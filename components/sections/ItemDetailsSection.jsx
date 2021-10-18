@@ -91,9 +91,9 @@ export default function ItemDetailsSection({
             <div className={styles['btnBoxes']}>
                 <Link href="#">
                   <a className='btn btn-primary cta-btn cta-btn-medium'>
-                    
+
                     <span>Download Floor Plan</span>
-                  </a>
+                  </a> 
                 </Link>
             </div>
 
