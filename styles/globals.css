@@ -205,6 +205,19 @@ a.btn-primary.cta-btn.cta-btn-medium {
 }
 
 
+a.btn.btn-icon {
+    padding: 0 10px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 24px;
+}
+
+a.btn.btn-icon-square {
+    width: 48px;
+    height: 48px;
+}
+
+
 
 p, ul, b, strong, em {
   font-family: "Roboto", sans-serif;

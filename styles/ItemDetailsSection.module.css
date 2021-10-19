@@ -12,13 +12,60 @@
    padding-right: 40px;
 }
 
-@media ( max-width: 768px ) {
-	.bg-image {
-		display: none;
-	}
+.mobile-bg-image {
+	position: absolute;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   display: none;
 }
+
 
 
 .detailBoxes {
 	padding: 85px 0;
+	position: relative;
+}
+
+.btnBoxes {
+	padding-bottom: 80px;
+	position: relative;
+	z-index: 1;
+}
+
+.btnBoxes .inner {
+	position: relative;
+}
+
+.btnBoxes .inner {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+	}
+
+
+@media ( max-width: 768px ) {
+	.mobile-bg-image {
+		display: block;
+	}
+	
+	.bg-image {
+		display: none;
+	}
+
+	.btnBoxes {
+		margin-left: -24px;
+		margin-right: -24px;
+		padding: 20px 24px;
+		padding-top: 80px;
+	}
+
+	
+
+	.cta-btn-main {
+		padding-left: 10px !important;
+		padding-right: 10px !important;
+	}
+
 }

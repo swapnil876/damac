@@ -15,11 +15,17 @@ import { useMediaQuery } from 'react-responsive'
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 
+import { FiArrowDown } from "react-icons/fi";
+import { IoShareSocialOutline, IoBookmarkOutline, IoLocationOutline} from 'react-icons/io5'
+
+
 
 
 export default function ItemDetailsSection({ 
   imageBanner, 
-  
+  floorPlanLink,
+  shareLink,
+  bookmarkId,
 }) {
 
 
@@ -86,16 +92,55 @@ export default function ItemDetailsSection({
 
               </div>
 
+           
+
             </div>
 
             <div className={styles['btnBoxes']}>
-                <Link href="#">
-                  <a className='btn btn-primary cta-btn cta-btn-medium'>
 
-                    <span>Download Floor Plan</span>
+              { deviceIsMobile && <>
+                <div className={styles['mobile-bg-image']}>
+                  <Image src={imageBanner} layout="fill" objectFit="cover"/>
+                </div>
+
+              </> }
+
+              <div className={styles['inner']}>
+                
+
+                <Link href="">
+                  <a className={ `btn btn-primary cta-btn cta-btn-medium ${styles['cta-btn-main']}` }>
+                    <span className='react-icon' style={ {'marginRight': '8px'} }>
+                      <FiArrowDown/>
+                    </span>
+                    <span>Get the Floor Plan</span>
                   </a> 
                 </Link>
+
+                { deviceIsMobile && <>
+                  <div className={styles['mobilebtns-sharer']}>
+
+                    <div className={styles['cta-bottom-btns']}>
+                      <a href="#" className={ `btn btn-primary btn-blur btn-icon` }>
+                        <span className='react-icon'>
+                              <IoBookmarkOutline color={ 'white' } />
+                        </span>
+                      </a>
+                    
+                   
+                      <a href="#" style={ {marginLeft: 8} } className={ `btn btn-primary btn-blur btn-icon btn-icon-square` }>
+                        <span className='react-icon'>
+                          <IoShareSocialOutline  color={ 'white' } />
+                        </span>
+                      </a>
+                    </div>
+
+                  </div>
+                </>}
+              </div>
             </div>
+
+            
 
           </div>
         </div>

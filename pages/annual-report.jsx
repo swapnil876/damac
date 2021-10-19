@@ -44,7 +44,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function AnnualReports( { mobileDevice } ) {
+function AnnualReport( { mobileDevice } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -184,7 +184,7 @@ function AnnualReports( { mobileDevice } ) {
   )
 }
 
-export default AnnualReports
+export default AnnualReport
 
 
 
