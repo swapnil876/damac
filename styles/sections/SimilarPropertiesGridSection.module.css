@@ -1,0 +1,22 @@
+
+.similar-properties-section {
+	padding: 85px 0;
+}
+
+.similar-properties-wrapper {
+	display: grid;
+	grid-gap: 44px 54px;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+@media ( max-width: 768px ) {
+	.similar-properties-section {
+		padding: 50px 0;
+	}
+	.similar-properties-wrapper {
+		display: grid;
+		grid-gap: 20px 54px;
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+}

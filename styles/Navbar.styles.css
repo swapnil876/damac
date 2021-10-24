@@ -25,6 +25,7 @@ header.damac-header:not(.damac-header-fixed) ~ .main {
 
     header.damac-header.damac-header-desktop {
         padding: 8px 0;
+        
     }
 
     header.damac-header:not(.damac-header-fixed) ~ .main {

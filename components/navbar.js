@@ -40,9 +40,13 @@ export default function Navbar({ className, children, navbarStyle }) {
 
   // Device React
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  const [damacHeaderClass, setDamacHeaderClass] = useState( 'damac-header-desktop' );
   useEffect(() => {
       if ( isMobile ) {
         setDeviceIsMobile( true );
+        setDamacHeaderClass( 'damac-header-mobile' );
+      } else {
+        setDamacHeaderClass( 'damac-header-desktop' );
       }
    }, [])
 
@@ -150,7 +154,7 @@ export default function Navbar({ className, children, navbarStyle }) {
   return (
     
 
-    <header className={`damac-header damac-header-desktop damac-nav  ${className} ${ slideOutMenuVisible ? 'slideout-active' : 'slideout-not-active'} `}>
+    <header className={`damac-header ${damacHeaderClass} damac-nav  ${className} ${ slideOutMenuVisible ? 'slideout-active' : 'slideout-not-active'} `}>
           
           { (deviceIsMobile) && 
             <div className={ `mobileNavContainer` }>

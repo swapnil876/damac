@@ -22,6 +22,10 @@ import SliderTextSection from '../../components/sections/SliderTextSection'
 import PaymentPlanSection from '../../components/sections/PaymentPlanSection'
 import VideoImageSection from '../../components/sections/VideoImageSection'
 import HighlightImageSection from '../../components/sections/HighlightImageSection'
+import PropertyTextImageSection from '../../components/sections/PropertyTextImageSection'
+import IconsFeatureText from '../../components/sections/IconsFeatureText'
+
+import SimilarPropertiesGridSection from '../../components/sections/SimilarPropertiesGridSection'
 
 
 // import styles from '../styles/.module.css'
@@ -218,6 +222,43 @@ function ListingPage() {
             bgImage={`/images/3d-tour-listing.png`}
 
         />
+
+
+        <PropertyTextImageSection
+           title="About DAMAC Hills"
+           subtext="Shaping the Middle East’s luxury real estate market since 2002"
+           location="Dubailand, Dubai, United Arab Emirates"
+           cta={<Link href="#"><a className='btn btn-primary cta-btn  cta-btn-wide cta-btn-primary'><span>View More</span></a></Link>}
+        />
+
+
+        <IconsFeatureText
+        icons={
+          [
+            {
+              icon: '/images/icons/building (1) 2.svg',
+              title: '5 min',
+              description: 'from Dubai International Financial Centre'
+            },
+
+            {
+              icon: '/images/icons/aeroplane 2.svg',
+              title: '10 min',
+              description: 'from Dubai International Airport'
+            },
+
+            {
+              icon: '/images/icons/sunrise 3.svg',
+              title: '13 min',
+              description: 'from Jumeirah Beach'
+            }
+          ]
+        }
+        />
+
+
+
+        <SimilarPropertiesGridSection/>
 
 
       </main>

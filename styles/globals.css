@@ -199,6 +199,8 @@ a.btn-primary.cta-btn {
     padding: 15px 30px;
 }
 
+
+
 a.btn-primary.cta-btn.cta-btn-medium {
     padding: 12px 24px;
     font-size: 14px;
@@ -299,7 +301,20 @@ h3.section-title {
 */
 .btn.cta-btn {
     padding: 14px 33px;
+    display: inline-block;
 }
+
+.btn.cta-btn-block {
+    display: block;
+}
+
+.btn.cta-btn-wide {
+    display: inline-block;
+    padding: 11px 45px;
+    text-align: center;
+    min-width: 200px;
+}
+
 
 .cta-btn.cta-btn-light {
     background-color: #FFFFFF;
