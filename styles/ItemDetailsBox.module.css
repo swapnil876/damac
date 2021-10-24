@@ -4,6 +4,10 @@
 	padding: 18px 0;
 }
 
+.itemdetailbox.white {
+	color: #fff;
+}
+
 .itemdetailbox2 {
 	color: #000;
 }

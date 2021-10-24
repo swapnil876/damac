@@ -150,7 +150,7 @@ export default function Navbar({ className, children, navbarStyle }) {
   return (
     
 
-    <header className={`damac-header damac-nav  ${className} ${ slideOutMenuVisible ? 'slideout-active' : 'slideout-not-active'} `}>
+    <header className={`damac-header damac-header-desktop damac-nav  ${className} ${ slideOutMenuVisible ? 'slideout-active' : 'slideout-not-active'} `}>
           
           { (deviceIsMobile) && 
             <div className={ `mobileNavContainer` }>
@@ -294,7 +294,13 @@ export default function Navbar({ className, children, navbarStyle }) {
 
           <div className={`main-menu-slideout ${ slideOutMenuVisible ? 'active' : 'not-active'}`}>
             <div className="menuslideut-left" onClick={handleMenuToggle}>
-              <div className="coverArea"></div>
+              <div className="coverArea">
+                <Image 
+                src="/images/bigmenu-left.jpg" 
+                layout="fill" objectFit="cover"
+                objectPosition="center"
+                />
+              </div>
             </div>
             <div className="inner">
               

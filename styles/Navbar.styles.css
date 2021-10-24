@@ -13,10 +13,19 @@ header.damac-header {
 }
 
 header.damac-header:not(.damac-header-fixed) ~ .main {
-    margin-top: -85px;
+    margin-top: -88px;
 }
 
 @media ( max-width: 768px ) {
+
+    .damac-header-desktop .header-right-area .header-item-wrapper {
+        padding: 0 20px;
+        padding-right: 0;
+    }
+
+    header.damac-header.damac-header-desktop {
+        padding: 8px 0;
+    }
 
     header.damac-header:not(.damac-header-fixed) ~ .main {
         margin-top: -59px;
@@ -282,18 +291,27 @@ span.menuItemIcon {
 }
 
 
-
+.main-menu-slideout .menuslideut-left {
+    display: none;
+}
 @media ( min-width: 768px ) {
     .main-menu-slideout .inner {
        margin-left: 30vw;
     }
 
+    .main-menu-slideout .menuslideut-left .coverArea {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
     .main-menu-slideout .menuslideut-left {
+        display: block;
         position: absolute;
         left: 0;
         top: 0;
         bottom: 0;
-        background-image: url(/images/bigmenu-left.jpg);
+        /*background-image: url(/images/bigmenu-left.jpg);*/
         width: 31vw;
         opacity: 0;
         transition: 0.2s all ease-in-out;

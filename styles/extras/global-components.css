@@ -467,3 +467,65 @@ List grid
         margin: 0;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Global Carousel and Sliders stylings
+*/
+.carousel.carousel-slider {
+
+}
+
+.carousel-slider .slider-arrow-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+    z-index: 1;
+}
+.carousel-slider .slider-arrow-center.slider-next-arrow {
+    left: initial;
+    right: 16px;
+}
+
+.slider-arrow {
+    width: 45px;
+    height: 45px;
+    display: block;
+    border-radius: 50%;
+    background-color: rgb(0 0 0 / 0.45);
+    backdrop-filter: blur(38px);
+    -webkit-backdrop-filter: blur(38px);
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    justify-content: center;
+    cursor: pointer; 
+    line-height: 1;
+    
+}
+.slider-arrow  svg {
+    width: 22px;
+    text-align: center;
+}
+
+.slider-arrow.arrow-disabled {
+    cursor: not-allowed;
+}
+.slider-arrow.arrow-disabled svg {
+    opacity: 0.5;
+
+}
+.slider-arrow span[arialabel] {
+    display: none;
+}

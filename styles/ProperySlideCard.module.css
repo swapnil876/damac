@@ -1,0 +1,68 @@
+/**/
+ 
+
+.property-slide-card {
+	position: relative;
+}
+
+.property-slides {
+	margin-bottom: 12px;
+}
+
+
+.details {
+	position: relative;
+}
+
+.details h3 {
+	font-size: 24px;
+	margin-bottom: 0;
+	line-height: 1.8;
+}
+.details h3 a {
+	font-weight: 500;
+	color: rgba(0,0,0,0.8);
+	letter-spacing: 0.02em;
+}
+
+.details .location {
+	margin-bottom: 12px;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 1.6;
+}
+
+.details .bookmarkAction {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.bookmarkAction {
+	font-size: 24px;
+	cursor: pointer;
+}
+
+
+.meta-items {}
+.meta-items ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex; flex-wrap: wrap;
+
+}
+
+.meta-items ul li {
+	margin-right: 24px;
+	font-weight: 300;
+	display: flex;
+	align-items: center;
+}
+.meta-items ul li:last-child {
+	margin-right: 0;
+}
+.meta-items ul li .icon {
+	margin-right: 8px;
+	font-size: 16px;
+	vertical-align: middle;
+}

@@ -1,0 +1,42 @@
+
+/**/
+.slider-text-section {
+	background-color: var(--primary);
+	background-image: var(--primary-gradient);
+	color: #fff; 
+	padding: 76px 0;
+	position: relative;
+}
+.section-text  {
+	margin-bottom: 52px;
+}
+.section-text h3 {
+	font-size: 44px;
+}
+.section-text p {
+	max-width: 390px;
+	font-size: 20px;
+	line-height: 1.8;
+}
+
+.section-detail-boxes {
+	display: grid;
+	grid-template-columns: 1.5fr 1fr;
+	grid-gap: 20px;
+}
+
+@media ( max-width: 768px ) {
+	.section-detail-boxes {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 20px;
+	}
+}
+
+
+.slider-section {
+	position: absolute;
+	top: 76px;
+	right: 0;
+	width: 50%;
+}

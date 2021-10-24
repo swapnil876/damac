@@ -234,6 +234,9 @@ p {
     line-height: 1.6;
 }
 
+b {
+    font-weight: 500;
+}
 
 
 .text-box h4 {
@@ -243,6 +246,28 @@ p {
 .text-box p {
   font-weight: 300;
   font-size: 18px;
+}
+
+
+
+
+
+
+/**/
+.section-text p{
+    font-size: 20px;
+}
+h3.section-title {
+    font-size: 44px;
+}
+
+@media ( max-width: 768px ) {
+    .section-text p{
+        font-size: 18px;
+    }
+    h3.section-title {
+        font-size: 32px;
+    }
 }
 
 
@@ -276,6 +301,10 @@ p {
     padding: 14px 33px;
 }
 
+.cta-btn.cta-btn-light {
+    background-color: #FFFFFF;
+}
+
 
 a.btn.btn-blur {
     background-color: rgb(255 255 255 / 10%);
@@ -293,6 +322,23 @@ a.btn.btn-blur-dark {
     -webkit-backdrop-filter: blur(20px);
 }
 
+
+/*Gradient text*/
+.gradient-text,
+.btn-light   {
+    background-image: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 200%;
+    background-position: 50% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent
+
+}
+.gradient-text .react-icon svg {
+    color: #cbb176;
+}
 
 
 /*
