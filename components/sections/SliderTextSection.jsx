@@ -14,8 +14,14 @@ import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detec
 
 
 
+
+
+
 // 
 import ItemDetailBox from '../ItemDetailBox'
+
+
+import SliderImageBottomArrow from '../items/SliderImageBottomArrow'
 
 export default function SliderTextSection({ 
   children,
@@ -79,8 +85,25 @@ export default function SliderTextSection({
         </div>
 
 
-        <div className={'slider-section'}>
-          <div>Sliders here.</div>
+        <div className={styles['slider-section']}>
+          <div>
+
+          <SliderImageBottomArrow 
+          slideItems={[
+                  {
+                    img: '/images/listing-slider.png',
+                    alt: 'Slider text alt',
+                  },
+
+                  {
+                    img: '/images/listing-slider.png',
+                    alt: 'Slider text alt',
+                  }
+           ]}
+           />
+
+
+          </div>
         </div>
 
     </section>

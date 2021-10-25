@@ -24,6 +24,7 @@ import VideoImageSection from '../../components/sections/VideoImageSection'
 import HighlightImageSection from '../../components/sections/HighlightImageSection'
 import PropertyTextImageSection from '../../components/sections/PropertyTextImageSection'
 import IconsFeatureText from '../../components/sections/IconsFeatureText'
+import BoxedTextSection from '../../components/sections/BoxedTextSection'
 
 import SimilarPropertiesGridSection from '../../components/sections/SimilarPropertiesGridSection'
 
@@ -257,6 +258,8 @@ function ListingPage() {
         />
 
 
+
+        <BoxedTextSection/>
 
         <SimilarPropertiesGridSection/>
 

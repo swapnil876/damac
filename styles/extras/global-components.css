@@ -529,3 +529,32 @@ Global Carousel and Sliders stylings
 .slider-arrow span[arialabel] {
     display: none;
 }
+
+/*Bottom arrow slider*/
+.imagecarousel-bottom-arrow .carousel.carousel-slider {
+    overflow: visible;
+}
+
+.slider-arrow-container .slider-arrow-bottom {
+    position: absolute;
+    left: 40%;
+    
+
+}
+
+.slider-arrow-container .slider-arrow-bottom.slider-prev-arrow {
+    position: absolute;
+    bottom: -22.5px;
+    margin-left: -40px;
+    display: flex;
+    z-index:9;
+}
+
+.slider-arrow-container .slider-arrow-bottom.slider-next-arrow {
+    position: absolute;
+    bottom: -22.5px;
+    margin-left: 40px;
+    transform: translateX(-50%);
+    display: flex;
+    z-index:9;
+}

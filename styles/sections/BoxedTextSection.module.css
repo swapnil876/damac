@@ -1,0 +1,65 @@
+.boxed-text-section {
+	position: relative;
+	background-color: #000;
+	color: #fff;
+}
+
+.boxed-text-section .bg-image {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+}
+
+.boxed-wrapper-desktop, 
+.boxed-wrapper {
+	display: block;
+	position: relative;
+}
+
+.boxed-wrapper-desktop {
+	padding-top: 170px;
+	padding-bottom: 70px;
+}
+.boxed-wrapper-desktop .the-box  {
+	max-width: 736px;
+	padding: 65px;
+	background-color: #000;
+	position: relative;
+}
+
+.boxed-wrapper-desktop .the-box  p, 
+.boxed-wrapper-desktop .the-box h3 {
+	max-width: 480px;
+}
+
+
+.subtext {
+	font-size: 22px;
+}
+
+.title {
+	font-size: 44px;
+	margin-bottom: 10px;
+}
+
+.ctatext {
+	margin-top: 70px;
+}
+
+.boxed-wrapper-desktop {
+	position: relative;
+}
+
+@media ( max-width: 768px ) {
+
+	.subtext {
+		font-size: 18px;
+	}
+
+	.title {
+		font-size: 34px;
+		margin-bottom: 10px;
+	}
+}
