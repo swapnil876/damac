@@ -1,22 +1,17 @@
 
 import styles from '../styles/ItemIconGrid.module.css'
 import Image from 'next/image'
-import classnames from 'classnames';
+import classnames from 'classnames'
 
 export default function ItemIconGrid({ 
   items
 }) {
 
-
-
-  
-
-
   return (
 
     
 
-    <div style{styles['item-grid']}>
+    <div class={styles['item-grid']}>
         <div className='container'>
           
           <div className={styles['item-grid-icons']}>

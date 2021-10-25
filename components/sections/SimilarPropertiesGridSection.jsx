@@ -17,6 +17,8 @@ import { Carousel } from 'react-responsive-carousel';
 // Is Mobile
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
+// icon
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 
 
 const prevArrow = function( clickHandler, hasPrev ){
