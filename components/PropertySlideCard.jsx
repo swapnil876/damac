@@ -33,7 +33,7 @@ export default function ProperySlideCard( {
 
       <div className={styles['details']}>
 
-        <div className={styles.bookmarkAction} propertId={propertyId}>
+        <div className={styles.bookmarkAction} data-propertyid={propertyId}>
           <BsBookmark color="#000" />
         </div>
 

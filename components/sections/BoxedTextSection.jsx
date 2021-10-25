@@ -43,39 +43,47 @@ export default function GridImageSection({
     <section className={styles['boxed-text-section']}>
 
 
-        { isMobile && <div className={styles['boxed-wrapper']}>
-          <h3 className={styles['title']}>{title}</h3>
-          <p className={styles['subtext']}>{subtext}</p>
+        { isMobile && <>
+          
+          <div className={styles['boxed-wrapper']}>
+                    <h3 className={styles['title']}>{title}</h3>
+                    <p className={styles['subtext']}>{subtext}</p>
 
-          <div className={styles['ctatext']}>
-            <Link href={cta.href}>
-              <a className={`cta cta-btn`}>
-                <span>{cta.text}</span>
-              </a>
-            </Link>
-          </div>
-        </div>}
+                    <div className={styles['ctatext']}>
+                      <Link href={cta.href}>
+                        <a className={`cta cta-btn`}>
+                          <span>{cta.text}</span>
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
+
+        </>}
 
 
-        { !isMobile && <div className={styles['boxed-wrapper-desktop']}>
-          <div className={styles['bg-image']}>
-            <Image src={bgImage} layout="fill" alt="bg image" objectFit="cover" objectPosition="center"/>
-          </div>
-          <div className='container'>
-            <div className={styles['the-box']}>
-              <h3 className={styles['title']}>{title}</h3>
-              <p className={styles['subtext']}>{subtext}</p>
+        { !isMobile && <>
+          
+          <div className={styles['boxed-wrapper-desktop']}>
+                    <div className={styles['bg-image']}>
+                      <Image src={bgImage} layout="fill" alt="bg image" objectFit="cover" objectPosition="center"/>
+                    </div>
+                    <div className='container'>
+                      <div className={styles['the-box']}>
+                        <h3 className={styles['title']}>{title}</h3>
+                        <p className={styles['subtext']}>{subtext}</p>
 
-              <div className={styles['ctatext']}>
-                <Link href={cta.href}>
-                  <a className={`cta cta-btn`}>
-                    <span>{cta.text}</span>
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>}
+                        <div className={styles['ctatext']}>
+                          <Link href={cta.href}>
+                            <a className={`cta cta-btn`}>
+                              <span>{cta.text}</span>
+                            </a>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+        </>}
 
        
 

@@ -48,6 +48,10 @@
 	margin-top: 70px;
 }
 
+.boxed-wrapper {
+	padding: 57px 24px;
+}
+
 .boxed-wrapper-desktop {
 	position: relative;
 }
@@ -61,5 +65,7 @@
 	.title {
 		font-size: 34px;
 		margin-bottom: 10px;
+		font-weight: 500;
+		max-width: 262px;
 	}
 }

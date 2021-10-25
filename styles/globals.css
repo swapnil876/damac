@@ -304,7 +304,9 @@ h3.section-title {
     display: inline-block;
 }
 
-.btn.cta-btn-block {
+
+.btn.cta-btn-block,
+.btn.btn-block {
     display: block;
 }
 
