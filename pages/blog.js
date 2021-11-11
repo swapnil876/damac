@@ -24,7 +24,7 @@ function Blog() {
     <div className='blogbody'>
 
       <Head>
-        <title>Damac - News</title>
+        <title>Damac - Blog</title>
         <meta name="description" content="Blog - Damac Properties" />
         
         <link rel="icon" href="/favicon.ico" />
@@ -97,7 +97,9 @@ function Blog() {
                 <h2>DAMAC in the News</h2>
               </div>
               <div>
-                <a href="#" className="border-btn border-btn-dark btn">View all</a>
+                <Link href={`/blog-list`}>
+                  <a className="border-btn border-btn-dark btn">View all</a>
+                </Link>
               </div>
             </div>
            

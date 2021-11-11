@@ -1764,8 +1764,12 @@ PAGE:  NEWS
 .industry-news.bg-light .card {
     width: 200px;   
 }
+.card img {
+    max-width: 100%;
+}
 .news-wrap .card img {
     margin-bottom: 9px;
+    max-width: 100%;
 }
 .news-wrap .card-body span, 
 .news-wrap .card-body p {
