@@ -189,6 +189,7 @@ a.btn-primary {
     background-color: var(--primary);
     border-color: transparent;
     background-image: var(--primary-gradient);
+    border: 0;
 }
 a.btn-primary:hover {
     background-color: var(--primary);
