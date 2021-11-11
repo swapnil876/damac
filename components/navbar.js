@@ -94,6 +94,11 @@ export default function Navbar({ className, children, navbarStyle }) {
 
     setDropdownValues({
       ...customDropdowns,
+      [name]: false,
+    });
+
+    setDropdownValues({
+      ...customDropdowns,
       [name]: !customDropdowns[name],
     });
 
@@ -211,9 +216,9 @@ export default function Navbar({ className, children, navbarStyle }) {
                     <div className="header-item-wrapper not-on-mobile header-dropdown-container dropdown-to-centered">
                       <a 
                       href="/damac-static/browse_properties.html" 
-                      className="browseProperties"
+                      className="browseProperties header-dropdown-btn"
                       data-dropdownkey={'browse-properties'} 
-                      onClick={ handleDropdownClick } 
+                      
 
                       >Browse Properties</a>
 
@@ -239,7 +244,7 @@ export default function Navbar({ className, children, navbarStyle }) {
                       <a href="#" 
                       className="btn btn-primary header-dropdown-btn" 
                       data-dropdownkey={'enquire'} 
-                      onClick={ handleDropdownClick } >
+                      >
                         Enquire
                       </a>
 

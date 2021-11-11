@@ -150,7 +150,7 @@ function About() {
          <div className="container">
            
            <div className="row flex-md-row flex-column-reverse">
-             <div className="col-md-7">
+             <div className="col-md-7 chairman-text-col">
                <div className="aboutChairmanbox">
                  <h3>Setting new standards for design, craftsmanship and inspired lifestyles</h3>
                  <div className="chairmanTextBody">
@@ -170,14 +170,14 @@ function About() {
                  </div>
                </div>
              </div>
-             <div className="col-md-5">
-                  {isDesktopOrLaptop && 
+             <div className="col-md-5 ps-md-0">
+                  {!deviceIsMobile && 
                     <div className="chairmanPhoto">
-                      <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                      <Image src="/images/chairman-portrait.jpg" layout="fill" objectFit="cover" objectPosition="top"/>
                     </div>
                   }
 
-                  { !isDesktopOrLaptop && 
+                  { deviceIsMobile && 
                     <div className="chairmanPhoto-mobile">
                       <Image src="/images/chairmanphotomob.jpg" width={342} height={338}/>
                     </div>

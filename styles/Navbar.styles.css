@@ -97,7 +97,17 @@ header.damac-header.slideout-active .mobileNavContainer {
     padding: 10px 0px;
  
     display: block;
+
+    transition: 0.15s all ease-in-out;
+
 }
+
+.header-item-wrapper:hover > a,
+.header-item-wrapper > a:hover {
+    color: #fff;
+    opacity: 0.8;
+}
+
 .navbar-dark .header-item-wrapper > a {
     color:  #111;
 }
@@ -143,6 +153,7 @@ header.damac-header.slideout-active .mobileNavContainer {
 
 .damac-nav .header-item-wrapper .btn-primary {
     color: #fff;
+    border: 0;
 }
 
 
@@ -304,6 +315,7 @@ span.menuItemIcon {
         position: relative;
         width: 100%;
         height: 100%;
+        opacity: 0;
     }
 
     .main-menu-slideout .menuslideut-left {
@@ -342,8 +354,10 @@ span.menuItemIcon {
 .custom-nav-dropdown {
     position: absolute;
 
+    top: 15px;
     left: 0;
     padding: 0 20px;
+    padding-top: 20px;
     min-width: 230px;
     margin-top: 14px;
 
@@ -373,7 +387,8 @@ span.menuItemIcon {
 }
 
 
-.custom-nav-dropdown.is-active {
+.custom-nav-dropdown.is-active,
+.header-dropdown-container:hover .custom-nav-dropdown {
     display: block;
     z-index: 9;
 }
@@ -410,4 +425,5 @@ span.menuItemIcon {
 .custom-nav-dropdown .navDropdownUl > li > a.active,
 .custom-nav-dropdown .navDropdownUl > li > a:focus {
     background-color: rgb(255 255 255 / 0.25);
+    color:  #000;
 }

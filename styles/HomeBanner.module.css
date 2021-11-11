@@ -7,7 +7,9 @@
     display: block;
     position: relative;
     min-height: 720px;
+    min-height: 100vh;
     height: 100vh;
+    width: 100%;
     background-color: #111;
     background-image: linear-gradient(45deg, #111, #c8b37a);
 }
@@ -117,9 +119,14 @@
 
 
 .about-banner-top-area {
-    margin-bottom: 100px;
+    margin-bottom: 0px;
 }
 
+@media ( min-width: 768px ) {
+    .about-banner-container {
+      padding-top: 180px;
+    }
+}
 @media ( max-width: 768px ) {
     .about-banner-top-area {
         margin-bottom: 45px;
