@@ -122,7 +122,7 @@ export default function Navbar({ className, children, navbarStyle }) {
         },
         {
           label: 'Our Picks / Offer',
-          url: '/our-picks'
+          url: '/offers'
         },
     ],
 
