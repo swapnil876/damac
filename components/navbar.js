@@ -85,6 +85,15 @@ export default function Navbar({ className, children, navbarStyle }) {
     'enquire': false,
   };
 
+  const bigLinkBrowseProperties = false;
+  const [_bigLinkBrowseProperties, setBigLinkBrowseProperties] = useState( bigLinkBrowseProperties );
+  function handleBrowsePropertiesBiglink(e){
+    e.preventDefault();
+
+    setBigLinkBrowseProperties( !_bigLinkBrowseProperties );
+    console.log( _bigLinkBrowseProperties );
+  }
+
   const [customDropdowns, setDropdownValues] = useState( _customDropdowns );
 
   function handleDropdownClick(e) {
@@ -316,14 +325,28 @@ export default function Navbar({ className, children, navbarStyle }) {
               <div className="main-menu-inner d-flex flex-column justify-content-between">
                 <div className="biglinks">
                   <div className="biglink-container biglinks-dropdown">
-                    <ActiveLink href="/damac-static/browse_properties.html" activeClassName="active">
-                         <a className="biglink">
+                    <ActiveLink href="#" activeClassName="active"  >
+                         <a className="biglink" data-dropdownkey="browse-properties" onClick={ handleBrowsePropertiesBiglink }>
                              <span>Browse Properties</span>
                              <span className="menuItemIcon">
                                <FontAwesomeIcon icon={ faChevronDown } size="xs"/>
                              </span>
                          </a>
                     </ActiveLink>
+                    <div className={`slideout-biglinks-dropdown  ${ _bigLinkBrowseProperties ? 'active' : 'not-active' }`} >
+                      <ul>
+                        { 
+                          
+                          dropdownItems['browse-properties'].map( 
+                            (item, index) => <li key={index} className='navitem-dropdown'>
+                              <Link href={ item.url }>
+                                {item.label}
+                              </Link>
+                            </li>
+                          ) 
+                        }
+                      </ul>
+                    </div>
                   </div>
                   <div className="biglink-container">
                     <ActiveLink href="/about" activeClassName="active">

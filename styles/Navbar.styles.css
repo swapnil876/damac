@@ -427,3 +427,26 @@ span.menuItemIcon {
     background-color: rgb(255 255 255 / 0.25);
     color:  #000;
 }
+
+
+
+/* Big links dropdown */
+.slideout-biglinks-dropdown {
+    display: none;
+}
+.slideout-biglinks-dropdown.active {
+    display: block;
+}
+
+.slideout-biglinks-dropdown ul {
+    list-style-type: none;
+    padding: 15px;
+    margin: 0;
+}
+
+.main-menu-slideout .biglinks .slideout-biglinks-dropdown ul li {
+    margin-bottom: 15px;
+}
+.main-menu-slideout .biglinks .slideout-biglinks-dropdown ul li a {
+    font-size: 24px;
+}
