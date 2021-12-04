@@ -1,11 +1,11 @@
-.pagetabs{
+.pagetabs {
     display: flex;
     padding: 0;
     margin-bottom: 45px;
     list-style-type: none;
 }
 
-.pagetabs-link  {
+.pagetabs-link {
     padding: 15px 0;
     display: block;
     margin-right: 33px;
@@ -30,7 +30,7 @@
     height: 2px;
     background-color: #000;
     opacity: 0;
-    transition: 0.12s all ease-in-out; 
+    transition: 0.12s all ease-in-out;
 }
 
 .pagetabs-link:hover::after {
@@ -52,13 +52,16 @@
 .annual-reports-list {
     padding-bottom: 80px;
 }
+
 .annual-reports-item {
     padding: 16px 0;
     border-bottom: 1px solid #eee;
 }
+
 .annual-reports-item:last-child {
     border-bottom: 0;
 }
+
 .annual-reports-item h3 {
     font-weight: 500;
     font-size: 28px;
@@ -73,7 +76,7 @@
     align-items: center;
 }
 
-@media ( max-width: 768px ) {
+@media (max-width: 768px) {
 
     .annual-reports-item .annual-report-meta {
         display: flex;
@@ -105,31 +108,34 @@
 * Investor Relation Page
 */
 
-.profile-outer-white{
+.profile-outer-white {
     padding: 0px;
     background: #fff;
     border-radius: 4px;
     position: relative;
     z-index: 9;
 }
-.profile-inner-main{
+
+.profile-inner-main {
     background: #000;
     padding: 40px 16px;
-    
+
 }
 
 .profile-main-head {
     max-width: 980px;
     margin: 0 auto;
 }
-.profile-main-head h1{
+
+.profile-main-head h1 {
     font-size: 32px;
     line-height: 37.63px;
     color: #fff;
     letter-spacing: 0.01em;
     margin-bottom: 16px;
 }
-.profile-main-head p{
+
+.profile-main-head p {
     font-size: 16px;
     line-height: 25.28px;
     letter-spacing: 0.04em;
@@ -138,13 +144,32 @@
     color: #ffffff;
 }
 
+.contactus-left-area h3 {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.6%;
+    letter-spacing: 0.03em;
+    color: #000000;
+}
+
+.telephonelinks, .contactus-left-area {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 148%;
+    color: #000000;
+}
 
 
-@media ( min-width: 768px ) {
-    .profile-corporate{
+@media (min-width: 768px) {
+    .profile-corporate {
         margin-top: -50px;
     }
-    .profile-outer-white{ 
+
+    .profile-outer-white {
         padding: 40px;
     }
 }

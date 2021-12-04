@@ -10,6 +10,7 @@ import Footer from '../components/Footer'
 
 import React, { Component } from "react";
 
+import MainContactForm from '../components/MainContactForm'
 
 
 
@@ -39,9 +40,7 @@ function ContactUs() {
           </div>
 
 
-          
-           
-        
+          <MainContactForm initialValues={ {'gender': 'Mr'} }/>
       </main>
 
       <Footer></Footer>

@@ -7,6 +7,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 
+// importing form template
+import InvestorContactForm from '../components/InvestorContactForm';
+
+
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -109,19 +113,19 @@ function ContactUsInvestor( { mobileDevice } ) {
             
             <div className='row'>
               
-              <div className='col-md-4'>
-                <div className='contactus-left-area'>
+              <div className='col-xl-3 col-md-4'>
+                <div className={ styles['contactus-left-area'] }>
                   <h3>Investor Relations</h3>
-                  <p>DAMAC Properties Dubai PJSC<br/>
-PO Box 2195<br/>
-Dubai, United Arab Emirates</p>
-                   <div className='telephonelinks'>
+                  <p>DAMAC Properties Dubai PJSC<br/> PO Box 2195<br/> Dubai, United Arab Emirates</p>
+                   <div className={ styles['telephonelinks'] }>
                      <div><FontAwesomeIcon icon={faPhone} rotation={90}/> <span className="ms-1">Tel:  +971 4 373 1000</span></div>
                      <div><FontAwesomeIcon icon={faPhone} rotation={90}/> <span className="ms-1">Tel:  +971 4 373 1000</span></div>
                    </div>
                 </div>
               </div>
-
+              <div className='col-xl-6 col-lg-8'>
+              <InvestorContactForm initialValues={ {'gender': 'Mr'} }></InvestorContactForm>
+              </div>
             </div>
 
 
