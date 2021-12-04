@@ -168,7 +168,7 @@ export default function Navbar({ className, children, navbarStyle }) {
   return (
     
 
-    <header className={`damac-header ${damacHeaderClass} damac-nav  ${className} ${ slideOutMenuVisible ? 'slideout-active' : 'slideout-not-active'} `}>
+    <header className={`damac-header ${damacHeaderClass} ${ navbarStyle == 'transparent' ? 'nv-transparent': '' } damac-nav  ${className} ${ slideOutMenuVisible ? 'slideout-active' : 'slideout-not-active'} `}>
           
           { (deviceIsMobile) && 
             <div className={ `mobileNavContainer` }>
@@ -251,7 +251,7 @@ export default function Navbar({ className, children, navbarStyle }) {
 
                     <div className="header-item-wrapper header-dropdown-container not-on-mobile">
                       <a href="#" 
-                      className="btn btn-primary header-dropdown-btn" 
+                      className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`}
                       data-dropdownkey={'enquire'} 
                       >
                         Enquire
