@@ -1,0 +1,38 @@
+.damac-about-leadership{
+    padding:68px 0;
+}
+.leadership-boxes {}
+
+.leadershipbox {
+    margin-bottom: 60px;
+}
+
+.leadershipimg {
+    margin-bottom: 18px;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+}
+
+.leadershipbox img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.leadership-details {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+}
+
+.leadership-details h5 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 169.6%;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.leadership-details p {
+    font-size: 18px;
+    opacity: 0.6;
+}

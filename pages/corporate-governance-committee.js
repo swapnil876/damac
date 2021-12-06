@@ -7,9 +7,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 
-// importing form template
-import InvestorContactForm from '../components/InvestorContactForm';
-
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -20,6 +17,7 @@ import FooterMoreLinks from '../components/FooterMoreLinks'
 import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
 
+// import styles from '../styles/pages/Quick.module.css'
 
 
  // React Responsive
@@ -27,15 +25,25 @@ import ContactForm from '../components/ContactForm'
 
 
 
+//  Importing the CorporateGovernance component
+ import CorporateGovernance from "../components/CorporateGovernance";
+
+// import styles from '../styles/.module.css'
+
+
+
+// Banner image
+
+
 
 // FA
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-
-function ContactUsInvestor( { mobileDevice } ) {
+function ShareInformation( { mobileDevice } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -52,10 +60,13 @@ function ContactUsInvestor( { mobileDevice } ) {
         'label': 'Investor Relations',
         'link': '/investor-relations',
       },
-
       {
-        'label': 'Contact Us',
-        'link': '/contact-us-investor',
+        'label': 'Corporate Governance',
+        'link': '/',
+      },
+      {
+        'label': 'Governance Committees',
+        'link': '/',
         'active': true
       }
   ];
@@ -71,50 +82,52 @@ function ContactUsInvestor( { mobileDevice } ) {
   
 
   return (
-    <div className='contactusinvestorbody'>
+    <div className='quickfactsheetbody'>
 
       <Head>
-        <title>Contact Us - Damac</title>
+        <title>Share Information - Damac</title>
 
-        <meta name="description" content="Contact Us - Damac Properties" />
+        <meta name="description" content="Share Information - Damac Properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
 
       <Navbar navbarStyle='dark' className='navbar-dark'></Navbar>
 
-      <main className="main main-regular contactusinvestor">
+      <main className="main main-regular capital-history">
 
         <Breadcrumbs crumbs={ crumbs }/>
 
         <HeadingTitle 
-          title="Contact Us" 
+          title="Corporate Governance" 
+          // btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
         </HeadingTitle>
 
-        <section className={ `section ${styles['contactus-investor']}` }>
-          <div className='container'>
-            
-            <div className='row'>
-              
-              <div className='col-xl-3 col-md-4'>
-                <div className={ styles['contactus-left-area'] }>
-                  <h3>Investor Relations</h3>
-                  <p>DAMAC Properties Dubai PJSC<br/> PO Box 2195<br/> Dubai, United Arab Emirates</p>
-                   <div className={ styles['telephonelinks'] }>
-                     <div><FontAwesomeIcon icon={faPhone} rotation={90}/> <span className="ms-1">Tel:  +971 4 373 1000</span></div>
-                     <div><FontAwesomeIcon icon={faPhone} rotation={90}/> <span className="ms-1">Tel:  +971 4 373 1000</span></div>
-                   </div>
-                </div>
-              </div>
-              <div className='col-xl-6 col-lg-8'>
-              <InvestorContactForm initialValues={ {'gender': 'Mr'} }></InvestorContactForm>
-              </div>
-            </div>
+        <div className='container'>
+            <PageTabs tabLinks={ [
+              {
+                url: '/',
+                label: 'Meet Our Board Members',
+                active: false,
+            },
+                {
+                  url: '/',
+                  label: 'Governance Committees',
+                  active: true,
+              },
 
+            ] }></PageTabs>
+        </div>
+
+        <section className='section'>
+          <div className='container'>
+
+
+        <CorporateGovernance/>
 
           </div>
         </section>
@@ -130,7 +143,7 @@ function ContactUsInvestor( { mobileDevice } ) {
   )
 }
 
-export default ContactUsInvestor
+export default ShareInformation
 
 
 
