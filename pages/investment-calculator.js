@@ -19,21 +19,16 @@ import ContactForm from '../components/ContactForm'
 
 // import styles from '../styles/pages/Quick.module.css'
 
-
  // React Responsive
- import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
+ import { Context as ResponsiveContext } from 'react-responsive'
+ import { useMediaQuery } from 'react-responsive'
+ import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
+
 
 
 
 //  Importing the CorporateGovernance component
- import CorporateGovernanceBoard from "../components/CorporateGovernanceBoard";
-
-// import styles from '../styles/.module.css'
-
-
-
-// Banner image
-
+ import InvestmentCalculator from "../components/InvestmentCalculator";
 
 
 // FA
@@ -53,6 +48,16 @@ function ShareInformation( { mobileDevice } ) {
       }
    }, [])
  
+   
+  const isDesktopOrLaptop = useMediaQuery(
+    { minDeviceWidth: 768 },
+    // { deviceWidth: 768 } // `device` prop
+);
+
+const isMobileWidth = useMediaQuery(
+    { maxDeviceWidth: 767 },
+    // { deviceWidth: 767 } // `device` prop
+);
 
   // Breadcrumbs links
   const crumbs = [
@@ -61,14 +66,14 @@ function ShareInformation( { mobileDevice } ) {
         'link': '/investor-relations',
       },
       {
-        'label': 'Corporate Governance',
+        'label': 'Investment Calculator',
         'link': '/',
       },
-      {
-        'label': 'Meet Our Board Members',
-        'link': '/corporate-governance-board',
-        'active': true
-      }
+    //   {
+    //     'label': 'Meet Our Board Members',
+    //     'link': '/',
+    //     'active': true
+    //   }
   ];
 
 
@@ -85,9 +90,9 @@ function ShareInformation( { mobileDevice } ) {
     <div className='quickfactsheetbody'>
 
       <Head>
-        <title>Corporate Governance - Damac</title>
+        <title>Investment Calculator - Damac</title>
 
-        <meta name="description" content="Corporate Governance - Damac Properties" />
+        <meta name="description" content="Investment Calculator - Damac Properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -99,8 +104,8 @@ function ShareInformation( { mobileDevice } ) {
         <Breadcrumbs crumbs={ crumbs }/>
 
         <HeadingTitle 
-          title="Corporate Governance" 
-          // btnLink={ downloadBtn } 
+          title="Investment Calculator" 
+          btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
@@ -110,22 +115,36 @@ function ShareInformation( { mobileDevice } ) {
         <div className='container'>
             <PageTabs tabLinks={ [
               {
-                url: '/corporate-governance-board',
-                label: 'Meet Our Board Members',
-                active: true,
+                url: '/',
+                label: 'Share Graph Monitor',
+                active: false,
             },
                 {
-                  url: '/corporate-governance-committee',
-                  label: 'Governance Committees',
+                  url: '/',
+                  label: 'Share Overview',
                   active: false,
               },
-
+              {
+                url: '/',
+                label: 'Investment Calculator',
+                active: true,
+            },
+            {
+                url: '/',
+                label: 'Share Price Look Up',
+                active: false,
+            },
+            {
+                url: '/',
+                label: 'Sharia Compliance',
+                active: false,
+            },
             ] }></PageTabs>
         </div>
 
         <section className='section'>
 
-        <CorporateGovernanceBoard/>
+        <InvestmentCalculator initialValues={ {'type': 'Amount', 'amt_invested': '100,000', 'date': '03/02/2020', 'end_date': '03/02/2021'} }/>
 
         </section>
 

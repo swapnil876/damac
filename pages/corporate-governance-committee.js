@@ -66,7 +66,7 @@ function ShareInformation( { mobileDevice } ) {
       },
       {
         'label': 'Governance Committees',
-        'link': '/',
+        'link': '/corporate-governance-committee',
         'active': true
       }
   ];
@@ -85,9 +85,9 @@ function ShareInformation( { mobileDevice } ) {
     <div className='quickfactsheetbody'>
 
       <Head>
-        <title>Share Information - Damac</title>
+        <title>Corporate Governance - Damac</title>
 
-        <meta name="description" content="Share Information - Damac Properties" />
+        <meta name="description" content="Corporate Governance - Damac Properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -108,14 +108,14 @@ function ShareInformation( { mobileDevice } ) {
         </HeadingTitle>
 
         <div className='container'>
-            <PageTabs tabLinks={ [
+        <PageTabs tabLinks={ [
               {
-                url: '/',
+                url: '/corporate-governance-board',
                 label: 'Meet Our Board Members',
                 active: false,
             },
                 {
-                  url: '/',
+                  url: '/corporate-governance-committee',
                   label: 'Governance Committees',
                   active: true,
               },
@@ -124,7 +124,7 @@ function ShareInformation( { mobileDevice } ) {
         </div>
 
         <section className='section'>
-          <div className='container'>
+          <div className=''>
 
 
         <CorporateGovernance/>

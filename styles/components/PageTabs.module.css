@@ -45,3 +45,10 @@
 .pagetabs-link.active {
     font-weight: 500;
 }
+
+@media ( max-width: 768px ) {
+    .pagetabs{
+        overflow: auto;
+        max-width: 100%;
+    }
+}
