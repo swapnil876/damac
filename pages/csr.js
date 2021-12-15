@@ -42,7 +42,7 @@ function CSR({entity1}) {
 
       <main className="main about-main">
        
-       <VideoBanner bannerImage={isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner>
+       {/*<VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner>*/}
 
        <TextSection className="text-section-csr-1">
          <h2>Why Corporate Social Responsibility (CSR)?</h2>
@@ -59,7 +59,7 @@ function CSR({entity1}) {
              <div className="col-md-4">
                <div className="text-box">
                  <h4>{entity1.fieldMilestones.fieldHeaderMile}</h4>
-                 <p>{entity1.fieldMilestones.entity.fieldTextMile}</p>
+                 {/*<p>{entity1.fieldMilestones.entity.fieldTextMile}</p>*/}
                </div>
 
                <div className="sliderArrows">
@@ -197,8 +197,9 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: _CSR });
+  console.log('data', data.data.nodeQuery.entities[0].fieldMilestones);
   let entity1 = data.data.nodeQuery.entities[0];
-  console.log('entity1',entity1);
+  // console.log('entity1',entity1);
    return {
       props: {
         entity1: entity1,

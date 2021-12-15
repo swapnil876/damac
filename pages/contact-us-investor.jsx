@@ -95,16 +95,19 @@ function ContactUsInvestor( { mobileDevice } ) {
           
         </HeadingTitle>
 
-        <section className={ `section ${styles['contactus-investor']}` }>
+        <section >
+        {/*className={ `section ${styles['contactus-investor']}` }*/}
           <div className='container'>
             
             <div className='row'>
               
               <div className='col-xl-3 col-md-4'>
-                <div className={ styles['contactus-left-area'] }>
+                <div >
+                {/*className={ styles['contactus-left-area'] }*/}
                   <h3>Investor Relations</h3>
                   <p>DAMAC Properties Dubai PJSC<br/> PO Box 2195<br/> Dubai, United Arab Emirates</p>
-                   <div className={ styles['telephonelinks'] }>
+                   <div>
+                    {/*className={ styles['telephonelinks'] }*/}
                      <div><FontAwesomeIcon icon={faPhone} rotation={90}/> <span className="ms-1">Tel:  +971 4 373 1000</span></div>
                      <div><FontAwesomeIcon icon={faPhone} rotation={90}/> <span className="ms-1">Tel:  +971 4 373 1000</span></div>
                    </div>
