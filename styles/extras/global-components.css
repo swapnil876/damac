@@ -217,6 +217,7 @@
 }
 .booking-details-items > li h5 {
   font-size: 22px;
+  margin-bottom: 0;
 }
 
 .booking-details-items > li .lbl {

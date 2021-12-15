@@ -1,3 +1,5 @@
+import React, { Component, useState, useEffect } from "react";
+
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -9,17 +11,27 @@ import Navbar from '../components/navbar'
 
 import Footer from '../components/Footer'
 
-
-import React, { Component } from "react";
-
 // import styles from '../styles/.module.css'
 
 import TextSection from '../components/text-section'
 
 
+import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
 
-function News() {
+
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { NEWS } from '../graphql/news';
+
+
+
+function News( {entity1} ) {
+
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  useEffect(() => {
+    setDeviceIsMobile( true );
+   }, [])
+
   return (
     <div className='whydubaibody'>
 
@@ -34,9 +46,6 @@ function News() {
       <Navbar className="navbar-dark" navbarStyle="dark"></Navbar>
 
 
-      
-
-
       <main className="main news-main">
        
 
@@ -45,12 +54,12 @@ function News() {
              <div className="row">
                <div className="col-md-8">
                <div className="primary-cta">
-                 <img src="/images/newscover.png" className="img-responsive full-width"/>
-                 <label>Press Release</label>
+                 <img src={isMobile?entity1.fieldFeatureImageMobileNews.url:entity1.fieldFeatureImageDesktopNews.url} className="img-responsive full-width"/>
+                 <label>{entity1.fieldCategoryn.entity.name}</label>
                  <h2>
                  <Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link>
                  </h2>
-                 <p> 21/12 2020 by The Guardian </p>
+                 <p> {entity1.body.value} </p>
                </div>
              </div>
              <div className="col-md-4">
@@ -309,5 +318,29 @@ function News() {
     </div>
   )
 }
+
+
+
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: NEWS });
+  let entity1 = data.data.nodeQuery.entities[0];
+  // let entity2 = data.data.nodeQuery.entities[1];
+  console.log('entity1',entity1);
+  // console.log('entity2',entity2);
+  // console.log(data.data.nodeQuery.entities);
+   return {
+      props: {
+        entity1: entity1,
+        // entity2: entity2
+      }
+    }
+}
+
 
 export default News

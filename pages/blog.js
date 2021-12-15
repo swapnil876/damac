@@ -1,3 +1,6 @@
+
+import React, { Component, useState, useEffect } from "react";
+
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -10,16 +13,30 @@ import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
 
 
-import React, { Component } from "react";
-
 // import styles from '../styles/.module.css'
 
 import TextSection from '../components/text-section'
 
 
+import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
 
-function Blog() {
+
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { BLOGS } from '../graphql/blogs';
+
+function Blog({entity1}) {
+ var img_url;
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  useEffect(() => {
+      if ( isMobile ) {
+        img_url = entity1.fieldFeatureImageMobile;
+      }else{
+        img_url = entity1.fieldFeatureImageDesktop;
+      }
+   }, [])
+
+
   return (
     <div className='blogbody'>
 
@@ -45,12 +62,12 @@ function Blog() {
              <div className="row">
                <div className="col-md-9">
                <div className="primary-cta">
-                 <img src="/images/newscover.png" className="img-responsive full-width"/>
-                 <label>Press Release</label>
+                 <img src={isMobile?entity1.fieldFeatureImageMobile:entity1.fieldFeatureImageDesktop} className="img-responsive full-width"/>
+                 <label>{entity1.fieldCategory.entity.name}</label>
                  <h2>
-                 <Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link>
+                 <Link href="#"><a>{entity1.title}</a></Link>
                  </h2>
-                 <p> 21/12 2020 by The Guardian </p>
+                 <p> {entity1.body.value} </p>
                </div>
              </div>
              <div className="col-md-3">
@@ -231,5 +248,30 @@ function Blog() {
     </div>
   )
 }
+
+
+
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: BLOGS });
+  let entity1 = data.data.nodeQuery.entities[0];
+  // let entity2 = data.data.nodeQuery.entities[1];
+  console.log('entity1',entity1);
+  // console.log('entity2',entity2);
+  // console.log(data.data.nodeQuery.entities);
+   return {
+      props: {
+        entity1: entity1,
+        // entity2: entity2
+      }
+    }
+
+}
+
 
 export default Blog

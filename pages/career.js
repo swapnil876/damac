@@ -17,9 +17,13 @@ import React, { Component } from "react";
 import TextSection from '../components/text-section'
 
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { CAREERS } from '../graphql/career';
+
+import {isMobile} from 'react-device-detect';
 
 
-function Career() {
+function Career({entity1}) {
   return (
     <div className='aboutbody'>
 
@@ -40,9 +44,7 @@ function Career() {
       <main className="main career-main">
        
 
-       <VideoBanner 
-         bannerImage={ `/images/careerpagebanner.png` }
-       >
+       <VideoBanner bannerImage={isMobile?entity1.fieldHeaderImageVideoMobile.url:entity1.fieldHeaderImageVideoDesktop.url}>
          
        </VideoBanner>
 
@@ -60,7 +62,7 @@ function Career() {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
+                   <img src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Property Development and Real Estates</p>
                </div>
@@ -69,7 +71,7 @@ function Career() {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
+                   <img src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Hotel , Resorts and Serviced Apartments</p>
                </div>
@@ -78,7 +80,7 @@ function Career() {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
+                   <img src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Malls and Retails</p>
                </div>
@@ -87,7 +89,7 @@ function Career() {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
+                   <img src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Manufacturing</p>
                </div>
@@ -96,7 +98,7 @@ function Career() {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
+                   <img src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Building Material</p>
                </div>
@@ -105,7 +107,7 @@ function Career() {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
+                   <img src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Food and Catering</p>
                </div>
@@ -114,7 +116,7 @@ function Career() {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
+                   <img src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Capital Market</p>
                </div>
@@ -136,6 +138,7 @@ function Career() {
          <div className="py-4">
            <div className="video-box-wrapper">
              <img src="/images/videobg-career.png"/>
+             {/* <Image className={styles['bg-image']} src={entity1.fieldVideoUrl.url.path} layout="fill"> </Image> */}
              <div className="playbtn-wrapper">
                <div className={'bannerPlayBtn'}>
                  <span>
@@ -165,6 +168,25 @@ function Career() {
       
     </div>
   )
+}
+
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: CAREERS });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('entity1',entity1);
+   return {
+      props: {
+        entity1: entity1,
+        // entity2: entity2
+      }
+    }
+
 }
 
 export default Career

@@ -19,16 +19,12 @@ import styles from '../styles/pages/Community.module.css'
  import { useMediaQuery } from 'react-responsive'
  import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
-
-
-// import styles from '../styles/.module.css'
-
-
-
-// Banner image
-
 // Static import
 import pageBanner from '../public/images/community-bg.jpg'
+
+
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { COMMUNITY } from '../graphql/community';
 
 
 
@@ -39,9 +35,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function Community() {
-
-
+function Community({entity1}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -71,13 +65,9 @@ function Community() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <Navbar></Navbar>
 
-
       <main className="main about-main">
-
-
         <header className={styles['community-banner']}>
           <div className={styles['bg-image']}>
             <Image 
@@ -97,8 +87,8 @@ function Community() {
               
               <div className={ styles['banner-text-left'] }>
                 <div>
-                  <h1>DAMAC Hills</h1>
-                  <p><span>Your second home around the world.</span></p>
+                  <h1>{entity1.title}</h1>
+                  <p><span>{entity1.fieldTagline}</span></p>
                 </div>
 
                 <div className={ styles['location-community'] }>
@@ -106,15 +96,16 @@ function Community() {
                      <span className={styles['text-icon']}>
                        <Image src="/images/icons/location.png" width={16} height={16}/> 
                      </span>
-                     Dubailand, Dubai, United Arab Emirates
+                     {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}
                   </a>
                 </div>
               </div> 
 
               <div className={ styles['banner-text-right'] }>
                 <div className="btn-list">
-                  <Link href="#">
-                    <a className="btn btn-dark-blur">
+                  <Link href={entity1.fieldBrochure.entity.url}>
+                  {/* {entity1.fieldBrochure.url} */}
+                    <a className="btn btn-dark-blur" target="_blank" download>
                       <span>Download Brochure</span>
                     </a>
                   </Link>
@@ -133,55 +124,81 @@ function Community() {
 
         </header>
 
-
-
-        <section className={`damac-section text-image-section`}>
-          
+        <section className={`damac-section text-image-section`}> 
           <div className={`container`}>
-
-              <div class={`text-wrapper`}>
-                
+              <div class={`text-wrapper`}> 
                 <div className="top-text">
-                  <h2>Shaping the highest standard of living</h2>
-                  <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+                  <h2>{entity1.fieldTitle2}</h2>
+                  <p>{entity1.fieldDescriptionc2.value}</p>
                 </div>
 
                 <div className="section-data-boxes">
                   <div className="data-box">
-                    <h2 className="heading-medium">4200 sqft.</h2>
+                    <h2 className="heading-medium">{entity1.fieldArea}</h2>
                     <p>Starting area</p>
                   </div>
                   <div className="data-box">
-                    <h2 className="heading-medium">1 - 5</h2>
+                    <h2 className="heading-medium">{entity1.fieldBedRooms}</h2>
                     <p>Bedrooms</p>
                   </div>
                   <div className="data-box">
-                    <h2 className="heading-medium">1,158,888</h2>
+                    <h2 className="heading-medium">{entity1.fieldStartingFromPrice}</h2>
                     <p>AED</p>
                   </div>
-                </div>
-
-      
+                </div>  
               </div>
-
           </div>
-
-          
-
           { !deviceIsMobile && 
             <div className={`containerRightImage`}>
               <Image src='/images/textsection-right-1.jpg' layout='fill' objectFit="cover"/>
             </div>
           }
-
           { deviceIsMobile && 
             <div className={`containerBottomImage`}>
               <Image src='/images/textsection-right-1.jpg' layout='fill' objectFit="cover"/>
             </div>
           }
-
-
         </section>
+
+{/* 
+      <section className="shape-wrap">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-6">
+            <div className={styles['shape-content-wrap']}>
+              <div className={styles['shape-item']}>
+                  <h2>{entity1.fieldTitle2}</h2>
+                  <p>{entity1.fieldDescriptionc2.value}</p>
+              </div>
+              <div className={styles['shape-item']}>
+                <h4>{entity1.fieldPropertyTypec[0].entity.name}</h4>
+                <p><span>Properties</span></p>               
+
+                <ul className="d-flex shape-count">
+                  <li>
+                    <h4>{entity1.fieldStartingFromPrice}</h4>
+                    <p>Prince starting from, in AED</p>
+                  </li>
+                  <li>
+                    <h4>{entity1.fieldArea}</h4>
+                    <p>Starting area</p>
+                  </li>
+                  <li>
+                    <h4>{entity1.fieldBedRooms}</h4>
+                    <p>Bedrooms</p>
+                  </li>
+                </ul>                
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6 p-0">            
+            <div className="shape-image float-end">
+              <img src="images/shape-right.jpg" className="img-fluid" />              
+            </div>
+          </div>          
+        </div>        
+      </div>      
+     </section> */}
 
 
         <>
@@ -194,18 +211,18 @@ function Community() {
                     <div className='left-area'>
                       <ul className='booking-details-items'>
                         <li>
-                          <h5>AED 1,512,221</h5>
+                          <h5>AED {entity1.fieldStartingFromPrice}</h5>
                           <div className='lbl'>Starting from</div>
                         </li>
 
                         {!deviceIsMobile && 
                           <>
                           <li>
-                            <h5>Dubai Marina</h5>
+                            <h5>{entity1.fieldLocality}</h5>
                             <div className='lbl'>Locality</div>
                           </li>
                           <li>
-                            <h5>Ready to Move In</h5>
+                            <h5>{entity1.fieldStatus}</h5>
                             <div className='lbl'>Status</div>
                           </li>
                           </>
@@ -240,17 +257,600 @@ function Community() {
             }
         </>
 
+     {/* section 3 */}
+      <section className={styles['damac-gallery']}>
+      <div className={styles['angry-grid']}>
+        <div className={styles['gr-item-0']}>
+           <div className={styles['right-side-gallery']}>
+           <img src={isMobile?entity1.fieldCol1ImageMobileC.url:entity1.fieldCol1ImageDesktopc.url}/>
+           <div className={styles['gal-content']}>
+            <p>{entity1.fieldCol1Textc}</p>
+          </div>         
+        </div>
+        </div>
+        <div className={styles['gr-item-1']}>
+            <div className={styles['sm-gal-right']}>
+              <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobic.url:entity1.fieldCol2Row1Col1ImageDeskc.url} className="img-fluid"/>
+            </div>
+        </div>
+        <div className={styles['gr-item-2']}>
+           <div className={styles['sm-gal-left']}>
+              <img src={isMobile?entity1.fieldCol2Row1Col2ImageMobic.url:entity1.fieldCol2Row1Col2ImageDeskc.url} className="img-fluid"/>
+            </div>
+        </div>
+        <div className={styles['gr-item-3']}>
+           <div className={styles['gal-gr']}>
+            <img src={isMobile?entity1.fieldCol2Row2ImageMobilec.url:entity1.fieldCol2Row2ImageDesktopc.url} className="img-fluid"/> 
+            
+          </div>
+        </div>
+      </div>           
+     </section>  
 
+      <section className={styles['township-amenities']}>
+        <div className="container">
+          <div class="row">
+          <div className="col-md-6">
+          <div class={`text-wrapper`}>
+                <div className="top-text">
+            <h2 style={{'color':'#ffffff'}}>Township Amenities</h2>
+            <p>{entity1.fieldDescriptionc4}</p>
+            </div>
+            </div>
+            <div style={{'margin-top':'50px'}}>
+            <div class="row">
+              {entity1.fieldAmenities.map((item)=>{
+                <div class="col-6">
+                <div className={styles['icon-area']}>
+                  <img src="/images/icons/building (1) 2.svg" />
+                  <h4>{item.entity.fieldValueAmi}</h4>
+                  <p>{item.entity.fieldTextAmi}</p>
+                </div>
+                </div>
+              })}
+              
+                {/* <div class="col-6">
+                <div className={styles['icon-area']}>
+                  <img src="/images/icons/building (1) 2.svg" />
+                  <h4>27</h4>
+                  <p>Residential Towers</p>
+                </div>
+                </div>
+                <div class="col-6">
+                <div className={styles['icon-area']}>
+                  <img src="/images/icons/building (1) 2.svg" />
+                  <h4>27</h4>
+                  <p>Residential Towers</p>
+                </div>
+                </div>
+                <div class="col-6">
+                <div className={styles['icon-area']}>
+                  <img src="/images/icons/building (1) 2.svg" />
+                  <h4>27</h4>
+                  <p>Residential Towers</p>
+                </div>
+                </div> */}
+            </div>
+            </div>
+          </div>
+          <div className="col-md-6">
+            {/* {
+            (isMobile) ? 
+            entity1.fieldGalleryMobileC4.map((item)=>{
+                 <div class="img">
+                 <img src={item.url}/>
+                </div>        
+              }) 
+              :entity1.fieldDescriptionc4.map((item)=>{
+                 <div class="img">
+                 <img src={item.url}/>
+                </div>        
+              })
+              } */}
+            <div class="img">
+            <img src="/images/textsection-right-1.jpg"/>
+            </div>
+          </div>
+          </div> 
+        </div>
+      </section>
+
+      <section className={styles['projects-section']}>
+        <div className="container">
+          <div class="row">
+          <div className="col-6">
+          <div class={`text-wrapper`}>
+                <div className="top-text">
+            <h2>Projects at DAMAC Hills</h2>
+            </div>
+            </div>
+          </div>
+          <div className="col-6">
+            <a className="btn btn-primary btn-icon" style={{ 'float': 'right'}}>View All Projects</a>
+          </div>
+          </div> 
+
+
+
+          <div class="row" style={{'padding':'30px 0'}}>
+            <div className="col-md-3 col-6">
+              <div className={styles['single-project']}>
+                <div className={styles['img']}>
+                <img src="/images/project-gal4.jpg" />
+                </div>
+                <div className={styles['info']}>
+                  <h4>Kiara</h4>
+                  <p>Starting AED 1,213,515*</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3 col-6">
+              <div className={styles['single-project']}>
+                <div className={styles['img']}>
+                <img src="/images/project-gal4.jpg" />
+                </div>
+                <div className={styles['info']}>
+                  <h4>Kiara</h4>
+                  <p>Starting AED 1,213,515*</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3 col-6">
+              <div className={styles['single-project']}>
+                <div className={styles['img']}>
+                <img src="/images/project-gal4.jpg" />
+                </div>
+                <div className={styles['info']}>
+                  <h4>Kiara</h4>
+                  <p>Starting AED 1,213,515*</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3 col-6">
+              <div className={styles['single-project']}>
+                <div className={styles['img']}>
+                <img src="/images/project-gal4.jpg" />
+                </div>
+                <div className={styles['info']}>
+                  <h4>Kiara</h4>
+                  <p>Starting AED 1,213,515*</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3 col-6">
+              <div className={styles['single-project']}>
+                <div className={styles['img']}>
+                <img src="/images/project-gal4.jpg" />
+                </div>
+                <div className={styles['info']}>
+                  <h4>Kiara</h4>
+                  <p>Starting AED 1,213,515*</p>
+                </div>
+              </div>
+            </div>    <div className="col-md-3 col-6">
+              <div className={styles['single-project']}>
+                <div className={styles['img']}>
+                <img src="/images/project-gal4.jpg" />
+                </div>
+                <div className={styles['info']}>
+                  <h4>Kiara</h4>
+                  <p>Starting AED 1,213,515*</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
 
 
         
-      </main>
+        </div>
+      </section>
+   
+      <section className={styles['damac-gallery']}>
+      <div className={styles['angry-grid']}>
+        <div className={styles['gr-item-0']}>
+           <div className={styles['right-side-gallery']}>
+           {/* <img src={isMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url}/> */}
+           <div className={styles['gal-content']}>
+            <p>{entity1.fieldCol1Textc5}</p>
+          </div>         
+        </div>
+        </div>
+        <div className={styles['gr-item-1']}>
+            <div className={styles['sm-gal-right']}>
+              {/* <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/> */}
+            </div>
+        </div>
+        <div className={styles['gr-item-2']}>
+           <div className={styles['sm-gal-left']}>
+              {/* <img src={isMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/> */}
+            </div>
+        </div>
+        <div className={styles['gr-item-3']}>
+           <div className={styles['gal-gr']}>
+            {/* <img src={isMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/>  */}
+            
+          </div>
+        </div>
+      </div>           
+     </section>   
 
+      <section className={styles['about-location']}>
+        <div className="container">
+          <div class="row">
+          <div className="col-md-6">
+          <div class={`text-wrapper`}>
+                <div className="top-text">
+            <h2>About Community Location</h2>
+            </div>
+            </div>
+            <div className={styles['brand-partners']}>
+              <h4>Brand Partners</h4>
+              <div className={styles['brand-icons']}>
+                <img src="/images/brand-logo/image 26.png"/>
+                <img src="/images/brand-logo/trumporg.png"/>
+                <img src="/images/brand-logo/trumporg.png"/>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+            <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+            <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+          </div>
+          </div> 
+        </div>
+      </section>
+
+      <section className={styles['master-plan']}>
+        <div className="container">  
+          <div class={`text-wrapper`}>
+            <div className="top-text">
+              <h2>Community Master Plan</h2>
+            </div>
+          </div>
+
+            <div className={styles['map']}>
+             {/* <img src={entity1.fieldMasterplan.entity.url}/> */}
+            </div>
+
+            <div className={styles['video']}>
+             <video>
+               {/* <source src={entity1.fieldVideo} /> */}
+             </video>
+            </div>
+
+        </div>
+      </section>
+
+      <section className={styles['destance']}>
+      <div className="container">
+        <div className="row">
+
+          {/* {
+            entity1.fieldMultipleLocators.map((item)=>{
+              <div className="col-6 col-md-4">
+              <div className="distance-card text-center">
+                <img src={item.entity.fieldIconm.url} />
+                <h5>{item.entity.fieldValuec6}</h5>
+                <p>{item.entity.fieldTextc6}</p>            
+              </div>
+            </div>
+            })
+          } */}
+          <div className="col-6 col-md-4">
+          <div className="distance-card text-center">
+            <img src="/images/icons/building (1) 2.svg" />
+            <h5>5 min</h5>
+            <p>from Dubai International <br/>Financial Centre</p>            
+          </div>
+        </div>
+         <div className="col-6 col-md-4">
+          <div className="distance-card text-center">
+            <img src="/images/icons/aeroplane 3.svg"/>
+            <h5>10 min</h5>
+            <p>from Dubai International <br/>Financial Centre</p>            
+          </div>
+        </div>
+         <div className="col-12 col-md-4">
+          <div className="distance-card text-center">
+            <img src="/images/icons/sunrise 2.svg"/>
+            <h5>13 min</h5>
+            <p>from Jumeirah <br/>Beach</p>            
+          </div>
+        </div>
+        </div>        
+      </div>       
+       </section>
+
+     {/* <!-- Map section --> */}
+    <section className={styles['map-section']}>
+      <div className="map-wrap">
+        <img src="/damac-static/images/map.jpg" className="img-fluid"/>        
+      </div>       
+   </section>
+
+
+   {/* <!-- Estimate Section --> */}
+     <section className={styles['estimate']}>      
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8">
+            <img src="/damac-static/images/invoice-1.png"/>
+            <div class={`text-wrapper`}>
+            <div className="top-text">
+            <h2>Get an estimate</h2>
+            </div>
+          </div> 
+           <p className={styles['estimate-tagline']} >Receive an upfront estimate on your new home.</p>
+           <div className={styles['estimate-inner']}>             
+             <div className={`price ${styles["border-white"]}`}>
+               <p><span>Property Price</span></p>
+              <p><span>AED          </span> 120,000 <span className={`${styles["text-right"]} ${styles["dark"]}`}>
+                <i className="fas fa-angle-left"></i> <i className="fas fa-angle-right"></i></span></p> 
+             </div>
+             <div className={`rate ${styles["border-white"]}`}>
+               <p><span>Interest Rate</span> <span className={styles['text-right']} >%</span>  </p>
+              <p>1.99 <span className={`${styles["text-right"]} ${styles["dark"]}`} ><i className="fas fa-minus"></i><i className="fas fa-plus"></i></span></p> 
+             </div> 
+           </div>
+          <div className={styles['estimate-inner']}>
+           <div className={`down-payment ${styles["border-white"]}`}>
+               <p>Down Payment <span className={styles['text-right']} >%</span></p> 
+              <p>25  </p> 
+             </div>
+
+             <div className={`loan ${styles["border-white"]}`}>
+               <p><span>Loan Period</span> <span className={styles['text-right']} >Y R S</span></p>
+              <p> 5</p> 
+             </div>
+          </div>
+          <a href="#" className={`${styles["white-btn"]} btn`}>Enquire Now</a>
+          </div>
+          <div className="col-md-4">
+            <div className={styles['estimate-cost']}>
+              <h4>Cost Breakdown</h4>
+              <ul>
+                <li><span className={styles['text-left']}>60 months of</span> <span>AED</span> 120,000</li>
+                <li><span className={styles['text-left']}>Down Payment</span>  <span>AED</span> 120,000</li>
+                <li><span className={styles['text-left']}>With Interest rate of</span>  <span>%</span>120,000</li>
+                <li><span className={styles['text-left']}>For Years</span>5</li>
+              </ul>
+              <h4>Fees</h4>
+              <ul>
+                <li><span className={styles['text-left']}>Land Department Fee</span> <span>AED</span> 120,000</li>
+                <li><span className={styles['text-left']}>Registration Fee</span>  <span>AED</span> 120,000</li>
+                <li><span className={styles['text-left']}>Mortgage Registration Fee</span>  <span>AED</span> 120,000</li>
+                <li><span className={styles['text-left']}>Valuation Fee</span><span>AED</span> 120,000</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+       </div>
+     </section>
+
+
+
+    {/* <!-- Invest section --> */}
+    <section className={styles['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+      <div className="container">
+        <div className="row justify-content-end align-items-end">
+          <div className="col-md-12">
+            <div className={styles['invest-wrap']}>
+              <h2>Why Invest in Dubai</h2>
+              <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/> investors can achieve gross rental yields<br/> of between 5-9%</p>
+              <a href="#" className={styles['read-more']}>Read more</a>
+            </div>  
+          </div>          
+        </div>        
+      </div>     
+    </section>
+
+
+    {/* <!-- Similar Properties --> */}
+    <section className={styles['project-detail']}>
+      <div className="container">
+      <div className={`text-wrapper`}>
+            <div className="top-text">
+            <h2>Other Communities</h2>
+            </div>
+          </div> 
+      
+
+        <div className="row">
+          <div className="col-md-6">
+            <div className={styles['property-slider-wrap']}>
+              <div className={styles['project-card']}>
+                <img src="images/project-gal4.jpg" className="img-fluid" />               
+                <h6>Kiara 2 Bedroom Apartment</h6>
+                <p>DAMAC Hills, Dubailand, Dubai</p>
+                <ul className={styles['bedroom-detail']}>
+                  <li>
+                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                  </li>
+                   <li>
+                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                  </li>                  
+                </ul>                              
+                            
+              </div>
+               <div className="project-detail-nav">
+                  <div className="left-nav">
+                    <a href="#"><i className="fas fa-chevron-left"></i></a>
+                  </div>
+                   <div className="right-nav">
+                    <a href="#"><i className="fas fa-chevron-right"></i></a>
+                  </div>   
+              </div>
+            </div>
+            
+          </div>
+
+           <div className="col-md-6">
+            <div className={styles['property-slider-wrap']}>
+              <div className={styles['project-card']}>
+                <img src="images/project-gal3.jpg" className="img-fluid" />
+                <h6>Kiara 2 Bedroom Apartment</h6>
+                <p>Starting AED 1,213,515*</p>  
+                  <ul className={styles['bedroom-detail']}>
+                  <li>
+                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                  </li>
+                   <li>
+                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                  </li>                  
+                </ul>               
+              </div>
+              <div className="project-detail-nav">
+                  <div className="left-nav">
+                    <a href="#"><i className="fas fa-chevron-left"></i></a>
+                  </div>
+                   <div className="right-nav">
+                    <a href="#"><i className="fas fa-chevron-right"></i></a>
+                  </div>   
+              </div>
+            </div>            
+          </div>
+           <div className="col-md-6">
+            <div className={styles['property-slider-wrap']}>
+              <div className={styles['project-card']}>
+              <img src="images/project-1.jpg" className="img-fluid" />
+              <h6>Kiara 2 Bedroom Apartment</h6>
+              <p><span>Starting AED 1,213,515*</span></p>
+                <ul className={styles['bedroom-detail']}>
+                  <li>
+                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                  </li>
+                   <li>
+                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                  </li>                  
+                </ul>             
+            </div>
+            <div className="project-detail-nav">
+                <div className="left-nav">
+                  <a href="#"><i className="fas fa-chevron-left"></i></a>
+                </div>
+                 <div className="right-nav">
+                  <a href="#"><i className="fas fa-chevron-right"></i></a>
+                </div>   
+            </div>
+            </div>
+            
+          </div>
+           <div className="col-md-6">
+            <div className={styles['property-slider-wrap']}>
+              <div className={styles['project-card']}>
+              <img src="images/project-2.jpg" className="img-fluid" />
+              <h6>Kiara 2 Bedroom Apartment</h6>
+              <p><span>Starting AED 1,213,515*</span></p> 
+               <ul className={styles['bedroom-detail']}>
+                  <li>
+                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                  </li>
+                   <li>
+                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                  </li>                  
+                </ul>             
+            </div>
+            <div className="project-detail-nav">
+                <div className="left-nav">
+                  <a href="#"><i className="fas fa-chevron-left"></i></a>
+                </div>
+                 <div className="right-nav">
+                  <a href="#"><i className="fas fa-chevron-right"></i></a>
+                </div>   
+            </div>
+            </div>
+            
+          </div>
+          
+        </div>   
+      </div>      
+    </section>    
+
+
+
+    <section className={styles['faq-section']}>
+      <div className="container">
+        <div className="faq-icon">
+          <img src="/damac-static/images/speech-bubble 1.png"/>
+          <h2>Frequently Asked Questions</h2>          
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <div className={styles['faq-wrap']}>
+              <div className="accordion" id="accordionExample">
+                <div className={styles['accordion-item']}>
+                  <h2 className={styles['accordion-header']} id="headingOne">
+                    <button className={styles['accordion-button']} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      What is the lowest mortgage rate in UAE?
+                    </button>
+                  </h2>
+                  <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
+                      The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                    </div>
+                  </div>
+                </div>
+                <div className={styles['accordion-item']}>
+                  <h2 className={styles['accordion-header']} id="headingTwo">
+                    <button className={`${styles["accordion-button"]} collapsed`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      What is the lowest mortgage rate in UAE?
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
+                     The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                    </div>
+                  </div>
+                </div>
+                <div className={styles['accordion-item']}>
+                  <h2 className={styles['accordion-header']} id="headingThree">
+                    <button className={`${styles["accordion-button"]} collapsed`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      What is the lowest mortgage rate in UAE?
+                    </button>
+                  </h2>
+                  <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
+                      The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                    </div>
+                  </div>
+                </div>
+              </div>                            
+            </div>            
+          </div>          
+        </div>        
+      </div>      
+    </section>
+
+      </main>
       <Footer></Footer>
 
       
     </div>
   )
 }
+
+
+
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: COMMUNITY });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('entity1',entity1);
+   return {
+      props: {
+        entity1: entity1,
+      }
+    }
+
+}
+
+
 
 export default Community
