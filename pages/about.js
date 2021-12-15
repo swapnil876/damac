@@ -89,7 +89,7 @@ function About({entity1}) {
       <main className="main about-main">
        
 
-       <AboutBanner entity1={entity1} bannerImage={ entity1.fieldImage2.url }></AboutBanner>
+       <AboutBanner entity1={entity1} bannerImage={ isMobile ? entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop.url}></AboutBanner>
 
 
        <div className="damac-text-section-container">
@@ -179,13 +179,13 @@ function About({entity1}) {
              <div className="col-md-5 ps-md-0" >
                   { !deviceIsMobile && 
                     <div className="chairmanPhoto">
-                      <Image alt="" src="/images/chairman-portrait.jpg" layout="fill" objectFit="cover" objectPosition="top"/>
+                      <img alt="" src={entity1.fieldImage4.url} layout="fill" objectFit="cover" objectPosition="top"/>
                     </div>
                   }
 
                   { deviceIsMobile && 
                     <div className="chairmanPhoto-mobile">
-                      <Image alt="" src="/images/chairmanphotomob.jpg" width={342} height={338}/>
+                      <img alt="" src={entity1.fieldImage4.url} width={342} height={338}/>
                     </div>
                   }
              </div>
@@ -208,87 +208,103 @@ function About({entity1}) {
            </div>
 
            <div className="leadership-boxes">
-             
+            <div class="row">
+               <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
-             <div className="leadershipbox">
+             </div>
+           
+             <div class="col-md-3 col-6">
+                <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+          
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            </div>
            </div>
 
          </div>

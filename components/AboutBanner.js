@@ -9,20 +9,30 @@ import aboutBanner from '../public/images/about-bg.png'
 export default function AboutBanner( { bannerImage, children, entity1}  ) {
 
 
-  const banner = (
-    <Image 
-    className={styles['bg-image']}
-    src={bannerImage} width={1920} 
-    placeholder="blur"
-    blurDataURL={aboutBanner}
-    height={1080}
-    layout="fill"
-    >
+  // const banner = (
+  //   <Image 
+  //   className={styles['bg-image']}
+  //   src={bannerImage} width={1920} 
+  //   placeholder="blur"
+  //   blurDataURL={aboutBanner}
+  //   height={1080}
+  //   layout="fill"
+  //   >
       
-    </Image>
+  //   </Image>
+
+  //   );
+  const banner = (
+    <video 
+    className={styles['bg-image']}
+    controls
+    loop
+    muted
+    >
+       <source {...{bannerImage}}/>
+    </video>
 
     );
-  
 
   return (
     <div className={styles['homepage-hero-section']}>

@@ -14,8 +14,6 @@ export default function HomeBanner( { bannerImage, children, entity1} ) {
     src={bannerImage} width={567} 
     // entity1.fieldMainImageDesktopHome
     height={320}
-    placeholder="blur"
-    blurDataURL={bannerImage}
     layout="fill"
     >
     </Image>

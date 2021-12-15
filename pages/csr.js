@@ -120,7 +120,7 @@ function CSR({entity1}) {
              </div>
              <div className="col-md-4">
                <div className="text-md-end text-center py-2">
-                 {/* <img alt=""src={isMobile?entity1.fieldFoundationImageMobile.url:entity1.fieldFoundationImageDesktop.url} className='img-responsive'/> */}
+                 <img alt=""src={isMobile?entity1.fieldFoundationImageMobile.url:entity1.fieldFoundationImageDesktop.url} className='img-responsive'/>
                </div>
              </div>
            </div>
@@ -175,9 +175,9 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: _CSR });
-  console.log('data1', data.data.nodeQuery.entities[0].fieldMilestones);
+  // console.log('data1', data.data.nodeQuery.entities[0].fieldMilestones);
   let entity1 = data.data.nodeQuery.entities[0];
-  // console.log('entity1',entity1);
+  console.log('entity1',entity1);
    return {
       props: {
         entity1: entity1,

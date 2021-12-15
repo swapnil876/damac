@@ -608,7 +608,7 @@ section.damac-about-chairman .aboutChairmanbox {
   .chairman-text-col {
     position: relative;
     background-color: #fff;
-    z-index: 1;
+    /* z-index: 1; */
   }
 
   .damac-about-chairman .chairmanPhoto {
@@ -623,7 +623,7 @@ section.damac-about-chairman .aboutChairmanbox {
 }
 
 .damac-about-chairman .chairmanPhoto img {
-    width: 50%;
+    width: 100%;
     object-fit: cover;
     height: 700px;
 }
@@ -700,21 +700,29 @@ section.damac-about-chairman .aboutChairmanbox {
     font-weight: 300;
 }
 
-.leadership-boxes {
+/* .leadership-boxes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 30px;
+} */
+.leadership-boxes .leadership-box{
+    margin-bottom: 60px;
 }
-
 .leadership-boxes .leadershipimg {
     position: relative;
     margin-bottom: 15px;
+    aspect-ratio: 4/5;
 }
-
+.leadership-boxes .leadershipimg img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
 .leadership-boxes .leadershipimg::before {
     content: "";
     display: block;
-    padding-bottom: 120%;
+    /* padding-bottom: 120%; */
+    padding-bottom: 0px
 }
 .leadership-boxes .leadershipimg > div {
     position: absolute !important;
@@ -726,14 +734,16 @@ section.damac-about-chairman .aboutChairmanbox {
     height: 100%;
 
 }
-
+.leadership-boxes .leadership-details h5{
+    margin-bottom: 6px;
+}
 @media ( max-width: 768px ) {
     
-.leadership-boxes {
+/* .leadership-boxes {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 30px;
-}
+} */
 }
 
 
@@ -1326,7 +1336,7 @@ footer.damac-footer  .footer-logo {
     padding-bottom: 50%;
     content: "";
 }
-.video-box-wrapper > img {
+.video-box-wrapper > img, .video-box-wrapper > video, .video-box-wrapper > iframe {
     position: absolute;
     left: 0;
     right: 0;

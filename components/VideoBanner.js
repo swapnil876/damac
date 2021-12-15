@@ -8,17 +8,28 @@ import styles from '../styles/HomeBanner.module.css'
 
 export default function AboutBanner( { bannerImage, children} ) {
   
-  const banner = (
-    <Image 
-    className={styles['bg-image']}
-    src={bannerImage} 
-    layout="fill"
-    >
+  // const banner = (
+  //   <Image 
+  //   className={styles['bg-image']}
+  //   src={bannerImage} 
+  //   layout="fill"
+  //   >
       
-    </Image>
+  //   </Image>
+
+  //   );
+  
+  const banner = (
+    <video 
+    className={styles['bg-image']}
+    controls
+    loop
+    muted
+    >
+       <source {...{bannerImage}}/>
+    </video>
 
     );
-  
 
   return (
     <div className={styles['homepage-hero-section']}>
