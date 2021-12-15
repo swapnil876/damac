@@ -14,7 +14,7 @@ import ImageCardItem from '../components/ImageCardItem'
 
 import React, { Component } from "react";
 
-import liststyle from "../../styles/ListStyles.module.css"
+import liststyle from "../styles/bases/ListStyles.module.css"
 
 
 // import styles from '../styles/.module.css'
