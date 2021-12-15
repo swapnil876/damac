@@ -42,7 +42,7 @@ function CSR({entity1}) {
 
       <main className="main about-main">
        
-       {/*<VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner>*/}
+       <VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner>
 
        <TextSection className="text-section-csr-1">
          <h2>Why Corporate Social Responsibility (CSR)?</h2>
@@ -57,10 +57,12 @@ function CSR({entity1}) {
            <div className="row">
              
              <div className="col-md-4">
-               <div className="text-box">
-                 <h4>{entity1.fieldMilestones.fieldHeaderMile}</h4>
-                 {/*<p>{entity1.fieldMilestones.entity.fieldTextMile}</p>*/}
+             {entity1.fieldMilestones.map((milestone) => (
+               <div className="text-box" key={milestone.id}>
+                 <h4>{milestone.entity.fieldHeaderMile}</h4>
+                 <p>{milestone.entity.fieldTextMile}</p>
                </div>
+              ))}
 
                <div className="sliderArrows">
                  <a href="#" className="sliderArrow">
@@ -83,11 +85,12 @@ function CSR({entity1}) {
                
                <div className="responsive-slider-container">
                   <Carousel className="milestone-carousel">
-                     <div>
+                  {entity1.fieldMilestones.map((milestone) => (
+                     <div key={milestone.id}>
                          <div className="milestone-carousel-item">
                            <div className="image-text">
                              <div className="img">
-                               <img alt=""src='/images/slider1img.png' className='img-responsive'/>
+                               <img alt=""src={milestone.entity.fieldImageMile.url} className='img-responsive'/>
                              </div>
                              <div className='text'>
                                <h3>Zayed Day for Humanitarian action</h3>
@@ -96,32 +99,7 @@ function CSR({entity1}) {
                            </div>
                          </div>
                      </div>
-                     <div>
-                         <div className="milestone-carousel-item">
-                           <div className="image-text">
-                             <div className="img">
-                               <img alt=""src='/images/slider1img.png' className='img-responsive'/>
-                             </div>
-                             <div className='text'>
-                               <h3>Zayed Day for Humanitarian action</h3>
-                               <p>To mark the occassion of the International Humanitarian Day initiative under the slogan og 'Your families .. our people', there was an assembly held during which, the Director od the Red Crescent, Mr. Khalfan Sarhan Al-Rumaithi, received a cheque from Brigadier General Jamal Salem Al Ameri, Executive Director of the Saed Association, to help families affected by the novel coronavirus,COVID-19.</p>
-                             </div>
-                           </div>
-                         </div>
-                     </div>
-                     <div>
-                         <div className="milestone-carousel-item">
-                           <div className="image-text">
-                             <div className="img">
-                               <img alt=""src='/images/slider1img.png' className='img-responsive'/>
-                             </div>
-                             <div className='text'>
-                               <h3>Zayed Day for Humanitarian action</h3>
-                               <p>To mark the occassion of the International Humanitarian Day initiative under the slogan og 'Your families .. our people', there was an assembly held during which, the Director od the Red Crescent, Mr. Khalfan Sarhan Al-Rumaithi, received a cheque from Brigadier General Jamal Salem Al Ameri, Executive Director of the Saed Association, to help families affected by the novel coronavirus,COVID-19.</p>
-                             </div>
-                           </div>
-                         </div>
-                     </div>
+                  ))}
                  </Carousel>
                </div>
 
@@ -197,7 +175,7 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: _CSR });
-  console.log('data', data.data.nodeQuery.entities[0].fieldMilestones);
+  console.log('data1', data.data.nodeQuery.entities[0].fieldMilestones);
   let entity1 = data.data.nodeQuery.entities[0];
   // console.log('entity1',entity1);
    return {
