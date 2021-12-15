@@ -58,7 +58,7 @@ function CSR({entity1}) {
              
              <div className="col-md-4">
              {entity1.fieldMilestones.map((milestone) => (
-               <div className="text-box" key={milestone.id}>
+               <div className="text-box" key={milestone.entity.id}>
                  <h4>{milestone.entity.fieldHeaderMile}</h4>
                  <p>{milestone.entity.fieldTextMile}</p>
                </div>
@@ -86,7 +86,7 @@ function CSR({entity1}) {
                <div className="responsive-slider-container">
                   <Carousel className="milestone-carousel">
                   {entity1.fieldMilestones.map((milestone) => (
-                     <div key={milestone.id}>
+                     <div key={milestone.entity.id}>
                          <div className="milestone-carousel-item">
                            <div className="image-text">
                              <div className="img">
