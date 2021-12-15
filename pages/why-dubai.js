@@ -73,9 +73,9 @@ const WhyDubai= ({entity1})=> {
              <div className="dubais-success-icons">
                <div className="row">
                   {entity1.fieldMultipleCounters.map((counter) => (
-                     <div className="col-4">
+                     <div key={counter.id} className="col-4">
                        <div className="icon-box">
-                         <img src="/images/icons/building 1.png"/>
+                         <img alt=""src="/images/icons/building 1.png"/>
                          <h3>{counter.targetRevisionId}</h3>
                          <p>Occupied room nights in 2018</p>
                        </div>
@@ -83,35 +83,35 @@ const WhyDubai= ({entity1})=> {
                    ))}
                  {/*<div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>#1</h3>
                      <p>The World's busiest international airport</p>
                    </div>
                  </div>
                  <div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>15.9M</h3>
                      <p>Visitors annually</p>
                    </div>
                  </div>
                  <div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>$29.7B</h3>
                      <p>#1 in Worldwide visitor spend</p>
                    </div>
                  </div>
                  <div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>26%</h3>
                      <p>Projected visitor growth</p>
                    </div>
                  </div>
                  <div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>15.9M</h3>
                      <p>Visitors annually</p>
                    </div>
@@ -146,7 +146,7 @@ const WhyDubai= ({entity1})=> {
 
 
        <section>
-         <img src='/images/why-dubai/dubaipalm.jpg' className="img-responsive full-width"/>
+         <img alt=""src='/images/why-dubai/dubaipalm.jpg' className="img-responsive full-width"/>
        </section>
 
 
@@ -225,7 +225,7 @@ const WhyDubai= ({entity1})=> {
            <div className="col-md-4">
              <div className="icon-box">
                <div className="text-center">
-                 <img src="/images/why-dubai/city.svg"/>
+                 <img alt=""src="/images/why-dubai/city.svg"/>
                </div>
                <h4>Premium Developers</h4>
                <p>DAMAC develops quality investment properties in high-demand locations</p>
@@ -234,7 +234,7 @@ const WhyDubai= ({entity1})=> {
            <div className="col-md-4">
              <div className="icon-box">
                <div className="text-center">
-                 <img src="/images/why-dubai/stars.svg"/>
+                 <img alt=""src="/images/why-dubai/stars.svg"/>
                </div>
                <h4>Most Renowned Brands</h4>
                <p>Our interior is designed by world’s most renowned brands</p>
@@ -243,7 +243,7 @@ const WhyDubai= ({entity1})=> {
            <div className="col-md-4">
              <div className="icon-box">
                <div className="text-center">
-                 <img src="/images/why-dubai/file-invoice-dollar.svg"/>
+                 <img alt=""src="/images/why-dubai/file-invoice-dollar.svg"/>
                </div>
                <h4>USD returns</h4>
                <p>Our property assets deliver great returns to our investors in a stable currency</p>
@@ -323,7 +323,7 @@ const WhyDubai= ({entity1})=> {
            <div className="row">
                <div className="col-md-10">
                <div className="mb-4">
-                 <img src="/images/why-dubai/ticket-1.png" width="46"/>
+                 <img alt=""src="/images/why-dubai/ticket-1.png" width="46"/>
                </div>
                  <h4>The Opportunity</h4>
                  <p>{entity1.fieldOpportunityText}</p>

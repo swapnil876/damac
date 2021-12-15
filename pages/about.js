@@ -179,13 +179,13 @@ function About({entity1}) {
              <div className="col-md-5 ps-md-0" >
                   { !deviceIsMobile && 
                     <div className="chairmanPhoto">
-                      <Image src="/images/chairman-portrait.jpg" layout="fill" objectFit="cover" objectPosition="top"/>
+                      <Image alt="" src="/images/chairman-portrait.jpg" layout="fill" objectFit="cover" objectPosition="top"/>
                     </div>
                   }
 
                   { deviceIsMobile && 
                     <div className="chairmanPhoto-mobile">
-                      <Image src="/images/chairmanphotomob.jpg" width={342} height={338}/>
+                      <Image alt="" src="/images/chairmanphotomob.jpg" width={342} height={338}/>
                     </div>
                   }
              </div>
@@ -211,7 +211,7 @@ function About({entity1}) {
              
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
@@ -221,7 +221,7 @@ function About({entity1}) {
 
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
@@ -231,7 +231,7 @@ function About({entity1}) {
 
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
@@ -241,7 +241,7 @@ function About({entity1}) {
 
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
@@ -251,7 +251,7 @@ function About({entity1}) {
 
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
@@ -261,7 +261,7 @@ function About({entity1}) {
 
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
@@ -271,7 +271,7 @@ function About({entity1}) {
 
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
@@ -281,7 +281,7 @@ function About({entity1}) {
 
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <Image alt="" src="/images/chairman-portrait.jpg" width={602} height={748}/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
@@ -441,7 +441,7 @@ Having now received over 100 global awards and commendations, for everything fro
            </div>
 
            <div className="graphic-img">
-             <img src="/images/corporate-responsibility.png"/>
+             <img alt=""src="/images/corporate-responsibility.png"/>
            </div>
 
          </div>

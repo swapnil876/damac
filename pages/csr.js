@@ -87,7 +87,7 @@ function CSR({entity1}) {
                          <div className="milestone-carousel-item">
                            <div className="image-text">
                              <div className="img">
-                               <img src='/images/slider1img.png' className='img-responsive'/>
+                               <img alt=""src='/images/slider1img.png' className='img-responsive'/>
                              </div>
                              <div className='text'>
                                <h3>Zayed Day for Humanitarian action</h3>
@@ -100,7 +100,7 @@ function CSR({entity1}) {
                          <div className="milestone-carousel-item">
                            <div className="image-text">
                              <div className="img">
-                               <img src='/images/slider1img.png' className='img-responsive'/>
+                               <img alt=""src='/images/slider1img.png' className='img-responsive'/>
                              </div>
                              <div className='text'>
                                <h3>Zayed Day for Humanitarian action</h3>
@@ -113,7 +113,7 @@ function CSR({entity1}) {
                          <div className="milestone-carousel-item">
                            <div className="image-text">
                              <div className="img">
-                               <img src='/images/slider1img.png' className='img-responsive'/>
+                               <img alt=""src='/images/slider1img.png' className='img-responsive'/>
                              </div>
                              <div className='text'>
                                <h3>Zayed Day for Humanitarian action</h3>
@@ -142,7 +142,7 @@ function CSR({entity1}) {
              </div>
              <div className="col-md-4">
                <div className="text-md-end text-center py-2">
-                 {/* <img src={isMobile?entity1.fieldFoundationImageMobile.url:entity1.fieldFoundationImageDesktop.url} className='img-responsive'/> */}
+                 {/* <img alt=""src={isMobile?entity1.fieldFoundationImageMobile.url:entity1.fieldFoundationImageDesktop.url} className='img-responsive'/> */}
                </div>
              </div>
            </div>

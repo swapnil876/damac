@@ -191,16 +191,16 @@ function ListingPage() {
               <div className="col-md-12">
                 <div className="brand-logos-grid">
                   <div className="brand-logo-item">
-                    <Image src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
+                    <Image  src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
                   </div>
                   <div className="brand-logo-item">
-                    <Image src="/images/brand-logo/trumporg.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
+                    <Image  src="/images/brand-logo/trumporg.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
                   </div>
                   <div className="brand-logo-item">
-                    <Image src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
+                    <Image  src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
                   </div>
                   <div className="brand-logo-item">
-                    <Image src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
+                    <Image  src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
                   </div>
                 </div>
               </div>

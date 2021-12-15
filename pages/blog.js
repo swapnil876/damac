@@ -62,7 +62,7 @@ function Blog({entity1}) {
              <div className="row">
                <div className="col-md-9">
                <div className="primary-cta">
-                 <img src={isMobile?entity1.fieldFeatureImageMobile:entity1.fieldFeatureImageDesktop} className="img-responsive full-width"/>
+                 <img alt=""src={isMobile?entity1.fieldFeatureImageMobile:entity1.fieldFeatureImageDesktop} className="img-responsive full-width"/>
                  <label>{entity1.fieldCategory.entity.name}</label>
                  <h2>
                  <Link href="#"><a>{entity1.title}</a></Link>
@@ -124,7 +124,7 @@ function Blog({entity1}) {
             <div className="row">
               <div className="col-6 col-md-3">
                <div className="card">
-                  <img src="/images/news/1.png" className="card-img-top" alt="..."/>
+                  <img alt=""src="/images/news/1.png" className="card-img-top"/>
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -136,7 +136,7 @@ function Blog({entity1}) {
               </div>
                <div className="col-6 col-md-3">
                <div className="card">
-                  <img src="/images/news/3.png" className="card-img-top" alt="..."/>
+                  <img alt=""src="/images/news/3.png" className="card-img-top" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -148,7 +148,7 @@ function Blog({entity1}) {
               </div>
                <div className="col-6 col-md-3">
                <div className="card">
-                  <img src="/images/news/2.png" className="card-img-top" alt="..."/>
+                  <img alt=""src="/images/news/2.png" className="card-img-top" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -160,7 +160,7 @@ function Blog({entity1}) {
               </div>
                <div className="col-6 col-md-3">
                <div className="card">
-                  <img src="/images/news/2.png" className="card-img-top" alt="..."/>
+                  <img alt=""src="/images/news/2.png" className="card-img-top" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -192,7 +192,7 @@ function Blog({entity1}) {
           <div className="row">
              <div className="col-6 col-md-3">
              <div className="card">
-                <img src="/images/news/Rectangle 135.png" className="card-img-top" alt="..."/>
+                <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>
@@ -202,7 +202,7 @@ function Blog({entity1}) {
             </div>
              <div className="col-6 col-md-3">
              <div className="card">
-                <img src="/images/news/Rectangle 151.png" className="card-img-top" alt="..."/>
+                <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>  
@@ -211,7 +211,7 @@ function Blog({entity1}) {
             </div>
              <div className="col-6 col-md-3">
              <div className="card">
-                <img src="/images/news/Rectangle 152.png" className="card-img-top" alt="..."/>
+                <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>
@@ -221,7 +221,7 @@ function Blog({entity1}) {
             </div>
              <div className="col-6 col-md-3">
              <div className="card">
-                <img src="/images/news/Rectangle 153.png" className="card-img-top" alt="..."/>
+                <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>

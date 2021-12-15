@@ -54,7 +54,7 @@ function News( {entity1} ) {
              <div className="row">
                <div className="col-md-8">
                <div className="primary-cta">
-                 <img src={isMobile?entity1.fieldFeatureImageMobileNews.url:entity1.fieldFeatureImageDesktopNews.url} className="img-responsive full-width"/>
+                 <img alt="" src={isMobile?entity1.fieldFeatureImageMobileNews.url:entity1.fieldFeatureImageDesktopNews.url} className="img-responsive full-width"/>
                  <label>{entity1.fieldCategoryn.entity.name}</label>
                  <h2>
                  <Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link>
@@ -114,7 +114,7 @@ function News( {entity1} ) {
             <div className="row">
               <div className="col-6 col-md-3">
                <div className="card">
-                  <img src="/images/news/1.png" className="card-img-top" alt="..."/>
+                  <img alt=""src="/images/news/1.png" className="card-img-top" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -126,7 +126,7 @@ function News( {entity1} ) {
               </div>
                <div className="col-6 col-md-3">
                <div className="card">
-                  <img src="/images/news/3.png" className="card-img-top" alt="..."/>
+                  <img alt=""src="/images/news/3.png" className="card-img-top" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -138,7 +138,7 @@ function News( {entity1} ) {
               </div>
                <div className="col-6 col-md-3">
                <div className="card">
-                  <img src="/images/news/2.png" className="card-img-top" alt="..."/>
+                  <img alt=""src="/images/news/2.png" className="card-img-top" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -150,7 +150,7 @@ function News( {entity1} ) {
               </div>
                <div className="col-6 col-md-3">
                <div className="card">
-                  <img src="/images/news/2.png" className="card-img-top" alt="..."/>
+                  <img alt=""src="/images/news/2.png" className="card-img-top" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -182,7 +182,7 @@ function News( {entity1} ) {
           <div className="row">
              <div className="col-6 col-md-3">
              <div className="card">
-                <img src="/images/news/Rectangle 135.png" className="card-img-top" alt="..."/>
+                <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>
@@ -192,7 +192,7 @@ function News( {entity1} ) {
             </div>
              <div className="col-6 col-md-3">
              <div className="card">
-                <img src="/images/news/Rectangle 151.png" className="card-img-top" alt="..."/>
+                <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top"/>
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>  
@@ -201,7 +201,7 @@ function News( {entity1} ) {
             </div>
              <div className="col-6 col-md-3">
              <div className="card">
-                <img src="/images/news/Rectangle 152.png" className="card-img-top" alt="..."/>
+                <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>
@@ -211,7 +211,7 @@ function News( {entity1} ) {
             </div>
              <div className="col-6 col-md-3">
              <div className="card">
-                <img src="/images/news/Rectangle 153.png" className="card-img-top" alt="..."/>
+                <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>
@@ -242,7 +242,7 @@ function News( {entity1} ) {
           <div className="row">
             <div className="col-md-8">            
               <div className="press-release">
-                <img src="/images/news/Rectangle 146.png" className="img-fluid full-width" />
+                <img alt=""src="/images/news/Rectangle 146.png" className="img-fluid full-width" />
                 <span className="tag-label">Tag Label</span>
                 <h2>2020 in Review: DAMAC Apps in Facts and Numbers</h2>
                 <p>December 30 • Lin Manuel</p>

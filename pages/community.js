@@ -70,7 +70,7 @@ function Community({entity1}) {
       <main className="main about-main">
         <header className={styles['community-banner']}>
           <div className={styles['bg-image']}>
-            <Image 
+            <Image alt="" 
               className={styles['bg-image']}
               src={pageBanner} width={1600} 
               height={700}
@@ -94,7 +94,7 @@ function Community({entity1}) {
                 <div className={ styles['location-community'] }>
                   <a href="#">
                      <span className={styles['text-icon']}>
-                       <Image src="/images/icons/location.png" width={16} height={16}/> 
+                       <Image alt="" src="/images/icons/location.png" width={16} height={16}/> 
                      </span>
                      {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}
                   </a>
@@ -150,12 +150,12 @@ function Community({entity1}) {
           </div>
           { !deviceIsMobile && 
             <div className={`containerRightImage`}>
-              <Image src='/images/textsection-right-1.jpg' layout='fill' objectFit="cover"/>
+              <Image alt="" src='/images/textsection-right-1.jpg' layout='fill' objectFit="cover"/>
             </div>
           }
           { deviceIsMobile && 
             <div className={`containerBottomImage`}>
-              <Image src='/images/textsection-right-1.jpg' layout='fill' objectFit="cover"/>
+              <Image alt="" src='/images/textsection-right-1.jpg' layout='fill' objectFit="cover"/>
             </div>
           }
         </section>
@@ -193,7 +193,7 @@ function Community({entity1}) {
           </div>
           <div className="col-md-6 p-0">            
             <div className="shape-image float-end">
-              <img src="images/shape-right.jpg" className="img-fluid" />              
+              <img alt=""src="images/shape-right.jpg" className="img-fluid" />              
             </div>
           </div>          
         </div>        
@@ -262,7 +262,7 @@ function Community({entity1}) {
       <div className={styles['angry-grid']}>
         <div className={styles['gr-item-0']}>
            <div className={styles['right-side-gallery']}>
-           <img src={isMobile?entity1.fieldCol1ImageMobileC.url:entity1.fieldCol1ImageDesktopc.url}/>
+           <img alt=""src={isMobile?entity1.fieldCol1ImageMobileC.url:entity1.fieldCol1ImageDesktopc.url}/>
            <div className={styles['gal-content']}>
             <p>{entity1.fieldCol1Textc}</p>
           </div>         
@@ -270,17 +270,17 @@ function Community({entity1}) {
         </div>
         <div className={styles['gr-item-1']}>
             <div className={styles['sm-gal-right']}>
-              <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobic.url:entity1.fieldCol2Row1Col1ImageDeskc.url} className="img-fluid"/>
+              <img alt=""src={isMobile?entity1.fieldCol2Row1Col1ImageMobic.url:entity1.fieldCol2Row1Col1ImageDeskc.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-2']}>
            <div className={styles['sm-gal-left']}>
-              <img src={isMobile?entity1.fieldCol2Row1Col2ImageMobic.url:entity1.fieldCol2Row1Col2ImageDeskc.url} className="img-fluid"/>
+              <img alt=""src={isMobile?entity1.fieldCol2Row1Col2ImageMobic.url:entity1.fieldCol2Row1Col2ImageDeskc.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-3']}>
            <div className={styles['gal-gr']}>
-            <img src={isMobile?entity1.fieldCol2Row2ImageMobilec.url:entity1.fieldCol2Row2ImageDesktopc.url} className="img-fluid"/> 
+            <img alt=""src={isMobile?entity1.fieldCol2Row2ImageMobilec.url:entity1.fieldCol2Row2ImageDesktopc.url} className="img-fluid"/> 
             
           </div>
         </div>
@@ -302,7 +302,7 @@ function Community({entity1}) {
               {entity1.fieldAmenities.map((item)=>{
                 <div class="col-6">
                 <div className={styles['icon-area']}>
-                  <img src="/images/icons/building (1) 2.svg" />
+                  <img alt=""src="/images/icons/building (1) 2.svg" />
                   <h4>{item.entity.fieldValueAmi}</h4>
                   <p>{item.entity.fieldTextAmi}</p>
                 </div>
@@ -311,21 +311,21 @@ function Community({entity1}) {
               
                 {/* <div class="col-6">
                 <div className={styles['icon-area']}>
-                  <img src="/images/icons/building (1) 2.svg" />
+                  <img alt=""src="/images/icons/building (1) 2.svg" />
                   <h4>27</h4>
                   <p>Residential Towers</p>
                 </div>
                 </div>
                 <div class="col-6">
                 <div className={styles['icon-area']}>
-                  <img src="/images/icons/building (1) 2.svg" />
+                  <img alt=""src="/images/icons/building (1) 2.svg" />
                   <h4>27</h4>
                   <p>Residential Towers</p>
                 </div>
                 </div>
                 <div class="col-6">
                 <div className={styles['icon-area']}>
-                  <img src="/images/icons/building (1) 2.svg" />
+                  <img alt=""src="/images/icons/building (1) 2.svg" />
                   <h4>27</h4>
                   <p>Residential Towers</p>
                 </div>
@@ -338,17 +338,17 @@ function Community({entity1}) {
             (isMobile) ? 
             entity1.fieldGalleryMobileC4.map((item)=>{
                  <div class="img">
-                 <img src={item.url}/>
+                 <img alt=""src={item.url}/>
                 </div>        
               }) 
               :entity1.fieldDescriptionc4.map((item)=>{
                  <div class="img">
-                 <img src={item.url}/>
+                 <img alt=""src={item.url}/>
                 </div>        
               })
               } */}
             <div class="img">
-            <img src="/images/textsection-right-1.jpg"/>
+            <img alt=""src="/images/textsection-right-1.jpg"/>
             </div>
           </div>
           </div> 
@@ -376,7 +376,7 @@ function Community({entity1}) {
             <div className="col-md-3 col-6">
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
-                <img src="/images/project-gal4.jpg" />
+                <img alt=""src="/images/project-gal4.jpg" />
                 </div>
                 <div className={styles['info']}>
                   <h4>Kiara</h4>
@@ -387,7 +387,7 @@ function Community({entity1}) {
             <div className="col-md-3 col-6">
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
-                <img src="/images/project-gal4.jpg" />
+                <img alt=""src="/images/project-gal4.jpg" />
                 </div>
                 <div className={styles['info']}>
                   <h4>Kiara</h4>
@@ -398,7 +398,7 @@ function Community({entity1}) {
             <div className="col-md-3 col-6">
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
-                <img src="/images/project-gal4.jpg" />
+                <img alt=""src="/images/project-gal4.jpg" />
                 </div>
                 <div className={styles['info']}>
                   <h4>Kiara</h4>
@@ -409,7 +409,7 @@ function Community({entity1}) {
             <div className="col-md-3 col-6">
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
-                <img src="/images/project-gal4.jpg" />
+                <img alt=""src="/images/project-gal4.jpg" />
                 </div>
                 <div className={styles['info']}>
                   <h4>Kiara</h4>
@@ -420,7 +420,7 @@ function Community({entity1}) {
             <div className="col-md-3 col-6">
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
-                <img src="/images/project-gal4.jpg" />
+                <img alt=""src="/images/project-gal4.jpg" />
                 </div>
                 <div className={styles['info']}>
                   <h4>Kiara</h4>
@@ -430,7 +430,7 @@ function Community({entity1}) {
             </div>    <div className="col-md-3 col-6">
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
-                <img src="/images/project-gal4.jpg" />
+                <img alt=""src="/images/project-gal4.jpg" />
                 </div>
                 <div className={styles['info']}>
                   <h4>Kiara</h4>
@@ -450,7 +450,7 @@ function Community({entity1}) {
       <div className={styles['angry-grid']}>
         <div className={styles['gr-item-0']}>
            <div className={styles['right-side-gallery']}>
-           {/* <img src={isMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url}/> */}
+           {/* <img alt=""src={isMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url}/> */}
            <div className={styles['gal-content']}>
             <p>{entity1.fieldCol1Textc5}</p>
           </div>         
@@ -458,17 +458,17 @@ function Community({entity1}) {
         </div>
         <div className={styles['gr-item-1']}>
             <div className={styles['sm-gal-right']}>
-              {/* <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/> */}
+              {/* <img alt=""src={isMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/> */}
             </div>
         </div>
         <div className={styles['gr-item-2']}>
            <div className={styles['sm-gal-left']}>
-              {/* <img src={isMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/> */}
+              {/* <img alt=""src={isMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/> */}
             </div>
         </div>
         <div className={styles['gr-item-3']}>
            <div className={styles['gal-gr']}>
-            {/* <img src={isMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/>  */}
+            {/* <img alt=""src={isMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/>  */}
             
           </div>
         </div>
@@ -487,9 +487,9 @@ function Community({entity1}) {
             <div className={styles['brand-partners']}>
               <h4>Brand Partners</h4>
               <div className={styles['brand-icons']}>
-                <img src="/images/brand-logo/image 26.png"/>
-                <img src="/images/brand-logo/trumporg.png"/>
-                <img src="/images/brand-logo/trumporg.png"/>
+                <img alt=""src="/images/brand-logo/image 26.png"/>
+                <img alt=""src="/images/brand-logo/trumporg.png"/>
+                <img alt=""src="/images/brand-logo/trumporg.png"/>
               </div>
             </div>
           </div>
@@ -511,7 +511,7 @@ function Community({entity1}) {
           </div>
 
             <div className={styles['map']}>
-             {/* <img src={entity1.fieldMasterplan.entity.url}/> */}
+             {/* <img alt=""src={entity1.fieldMasterplan.entity.url}/> */}
             </div>
 
             <div className={styles['video']}>
@@ -531,7 +531,7 @@ function Community({entity1}) {
             entity1.fieldMultipleLocators.map((item)=>{
               <div className="col-6 col-md-4">
               <div className="distance-card text-center">
-                <img src={item.entity.fieldIconm.url} />
+                <img alt=""src={item.entity.fieldIconm.url} />
                 <h5>{item.entity.fieldValuec6}</h5>
                 <p>{item.entity.fieldTextc6}</p>            
               </div>
@@ -540,21 +540,21 @@ function Community({entity1}) {
           } */}
           <div className="col-6 col-md-4">
           <div className="distance-card text-center">
-            <img src="/images/icons/building (1) 2.svg" />
+            <img alt=""src="/images/icons/building (1) 2.svg" />
             <h5>5 min</h5>
             <p>from Dubai International <br/>Financial Centre</p>            
           </div>
         </div>
          <div className="col-6 col-md-4">
           <div className="distance-card text-center">
-            <img src="/images/icons/aeroplane 3.svg"/>
+            <img alt=""src="/images/icons/aeroplane 3.svg"/>
             <h5>10 min</h5>
             <p>from Dubai International <br/>Financial Centre</p>            
           </div>
         </div>
          <div className="col-12 col-md-4">
           <div className="distance-card text-center">
-            <img src="/images/icons/sunrise 2.svg"/>
+            <img alt=""src="/images/icons/sunrise 2.svg"/>
             <h5>13 min</h5>
             <p>from Jumeirah <br/>Beach</p>            
           </div>
@@ -566,7 +566,7 @@ function Community({entity1}) {
      {/* <!-- Map section --> */}
     <section className={styles['map-section']}>
       <div className="map-wrap">
-        <img src="/damac-static/images/map.jpg" className="img-fluid"/>        
+        <img alt=""src="/damac-static/images/map.jpg" className="img-fluid"/>        
       </div>       
    </section>
 
@@ -576,7 +576,7 @@ function Community({entity1}) {
       <div className="container">
         <div className="row">
           <div className="col-md-8">
-            <img src="/damac-static/images/invoice-1.png"/>
+            <img alt=""src="/damac-static/images/invoice-1.png"/>
             <div class={`text-wrapper`}>
             <div className="top-text">
             <h2>Get an estimate</h2>
@@ -661,15 +661,15 @@ function Community({entity1}) {
           <div className="col-md-6">
             <div className={styles['property-slider-wrap']}>
               <div className={styles['project-card']}>
-                <img src="images/project-gal4.jpg" className="img-fluid" />               
+                <img alt=""src="images/project-gal4.jpg" className="img-fluid" />               
                 <h6>Kiara 2 Bedroom Apartment</h6>
                 <p>DAMAC Hills, Dubailand, Dubai</p>
                 <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>                              
                             
@@ -689,15 +689,15 @@ function Community({entity1}) {
            <div className="col-md-6">
             <div className={styles['property-slider-wrap']}>
               <div className={styles['project-card']}>
-                <img src="images/project-gal3.jpg" className="img-fluid" />
+                <img alt=""src="images/project-gal3.jpg" className="img-fluid" />
                 <h6>Kiara 2 Bedroom Apartment</h6>
                 <p>Starting AED 1,213,515*</p>  
                   <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>               
               </div>
@@ -714,15 +714,15 @@ function Community({entity1}) {
            <div className="col-md-6">
             <div className={styles['property-slider-wrap']}>
               <div className={styles['project-card']}>
-              <img src="images/project-1.jpg" className="img-fluid" />
+              <img alt=""src="images/project-1.jpg" className="img-fluid" />
               <h6>Kiara 2 Bedroom Apartment</h6>
               <p><span>Starting AED 1,213,515*</span></p>
                 <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>             
             </div>
@@ -740,15 +740,15 @@ function Community({entity1}) {
            <div className="col-md-6">
             <div className={styles['property-slider-wrap']}>
               <div className={styles['project-card']}>
-              <img src="images/project-2.jpg" className="img-fluid" />
+              <img alt=""src="images/project-2.jpg" className="img-fluid" />
               <h6>Kiara 2 Bedroom Apartment</h6>
               <p><span>Starting AED 1,213,515*</span></p> 
                <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>             
             </div>
@@ -773,7 +773,7 @@ function Community({entity1}) {
     <section className={styles['faq-section']}>
       <div className="container">
         <div className="faq-icon">
-          <img src="/damac-static/images/speech-bubble 1.png"/>
+          <img alt=""src="/damac-static/images/speech-bubble 1.png"/>
           <h2>Frequently Asked Questions</h2>          
         </div>
         <div className="row">

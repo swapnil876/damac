@@ -62,7 +62,7 @@ function Career({entity1}) {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src={entity1.fieldIcons.url}/>
+                   <img alt=""src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Property Development and Real Estates</p>
                </div>
@@ -71,7 +71,7 @@ function Career({entity1}) {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src={entity1.fieldIcons.url}/>
+                   <img alt=""src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Hotel , Resorts and Serviced Apartments</p>
                </div>
@@ -80,7 +80,7 @@ function Career({entity1}) {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src={entity1.fieldIcons.url}/>
+                   <img alt=""src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Malls and Retails</p>
                </div>
@@ -89,7 +89,7 @@ function Career({entity1}) {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src={entity1.fieldIcons.url}/>
+                   <img alt=""src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Manufacturing</p>
                </div>
@@ -98,7 +98,7 @@ function Career({entity1}) {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src={entity1.fieldIcons.url}/>
+                   <img alt=""src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Building Material</p>
                </div>
@@ -107,7 +107,7 @@ function Career({entity1}) {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src={entity1.fieldIcons.url}/>
+                   <img alt=""src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Food and Catering</p>
                </div>
@@ -116,7 +116,7 @@ function Career({entity1}) {
              <div className="col-md-3 col-4">
                <div className="icon-box">
                  <div className="icon-box-svg">
-                   <img src={entity1.fieldIcons.url}/>
+                   <img alt=""src={entity1.fieldIcons.url}/>
                  </div>
                  <p>Capital Market</p>
                </div>
@@ -137,8 +137,8 @@ function Career({entity1}) {
 
          <div className="py-4">
            <div className="video-box-wrapper">
-             <img src="/images/videobg-career.png"/>
-             {/* <Image className={styles['bg-image']} src={entity1.fieldVideoUrl.url.path} layout="fill"> </Image> */}
+             <img alt=""src="/images/videobg-career.png"/>
+             {/* <Image alt="" className={styles['bg-image']} src={entity1.fieldVideoUrl.url.path} layout="fill"> </Image> */}
              <div className="playbtn-wrapper">
                <div className={'bannerPlayBtn'}>
                  <span>
