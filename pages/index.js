@@ -70,16 +70,16 @@ function Home( {entity1} ) {
 
           <>
             { (!deviceIsMobile) &&
-              <HomeBanner entity1={ entity1 } bannerImage={ bannerImage }></HomeBanner>
+              <HomeBanner entity1={ entity1 } bannerImage={ entity1.fieldMainImageDesktopHome.url }></HomeBanner>
             }
 
             { (deviceIsMobile) &&
-              <div className="homeMobileBanner" style={{'background-image': 'url(' + entity1.fieldMainImageMobileHome + ')'}}>
+              <div className="homeMobileBanner" style={{'background-image': 'url(' + entity1.fieldMainImageMobileHome.url + ')'}}>
                 <div className="container">
                   
                   <div className="homemobileBannerText">
                     <h3>{entity1.title}</h3>
-                    <p>{entity1.body}</p>
+                    <p>{entity1.body.value}</p>
                   </div>
 
                   <div className="bannerBtnGroup">
@@ -115,7 +115,7 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: HOME });
-  console.log('entity1',data);
+  // console.log('entity1',data);
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
   console.log('entity1',entity1);

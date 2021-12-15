@@ -15,6 +15,7 @@ export default function HomeBanner( { bannerImage, children, entity1} ) {
     // entity1.fieldMainImageDesktopHome
     height={320}
     placeholder="blur"
+    blurDataURL={bannerImage}
     layout="fill"
     >
     </Image>
@@ -22,7 +23,7 @@ export default function HomeBanner( { bannerImage, children, entity1} ) {
   
 
   return (
-    <div className={styles['homepage-hero-section']} style={{'background': 'url(' + entity1.fieldMainImageDesktopHome + ') center/100% no-repeat'}} >
+    <div className={styles['homepage-hero-section']} style={{'background': 'url(' + entity1.fieldMainImageDesktopHome.url + ') center/100% no-repeat'}} >
       {/* style={{'background': 'url(' + entity1.fieldMainImageDesktopHome + ') center/100% no-repeat'}} */}
       { banner }
       { children }
@@ -32,7 +33,7 @@ export default function HomeBanner( { bannerImage, children, entity1} ) {
           <div className="row">
             <div className={styles["hero-content-text"]}>
               <h2>{entity1.title}</h2>
-              <p className={styles["subtext"]}>{entity1.body}</p>
+              <p className={styles["subtext"]}>{entity1.body.value}</p>
 
               <div className={styles['hero-cta-btns']}>
                 <Link href="#">
