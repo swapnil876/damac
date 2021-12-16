@@ -49,7 +49,7 @@ function ChairmansMessage({entity1}) {
                  
                  <div className="col-md-4">
                    <div className="chairmans-photo">
-                     <img alt=""src={entity1.fieldImageChairman}/>
+                     <img alt={entity1.title} src={entity1.fieldImageChairman.url}/>
                    </div>
                  </div>
 

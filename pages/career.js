@@ -54,13 +54,13 @@ function Career({entity1}) {
 
          <div className="py-4">
            <div className="row justify-content-center">
-             {entity1.fieldIcons.map((icon) => (
+             {entity1.fieldIcons.map((item) => (
                <div className="col-md-3 col-4">
                  <div className="icon-box">
                    <div className="icon-box-svg">
-                     <img alt=""src={icon.url}/>
+                     <img alt=""src={item.url}/>
                    </div>
-                   <p>{icon.title}</p>
+                   <p>{item.title}</p>
                  </div>
                </div>
              ))}
