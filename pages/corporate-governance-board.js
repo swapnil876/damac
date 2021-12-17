@@ -115,7 +115,7 @@ function ShareInformation( { mobileDevice } ) {
                 active: true,
             },
                 {
-                  url: '/',
+                  url: '/corporate-governance-committee',
                   label: 'Governance Committees',
                   active: false,
               },

@@ -110,7 +110,7 @@ function ShareInformation( { mobileDevice } ) {
         <div className='container'>
             <PageTabs tabLinks={ [
               {
-                url: '/',
+                url: '/corporate-governance-board',
                 label: 'Meet Our Board Members',
                 active: false,
             },

@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 
+import styles from '../styles/pages/dividends.module.css'
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -61,8 +62,8 @@ function CapitalHistory( { mobileDevice } ) {
       },
 
       {
-        'label': 'Capital History',
-        'link': '/capital-history',
+        'label': 'Dividends',
+        'link': '/dividends',
         'active': true
       }
   ];
@@ -95,7 +96,7 @@ function CapitalHistory( { mobileDevice } ) {
         <Breadcrumbs crumbs={ crumbs }/>
 
         <HeadingTitle 
-          title="Capital History" 
+          title="Dividends" 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
@@ -122,72 +123,168 @@ function CapitalHistory( { mobileDevice } ) {
         <section className='section'>
           <div className='container'>
 
-             <div className='table-wrapper-dividend my-4'>
-               <div className="table-main-wrap table-responsive">
-                 <table class="table table-striped dm-graph-table">
-                         <thead>
-                           <tr>
-                             <th>Share</th>
-                             <th>Last</th>
-                             <th>High</th>
-                             <th>Low</th>
-                             <th>(+/-)</th>
-                             <th>%</th>
-                             <th>Bid</th>
-                             <th>Ask</th>
-                             <th>Volume</th>
-                           </tr>
-                         </thead>
-                         <tbody>
-                           <tr>
-                             <td>10% shares dividend of 500 mn shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>
-                           <tr>
-                             <td>Issuing, subscribing and full payment of 5,500 shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>
-                           <tr>
-                             <td>10% shares dividend of 550 mn shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>
-                           <tr>
-                             <td>Issuing, subscribing and full payment of 6,050 mn shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>                       
+          {/* <!-- capital tab --> */}
+                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                  <div className="dm-capital-wrap">
+                    <div className={styles['dm-capital-head']}>
+                      <h2>DAMAC Properties Dubai Co JPSC</h2>
+                    </div>
+                    <div className="dm-capital-list">
+                      <ul hidden>
+                        <li className="dm-c-list-item list-unstyled">
+                          <div className="row">
+                            <div className="col-md-6">
+                              <div className="dmc-list-txt">
+                                <p>Issuing, subscribing and full payment of 5,000mn shares</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>AED 5,000mn</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>2 days ago</p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li className="dm-c-list-item list-unstyled">
+                          <div className="row">
+                            <div className="col-md-6">
+                              <div className="dmc-list-txt">
+                                <p>10% shares dividend of 500 mn shares</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>AED 500mn</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>2 weeks ago</p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li className="dm-c-list-item list-unstyled">
+                          <div className="row">
+                            <div className="col-md-6">
+                              <div className="dmc-list-txt">
+                                <p>Issuing, subscribing and full payment of 5,500 shares</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>AED 500mn</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>2 weeks ago</p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li className="dm-c-list-item list-unstyled">
+                          <div className="row">
+                            <div className="col-md-6">
+                              <div className="dmc-list-txt">
+                                <p>10% shares dividend of 550 mn shares</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>AED 550mn</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>30 Jun 2015</p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li className="dm-c-list-item list-unstyled">
+                          <div className="row">
+                            <div className="col-md-6">
+                              <div className="dmc-list-txt">
+                                <p>Issuing, subscribing and full payment of 6,050 mn shares</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>AED 6,050mn</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>31 Dec 2014</p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li className="dm-c-list-item list-unstyled">
+                          <div className="row">
+                            <div className="col-md-6">
+                              <div className="dmc-list-txt">
+                                <p>10% shares dividend of 550 mn shares</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>AED 550mn</p>
+                              </div>
+                            </div>
+                            <div className="col-md-3">
+                              <div className="dmc-list-txt">
+                                <p>30 Jun 2015</p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
 
-                         </tbody>
-                    </table>
-               </div>
-             </div>
+
+                      <table className="table table-striped table-borderless reports-table">
+                        <tbody>
+                          <tr>
+                            <td>Issuing, subscribing and full payment of 5,000mn shares</td>
+                            <td>AED 5,000mn</td>
+                            <td><span className="opacity-50">2 days ago</span></td>
+                          </tr>
+
+                          <tr>
+                            <td>10% shares dividend of 500 mn shares</td>
+                            <td>AED 5,500mn</td>
+                            <td><span className="opacity-50">29 Sep 2015</span></td>
+                          </tr>
+
+                          <tr>
+                            <td>10% shares dividend of 550 mn shares</td>
+                            <td>AED 550mn</td>
+                            <td><span className="opacity-50">30 Jun 2015</span></td>
+                          </tr>
+
+                          <tr>
+                            <td>Issuing, subscribing and full payment of 6,050 mn shares</td>
+                            <td>AED 6,050mn</td>
+                            <td><span className="opacity-50">31 Dec 2014</span></td>
+                          </tr>
+                          <tr>
+                            <td>10% shares dividend of 550 mn shares</td>
+                            <td>AED 550mn</td>
+                            <td><span className="opacity-50">30 Jun 2015</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+
+                    </div>
+                  </div>
+                </div>
              
 
              <div className='enquiry-form-section'>

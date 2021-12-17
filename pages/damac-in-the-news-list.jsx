@@ -13,6 +13,7 @@ import PagePagination from '../components/PagePagination'
 import BlogCardItem from '../components/BlogCardItem'
 
 import styles from '../styles/blog-list.module.css'
+import style from '../styles/pages/damac-in-the-news.module.css'
 
 import React, { Component } from "react";
 
@@ -21,7 +22,7 @@ import React, { Component } from "react";
 
 // import styles from '../styles/.module.css'
 
-function DamacInTheNews( { blogs } ) {
+function DamacInTheNewsList( { blogs } ) {
 
 
   return (
@@ -40,9 +41,20 @@ function DamacInTheNews( { blogs } ) {
 
       <main className="main bloglist-main">
 
-           <PageTitle title="Damac In The News" subtitle="News" backgroundImage={'/images/investor-relation-hero.jpg'}/>
+           {/* <PageTitle title="Damac In The News List" subtitle="News" backgroundImage={'/images/investor-relation-hero.jpg'}/> */}
 
-
+           {/* <!-- Blog list Hero section --> */}
+            <section className={`${style["news-hero"]} d-flex align-items-center`} style={{'background': "url('images/investor-relation-hero.jpg') no-repeat center/100%"}}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <p>News</p>
+                            <h1 className={`${style["news-hero-text"]} text-white m-0`}>DAMAC in the News</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {/* <!-- news list news section --> */}
            <section className="bloglist-list-page">
              <div className="container">
                
@@ -74,7 +86,7 @@ function DamacInTheNews( { blogs } ) {
   )
 }
 
-export default DamacInTheNews
+export default DamacInTheNewsList
 
 
 
