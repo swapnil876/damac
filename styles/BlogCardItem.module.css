@@ -1,8 +1,8 @@
 /* Blog card item  */
 .blogcard-item p {
-	color: rgba(0,0,0,0.65);
-	font-size: 18px;
-	line-height: 1.7;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 18px;
+    line-height: 1.7;
 }
 
 .blogcard-item .blogitem-title {
@@ -26,13 +26,22 @@
     margin-bottom: 16px;
     align-items: center;
 }
+
 .dateandauthor {
     font-size: 14px;
-    color: rgba(0,0,0,0.65);
+    color: rgba(0, 0, 0, 0.65);
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 148%;
+    letter-spacing: 0.03em;
+    color: #000000;
+    opacity: 0.6;
 }
 
 
-.dateandauthor > span {
+.dateandauthor>span {
     display: inline-block;
     margin-left: 4px;
 }
@@ -40,4 +49,7 @@
 .metatags .taglabel {
     display: inline-block;
     margin-right: 4px;
+}
+.taglabel{
+    font-weight: 500;
 }

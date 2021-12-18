@@ -1,0 +1,253 @@
+.news-hero {
+    width: 100%;
+    height: 100%;
+}
+
+.news-hero p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    padding-top: 165px;
+    margin-bottom: 13px;
+    color: #fff;
+}
+
+.news-hero-text {
+    padding-bottom: 84px;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 49px;
+    color: #fff;
+}
+
+.banner {
+    aspect-ratio: 144/65;
+    position: relative;
+}
+
+.banner img.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.banner-text-box {
+    font-family: "Roboto";
+    font-style: normal;
+    color: #FFFFFF;
+    position: absolute;
+    top: 40%;
+    width: 40%;
+    right: 30px
+}
+
+.banner-text-box h4 {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 117.6%;
+    color: #FFFFFF;
+}
+
+.banner-text-box p {
+    font-size: 24px;
+    line-height: 127.6%;
+    letter-spacing: 0.02em;
+    opacity: 0.75;
+    font-weight: normal;
+}
+
+.banner-text-box .date {
+    font-size: 16px;
+    line-height: 127.6%;
+    letter-spacing: 0.02em;
+    color: #C9CED3;
+}
+
+.under_banner_section {
+    padding: 42px 0;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 148%;
+    letter-spacing: 0.03em;
+    color: #000000;
+}
+
+.under_banner_section h3 {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 137.6%;
+    margin-bottom: 21px;
+}
+
+.under_banner_section .middle_section>.inner {
+    width: 60%;
+    margin: auto
+}
+
+.under_banner_section .middle_section .img {
+    width: 80%;
+    aspect-ratio: 16/7;
+    margin: 64px auto 50px;
+}
+
+.under_banner_section .middle_section .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.related_news_section .title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 137.6%;
+    color: #000000;
+    margin-bottom: 14px
+}
+.related_news_section .news-box{
+    margin-bottom: 30px;
+}
+.related_news_section .news-box .img {
+    aspect-ratio: 1/.7;
+    margin-bottom: 12px;
+}
+
+.related_news_section .news-box .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.related_news_section .news-box .text-sec {
+    font-family: "Roboto";
+    font-style: normal;
+}
+
+.related_news_section .news-box .text-sec h4 {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 117.6%;
+    color: #000000;
+}
+
+.related_news_section .news-box .text-sec p {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 148%;
+    color: #000000;
+    opacity: 0.65;
+    margin-bottom: 0;
+}
+
+.related_news_section .news-box .text-sec .label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:24px 0 12px;
+}
+
+.related_news_section .news-box .text-sec .label {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 148%;
+    letter-spacing: 0.03em;
+    color: #000000;
+}
+.related_news_section .news-box .text-sec .label .tag{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 148%;
+    letter-spacing: 0.04em;
+    color: #000000;
+}
+.related_news_section .news-box .text-sec .label .date{
+    opacity: 0.6;
+}
+.news-box .read_more{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 148%;
+    letter-spacing: 0.04em;
+    color:gold
+}
+
+@media(max-width:1280px) {
+    .banner-text-box {
+        width: 50%;
+    }
+}
+
+@media(max-width:992px) {
+    .under_banner_section .middle_section .img {
+        width: 100%;
+    }
+    .under_banner_section .middle_section>.inner {
+        width: 70%;
+        margin: auto
+    }
+    .banner-text-box {
+        width: 60%;
+    }
+
+    .banner {
+        aspect-ratio: 1/.6;
+    }
+}
+
+@media(max-width:900px) {
+    .banner-text-box {
+        width: 70%;
+    }
+}
+
+@media(max-width:768px) {
+    .under_banner_section .middle_section>.inner {
+        width: 80%;
+    }
+    .banner {
+        aspect-ratio: 1/1;
+    }
+
+    .banner-text-box {
+        width: 90%;
+        right: 20px;
+        top:35%;
+    }
+}
+@media(max-width:550px) {
+    .under_banner_section .middle_section>.inner {
+        width: 90%;
+    }
+    .banner-text-box {
+        top:20%;
+    }
+}
+@media(max-width:450px) {
+    .banner {
+        aspect-ratio: 1/1.2;
+    }
+    .banner-text-box {
+        top:20%;
+    }
+    .banner-text-box {
+        top:15%;
+    }
+}
+@media(max-width:360px) {
+    .banner-text-box h4 {
+        font-size: 28px;
+    }
+    .banner-text-box p {
+        font-size: 20px;
+    }
+}

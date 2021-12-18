@@ -1,0 +1,233 @@
+
+.dividend-hero{
+	padding-top: 115px;
+}
+.breadcrum-main{
+	color: #000000;
+}
+.breadcrum-main ul li a{
+	font-size: 16px;
+	letter-spacing: 0.02em;	
+	opacity: 50%;
+}
+.breadcrum-main ul li span {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 16px;
+    opacity: 50%;
+}
+.breadcrum-main ul {
+    margin-bottom: 0px;
+}
+.head-text h1{	
+	font-size: 42px;
+    line-height: 49px;
+    margin-top: 14px;
+    margin-bottom: 24px;
+}
+.download-text a{
+	font-size: 16px;
+	letter-spacing: 0.02em;
+	font-weight: 300;
+}
+.download-text a span{
+	margin-right: 8px;
+	font-weight: 400;
+}
+.dividend-tab-section ul.nav-tabs li button {
+    border: none;
+}
+.dm-link{
+	font-size: 20px;
+	font-weight: light;
+	line-height: 30px;
+	padding: 8px 0px;
+	margin-right: 33px;
+	color: #000;
+	opacity: 50%;
+	letter-spacing: 0.05em;
+}
+.dm-link:hover{
+	color: #000;
+}
+.table-main-wrap{
+	color: #000;
+}
+.dm-link.active{
+	color: #000000 !important;
+	opacity: 1;
+	border-color: transparent !important;
+	border-bottom: 2px solid #000000 !important;
+}
+.dm-tabs{
+	margin-bottom: 30px;
+	border: none;
+}
+.dm-table thead{
+	background: #D6D6D6;
+	border-radius: 4px;
+}
+.dm-table thead tr th{
+	letter-spacing: 0.8px;
+	font-size: 16px;
+	opacity:70%;
+	line-height: 23px;
+	padding: 12px;
+	border-color: transparent !important;
+	vertical-align: top;
+}
+.table-main-wrap .table-striped>tbody>tr:nth-of-type(odd) {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+    background: #F3F3F3 !important;
+}
+.dm-table tbody{
+	background: transparent;
+	border-color: transparent;
+}
+.dm-table tbody tr td{
+	font-size: 16px;
+	font-weight: 300;
+	white-space: nowrap;
+	line-height: 28px;
+	letter-spacing: 0.05em;
+	opacity: 0.8; 
+    padding: 0.75rem 0.75rem;
+}
+.dm-capital-head h2{
+	font-size: 16px;
+	letter-spacing: 0.05em;
+	line-height: 23px;	
+	/* opacity: 0.8; */
+	margin-bottom: 25px;
+}
+.dmc-list-txt p{
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 28px;
+	letter-spacing: 0.05em;
+	opacity: 0.8;
+	color: #000;
+}
+.dm-c-list-item{
+	margin-bottom: 20px;
+}
+.enquiry-wrap{
+	padding-top: 110px;
+	padding-bottom: 220px;
+}
+.enquiry-head h1{
+	font-size: 32px;
+	line-height: 38px;
+	margin-bottom: 25px;
+}
+.more-wrap{
+	background: #000000;
+	padding-top: 82px;
+	padding-bottom: 142px;
+}
+.more-head h1{
+	font-size: 32px;
+	line-height: 38px;
+	letter-spacing: 0.01em;
+	color: #ffffff;
+}
+ul.more-link-ul {
+    list-style-type: none;
+    padding: 0;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 55px;
+}
+
+ul.more-link-ul li a {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+    text-align: left;
+}
+
+ul.more-link-ul li a i {
+    margin-left: 15px;
+}
+
+ul.more-link-ul li {
+    width: 20.42vw;
+    padding-bottom: 45px;
+}
+.link-wrap-row{
+	padding: 45px 0;
+}
+.more-link-item:hover{
+	color: #fff;
+}
+.form-feild input, .form-feild select {
+    height: 48px;
+    margin-bottom: 16px;
+}
+.dm-col-4{
+	padding: 0px;
+	padding: 0 19.5px;
+}
+.d-flex.align-items-center.phone-feild {
+    gap: 16px;
+}
+.main-label{
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: 0.32px;
+	font-weight: 500;
+	opacity: 40%;
+}
+.form-feild.verification{
+	margin-top: 42px;
+}
+.contact-form-btn{
+	background: #000;
+	display: block;
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 64px;
+}
+.contact-form-btn:hover{
+	color: #fff;
+}
+@media(max-width: 768px){
+	ul.more-link-ul li {
+    width: 100%;
+}
+ul.more-link-ul {
+    display: block;
+    column-count: 2;
+}
+}
+@media (max-width: 767px){
+	ul.more-link-ul li{
+		width: 100%;
+		padding-bottom: 20px;
+	}
+	ul.more-link-ul {	    
+	    column-count: 1;
+	}
+	.form-feild.verification {
+	    margin-top: 16px;
+	}
+	.contact-form-btn{
+		margin-top: 16px;
+	}
+	.enquiry-wrap{
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+	.more-links-main {
+	    padding: 0 19.5px;
+	}
+	.more-head h1{
+	    padding: 0 19.5px;
+	}
+}

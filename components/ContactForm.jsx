@@ -7,7 +7,6 @@ import styles from '../styles/components/ContactForm.module.css';
 
 
 
-
 // import styles from '../styles/.module.css'
 
 
@@ -99,10 +98,8 @@ export default function ContactForm( { initialValues } ) {
                 <div className='col-5 pe-0'>
                   <div className='custom-input-element'>
                     <label className='input-element-wrapper'>
-                      
                       <div className='input-element country-code-element text-element'>
                         <input type='text' name='countryCode' value={'India (+91)'}  onChange={handleChange}/>
-                        
                       </div>
                     </label>
                   </div>
@@ -150,8 +147,10 @@ export default function ContactForm( { initialValues } ) {
                     </select>
                     <label className={`custom-floating-label ${values.dividendPeriod && 'filled'}`} htmlFor={'dividendPeriod'}>Select dividend period*</label>
                   </div>
-                </label>
+                </label>       
               </div>
+              <label class="main-label" style={{'font-size':'14px', 'letter-spacing': '0.32px',' font-weight': '500','opacity': '40%'}}>* Required fields</label>
+
             </div>
             <div className={`form-item-col`}>
 
@@ -168,9 +167,9 @@ export default function ContactForm( { initialValues } ) {
             </div>
           </div>
 
-          <div className="p2 my-4">
+          {/* <div className="p2 my-4">
             <span className="text-grey">* Required fields</span>
-          </div>
+          </div> */}
 
 
           <div className={`form-row form-row-2`}>
@@ -183,6 +182,7 @@ export default function ContactForm( { initialValues } ) {
                     <label className={`custom-floating-label ${values.captchaSolveInput && 'filled'}`} htmlFor={'captchaSolveInput'}>13+7 = Solve Verification</label>
                   </div>
                 </label>
+                
               </div>
             </div>
             <div className={`form-item-col`}>

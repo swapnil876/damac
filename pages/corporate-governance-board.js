@@ -43,7 +43,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function ShareInformation( { mobileDevice } ) {
+function CorporateGovBoard( { mobileDevice } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -115,7 +115,7 @@ function ShareInformation( { mobileDevice } ) {
                 active: true,
             },
                 {
-                  url: '/',
+                  url: '/corporate-governance-committee',
                   label: 'Governance Committees',
                   active: false,
               },
@@ -140,7 +140,7 @@ function ShareInformation( { mobileDevice } ) {
   )
 }
 
-export default ShareInformation
+export default CorporateGovBoard
 
 
 

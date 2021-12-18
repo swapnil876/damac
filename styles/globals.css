@@ -1,4 +1,3 @@
-
 /* Fonts  */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
@@ -6,27 +5,27 @@
 
 /* Common Style */
 :root {
-  --font-family: "Roboto", sans-serif;
-  --primary: #BD8C1B;
-  --dark: #000;
-  --light: #fff;
+    --font-family: "Roboto", sans-serif;
+    --primary: #BD8C1B;
+    --dark: #000;
+    --light: #fff;
 
-  --primary-gradient: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
-} 
+    --primary-gradient: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+}
 
 
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: "Roboto", sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
 }
 
 
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 
@@ -35,10 +34,10 @@ body {
 
 
 a {
-  color: inherit;
-  text-decoration: none;
-  font-weight: 300;
-  
+    color: inherit;
+    text-decoration: none;
+    font-weight: 300;
+
 }
 
 a:hover {
@@ -48,8 +47,8 @@ a:hover {
 
 
 .dark a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 .dark a:hover {
@@ -69,7 +68,7 @@ a:hover {
 }
 
 .full-width {
-    width:  100%;
+    width: 100%;
 }
 
 
@@ -81,13 +80,15 @@ a:hover {
 
 
 
-@media ( min-width: 1200px ) {
+@media (min-width: 1200px) {
 
-    h3, .h3 {
+    h3,
+    .h3 {
         font-size: 44px;
     }
 
-    h4, .h4 {
+    h4,
+    .h4 {
         font-size: 32px;
     }
 }
@@ -96,55 +97,84 @@ a:hover {
 
 /*Headings*/
 
-h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
-  margin-top: 0;
-  margin-bottom: 30px;
-  font-weight: 500;
-  line-height: 1.2;
+h6,
+.h6,
+h5,
+.h5,
+h4,
+.h4,
+h3,
+.h3,
+h2,
+.h2,
+h1,
+.h1 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
-h1, .h1 {
-  font-size: calc(1.375rem + 1.5vw);
+h1,
+.h1 {
+    font-size: calc(1.375rem + 1.5vw);
 }
+
 @media (min-width: 1200px) {
-  h1, .h1 {
-    font-size: 2.5rem;
-  }
+
+    h1,
+    .h1 {
+        font-size: 2.5rem;
+    }
 }
 
-h2, .h2 {
-  font-size: 32px;
+h2,
+.h2 {
+    font-size: 32px;
 }
+
 @media (min-width: 1200px) {
-  h2, .h2 {
-    font-size: 44px;
-  }
+
+    h2,
+    .h2 {
+        font-size: 42px;
+    }
 }
 
-h3, .h3 {
-  font-size: 32px;
+h3,
+.h3 {
+    font-size: 32px;
 }
+
 @media (min-width: 1200px) {
-  h3, .h3 {
-    font-size: 28px;
-  }
+
+    h3,
+    .h3 {
+        font-size: 28px;
+    }
 }
 
-h4, .h4 {
-  font-size: calc(1.275rem + 0.3vw);
+h4,
+.h4 {
+    font-size: calc(1.275rem + 0.3vw);
 }
+
 @media (min-width: 1200px) {
-  h4, .h4 {
-    font-size: 1.5rem;
-  }
+
+    h4,
+    .h4 {
+        font-size: 1.5rem;
+    }
 }
 
-h5, .h5 {
-  font-size: 1.25rem;
+h5,
+.h5 {
+    font-size: 1.25rem;
 }
 
-h6, .h6 {
-  font-size: 1rem;
+h6,
+.h6 {
+    font-size: 1rem;
 }
 
 
@@ -157,7 +187,8 @@ h6, .h6 {
     left: 0;
     right: 0;
 }
-.cookie-consent-bar p{
+
+.cookie-consent-bar p {
     font-size: 10px;
     padding: 8px 0;
     margin-bottom: 0;
@@ -166,14 +197,14 @@ h6, .h6 {
 /*
 * Global Responsive
 */
-@media ( max-width: 767px ) {
+@media (max-width: 767px) {
     .not-on-mobile {
         display: none;
     }
 }
 
-@media ( min-width: 768px ) {
-    .cookie-consent-bar p{
+@media (min-width: 768px) {
+    .cookie-consent-bar p {
         font-size: 16px;
         padding: 8px 0;
     }
@@ -191,6 +222,7 @@ a.btn-primary {
     background-image: var(--primary-gradient);
     border: 0;
 }
+
 a.btn-primary:hover {
     background-color: var(--primary);
     border-color: transparent;
@@ -222,12 +254,21 @@ a.btn.btn-icon-square {
 
 
 
-p, ul, b, strong, em {
-  font-family: "Roboto", sans-serif;
+p,
+ul,
+b,
+strong,
+em {
+    font-family: "Roboto", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Roboto", sans-serif;
 }
 
 
@@ -243,12 +284,13 @@ b {
 
 
 .text-box h4 {
-  font-size:  44px;
-  margin-bottom: 30px;
+    font-size: 44px;
+    margin-bottom: 30px;
 }
+
 .text-box p {
-  font-weight: 300;
-  font-size: 18px;
+    font-weight: 300;
+    font-size: 18px;
 }
 
 
@@ -257,17 +299,19 @@ b {
 
 
 /**/
-.section-text p{
+.section-text p {
     font-size: 20px;
 }
+
 h3.section-title {
     font-size: 44px;
 }
 
-@media ( max-width: 768px ) {
-    .section-text p{
+@media (max-width: 768px) {
+    .section-text p {
         font-size: 18px;
     }
+
     h3.section-title {
         font-size: 32px;
     }
@@ -279,7 +323,7 @@ h3.section-title {
     margin-bottom: 16px;
 }
 
-@media ( min-width: 768px ) {
+@media (min-width: 768px) {
 
     .heading-medium {
         font-size: 44px;
@@ -288,11 +332,11 @@ h3.section-title {
 
 }
 
-@media ( max-width: 767px ) {
+@media (max-width: 767px) {
 
     .text-box h4 {
-      font-size:  32px;
-      margin-bottom: 14px;
+        font-size: 32px;
+        margin-bottom: 14px;
     }
 }
 
@@ -343,7 +387,7 @@ a.btn.btn-blur-dark {
 
 /*Gradient text*/
 .gradient-text,
-.btn-light   {
+.btn-light {
     background-image: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -352,8 +396,8 @@ a.btn.btn-blur-dark {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent
-
 }
+
 .gradient-text .react-icon svg {
     color: #cbb176;
 }
@@ -364,8 +408,9 @@ a.btn.btn-blur-dark {
 */
 
 .damac-text-section-container {
-  padding: 80px 0;
+    padding: 80px 0;
 }
+
 .damac-text-section {
     background-color: #eee;
     background-size: cover;
@@ -380,22 +425,22 @@ a.btn.btn-blur-dark {
     color: #fff;
     padding: 58px 30px;
     max-width: 600px;
-    margin:0 auto;
+    margin: 0 auto;
 }
 
 .damac-text-section .text-box h3 {
     margin-bottom: 68px;
     font-size: 44px;
-   
+
 }
 
 .damac-text-section .text-box p {
-  font-weight:  300;
-  line-height: 2;
-  font-size: 20px;
+    font-weight: 300;
+    line-height: 2;
+    font-size: 20px;
 }
 
-@media ( min-width: 768px ) {
+@media (min-width: 768px) {
     .damac-text-section .text-box {
         margin: 0;
         margin-left: auto;
@@ -404,18 +449,20 @@ a.btn.btn-blur-dark {
 
 }
 
-@media ( max-width: 767px ) {
+@media (max-width: 767px) {
     .damac-text-section .text-box {
         background-color: transparent;
         padding-left: 0;
         padding-right: 0;
     }
+
     .damac-text-section .text-box h3 {
         margin-bottom: 30px;
         font-size: 32px;
-       
+
     }
-    .damac-text-section .text-box p  {
+
+    .damac-text-section .text-box p {
         font-size: 18px;
         line-height: 1.8;
         margin-bottom: 88px;
@@ -449,7 +496,7 @@ a.btn.btn-blur-dark {
     right: 0;
     bottom: 0;
     top: 0;
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0, 0, 0, 0.25);
     height: 100%;
 
 }
@@ -457,7 +504,7 @@ a.btn.btn-blur-dark {
 .homeMobileBanner .container {
     display: flex;
     flex-direction: column;
-  
+
     justify-content: flex-end;
     height: 110vh;
     color: #fff;
@@ -488,7 +535,8 @@ a.btn.btn-blur-dark {
 .homeMobileBanner .bannerBtnGroup {
     padding: 20px 0;
 }
-.homeMobileBanner  .cta-btn-link {
+
+.homeMobileBanner .cta-btn-link {
     color: #C0AA71;
 }
 
@@ -513,12 +561,12 @@ a.btn.btn-blur-dark {
 
 }
 
-@media ( min-width: 768px ) {
+@media (min-width: 768px) {
     .aboutbody .damac-about-section-2 .aboutsection-2 {
         min-height: 640px;
         display: flex;
         justify-content: space-between;
-        flex-direction:column;
+        flex-direction: column;
     }
 }
 
@@ -527,6 +575,7 @@ a.btn.btn-blur-dark {
     font-size: 44px;
     font-family: "Roboto", sans-serif;
 }
+
 .aboutbody .damac-about-section-2 h3,
 .aboutbody .damac-about-section-2 .section-text {
     padding: 80px 0;
@@ -549,7 +598,7 @@ a.btn.btn-blur-dark {
     width: 50%;
 }
 
-@media ( max-width: 768px ) {
+@media (max-width: 768px) {
     .aboutbody .numbersdata {
         margin-bottom: 52px;
         padding: 30px 24px;
@@ -565,12 +614,14 @@ a.btn.btn-blur-dark {
         padding-top: 57px;
         padding-bottom: 25px;
     }
+
     .aboutbody .damac-about-section-2 .section-text {
         padding-top: 0;
     }
+
     .aboutbody .numbers-row-col {
         padding-left: 0 !important;
-        padding-right:  0 !important;
+        padding-right: 0 !important;
     }
 }
 
@@ -595,31 +646,33 @@ section.damac-about-chairman .aboutChairmanbox {
     margin-bottom: 30px;
 }
 
-.aboutChairmanbox .cta-container  {
+.aboutChairmanbox .cta-container {
     margin-top: 50px;
 }
-.aboutChairmanbox  p {
+
+.aboutChairmanbox p {
     font-weight: 300;
     margin-bottom: 45px;
 
 }
-@media ( min-width: 768px ) {
 
-  .chairman-text-col {
-    position: relative;
-    background-color: #fff;
-    /* z-index: 1; */
-  }
+@media (min-width: 768px) {
 
-  .damac-about-chairman .chairmanPhoto {
-      position: absolute;
-      right: 0;
-      margin-left: 15px;
-      height: 100%;
-      width: 45vw;
-      margin-left: 0;
+    .chairman-text-col {
+        position: relative;
+        background-color: #fff;
+        /* z-index: 1; */
+    }
 
-  }
+    .damac-about-chairman .chairmanPhoto {
+        position: absolute;
+        right: 0;
+        margin-left: 15px;
+        height: 100%;
+        width: 45vw;
+        margin-left: 0;
+
+    }
 }
 
 .damac-about-chairman .chairmanPhoto img {
@@ -629,10 +682,11 @@ section.damac-about-chairman .aboutChairmanbox {
 }
 
 
-@media ( max-width: 767px ) {
+@media (max-width: 767px) {
     section.damac-about-chairman {
-        padding-top: 50px; 
+        padding-top: 50px;
     }
+
     section.damac-about-chairman .aboutChairmanbox {
         padding-top: 0;
         max-width: 100%;
@@ -651,10 +705,8 @@ section.damac-about-chairman .aboutChairmanbox {
 
     }
 
-    .damac-about-chairman .aboutChairmanbox h3, 
-    .damac-about-chairman .aboutChairmanbox p {
-        
-    }
+    .damac-about-chairman .aboutChairmanbox h3,
+    .damac-about-chairman .aboutChairmanbox p {}
 
     .damac-about-chairman .cta-btn {
         display: block;
@@ -692,7 +744,7 @@ section.damac-about-chairman .aboutChairmanbox {
 }
 
 .damac-about-leadership .ourleadership-header h4 {
-  font-size: 44px;
+    font-size: 44px;
 }
 
 .damac-about-leadership .ourleadership-header p {
@@ -705,26 +757,30 @@ section.damac-about-chairman .aboutChairmanbox {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 30px;
 } */
-.leadership-boxes .leadership-box{
+.leadership-boxes .leadership-box {
     margin-bottom: 60px;
 }
+
 .leadership-boxes .leadershipimg {
     position: relative;
     margin-bottom: 15px;
     aspect-ratio: 4/5;
 }
-.leadership-boxes .leadershipimg img{
-    width:100%;
-    height:100%;
+
+.leadership-boxes .leadershipimg img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
+
 .leadership-boxes .leadershipimg::before {
     content: "";
     display: block;
     /* padding-bottom: 120%; */
     padding-bottom: 0px
 }
-.leadership-boxes .leadershipimg > div {
+
+.leadership-boxes .leadershipimg>div {
     position: absolute !important;
     top: 0;
     left: 0;
@@ -743,6 +799,13 @@ section.damac-about-chairman .aboutChairmanbox {
 @media ( max-width: 768px ) {
     
 /* .leadership-boxes {
+=======
+    margin-bottom: 6px;
+}
+
+@media (max-width: 768px) {
+
+    /* .leadership-boxes {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 30px;
@@ -769,20 +832,21 @@ section.damac-about-chairman .aboutChairmanbox {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-   background: #FFFFFF;
-   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   margin-right: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
 }
 
 .historyArrows .historyArrow.arrow-disabled {
     pointer-events: none;
     cursor: default;
 }
+
 .historyArrows .historyArrow.arrow-disabled svg {
-    opacity:  0.25;
+    opacity: 0.25;
 }
 
 
@@ -822,10 +886,12 @@ section.damac-about-chairman .aboutChairmanbox {
     padding: 15px;
     vertical-align: top;
 }
+
 .historyslidercontainer .historyslide h5 {
     margin-bottom: 20px;
     font-size: 32px;
 }
+
 .historyslidercontainer .historyslide p {
     font-family: "Roboto";
     font-weight: 300;
@@ -840,18 +906,20 @@ section.damac-about-chairman .aboutChairmanbox {
 .historyslidercontainer .projectsdelivered {
     margin-top: 30px;
 }
+
 .historyslidercontainer .historyslide ul li {
-    margin: 15px 0; 
+    margin: 15px 0;
 }
 
 
-@media ( max-width: 767px ) {
+@media (max-width: 767px) {
     .historyslidercontainer .historyArrows {
         position: absolute;
         top: 10px;
         right: 0;
         margin-top: 0;
     }
+
     .historyslidercontainer::after {
         opacity: 0;
     }
@@ -869,9 +937,9 @@ section.damac-awards-section {
     padding: 120px 0;
 }
 
-.damac-awards-section .awardsbox1 h2{
- font-weight: 300;   
- font-size: 44px;
+.damac-awards-section .awardsbox1 h2 {
+    font-weight: 300;
+    font-size: 44px;
 }
 
 .damac-awards-section .awardsbox1 .subtext {
@@ -912,10 +980,10 @@ section.damac-corporate-section {
 }
 
 .damac-corporate-section .graphic-img img {
-    max-width:100%;
+    max-width: 100%;
 }
 
-@media ( max-width: 767px ) {
+@media (max-width: 767px) {
     section.damac-awards-section {
         padding-top: 56px;
         padding-bottom: 56px;
@@ -960,7 +1028,7 @@ section.damac-corporate-section {
 
 }
 
-@media ( min-width: 768px ) {
+@media (min-width: 768px) {
     .chairmans-portrait-section {
         top: -60px;
     }
@@ -974,7 +1042,8 @@ section.damac-corporate-section {
 .chairmans-portrait-section .chairmans-message-text {
     padding-top: 100px;
 }
-.chairmans-message-text  h2 {
+
+.chairmans-message-text h2 {
     font-size: 44px;
 }
 
@@ -984,13 +1053,13 @@ section.damac-corporate-section {
     padding-bottom: 120px;
 }
 
-.chairmans-message-para  p {
+.chairmans-message-para p {
     font-weight: 300;
     font-size: 20px;
 }
 
 
-.chairmans-message-para  .chairmans-name {
+.chairmans-message-para .chairmans-name {
     margin-top: 46px;
     font-weight: 300;
 }
@@ -1007,6 +1076,7 @@ section.building-documentation-para .main-text {
     margin-bottom: 45px;
     max-width: 1000px;
 }
+
 .building-documentation-link {
     max-width: 720px;
     margin: 0;
@@ -1028,9 +1098,13 @@ section.building-documentation-para .main-text {
 }
 
 .building-documentation-link li .doc-link a {
-    color: #333;
     text-decoration: none;
     font-size: 16px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 171.5%;
+    color: #000000;
 }
 
 
@@ -1048,35 +1122,37 @@ footer.damac-footer {
 }
 
 
-footer.damac-footer  .footer-logo {
+footer.damac-footer .footer-logo {
     margin-bottom: 30px;
     max-width: 106px;
 }
- .footer-logo img {
-     max-width: 100%;
- }
 
-
-
-
-
-.footerMailList {
-
+.footer-logo img {
+    max-width: 100%;
 }
+
+
+
+
+
+.footerMailList {}
+
 .footerMailList .footerMailListForm {
     max-width: 250px;
 }
+
 .footerMailList .footerMailListForm input[type='email'] {
     background-color: transparent;
     border: 0;
     color: #fff;
-    border-bottom: 1px solid ;
+    border-bottom: 1px solid;
     padding: 5px 0;
     display: block;
     width: 100%;
     outline: none;
     font-weight: 300;
 }
+
 .footerMailList .footerMailListForm input[type='email']::placeholder {
     color: #fff;
     opacity: 0.9;
@@ -1099,7 +1175,7 @@ footer.damac-footer  .footer-logo {
 
 
 
-.footer-link-list  ul {
+.footer-link-list ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -1107,12 +1183,12 @@ footer.damac-footer  .footer-logo {
 
 }
 
-.footer-link-list  ul li {
+.footer-link-list ul li {
     display: inline-block;
     margin-right: 10px;
 }
 
-.footer-link-list  ul  a {
+.footer-link-list ul a {
     color: #fff;
     text-decoration: none;
     font-weight: 300;
@@ -1124,7 +1200,7 @@ footer.damac-footer  .footer-logo {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    
+
 
 }
 
@@ -1134,7 +1210,7 @@ footer.damac-footer  .footer-logo {
     margin-right: 10px;
 }
 
-.footerimportantlinks  a {
+.footerimportantlinks a {
     color: #fff;
     text-decoration: none;
     font-weight: 300;
@@ -1152,20 +1228,22 @@ footer.damac-footer  .footer-logo {
     font-size: 12px;
 }
 
-.footer-text-block h4{
-        font-size: 22px;
-        font-weight: 400;
-    }
+.footer-text-block h4 {
+    font-size: 22px;
+    font-weight: 400;
+}
 
-@media ( min-width: 768px ) {
+@media (min-width: 768px) {
     .footer2ndrow {
         margin-top: 180px;
     }
+
     .footer-row-3 {
         margin-top: 90px;
     }
 }
-@media ( max-width: 767px ) {
+
+@media (max-width: 767px) {
 
     .footer-text-block {
         padding: 30px 0;
@@ -1181,6 +1259,7 @@ footer.damac-footer  .footer-logo {
         margin-top: 20px;
         width: 100%;
     }
+
     .footerMailList .footerMailListForm input[type='email']::placeholder {
         color: #fff;
         opacity: 0.9;
@@ -1188,7 +1267,7 @@ footer.damac-footer  .footer-logo {
 
 
 
-    .footer-text-block h4{
+    .footer-text-block h4 {
         font-size: 16px;
     }
 
@@ -1247,19 +1326,20 @@ footer.damac-footer  .footer-logo {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-   background: #FFFFFF;
-   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   margin-right: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
 }
 
 .sliderArrows .sliderArrow.arrow-disabled {
     pointer-events: none;
     cursor: default;
 }
-.sliderArrows .sliderArrow.arrow-disabled svg{
+
+.sliderArrows .sliderArrow.arrow-disabled svg {
     opacity: .25;
 }
 
@@ -1281,12 +1361,14 @@ footer.damac-footer  .footer-logo {
 }
 
 .milestone-carousel-item .image-text .img {
-    min-width : 420px;
+    min-width: 420px;
     margin-right: 20px;
 }
+
 .milestone-carousel-item .image-text .text {
     text-align: left;
 }
+
 .milestone-carousel-item .image-text h3 {
     font-size: 32px;
     text-align: left;
@@ -1307,18 +1389,21 @@ footer.damac-footer  .footer-logo {
     text-align: center;
     padding: 20px;
 }
+
 .icon-box .icon-box-svg {
     width: 44px;
     height: 44px;
     margin: 0 auto;
     margin-bottom: 30px;
 }
+
 .icon-box .icon-box-svg img {
     width: 44px;
     height: 44px;
     object-fit: contain;
     object-position: center;
 }
+
 .icon-box p {
     font-size: 16px;
 }
@@ -1344,7 +1429,10 @@ footer.damac-footer  .footer-logo {
     padding-bottom: 50%;
     content: "";
 }
-.video-box-wrapper > img, .video-box-wrapper > video, .video-box-wrapper > iframe {
+
+.video-box-wrapper>img,
+.video-box-wrapper>video,
+.video-box-wrapper>iframe {
     position: absolute;
     left: 0;
     right: 0;
@@ -1407,13 +1495,13 @@ footer.damac-footer  .footer-logo {
     position: relative;
 }
 
-.banner-conent-style-1 > .bg {
+.banner-conent-style-1>.bg {
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
     right: 0;
-    background-color: #fff; 
+    background-color: #fff;
     max-width: 65%;
 }
 
@@ -1432,14 +1520,14 @@ footer.damac-footer  .footer-logo {
     max-width: 480px;
 }
 
-@media ( max-width: 768px ) {
-    .banner-conent-style-1 > .bg {
+@media (max-width: 768px) {
+    .banner-conent-style-1>.bg {
         position: absolute;
         left: 0;
         top: 0;
         bottom: 0;
         right: 0;
-        background-color: #fff; 
+        background-color: #fff;
         max-width: 100%;
     }
 }
@@ -1473,7 +1561,7 @@ WHY DUBAI PAGE
     margin-bottom: 15px;
 }
 
-.dubais-success-icons  p {
+.dubais-success-icons p {
     font-size: 20px;
     max-width: 190px;
     margin: 0 auto;
@@ -1518,7 +1606,7 @@ WHY DUBAI PAGE
 }
 
 .why-dubai-section-3 p {
-    font-size:  20px;
+    font-size: 20px;
     line-height: 1.8;
 }
 
@@ -1541,7 +1629,7 @@ WHY DUBAI PAGE
 
 }
 
-@media ( min-width: 768px ) {
+@media (min-width: 768px) {
     .why-dubai-section-5 .img-grid-text-1 {
         margin-top: 400px;
         font-size: 20px;
@@ -1564,7 +1652,7 @@ WHY DUBAI PAGE
 
 
 
-.why-dubai-section-6  {
+.why-dubai-section-6 {
     padding: 80px;
     background-color: #111;
     color: #fff;
@@ -1576,21 +1664,21 @@ WHY DUBAI PAGE
 }
 
 .why-dubai-section-6 p {
-    font-size:  20px;
+    font-size: 20px;
 }
 
 
 
 .why-dubai-section-then-now {
-        background-image: url('/images/why-dubai/dubai-then-now-bg.jpg');
-        padding: 120px 0;
-        padding-bottom: 240px;
-        color: #fff;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-       
-    }
+    background-image: url('/images/why-dubai/dubai-then-now-bg.jpg');
+    padding: 120px 0;
+    padding-bottom: 240px;
+    color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
 
 .why-dubai-section-then-now p {
     font-size: 20px;
@@ -1610,12 +1698,12 @@ WHY DUBAI PAGE
     object-position: center;
 }
 
-.text-section-whhydubai-investorsfav  h4 {
+.text-section-whhydubai-investorsfav h4 {
     font-size: 28px;
     font-weight: 400;
 }
 
-.text-section-whhydubai-investorsfav  p {
+.text-section-whhydubai-investorsfav p {
     max-width: 220px;
     margin: 0 auto;
     font-size: 16px;
@@ -1625,6 +1713,7 @@ WHY DUBAI PAGE
 .district-items-nav {
     margin-top: 30px;
 }
+
 ul.district-items-nav-list {
     display: flex;
     flex-wrap: wrap;
@@ -1666,7 +1755,8 @@ PAGE:  NEWS
     height: 429px;
     object-fit: cover;
 }
-.primary-cta p {   
+
+.primary-cta p {
     font-size: 16px;
     font-style: normal;
     font-weight: 300;
@@ -1674,20 +1764,22 @@ PAGE:  NEWS
     letter-spacing: 0.03em;
     opacity: 60%;
 }
-.primary-cta h2 {   
+
+.primary-cta h2 {
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
     line-height: 38px;
-    letter-spacing: 0em;  
+    letter-spacing: 0em;
     margin-bottom: 8px !important;
 }
-.primary-cta label {  
+
+.primary-cta label {
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-   
-    letter-spacing: 0.02em;  
+
+    letter-spacing: 0.02em;
     background: #BDB9B6;
     color: #fff;
     margin-top: 11px;
@@ -1696,6 +1788,7 @@ PAGE:  NEWS
     padding: 5px 10px;
     margin: 15px 0;
 }
+
 .news h6 {
     font-size: 18px;
     font-style: normal;
@@ -1704,6 +1797,7 @@ PAGE:  NEWS
     letter-spacing: 0.02em;
     margin-bottom: 4px;
 }
+
 .news p {
     font-size: 16px;
     font-style: normal;
@@ -1711,8 +1805,9 @@ PAGE:  NEWS
     line-height: 24px;
     letter-spacing: 0.03em;
     margin-bottom: 0px;
-    opacity: 60%; 
+    opacity: 60%;
 }
+
 .news label {
     background: #BDB9B6;
     color: #fff;
@@ -1720,45 +1815,52 @@ PAGE:  NEWS
     border-radius: 4px;
     margin-bottom: 5px;
 }
+
 .news {
     padding-bottom: 12px;
     max-width: 230px;
 }
 
-.dark-bg{
+.dark-bg {
     background: #000;
 }
+
 .dark-bg.news-wrap .card {
     border: none;
     background: transparent;
 }
+
 .news-wrap {
     padding-top: 36px;
     padding-bottom: 58px;
 }
+
 .dark-title h2 {
-    color: #fff;   
+    color: #fff;
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
     line-height: 38px;
-    letter-spacing: 0em;   
+    letter-spacing: 0em;
     padding-bottom: 31px;
     margin-bottom: 0px;
 }
+
 .border-btn {
     font-size: 16px;
     font-style: normal;
     font-weight: 300;
     line-height: 18px;
-    letter-spacing: 0.02em;    
+    letter-spacing: 0.02em;
     border: 1px solid #fff;
     color: #fff;
     padding: 15px 32px;
 }
+
 .border-btn:hover {
     color: #fff;
 }
+
 .news-wrap h5 {
     font-size: 20px;
     font-style: normal;
@@ -1769,27 +1871,34 @@ PAGE:  NEWS
     margin-bottom: 6px;
     margin-top: 2px;
 }
-.news-wrap .card-body{
+
+.news-wrap .card-body {
     padding: 0px;
 }
+
 .industry-news .card {
     background: transparent;
-    border: none;   
+    border: none;
 }
+
 .industry-news .card-body {
     padding: 64px 0px 0px 0px;
 }
+
 .industry-news.bg-light .card {
-    width: 200px;   
+    width: 200px;
 }
+
 .card img {
     max-width: 100%;
 }
+
 .news-wrap .card img {
     margin-bottom: 9px;
     max-width: 100%;
 }
-.news-wrap .card-body span, 
+
+.news-wrap .card-body span,
 .news-wrap .card-body p {
     color: #fff;
     font-size: 16px;
@@ -1799,14 +1908,17 @@ PAGE:  NEWS
     letter-spacing: 0.03em;
     opacity: 60%;
 }
+
 .industry-news {
     padding-top: 52px;
     padding-bottom: 90px;
 }
+
 .dark-bg.press-rel {
     padding-top: 57px;
     padding-bottom: 85px;
 }
+
 .press-release span.tag-label {
     font-size: 16px;
     font-style: normal;
@@ -1843,9 +1955,11 @@ PAGE:  NEWS
     color: #fff;
     opacity: 60%;
 }
+
 .press-rel .news {
     padding-bottom: 19px;
 }
+
 .press-rel .news span {
     font-size: 16px;
     font-style: normal;
@@ -1856,6 +1970,7 @@ PAGE:  NEWS
     color: #fff;
     opacity: 60%;
 }
+
 .new-title h3 {
     font-size: 32px;
     font-style: normal;
@@ -1867,7 +1982,8 @@ PAGE:  NEWS
     padding-bottom: 38px;
     margin-bottom: 0px;
 }
-.news-form form  {
+
+.news-form form {
     max-width: 263px;
     margin: 0 auto;
     text-align: center;
@@ -1879,11 +1995,13 @@ PAGE:  NEWS
     display: block;
     width: 100%;
     text-align: center;
-    padding:  10px 20px;
+    padding: 10px 20px;
 }
+
 .news-form form input {
     text-align: left;
 }
+
 .sidebar-title h3 {
     font-size: 24px;
     font-style: normal;
@@ -1895,35 +2013,42 @@ PAGE:  NEWS
     border-bottom: 1px solid #000;
     /* text-align: left; */
 }
+
 .dark-bg .sidebar-title h3 {
     border-bottom: 1px solid #fff;
     /* text-align: left; */
 }
+
 .damac-latest-news {
     padding-left: 30px;
 }
+
 .sidebar-title hr {
-    margin-top: 9px;   
+    margin-top: 9px;
     border-color: #000000;
-    border-width: 2px;   
+    border-width: 2px;
     opacity: 1;
 }
+
 .damac-new-sec {
     padding-bottom: 56px;
     padding-top: 160px;
 }
+
 .industry-news.bg-light {
     background: #F4F7FA !important;
 }
+
 .industry-news a.btn.btn-primary {
-    padding: 15px 32px;    
+    padding: 15px 32px;
 }
+
 .light-title h2 {
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
     line-height: 38px;
-    letter-spacing: 0em;    
+    letter-spacing: 0em;
     margin-bottom: 8px;
 }
 
@@ -1932,16 +2057,18 @@ PAGE:  NEWS
     font-style: normal;
     font-weight: 300;
     line-height: 24px;
-    letter-spacing: 0.03em;    
+    letter-spacing: 0.03em;
 }
 
 .light-title {
     padding-bottom: 54px;
 }
+
 .news-wrap.dark-bg .card {
     width: 230px;
 }
-.press-rel .dark-title h2 {   
+
+.press-rel .dark-title h2 {
     font-size: 37px;
     font-style: normal;
     font-weight: 500;
@@ -1949,83 +2076,96 @@ PAGE:  NEWS
     letter-spacing: 0em;
     padding-bottom: 33px;
 }
-.press-rel .sidebar-title h3 {    
+
+.press-rel .sidebar-title h3 {
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
     line-height: 28px;
-    letter-spacing: 0em;   
+    letter-spacing: 0em;
     color: #fff;
 }
+
 .press-rel .sidebar-title hr {
     border-color: #fff;
 }
 
-.press-rel .news h6 {   
+.press-rel .news h6 {
     color: #fff;
 }
+
 .press-rel .news h6 a {
     color: #fff;
 }
+
 .press-rel .news h6 a:hover {
     color: #f7f7f7;
 }
-.press-rel .news p {    
+
+.press-rel .news p {
     color: #fff;
 }
-@media(max-width: 768px){
+
+@media(max-width: 768px) {
     .damac-latest-news {
-    padding-left: 0;
-}
-.industry-news.bg-light .card {
-    width: auto;
-    margin-bottom: 30px;
-}
-.news-wrap.dark-bg a {
-    color: #fff;
-}
-.news-wrap.dark-bg .card {
-    width: auto;
-    margin-bottom: 30px;
-}
-.news-wrap.dark-bg .card a {
-    color: #fff;
-}
+        padding-left: 0;
+    }
 
-.news-wrap.dark-bg .card a:hover {
-    color: #fff;
-}
+    .industry-news.bg-light .card {
+        width: auto;
+        margin-bottom: 30px;
+    }
 
-a.border-btn.btn {    
-    padding: 8px 10px;
-    color: #fff;
-}
+    .news-wrap.dark-bg a {
+        color: #fff;
+    }
 
-a.border-btn.btn:hover {
-    opacity: 0.8;
-    color: #fff;
-}
+    .news-wrap.dark-bg .card {
+        width: auto;
+        margin-bottom: 30px;
+    }
 
-.dark-title h2{
-    font-size: 26px;
-}
-.news-wrap h5 {
-    font-size: 17px;   
-    line-height: 20px;
-}
+    .news-wrap.dark-bg .card a {
+        color: #fff;
+    }
 
-.news-wrap h5 a {
-    color: #fff;
-}
+    .news-wrap.dark-bg .card a:hover {
+        color: #fff;
+    }
 
-.news-wrap h5 a:hover {
-    color: #fff;
-}
-.news-wrap .card-body span, 
-.news-wrap .card-body p{
-    font-size: 14px;
-} 
-.industry-news .card-body {
-    padding: 30px 0px 0px 0px;
-}
+    a.border-btn.btn {
+        padding: 8px 10px;
+        color: #fff;
+    }
+
+    a.border-btn.btn:hover {
+        opacity: 0.8;
+        color: #fff;
+    }
+
+    .dark-title h2 {
+        font-size: 26px;
+    }
+
+    .news-wrap h5 {
+        font-size: 17px;
+        line-height: 20px;
+    }
+
+    .news-wrap h5 a {
+        color: #fff;
+    }
+
+    .news-wrap h5 a:hover {
+        color: #fff;
+    }
+
+    .news-wrap .card-body span,
+    .news-wrap .card-body p {
+        font-size: 14px;
+    }
+
+    .industry-news .card-body {
+        padding: 30px 0px 0px 0px;
+    }
 }

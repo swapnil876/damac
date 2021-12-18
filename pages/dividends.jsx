@@ -19,20 +19,10 @@ import ContactForm from '../components/ContactForm'
 // import styles from '../styles/pages/Quick.module.css'
 
 
-
+import styles from '../styles/pages/dividends.module.css'
 
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
-
-
-
-// import styles from '../styles/.module.css'
-
-
-
-// Banner image
-
-
 
 // FA
 import ReactDOM from 'react-dom'
@@ -42,8 +32,6 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
 function Dividends( { mobileDevice } ) {
-
-
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -121,10 +109,9 @@ function Dividends( { mobileDevice } ) {
         <section className='section'>
           <div className='container'>
              
-
-             <div className='table-wrapper-dividend my-4'>
-               <div className="table-main-wrap table-responsive">
-                 <table className="table table-striped dm-table">
+             <div className={`${styles["table-wrapper-dividend"]} my-4`}>
+               <div className={`${styles["table-main-wrap"]} ${styles["table-responsive"]}`}>
+                 <table className={`${styles["table"]} table-striped ${styles["dm-table"]}`}>
                    <thead>
                      <tr>
                        <th>Period</th>

@@ -1,0 +1,237 @@
+
+/*more link section css start here*/
+.more-wrap {
+    background: #000000;
+    padding-top: 82px;
+    padding-bottom: 142px;
+}
+.more-head h1 {
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+}
+ul.capital-dm-ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    gap: 30px;
+    margin-bottom: 47px;
+}
+.dfm-main-text {
+    padding-bottom: 15px;
+}
+
+.dfm-table-main.table-responsive {
+    padding-right: 30px;
+}
+
+
+
+ul.capital-dm-ul li a {   
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    opacity: 50%;   
+}
+
+ul.capital-dm-ul li.active a {
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    color: #000 !important;
+    border-bottom: 2px solid;
+    padding-bottom: 8px;
+    opacity: 1;
+}
+ul.more-link-ul {
+    list-style-type: none;
+    padding: 0;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 55px;
+}
+ul.more-link-ul li {
+    width: 20.42vw;
+    padding-bottom: 45px;
+}
+ul.more-link-ul li a {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+    text-align: left;
+}
+ul.more-link-ul li a i {
+    margin-left: 15px;
+}
+/*more link section css end here*/
+.announcements-hero{
+	padding-top: 115px;
+}
+.breadcrum-main{
+	color: #000000;
+}
+.breadcrum-main ul li a{
+	font-size: 16px;
+	letter-spacing: 0.02em;	
+	opacity: 50%;
+}
+.breadcrum-main ul li span {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 16px;
+    opacity: 50%;
+}
+.breadcrum-main ul {
+    margin-bottom: 0px;
+}
+.announcements-main-head .head-text h1{	
+	font-size: 42px;
+    line-height: 49px;
+    margin-top: 14px;
+    margin-bottom: 24px;
+}
+.announcements-main-head .head-text p{
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+	letter-spacing: 0.32px;
+	opacity: 0.6;
+}
+.filter_sort_main{
+	margin-top: 82px;
+	margin-bottom: 60px;
+}
+.form-field{
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    position: relative;
+}
+
+.form-field input{
+	height: 48px;
+    background-color: transparent;
+    color: #333;
+    border: 0;
+    width: 100%;
+    display: block;
+    padding: 6px 14px 18px;
+    margin-top: 0px;
+    padding-top: 23px;
+    outline: none;
+    position: relative;
+    z-index: 1;
+}
+.form_btn_announcement a{
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 18px;
+	padding: 15px 15px;
+}
+ul.announcement_tab_ul li a {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 30px;
+    color: #000;
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+    margin-right: 48px;
+}
+ul.announcement_tab_ul li.active a{
+	padding-bottom: 8px;
+	border-bottom: 2px solid #000;
+	opacity: 1;
+}
+.clear_main a{
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0.60px;
+}
+.announcement_list{
+	padding: 20px 0;
+	border-bottom: 1px solid #C4C4C4;
+}
+.announcement_list h1{
+	font-size: 28px;
+	line-height: 38px;
+	letter-spacing: 0.60px;
+	margin-bottom: 12px;
+}
+.announcement_list h1 a{
+    font-weight: 500 !important;
+}
+.datetime-announcement p{
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0.60px;
+	font-weight: 300px;
+	margin-right: 15px;
+}
+.download_announcement a{
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0.60px;
+    font-weight: 400;
+}
+.pagination_main_wrap{
+	margin-top: 110px;
+	margin-bottom: 110px;
+}
+.page_btn a{
+	padding: 13px 17.5px;
+	border-radius: 50%;
+	box-shadow: 0px 4px 15px 0px #00000026;
+	background: #ffffff;
+}
+.pagination_no{
+	margin: 0 32px;
+}
+.pagination_no ul li{
+	font-size: 16px;
+	line-height: 27px;
+	opacity: 0.65;
+}
+.pagination_no ul li:not(:last-child){
+	padding-right: 42px;
+}
+
+@media (max-width: 767px){
+	.pagination_no{
+		margin: 0 22px;
+	}
+	.pagination_no ul li:not(:last-child){
+		padding-right: 22px;
+	}
+    ul.more-link-ul li {
+        width: 100%;
+        padding-bottom: 15px;
+    }
+    .announcements-main-head .head-text h1{
+        font-size: 32px;
+        line-height: 38px;
+    }
+    .filter_sort_main{
+        margin: 15px 0;
+    }
+    .form-field input{
+        margin-bottom: 20px;
+    }
+    ul.announcement_tab_ul li a{
+        margin-right: 20px;
+    }
+    .announcement_list h1 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+}

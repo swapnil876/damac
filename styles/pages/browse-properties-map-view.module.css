@@ -1,0 +1,204 @@
+
+.filter_option_wrap {
+    padding: 14px;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 18px rgb(0 0 0 / 8%);
+    border-radius: 8px;
+    margin-top: -45px;
+    position: relative;
+    z-index: 9;
+}
+.search_filter {
+    position: relative;
+}
+.search_filter i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3px;
+    font-size: 16px;
+    font-weight: 300;
+    opacity: 0.7;
+}
+.search_filter input {
+    padding-left: 24px;
+}
+.form-field input, .form-field select {
+    height: 48px;
+    border: none;
+}
+.more-filter-btn a {
+    line-height: 48px;
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+}
+.search_btn_filter a {
+    height: 48px;
+    padding: 15px 37px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 18px;
+    float: right;
+}
+.property-slider-wrap {
+    position: relative;
+}
+.project-card {
+    margin-bottom: 66px;
+    padding: 10px;
+}
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.bookmark_main li a img {
+    width: 16px;
+    height: 20px;
+    margin-left: 30px;
+    margin-top: 21px;
+}
+.project-card h6 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 41px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    letter-spacing: 0.02em;
+}
+.project-card p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+    opacity: 65%;
+    margin-bottom: 12px;
+}
+a.border-icon .whatsapp-ico{
+	width:22px;
+	height: 22px;
+}
+ul.bedroom-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.bedroom-detail li a {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+ul.bedroom-detail li a img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+.shape-wrap-plan {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    margin-top: 20px;
+}
+.shape-contact ul {
+    list-style-type: none;
+}
+.shape-contact ul li {
+    margin-left: 8px;
+}
+.solid-icon {
+    background: linear-gradient( 
+90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+    color: #fff;
+    padding: 14px;
+    border-radius: 4px;
+}
+.shape-contact ul li a i {
+    font-size: 18px;
+}
+a.border-icon {
+    border: 2px solid #D0BB83;
+    padding: 12px;
+    border-radius: 4px;
+    color: #D0BB83;
+}
+
+.project-detail-nav a {
+    display: block;
+    background: rgba( 0, 0, 0, 0.4 );
+    box-shadow: none;
+    backdrop-filter: blur( 5.5px );
+    -webkit-backdrop-filter: blur( 5.5px );
+    border-radius: 50%;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 7px 15px;
+    margin-left: 0px;
+}
+.project-detail-nav a i {
+    color: #fff;
+}
+.project-detail-nav .right-nav {
+    position: absolute;
+    top: 25%;
+    right: 16px;
+}
+.project-detail-nav .left-nav {
+    position: absolute;
+    top: 25%;
+    left: 16px;
+}
+.properties-sidebar-wrap {   
+    padding-top: 179px;
+    overflow: auto;
+    max-height: 100vh;
+    overflow: auto;
+}
+.properties-sidebar-wrap::-webkit-scrollbar{
+    width:6px
+}
+.properties-sidebar-wrap::-webkit-scrollbar-thumb{
+    border-radius: 35px;
+    background:#e6e6e6
+}
+.col-md-4.sider-bar-overflow {
+    height: 100vh !important;
+    overflow: auto;
+}
+.map-image img {
+    height: 100%;
+    object-fit: cover;
+}
+.map-image  {
+    height: 100vh;
+}
+section.map-section {
+    position: relative;
+}
+.filter_main_wrap {
+    position: absolute;
+    top: 120px;
+    width: 100%;
+}
+section.map-section .container-fluid .col-md-8,section.map-section .container-fluid .col-md-4 {
+    padding: 0;
+}
+.map-image img {
+    width: 100%;
+}
+@media(max-width: 767px){
+	.properties-sidebar-wrap {
+    padding-top: 120px;
+    overflow: inherit;
+}
+.filter_main_wrap {
+    position: unset;
+    margin-top: 80px;
+}
+}
