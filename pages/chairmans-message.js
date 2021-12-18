@@ -30,7 +30,7 @@ function ChairmansMessage({entity1}) {
       </Head>
 
 
-      <Navbar></Navbar>
+      <Navbar navbarStyle="transparent"></Navbar>
 
 
       <main className="main chairmans-message-main">

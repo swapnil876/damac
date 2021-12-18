@@ -229,7 +229,7 @@ a.btn-primary:hover {
 }
 
 a.btn-primary.cta-btn {
-    padding: 15px 30px;
+    padding: 12px 30px;
 }
 
 
@@ -792,6 +792,14 @@ section.damac-about-chairman .aboutChairmanbox {
 }
 
 .leadership-boxes .leadership-details h5 {
+    margin-bottom: 0;
+}
+
+
+@media ( max-width: 768px ) {
+    
+/* .leadership-boxes {
+=======
     margin-bottom: 6px;
 }
 
@@ -936,8 +944,12 @@ section.damac-awards-section {
 
 .damac-awards-section .awardsbox1 .subtext {
     opacity: 0.5;
+    font-size: 24px;
 }
 
+.awardsbox2 p {
+    font-size: 20px;
+}
 
 
 
@@ -1043,6 +1055,7 @@ section.damac-corporate-section {
 
 .chairmans-message-para p {
     font-weight: 300;
+    font-size: 20px;
 }
 
 

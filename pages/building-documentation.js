@@ -28,7 +28,7 @@ function BuildingDocumentation() {
       </Head>
 
 
-      <Navbar></Navbar>
+      <Navbar navbarStyle="transparent"></Navbar>
 
 
       <main className="main buildingdocumentation-main">
