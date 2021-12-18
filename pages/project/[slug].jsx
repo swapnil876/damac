@@ -32,9 +32,9 @@ import SimilarPropertiesGridSection from '../../components/sections/SimilarPrope
 // import styles from '../styles/.module.css'
 
 
-import styles from '../../styles/pages/ListingPage.module.css'
+import styles from '../../styles/pages/ProjectPage.module.css'
 
-
+ 
 // icons
 import { FiArrowDown } from "react-icons/fi";
 import { FaStreetView } from "react-icons/fa";
@@ -122,9 +122,11 @@ function ProjectPage() {
 
 
         <SliderTextSection
-            color="light"
-            title="Unit Amenities"
-            subtext="A safe, gated neighbourhood, Golf town is ideally located on the crossroads between Dubai and Abu Dhabi."
+            color=""
+            title="The premier venue for best-in-class facilities"
+            subtext={`Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.  Live your story amongst a spectacular mix of culture and leisure attractions. 
+
+That are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.`}
 
             itemBoxes={
 
