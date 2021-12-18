@@ -17,9 +17,13 @@ import React, { Component } from "react";
 import TextSection from '../components/text-section'
 
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { CAREERS } from '../graphql/career';
+
+import {isMobile} from 'react-device-detect';
 
 
-function Career() {
+function Career({entity1}) {
   return (
     <div className='aboutbody'>
 
@@ -40,15 +44,9 @@ function Career() {
       <main className="main career-main">
        
 
-       <VideoBanner 
-         bannerImage={ `/images/careerpagebanner.png` }
-       >
-         
-       </VideoBanner>
+       <VideoBanner bannerImage={isMobile?entity1.fieldHeaderImageVideoMobile.entity.url:entity1.fieldHeaderImageVideoDesktop.entity.url}> </VideoBanner>
 
-
-       <TextSection>
-         
+       <TextSection>         
          <div className="section-title text-center">
            <h3 className="section-title-gradient">Welcome to our World</h3>
            <p>Make a career with DAMAC Properties and the DICO Group</p>
@@ -56,69 +54,16 @@ function Career() {
 
          <div className="py-4">
            <div className="row justify-content-center">
-             
-             <div className="col-md-3 col-4">
-               <div className="icon-box">
-                 <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
+             {entity1.fieldIcons.map((item) => (
+               <div className="col-md-3 col-4">
+                 <div className="icon-box">
+                   <div className="icon-box-svg">
+                     <img alt=""src={item.url}/>
+                   </div>
+                   <p>{item.title}</p>
                  </div>
-                 <p>Property Development and Real Estates</p>
                </div>
-             </div>
-
-             <div className="col-md-3 col-4">
-               <div className="icon-box">
-                 <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
-                 </div>
-                 <p>Hotel , Resorts and Serviced Apartments</p>
-               </div>
-             </div>
-
-             <div className="col-md-3 col-4">
-               <div className="icon-box">
-                 <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
-                 </div>
-                 <p>Malls and Retails</p>
-               </div>
-             </div>
-
-             <div className="col-md-3 col-4">
-               <div className="icon-box">
-                 <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
-                 </div>
-                 <p>Manufacturing</p>
-               </div>
-             </div>
-
-             <div className="col-md-3 col-4">
-               <div className="icon-box">
-                 <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
-                 </div>
-                 <p>Building Material</p>
-               </div>
-             </div>
-
-             <div className="col-md-3 col-4">
-               <div className="icon-box">
-                 <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
-                 </div>
-                 <p>Food and Catering</p>
-               </div>
-             </div>
-
-             <div className="col-md-3 col-4">
-               <div className="icon-box">
-                 <div className="icon-box-svg">
-                   <img src="/images/icons/building 1.png"/>
-                 </div>
-                 <p>Capital Market</p>
-               </div>
-             </div>
+             ))}
 
            </div>
          </div>
@@ -135,7 +80,8 @@ function Career() {
 
          <div className="py-4">
            <div className="video-box-wrapper">
-             <img src="/images/videobg-career.png"/>
+             {/* <img alt=""src="/images/videobg-career.png"/> */}
+             <iframe src={entity1.fieldVideoUrl.url.path}></iframe>
              <div className="playbtn-wrapper">
                <div className={'bannerPlayBtn'}>
                  <span>
@@ -165,6 +111,25 @@ function Career() {
       
     </div>
   )
+}
+
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: CAREERS });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('entity1',entity1);
+   return {
+      props: {
+        entity1: entity1,
+        // entity2: entity2
+      }
+    }
+
 }
 
 export default Career

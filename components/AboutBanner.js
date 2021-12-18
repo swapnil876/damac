@@ -3,25 +3,36 @@ import Link from 'next/link'
 
 import styles from '../styles/HomeBanner.module.css'
 
+import aboutBanner from '../public/images/about-bg.png'
 
 
+export default function AboutBanner( { bannerImage, children, entity1}  ) {
 
-export default function AboutBanner( { bannerImage, children} ) {
 
-
-  const banner = (
-    <Image 
-    className={styles['bg-image']}
-    src={bannerImage} width={1920} 
-    placeholder="blur"
-    height={1080}
-    layout="fill"
-    >
+  // const banner = (
+  //   <Image 
+  //   className={styles['bg-image']}
+  //   src={bannerImage} width={1920} 
+  //   placeholder="blur"
+  //   blurDataURL={aboutBanner}
+  //   height={1080}
+  //   layout="fill"
+  //   >
       
-    </Image>
+  //   </Image>
+
+  //   );
+  const banner = (
+    <video 
+    className={styles['bg-image']}
+    controls
+    loop
+    muted
+    >
+       <source {...{bannerImage}}/>
+    </video>
 
     );
-  
 
   return (
     <div className={styles['homepage-hero-section']}>
@@ -35,7 +46,7 @@ export default function AboutBanner( { bannerImage, children} ) {
             <div className="col-md-6">
               <div className={styles["about-banner-text"]}>
                 <div className={ styles['about-banner-top-area'] }>
-                  <h2>More than numbers</h2>
+                  <h2>{entity1.fieldHeader1}</h2>
 
                   <div className={ `${styles['bannerPlayBtn']}` }>
                     <span>
@@ -47,7 +58,7 @@ export default function AboutBanner( { bannerImage, children} ) {
                   </div>
                 </div>
 
-                <p>DAMAC adds vibrancy to the cities in which its projects are located, with a huge and diverse portfolio that includes two world-class master-planned golf developments. To date, DAMAC has delivered 30,900+ quality homes, with 34,000 more under way.</p>
+                <p>{entity1.fieldDescription1}</p>
 
               </div>
             </div>

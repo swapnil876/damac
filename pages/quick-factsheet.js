@@ -121,7 +121,7 @@ function QuickFactsheet( { mobileDevice } ) {
              <div className={'factsheet-content'}>
 
                <div className='factsheet-content-div'>
-                   <img className='img-responsive' src='/images/content/quick-factsheet/factsheet-graph.jpg'/>
+                   <img alt=""className='img-responsive' src='/images/content/quick-factsheet/factsheet-graph.jpg'/>
                </div>
 
 
@@ -252,19 +252,19 @@ function QuickFactsheet( { mobileDevice } ) {
                  <div className='row align-items-center justify-content-center'>
                    
                    <div className='col-md-5'>
-                     <div className='text-center py-5'><img className='img-responsive' src='/images/content/quick-factsheet/total-assets.jpg'/></div>
+                     <div className='text-center py-5'><img alt=""className='img-responsive' src='/images/content/quick-factsheet/total-assets.jpg'/></div>
                    </div>
 
                    <div className='col-md-5'>
-                     <div className='text-center py-5'><img className='img-responsive' src='/images/content/quick-factsheet/profit-year.jpg'/></div>
+                     <div className='text-center py-5'><img alt=""className='img-responsive' src='/images/content/quick-factsheet/profit-year.jpg'/></div>
                    </div>
 
                    <div className='col-md-5'>
-                     <div className='text-center py-5'><img className='img-responsive' src='/images/content/quick-factsheet/earning-plan.jpg'/></div>
+                     <div className='text-center py-5'><img alt=""className='img-responsive' src='/images/content/quick-factsheet/earning-plan.jpg'/></div>
                    </div>
 
                    <div className='col-md-5'>
-                     <div className='text-center py-5'><img className='img-responsive' src='/images/content/quick-factsheet/revenu.jpg'/></div>
+                     <div className='text-center py-5'><img alt=""className='img-responsive' src='/images/content/quick-factsheet/revenu.jpg'/></div>
                    </div>
 
                  </div>

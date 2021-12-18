@@ -13,6 +13,12 @@ import AboutBanner from '../components/AboutBanner'
 import Footer from '../components/Footer'
 
 
+
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ABOUT_US } from '../graphql/aboutus';
+import { HISTORY } from '../graphql/master/history';
+
+
 import Slider from "react-slick";
 
 
@@ -44,7 +50,7 @@ const sliderSettings = {
 import aboutBanner from '../public/images/about-bg.png'
 
 
-function About() {
+function About({entity1}) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -83,18 +89,18 @@ function About() {
       <main className="main about-main">
        
 
-       <AboutBanner bannerImage={ aboutBanner }></AboutBanner>
+       <AboutBanner entity1={entity1} bannerImage={ isMobile ? entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop.url}></AboutBanner>
 
 
        <div className="damac-text-section-container">
-         <div className="damac-text-section">
+         <div className="damac-text-section" style={{'background-image': 'url(' + entity1.fieldImage2.url + ')'}}>
 
            <div className="container">
              <div className="damac-text-section-right">
                
                <div className="text-box text-center">
-                 <h3>DAMAC Around the world</h3>
-                 <p>DAMAC Properties is an Emirati property development company, based in Dubai, United Arab Emirates. We operates internationally providing residential, commercial and leisure properties and has presence in the UAE, Saudi Arabia, Qatar, Jordan, Lebanon, Oman, and the United Kingdom</p>
+                 <h3>{entity1.fieldHeader2}</h3>
+                 <p>{entity1.fieldDescription2}</p>
 
                  <div className="cta-box text-center mt-5">
                    <Link href="#">
@@ -108,16 +114,16 @@ function About() {
        </div>
 
 
-       <section className="damac-about-section-2">
+       <section className="damac-about-section-2" style={{'background-image': 'url(' + entity1.fieldImage3.url + ')'}}>
          <div className="container">
            
            <div className="aboutsection-2">
              <div className="row">
                <div className="col-md-7">
-                 <h3>Shaping the Middle East’s luxury real estate market since 2002</h3>
+                 <h3>{entity1.fieldHeader3}</h3>
                </div>
                <div className="col-md-5">
-                 <p className='section-text'>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+                 <p className='section-text'>{entity1.fieldDescription2}</p>
                </div>
              </div>
 
@@ -125,8 +131,8 @@ function About() {
                <div className="col-md-7 numbers-row-col">
                  <div className="numbersdata">
                    <div className="numberdata">
-                     <h4>34000+</h4>
-                     <p>Homes delivered</p>
+                     <h4>{entity1.fieldCounter3[0].entity.fieldCountValue}</h4>
+                     <p>{entity1.fieldCounter3[0].entity.fieldCountText}</p>
                    </div>
 
                    <div className="numberdata">
@@ -152,10 +158,10 @@ function About() {
            <div className="row flex-md-row flex-column-reverse">
              <div className="col-md-7 chairman-text-col">
                <div className="aboutChairmanbox">
-                 <h3>Setting new standards for design, craftsmanship and inspired lifestyles</h3>
+                 <h3>{entity1.fieldHeader4}</h3>
                  <div className="chairmanTextBody">
-                   <p>The DAMAC Properties story runs in tandem with the UAE’s journey to becoming the world’s foremost trade, hospitality and lifestyle destination.</p>
-                   <p>In 2002, Dubai’s leadership opened up the real estate market to international investors by allowing freehold ownership. DAMAC Properties was incorporated the same year, and purchased land for its very first project in the Dubai Marina area.</p>
+                   <p>{entity1.fieldDescription4.value}</p>
+                   {/* <p>In 2002, Dubai’s leadership opened up the real estate market to international investors by allowing freehold ownership. DAMAC Properties was incorporated the same year, and purchased land for its very first project in the Dubai Marina area.</p> */}
 
                    
                  </div>
@@ -170,16 +176,16 @@ function About() {
                  </div>
                </div>
              </div>
-             <div className="col-md-5 ps-md-0">
-                  {!deviceIsMobile && 
+             <div className="col-md-5 ps-md-0" >
+                  { !deviceIsMobile && 
                     <div className="chairmanPhoto">
-                      <Image src="/images/chairman-portrait.jpg" layout="fill" objectFit="cover" objectPosition="top"/>
+                      <img alt="" src={entity1.fieldImage4.url} layout="fill" objectFit="cover" objectPosition="top"/>
                     </div>
                   }
 
                   { deviceIsMobile && 
                     <div className="chairmanPhoto-mobile">
-                      <Image src="/images/chairmanphotomob.jpg" width={342} height={338}/>
+                      <img alt="" src={entity1.fieldImage4.url} width={342} height={338}/>
                     </div>
                   }
              </div>
@@ -202,87 +208,103 @@ function About() {
            </div>
 
            <div className="leadership-boxes">
-             
+            <div class="row">
+               <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
-             <div className="leadershipbox">
+             </div>
+           
+             <div class="col-md-3 col-6">
+                <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+          
+             <div class="col-md-3 col-6">
              <div className="leadershipbox">
                <div className="leadershipimg">
-                 <Image src="/images/chairman-portrait.jpg" width={602} height={748}/>
+                 <img alt="" src="/images/chairman-portrait.jpg"/>
                </div>
                <div className="leadership-details">
                  <h5>Kyoko Matsushita</h5>
                  <p>Global CEO</p>
                </div>
              </div>
-
+             </div>
+            </div>
            </div>
 
          </div>
@@ -297,7 +319,7 @@ function About() {
              <div className="col-md-4">
                <div className="text-box">
                  <h4>History</h4>
-                 <p>DAMAC Properties has grown to become one of the world’s foremost luxury developers, with projects spanning the GCC, Levant, Middle East and United Kingdom.</p>
+                 <p>DAMAC Properties has grown to become one of the world’s foremost luxury  , with projects spanning the GCC, Levant, Middle East and United Kingdom.</p>
                </div>
 
                <div className="historyArrows d-md-flex d-none">
@@ -396,11 +418,13 @@ function About() {
                <div className="col-md-5">
                  <div className="awardsbox2">
                    <div className="text-box">
-                      <h4>Awards</h4>
+                   <h4>{entity1.fieldHeader5}</h4>
+                   <p>{entity1.fieldDescription5.value}</p>
+                      {/* <h4>Awards</h4> */}
                    
-                     <p>Since the early days of DAMAC Properties, the organisation has continually received recognition and accolades for its contribution to the real estate development sector. 
+                     {/* <p>Since the early days of DAMAC Properties, the organisation has continually received recognition and accolades for its contribution to the real estate development sector. 
                      <br/><br/>
-Having now received over 100 global awards and commendations, for everything from high-rise architecture and interior design to excellence in hospitality and international golf course communities, DAMAC only goes from strength to strength.</p>
+Having now received over 100 global awards and commendations, for everything from high-rise architecture and interior design to excellence in hospitality and international golf course communities, DAMAC only goes from strength to strength.</p> */}
                    </div>
                  </div>
                </div>
@@ -419,7 +443,7 @@ Having now received over 100 global awards and commendations, for everything fro
              <div className="col-md-7">
                <div className="coporate-responsibility-section text-center">
                  <h2>Corporate Social Responsibility</h2>
-                 <p>As a company born in the United Arab Emirates, we believe in giving back to the country that has played a seminal role in our success story.</p>
+                 <p>{entity1.fieldCsrDescription5}</p>
 
                  <div className="cta-container">
                    <Link href="#">
@@ -433,7 +457,7 @@ Having now received over 100 global awards and commendations, for everything fro
            </div>
 
            <div className="graphic-img">
-             <img src="/images/corporate-responsibility.png"/>
+             <img alt=""src="/images/corporate-responsibility.png"/>
            </div>
 
          </div>
@@ -449,4 +473,33 @@ Having now received over 100 global awards and commendations, for everything fro
   )
 }
 
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: ABOUT_US });
+  const history = await client.query({ query: HISTORY });
+  // console.log('about',data);
+  let entity1 = data.data.nodeQuery.entities[0];
+  let entity2 = history.data.nodeQuery.entities[0];
+  // let entity2 = data.data.nodeQuery.entities[1];
+  console.log('about',entity2);
+  // console.log('entity2',entity2);
+  // console.log(data.data.nodeQuery.entities);
+   return {
+      props: {
+        entity1: entity1,
+        entity2: entity2
+      }
+    }
+
+}
+
+
 export default About
+
+
+

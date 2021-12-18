@@ -11,11 +11,13 @@ import Footer from '../components/Footer'
 import React, { Component } from "react";
 
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { CHAIRMANMESSAGE } from '../graphql/chairman_message';
 
 
 // import styles from '../styles/.module.css'
 
-function ChairmansMessage() {
+function ChairmansMessage({entity1}) {
   return (
     <div className='aboutbody'>
 
@@ -47,13 +49,13 @@ function ChairmansMessage() {
                  
                  <div className="col-md-4">
                    <div className="chairmans-photo">
-                     <img src="/images/chairmansmessage-portrait.jpg"/>
+                     <img alt={entity1.title} src={entity1.fieldImageChairman.url}/>
                    </div>
                  </div>
 
                  <div className="col-md-8">
                    <div className="chairmans-message-text">
-                     <h2>DAMAC has become synonymous with iconic projects setting new standards for design, craftsmanship and inspired lifestyles.</h2>
+                     <h2>{entity1.title}</h2>
                    </div>
                  </div>
 
@@ -64,22 +66,8 @@ function ChairmansMessage() {
 
            <section className="chairmans-message-para">
              <div className="container">
-               <p>The DAMAC Properties story runs in tandem with the UAE’s journey to becoming the world’s foremost trade, hospitality and lifestyle destination.</p><br/>
-
-               <p>In 2002, Dubai’s leadership opened up the real estate market to international investors by allowing freehold ownership. DAMAC Properties was incorporated the same year, and purchased land for its very first project in the Dubai Marina area.</p><br/>
-
-               <p>Since then, DAMAC has become synonymous with iconic projects setting new standards for design, craftsmanship and inspired lifestyles.</p><br/>
-
-               <p>Today, DAMAC Properties enjoys a position of trust, established over years of uncompromising quality. We have consistently stuck to a mantra of sound design and attention to the small details that make a home special. I am proud that the DAMAC brand – home-grown in the UAE – is now recognised in international markets stretching from Saudi Arabia to London.</p><br/>
-
-               <p>We genuinely appreciate what our country and our communities have done for us. In turn, our corporate social responsibility ethos and culture of philanthropy demand that we give back. Through initiatives such as the Hussain Sajwani – DAMAC Foundation, we engage with our communities in ways that alleviate hardship, respond to urgent need, and deliver the skills and learning required for a sustainable future.</p><br/>
-
-               <p>On behalf of DAMAC, I would like to express my deepest gratitude to the visionary rulers of the UAE. It is their progressive vision and efforts that have made the UAE the nation it is today.</p><br/>
-
-               <p>I am also incredibly grateful to our community of employees, partners and shareholders. Thank you for supporting us in creating exceptional lifestyle experiences, and for believing in our ability to create flourishing communities. Our successes would not be possible without your commitment</p><br/>
-
-               <p>Finally, and most importantly, I’d like to express my appreciation to our customers, without whom we could never have achieved so much. Quite simply, you inspire us to do even better.</p>
-
+               <p>{entity1.fieldTextChairman}</p>
+              
                <h4 className="chairmans-name">Hussain Sajwani</h4>
 
              </div>
@@ -93,5 +81,26 @@ function ChairmansMessage() {
     </div>
   )
 }
+
+
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: CHAIRMANMESSAGE });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('entity1',entity1);
+   return {
+      props: {
+        entity1: entity1,
+      }
+    }
+
+}
+
+
 
 export default ChairmansMessage

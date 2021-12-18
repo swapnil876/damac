@@ -1,0 +1,175 @@
+/* p{
+	margin: 0;
+}
+a:hover{
+    color: inherit;
+} */
+/*more link section css start here*/
+.more-wrap {
+    background: #000000;
+    padding-top: 82px;
+    padding-bottom: 142px;
+}
+.more-head h1 {
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+}
+ul.capital-dm-ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    gap: 30px;
+    margin-bottom: 47px;
+}
+.dfm-main-text {
+    padding-bottom: 15px;
+}
+
+.dfm-table-main.table-responsive {
+    padding-right: 30px;
+}
+
+
+
+ul.capital-dm-ul li a {   
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    opacity: 50%;   
+}
+
+ul.capital-dm-ul li.active a {
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    color: #000 !important;
+    border-bottom: 2px solid;
+    padding-bottom: 8px;
+    opacity: 1;
+}
+ul.more-link-ul {
+    list-style-type: none;
+    padding: 0;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 55px;
+}
+ul.more-link-ul li {
+    width: 20.42vw;
+    padding-bottom: 45px;
+}
+ul.more-link-ul li a {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+    text-align: left;
+}
+ul.more-link-ul li a i {
+    margin-left: 15px;
+}
+/*more link section css end here*/
+.corporate-hero{
+	padding-top: 115px;
+}
+.breadcrum-main{
+	color: #000000;
+}
+.breadcrum-main ul li a{
+	font-size: 16px;
+	letter-spacing: 0.02em;	
+	opacity: 50%;
+}
+.breadcrum-main ul li span {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 16px;
+    opacity: 50%;
+}
+.breadcrum-main ul {
+    margin-bottom: 0px;
+}
+.corporate-main-head .head-text h1{	
+	font-size: 42px;
+    line-height: 49px;
+    margin-top: 14px;
+    margin-bottom: 24px;
+}
+.tabs_gov ul li a {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    color: #000;
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+    margin-right: 35px;
+}
+.tabs_gov ul li.active a{
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000;
+    opacity: 1;
+}
+.gov_main_content{
+    padding-top: 68px;
+    padding-bottom: 245px;
+}
+.gov_main_content h1{
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 18px;
+}
+.gov_main_content p,.gov_main_content ol li{
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 34px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+.gov_main_content h4{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 34px;
+    margin-bottom: 14px;
+    opacity: 0.8;
+}
+.gov_main_content ol li{
+    margin-bottom: 0px;
+}
+.gov_main_content ol{
+    margin-bottom: 30px;
+}
+@media (max-width: 767px){
+    .corporate-main-head .head-text h1{
+        font-size: 32px;
+    }
+    .tabs_gov ul li a{
+        font-size: 16px;
+    }
+    .gov_main_content h1 {
+        font-size: 22px;
+        line-height: 25px;
+    }
+    .gov_main_content p, .gov_main_content ol li{
+        font-size: 18px;
+        line-height: 25px;
+    }
+    .gov_main_content{
+        padding-bottom: 50px;
+    }
+    ul.more-link-ul li {
+        width: 100%;
+        padding-bottom: 15px;
+    }
+}

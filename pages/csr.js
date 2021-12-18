@@ -22,7 +22,12 @@ import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-function CSR() {
+
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { _CSR } from '../graphql/csr';
+import { isMobile } from 'react-device-detect'
+
+function CSR({entity1}) {
   return (
     <div className='aboutbody'>
 
@@ -33,22 +38,11 @@ function CSR() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <Navbar></Navbar>
-
-
-      
-
 
       <main className="main about-main">
        
-
-       <VideoBanner 
-         bannerImage={ `/images/csr-bg.jpg` }
-       >
-         
-       </VideoBanner>
-
+       <VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner>
 
        <TextSection className="text-section-csr-1">
          <h2>Why Corporate Social Responsibility (CSR)?</h2>
@@ -63,10 +57,12 @@ function CSR() {
            <div className="row">
              
              <div className="col-md-4">
-               <div className="text-box">
-                 <h4>Milestones</h4>
-                 <p>DAMAC Properties and its Chairman, Hussain Sajwani, have collaborated with a range of initiatives and organisations to alleviate hardship and improve quality of life across the communities in which DAMAC operates. Notable milestones include:</p>
+             {entity1.fieldMilestones.map((milestone) => (
+               <div className="text-box" key={milestone.entity.id}>
+                 <h4>{milestone.entity.fieldHeaderMile}</h4>
+                 <p>{milestone.entity.fieldTextMile}</p>
                </div>
+              ))}
 
                <div className="sliderArrows">
                  <a href="#" className="sliderArrow">
@@ -89,11 +85,12 @@ function CSR() {
                
                <div className="responsive-slider-container">
                   <Carousel className="milestone-carousel">
-                     <div>
+                  {entity1.fieldMilestones.map((milestone) => (
+                     <div key={milestone.entity.id}>
                          <div className="milestone-carousel-item">
                            <div className="image-text">
                              <div className="img">
-                               <img src='/images/slider1img.png' className='img-responsive'/>
+                               <img alt=""src={milestone.entity.fieldImageMile.url} className='img-responsive'/>
                              </div>
                              <div className='text'>
                                <h3>Zayed Day for Humanitarian action</h3>
@@ -102,32 +99,7 @@ function CSR() {
                            </div>
                          </div>
                      </div>
-                     <div>
-                         <div className="milestone-carousel-item">
-                           <div className="image-text">
-                             <div className="img">
-                               <img src='/images/slider1img.png' className='img-responsive'/>
-                             </div>
-                             <div className='text'>
-                               <h3>Zayed Day for Humanitarian action</h3>
-                               <p>To mark the occassion of the International Humanitarian Day initiative under the slogan og 'Your families .. our people', there was an assembly held during which, the Director od the Red Crescent, Mr. Khalfan Sarhan Al-Rumaithi, received a cheque from Brigadier General Jamal Salem Al Ameri, Executive Director of the Saed Association, to help families affected by the novel coronavirus,COVID-19.</p>
-                             </div>
-                           </div>
-                         </div>
-                     </div>
-                     <div>
-                         <div className="milestone-carousel-item">
-                           <div className="image-text">
-                             <div className="img">
-                               <img src='/images/slider1img.png' className='img-responsive'/>
-                             </div>
-                             <div className='text'>
-                               <h3>Zayed Day for Humanitarian action</h3>
-                               <p>To mark the occassion of the International Humanitarian Day initiative under the slogan og 'Your families .. our people', there was an assembly held during which, the Director od the Red Crescent, Mr. Khalfan Sarhan Al-Rumaithi, received a cheque from Brigadier General Jamal Salem Al Ameri, Executive Director of the Saed Association, to help families affected by the novel coronavirus,COVID-19.</p>
-                             </div>
-                           </div>
-                         </div>
-                     </div>
+                  ))}
                  </Carousel>
                </div>
 
@@ -144,11 +116,11 @@ function CSR() {
            <h2>Hussain Sajwani – DAMAC Foundation</h2>
            <div className="row align-items-center">
              <div className="col-md-8">
-               <p>The Hussain Sajwani – DAMAC Foundation is a joint philanthropic initiative between the DAMAC Group and its Chairman, Hussain Sajwani. The Foundation focuses on learning and skills development opportunities to catalyse gainful social and economic participation. The Foundation’s initiatives empower communities within the Arab world towards a sustainable future.</p>
+               <p>{entity1.fieldFoundationText}</p>
              </div>
              <div className="col-md-4">
                <div className="text-md-end text-center py-2">
-                 <img src='/images/img-text-22csr.png' className='img-responsive'/>
+                 <img alt=""src={isMobile?entity1.fieldFoundationImageMobile.url:entity1.fieldFoundationImageDesktop.url} className='img-responsive'/>
                </div>
              </div>
            </div>
@@ -159,7 +131,7 @@ function CSR() {
            <h2>Our Mission</h2>
            <div className="row align-items-center">
              <div className="col-md-12">
-               <p>The Hussain Sajwani – DAMAC Foundation delivers the learning and skills development instrumental in creating socio-economic participation and improving livelihoods.</p>
+               <p>{entity1.fieldOurMission}</p>
              </div>
            
            </div>
@@ -169,12 +141,7 @@ function CSR() {
            <h2>Our Cause</h2>
            <div className="row align-items-center">
              <div className="col-md-12">
-               <p>The Hussain Sajwani – DAMAC Foundation is committed to advancing education and learning as its primary objective. It assesses gaps in learning, and unmet vocational skill needs within communities. Then, it targets these gaps with initiatives that can improve economic circumstances, promote employment and create uplift. 
-
-               <br/><br/>The Foundation is the main sponsor of the Dubai Future Foundation’s ‘One Million Arab Coders’ initiative – an integrated educational programme that aims to empower one million Arabs with the ability to code.
-               <br/><br/>The Hussain Sajwani – DAMAC Foundation joins a network of grassroots organisations, NGOs and government bodies collaborating across the Arab world to facilitate computer and internet access for interested students.
-               <br/><br/>The One Million Arab Coders initiative has received over a million applications, with 311 top students selected to enrol in a Udacity nanodegree course. 
-               <br/><br/>Find out more about the One Million Arab Coders initiative. Or read Mr Hussain Sajwani’s thoughts on the importance of coding for the jobs of the future.</p>
+               <p>{entity1.fieldOurCause}</p>
              </div>
            
            </div>
@@ -198,6 +165,25 @@ function CSR() {
       
     </div>
   )
+}
+
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: _CSR });
+  // console.log('data1', data.data.nodeQuery.entities[0].fieldMilestones);
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('entity1',entity1);
+   return {
+      props: {
+        entity1: entity1,
+      }
+    }
+
 }
 
 export default CSR

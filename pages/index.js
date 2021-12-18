@@ -21,18 +21,19 @@ import { useMediaQuery } from 'react-responsive'
 import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
 
-
-
-
 // Static imports
 import bannerImage from '../public/images/hero-image-sm.png'
 
 
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { HOME } from '../graphql/home';
 
-export default function Home() {
+
+
+
+function Home( {entity1} ) {
   // 
-
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -49,13 +50,6 @@ export default function Home() {
        { maxDeviceWidth: 767 },
        // { deviceWidth: 767 } // `device` prop
   );
-
-  
-  
-
-
-
-
 
 
   return (
@@ -76,16 +70,16 @@ export default function Home() {
 
           <>
             { (!deviceIsMobile) &&
-              <HomeBanner bannerImage={ bannerImage }></HomeBanner>
+              <HomeBanner entity1={ entity1 } bannerImage={ entity1.fieldMainImageDesktopHome.url }></HomeBanner>
             }
 
             { (deviceIsMobile) &&
-              <div className="homeMobileBanner">
+              <div className="homeMobileBanner" style={{'background-image': 'url(' + entity1.fieldMainImageMobileHome.url + ')'}}>
                 <div className="container">
                   
                   <div className="homemobileBannerText">
-                    <h3>Golf Town at DAMAC Hills</h3>
-                    <p>Your second home around the World</p>
+                    <h3>{entity1.title}</h3>
+                    <p>{entity1.body.value}</p>
                   </div>
 
                   <div className="bannerBtnGroup">
@@ -103,11 +97,8 @@ export default function Home() {
             }
           </>
 
-
-
           <CookieConsent/>
-          
-        
+                 
       </main>
 
       
@@ -116,8 +107,28 @@ export default function Home() {
 }
 
 
-export async function getStaticProps(context) {
-  return {
-    props: {}, // will be passed to the page component as props
-  }
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: HOME });
+  // console.log('entity1',data);
+  let entity1 = data.data.nodeQuery.entities[0];
+  // let entity2 = data.data.nodeQuery.entities[1];
+  console.log('entity1',entity1);
+  // console.log('entity2',entity2);
+  // console.log(data.data.nodeQuery.entities);
+   return {
+      props: {
+        entity1: entity1,
+        // entity2: entity2
+      }
+    }
+
 }
+
+
+export default Home;

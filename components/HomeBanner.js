@@ -6,25 +6,23 @@ import Link from 'next/link'
 import styles from '../styles/HomeBanner.module.css'
 
 
-export default function HomeBanner( { bannerImage, children} ) {
+export default function HomeBanner( { bannerImage, children, entity1} ) {
   
   const banner = (
     <Image 
     className={styles['bg-image']}
     src={bannerImage} width={567} 
+    // entity1.fieldMainImageDesktopHome
     height={320}
-    placeholder="blur"
     layout="fill"
     >
-      
     </Image>
-
     );
   
 
   return (
-    <div className={styles['homepage-hero-section']}>
-      
+    <div className={styles['homepage-hero-section']} style={{'background': 'url(' + entity1.fieldMainImageDesktopHome.url + ') center/100% no-repeat'}} >
+      {/* style={{'background': 'url(' + entity1.fieldMainImageDesktopHome + ') center/100% no-repeat'}} */}
       { banner }
       { children }
       <div className={styles['homepage-hero-content']}>
@@ -32,8 +30,8 @@ export default function HomeBanner( { bannerImage, children} ) {
           
           <div className="row">
             <div className={styles["hero-content-text"]}>
-              <h2>Amora at High Gardens</h2>
-              <p className={styles["subtext"]}>Live your story to the best.</p>
+              <h2>{entity1.title}</h2>
+              <p className={styles["subtext"]}>{entity1.body.value}</p>
 
               <div className={styles['hero-cta-btns']}>
                 <Link href="#">

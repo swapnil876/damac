@@ -230,7 +230,7 @@ export default function ContactForm({ initialValues }) {
                                 </ul>
                             </div>
                         </div>
-                        <div className="" className={`${styles["contact-detail-row"]} row`}>
+                        <div className={`${styles["contact-detail-row"]} row`}>
                             <div className="col-md-4">
                                 <div className={styles['contact-detail']}>
                                     <h2>General Contact</h2>

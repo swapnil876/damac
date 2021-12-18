@@ -178,7 +178,7 @@ export default function Navbar({ className, children, navbarStyle }) {
                     <div className="damac-logo text-start">
                       <Link href="/">
                         <a className="damac-home-link">
-                            <Image src={ navbarLogo } width={139} height={15}/>
+                            <img src={ navbarLogo } width={139} height={15}/>
                         </a>
                       </Link>
                     </div>
@@ -211,7 +211,7 @@ export default function Navbar({ className, children, navbarStyle }) {
                   <div className="damac-logo">
                     <Link href="/">
                       <a className="damac-home-link">
-                          <Image src={ navbarLogo } width={139} height={15}/>
+                          <img src={ navbarLogo } width={139} height={15}/>
                       </a>
                     </Link>
                     

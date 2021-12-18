@@ -16,10 +16,11 @@ import React, { Component } from "react";
 
 import TextSection from '../components/text-section'
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { WHY_DUBAI } from '../graphql/why_dubai';
 
 
-
-function WhyDubai() {
+const WhyDubai= ({entity1})=> {
   return (
     <div className='whydubaibody'>
 
@@ -41,7 +42,7 @@ function WhyDubai() {
        
 
        <HeroSection
-         bannerImage={ `/images/careerpagebanner.png` }
+         bannerImage={entity1.fieldMainImageDesktopd.url}
        >
 
            <div className="banner-conent-style-1">
@@ -51,8 +52,8 @@ function WhyDubai() {
                <div className="row">
                  <div className="col-md-7">
                    <div className="banner-text-body">
-                     <h3>The World's Most Exciting Investment Destination</h3>
-                     <p>As a Company born in the United Arab Emirates, DAMAC Properties believes in giving back to the country that has played such a seminal role in its success story. DAMAC and its Chairman.</p>
+                     <h3>{entity1.fieldHeaderw2}</h3>
+                     <p>{entity1.fieldDescription}</p>
                    </div>
                  </div>
                </div>
@@ -71,49 +72,50 @@ function WhyDubai() {
            <div className="col-md-7">
              <div className="dubais-success-icons">
                <div className="row">
-                 
-                 <div className="col-4">
+                  {entity1.fieldMultipleCounters.map((counter) => (
+                     <div key={counter.id} className="col-4">
+                       <div className="icon-box">
+                         <img alt=""src="/images/icons/building 1.png"/>
+                         <h3>{counter.targetRevisionId}</h3>
+                         <p>Occupied room nights in 2018</p>
+                       </div>
+                     </div>
+                   ))}
+                 {/*<div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
-                     <h3>30.1M</h3>
-                     <p>Occupied room nights in 2018</p>
-                   </div>
-                 </div>
-                 <div className="col-4">
-                   <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>#1</h3>
                      <p>The World's busiest international airport</p>
                    </div>
                  </div>
                  <div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>15.9M</h3>
                      <p>Visitors annually</p>
                    </div>
                  </div>
                  <div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>$29.7B</h3>
                      <p>#1 in Worldwide visitor spend</p>
                    </div>
                  </div>
                  <div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>26%</h3>
                      <p>Projected visitor growth</p>
                    </div>
                  </div>
                  <div className="col-4">
                    <div className="icon-box">
-                     <img src="/images/icons/building 1.png"/>
+                     <img alt=""src="/images/icons/building 1.png"/>
                      <h3>15.9M</h3>
                      <p>Visitors annually</p>
                    </div>
-                 </div>
+                 </div>*/}
 
                </div>
              </div>
@@ -126,17 +128,17 @@ function WhyDubai() {
          <div className="container">
            <div className="row">
                <div className="col-6 mb-4">
-                 <h3>Dubai: A Safe Haven and the Region's Most Dynamic City</h3>
+                 <h3>{entity1.fieldHeaderw2}</h3>
 
                </div>
            </div>
 
            <div className="row">
                <div className="col-6 mb-2">
-                 <p>Dubai is considered one of the safest cities in the world, while the UAE is an economic and political safe haven and a beacon of stability in the Middle East. Dubai was ranked the best city for quality of living and public infrastructure across the Middle East and Africa (MEA) region in Mercer’s 2018 Quality of Living Survey. </p>
+                 <p>{entity1.fieldCol1Text2}</p>
                </div>
                <div className="col-6 mb-2">
-                 <p>The city took 74th place in the global ranking, making it the MEA region’s top city for the fifth year running. Dubai is a magnet for foreign talent and multinational companies that view the city as the ideal location from which to serve to markets across the MEA region.</p>
+                 <p>{entity1.fieldCol1Text3}</p>
                </div>
            </div>
          </div>
@@ -144,7 +146,7 @@ function WhyDubai() {
 
 
        <section>
-         <img src='/images/why-dubai/dubaipalm.jpg' className="img-responsive full-width"/>
+         <img alt=""src='/images/why-dubai/dubaipalm.jpg' className="img-responsive full-width"/>
        </section>
 
 
@@ -152,7 +154,7 @@ function WhyDubai() {
          <div className="container">
            <div className="row">
                <div className="col-6 mb-4">
-                 <h3>Dubai’s Most Exciting Districts</h3>
+                 <h3>{entity1.fieldHeaderw3}</h3>
 
                </div>
            </div>
@@ -161,10 +163,10 @@ function WhyDubai() {
              <div className="dubai-district-item">
                <div className="row justify-content-between">
                    <div className="col-6 mb-2">
-                     <p>With its world-famous skyline, enviable lifestyle and premium attractions, Dubai is a destination unlike any other on the planet. The First Group’s upper midscale hotels and premium residences are situated in prime locations in</p>
+                     <p>{entity1.fieldCol1Text3}</p>
                    </div>
                    <div className="col-5 mb-2 pb-5">
-                     <p>Dubai’s most exciting and popular districts, including Dubai Marina and Business Bay, ensuring high occupancy rates and consistent revenues.</p>
+                     <p>{entity1.fieldCol2Text3}</p>
                    </div>
                </div>
 
@@ -223,7 +225,7 @@ function WhyDubai() {
            <div className="col-md-4">
              <div className="icon-box">
                <div className="text-center">
-                 <img src="/images/why-dubai/city.svg"/>
+                 <img alt=""src="/images/why-dubai/city.svg"/>
                </div>
                <h4>Premium Developers</h4>
                <p>DAMAC develops quality investment properties in high-demand locations</p>
@@ -232,7 +234,7 @@ function WhyDubai() {
            <div className="col-md-4">
              <div className="icon-box">
                <div className="text-center">
-                 <img src="/images/why-dubai/stars.svg"/>
+                 <img alt=""src="/images/why-dubai/stars.svg"/>
                </div>
                <h4>Most Renowned Brands</h4>
                <p>Our interior is designed by world’s most renowned brands</p>
@@ -241,7 +243,7 @@ function WhyDubai() {
            <div className="col-md-4">
              <div className="icon-box">
                <div className="text-center">
-                 <img src="/images/why-dubai/file-invoice-dollar.svg"/>
+                 <img alt=""src="/images/why-dubai/file-invoice-dollar.svg"/>
                </div>
                <h4>USD returns</h4>
                <p>Our property assets deliver great returns to our investors in a stable currency</p>
@@ -258,7 +260,7 @@ function WhyDubai() {
              <h3>An Investor’s Favourite</h3>
            </div>
            <div className="col-md-5">
-             <p>High-yielding assets, a world-class regulatory environment and ultra-modern infrastructure – these factors have made Dubai one of the most-popular investment destinations on the planet. Dubai’s stated ambition to become the world’s most-visited destination by 2025 means there’s never been a better time to invest in the city’s thriving hotel industry. Speak to us today about the incredible opportunities available.</p>
+             <p>{entity1.fieldInvestorText}</p>
            </div>
          </div>
        </TextSection>
@@ -308,7 +310,7 @@ function WhyDubai() {
          <div className="container">
            <div className="row">
                <div className="col-md-5 img-grid-text-1">
-                 <p>Already recognised as the Middle East’s most dynamic and exciting city, Dubai is set to further enhance its global reputation when it hosts the region’s first-ever World Expo in 2020. More than 25 million people are expected to attend Expo during its six-month duration from October 2020 to April 2021, while global media coverage will expose the city and its incredible attractions to an audience many times larger again. Dubai’s development is set to accelerate further over the next decade, as a series of strategic initiatives designed to establish it as the region’s first global city make their mark.</p>
+                 <p>{entity1.fieldCol1Text5}</p>
                </div>
            </div>
 
@@ -321,10 +323,10 @@ function WhyDubai() {
            <div className="row">
                <div className="col-md-10">
                <div className="mb-4">
-                 <img src="/images/why-dubai/ticket-1.png" width="46"/>
+                 <img alt=""src="/images/why-dubai/ticket-1.png" width="46"/>
                </div>
                  <h4>The Opportunity</h4>
-                 <p>The First Group provides private investors the opportunity to purchase hotel guestrooms, suites and serviced apartments in upscale properties located in highly popular locations across Dubai. Find out more about the incredible investment opportunities available by experiencing the city on our Dubai Investment Visit and discover how World Expo 2020 will act as a catalyst for Dubai’s next growth phase.</p>
+                 <p>{entity1.fieldOpportunityText}</p>
                </div>
            </div>
 
@@ -340,5 +342,29 @@ function WhyDubai() {
     </div>
   )
 }
+
+export const getStaticProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: WHY_DUBAI });
+  console.log('entity1',data);
+  let entity1 = data.data.nodeQuery.entities[0];
+  // let entity2 = data.data.nodeQuery.entities[1];
+  console.log('entity1',entity1);
+  // console.log('entity2',entity2);
+  // console.log(data.data.nodeQuery.entities);
+   return {
+      props: {
+        entity1: entity1,
+        // entity2: entity2
+      }
+    }
+
+}
+
 
 export default WhyDubai

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.5.5",
     "@chakra-ui/react": "^1.6.7",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -19,6 +20,7 @@
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@headlessui/react": "^1.4.1",
     "framer-motion": "^4.1.17",
+    "graphql": "^16.0.1",
     "lightgallery": "^2.2.1",
     "next": "11.1.2",
     "react": "17.0.2",
