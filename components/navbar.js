@@ -203,9 +203,9 @@ export default function Navbar({ className, children, navbarStyle }) {
             
                 <div className="col-7 col-md-4 header-left-col align-items-center">
                   <div className="menuicon-wrapper">
-                    <a href="#" className="mainmenutoggle" onClick={handleMenuToggle}>Menu</a>
-
-
+                    <a href="#" className="mainmenutoggle" onClick={handleMenuToggle} style={navbarStyle=='dark'?{'background-image':'unset'}:''}>
+                    <img src={navbarStyle=='dark'?"images/icons/Menu/menu.png":""} style={navbarStyle=='dark'?{'width':'28px', 'height':'18px'}:{'display':'none'}}/>
+                    </a>
                   </div>
 
                   <div className="damac-logo">
