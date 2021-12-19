@@ -12,10 +12,7 @@ import PageTitle from '../components/PageTitle'
 import PagePagination from '../components/PagePagination'
 import BlogCardItem from '../components/BlogCardItem'
 
-// Made by vinayak
-import style from '../styles/pages/damac-in-the-news.module.css'
 
-// Used from news page
 import styles from '../styles/pages/industry-news.module.css'
 
 import React, { Component } from "react";
@@ -31,15 +28,15 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { useMediaQuery } from 'react-responsive'
 
 
- export default function DamacInTheNews(){
+ export default function IndustryNews(){
      return(
-         <div className="DamacInTheNews">
+         <div className="IndustryNews">
              <Navbar></Navbar>
              <main className="main">
-                <section className={styles['press-hero']} style={{'background-image':'url(/images/damac_in_news.png)'}}>               
+                <section className={styles['press-hero']} style={{'background-image':'url(/damac-static/images/ind-bg.jpg)'}}>               
                 <div className={styles['press-hero-wrap']}>
                     <div className={styles['press-content']}>
-                    <h2>DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh</h2>
+                    <h2>DAMAC Properties to Hold First Ever Ramadan Sports Festival at AKOYA</h2>
                     <p>We reflected on DAMAC’s years of history and created an infographic summary.</p>
                     <span>Dec, 15 2021 By Financial Times</span>
                     </div> 

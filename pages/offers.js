@@ -95,7 +95,10 @@ export const getStaticProps = async () => {
     // },
     entity1.map((v,i)=>{
       console.log(v);
+      if(v.fieldImageOffer != null)
       offer.push({imageUrl:v.fieldImageOffer.url,title:v.fieldImageOffer.title,description:v.fieldDescriptionOffer})
+      else
+      offer.push({imageUrl:"",title:"",description:v.fieldDescriptionOffer})
       // v.imageUrl = v.fieldImageOffer.url;
       // v.title = v.fieldImageOffer.title;
       // v.description = v.fieldDescriptionOffer;
