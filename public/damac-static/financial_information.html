@@ -170,7 +170,7 @@
                 <h1>Financial Information</h1>
               </div>
               <div class="share-download-text">
-                <select class="dropdown-select">
+                <select class="dropdown-select form-select" style="border: 0;">
                   <option>Financial Information</option>
                 </select>
               </div>
@@ -186,72 +186,99 @@
      <section class="capital-history">
        <div class="container">
         <div class="tab-btn-group mb-4">
-          <div class="btn-group damac-tab-btns">
-            <a href="#" class="btn btn-outine active" aria-current="page">Financial Statements</a>
-            <a href="#" class="btn btn-outine">Key Figures</a>
+          <div class="nav nav-tabs btn-group damac-tab-btns justify-content-start d-inline-flex">
+              <a  data-bs-toggle="tab" data-bs-target="#financialstatements" href="#financialstatements" class="nav-pills btn btn-outine active" aria-current="page">Financial Statements</a>
+              <a  data-bs-toggle="tab" data-bs-target="#keyfigures" href="#keyfigures" class="nav-pills btn btn-outine">Key Figures</a>
           </div>
         </div>
+        
 
-         <div class="capital-history-menu">
-           <ul class="capital-dm-ul">
-             <li class="active"><a href="#">2020</a></li>
-             <li><a href="#">2019</a></li>
-             <li><a href="#">2018</a></li>
-             <li><a href="#">2017</a></li>
-             <li><a href="#">2016</a></li>           
-            </ul>
-          </div>
-          
-          <div class="statements-wrapper">
-            <!-- Report list start here -->
-            <div class="list_report_main">
-                <ul class="list-unstyled">
-                    <li>
-                        <div class="report_list">
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
-                            <div class="d-flex ">
-                                <div class="datetime-report">
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div class="download_report"><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="report_list">
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h1>
-                            <div class="d-flex ">
-                                <div class="datetime-report">
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div class="download_report"><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="report_list">
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
-                            <div class="d-flex ">
-                                <div class="datetime-report">
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div class="download_report"><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="report_list">
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
-                            <div class="d-flex ">
-                                <div class="datetime-report">
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div class="download_report"><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li>
-                    
+          <div class="tab-content">
+            <div class="tab-pane show fade active" id="financialstatements">
+              <div class="capital-history-menu">
+               <ul class="capital-dm-ul">
+                 <li class="active"><a href="#">2020</a></li>
+                 <li><a href="#">2019</a></li>
+                 <li><a href="#">2018</a></li>
+                 <li><a href="#">2017</a></li>
+                 <li><a href="#">2016</a></li>           
                 </ul>
+              </div>
+              
+              <div class="statements-wrapper">
+                <!-- Report list start here -->
+                <div class="list_report_main">
+                    <ul class="list-unstyled">
+                        <li>
+                            <div class="report_list">
+                                <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                <div class="d-flex ">
+                                    <div class="datetime-report">
+                                        <p>January 29, 2021 4:00 PM EST</p>
+                                    </div>
+                                    <div class="download_report"><a href="#">Download</a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="report_list">
+                                <h1><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h1>
+                                <div class="d-flex ">
+                                    <div class="datetime-report">
+                                        <p>January 29, 2021 4:00 PM EST</p>
+                                    </div>
+                                    <div class="download_report"><a href="#">Download</a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="report_list">
+                                <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                <div class="d-flex ">
+                                    <div class="datetime-report">
+                                        <p>January 29, 2021 4:00 PM EST</p>
+                                    </div>
+                                    <div class="download_report"><a href="#">Download</a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="report_list">
+                                <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                <div class="d-flex ">
+                                    <div class="datetime-report">
+                                        <p>January 29, 2021 4:00 PM EST</p>
+                                    </div>
+                                    <div class="download_report"><a href="#">Download</a></div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="keyfigures">
+              <div class="capital-history-menu">
+               <ul class="capital-dm-ul">
+                 <li><a href="#">Quarterly Data</a></li>
+                 <li class="active"><a href="#">Annual Data</a></li>
+                </ul>
+              </div>
+
+              <div class="capital-history-menu secondary-menu " style="font-size: 14px;">
+               <ul class="capital-dm-ul">
+                 <li class="active"><a href="#">Consolidated Income Statement</a></li>
+                 <li ><a href="#">Consolidated Statement of Financial Position</a></li>
+                </ul>
+              </div>
+
+              <div class="my-2 pb-5">
+                <img src="img/financialinfoimg.png" width="758">
+              </div>
+              
+              
+              </div>
             </div>
           </div>
        </div>
@@ -421,6 +448,7 @@
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
+
 
 </body>
 

@@ -296,3 +296,14 @@ ul.report_tab_ul li.active a {
     background: #000;
     color: #fff;
 }
+
+
+
+.secondary-menu ul.capital-dm-ul li a {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.secondary-menu ul.capital-dm-ul li.active a {
+    opacity: 1;
+}
