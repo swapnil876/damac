@@ -1,6 +1,4 @@
-p{
-    margin-bottom: 0;
-}
+
 
 .project-left h1 {
     font-family: Roboto;
@@ -69,6 +67,7 @@ section.inner-wrap-hero {
     left: 104px;
 }
 .shape-content-wrap {
+    padding:70px 0;
     padding-left: 105px;    
     color: #000;
 }
@@ -124,7 +123,8 @@ section.shape-wrap.side-img-content {
 .vs-range h5 {  
     font-size: 22px;    
     font-weight: 500;
-    line-height: 22px;    
+    line-height: 22px;
+    margin: 0;    
 }
 .vs-range p {   
     font-size: 16px;    
@@ -455,6 +455,8 @@ section.estimate .container {
 }
 section.estimate {
     color: white;
+    padding-top: 38px;
+    padding-bottom: 59px;
 }
 
 section.estimate .col-md-8 img {
@@ -584,7 +586,7 @@ a.play-button {
     padding: 30px 35px;
     text-align: center;
 }
-a.play-button i {
+a.play-button i, a.play-button svg {
     font-size: 50px;
     color: #fff;
 }
@@ -602,6 +604,7 @@ a.play-button i {
 }
 .\33 d-content-inner.text-center {
     padding: 251px 2px;
+    text-align: center;
 }
 
 .golf-content-inner p {
@@ -748,7 +751,7 @@ section.golf-town .row {
     -webkit-backdrop-filter: blur( 5.5px );
     border-radius: 50%;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    padding: 9px 15px;
+    padding: 9px;
     margin-left: 7px;
 }
 
@@ -763,8 +766,9 @@ section.golf-town .row {
     top: 25%;
     left: 0px;
 }
-.project-detail-nav a i {
+.project-detail-nav a i, .project-detail-nav a svg {
     color: #fff;
+    font-size: 22px;
 }
 .project-detail-nav .right-nav {
     position: absolute;
@@ -788,7 +792,11 @@ ul.bedroom-detail {
     padding: 0;
     align-items: center;
 }
-
+/* .project-detail .project-detail-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
 @media(min-width: 1400px){
     ul.shape-count{
         width: 50%;
