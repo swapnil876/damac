@@ -926,7 +926,7 @@ ul.bedroom-detail {
         justify-content: inherit;
         margin-top: 25px;
     }
-    .shape-item p br{
+    shape-item p br{
         display: none;
     }
     .gal-content {        
