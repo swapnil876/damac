@@ -199,11 +199,12 @@ ul.bedroom-detail li a img {
     -webkit-backdrop-filter: blur( 5.5px );
     border-radius: 50%;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    padding: 7px 15px;
+    padding: 7px ;
     margin-left: 7px;
 }
-.project-detail-nav a i {
+.project-detail-nav a i, .project-detail-nav a svg {
     color: #fff;
+	font-size: 22px;
 }
 .project-detail-nav .right-nav {
     position: absolute;
@@ -247,6 +248,13 @@ a.border-icon .whatsapp-ico{
 .pagination_main_wrap {
     margin-top: 56px;
     margin-bottom: 82px;
+}
+.pagination_main_wrap .page_btn a{
+	padding:13px
+}
+.pagination_main_wrap .page_btn a svg{
+	width:22px;
+	height:22px
 }
 .page_btn a {
     padding: 13px 17.5px;
