@@ -2,7 +2,7 @@ module.exports = {
   reactStrictMode: true,
   images: {
     loader: 'imgix',
-    path: 'http://157.245.100.30',
+    path: 'https://damac.techsperia.in',
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if
