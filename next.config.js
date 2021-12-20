@@ -3,6 +3,7 @@ module.exports = {
   images: {
     loader: 'imgix',
     path: 'https://damac.techsperia.in',
+    
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if
