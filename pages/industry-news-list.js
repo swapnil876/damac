@@ -3,6 +3,8 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+
 // Navbar
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
@@ -194,7 +196,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     </div>
                     <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
                       <div className={`${styles["page_btn"]} prev_btn`}>
-                        <a href="#"><i className="fas fa-chevron-left"></i></a>
+                        <a href="#" className={styles['disabled']}>< FaAngleLeft /></a>
                       </div>
                       <div className={styles['pagination_no']}>
                         <ul className="list-unstyled d-flex">
@@ -206,7 +208,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         </ul>
                       </div>
                       <div className={`${styles["page_btn"]} next_btn`}>
-                        <a href="#"><i className="fas fa-chevron-right"></i></a>
+                        <a href="#"><FaAngleRight/></a>
                       </div>
                     </div>  
 
