@@ -1,0 +1,312 @@
+
+/*more link section css start here*/
+.more-wrap {
+    background: #000000;
+    padding-top: 82px;
+    padding-bottom: 142px;
+}
+.more-head h1 {
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+}
+
+ul.capital-dm-ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    gap: 30px;
+    margin-bottom: 29px;
+}
+
+ul.capital-dm-ul li a {   
+    font-family: "Roboto";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    opacity: 50%;   
+    text-decoration: none;
+    color:#000
+}
+
+ul.capital-dm-ul li.active a {
+    font-family: "Roboto";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    color: #000 !important;
+    border-bottom: 2px solid;
+    padding-bottom: 8px;
+    opacity: 1;
+}
+ul.more-link-ul {
+    list-style-type: none;
+    padding: 0;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 55px;
+    margin-bottom: 0px;
+}
+ul.more-link-ul li {
+    width: 20.42vw;
+    padding-bottom: 45px;
+}
+ul.more-link-ul li a {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+    text-align: left;
+}
+ul.more-link-ul li a i {
+    margin-left: 15px;
+}
+/*more link section css end here*/
+.share-hero{
+	padding-top: 115px;
+}
+.breadcrum-main {
+    color: #000000;
+}
+.breadcrum-main ul {
+    margin-bottom: 0px;
+}
+.breadcrum-main ul li a {
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    opacity: 50%;
+}
+.breadcrum-main ul li span {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 16px;
+    opacity: 50%;
+}
+.breadcrum-main ul li a:hover{
+	color: #000;
+}
+.share-main-head .share-head-text h1 {
+    font-size: 42px;
+    line-height: 49px;
+    margin-top: 14px;
+    margin-bottom: 24px;
+}
+.share-download-text a {
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    font-weight: 300;
+}
+.share-download-text a span {
+    margin-right: 8px;
+    font-weight: 400;
+}
+.capital-dm-ul{
+	margin-bottom: 30px;
+    border: none;
+}
+.capital-dm-links,.dm-graph-link{
+	border: none;
+	font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    padding: 8px 0px;
+    margin-right: 33px;
+    color: #000;
+    opacity: 50%;
+    letter-spacing: 0.80px;
+}
+.dm-graph-link{
+	font-size: 16px;
+	line-height: 18px;
+	margin-right: 0px;
+}
+.capital-dm-links:hover,.dm-graph-link:hover{
+	color: #000;
+}
+.capital-dm-li.active a,.dm-graph-item.active a{
+    opacity: 1;
+    border-bottom: 2px solid #000000 !important;
+}
+.date-time h5{
+	font-size: 16px;
+	line-height: 22px;
+	opacity: 80%;
+	letter-spacing: 0.80px;	
+}
+.share-graph-table-wrap{
+	margin-top: 25px;
+}
+.dm-graph-table tbody{
+	border-color: transparent;
+}
+.dm-graph-table thead tr th{
+	letter-spacing: 0.8px;
+    font-size: 16px;
+    opacity: 80%;
+    line-height: 27px;
+    padding: 12px;
+    border-color: transparent !important;
+    vertical-align: top;
+}
+.share-graph-table-wrap .table-striped>tbody>tr:nth-of-type(odd) {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+    background: #F3F3F3 !important;
+}
+.dm-graph-table tbody tr td {
+    font-size: 16px;
+    font-weight: 300;
+    white-space: nowrap;
+    line-height: 27px;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+.graph-dm-main{
+	padding-top: 90px;
+	padding-bottom: 120px;
+}
+
+
+
+
+
+@media (max-width: 767px){
+	ul.more-link-ul li{
+		width: 100%;
+		padding-bottom: 20px;
+	}
+    ul.capital-dm-ul{
+        gap: 10px;
+    }
+    .share-main-head .share-head-text h1{
+        font-size: 30px;
+        line-height: 30px;
+    }
+    
+}
+
+
+
+
+
+
+.report_tab {
+    margin-bottom: 34px;
+}
+.report-main-head .head-text h1 {
+    font-size: 42px;
+    line-height: 49px;
+    margin-top: 14px;
+    font-weight: 500;
+    margin-bottom: 82px;
+}
+ul.report_tab_ul {
+    margin-bottom: 16px;
+}
+ul.report_tab_ul li a {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 30px;
+    color: #000;
+    letter-spacing: 0.05em;
+    padding-bottom: 8px;
+    opacity: 0.5;
+    margin-right: 32px;
+}
+ul.report_tab_ul li.active a {
+    border-bottom: 2px solid #000;
+    opacity: 1;
+    font-weight: 500;
+}
+.report_list {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #C4C4C4;
+    margin-bottom: 20px;
+}
+.report_list h1, .report_list h1 a {
+    font-size: 28px;
+    line-height: 38px;
+    letter-spacing: 0.60px;
+    margin-bottom: 11px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #000;
+}
+.datetime-report p {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.60px;
+    font-weight: 300;
+    margin-right: 18px;
+}
+.download_report a {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0.60px;
+    text-decoration: none;
+    color:#000
+}
+.list_report_main ul li:last-child .report_list {
+    border-bottom: none;
+}
+.list_report_main{
+    padding-bottom: 110px;
+}
+@media (max-width: 767px){
+    .report-main-head .head-text h1{
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    ul.report_tab_ul li {
+        margin-bottom: 12px;
+    }
+    .report_list h1{
+        font-size: 20px;
+    }
+    ul.more-link-ul li {
+        width: 100%;
+        padding-bottom: 15px;
+    }
+    .more-wrap{
+        padding: 50px 0;
+    }
+}
+
+
+
+
+
+.tab-btn-group {
+    padding: 15px 0;
+}
+.damac-tab-btns .nav-pills {
+    border: 1px solid #000;
+}
+
+.damac-tab-btns .nav-pills.active {
+    background: #000;
+    color: #fff;
+}
+.damac-tab-btns .nav-pills.inactive:hover{
+    color:rgb(0, 0, 0)
+}
+
+
+.secondary-menu ul.capital-dm-ul li a {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.secondary-menu ul.capital-dm-ul li.active a {
+    opacity: 1;
+}

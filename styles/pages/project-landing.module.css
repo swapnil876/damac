@@ -1,0 +1,205 @@
+
+.project-hero{
+	width: 100%;
+	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+}
+.project-hero-text{
+	font-size: 44px;
+	line-height: 50px;
+	font-weight: 500;
+	color: #ffffff;
+	padding-top: 131px;
+	padding-bottom: 131px;
+}
+.filter_option_wrap {
+    padding: 14px;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 18px rgb(0 0 0 / 8%);
+    border-radius: 8px;
+    margin-top: -44px;
+    position: relative;
+}
+.search_filter {
+    position: relative;
+}
+.search_filter i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3px;
+    font-size: 16px;
+    font-weight: 300;
+    opacity: 0.7;
+}
+.form-field input, .form-field select {
+    height: 48px;
+    border: none;
+}
+.filter_option_wrap .form-field select{
+	width: 170px;
+    width: 130px;
+}
+/* .filter_option_wrap .form-field select:first-child
+{
+    margin-right: 70px;
+} */
+.search_filter input {
+    padding-left: 24px;
+    width: 100%;
+}
+.search_filter input {
+    padding-left: 24px;
+}	
+.search_btn_filter a {
+    height: 48px;
+    padding: 15px 37px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 18px;
+    float: right;
+}
+.filtered_properties {
+    padding-top: 44px;
+}
+.project-card {
+    margin-bottom: 82px;
+}
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.project-card h6 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 37px;
+    opacity: 0.8;
+    margin-top: 12px;
+    margin-bottom: 0;
+    letter-spacing: 0.02em;
+}
+.project-card p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+}
+ul.bedroom-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 58px;
+    list-style-type: none;
+    padding: 0;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.bedroom-detail li a {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+ul.bedroom-detail li a img, ul.bedroom-detail li a svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+.shape-wrap-plan {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    margin-top: 28px;
+}
+.shape-contact ul {
+    list-style-type: none;
+}
+.shape-contact ul li {
+    margin-left: 8px;
+}
+.solid-icon {
+    background: linear-gradient( 
+90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+    color: #fff;
+   	padding: 15px 31px;
+    border-radius: 4px;
+}
+a.border-icon {
+    border: 2px solid #D0BB83;
+    padding: 15px 31px;
+    border-radius: 4px;
+    color: #D0BB83;
+}
+ul.bedroom-detail li a i {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-right: 8px;
+}
+.view_more_btn{
+	margin-top: 15px;
+}
+.similar_property {
+    padding: 120px 0;
+}
+.similar_property_head h1 {
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 52px;
+    margin-bottom: 49px;
+}
+.property_similar_card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.property_similar_card h1 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 34px;
+    opacity: 0.8;
+    margin-top: 14px;
+    margin-bottom: 1px;
+}
+.property_similar_card p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 34px;
+    opacity: 0.8;
+}
+@media (max-width: 1024px){
+    /* .filter_option_wrap .form-field select:first-child{
+        margin-right: 40px;
+    } */
+	.search_btn_filter{
+		display: block;
+		margin-left: auto;
+	}
+	ul.bedroom-detail{
+		gap:10px;
+	}
+	.property_similar_card p{
+		font-size: 18px;
+	}
+}
+@media (max-width: 767px){
+    /* .filter_option_wrap .form-field select:first-child{
+        margin-right: 30px;
+    } */
+	.similar_property{
+		padding: 50px 0;
+	}
+	.property_similar_card{
+		margin-bottom: 30px;
+	}
+	.similar_property_head h1{
+		font-size: 32px;
+	}
+	.filter_option_wrap .form-field select{
+		width: unset;
+	}
+    a.border-icon,.solid-icon{
+        padding:10px 20px;
+    }
+}
