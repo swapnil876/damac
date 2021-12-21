@@ -27,7 +27,14 @@ export default function BlogCardItem( { className, cardDetails  } ) {
     <div className={ `image-card-item ${styles['blogcard-item']}` }>
       
       <div className={ `card-image` }>
-        <Image 
+        {/* <Image 
+             src={ cardDetails.imageUrl }
+             width={380}
+             height={211}
+             layout='responsive'
+             objectFit='cover'
+        /> */}
+        <img
              src={ cardDetails.imageUrl }
              width={380}
              height={211}

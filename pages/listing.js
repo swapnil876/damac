@@ -164,8 +164,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         <div className={style['shape-wrap-plan']}>              
                         <div className={`${style["shape-contact"]} float-end`}>
                             <ul className="d-flex align-items-center p-0">
-                            <li><a href="#" className={style['solid-icon']}><i className="far fa-envelope"></i></a></li>
-                            <li><a href="#" className={style['border-icon']}><i className="fab fa-whatsapp"></i></a></li>
+                            <li><a href="#" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                            <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
                             </ul>                  
                         </div>                
                         </div>              

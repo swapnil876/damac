@@ -5,7 +5,9 @@
     margin-bottom: 8px;
     margin-top: 8px; 
 }
-
+.icon-link{
+    text-decoration: none!important;
+}
 .breadcrumbLinks ul {
     position: relative;
     display: block;
@@ -26,6 +28,7 @@
     color: rgba(0,0,0,0.5);
     display: block;
     padding: 5px 0;
+    text-decoration: none;
 }
 
 .breadcrumbLinks ul li::before {
