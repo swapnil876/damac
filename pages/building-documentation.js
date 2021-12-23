@@ -10,13 +10,15 @@ import PageTitle from '../components/PageTitle'
 
 
 import React, { Component } from "react";
+// import { getStaticProps } from './project'
 
 
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {BUILDING_DOCUMENTATION} from '../graphql/master/building_documentation';
 
 // import styles from '../styles/.module.css'
 
-function BuildingDocumentation() {
+function BuildingDocumentation({entity1}) {
   return (
     <div className='buildingdocumentationbody'>
 
@@ -42,7 +44,7 @@ function BuildingDocumentation() {
 
 
                <ul className="building-documentation-link">
-                 <li>
+                 {/* <li>
                    <div className="doc-name">Download DAMAC Majestine JOPD</div>
                    <div className="doc-link"><Link href="#"><a>Download</a></Link></div>
                  </li>
@@ -69,7 +71,18 @@ function BuildingDocumentation() {
                  <li>
                    <div className="doc-name">Download DAMAC Majestine JOPD</div>
                    <div className="doc-link"><Link href="#"><a>Download</a></Link></div>
+                 </li> */}
+
+
+              {
+               entity1.map((item)=>{
+                 <li>
+                   <div className="doc-name">{item.nid}</div>
+                   <div className="doc-link"><Link href={item.fieldFile.entity.url}><a>Download</a></Link></div>
                  </li>
+               })
+              }
+                  
                </ul>
 
              </div>
@@ -82,6 +95,25 @@ function BuildingDocumentation() {
       
     </div>
   )
+}
+
+
+export async function getStaticProps(context){
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: BUILDING_DOCUMENTATION });
+
+  let entity1 = data.data.nodeQuery.entities;
+  console.log('entity1',entity1);
+
+  return {
+    props: {
+       entity1 : entity1
+    }, // will be passed to the page component as props
+  }
 }
 
 export default BuildingDocumentation

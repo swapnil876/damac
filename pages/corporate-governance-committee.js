@@ -23,17 +23,13 @@ import ContactForm from '../components/ContactForm'
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
-
-
 //  Importing the CorporateGovernance component
  import CorporateGovernance from "../components/CorporateGovernance";
 
 // import styles from '../styles/.module.css'
 
-
-
-// Banner image
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {GOVERNANCE_COMMITTEE} from '../graphql/master/governance_committee'
 
 
 // FA
@@ -43,8 +39,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function CorporateGovCommittee( { mobileDevice } ) {
-
+function CorporateGovCommittee( { mobileDevice, entity1 } ) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
@@ -71,7 +66,6 @@ function CorporateGovCommittee( { mobileDevice } ) {
       }
   ];
 
-
   // Heading title btn
   const downloadBtn = {
     'title': 'Download PDF',
@@ -79,15 +73,13 @@ function CorporateGovCommittee( { mobileDevice } ) {
     'icon': 'arrow-down'
   }
 
-  
-
   return (
     <div className='quickfactsheetbody'>
 
       <Head>
-        <title>Share Information - Damac</title>
+        <title>Corporate Governance - Damac</title>
 
-        <meta name="description" content="Share Information - Damac Properties" />
+        <meta name="description" content="Corporate Governance - Damac Properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -127,7 +119,7 @@ function CorporateGovCommittee( { mobileDevice } ) {
           <div className='container'>
 
 
-        <CorporateGovernance/>
+        <CorporateGovernance entity1={entity1}/>
 
           </div>
         </section>
@@ -143,21 +135,35 @@ function CorporateGovCommittee( { mobileDevice } ) {
   )
 }
 
-export default CorporateGovCommittee
-
 
 
 export async function getStaticProps(context) {
-
 
   // Device React
   const deviceIsMobile = isMobile;
   const deviceType = deviceIsMobile;
 
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+
+  const  data  = await client.query({ query: GOVERNANCE_COMMITTEE });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('entity1',entity1);
+
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       entity1: entity1
     }, // will be passed to the page component as props
   }
 }
+
+
+export default CorporateGovCommittee
+
+
+

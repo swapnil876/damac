@@ -1,6 +1,6 @@
 
 import React, { Component, useState, useEffect } from "react";
-
+                                              
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -28,12 +28,8 @@ import ContactForm from '../components/ContactForm'
 //  Importing the CorporateGovernance component
  import CorporateGovernanceBoard from "../components/CorporateGovernanceBoard";
 
-// import styles from '../styles/.module.css'
-
-
-
-// Banner image
-
+ import { ApolloClient, InMemoryCache } from '@apollo/client';
+ import {BOARD_MEMBERS} from '../graphql/master/board_members';
 
 
 // FA
@@ -43,7 +39,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function CorporateGovBoard( { mobileDevice } ) {
+function CorporateGovBoard( { mobileDevice, entity1 } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -80,14 +76,13 @@ function CorporateGovBoard( { mobileDevice } ) {
   }
 
   
-
   return (
     <div className='quickfactsheetbody'>
 
       <Head>
-        <title>Share Information - Damac</title>
+        <title>Corporate Governance - Damac</title>
 
-        <meta name="description" content="Share Information - Damac Properties" />
+        <meta name="description" content="Corporate Governance - Damac Properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -125,7 +120,7 @@ function CorporateGovBoard( { mobileDevice } ) {
 
         <section className='section'>
 
-        <CorporateGovernanceBoard/>
+        <CorporateGovernanceBoard entity1={entity1} />
 
         </section>
 
@@ -140,21 +135,27 @@ function CorporateGovBoard( { mobileDevice } ) {
   )
 }
 
-export default CorporateGovBoard
-
-
-
 export async function getStaticProps(context) {
-
 
   // Device React
   const deviceIsMobile = isMobile;
   const deviceType = deviceIsMobile;
 
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: BOARD_MEMBERS });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('entity1',entity1);
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       entity1: entity1
     }, // will be passed to the page component as props
   }
 }
+
+export default CorporateGovBoard

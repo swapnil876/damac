@@ -527,20 +527,38 @@ function Community({entity1}) {
       <div className="container">
         <div className="row">
 
-          {
-            (entity1.fieldMultipleLocators.length > 0) ?
-            entity1.fieldMultipleLocators.forEach((item)=>{
+          {/* {
+            entity1.fieldMultipleLocators.map((item)=>{
               <div className="col-6 col-md-4">
               <div className="distance-card text-center">
-                <img alt={item.entity.fieldTextc6} src={item.entity.fieldIconm.url} />
+                <img alt=""src={item.entity.fieldIconm.url} />
                 <h5>{item.entity.fieldValuec6}</h5>
                 <p>{item.entity.fieldTextc6}</p>            
               </div>
             </div>
-            }) :
-            <div><h2>No Locators Yet !!!</h2></div>
-          }
-
+            })
+          } */}
+          <div className="col-6 col-md-4">
+          <div className="distance-card text-center">
+            <img alt=""src="/images/icons/building (1) 2.svg" />
+            <h5>5 min</h5>
+            <p>from Dubai International <br/>Financial Centre</p>            
+          </div>
+        </div>
+         <div className="col-6 col-md-4">
+          <div className="distance-card text-center">
+            <img alt=""src="/images/icons/aeroplane 3.svg"/>
+            <h5>10 min</h5>
+            <p>from Dubai International <br/>Financial Centre</p>            
+          </div>
+        </div>
+         <div className="col-12 col-md-4">
+          <div className="distance-card text-center">
+            <img alt=""src="/images/icons/sunrise 2.svg"/>
+            <h5>13 min</h5>
+            <p>from Jumeirah <br/>Beach</p>            
+          </div>
+        </div>
         </div>        
       </div>       
        </section>
@@ -823,7 +841,7 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: COMMUNITY });
-  let entity1 = data.data.nodeQuery(filter.conditions).entities[0];
+  let entity1 = data.data.nodeQuery.entities[0];
   console.log('entity1',entity1);
    return {
       props: {

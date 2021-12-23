@@ -4,7 +4,7 @@ import React, { Component, useState, useEffect } from "react";
 
 import styles from "../styles/components/CorporateGovernance.module.css";
 
-export default function CorporateGovernance() {
+export default function CorporateGovernance({entity1}) {
   return (
     <>
       <section className="governance_tab_main">
@@ -17,11 +17,9 @@ export default function CorporateGovernance() {
           </div> */}
           <div className={ styles['gov_main_content'] }>
             <div className="audit_compliance">
-              <h1>Audit Compliance and Risk Committee</h1>
-              <p>The Audit Compliance &amp; Risk Committee will assist the Board in discharging its responsibilities with regard to financial reporting, external and internal audits and controls, including monitoring the integrity of the Company’s financial statements, monitoring and reviewing the extent of the non-audit work undertaken by external auditors, advising on the appointment, re-appointment, removal, remuneration and terms of engagement of external auditors and reviewing the effectiveness of the Company’s internal audit activities, internal controls and risk management systems.</p>
-              <p>The Audit Compliance &amp; Risk Committee will report to the Board on how it has discharged its responsibilities and, separately, an individual section of the annual report will describe the work of the Audit Compliance &amp; Risk Committee. Where requested by the Board, the Audit Compliance &amp; Risk Committee will review the content of the annual report and accounts and advise the Board on whether, taken as a whole, it is fair, balanced and understandable and provides the information necessary for shareholders to assess the Company’s performance, business model and strategy.</p>
-              <p>The Audit Compliance &amp; Risk Committee comprises three members, who are all independent non-executive directors, of which, at least one member should have recent and relevant financial experience.</p>
-              <div className="audit_ol_list">
+              <h1>{entity1.__typename}</h1>
+              <p>{entity1.body.value}</p>
+             <div className="audit_ol_list">
                 <h4>Audit Compliance &amp; Risk Committee members:</h4>
                 <ol>
                   <li>Mr Yahya Nooruddin (Chairman)</li>

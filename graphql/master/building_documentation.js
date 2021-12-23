@@ -1,16 +1,18 @@
 import { gql } from '@apollo/client';
 
 const BUILDING_DOCUMENTATION = gql`
-  query {
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["building_documentaion"]}]}) {
+query {
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["building_documentation"]},{operator: EQUAL, field: "nid", value: ["7"]}]}) {
     entities {
       ... on NodeBuildingDocumentation{
-         nid,
+         nid
+        entityLabel
          fieldFile {
-           targetId
-           display
-           description
-         },
+          targetId
+          display
+          description
+          entity{ url }
+        }
          body{
           value
         }
