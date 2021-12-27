@@ -9,7 +9,7 @@ import Footer from '../components/Footer'
 
 
 import React, { Component } from "react";
-
+import { useMediaQuery } from 'react-responsive'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { CHAIRMANMESSAGE } from '../graphql/chairman_message';

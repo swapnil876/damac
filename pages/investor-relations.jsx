@@ -12,7 +12,7 @@ import PageTitle from '../components/PageTitle'
 import styles from '../styles/InvestorRelation.module.css'
 
 import React, { Component } from "react";
-
+import { useMediaQuery } from 'react-responsive'
 
 
 

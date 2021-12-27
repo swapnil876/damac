@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 
-
+import { useMediaQuery } from 'react-responsive'
 
 // Navbar
 import Navbar from '../components/navbar'

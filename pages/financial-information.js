@@ -18,7 +18,7 @@ import FooterMoreLinks from '../components/FooterMoreLinks'
 
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
-
+ import { useMediaQuery } from 'react-responsive'
 
 //  Bootstrap
 //  import 'bootstrap/dist/css/bootstrap.css'

@@ -10,7 +10,7 @@ import PageTitle from '../components/PageTitle'
 
 
 import React, { Component, useEffect } from "react";
-
+import { useMediaQuery } from 'react-responsive'
 
 import styles from '../styles/pages/mortgage-calculator.module.css'
 import 'bootstrap/dist/css/bootstrap.css'

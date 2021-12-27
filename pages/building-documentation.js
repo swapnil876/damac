@@ -10,6 +10,7 @@ import PageTitle from '../components/PageTitle'
 
 
 import React, { Component } from "react";
+import { useMediaQuery } from 'react-responsive'
 // import { getStaticProps } from './project'
 
 
@@ -19,6 +20,7 @@ import {BUILDING_DOCUMENTATION} from '../graphql/master/building_documentation';
 // import styles from '../styles/.module.css'
 
 function BuildingDocumentation({entity1}) {
+
   return (
     <div className='buildingdocumentationbody'>
 
