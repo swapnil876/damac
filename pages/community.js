@@ -150,12 +150,12 @@ function Community({entity1}) {
           </div>
           { !deviceIsMobile && 
             <div className={`containerRightImage`}>
-              <Image alt="" src='/images/textsection-right-1.jpg' layout='fill' objectFit="cover"/>
+              <Image alt="" src='/images/textsection-right-1.jpg' layout='fill' objectfit="cover"/>
             </div>
           }
           { deviceIsMobile && 
             <div className={`containerBottomImage`}>
-              <Image alt="" src='/images/textsection-right-1.jpg' layout='fill' objectFit="cover"/>
+              <Image alt="" src='/images/textsection-right-1.jpg' layout='fill' objectfit="cover"/>
             </div>
           }
         </section>
@@ -614,7 +614,7 @@ function Community({entity1}) {
 
 
     {/* <!-- Invest section --> */}
-    <section className={styles['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+    <section className={styles['why-invest']} style={{'backgroundImage':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
       <div className="container">
         <div className="row justify-content-end align-items-end">
           <div className="col-md-12">

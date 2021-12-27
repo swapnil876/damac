@@ -28,7 +28,7 @@ export default function ImageCardItem( { className, cardDetails  } ) {
     // entity1.fieldMainImageDesktopHome
     height={320}
     // layout='responsive'
-    // objectFit='cover'
+    // objectfit='cover'
     />    );
   console.log('carddetails',cardDetails);
   return (

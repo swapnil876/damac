@@ -106,7 +106,7 @@ export async function getStaticProps(context){
     cache: new InMemoryCache()
   });
 
-  const  data  = await client.query({ query: BUILDING_DOCUMENTATION });
+  const  data  = await client.query({ query: BUILDING_DOCUMENTATION});
 
   let entity1 = data.data.nodeQuery.entities;
   console.log('entity1',entity1);

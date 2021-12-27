@@ -39,7 +39,7 @@ import styles from '../../styles/pages/ProjectPage.module.css'
 import { FiArrowDown } from "react-icons/fi";
 import { FaStreetView } from "react-icons/fa";
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import {PROJECTDETAIL} from '../../graphql/projectdetail';
+import {PROJECT} from '../../graphql/project';
 
 
 
@@ -194,16 +194,16 @@ function ProjectPage() {
               <div className="col-md-12">
                 <div className="brand-logos-grid">
                   <div className="brand-logo-item">
-                    <Image  src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
+                    <Image  src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectfit="contain" layout="responsive"/>
                   </div>
                   <div className="brand-logo-item">
-                    <Image  src="/images/brand-logo/trumporg.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
+                    <Image  src="/images/brand-logo/trumporg.png" alt="Versace" width={110} height={90} objectfit="contain" layout="responsive"/>
                   </div>
                   <div className="brand-logo-item">
-                    <Image  src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
+                    <Image  src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectfit="contain" layout="responsive"/>
                   </div>
                   <div className="brand-logo-item">
-                    <Image  src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectFit="contain" layout="responsive"/>
+                    <Image  src="/images/brand-logo/image 26.png" alt="Versace" width={110} height={90} objectfit="contain" layout="responsive"/>
                   </div>
                 </div>
               </div>
@@ -284,10 +284,10 @@ export const getServerSideProps = async () => {
     cache: new InMemoryCache()
   });
   // console.log(this.router);
-  const  data  = await client.query({ query: PROJECTDETAIL});
+  const  data  = await client.query({ query: PROJECT});
   let entity1 = data.data.nodeQuery.entities;
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log('entity224',entity1);
+  console.log('entity224',slug);
   // console.log('entity2',entity2);
   // console.log(data.data.nodeQuery.entities);
    return {

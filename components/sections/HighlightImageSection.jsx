@@ -27,10 +27,10 @@ export default function HighlightImageSection({
 
 
   const img = (
-    <Image src={ bgImage } layout="fill" objectFit="cover" objectPosition="center"/>
+    <Image src={ bgImage } layout="fill" objefit="cover" objectPosition="center"/>
   );
   const imgMobile = (
-    <Image src={ bgImageMobile } layout="fill" objectFit="cover" objectPosition="center"/>
+    <Image src={ bgImageMobile } layout="fill" objefit="cover" objectPosition="center"/>
   );
 
 

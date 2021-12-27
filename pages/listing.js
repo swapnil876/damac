@@ -47,7 +47,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
              <Navbar></Navbar>
              <main className="main">
 
-                <section className={style['inner-wrap-hero']} style={{'background-image': 'url(images/project-bg.jpg)'}}>
+                <section className={style['inner-wrap-hero']} style={{'backgroundImage': 'url(images/project-bg.jpg)'}}>
 
                     <div className='project-hero-wrap'>
                         <div className={`container ${style["hero-container"]}`}>
@@ -359,7 +359,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
                 {/* <!-- Experince section --> */}
                 <section className={style['3d-tour']}>
-                  <div className={style['3d-tour-inner']} style={{'background-image':'url(images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px'}}>
+                  <div className={style['3d-tour-inner']} style={{'backgroundImage':'url(images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px'}}>
                     <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                       <h2>Experience it <br/>remotely</h2>
                       <a href="#" className="btn btn-primary"><img src="damac-static/images/per.png" />Take a 3D Tour</a>
@@ -471,7 +471,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
               </section>
 
           {/* <!-- Invest section --> */}
-          <section className={style['why-invest']} style={{'background-image':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
+          <section className={style['why-invest']} style={{'backgroundImage':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
             <div className="container">
               <div className="row justify-content-end align-items-end">
                 <div className="col-md-12">

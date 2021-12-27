@@ -46,7 +46,7 @@ export default function ItemDetailsSection({
       
       { !deviceIsMobile && 
         <div className={styles['bg-image']}>
-          <Image src={imageBanner} layout="fill" objectFit="cover"/>
+          <Image src={imageBanner} layout="fill" objectfit="cover"/>
         </div>
       }
 
@@ -100,7 +100,7 @@ export default function ItemDetailsSection({
 
               { deviceIsMobile && <>
                 <div className={styles['mobile-bg-image']}>
-                  <Image src={imageBanner} layout="fill" objectFit="cover"/>
+                  <Image src={imageBanner} layout="fill" objectfit="cover"/>
                 </div>
 
               </> }

@@ -56,7 +56,7 @@ import {PROJECT} from '../graphql/project';
              <Navbar></Navbar>
              <main className="main">
 
-                <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldMainImageDesktopP + ')'}:{'background-image': 'url(' + entity1.fieldMainImageMobileP + ')'}}>
+                <section className={style['inner-wrap-hero']} style={!isMobile?{'backgroundImage': 'url(' + entity1.fieldMainImageDesktopP + ')'}:{'backgroundImage': 'url(' + entity1.fieldMainImageMobileP + ')'}}>
                 <div className='project-hero-wrap'>
                     <div className={`container ${style["hero-container"]}`}>
                     <div className="row align-items-end">
@@ -121,12 +121,12 @@ import {PROJECT} from '../graphql/project';
           </div>
           { !deviceIsMobile && 
             <div className={`containerRightImage`}>
-              <img alt="" src={entity1.fieldCol1ImageDesktopP2} layout='fill' objectFit="cover" style={{'max-width':'100%'}}/>
+              <img alt="" src={entity1.fieldCol1ImageDesktopP2} layout='fill' objectfit="cover" style={{'max-width':'100%'}}/>
             </div>
           }
           { deviceIsMobile && 
             <div className={`containerBottomImage`}>
-              <img alt="" src={entity1.fieldCol1ImageMobileP3} layout='fill' objectFit="cover" style={{'max-width':'100%'}}/>
+              <img alt="" src={entity1.fieldCol1ImageMobileP3} layout='fill' objectfit="cover" style={{'max-width':'100%'}}/>
             </div>
           }
         </section>
@@ -243,7 +243,7 @@ import {PROJECT} from '../graphql/project';
                             </div>
                             </div> */}
                              {entity1.fieldAmenitiesP3.map((item)=>{
-                                <div class="col-6">
+                                <div className="col-6">
                                 <div className={styles['icon-area']}>
                                   <img alt=""src="/images/icons/building (1) 2.svg" />
                                   <h4>{item.entity.fieldValueAmi}</h4>
@@ -278,9 +278,9 @@ import {PROJECT} from '../graphql/project';
 
                 <section className={styles['about-location']}>
                   <div className="container">
-                    <div class="row">
+                    <div className="row">
                     <div className="col-md-6">
-                    <div class={`text-wrapper`}>
+                    <div className={`text-wrapper`}>
                           <div className="top-text">
                       <h2>Community and Area</h2>
                       </div>
@@ -718,7 +718,7 @@ import {PROJECT} from '../graphql/project';
 
 
                     {/* <!-- Invest section --> */}
-                    <section className={style['why-invest']} style={{'background-image':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
+                    <section className={style['why-invest']} style={{'backgroundImage':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
                       <div className="container">
                         <div className="row justify-content-end align-items-end">
                           <div className="col-md-12">
@@ -735,7 +735,7 @@ import {PROJECT} from '../graphql/project';
 
                   {/* <!-- Experince section --> */}
                   <section className={style['3d-tour']}>
-                    <div className={style['3d-tour-inner']} style={{'background-image':'url(images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px'}}>
+                    <div className={style['3d-tour-inner']} style={{'backgroundImage':'url(images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px'}}>
                       <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                         <h2>Experience it <br/>remotely</h2>
                         <a href="#" className="btn btn-primary"><img src="damac-static/images/per.png" />Take a 3D Tour</a>
@@ -803,7 +803,7 @@ import {PROJECT} from '../graphql/project';
 
 
                     {/* golf town section */}
-                      <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'background-image': 'url(images/project-bg.jpg)'}}>
+                      <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'backgroundImage': 'url(images/project-bg.jpg)'}}>
                                 <div className='project-hero-wrap'>
                                     <div className={`container ${style["hero-container"]}`}>
                                     <div className="row align-items-center">
@@ -896,8 +896,10 @@ import {PROJECT} from '../graphql/project';
 
 
     const  data  = await client.query({ query: PROJECT });
-    console.log('projectdata',data.data.nodeQuery.entities);
-    let entity1 = data.data.nodeQuery.entities[0];
+    console.log('projectdata******',data.data.nodeQuery.entities);
+    let entity1 = {fieldPropertyTypeP2:[],fieldCol1ImageDesktopP2:{},fieldCol1ImageDesktopP2:{},fieldCol2Row1Col1ImageDesp3:{},fieldCol2Row1Col2ImageDesp3:{},fieldCol2Row2ImageDesktopP3:{},fieldAmenitiesP3:[],fieldMultipleLocatorsp4:[]}
+    if(data.data.nodeQuery.entities.length>0)
+      entity1 = data.data.nodeQuery.entities[0];
     // console.log('entity1',entity1);
   
     return {

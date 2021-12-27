@@ -184,7 +184,7 @@ export const getStaticProps = async () => {
     let projects = data.data.nodeQuery.entities;
     let country = data1.data.taxonomyTermQuery.entities;
     let city = data2.data.taxonomyTermQuery.entities
-    console.log('entity1',data2);
+    console.log('entity1',projects);
   
     return {
       props: {

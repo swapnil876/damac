@@ -74,7 +74,7 @@ function Home( {entity1} ) {
             }
 
             { (deviceIsMobile) &&
-              <div className="homeMobileBanner" style={{'background-image': 'url(' + entity1.fieldMainImageMobileHome.url + ')'}}>
+              <div className="homeMobileBanner" style={{'backgroundImage': 'url(' + entity1.fieldMainImageMobileHome.url + ')'}}>
                 <div className="container">
                   
                   <div className="homemobileBannerText">
