@@ -19,6 +19,7 @@ import {BUILDING_DOCUMENTATION} from '../graphql/master/building_documentation';
 // import styles from '../styles/.module.css'
 
 function BuildingDocumentation({entity1}) {
+
   return (
     <div className='buildingdocumentationbody'>
 
