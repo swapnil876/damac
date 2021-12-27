@@ -16,7 +16,7 @@ import styles from '../styles/blog-list.module.css'
 import style from '../styles/pages/damac-in-the-news.module.css'
 
 import React, { Component } from "react";
-
+import { useMediaQuery } from 'react-responsive'
 
 
 

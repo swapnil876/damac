@@ -27,6 +27,8 @@ import { FaBed } from 'react-icons/fa';
 import { FaBath } from 'react-icons/fa';
 
 
+import { useMediaQuery } from 'react-responsive'
+
 function Bookstep2({entity1}) {
   return (
     <div id="appBody">

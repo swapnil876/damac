@@ -13,6 +13,7 @@ import ImageCardItem from '../components/ImageCardItem'
 
 
 import React, { Component } from "react";
+import { useMediaQuery } from 'react-responsive'
 
 import liststyle from "../styles/bases/ListStyles.module.css"
 import { ApolloClient, InMemoryCache } from '@apollo/client';

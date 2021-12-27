@@ -11,6 +11,7 @@ import Footer from '../components/Footer'
 
 
 import React, { Component } from "react";
+import { useMediaQuery } from 'react-responsive'
 
 // import styles from '../styles/.module.css'
 

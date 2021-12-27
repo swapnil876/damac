@@ -21,7 +21,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { CAREERS } from '../graphql/career';
 
 import {isMobile} from 'react-device-detect';
-
+import { useMediaQuery } from 'react-responsive'
 
 function Career({entity1}) {
   return (

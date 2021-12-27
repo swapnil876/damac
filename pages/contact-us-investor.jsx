@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 // importing form template
 import InvestorContactForm from '../components/InvestorContactForm';
-
+import { useMediaQuery } from 'react-responsive'
 
 // Navbar
 import Navbar from '../components/navbar'

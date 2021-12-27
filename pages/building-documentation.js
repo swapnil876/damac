@@ -10,6 +10,7 @@ import PageTitle from '../components/PageTitle'
 
 
 import React, { Component } from "react";
+import { useMediaQuery } from 'react-responsive'
 // import { getStaticProps } from './project'
 
 

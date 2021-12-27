@@ -17,7 +17,7 @@ import TextSection from '../components/text-section'
 
 
 import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
-
+import { useMediaQuery } from 'react-responsive'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';

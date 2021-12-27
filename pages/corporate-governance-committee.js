@@ -22,7 +22,8 @@ import ContactForm from '../components/ContactForm'
 
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
-
+ import { useMediaQuery } from 'react-responsive'
+ 
 //  Importing the CorporateGovernance component
  import CorporateGovernance from "../components/CorporateGovernance";
 

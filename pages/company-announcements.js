@@ -21,7 +21,8 @@ import ContactForm from '../components/ContactForm'
 
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
-
+ import { useMediaQuery } from 'react-responsive'
+ 
 // FA
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
