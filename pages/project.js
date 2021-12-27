@@ -38,7 +38,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import {PROJECT} from '../graphql/project';
 
- export default function Projects({entity1, mobileDevice}){
+ export default function Project({entity1,mobileDevice}){
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     useEffect(() => {
@@ -56,7 +56,7 @@ import {PROJECT} from '../graphql/project';
              <Navbar></Navbar>
              <main className="main">
 
-                <section className={style['inner-wrap-hero']} style={!isMobile?{'backgroundImage': 'url(' + entity1.fieldMainImageDesktopP + ')'}:{'backgroundImage': 'url(' + entity1.fieldMainImageMobileP + ')'}}>
+                <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldMainImageDesktopP + ')'}:{'background-image': 'url(' + entity1.fieldMainImageMobileP + ')'}}>
                 <div className='project-hero-wrap'>
                     <div className={`container ${style["hero-container"]}`}>
                     <div className="row align-items-end">
@@ -121,12 +121,12 @@ import {PROJECT} from '../graphql/project';
           </div>
           { !deviceIsMobile && 
             <div className={`containerRightImage`}>
-              <img alt="" src={entity1.fieldCol1ImageDesktopP2} layout='fill' objectfit="cover" style={{'max-width':'100%'}}/>
+              <img alt="" src={entity1.fieldCol1ImageDesktopP2} layout='fill' objectFit="cover" style={{'max-width':'100%'}}/>
             </div>
           }
           { deviceIsMobile && 
             <div className={`containerBottomImage`}>
-              <img alt="" src={entity1.fieldCol1ImageMobileP3} layout='fill' objectfit="cover" style={{'max-width':'100%'}}/>
+              <img alt="" src={entity1.fieldCol1ImageMobileP3} layout='fill' objectFit="cover" style={{'max-width':'100%'}}/>
             </div>
           }
         </section>
@@ -280,7 +280,7 @@ import {PROJECT} from '../graphql/project';
                   <div className="container">
                     <div className="row">
                     <div className="col-md-6">
-                    <div className={`text-wrapper`}>
+                    <div class={`text-wrapper`}>
                           <div className="top-text">
                       <h2>Community and Area</h2>
                       </div>
@@ -718,7 +718,7 @@ import {PROJECT} from '../graphql/project';
 
 
                     {/* <!-- Invest section --> */}
-                    <section className={style['why-invest']} style={{'backgroundImage':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
+                    <section className={style['why-invest']} style={{'background-image':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
                       <div className="container">
                         <div className="row justify-content-end align-items-end">
                           <div className="col-md-12">
@@ -735,7 +735,7 @@ import {PROJECT} from '../graphql/project';
 
                   {/* <!-- Experince section --> */}
                   <section className={style['3d-tour']}>
-                    <div className={style['3d-tour-inner']} style={{'backgroundImage':'url(images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px'}}>
+                    <div className={style['3d-tour-inner']} style={{'background-image':'url(images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px'}}>
                       <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                         <h2>Experience it <br/>remotely</h2>
                         <a href="#" className="btn btn-primary"><img src="damac-static/images/per.png" />Take a 3D Tour</a>
@@ -803,7 +803,7 @@ import {PROJECT} from '../graphql/project';
 
 
                     {/* golf town section */}
-                      <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'backgroundImage': 'url(images/project-bg.jpg)'}}>
+                      <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'background-image': 'url(images/project-bg.jpg)'}}>
                                 <div className='project-hero-wrap'>
                                     <div className={`container ${style["hero-container"]}`}>
                                     <div className="row align-items-center">
@@ -908,4 +908,4 @@ import {PROJECT} from '../graphql/project';
          entity1 : entity1
       }, // will be passed to the page component as props
     }
- }
+  }
