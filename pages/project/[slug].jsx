@@ -38,7 +38,8 @@ import styles from '../../styles/pages/ProjectPage.module.css'
 // icons
 import { FiArrowDown } from "react-icons/fi";
 import { FaStreetView } from "react-icons/fa";
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {PROJECTDETAIL} from '../../graphql/projectdetail';
 
 
 
@@ -53,7 +54,7 @@ function ProjectPage() {
 
   // Use the postid prop for retrieving info
   const { slug } = router.query
-
+  console.log('slug',slug);
 
   const id = 33; // Fetch id here..
 
@@ -99,7 +100,7 @@ function ProjectPage() {
 
      
 
-      <main className="main listing-main">
+      {/*<main className="main listing-main">
 
 
         <HeroCoverImage
@@ -124,9 +125,7 @@ function ProjectPage() {
         <SliderTextSection
             color=""
             title="The premier venue for best-in-class facilities"
-            subtext={`Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.  Live your story amongst a spectacular mix of culture and leisure attractions. 
-
-That are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.`}
+            subtext={`Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.  Live your story amongst a spectacular mix of culture and leisure attractions. That are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.`}
 
             itemBoxes={
 
@@ -268,7 +267,7 @@ That are sure to leave you astounded, and retreat to your luxurious haven whenev
         <SimilarPropertiesGridSection/>
 
 
-      </main>
+      </main>*/}
 
       <Footer></Footer>
 
@@ -276,6 +275,28 @@ That are sure to leave you astounded, and retreat to your luxurious haven whenev
     </div>
 
   );
+}
+
+export const getServerSideProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+  // console.log(this.router);
+  const  data  = await client.query({ query: PROJECTDETAIL});
+  let entity1 = data.data.nodeQuery.entities;
+  // let entity2 = data.data.nodeQuery.entities[1];
+  console.log('entity224',entity1);
+  // console.log('entity2',entity2);
+  // console.log(data.data.nodeQuery.entities);
+   return {
+      props: {
+        entity1: "entity1",
+        // entity2: entity2
+      }
+    }
+
 }
 
 export default ProjectPage
