@@ -23,8 +23,16 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { useMediaQuery } from 'react-responsive'
 
 import styles from '../styles/pages/project-landing.module.css'
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {PROJECT} from '../graphql/project';
+import {COUNTRY} from '../graphql/master/country';
+import {CITY} from '../graphql/master/cityjs';
 
-export default function ProjectLanding(){
+
+// Bootstrap Css
+// import 'bootstrap/dist/css/bootstrap.css'
+
+const ProjectLanding= ({projects,countries,cities})=> {
     return (
       <div className="ProjectLanding">
             <Navbar></Navbar>
@@ -46,22 +54,17 @@ export default function ProjectLanding(){
                                     </div>
                                 </div>
                                 <div className="col-md-6 d-flex flex-wrap justify-content-between">
-                                    <div className={`${styles['form-field-wrap']} d-flex`}>
+                                    <div className={`${styles["form-field-wrap"]} d-flex`}>
                                         <div className={styles['form-field']}>
-                                            <select name="all_country" className={styles['form-select']} id="" style={{'margin-right': '50px'}}>
+                                            <select name="all_country" className={styles['form-select']} id="" style={{'marginRight': '50px'}}>
                                                 <option value="">All Countries</option>
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4</option>
-                                                <option value="">5</option>
-                                                <option value="">6</option>
+                                                {countries.map((country,k) => (<option key={k} value={country.tid}>{country.name}</option>))}
                                             </select>
                                         </div>
                                         <div className={styles['form-field']}>
                                             <select name="all_city" className={styles['form-select']} id="">
                                                 <option value="">All Cities</option>
-                                                <option value="">1</option>
+                                                {cities.map((city,k) => (<option key={k} value={city.tid}>{city.name}</option>))}
                                             </select>
                                         </div>
                                     </div>
@@ -79,130 +82,39 @@ export default function ProjectLanding(){
                 <div className="container">
                     <div className={styles['filtered_properties']}>
                         <div className="row">
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="damac-static/images/project-landing-1.jpg" className="img-fluid" />
-                                        <h6>DAMAC Hills</h6>
-                                        <p>Dubailand &#8226; Dubai &#8226; UAE</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />2,750 sqft</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><FaBed/>1-3 Bedrooms</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><FaHome/>Apartments</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>
-                                            <div className={styles['shape-contact']}>
-                                                <ul className="d-flex align-items-center p-0">
-                                                    <li><a href="#" className={styles['border-icon']}>Know more</a></li>
-                                                    <li><a href="#" className={styles['solid-icon']}>View units</a></li>
-                                                </ul>
+                            {projects.map((project,k) => (
+                                <div key={k} className="col-md-6">
+                                    <div className={styles['property-slider-wrap']}>
+                                        <div className={styles['project-card']}>
+                                            <img src={project.fieldMainImageDesktopP.url} className="img-fluid" />
+                                            <h6>{project.title}</h6>
+                                            <p>{project.fieldCityp.entity.name} &#8226; {project.fieldCountryP.entity.name}</p>
+                                            <ul className={styles['bedroom-detail']}>
+                                                <li>
+                                                    <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED {project.fieldStartingFromPriceP2}*</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />{project.fieldAreaP2} sqft</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><FaBed/>{project.fieldBedRoomsP2} Bedrooms</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><FaHome/>{project.fieldLocalityP2}</a>
+                                                </li>
+                                            </ul>
+                                            <div className={styles['shape-wrap-plan']}>
+                                                <div className={styles['shape-contact']}>
+                                                    <ul className="d-flex align-items-center p-0">
+                                                        <li><a href="#" className={styles['border-icon']}>Know more</a></li>
+                                                        <li><a href="#" className={styles['solid-icon']}>View units</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="damac-static/images/project-landing-2.jpg" className="img-fluid" />
-                                        <h6>Greenwood at Damac Hills</h6>
-                                        <p>Dubailand &#8226; Dubai &#8226; UAE</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />2,750 sqft</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><FaBed/>1-4 Bedrooms</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><FaHome/>Villa</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>
-                                            <div className={styles['shape-contact']}>
-                                                <ul className="d-flex align-items-center p-0">
-                                                    <li><a href="#" className={styles['border-icon']}>Know more</a></li>
-                                                    <li><a href="#" className={styles['solid-icon']}>View units</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="damac-static/images/project-landing-1.jpg" className="img-fluid" />
-                                        <h6>DAMAC Hills</h6>
-                                        <p>Dubailand &#8226; Dubai &#8226; UAE</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />2,750 sqft</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><FaBed/>1-3 Bedrooms</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><FaHome/>Apartments</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>
-                                            <div className={styles['shape-contact']}>
-                                                <ul className="d-flex align-items-center p-0">
-                                                    <li><a href="#" className={styles['border-icon']}>Know more</a></li>
-                                                    <li><a href="#" className={styles['solid-icon']}>View units</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="damac-static/images/project-landing-2.jpg" className="img-fluid" />
-                                        <h6>Greenwood at Damac Hills</h6>
-                                        <p>Dubailand &#8226; Dubai &#8226; UAE</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />2,750 sqft</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><FaBed/>1-4 Bedrooms</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><FaHome/>Villa</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>
-                                            <div className={styles['shape-contact']}>
-                                                <ul className="d-flex align-items-center p-0">
-                                                    <li><a href="#" className={styles['border-icon']}>Know more</a></li>
-                                                    <li><a href="#" className={styles['solid-icon']}>View units</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                             <div className="col-md-12">
                                 <div className="view_more_btn text-center">
                                     <a href="#" className={styles['solid-icon']}>View more</a>
@@ -257,3 +169,35 @@ export default function ProjectLanding(){
       </div>
     )
 }
+
+export const getStaticProps = async () => {
+    // Device React
+    // const deviceIsMobile = isMobile;
+    // const deviceType = deviceIsMobile;
+  
+    const client = new ApolloClient({
+      uri: process.env.STRAPI_GRAPHQL_URL,
+      cache: new InMemoryCache()
+    });
+
+
+    const  data  = await client.query({ query: PROJECT });
+    const  data1  = await client.query({ query: COUNTRY });
+    const  data2  = await client.query({ query: CITY });
+    // console.log('projectdata',data.data.nodeQuery.entities);
+    let projects = data.data.nodeQuery.entities;
+    let country = data1.data.taxonomyTermQuery.entities;
+    let city = data2.data.taxonomyTermQuery.entities
+    console.log('entity1',data2);
+  
+    return {
+      props: {
+         // mobileDevice: deviceType,
+         projects : projects,
+         countries: country,
+         cities: city
+      }, // will be passed to the page component as props
+    }
+  }
+
+export default ProjectLanding

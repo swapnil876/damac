@@ -30,7 +30,9 @@ export default function ImageCardItem( { className, cardDetails  } ) {
     // layout='responsive'
     // objectFit='cover'
     />    );
-  console.log('carddetails',cardDetails);
+
+  // console.log('carddetails',cardDetails);
+
   return (
 
     <div className={ 'image-card-item' }>
@@ -50,7 +52,7 @@ export default function ImageCardItem( { className, cardDetails  } ) {
         <p>{cardDetails.text}</p>
       </div>
       <div className={`cta-btn-wrapper`}>
-        <Link href={cardDetails.ctaLink}><a className={`btn btn-primary`}>{cardDetails.ctaText}</a></Link>
+        <Link href={cardDetails}><a className={`btn btn-primary`}>{cardDetails.ctaText}</a></Link>
       </div>
 
     </div>

@@ -12,6 +12,8 @@ import { useMediaQuery } from 'react-responsive'
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 
+import styles from '../styles/components/Navbar.module.css'
+
 
 // FA
 import ReactDOM from 'react-dom'
@@ -284,7 +286,7 @@ export default function Navbar({ className, children, navbarStyle }) {
                     <div className="header-item-wrapper not-on-mobile">
 
                       <div className="dropdown dropdown-item-outer language-dropdown">
-                        <a href="#" className="dropdown-toggle language-dropdown-link">
+                        <a href="#" className={`${styles["lang_drop"]} dropdown-toggle language-dropdown-link`}>
                             <span style={ {'marginRight': '6px'} }>English</span> 
                             <FontAwesomeIcon size='xs' icon={ faChevronDown }/>
                         </a>

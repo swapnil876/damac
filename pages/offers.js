@@ -83,6 +83,7 @@ export const getStaticProps = async () => {
     const  data  = await client.query({ query: OFFERS });
     // console.log('entity1',data);
     let entity1 = data.data.nodeQuery.entities;
+    console.log(entity1);
     let offer = []
     // {
     //   title: 'DAMAC Hills',
@@ -95,7 +96,7 @@ export const getStaticProps = async () => {
     //   id: '1929392',
     // },
     entity1.map((v,i)=>{
-      console.log(v);
+      // console.log(v);
       if(v.fieldImageOffer != null)
       offer.push({imageUrl:v.fieldImageOffer.url,title:v.fieldImageOffer.title,description:v.fieldDescriptionOffer})
       else
@@ -105,7 +106,7 @@ export const getStaticProps = async () => {
       // v.description = v.fieldDescriptionOffer;
     });
     // let entity2 = data.data.nodeQuery.entities[1];
-    console.log('entity2',offer);
+    // console.log('entity2',offer);
     // console.log('entity2',entity2);
     // console.log(data.data.nodeQuery.entities);
      return {

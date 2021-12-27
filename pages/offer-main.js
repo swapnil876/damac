@@ -13,12 +13,10 @@ import AboutBanner from '../components/AboutBanner'
 import Footer from '../components/Footer'
 
 
+import Slider from "react-slick";
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { ABOUT_US } from '../graphql/aboutus';
-
-
-import Slider from "react-slick";
+import { OFFERS } from '../graphql/master/offers';
 
 
 const sliderSettings = {
@@ -28,8 +26,6 @@ const sliderSettings = {
       slidesToShow: 1,
       slidesToScroll: 1
  };
-
-
 
 
  // React Responsive
@@ -59,15 +55,11 @@ function OfferMain({entity1}) {
         setDeviceIsMobile( true );
       }
 
+    //   importing bootstrap js
       import("bootstrap/dist/js/bootstrap");
 
    }, [])
 
-//    useEffect(() => {
-//     import("bootstrap/dist/js/bootstrap");
-//   }, []);
-
-  // 
 
   const isDesktopOrLaptop = useMediaQuery(
        { minDeviceWidth: 768 },
@@ -91,7 +83,7 @@ function OfferMain({entity1}) {
 
       <main className="main">
       {/* <!-- community Hero section --> */}
-      <section className={styles['offermain-hero']} style={{'background-image':'url(damac-static/images/offer-main.jpg)'}}>        
+      <section className={styles['offermain-hero']} style={{'background-image':'url(' + entity1.fieldImageOffer.url + ')'}}>        
         <div className={`container ${styles["offerhero-container"]}`}>
           <div className="row align-items-end">
             <div className="col-md-12">
@@ -110,16 +102,8 @@ function OfferMain({entity1}) {
             <h1>Hospitality Investment never looked this good.</h1>
           </div>
           <div className={styles['hospitality-maintxt']}>
-            <p>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</p>
-            <p>Make your next acquisition in Dubai's promising hospitality market with a profitable investment that's destined to soar.</p>
-            <p>With 1,500 hotels across 120 countries, Radisson is a world-leader in hospitality. Now, with Radisson Dubai DAMAC Hills, you can be part of a global network with a smart investment and attractive limited-time offers from DAMAC.</p>
-            <ul>
-              <li>100% VAT waiver</li>
-              <li>100% registration fee waiver</li>
-              <li>3-year payment plan</li>
-            </ul>
-            <p>*Payable on capital paid amount. All income from the property after expiry of offer period shall accrue on an actual basis. Terms & conditions apply.</p>
-          </div>
+            {entity1.fieldDescriptionOffer}
+            </div>
         </div>
       </section>
       {/* <!-- callback section --> */}
@@ -262,24 +246,26 @@ function OfferMain({entity1}) {
   )
 }
 
+
 export const getStaticProps = async () => {
 
-  const client = new ApolloClient({
-    uri: process.env.STRAPI_GRAPHQL_URL,
-    cache: new InMemoryCache()
-  });
+    const client = new ApolloClient({
+      uri: process.env.STRAPI_GRAPHQL_URL,
+      cache: new InMemoryCache()
+    });
 
-  const  data  = await client.query({ query: ABOUT_US });
-  let entity1 = data.data.nodeQuery.entities[0];
+    const  data  = await client.query({ query: OFFERS });
+    let entity1 = data.data.nodeQuery.entities[3];
 
-   return {
-      props: {
-        
+    console.log(entity1);
+
+     return {
+        props: {
+          entity1: entity1
+        }
       }
-    }
 
 }
-
 
 export default OfferMain
 

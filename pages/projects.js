@@ -38,7 +38,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import {PROJECT} from '../graphql/project';
 
- export default function Project({mobileDevice, entity1}){
+ export default function Projects({entity1, mobileDevice}){
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     useEffect(() => {
@@ -896,8 +896,8 @@ import {PROJECT} from '../graphql/project';
 
 
     const  data  = await client.query({ query: PROJECT });
+    console.log('projectdata',data.data.nodeQuery.entities);
     let entity1 = data.data.nodeQuery.entities[0];
-    console.log('entity1',entity1);
   
     return {
       props: {

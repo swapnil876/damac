@@ -76,15 +76,14 @@ function BuildingDocumentation({entity1}) {
                  </li> */}
 
 
-              {
-               entity1.map((item)=>{
-                 <li>
-                   <div className="doc-name">{item.nid}</div>
+              {               
+               entity1.map((item, index)=>(
+                 <li key={ index }>
+                   <div className="doc-name">{item.entityLabel}</div>
                    <div className="doc-link"><Link href={item.fieldFile.entity.url}><a>Download</a></Link></div>
                  </li>
-               })
+                ))
               }
-                  
                </ul>
 
              </div>
