@@ -170,7 +170,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
     )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     // Device React
     // const deviceIsMobile = isMobile;
     // const deviceType = deviceIsMobile;

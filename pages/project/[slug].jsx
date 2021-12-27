@@ -287,7 +287,7 @@ export const getServerSideProps = async () => {
   const  data  = await client.query({ query: PROJECT});
   let entity1 = data.data.nodeQuery.entities;
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log('entity224',slug);
+  // console.log('entity224',slug);
   // console.log('entity2',entity2);
   // console.log(data.data.nodeQuery.entities);
    return {
