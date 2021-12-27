@@ -823,7 +823,7 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: COMMUNITY });
-  let entity1 = data.data.nodeQuery(filter.conditions).entities[0];
+  let entity1 = data.data.nodeQuery.entities[0];
   console.log('entity1',entity1);
    return {
       props: {

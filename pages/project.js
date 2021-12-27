@@ -38,7 +38,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import {PROJECT} from '../graphql/project';
 
- export default function Project({mobileDevice}){
+ export default function Project({mobileDevice, entity1}){
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     useEffect(() => {

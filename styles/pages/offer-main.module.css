@@ -1,0 +1,282 @@
+section.offermain-hero {
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    position: rea;
+    position: relative;
+    color: #fff;
+    width: 100%;
+    background-repeat: no-repeat;
+}
+
+.offerhero-container {
+    position: absolute;
+    bottom: 100px;
+    left: 104px;
+}
+
+.offermain-banner-txt h1 {
+    font-size: 72px;
+    line-height: 72px;
+}
+
+.offermain-banner-txt p {
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 0.32px;
+    margin-top: 10px;
+}
+
+section.hospitality {
+    padding-top: 55px;
+}
+
+.community-card-btn a {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: center;
+    padding: 15px 32px;
+}
+
+.hospitality-main-head h1 {
+    font-size: 44px;
+    line-height: 52px;
+    margin: 0;
+}
+
+.hospitality-maintxt p,
+.hospitality-maintxt ul {
+    margin: 0;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 28px;
+    letter-spacing: 0.32px;
+    opacity: 75%;
+}
+
+.callback-schedule {
+    padding: 80px 0;
+}
+
+.dm-col-6 {
+    padding: 0 22px;
+}
+
+.callback-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.callback-card h6 {
+    font-size: 32px;
+    line-height: 38px;
+    margin-top: 32px;
+    margin-bottom: 8px;
+}
+
+.callback-card p {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.32px;
+    opacity: 75%;
+    font-weight: 300;
+    margin-bottom: 24px;
+}
+
+a.callback-card-btn {
+    padding: 15px 32px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 40px;
+}
+
+/*estimate css*/
+section.estimate {
+    padding-top: 38px;
+    padding-bottom: 59px;
+    color: white;
+    background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+}
+
+section.estimate .container {
+    padding-top: 38px;
+    padding-bottom: 59px;
+}
+
+section.estimate .col-md-8 {
+    padding-right: 156px;
+}
+
+section.estimate .col-md-8 img {
+    width: 30px;
+    margin-bottom: 16px;
+}
+
+p.estimate-tagline {
+    margin-bottom: 47px;
+}
+
+.estimate-inner {
+    display: flex;
+    columns: 2;
+    gap: 20px;
+    align-items: center;
+}
+
+.border-white {
+    padding: 15px 20px;
+    width: 50%;
+    margin-bottom: 22px;
+    border: 0.5px solid #FFFFFF;
+}
+
+.estimate-inner p {
+    font-size: 20px;
+}
+
+.estimate-inner span {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 148%;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+    opacity: 50%;
+}
+
+span.text-right.dark {
+    opacity: 100%;
+}
+
+span.text-right {
+    float: right;
+}
+
+span.text-right.dark i {
+    margin-left: 20px;
+}
+
+.estimate-inner p {
+    font-size: 20px;
+}
+
+.estimate-cost {
+    margin-top: 40px;
+}
+
+.estimate-cost h4 {
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 31px;
+}
+
+.estimate-cost ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.estimate-cost h4 {
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 31px;
+}
+
+.estimate-cost ul li {
+    margin-bottom: 26px;
+    font-size: 26px;
+    float: right;
+    text-align: right;
+    width: 100%;
+}
+
+.estimate-cost span.text-left {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    float: left;
+    width: 50%;
+}
+
+.estimate-cost span {
+    opacity: 0.7;
+}
+
+section.faq-section {
+    background: #000;
+    color: #fff;
+    padding-top: 60px;
+    padding-bottom: 199px;
+}
+
+.faq-icon h2 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 44px;
+    margin-top: 8px;
+    margin-bottom: 60px;
+}
+
+section.faq-section div.accordion,
+section.faq-section .accordion-item,
+section.faq-section div.accordion button {
+    background: transparent !important;
+    color: #fff;
+}
+
+.callback-card {
+    margin-bottom: 50px;
+}
+
+.accordion-body {
+    padding: 1rem 1.25rem;
+}
+
+.faq-wrap .accordion-body {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .border-white {
+        width: 100%;
+    }
+
+    .estimate-inner {
+        width: 100%;
+        flex-direction: column;
+    }
+
+}
+
+@media(max-width: 767px) {
+    section.estimate .col-md-8 {
+        padding-right: 12px;
+    }
+
+    .estimate-cost ul li {
+        margin-bottom: 0px;
+    }
+
+    .offermain-banner-txt h1 {
+        font-size: 35px;
+        line-height: 32px;
+    }
+
+    .offerhero-container {
+        position: absolute;
+        bottom: 100px;
+        left: 0;
+    }
+
+    .hospitality-main-head h1 {
+        font-size: 30px;
+        line-height: 30px;
+        margin: 0;
+    }
+}
