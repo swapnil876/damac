@@ -884,7 +884,7 @@ import {PROJECT} from '../graphql/project';
 
 
 
- export async function getStaticProps(context) {
+ export async function getServerSideProps(context) {
     // Device React
     const deviceIsMobile = isMobile;
     const deviceType = deviceIsMobile;

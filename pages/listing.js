@@ -655,7 +655,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
 
- export async function getStaticProps(context) {
+ export async function getServerSideProps(context) {
 
 
     // Device React
