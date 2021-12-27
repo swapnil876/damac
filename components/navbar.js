@@ -207,7 +207,7 @@ export default function Navbar({ className, children, navbarStyle }) {
                   <div className="menuicon-wrapper">
                     {
                       navbarStyle=='dark'?
-                      <a href="#" className="mainmenutoggle" onClick={handleMenuToggle} style={{'background-image':'unset'}}>
+                      <a href="#" className="mainmenutoggle" onClick={handleMenuToggle} style={{'backgroundImage':'unset'}}>
                     <img src="images/icons/Menu/menu.png" style={navbarStyle=='dark'?{'width':'28px', 'height':'18px'}:{'display':'none'}}/>
                     </a> :
                     <a href="#" className="mainmenutoggle" onClick={handleMenuToggle}>
@@ -323,7 +323,7 @@ export default function Navbar({ className, children, navbarStyle }) {
               <div className="coverArea">
                 <Image 
                 src="/images/bigmenu-left.jpg" 
-                layout="fill" objectFit="cover"
+                layout="fill" objectfit="cover"
                 objectPosition="center"
                 />
               </div>

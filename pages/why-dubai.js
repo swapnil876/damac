@@ -73,8 +73,8 @@ const WhyDubai= ({entity1})=> {
            <div className="col-md-7">
              <div className="dubais-success-icons">
                <div className="row">
-                  {entity1.fieldMultipleCounters.map((counter) => (
-                     <div key={counter.id} className="col-4">
+                  {entity1.fieldMultipleCounters.map((counter,index) => (
+                     <div key={index} className="col-4">
                        <div className="icon-box">
                          <img alt=""src="/images/icons/building 1.png"/>
                          <h3>{counter.targetRevisionId}</h3>
@@ -274,13 +274,13 @@ const WhyDubai= ({entity1})=> {
                  <div className={`sliderArrows sliderArrowsDark`}>
                    <a href="#" className="sliderArrow">
                      <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path  d="M8.75 15.875L1.875 9L8.75 2.125" stroke="white" strokeLidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path  d="M8.75 15.875L1.875 9L8.75 2.125" stroke="white" strokelidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                       </span>
                    </a>
                    <a href="#" className="sliderArrow">
                      <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path  d="M2.25 2.125L9.125 9L2.25 15.875" stroke="white" strokeLidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path  d="M2.25 2.125L9.125 9L2.25 15.875" stroke="white" strokelidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
 
                       </span>

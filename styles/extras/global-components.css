@@ -132,11 +132,11 @@
 }
 
 .ui-icon.arrow-down {
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3.125V16.875' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4.375 11.25L10 16.875L15.625 11.25' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  backgroundImage: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3.125V16.875' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4.375 11.25L10 16.875L15.625 11.25' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 }
 
 .ui-icon.bookmark {
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3.125V16.875' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4.375 11.25L10 16.875L15.625 11.25' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  backgroundImage: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3.125V16.875' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4.375 11.25L10 16.875L15.625 11.25' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 }
 
 /*
@@ -435,7 +435,7 @@ List grid
     padding: 80px;
     padding-top: 120px;
     background-color: var(--primary);
-    background-image: var(--primary-gradient);
+    backgroundImage: var(--primary-gradient);
     color: #fff;
     margin-bottom: 10px;
     position: relative;
@@ -460,7 +460,7 @@ List grid
         padding: 20px 0;
         padding-top: 80px;
         background-color: var(--primary);
-        background-image: var(--primary-gradient);
+        backgroundImage: var(--primary-gradient);
         color: #fff;
         margin-bottom: 0px;
     }

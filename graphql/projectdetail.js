@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-const PROJECTDETAIL = gql`
+const PROJECT = gql`
   query {
-    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "tid", value: ["1"]}]}) {
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["project"]}]}) {
       entities {
         ... on NodeProject{
             title
@@ -180,4 +180,4 @@ const PROJECTDETAIL = gql`
     }
   }`;
 
-export { PROJECTDETAIL };
+export { PROJECT };

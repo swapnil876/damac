@@ -32,14 +32,14 @@ export default function BlogCardItem( { className, cardDetails  } ) {
              width={380}
              height={211}
              layout='responsive'
-             objectFit='cover'
+             objectfit='cover'
         /> */}
         <img
              src={ cardDetails.imageUrl }
              width={380}
              height={211}
              layout='responsive'
-             objectFit='cover'
+             objectfit='cover'
         />
       </div>
 

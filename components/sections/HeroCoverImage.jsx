@@ -46,7 +46,7 @@ export default function HeroCoverImage({
         className={styles['coverImage']}
         src={coverImage} 
         width={1920} 
-        objectFit='cover'
+        objectfit='cover'
         height={1080}
         layout="fill"
     >

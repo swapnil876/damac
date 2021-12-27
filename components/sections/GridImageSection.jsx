@@ -55,23 +55,23 @@ export default function GridImageSection({
           <div className={styles['desktop-image-grid']}>
             <div className={styles['grid-image-outer']}>
               <div className={styles['full-grid-img']}>
-                <Image src={gridImages[0]} layout="fill" objectFit="cover"/>
+                <Image src={gridImages[0]} layout="fill" objecfit="cover"/>
               </div>
             </div>
             <div className={styles['desktop-image-grid-right']}>
               <div className={styles['grid-image-outer']}>
                 <div className={styles['full-grid-img']}>
-                  <Image src={gridImages[1]} layout="fill" objectFit="cover"/>
+                  <Image src={gridImages[1]} layout="fill" objecfit="cover"/>
                 </div>
               </div>
               <div className={styles['grid-image-outer']}>
                 <div className={styles['full-grid-img']}>
-                  <Image src={gridImages[2]} layout="fill" objectFit="cover"/>
+                  <Image src={gridImages[2]} layout="fill" objecfit="cover"/>
                 </div>
               </div>
               <div className={styles['grid-image-outer']}>
                 <div className={styles['full-grid-img']}>
-                  <Image src={gridImages[3]} layout="fill" objectFit="cover"/>
+                  <Image src={gridImages[3]} layout="fill" objecfit="cover"/>
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function GridImageSection({
 
             <div className={styles['maintext-box']}>
               <div className={styles['bgimage']}>
-                <Image src={mobileImages[0]} layout="fill" objectFit="cover"/>
+                <Image src={mobileImages[0]} layout="fill" objectfit="cover"/>
               </div>
               <div className={styles['text-content']}>
                 <ShowMoreText
