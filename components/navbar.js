@@ -362,7 +362,7 @@ export default function Navbar({ className, children, navbarStyle }) {
                     </ActiveLink>
                   </div>
                   <div className="biglink-container">
-                    <ActiveLink href="/damac-static/contact.html" activeClassName="active">
+                    <ActiveLink href="/contact" activeClassName="active">
                          <a className="biglink"><span>Contact Us</span></a>
                     </ActiveLink>
                   </div>
