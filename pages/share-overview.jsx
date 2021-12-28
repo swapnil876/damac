@@ -17,7 +17,7 @@ import FooterMoreLinks from '../components/FooterMoreLinks'
 import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
 
-// import styles from '../styles/pages/Quick.module.css'
+import styles from '../styles/pages/ShareOverview.module.css'
 
 
 
@@ -154,52 +154,24 @@ function ShareOverview( { mobileDevice } ) {
                       <table class="table dfm-table">
                         <tbody>
                           <tr>
-                            <td>Volume</td>
-                            <td><strong>729,731</strong></td>
+                            <td className={styles['left_col']}>Volume</td>
+                            <td className={styles['right_col']}><strong>729,731</strong></td>
                           </tr>
                           <tr>
-                            <td>No. of Shares</td>
-                            <td><strong>6,050,000,000</strong></td>
+                            <td className={styles['left_col']}>No. of Shares</td>
+                            <td className={styles['right_col']}><strong>6,050,000,000</strong></td>
                           </tr>
                           <tr>
-                            <td>Change</td>
-                            <td><strong><span class="dfm-success">+0.39 (+0.78%)</span></strong></td>
+                            <td className={styles['left_col']}>Change</td>
+                            <td className={styles['right_col']}><strong><span class="dfm-success">+0.39 (+0.78%)</span></strong></td>
                           </tr>
                           <tr>
-                            <td>Today’s High</td>
-                            <td><strong>1.35</strong></td>
+                            <td className={styles['left_col']}>Today’s High</td>
+                            <td className={styles['right_col']}><strong>1.35</strong></td>
                           </tr>
                           <tr>
-                            <td>Ask</td>
-                            <td><strong>1.36</strong></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <div class="col-md-4 dfm-col-4">
-                    <div class="dfm-table-main table-responsive">
-                      <table class="table dfm-table">
-                        <tbody>
-                          <tr>
-                            <td>Open</td>
-                            <td><strong>1.38</strong></td>
-                          </tr>
-                          <tr>
-                            <td>Last</td>
-                            <td><strong>1.35</strong></td>
-                          </tr>
-                          <tr>
-                            <td>52 Week High</td>
-                            <td><strong>1.75</strong></td>
-                          </tr>
-                          <tr>
-                            <td>52 Weeks Low</td>
-                            <td><strong>1.34</strong></td>
-                          </tr>
-                          <tr>
-                            <td>52 Weeks %</td>
-                            <td><strong><span class="dfm-success">103.21</span></strong></td>
+                            <td className={styles['left_col']}>Ask</td>
+                            <td className={styles['right_col']}><strong>1.36</strong></td>
                           </tr>
                         </tbody>
                       </table>
@@ -210,16 +182,44 @@ function ShareOverview( { mobileDevice } ) {
                       <table class="table dfm-table">
                         <tbody>
                           <tr>
-                            <td>YTD</td>
-                            <td><strong><span class="dfm-success">6.92%</span></strong></td>
+                            <td className={styles['left_col']}>Open</td>
+                            <td className={styles['right_col']}><strong>1.38</strong></td>
                           </tr>
                           <tr>
-                            <td>Industry</td>
-                            <td><strong>Real Estate & Construction</strong></td>
+                            <td className={styles['left_col']}>Last</td>
+                            <td className={styles['right_col']}><strong>1.35</strong></td>
                           </tr>
                           <tr>
-                            <td>Market Cap</td>
-                            <td><strong>8,167,500,000</strong></td>
+                            <td className={styles['left_col']}>52 Week High</td>
+                            <td className={styles['right_col']}><strong>1.75</strong></td>
+                          </tr>
+                          <tr>
+                            <td className={styles['left_col']}>52 Weeks Low</td>
+                            <td className={styles['right_col']}><strong>1.34</strong></td>
+                          </tr>
+                          <tr>
+                            <td className={styles['left_col']}>52 Weeks %</td>
+                            <td className={styles['right_col']}><strong><span class="dfm-success">103.21</span></strong></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-md-4 dfm-col-4">
+                    <div class="dfm-table-main table-responsive">
+                      <table class="table dfm-table">
+                        <tbody>
+                          <tr>
+                            <td className={styles['left_col']}>YTD</td>
+                            <td className={styles['right_col']}><strong><span class="dfm-success">6.92%</span></strong></td>
+                          </tr>
+                          <tr>
+                            <td className={styles['left_col']}>Industry</td>
+                            <td className={styles['right_col']}><strong>Real Estate & Construction</strong></td>
+                          </tr>
+                          <tr>
+                            <td className={styles['left_col']}>Market Cap</td>
+                            <td className={styles['right_col']}><strong>8,167,500,000</strong></td>
                           </tr>
                         </tbody>
                       </table>
