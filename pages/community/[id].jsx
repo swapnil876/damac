@@ -7,11 +7,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 // Navbar
-import Navbar from '../components/navbar'
-import Footer from '../components/Footer'
-import styles from '../styles/pages/Community.module.css'
+import Navbar from '../../components/navbar'
+import Footer from '../../components/Footer'
+import styles from '../../styles/pages/Community.module.css'
 
-
+// Bootstrap Css
+import 'bootstrap/dist/css/bootstrap.css'
 
 
  // React Responsive
@@ -20,11 +21,12 @@ import styles from '../styles/pages/Community.module.css'
  import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
 // Static import
-import pageBanner from '../public/images/community-bg.jpg'
+import pageBanner from '../../public/images/community-bg.jpg'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { COMMUNITY } from '../graphql/community';
+import { COMMUNITY } from '../../graphql/community';
+import { PROJECT } from '../../graphql/project';
 
 
 
@@ -41,6 +43,9 @@ function Community({entity1}) {
       if ( isMobile ) {
         setDeviceIsMobile( true );
       }
+
+       //   importing bootstrap js
+       import("bootstrap/dist/js/bootstrap");
    }, [])
 
   // 
@@ -70,15 +75,13 @@ function Community({entity1}) {
       <main className="main about-main">
         <header className={styles['community-banner']}>
           <div className={styles['bg-image']}>
-            <Image alt="" 
+            <img alt={entity1.title} 
               className={styles['bg-image']}
-              src={pageBanner} width={1600} 
+              src={entity1.fieldImageDesktop.url} 
+              width={1600} 
               height={700}
-              placeholder="blur"
               layout="fill"
-            >
-              
-            </Image>
+            />
           </div>
           <div className={styles['bottom-gradient']}></div>
 
@@ -102,16 +105,16 @@ function Community({entity1}) {
               </div> 
 
               <div className={ styles['banner-text-right'] }>
-                <div className="btn-list">
+                <div className={styles['btn-list']}>
                   <Link href={entity1.fieldBrochure.entity.url}>
                   {/* {entity1.fieldBrochure.url} */}
-                    <a className="btn btn-dark-blur" target="_blank" download>
+                    <a className={`${styles["cust_banner_btn"]} btn btn-dark-blur`} target="_blank" download>
                       <span>Download Brochure</span>
                     </a>
                   </Link>
 
                   <Link href="#">
-                    <a className="btn btn-dark-blur">
+                    <a className={`${styles["cust_banner_btn"]} btn btn-dark-blur`}>
                       <span>View Gallery (19)</span>
                     </a>
                   </Link>
@@ -234,17 +237,17 @@ function Community({entity1}) {
                       
                       <div className='booking-btns'>
                         <a className='btn btn-primary btn-icon'>
-                          <span className='fa-icon'>
-                            <FontAwesomeIcon icon={faEnvelope}/>
+                          <span className='fa-icon' style={{'margin': '0'}}>
+                            <FontAwesomeIcon icon={faEnvelope} style={{'margin-right':'0'}}/>
                           </span>
-                          <span className='btnlabel'>Schedule a call-back</span>
+                          {/* <span className='btnlabel'>Schedule a call-back</span> */}
                         </a>
 
-                        <a className='btn btn-primary-outline btn-icon'>
-                          <span className='fa-icon'>
-                            <FontAwesomeIcon icon={faWhatsapp}/>
+                        <a className='btn btn-primary-outline btn-icon' style={{'border': '1px solid #bd8c1b'}}>
+                          <span className='fa-icon' style={{'margin': '0'}}>
+                            <FontAwesomeIcon icon={faWhatsapp} style={{'color':'#bd8c1b', 'margin-right':'0'}}/>
                           </span>
-                          <span className='btnlabel'>WhatsApp</span>
+                          {/* <span className='btnlabel'>WhatsApp</span> */}
                         </a> 
                       </div>
 
@@ -527,38 +530,20 @@ function Community({entity1}) {
       <div className="container">
         <div className="row">
 
-          {/* {
-            entity1.fieldMultipleLocators.map((item)=>{
+          {
+            (entity1.fieldMultipleLocators.length > 0) ?
+            entity1.fieldMultipleLocators.forEach((item)=>{
               <div className="col-6 col-md-4">
               <div className="distance-card text-center">
-                <img alt=""src={item.entity.fieldIconm.url} />
+                <img alt={item.entity.fieldTextc6} src={item.entity.fieldIconm.url} />
                 <h5>{item.entity.fieldValuec6}</h5>
                 <p>{item.entity.fieldTextc6}</p>            
               </div>
             </div>
-            })
-          } */}
-          <div className="col-6 col-md-4">
-          <div className="distance-card text-center">
-            <img alt=""src="/images/icons/building (1) 2.svg" />
-            <h5>5 min</h5>
-            <p>from Dubai International <br/>Financial Centre</p>            
-          </div>
-        </div>
-         <div className="col-6 col-md-4">
-          <div className="distance-card text-center">
-            <img alt=""src="/images/icons/aeroplane 3.svg"/>
-            <h5>10 min</h5>
-            <p>from Dubai International <br/>Financial Centre</p>            
-          </div>
-        </div>
-         <div className="col-12 col-md-4">
-          <div className="distance-card text-center">
-            <img alt=""src="/images/icons/sunrise 2.svg"/>
-            <h5>13 min</h5>
-            <p>from Jumeirah <br/>Beach</p>            
-          </div>
-        </div>
+            }) :
+            <div><h2>No Locators Yet !!!</h2></div>
+          }
+
         </div>        
       </div>       
        </section>
@@ -605,7 +590,7 @@ function Community({entity1}) {
               <p> 5</p> 
              </div>
           </div>
-          <a href="#" className={`${styles["white-btn"]} btn`}>Enquire Now</a>
+          <a href="#" className={`${styles["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71'}}>Enquire Now</a>
           </div>
           <div className="col-md-4">
             <div className={styles['estimate-cost']}>
@@ -770,58 +755,59 @@ function Community({entity1}) {
 
 
 
-    <section className={styles['faq-section']}>
-      <div className="container">
-        <div className="faq-icon">
-          <img alt=""src="/damac-static/images/speech-bubble 1.png"/>
-          <h2>Frequently Asked Questions</h2>          
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <div className={styles['faq-wrap']}>
-              <div className="accordion" id="accordionExample">
-                <div className={styles['accordion-item']}>
-                  <h2 className={styles['accordion-header']} id="headingOne">
-                    <button className={styles['accordion-button']} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      What is the lowest mortgage rate in UAE?
-                    </button>
-                  </h2>
-                  <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div className="accordion-body">
-                      The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                    </div>
-                  </div>
-                </div>
-                <div className={styles['accordion-item']}>
-                  <h2 className={styles['accordion-header']} id="headingTwo">
-                    <button className={`${styles["accordion-button"]} collapsed`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      What is the lowest mortgage rate in UAE?
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div className="accordion-body">
-                     The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                    </div>
-                  </div>
-                </div>
-                <div className={styles['accordion-item']}>
-                  <h2 className={styles['accordion-header']} id="headingThree">
-                    <button className={`${styles["accordion-button"]} collapsed`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      What is the lowest mortgage rate in UAE?
-                    </button>
-                  </h2>
-                  <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                    <div className="accordion-body">
-                      The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                    </div>
-                  </div>
-                </div>
-              </div>                            
-            </div>            
-          </div>          
-        </div>        
-      </div>      
-    </section>
+                  {/* <!-- faq section --> */}
+                  <section className={styles['faq-section']}>
+                    <div className="container">
+                        <div className={styles['faq-icon']}>
+                        <img src="damac-static/images/speech-bubble 1.png"/>
+                        <h2>Frequently Asked Questions</h2>          
+                        </div>
+                        <div className="row">
+                        <div className="col-md-12">
+                            <div className={styles['faq-wrap']}>
+                            <div className={styles['accordion']} id="accordionExample">
+                                <div className={styles['accordion-item']}>
+                                <h2 className={styles['accordion-header']} id="headingOne">
+                                    <button className={`accordion-button ${styles["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    What is the lowest mortgage rate in UAE?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div className={styles['accordion-body']}>
+                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    </div>
+                                </div>
+                                </div>
+                                <div className={styles['accordion-item']}>
+                                <h2 className={styles['accordion-header']} id="headingTwo">
+                                    <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    What is the lowest mortgage rate in UAE?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div className={styles['accordion-body']}>
+                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    </div>
+                                </div>
+                                </div>
+                                <div className={styles['accordion-item']}>
+                                <h2 className={styles['accordion-header']} id="headingThree">
+                                    <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What is the lowest mortgage rate in UAE?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div className={styles['accordion-body']}>
+                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    </div>
+                                </div>
+                                </div>
+                            </div>                            
+                            </div>            
+                        </div>          
+                        </div>        
+                    </div>      
+                </section>
 
       </main>
       <Footer></Footer>
@@ -833,7 +819,7 @@ function Community({entity1}) {
 
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
@@ -842,7 +828,9 @@ export const getStaticProps = async () => {
 
   const  data  = await client.query({ query: COMMUNITY });
   let entity1 = data.data.nodeQuery.entities[0];
-  console.log('entity1',entity1);
+  // const  data1  = await client.query({ query: PROJECT,filter:{conditions: [{operator: EQUAL, field: "fieldCommunity.entity.nid", value: [entity1.fieldCommunity.entity.id]}]} });
+  
+  // console.log('entity1',data1.data);
    return {
       props: {
         entity1: entity1,

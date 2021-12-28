@@ -11,7 +11,7 @@
     height: 100vh;
     width: 100%;
     background-color: #111;
-    backgroundImage: linear-gradient(45deg, #111, #c8b37a);
+    background-image: linear-gradient(45deg, #111, #c8b37a);
 }
 
 .homepage-hero-section .bg-image {

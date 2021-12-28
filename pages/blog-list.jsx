@@ -40,7 +40,7 @@ function BlogList( { blogs } ) {
 
       <main className="main bloglist-main">
 
-           <PageTitle title="Blogs" backgroundImage={'/images/investor-relation-hero.jpg'}/>
+           <PageTitle title="Blogs" background-image={'/images/investor-relation-hero.jpg'}/>
 
 
            <section className="bloglist-list-page">

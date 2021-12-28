@@ -4,7 +4,7 @@
 
 .payment-plan-section {
 	padding:  36px 0;
-	backgroundImage: var(--primary-gradient);
+	background-image: var(--primary-gradient);
 	color: #fff;
 }
 

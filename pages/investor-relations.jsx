@@ -53,126 +53,23 @@ function InvestorRelations( {  } ) {
              className={styles['investor-relationsbody']} 
              title="Investor Relations" 
              subtitle="Investor Relations" 
-             backgroundImage={'/damac-static/images/investor-relation-hero.jpg'}
-           /> */}
+             background-image={'/images/investor-relation-hero.jpg'}
+           />
 
 
-      <section className={style['investor-hero']}>
-          <div className="container">
-            <div className={style['investor-main-text']}>
-              <div className={style['relation-txt']}>
-                <h5>Investor Relations</h5>
-                <h1>Investor Relations</h1>
-              </div>
-            </div>
-          </div>
-      </section>
+           <section className="section">
 
-      {/* <!-- corporate profile section --> */}
-      <section className={style['profile-corporate']}>
-        <div className="container p-0">
-          <div className={style['profile-outer-white']}>
-            <div className={`${style["profile-inner-main"]} d-flex justify-content-center`}>
-              <div className={style['profile-main-head']}>
-                <h1 className="">Corporate Profile</h1>
-                <p className="">DAMAC Properties has been shaping the Middle East’s luxury real estate market since 2002, delivering iconic residential, commercial and leisure properties across the region and beyond. DAMAC adds vibrancy to the cities in which its projects are located, with a huge and diverse portfolio that includes two world-class master-planned golf developments. To date, DAMAC has delivered 30,900+ quality homes, with 34,000 more under way.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* <!-- Stock quote section  --> */}
-      <section className={style['stock-wrap']}>
-        <div className="container">
-          <div className="row">
-            <div className={`col-md-4 ${style["dm-stock-right"]}`}>
-              <div className={style['stock-head']}>
-                <h1>Stock Quote</h1>
-              </div>
-              <div className={style['dfm-4-content']}>
-                <p>DAMAC DFM</p>
-                <h2 className="m-0">1.37 AED</h2>
-                <p>January 29, 2021 4:00 PM EST</p>
-              </div>
-              <div className={style['dfm-table-main']}>
-                <table className={`m-0 ${style["table"]} ${style["dfm-table"]}`}>
-                  <tbody>
-                    <tr>
-                      <td>Change</td>
-                      <td className={style['dfm-success']}>+0.39 (+0.78%)</td>
-                    </tr>
-                    <tr>
-                      <td>Volume</td>
-                      <td>2,771,509</td>
-                    </tr>
-                    <tr>
-                      <td>Today’s Open</td>
-                      <td>1.31</td>
-                    </tr>
-                    <tr>
-                      <td>Ask</td>
-                      <td>1.38</td>
-                    </tr>
-                    <tr>
-                      <td>Today’s High</td>
-                      <td>1.39</td>
-                    </tr>
-                    <tr>
-                      <td>Today’s Low</td>
-                      <td>1.28</td>
-                    </tr>
-                    <tr>
-                      <td>52 Week High</td>
-                      <td>4.62</td>
-                    </tr>
-                    <tr>
-                      <td>52 Week Low</td>
-                      <td>0.33</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div className={style['dfm-message']}>
-                  <p>Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-8">
-              <div className={`${style["dfm-main-wrap"]} d-flex justify-content-between`}>
-                <div className="dfm-left-txt d-inline-block">
-                  <p style={{'margin':'0'}}>DFM</p>
-                  <p style={{'margin':'0'}}>1/29/2021 09:33 AM</p>
-                </div>
-                <div className={style['dfm-right-txt']}>
-                  <ul className="dm-ul-dfm d-flex list-unstyled text-right">
-                    <li>6M</li>
-                    <li>3M</li>
-                    <li>1M</li>
-                    <li>1W</li>
-                    <li>3D</li>
-                    <li>1D</li>
-                  </ul>
-                </div>
-              </div>
-              <div className={style['graph-damac']}>
-                <img src="/damac-static/images/graph.jpg" className="img-fluid"/>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-           {/* <!-- enquiry section start here --> */}
-     <section className={style['enquiry-wrap']}>
-       <div className="container">
-         <div className={style['contact-form']}>
-           <form>
-             <div className="row">
-               <div className="col-md-4">
-                 <div className={style['enquiry-head']}>
-                   <h1>Send us an Enquiry</h1>
+             <div className={styles['investorrelations-cover']}>
+               <section className={ styles["profile-corporate"]} >
+                 <div className={ "container p-0"} >
+                   <div className={ styles["profile-outer-white"]} >
+                     <div className={ `${styles['profile-inner-main']} d-flex justify-content-center `} >
+                       <div className={ styles["profile-main-head"]} >
+                         <h1 className={ "text-center"} >Corporate Profile</h1>
+                         <p className={ "text-center"} >DAMAC Properties has been shaping the Middle East’s luxury real estate market since 2002, delivering iconic residential, commercial and leisure properties across the region and beyond. DAMAC adds vibrancy to the cities in which its projects are located, with a huge and diverse portfolio that includes two world-class master-planned golf developments. To date, DAMAC has delivered 30,900+ quality homes, with 34,000 more under way.</p>
+                       </div>
+                     </div>
+                   </div>
                  </div>
                </div>
                <div className="col-md-4 dm-col-4">

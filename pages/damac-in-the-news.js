@@ -36,7 +36,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
          <div className="DamacInTheNews">
              <Navbar></Navbar>
              <main className="main">
-                <section className={styles['press-hero']} style={{'backgroundImage':'url(/images/damac_in_news.png)'}}>               
+                <section className={styles['press-hero']} style={{'background-image':'url(/images/damac_in_news.png)'}}>               
                 <div className={styles['press-hero-wrap']}>
                     <div className={styles['press-content']}>
                     <h2>DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh</h2>

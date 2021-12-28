@@ -341,7 +341,7 @@ import 'bootstrap/dist/css/bootstrap.css'
               </div>
             </section>
             {/* <!-- Why Invest in Dubai --> */}
-            <section className={styles['why-invest']} style={{'backgroundImage':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+            <section className={styles['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
               <div className={`container ${styles["why-invest-container"]}`}
 >
                 <div className="row ">

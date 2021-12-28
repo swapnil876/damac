@@ -36,7 +36,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
          <div className="PressRelease">
              <Navbar></Navbar>
              <main className="main">
-                <section className={styles['press-hero']} style={{'backgroundImage': 'url(damac-static/images/press-realease-banner.jpg)'}}>               
+                <section className={styles['press-hero']} style={{'background-image': 'url(damac-static/images/press-realease-banner.jpg)'}}>               
                 <div className={styles['press-hero-wrap']}>
                     <div className={styles['press-content']}>
                     <h2>DAMAC Properties to Hold First Ever Ramadan Sports Festival at AKOYA</h2>
