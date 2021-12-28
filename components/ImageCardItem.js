@@ -31,7 +31,7 @@ export default function ImageCardItem( { className, cardDetails  } ) {
     // objectfit='cover'
     />    );
 
-  // console.log('carddetails',cardDetails);
+  console.log('carddetails',cardDetails);
 
   return (
 
@@ -47,12 +47,12 @@ export default function ImageCardItem( { className, cardDetails  } ) {
       </div>
 
       <div className={`card-details-box`}>
-        <h3>{/*<Link href={cardDetails.url}><a>*/}{cardDetails.title}{/*</a></Link>*/}</h3>
-        <h5>{cardDetails.subtitle}</h5>
-        <p>{cardDetails.text}</p>
+        <h3>{cardDetails.title}</h3>
+        // <h5>{cardDetails.subtitle}</h5>
+        <p>{cardDetails.description}</p>
       </div>
       <div className={`cta-btn-wrapper`}>
-        <Link href={cardDetails}><a className={`btn btn-primary`}>{cardDetails.ctaText}</a></Link>
+        <Link href="/"><a className={`btn btn-primary`}>SHow</a></Link>
       </div>
 
     </div>
