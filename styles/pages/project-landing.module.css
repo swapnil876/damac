@@ -205,6 +205,12 @@ ul.bedroom-detail li a i {
 	}
 }
 @media (max-width: 767px){
+    .filter_option_wrap {
+        margin-top: -20px;
+    }
+    .form-select{
+        margin-right:10px !important
+    }
     /* .filter_option_wrap .form-field select:first-child{
         margin-right: 30px;
     } */
@@ -218,7 +224,7 @@ ul.bedroom-detail li a i {
 		font-size: 32px;
 	}
 	.filter_option_wrap .form-field select{
-		width: unset;
+		/* width: unset; */
 	}
     a.border-icon,.solid-icon{
         padding:10px 20px;

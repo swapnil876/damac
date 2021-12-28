@@ -16,6 +16,9 @@
 .blog-list{
 	margin-top: 82px;
 }
+.blog-card{
+	margin:24px 0
+}
 .blog-card a h6{
 	font-size: 20px;
 	line-height: 24px;
@@ -50,7 +53,7 @@
 	-webkit-line-clamp: 4;
 }
 .blog-card-btn{
-	margin-bottom: 82px;
+	/* margin-bottom: 82px; */
 	margin-top: 4px;
 }
 .blog-card-btn a{
@@ -58,6 +61,12 @@
 	line-height: 18px;
 	font-weight: 300;
 	padding: 15px 33px;
+}
+.hr-tag{
+	display:none;
+	margin:0;
+	border-bottom:1px solid #C4C4C4;
+	opacity: .6;
 }
 .pagination_main_wrap{
 	margin-top: 43px;
@@ -93,12 +102,21 @@
 	}
 }
 @media (max-width: 767px){
+	.blog-list{
+		margin-top: unset;
+	}
+	.hr-tag{
+		display: block;
+	}
 	.pagination_no{
 		margin: 0 22px;
 	}
 	.pagination_no ul li:not(:last-child){
 		padding-right: 22px;
 	}
+	.blog-card a h6 {
+        height: auto 
+    }
 }
 
 

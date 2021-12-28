@@ -18,16 +18,11 @@ import style from '../styles/pages/damac-in-the-news.module.css'
 import React, { Component } from "react";
 import { useMediaQuery } from 'react-responsive'
 
-
-
 // import styles from '../styles/.module.css'
 
 function PressReleaseList( { blogs } ) {
-
-
   return (
     <div className='bloglistbody'>
-
       <Head>
         <title>Press Release List - Damac</title>
         <meta name="description" content="Press Release List - Damac Properties" />
@@ -35,10 +30,7 @@ function PressReleaseList( { blogs } ) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <Navbar></Navbar>
-
-
       <main className="main bloglist-main">
 
            {/* <PageTitle title="Damac In The News List" subtitle="News" background-image={'damac-static/images/investor-relation-hero.jpg'}/> */}
@@ -58,7 +50,7 @@ function PressReleaseList( { blogs } ) {
            <section className="bloglist-list-page">
              <div className="container">
                
-               <div className='ItemListGrid items-3'>
+               <div className={`ItemListGrid items-3 ${styles["custom_card"]}`}>
                  {
                    blogs.map( (blog, index) => (
 

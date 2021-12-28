@@ -2,7 +2,6 @@
 .calculator_mortage{
 	padding-top: 130px;
 	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
-
 }
 .mortage_calculator_left{
 	padding-bottom: 22px;
@@ -182,6 +181,7 @@ input.range-slider {
 	color: #000;
 	padding: 14px 20px;
 	margin-top: 55px;
+    text-decoration: none;
 }
 
 .interest_mortage{
@@ -337,6 +337,9 @@ section.faq-section .accordion-body {
 	}
 }
 @media (max-width: 767px){
+    .calculator_mortage{
+        background: #111;
+    }
 	.mortage_calculator_left h1{
 		font-size: 32px;
 	}

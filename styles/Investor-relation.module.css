@@ -1,0 +1,263 @@
+
+.investor-hero{
+	height: 329px;
+	width: 100%;
+	background: url('/damac-static/images/investor-relation-hero.jpg') no-repeat center/100%;
+}
+.relation-txt{
+	padding-top: 165px;
+}
+.relation-txt h5{
+	font-size: 16px;
+	letter-spacing: 0.02em;
+	line-height: 19px;
+	color: #ffffff;
+	font-weight: 500;
+	margin-bottom: 13px;
+}
+.relation-txt h1{
+	font-size: 42px;
+	line-height: 49.39px;
+	color: #ffffff;
+}
+.graph-damac {
+    height: 100%;
+}
+
+.graph-damac img {
+    height: 100%;
+    object-fit: contain;
+}
+.profile-corporate{
+	margin-top: -50px;
+}
+.profile-outer-white{
+	padding: 50px;
+	background: #fff;
+	border-radius: 4px;
+}
+.profile-inner-main{
+	background: #000;
+	padding: 50px 137px;
+}
+.profile-main-head h1{
+	font-size: 32px;
+	line-height: 37.63px;
+	color: #fff;
+	letter-spacing: 0.01em;
+	margin-bottom: 16px;
+	text-align: center;
+}
+.profile-main-head p{
+	font-size: 16px;
+	line-height: 25.28px;
+	letter-spacing: 0.04em;
+	font-weight: 300;
+	opacity: 0.75;
+	color: #ffffff;
+	text-align: center;
+}
+.dm-stock-right{
+	padding-left: 50px;
+}
+.stock-head h1{
+	font-size: 32px;
+	line-height: 37.63px;
+}
+.dfm-main-wrap{
+	padding:18px 25px;
+	margin-top: 22px;
+	border: 1px solid #D5E2F0;
+	box-sizing: border-box;
+	background: #F4F7FA;
+	border-radius: 8px;
+}
+.dfm-left-txt p,.dm-ul-dfm li,.dfm-4-content p,.dfm-4-content h2{
+	font-size: 16px;
+	line-height: 21.7px;
+	letter-spacing: 0.06em;
+	font-weight: 300;
+}
+.dm-ul-dfm li{
+ 	margin-left: 24px;
+}
+.dfm-4-content{
+	margin-top: 38px;
+}
+.dfm-4-content h2{
+	font-size: 28px;
+	padding: 4px 0;
+}
+.dfm-table{
+	margin-top: 10px;
+	color: #000;
+}
+.dfm-table tbody tr td{
+	padding:10px;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 22px;
+	letter-spacing: 0.8px;
+}
+.dfm-table tbody tr td:first-child{
+	padding-left: 0px;
+}
+.dfm-success{
+	color: #56B378;
+}
+.dfm-message p{
+	font-size: 14px;
+	line-height: 21px;	
+	letter-spacing: 0.8px;
+	color: #000;
+	font-weight: 300;
+	margin-top: 22px;
+}
+.enquiry-wrap {
+    padding-top: 81px;
+    padding-bottom: 82px;
+}
+.enquiry-head h1 {
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 25px;
+}
+.form-feild input, .form-feild select {
+    height: 48px;
+    margin-bottom: 16px;
+}
+.d-flex.align-items-center.phone-feild {
+    gap: 16px;
+}
+.main-label {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.32px;
+    font-weight: 500;
+    opacity: 40%;
+}
+.form-feild.verification {
+    margin-top: 42px;
+}
+.contact-form-btn {
+    background: #000;
+    display: block;
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 64px;
+}
+.more-wrap {
+    background: #000000;
+    padding-top: 82px;
+    padding-bottom: 142px;
+}
+.more-head h1 {
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+}
+ul.more-link-ul {
+    list-style-type: none;
+    padding: 0;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 55px;
+}
+ul.more-link-ul li {
+    width: 20.42vw;
+    padding-bottom: 45px;
+}
+ul.more-link-ul li a {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+    text-align: left;
+	color:#fff;
+	text-decoration: none;
+}
+ul.more-link-ul li a i {
+    margin-left: 15px;
+}
+.more-link-item:hover {
+    color: #fff;
+}
+.new-realease-wrap{
+	padding: 90px 0;
+}
+.new-realease-head h1{
+	font-size: 32px;
+	line-height: 38px;
+	font-weight: 500;
+	letter-spacing: 0.16px;
+	margin-bottom: 55px;
+}
+.dm-card-image img{
+	width: 100%;
+}
+.dm-card-txt p{
+	font-size: 16px;
+	font-weight: 400;
+	margin-top: 9px;	
+	line-height: 24px;
+	letter-spacing: 0.48px;
+	opacity: 60%;
+	color: #000;
+}
+.dm-card-head h2, .dm-card-head h2 a{
+	font-size: 20px;
+	line-height: 20px;
+	color: #000;
+	letter-spacing: 0.32px;
+	margin-bottom: 6px;	
+	text-decoration: none;
+}
+.dm-card-head h2 a:hover{
+	color: #000;
+}
+@media (max-width: 767px){
+	.profile-inner-main{
+		background: #fff;
+	}
+	.profile-main-head h1, .profile-main-head p{
+		color:#111;
+		text-align: left;
+	}
+	ul.more-link-ul li{
+		width: 100%;
+		padding-bottom: 20px;
+	}
+	.form-feild.verification {
+	    margin-top: 16px;
+	}
+	.contact-form-btn{
+		margin-top: 16px;
+	}
+	.profile-outer-white{
+		padding: 0px;
+	}
+	.profile-corporate{
+		margin: 0;
+	}
+	.profile-inner-main{
+		padding: 20px;
+	}
+	.dm-stock-right {
+	    padding-left: 12px;
+	    padding-top: 20px;
+	}
+	.dfm-main-wrap{
+		flex-direction: column;
+	}
+	.dfm-right-txt{
+		padding-top: 10px;
+	}
+	.dm-card-main{
+		margin-bottom: 35px;
+	}
+}

@@ -263,6 +263,10 @@ ul.report_tab_ul li.active a {
     padding-bottom: 110px;
 }
 @media (max-width: 767px){
+    .report_list h1, .report_list h1 a {
+        font-size: 20px;
+        line-height: 135.6%;
+    }
     .report-main-head .head-text h1{
         font-size: 32px;
         margin-bottom: 30px;

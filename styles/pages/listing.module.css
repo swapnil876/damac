@@ -250,7 +250,32 @@ a.border-icon svg,
     padding-bottom: 53px;
     color: #fff;
 }
-
+.town-ship-detail .slider-nav{
+    display: flex;
+    justify-content: center;
+    /* padding:10px */
+    position: relative;
+    top: -20px;
+}
+.town-ship-detail .slider-nav .left-nav,
+.town-ship-detail .slider-nav .right-nav {
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.46);
+    backdrop-filter: blur(38px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:#fff;
+    font-size: 22px;
+    margin:3px
+}
+.town-ship-detail .slider-nav .left-nav a,
+.town-ship-detail .slider-nav .right-nav a{
+    color:#fff;
+    text-decoration: none;
+}
 .town-ship-title h2 {
     font-size: 44px;
     font-style: normal;
@@ -343,6 +368,11 @@ a.border-icon svg,
 
 .brand-loc {
     margin-top: 80px;
+}
+
+.brand-loc a {
+    text-decoration: none;
+    color: #111
 }
 
 .brand-loc ul {
@@ -994,9 +1024,13 @@ ul.bedroom-detail {
 }
 
 @media(max-width: 768px) {
+    .shape-content-wrap {
+        padding: 0px 0;
+    }
     .golf_town_banner {
         aspect-ratio: 1/.5 !important;
     }
+
     .ava_list_btn {
         margin-top: -70px;
     }
@@ -1266,17 +1300,19 @@ ul.bedroom-detail {
 
 }
 
-@media(max-width: 550px){
+@media(max-width: 550px) {
     .golf_town_banner {
         aspect-ratio: 1/.7 !important;
     }
 }
-@media(max-width: 360px){
+
+@media(max-width: 360px) {
     .golf_town_banner {
         aspect-ratio: 1/.8 !important;
     }
 }
-@media(max-width: 340px){
+
+@media(max-width: 340px) {
     .golf_town_banner {
         aspect-ratio: 1/.9 !important;
     }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { useRouter } from 'next/router'
 
 import Head from 'next/head'
@@ -31,7 +31,7 @@ import SimilarPropertiesGridSection from '../../components/sections/SimilarPrope
 
 // import styles from '../styles/.module.css'
 
-
+import { FaPlay, FaAngleLeft, FaAngleRight, FaArrowDown, FaCross } from 'react-icons/fa'
 import styles from '../../styles/pages/ProjectPage.module.css'
 
  
@@ -50,6 +50,9 @@ import {PROJECT} from '../../graphql/project';
 
 function ProjectPage() {
   const router = useRouter()
+
+
+  const [customModal, openCustomModal] = useState(false)
 
 
   // Use the postid prop for retrieving info
@@ -94,14 +97,9 @@ function ProjectPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <Navbar className="navbar-normal"></Navbar>
 
-
-     
-
-      {/*<main className="main listing-main">
-
+      <main className="main listing-main">
 
         <HeroCoverImage
            itemId={ id } 
@@ -112,6 +110,35 @@ function ProjectPage() {
            location={'Dubailand, Dubai, United Arab Emirates'}
         />
 
+
+          {/* Custom popup modal */}
+          {
+            customModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{openCustomModal(false)}}>
+                <div className={`${styles["project_slug_modal"]} popup_modal`}>
+                  <div className={styles['banner_area']}>
+                    <div className="close" onClick={()=>{
+                      openCustomModal(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+          <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+          </svg>
+
+                      </span>
+                    </div>
+                    <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                  </div>
+                </div>
+              </a>
+            </div> :
+            ""
+          }
+           {/* Custom popup modal */}
+
+        
 
         <ItemDetailsSection imageBanner='/images/3d-tour-listing.jpg' />
 
@@ -267,7 +294,7 @@ function ProjectPage() {
         <SimilarPropertiesGridSection/>
 
 
-      </main>*/}
+      </main>
 
       <Footer></Footer>
 

@@ -99,7 +99,7 @@ function QuickFactsheet( { mobileDevice } ) {
           
         </HeadingTitle>
 
-        <section className='section' style={{'padding-top': '68px','padding-bottom': '12px'}}>
+        <section className='section' style={{'padding-bottom': '12px'}}>
           <div className='container'>
              <h3 className='section-title' style={{'font-size':'32px', 'max-width': '420px'}}>Pioneering luxury real estate across the region</h3>
 

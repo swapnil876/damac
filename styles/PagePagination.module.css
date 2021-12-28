@@ -20,7 +20,11 @@
     justify-content: center;
     cursor: pointer;
 }
-
+@media (max-width:400px){
+    .page-pagination  .pagination-arrow{
+        margin:0
+    }
+}
 .page-pagination .pagination-arrow.disabled {
   opacity: 0.5;
 }
