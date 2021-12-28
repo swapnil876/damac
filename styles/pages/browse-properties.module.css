@@ -10,7 +10,7 @@
 	letter-spacing: -0.01em;
 	color: #ffffff40 !important;
 	padding-top: 121px;
-	padding-bottom: 93px;
+	/* padding-bottom: 93px; */
 }
 .browse-hero-text span{
 	color: #ffffff !important;
@@ -190,6 +190,8 @@ ul.bedroom-detail li a img {
 	line-height: 16px;
 	font-weight: 300;
 	letter-spacing: 0.02em;
+	color:#111;
+	text-decoration: none;
 }
 .project-detail-nav a {
 	display: block;
@@ -250,17 +252,23 @@ a.border-icon .whatsapp-ico{
     margin-bottom: 82px;
 }
 .pagination_main_wrap .page_btn a{
-	padding:13px
+	padding:13px;
+	color:#111;
+	text-decoration: none;
 }
 .pagination_main_wrap .page_btn a svg{
 	width:22px;
-	height:22px
+	height:22px;
+	color:#111;
+	text-decoration: none;
 }
 .page_btn a {
     padding: 13px 17.5px;
     border-radius: 50%;
     box-shadow: 0px 4px 15px 0px #00000026;
     background: #ffffff;
+	color:#111;
+	text-decoration: none;
 }
 .pagination_no {
     margin: 0 32px;
@@ -272,6 +280,10 @@ a.border-icon .whatsapp-ico{
     font-size: 16px;
     line-height: 27px;
     opacity: 0.65;
+}
+.pagination_no ul li a{
+	color:#111;
+	text-decoration: none;
 }
 /*pagination css end here*/
 .filtered_properties{
@@ -327,11 +339,12 @@ a.border-icon .whatsapp-ico{
     line-height: 33px;
     letter-spacing: 0.02em;
 }
-.invest-wrap a.read-more {
+.invest-wrap a.read-more, .read-more {
     font-size: 16px;
     font-weight: 500;
     line-height: 18px;
     letter-spacing: 0.04em;
+	text-decoration: none;
 }
 /*why invest end here*/
 /*faq-section css start here*/
@@ -358,6 +371,7 @@ section.faq-section .accordion-body {
     font-weight: 300;
     line-height: 24px;
     letter-spacing: 0.03em;
+	padding: 1rem 1.25rem;
 }
 .faq-wrap button.accordion-button {
     font-size: 20px;
@@ -451,7 +465,7 @@ section.faq-section .accordion-body {
 		padding: 0px;
 	}
 	.why-invest-container{
-		padding: 12px;
+		padding: 57px 12px;
 	}
 	section.faq-section{
 		padding:50px 0;

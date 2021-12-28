@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-import { FaPlay, FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+import { FaPlay, FaAngleLeft, FaAngleRight, FaEnvelope } from 'react-icons/fa'
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -19,6 +19,9 @@ import styles from '../styles/pages/Community.module.css'
 import style from '../styles/pages/listing.module.css'
 
 import React, { Component, useState, useEffect } from "react";
+
+// Bootstrap Css
+import 'bootstrap/dist/css/bootstrap.css'
 
 // FA
 import ReactDOM from 'react-dom'
@@ -40,6 +43,9 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
         if ( isMobile ) {
           setDeviceIsMobile( true );
         }
+
+        //   importing bootstrap js
+       import("bootstrap/dist/js/bootstrap");
      }, [])
 
      return(
@@ -93,7 +99,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                 <h4>{listing.fieldPrice}</h4>
                                 <p><span>AED</span></p>
 
-                                <h4>{listing.fieldUnitType.entity.name}</h4>
+                                <h4>{listing.fieldUnitType.entity}</h4>
                                 <p><span>Unit Type</span></p>               
 
                                 <ul className={`d-flex ${style["shape-count"]}`}>
@@ -165,8 +171,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                 <div className={style['shape-wrap-plan']}>              
                                 <div className={`${style["shape-contact"]} float-end`}>
                                     <ul className="d-flex align-items-center p-0">
-                                    <li><a href="#" className={style['solid-icon']}><i className="far fa-envelope"></i></a></li>
-                                    <li><a href="#" className={style['border-icon']}><i className="fab fa-whatsapp"></i></a></li>
+                                    <li><a href="#" className={style['solid-icon']}><FontAwesomeIcon icon={faEnvelope} /></a></li>
+                                    <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp} /></a></li>
                                     </ul>                  
                                 </div>                
                                 </div>              
@@ -584,64 +590,59 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             </div>
           </section>
 
-          <section className={style['faq-section']}>
-            <div className="container">
-              <div className={style['faq-icon']}>
-                <img src="damac-static/images/speech-bubble 1.png"/>
-                <h2>Frequently Asked Questions</h2>
-              </div>
-              <div className="row">
-                <div className="col-md-12">
-                  <div className={style['faq-wrap']}>
-                    <div className={style['accordion']} id="accordionExample">
-                      <div className={style['accordion-item']}>
-                        <h2 className={style['accordion-header']} id="headingOne">
-                          <button className={style['accordion-button']}  type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            What is the lowest mortgage rate in UAE?
-                          </button>
-                        </h2>
-                        <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne"
-                          data-bs-parent="#accordionExample">
-                          <div className="accordion-body">
-                            The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                          </div>
+                  {/* <!-- faq section --> */}
+                  <section className={style['faq-section']}>
+                    <div className="container">
+                        <div className={style['faq-icon']}>
+                        <img src="damac-static/images/speech-bubble 1.png"/>
+                        <h2>Frequently Asked Questions</h2>          
                         </div>
-                      </div>
-                      <div className={style['accordion-item']}>
-                        <h2 className={style['accordion-header']} id="headingTwo">
-                          <button className={`${style["accordion-button"]} collapsed`} type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            What is the lowest mortgage rate in UAE?
-                          </button>
-                        </h2>
-                        <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo"
-                          data-bs-parent="#accordionExample">
-                          <div className="accordion-body">
-                            The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                          </div>
-                        </div>
-                      </div>
-                      <div className={style['accordion-item']}>
-                        <h2 className={style['accordion-header']} id="headingThree">
-                          <button className={`${style["accordion-button"]} collapsed`} type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            What is the lowest mortgage rate in UAE?
-                          </button>
-                        </h2>
-                        <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree"
-                          data-bs-parent="#accordionExample">
-                          <div className="accordion-body">
-                            The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+                        <div className="row">
+                        <div className="col-md-12">
+                            <div className={style['faq-wrap']}>
+                            <div className={style['accordion']} id="accordionExample">
+                                <div className={style['accordion-item']}>
+                                <h2 className={style['accordion-header']} id="headingOne">
+                                    <button className={`accordion-button ${style["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    What is the lowest mortgage rate in UAE?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div className={style['accordion-body']}>
+                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    </div>
+                                </div>
+                                </div>
+                                <div className={style['accordion-item']}>
+                                <h2 className={style['accordion-header']} id="headingTwo">
+                                    <button className={`accordion-button ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    What is the lowest mortgage rate in UAE?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div className={style['accordion-body']}>
+                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    </div>
+                                </div>
+                                </div>
+                                <div className={style['accordion-item']}>
+                                <h2 className={style['accordion-header']} id="headingThree">
+                                    <button className={`accordion-button ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What is the lowest mortgage rate in UAE?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div className={style['accordion-body']}>
+                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    </div>
+                                </div>
+                                </div>
+                            </div>                            
+                            </div>            
+                        </div>          
+                        </div>        
+                    </div>      
+                </section>
 
 
 

@@ -188,7 +188,15 @@ export default function Navbar({ className, children, navbarStyle }) {
                   <div className="col-5">
                     <div className="d-flex justify-content-end">
                       <div className="menuicon-wrapper">
-                        <a href="#" className="mainmenutoggle" onClick={handleMenuToggle}></a>
+                      {
+                      navbarStyle=='dark'?
+                      <a href="#" className="mainmenutoggle" onClick={handleMenuToggle} style={{'backgroundImage':'unset'}}>
+                    <img src="images/icons/Menu/menu.png" style={navbarStyle=='dark'?{'width':'28px', 'height':'18px'}:{'display':'none'}}/>
+                    </a> :
+                    <a href="#" className="mainmenutoggle" onClick={handleMenuToggle}>
+                    </a>
+                    }
+
                       </div>
                     </div>
                   </div>

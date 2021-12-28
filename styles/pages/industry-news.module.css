@@ -18,6 +18,8 @@
 }
 .related-post img {
     border-radius: 0;
+    max-width: 100%;
+    width: 100%;
 }
 .press-content h2 {
     font-size: 32px;
@@ -80,6 +82,7 @@ ul.social-media li {
 }
 .content-detail img {
     margin-bottom: 32px;
+    object-fit: cover;
 }
 .related-title h2 {
     font-size: 32px;
@@ -168,6 +171,9 @@ a.read-more {
     padding-bottom: 71px;
 }
 @media(max-width: 767px){
+    .content-detail img {
+        aspect-ratio: 1/1;
+    }
     .content-wrap-news{
         flex-direction: column;
     }

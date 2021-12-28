@@ -4,3 +4,10 @@
 .pagination-container {
 	padding-bottom: 80px;
 }
+
+@media (max-width:767px) {
+	.custom_card {
+		padding: 0px 0;
+		grid-gap: 0px 0px;
+	}
+}

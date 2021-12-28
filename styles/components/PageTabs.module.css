@@ -2,6 +2,7 @@
 .pagetabs{
     display: flex;
     margin-bottom: 45px;
+    flex-wrap: wrap;
 }
 
 .pagetabs-link  {

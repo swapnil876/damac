@@ -85,6 +85,10 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+.damac-table-wrapper{
+  max-width: 100%;
+  overflow: auto;
+}
 
 @media (max-width: 575.98px) {
   .table-responsive-sm {
@@ -340,7 +344,9 @@
 
 
 @media ( max-width: 768px ) {
-
+  .title-wrapper-box h2{
+    width:40%
+  }
   .form-row-2 {
       grid-template-columns: repeat(1, 1fr);
       grid-gap: 16px;
@@ -395,14 +401,18 @@ List grid
     grid-template-columns: repeat(1, 1fr);
   }
 }
-
-.image-card-item .card-image {
-    margin-bottom: 12px;
+.image-card-item{
+  margin:24px 0
 }
-
+.image-card-item .card-image {
+    /* margin-bottom: 12px; */
+}
+.image-card-item .card-image img{
+  max-width: 100%;
+}
 .image-card-item .card-details-box {
     max-width: 550px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .image-card-item h3 {
     font-size: 24px;
@@ -415,6 +425,7 @@ List grid
 }
 .image-card-item p {
     font-size: 16px;
+    margin:0
 }
 .image-card-item h5 {
     font-size: 20px;
@@ -424,7 +435,7 @@ List grid
 }
 
 .image-card-item .cta-btn-wrapper {
-    text-align: right;
+    text-align: left;
 }
 
 
@@ -458,11 +469,13 @@ List grid
 
     .page-title {
         padding: 20px 0;
-        padding-top: 80px;
+        /* padding-top: 80px; */
+        padding-top: 120px;
         background-color: var(--primary);
         backgroundImage: var(--primary-gradient);
         color: #fff;
         margin-bottom: 0px;
+        height: 200px;
     }
     .page-title h2 {
         margin: 0;

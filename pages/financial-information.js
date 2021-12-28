@@ -195,8 +195,8 @@ function FinancialInformation( { mobileDevice } ) {
                  </ul>
                </div>
  
-               <div className="my-2 pb-5">
-                 <img src="damac-static/img/financialinfoimg.png" width="758"/>
+               <div className="my-5 pb-5">
+                 <img src="damac-static/img/financialinfoimg.png" width="758" style={{'max-width':'100%'}}/>
                </div>
                
                 </div>

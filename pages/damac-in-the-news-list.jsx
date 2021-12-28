@@ -58,7 +58,7 @@ function DamacInTheNewsList( { blogs } ) {
            <section className="bloglist-list-page">
              <div className="container">
                
-               <div className='ItemListGrid items-3'>
+               <div className={`ItemListGrid items-3 ${styles["custom_card"]}`}>
                  {
                    blogs.map( (blog, index) => (
 

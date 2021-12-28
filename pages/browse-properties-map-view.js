@@ -9,6 +9,8 @@ import Footer from '../components/Footer'
 
 import PageTitle from '../components/PageTitle'
 
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+
 import PagePagination from '../components/PagePagination'
 import BlogCardItem from '../components/BlogCardItem'
 
@@ -16,6 +18,7 @@ import BlogCardItem from '../components/BlogCardItem'
 import styles from '../styles/pages/browse-properties-map-view.module.css'
 
 import React, { Component } from "react";
+import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
 // FA
 import ReactDOM from 'react-dom'
@@ -34,64 +37,70 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
              <Navbar navbarStyle='dark'></Navbar>
              <main className="main">
 
+                 {
+                     isMobile ? <PageTitle title="Find the best properties by DAMAC"/> : ''
+                 }
+
              {/* <!-- Map section start --> */}
             <section className={styles['map-section']}>
-                <div className={styles['filter_main_wrap']}>
-                <div className="container">
-                    <div className={styles['filter_option_wrap']}>
-                        <form action="">
-                            <div className="row">
-                                <div className="col-md-3">
-                                    <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
-                                        <i className="fas fa-search"></i>
-                                        <input type="text" placeholder="Search Project or Area" className="form-control"/>
+
+                {
+                    ! isMobile ? 
+                    <div className={styles['filter_main_wrap']}>
+                    <div className="container">
+                        <div className={styles['filter_option_wrap']}>
+                            <form action="">
+                                <div className="row">
+                                    <div className="col-md-3">
+                                        <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
+                                            <i className="fas fa-search"></i>
+                                            <input type="text" placeholder="Search Project or Area" className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 d-flex flex-wrap">
+                                        <div className={styles['form-field']}>
+                                            <select name="property_type" className={styles['form-select']} id="">
+                                                <option value="">Property Type</option>
+                                                <option value="">Apartment</option>
+                                                <option value="">Hotel</option>
+                                                <option value="">Office</option>
+                                                <option value="">Plot</option>
+                                                <option value="">Townhouse</option>
+                                                <option value="">Villa</option>
+                                            </select>
+                                        </div>
+                                        <div className={styles['form-field']}>
+                                            <select name="bedrooms" className={styles['form-select']} id="">
+                                                <option value="">Bedrooms</option>
+                                                <option value="">Single</option>
+                                            </select>
+                                        </div>
+                                        <div className={styles['form-field']}>
+                                            <select name="locality" className={styles['form-select']} id="">
+                                                <option value="">Locality</option>
+                                                <option value="">local</option>
+                                            </select>
+                                        </div>
+                                        <div className={styles['more-filter-btn']}>
+                                            <a href="#">More filters <span></span><span></span><span></span></a>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <div className={styles['search_btn_filter']}>
+                                            <a href="#" className="btn btn-primary">Search</a>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="col-md-6 d-flex flex-wrap">
-                                    <div className={styles['form-field']}>
-                                        <select name="property_type" className={styles['form-select']} id="">
-                                            <option value="">Property Type</option>
-                                            <option value="">Apartment</option>
-                                            <option value="">Hotel</option>
-                                            <option value="">Office</option>
-                                            <option value="">Plot</option>
-                                            <option value="">Townhouse</option>
-                                            <option value="">Villa</option>
-                                        </select>
-                                    </div>
-                                    <div className={styles['form-field']}>
-                                        <select name="bedrooms" className={styles['form-select']} id="">
-                                            <option value="">Bedrooms</option>
-                                            <option value="">Single</option>
-                                        </select>
-                                    </div>
-                                    <div className={styles['form-field']}>
-                                        <select name="locality" className={styles['form-select']} id="">
-                                            <option value="">Locality</option>
-                                            <option value="">local</option>
-                                        </select>
-                                    </div>
-                                    <div className={styles['more-filter-btn']}>
-                                        <a href="#">More filters <span></span><span></span><span></span></a>
-                                    </div>
-                                </div>
-                                <div className="col-md-3">
-                                    <div className={styles['search_btn_filter']}>
-                                        <a href="#" className="btn btn-primary">Search</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                   
-                </div>
-              
-            </div>
+                            </form>
+                        </div>                  
+                    </div>     
+                    </div> :  ''
+                }
+               
 
                 <div className="container-fluid">
                     <div className="row">
-                           <div className={`col-md-4 px-0 ${styles["sider-bar-overflow"]}`}
->
+                           <div className="col-md-4 px-0 sider-bar-overflow">
                             <div className={styles['properties-sidebar-wrap']}>
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
@@ -125,15 +134,13 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                     </div>
                                     <div className={styles['project-detail-nav']}>
                                         <div className={styles['left-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-left"></i></a>
+                                            <a href="#"><FaAngleLeft/></a>
                                         </div>
                                         <div className={styles['right-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-right"></i></a>
+                                            <a href="#"><FaAngleRight/></a>
                                         </div>
                                     </div>
                                 </div>
-                               
-
 
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
@@ -167,10 +174,10 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                     </div>
                                     <div className={styles['project-detail-nav']}>
                                         <div className={styles['left-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-left"></i></a>
+                                            <a href="#"><FaAngleLeft/></a>
                                         </div>
                                         <div className={styles['right-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-right"></i></a>
+                                            <a href="#"><FaAngleRight/></a>
                                         </div>
                                     </div>
                                 </div>
@@ -208,10 +215,10 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                     </div>
                                     <div className={styles['project-detail-nav']}>
                                         <div className={styles['left-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-left"></i></a>
+                                            <a href="#"><FaAngleLeft/></a>
                                         </div>
                                         <div className={styles['right-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-right"></i></a>
+                                            <a href="#"><FaAngleRight/></a>
                                         </div>
                                     </div>
                                 </div>
@@ -249,10 +256,10 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                     </div>
                                     <div className={styles['project-detail-nav']}>
                                         <div className={styles['left-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-left"></i></a>
+                                            <a href="#"><FaAngleLeft/></a>
                                         </div>
                                         <div className={styles['right-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-right"></i></a>
+                                            <a href="#"><FaAngleRight/></a>
                                         </div>
                                     </div>
                                 </div>
@@ -290,30 +297,25 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                     </div>
                                     <div className={styles['project-detail-nav']}>
                                         <div className={styles['left-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-left"></i></a>
+                                            <a href="#"><FaAngleLeft/></a>
                                         </div>
                                         <div className={styles['right-nav']}>
-                                            <a href="#"><i className="fas fa-chevron-right"></i></a>
+                                            <a href="#"><FaAngleRight/></a>
                                         </div>
                                     </div>
                                 </div>
                                 
                             </div>
-                            
+                          </div>
 
-
-                            </div>
-
-                             <div className={`col-md-8 px-0 ${styles["map-wrap-view"]}`}>
+                             <div className="col-md-8 px-0 map-wrap-view">
                                 <div className={styles['map-image']}>                                    
                                     <img src="/damac-static/images/map-view.jpg" className="img-fluid" />              
                                 </div>                                
                             </div>
                     </div>
                 </div>
-                 
-
-
+                
             </section>        
            
            

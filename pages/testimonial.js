@@ -39,16 +39,21 @@ function Bookstep2({entity1}) {
       </Head>
 
 
-      <Navbar className="navbar-dark" navbarStyle="dark"></Navbar>
+      <Navbar></Navbar>
         <main className="main-body main">
+
+        <VideoBanner bannerImage="damac-static/images/play-testimonial.png"> </VideoBanner>
+
+
         {/* <!-- testimonial header section --> */}
-      <section className={`${styles["testimonial_main_wrap"]} d-flex justify-content-center align-items-center`} style={{'background':'url(images/testimonial-banner.jpg) no-repeat center/100%'}}>
+      {/* <section className={`${styles["testimonial_main_wrap"]} d-flex justify-content-center align-items-center`} style={{'background':'url(images/testimonial-banner.jpg) no-repeat center/100%'}}>
         <div className={styles['play_btn']}>
           <img src="damac-static/images/play-testimonial.png" alt="play button"/>
         </div>
-      </section>
-
+      </section> */}
       {/* <!-- testimonial main section --> */}
+
+
       <section className={styles['main_client_sec']}>
         <div className={`${styles["heading_testimonial"]} text-center`}>
           <h1>Testimonials</h1>

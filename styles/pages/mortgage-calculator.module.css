@@ -2,7 +2,6 @@
 .calculator_mortage{
 	padding-top: 130px;
 	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
-
 }
 .mortage_calculator_left{
 	padding-bottom: 22px;
@@ -182,6 +181,7 @@ input.range-slider {
 	color: #000;
 	padding: 14px 20px;
 	margin-top: 55px;
+    text-decoration: none;
 }
 
 .interest_mortage{
@@ -247,7 +247,7 @@ input.range-slider {
 .form-check-input[type="checkbox"]:checked {
     background-color: #C0AA71 !important; 
     border-color: #C0AA71 !important;
-    backgroundImage: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e")
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e")
 }
 
 .checkbox_main{
@@ -301,7 +301,7 @@ section.faq-section .accordion-body {
     letter-spacing: 0.03em;
 }
 .accordion-button.collapsed::after {
-    backgroundImage: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     transform: rotate(-180deg);
 }
 .accordion-button::after {
@@ -310,7 +310,7 @@ section.faq-section .accordion-body {
     height: 1.25rem;
     margin-left: auto;
     content: "";
-    backgroundImage: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-size: 1.25rem;
     transition: transform .2s ease-in-out;
@@ -337,6 +337,9 @@ section.faq-section .accordion-body {
 	}
 }
 @media (max-width: 767px){
+    .calculator_mortage{
+        background: #111;
+    }
 	.mortage_calculator_left h1{
 		font-size: 32px;
 	}

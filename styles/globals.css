@@ -484,7 +484,7 @@ a.btn.btn-blur-dark {
 */
 
 .damac-text-section-container {
-    padding: 80px 0;
+    padding: 40px 0;
 }
 
 .damac-text-section {
@@ -759,6 +759,12 @@ section.damac-about-chairman .aboutChairmanbox {
 
 
 @media (max-width: 767px) {
+    .chairmans-photo{
+        margin-top: 20px;
+    }
+    .chairmans-message-text h2 {
+        font-size: 32px !important;
+    }
     section.damac-about-chairman {
         padding-top: 50px;
     }
@@ -794,6 +800,7 @@ section.damac-about-chairman .aboutChairmanbox {
         max-width: 100%;
         width: 100%;
         overflow: hidden;
+        text-align: center;
     }
 
     .chairmanPhoto-mobile div {

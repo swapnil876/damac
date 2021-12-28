@@ -188,7 +188,7 @@ export default function ContactForm({ initialValues }) {
 
                             <div className={`form-row form-row-2`}>
                                 <div className={`form-item-col`}>
-                                    <div className={`${styles["form-feild"]} form-check`}>
+                                    <div className={`${styles["form-feild"]} form-check`} style={{'display':'flex'}}>
                                         <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked" />
                                         <label className={styles['form-check-label']} for="flexCheckChecked">
                                             I’d like to hear about news and offers
@@ -196,7 +196,7 @@ export default function ContactForm({ initialValues }) {
                                     </div>
                                 </div>
                                 <div className={`form-item-col`}>
-                                    <div className={`${styles["form-feild"]} form-check`}>
+                                    <div className={`${styles["form-feild"]} form-check`} style={{'display':'flex'}}>
                                         <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked" />
                                         <label className={styles['form-check-label']} for="flexCheckChecked">
                                             I’ve read and Agree to <span style={styling_here.privacy_pg_txt}>Privacy Policy</span>

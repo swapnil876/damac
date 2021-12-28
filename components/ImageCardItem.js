@@ -48,11 +48,11 @@ export default function ImageCardItem( { className, cardDetails  } ) {
 
       <div className={`card-details-box`}>
         <h3>{cardDetails.title}</h3>
-        // <h5>{cardDetails.subtitle}</h5>
+        <h5>{cardDetails.subtitle}</h5>
         <p>{cardDetails.description}</p>
       </div>
       <div className={`cta-btn-wrapper`}>
-        <Link href="/"><a className={`btn btn-primary`}>SHow</a></Link>
+        <Link href="/"><a className={`btn btn-primary`}>Show</a></Link>
       </div>
 
     </div>

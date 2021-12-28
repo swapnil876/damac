@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-
+import { FaPlay, FaAngleLeft, FaAngleRight, FaEnvelope } from 'react-icons/fa'
 import styles from '../styles/pages/commany-announcements.module.css'
 
 // Navbar
@@ -197,7 +197,7 @@ return (
             <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}
             >
                 <div className={`${styles["page_btn"]} prev_btn`}>
-                    <a href="#"><i className="fas fa-chevron-left"></i></a>
+                    <a href="#"><FaAngleLeft/></a>
                 </div>
                 <div className={styles['pagination_no']}>
                     <ul className="list-unstyled d-flex">
@@ -209,7 +209,7 @@ return (
                     </ul>
                 </div>
                 <div className={`${styles["page_btn"]} prev_btn`}>
-                    <a href="#"><i className="fas fa-chevron-right"></i></a>
+                    <a href="#"><FaAngleRight/></a>
                 </div>
             </div>
         </div>

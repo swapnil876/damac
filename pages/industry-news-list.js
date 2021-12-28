@@ -40,7 +40,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className={`${styles["blog-hero-text"]}  text-white m-0`}>Press Releases</h1>
+                            <h1 className={`${styles["blog-hero-text"]}  text-white m-0`}>Industry News</h1>
                         </div>
                     </div>
                 </div>
@@ -68,11 +68,12 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                   </div>
                                 </div>
                                 <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-end`}>
+                                <div className={`${styles["blog-card-btn"]} text-start`}>
                                     <a href="#" className="btn btn-primary">Read more</a>
                                 </div>
                             </div>
                         </div>
+                        <hr className={styles['hr-tag']}/>
                         <div className="col-md-4 bl-col-4">
                             <div className={styles['blog-card']}>
                                 <img src="images/blog-list-2.jpg" className="img-fluid"/>
@@ -92,11 +93,12 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                   </div>
                                 </div>
                                 <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-end`}>
+                                <div className={`${styles["blog-card-btn"]} text-start`}>
                                     <a href="#" className="btn btn-primary">Read more</a>
                                 </div>
                             </div>
                         </div>
+                        <hr className={styles['hr-tag']}/>
                         <div className="col-md-4 bl-col-4">
                             <div className={styles['blog-card']}>
                                 <img src="images/blog-list-3.jpg" className="img-fluid"/>
@@ -116,11 +118,12 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                   </div>
                                 </div>
                                 <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-end`}>
+                                <div className={`${styles["blog-card-btn"]} text-start`}>
                                     <a href="#" className="btn btn-primary">Read more</a>
                                 </div>
                             </div>
                         </div>
+                        <hr className={styles['hr-tag']}/>
                         <div className="col-md-4 bl-col-4">
                             <div className={styles['blog-card']}>
                                 <img src="images/blog-list-1.jpg" className="img-fluid"/>
@@ -140,11 +143,12 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                   </div>
                                 </div>
                                 <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-end`}>
+                                <div className={`${styles["blog-card-btn"]} text-start`}>
                                     <a href="#" className="btn btn-primary">Read more</a>
                                 </div>
                             </div>
                         </div>
+                        <hr className={styles['hr-tag']}/>
                         <div className="col-md-4 bl-col-4">
                             <div className={styles['blog-card']}>
                                 <img src="images/blog-list-2.jpg" className="img-fluid"/>
@@ -164,11 +168,12 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                   </div>
                                 </div>
                                 <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-end`}>
+                                <div className={`${styles["blog-card-btn"]} text-start`}>
                                     <a href="#" className="btn btn-primary">Read more</a>
                                 </div>
                             </div>
                         </div>
+                        <hr className={styles['hr-tag']}/>
                         <div className="col-md-4 bl-col-4">
                             <div className={styles['blog-card']}>
                                 <img src="images/blog-list-3.jpg" className="img-fluid"/>
@@ -188,11 +193,12 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                   </div>
                                 </div>
                                 <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-end`}>
+                                <div className={`${styles["blog-card-btn"]} text-start`}>
                                     <a href="#" className="btn btn-primary">Read more</a>
                                 </div>
                             </div>
                         </div>
+                        <hr className={styles['hr-tag']}/>
                     </div>
                     <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
                       <div className={`${styles["page_btn"]} prev_btn`}>

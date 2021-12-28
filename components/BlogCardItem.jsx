@@ -24,7 +24,9 @@ export default function BlogCardItem( { className, cardDetails  } ) {
 
   return (
 
-    <div className={ `image-card-item ${styles['blogcard-item']}` }>
+
+    <div>
+       <div className={ `image-card-item ${styles['blogcard-item']}` }>
       
       <div className={ `card-image` }>
         {/* <Image 
@@ -69,6 +71,7 @@ export default function BlogCardItem( { className, cardDetails  } ) {
       </div>
 
     </div>
-    
+    <hr className={styles['hr-tag']}/>
+    </div>
   )
 }

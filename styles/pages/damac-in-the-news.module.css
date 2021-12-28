@@ -172,6 +172,12 @@
 .related_news_section .news-box .text-sec .label .date{
     opacity: 0.6;
 }
+.hr-tag{
+	display:none;
+	margin:0;
+    border-bottom:1px solid #C4C4C4;
+	opacity: .6;
+}
 .news-box .read_more{
     font-style: normal;
     font-weight: 500;
@@ -211,6 +217,9 @@
 }
 
 @media(max-width:768px) {
+    .hr-tag{
+		display: block;
+	}
     .under_banner_section .middle_section>.inner {
         width: 80%;
     }

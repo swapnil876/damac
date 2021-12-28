@@ -83,6 +83,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     <div className="col-md-4">
                         <div className={styles['card']}>
                         <img src="damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
+
+
                         <div className={styles['card-body']}>
                             <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
                             <div className="d-flex justify-content-between">

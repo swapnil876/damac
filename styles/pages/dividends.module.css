@@ -19,6 +19,10 @@
 .breadcrum-main ul {
     margin-bottom: 0px;
 }
+.table-wrapper-dividend{
+	max-width: 100%;
+	overflow: auto;
+}
 .head-text h1{	
 	font-size: 42px;
     line-height: 49px;

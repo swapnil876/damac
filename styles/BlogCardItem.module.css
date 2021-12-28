@@ -4,11 +4,17 @@
     font-size: 18px;
     line-height: 1.7;
 }
-
+.hr-tag{
+	display:none;
+	margin:0;
+    border-bottom:1px solid #C4C4C4;
+	opacity: .6;
+}
 .blogcard-item .blogitem-title {
     font-size: 20px;
     line-height: 1.4;
     min-height: 80px;
+    margin-top: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 8px;
@@ -52,4 +58,10 @@
 }
 .taglabel{
     font-weight: 500;
+}
+
+@media(max-width: 767px){
+    .hr-tag{
+        display:block;
+    }
 }
