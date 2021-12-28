@@ -44,7 +44,7 @@ function BlogPost() {
   // Blog Header
   const blogHeroStyle = {
 
-    backgroundImage: 'url(/images/blog/blog-bg.png)',
+    background-image: 'url(/images/blog/blog-bg.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
 

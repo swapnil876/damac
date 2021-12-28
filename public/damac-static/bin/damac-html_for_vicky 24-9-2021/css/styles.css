@@ -59,7 +59,7 @@ a {
 a.btn-primary {
     background-color: var(--primary);
     border: 0;
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
 }
 a.btn-primary:hover {
     background-color: var(--primary);
@@ -106,7 +106,7 @@ p {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    backgroundImage: url(/images/textsectionbg.jpg);
+    background-image: url(/images/textsectionbg.jpg);
 }
 
 .damac-text-section .text-box {
@@ -158,7 +158,7 @@ p {
 a.btn-primary {
     background-color: var(--primary);
     border: 0;
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
 }
 a.btn-primary:hover {
     background-color: var(--primary);
@@ -201,7 +201,7 @@ p {
     padding: 80px;
     padding-top: 120px;
     background-color: var(--primary);
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
     color: #fff;
     margin-bottom: 10px;
 }
@@ -255,7 +255,7 @@ header.damac-header.damac-header-fixed {
     width: 28px;
     height: 18px;
     font-size: 0;
-    backgroundImage: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAyNiAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgb3BhY2l0eT0iMC45IiB3aWR0aD0iMjYiIGhlaWdodD0iMiIgZmlsbD0id2hpdGUiLz4KPHJlY3Qgb3BhY2l0eT0iMC45IiB5PSI4IiB3aWR0aD0iMjYiIGhlaWdodD0iMiIgZmlsbD0id2hpdGUiLz4KPHJlY3Qgb3BhY2l0eT0iMC45IiB5PSIxNiIgd2lkdGg9IjI2IiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAyNiAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgb3BhY2l0eT0iMC45IiB3aWR0aD0iMjYiIGhlaWdodD0iMiIgZmlsbD0id2hpdGUiLz4KPHJlY3Qgb3BhY2l0eT0iMC45IiB5PSI4IiB3aWR0aD0iMjYiIGhlaWdodD0iMiIgZmlsbD0id2hpdGUiLz4KPHJlY3Qgb3BhY2l0eT0iMC45IiB5PSIxNiIgd2lkdGg9IjI2IiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=);
     background-size: contain;
     background-position: center;
 }
@@ -265,7 +265,7 @@ header.damac-header.damac-header-fixed {
     width: 28px;
     height: 18px;
     font-size: 0;
-    backgroundImage: url(../images/hamburger-menu-dark.svg);
+    background-image: url(../images/hamburger-menu-dark.svg);
     background-size: contain;
     background-position: center;
 }
@@ -308,14 +308,14 @@ header.damac-header.damac-header-fixed {
     width: 17px;
     height: 22px;
     display: block;
-    backgroundImage: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAxNyAyMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2LjQwOCAwSDAuNTkxNzk2QzAuMjY1MTUzIDAgNi40NTEyNWUtMDcgMC4yNDM0NDYgNi40NTEyNWUtMDcgMC41NDM4MjRWMjAuOTExNUMtMC4wMDA0NjE2NjUgMjEuMzE5NiAwLjI0NzU4NCAyMS42OTM1IDAuNjQyNDIyIDIxLjg4QzEuMDM3NDkgMjIuMDY2MyAxLjUxMjc4IDIyLjAzMzggMS44NzMxNyAyMS43OTU3TDguNDk5ODkgMTcuNDMwNEwxNS4xMjY4IDIxLjc5NTRDMTUuNDg3NSAyMi4wMzMyIDE1Ljk2MjMgMjIuMDY1NCAxNi4zNTcxIDIxLjg3OTFDMTYuNzUxNyAyMS42OTI4IDE3IDIxLjMxOTIgMTcgMjAuOTExNVYwLjU0MzgyNEMxNyAwLjI0MzQ0NiAxNi43MzQ4IDAgMTYuNDA4IDBaTTE1LjgxNjIgMjAuOTExM0w4Ljg0NTAyIDE2LjMxOTJDOC42Mzg4MiAxNi4xODM0IDguMzYxNDEgMTYuMTgzNCA4LjE1NTQ0IDE2LjMxOTJMMS4xODQwNSAyMC45MTE1VjEuMDg3NjVIMTUuODE2MlYyMC45MTEzWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAxNyAyMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2LjQwOCAwSDAuNTkxNzk2QzAuMjY1MTUzIDAgNi40NTEyNWUtMDcgMC4yNDM0NDYgNi40NTEyNWUtMDcgMC41NDM4MjRWMjAuOTExNUMtMC4wMDA0NjE2NjUgMjEuMzE5NiAwLjI0NzU4NCAyMS42OTM1IDAuNjQyNDIyIDIxLjg4QzEuMDM3NDkgMjIuMDY2MyAxLjUxMjc4IDIyLjAzMzggMS44NzMxNyAyMS43OTU3TDguNDk5ODkgMTcuNDMwNEwxNS4xMjY4IDIxLjc5NTRDMTUuNDg3NSAyMi4wMzMyIDE1Ljk2MjMgMjIuMDY1NCAxNi4zNTcxIDIxLjg3OTFDMTYuNzUxNyAyMS42OTI4IDE3IDIxLjMxOTIgMTcgMjAuOTExNVYwLjU0MzgyNEMxNyAwLjI0MzQ0NiAxNi43MzQ4IDAgMTYuNDA4IDBaTTE1LjgxNjIgMjAuOTExM0w4Ljg0NTAyIDE2LjMxOTJDOC42Mzg4MiAxNi4xODM0IDguMzYxNDEgMTYuMTgzNCA4LjE1NTQ0IDE2LjMxOTJMMS4xODQwNSAyMC45MTE1VjEuMDg3NjVIMTUuODE2MlYyMC45MTEzWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==);
     background-size: contain;
     background-position: center;
     font-size: 0;
 }
 
 .navbar-dark .header-item-wrapper .bookmark-icon {
-    backgroundImage: url(../images/bookmark-dark.svg);
+    background-image: url(../images/bookmark-dark.svg);
 }
 
 
@@ -335,7 +335,7 @@ header.damac-header.damac-header-fixed {
     top: 0;
     bottom: 0;
     background-color: var(--primary);
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
     min-width: 76vw;
     transform: translateX(120%);
     transition: 0.5s all ease-in-out;
@@ -511,7 +511,7 @@ header.damac-header.damac-header-fixed {
     top: 0;
     bottom: 0;
     background-color: var(--primary);
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
     min-width: 76vw;
     transform: translateX(120%);
     transition: 0.5s all ease-in-out;
@@ -585,7 +585,7 @@ header.damac-header.damac-header-fixed {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    backgroundImage: url(/images/aboutsectionbg-2.jpg);
+    background-image: url(/images/aboutsectionbg-2.jpg);
     color: #fff;
 
 }
@@ -766,7 +766,7 @@ section.damac-about-chairman .aboutChairmanbox {
     bottom: 0;
     width: 80px;
     background-color: transparent;
-    backgroundImage: linear-gradient(90deg, transparent, #fff);
+    background-image: linear-gradient(90deg, transparent, #fff);
     content: "";
 
 }
@@ -956,7 +956,7 @@ footer.damac-footer {
     background-color: var(--primary);
     padding: 45px 0;
     color: #fff;
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
 }
 
 
@@ -1085,7 +1085,7 @@ footer.damac-footer  .footer-logo {
 
 .damac-slider-section {
     padding: 80px 0;
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
     color: #fff;
 }
 

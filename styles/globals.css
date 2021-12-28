@@ -219,7 +219,7 @@ h6,
 a.btn-primary {
     background-color: var(--primary);
     border-color: transparent;
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
     border: 0;
 }
 
@@ -388,7 +388,7 @@ a.btn.btn-blur-dark {
 /*Gradient text*/
 .gradient-text,
 .btn-light {
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 100% 200%;
@@ -417,7 +417,7 @@ a.btn.btn-blur-dark {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    backgroundImage: url(/images/textsectionbg.jpg);
+    background-image: url(/images/textsectionbg.jpg);
 }
 
 .damac-text-section .text-box {
@@ -481,7 +481,7 @@ a.btn.btn-blur-dark {
 
 .homeMobileBanner {
     min-height: 110vh;
-    backgroundImage: url(/images/drone2.png);
+    background-image: url(/images/drone2.png);
     position: relative;
     min-height: 800px;
     background-repeat: no-repeat;
@@ -556,7 +556,7 @@ a.btn.btn-blur-dark {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    backgroundImage: url(/images/aboutsectionbg-2.jpg);
+    background-image: url(/images/aboutsectionbg-2.jpg);
     color: #fff;
 
 }
@@ -864,7 +864,7 @@ section.damac-about-chairman .aboutChairmanbox {
     bottom: 0;
     width: 80px;
     background-color: transparent;
-    backgroundImage: linear-gradient(90deg, transparent, #fff);
+    background-image: linear-gradient(90deg, transparent, #fff);
     content: "";
 
 }
@@ -932,7 +932,7 @@ section.damac-about-chairman .aboutChairmanbox {
 
 section.damac-awards-section {
     background-color: var(--primary);
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
     color: #fff;
     padding: 120px 0;
 }
@@ -1118,7 +1118,7 @@ footer.damac-footer {
     background-color: var(--primary);
     padding: 45px 0;
     color: #fff;
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
 }
 
 
@@ -1312,7 +1312,7 @@ footer.damac-footer .footer-logo {
 
 .damac-slider-section {
     padding: 80px 0;
-    backgroundImage: var(--primary-gradient);
+    background-image: var(--primary-gradient);
     color: #fff;
 }
 
@@ -1592,7 +1592,7 @@ WHY DUBAI PAGE
 
 
 .why-dubai-section-3 {
-    backgroundImage: url('/images/why-dubai/dubai-bg-2.jpg');
+    background-image: url('/images/why-dubai/dubai-bg-2.jpg');
     padding: 120px 0;
     color: #fff;
     background-size: cover;
@@ -1619,7 +1619,7 @@ WHY DUBAI PAGE
 
 
 .why-dubai-section-5 {
-    backgroundImage: url('/images/why-dubai/img-grid-1.jpg');
+    background-image: url('/images/why-dubai/img-grid-1.jpg');
     padding: 120px 0;
     color: #fff;
     background-size: cover;
@@ -1637,7 +1637,7 @@ WHY DUBAI PAGE
 
 
     .why-dubai-section-5 {
-        backgroundImage: url('/images/why-dubai/img-grid-full-bg.jpg');
+        background-image: url('/images/why-dubai/img-grid-full-bg.jpg');
         padding: 120px 0;
         color: #fff;
         background-size: cover;
@@ -1670,7 +1670,7 @@ WHY DUBAI PAGE
 
 
 .why-dubai-section-then-now {
-    backgroundImage: url('/images/why-dubai/dubai-then-now-bg.jpg');
+    background-image: url('/images/why-dubai/dubai-then-now-bg.jpg');
     padding: 120px 0;
     padding-bottom: 240px;
     color: #fff;

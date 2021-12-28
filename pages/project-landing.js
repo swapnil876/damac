@@ -39,7 +39,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
              <main className="main">
              <PageTitle  
              title="Projects" 
-             backgroundImage={'/damac-static/images/investor-relation-hero.jpg'}
+             background-image={'/damac-static/images/investor-relation-hero.jpg'}
            />
             {/* <!-- sorting and filter section --> */}
             <section className={styles['filter_main_wrap']}>

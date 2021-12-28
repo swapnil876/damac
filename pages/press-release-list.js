@@ -41,7 +41,7 @@ function PressReleaseList( { blogs } ) {
 
       <main className="main bloglist-main">
 
-           {/* <PageTitle title="Damac In The News List" subtitle="News" backgroundImage={'damac-static/images/investor-relation-hero.jpg'}/> */}
+           {/* <PageTitle title="Damac In The News List" subtitle="News" background-image={'damac-static/images/investor-relation-hero.jpg'}/> */}
 
            {/* <!-- Blog list Hero section --> */}
             <section className={`${style["news-hero"]} d-flex align-items-center`} style={{'background': "url('images/investor-relation-hero.jpg') no-repeat center/100%"}}>

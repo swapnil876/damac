@@ -14,7 +14,8 @@ import ImageCardItem from '../components/ImageCardItem'
 
 import React, { Component } from "react";
 import { useMediaQuery } from 'react-responsive'
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { COMMUNITY } from '../graphql/community';
 
 
 // import styles from '../styles/.module.css'
@@ -66,65 +67,80 @@ function Communities( { communities } ) {
   )
 }
 
-export default Communities
+export const getServerSideProps = async () => {
 
-
-
-
-export async function getStaticProps(context) {
-
-
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
   // Device React
 
   const communities = [
-      {
-        title: 'DAMAC Hills',
-        url: '/communities/community1',
-        subtitle: 'Business Bay, Dubai, UAE',
-        imageUrl: '/images/community-list.jpg',
-        ctaText: 'Know More',
-        ctaLink: '/communities/community1',
-        text: 'An established and prestigious international golf community in Dubailands',
-        id: '1929392',
-      },
+      // {
+      //   title: 'DAMAC Hills',
+      //   url: '/communities/community1',
+      //   subtitle: 'Business Bay, Dubai, UAE',
+      //   imageUrl: '/images/community-list.jpg',
+      //   ctaText: 'Know More',
+      //   ctaLink: '/communities/community1',
+      //   text: 'An established and prestigious international golf community in Dubailands',
+      //   id: '1929392',
+      // },
 
-      {
-        title: 'DAMAC Hills',
-        url: '/communities/community1',
-        subtitle: 'Business Bay, Dubai, UAE',
-        imageUrl: '/images/community-list.jpg',
-        ctaText: 'Know More',
-        ctaLink: '/communities/community1',
-        text: 'An established and prestigious international golf community in Dubailands',
-        id: '1929392',
-      },
+      // {
+      //   title: 'DAMAC Hills',
+      //   url: '/communities/community1',
+      //   subtitle: 'Business Bay, Dubai, UAE',
+      //   imageUrl: '/images/community-list.jpg',
+      //   ctaText: 'Know More',
+      //   ctaLink: '/communities/community1',
+      //   text: 'An established and prestigious international golf community in Dubailands',
+      //   id: '1929392',
+      // },
 
-      {
-        title: 'DAMAC Hills',
-        url: '/communities/community1',
-        subtitle: 'Business Bay, Dubai, UAE',
-        imageUrl: '/images/community-list.jpg',
-        ctaText: 'Know More',
-        ctaLink: '/communities/community1',
-        text: 'An established and prestigious international golf community in Dubailands',
-        id: '1929392',
-      },
+      // {
+      //   title: 'DAMAC Hills',
+      //   url: '/communities/community1',
+      //   subtitle: 'Business Bay, Dubai, UAE',
+      //   imageUrl: '/images/community-list.jpg',
+      //   ctaText: 'Know More',
+      //   ctaLink: '/communities/community1',
+      //   text: 'An established and prestigious international golf community in Dubailands',
+      //   id: '1929392',
+      // },
 
-      {
-        title: 'DAMAC Hills',
-        url: '/communities/community1',
-        subtitle: 'Business Bay, Dubai, UAE',
-        imageUrl: '/images/community-list.jpg',
-        ctaText: 'Know More',
-        ctaLink: '/communities/community1',
-        text: 'An established and prestigious international golf community in Dubailands',
-        id: '1929392',
-      }
+      // {
+      //   title: 'DAMAC Hills',
+      //   url: '/communities/community1',
+      //   subtitle: 'Business Bay, Dubai, UAE',
+      //   imageUrl: '/images/community-list.jpg',
+      //   ctaText: 'Know More',
+      //   ctaLink: '/communities/community1',
+      //   text: 'An established and prestigious international golf community in Dubailands',
+      //   id: '1929392',
+      // }
   ];
 
+  const  data  = await client.query({ query: COMMUNITY });
+  var communities_data = data.data.nodeQuery.entities;
+  // console.log('*****data*****',data.data.nodeQuery.entities);
+  communities_data.map((v,i)=>{
+    console.log('************'+i,v);
+    if(v.fieldImageDesktop != null){
+      communities.push({title:v.title,imageUrl:v.fieldImageDesktop.url,subtitle:v.fieldCity.entity.name+','+v.fieldCountry.entity.name,description:v.fieldTagline,link:'/community/1'})
+    }
+     
+  });
+  console.log('*****',communities);
   return {
     props: {
        communities: communities
     }, // will be passed to the page component as props
   }
 }
+
+export default Communities
+
+
+
+

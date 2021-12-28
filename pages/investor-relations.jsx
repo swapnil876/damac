@@ -47,7 +47,7 @@ function InvestorRelations( {  } ) {
              className={styles['investor-relationsbody']} 
              title="Investor Relations" 
              subtitle="Investor Relations" 
-             backgroundImage={'/images/investor-relation-hero.jpg'}
+             background-image={'/images/investor-relation-hero.jpg'}
            />
 
 

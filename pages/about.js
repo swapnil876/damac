@@ -93,7 +93,7 @@ function About({entity1}) {
 
 
        <div className="damac-text-section-container">
-         <div className="damac-text-section" style={{'backgroundImage': 'url(' + entity1.fieldImage2.url + ')'}}>
+         <div className="damac-text-section" style={{'background-image': 'url(' + entity1.fieldImage2.url + ')'}}>
 
            <div className="container">
              <div className="damac-text-section-right">
@@ -114,7 +114,7 @@ function About({entity1}) {
        </div>
 
 
-       <section className="damac-about-section-2" style={{'backgroundImage': 'url(' + entity1.fieldImage3.url + ')'}}>
+       <section className="damac-about-section-2" style={{'background-image': 'url(' + entity1.fieldImage3.url + ')'}}>
          <div className="container">
            
            <div className="aboutsection-2">
