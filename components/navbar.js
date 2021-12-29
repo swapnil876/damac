@@ -19,7 +19,7 @@ import styles from '../styles/components/Navbar.module.css'
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Navbar({ className, children, navbarStyle }) {
@@ -89,8 +89,14 @@ export default function Navbar({ className, children, navbarStyle }) {
 
   const bigLinkBrowseProperties = false;
   const [_bigLinkBrowseProperties, setBigLinkBrowseProperties] = useState( bigLinkBrowseProperties );
+
+  const [browseClicked,setBrowseClicked] = useState(false);
+
+
   function handleBrowsePropertiesBiglink(e){
     e.preventDefault();
+
+    // setBrowseClicked(browseClicked = !browseClicked);
 
     setBigLinkBrowseProperties( !_bigLinkBrowseProperties );
     console.log( _bigLinkBrowseProperties );
@@ -345,7 +351,9 @@ export default function Navbar({ className, children, navbarStyle }) {
                          <a className="biglink" data-dropdownkey="browse-properties" onClick={ handleBrowsePropertiesBiglink }>
                              <span>Browse Properties</span>
                              <span className="menuItemIcon">
-                               <FontAwesomeIcon icon={ faChevronDown } size="xs"/>
+                               {
+                                 _bigLinkBrowseProperties ? <FontAwesomeIcon icon={ faChevronUp } size="xs"/> : <FontAwesomeIcon icon={ faChevronDown } size="xs"/>
+                               } 
                              </span>
                          </a>
                     </ActiveLink>
