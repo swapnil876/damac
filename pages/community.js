@@ -5,11 +5,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import Link from 'next/link'
+import MainContactForm from '../components/MainContactForm'
 
 // Navbar
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
 import styles from '../styles/pages/Community.module.css'
+// contact form css
+import style from '../styles/components/ContactForm.module.css';
 
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
@@ -59,8 +62,123 @@ function Community({entity1}) {
        // { deviceWidth: 767 } // `device` prop
   );
 
+  const [customModal, openCustomModal] = useState(false)
+
   return (
     <div className='communitybody'>
+
+       {/* Custom popup modal */}
+       {
+            customModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{openCustomModal(false)}}> </a>
+                <div className={`${style["schedule_callback_modal"]} popup_modal`}>
+                   <div className="close" onClick={()=>{
+                      openCustomModal(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+          <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+          </svg>
+                      </span>
+                    </div>
+                    <div className="row justify-content-center">
+                    <div className="col-lg-7 col-md-9">
+                        <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
+
+                            <div style={{'margin-bottom':'60px'}}>
+                            <h2 className={style['example-class']} style={{ 'margin': '0', 'textAlign':'center' }}>Schedule a Callback</h2>
+                            <p style={{ 'margin': '0', 'textAlign':'center' }}>Hassle-free booking experience. Only from DAMAC.</p>
+                            </div>
+
+                            <div className={`form-row form-row-2`}>
+
+                                <div className={`form-item-col`}>
+                                    <div className='custom-input-element'>
+                                        <label className='input-element-wrapper'>
+
+                                            <div className='input-element text-element'>
+                                                <input type='text' name='firstName' />
+                                                <label className={`custom-floating-label`} htmlFor={'firstName'}>First name</label>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className={`form-item-col`}>
+
+                                    <div className='custom-input-element'>
+                                        <label className='input-element-wrapper'>
+
+                                            <div className='input-element text-element'>
+                                                <input type='text' name='lastName' />
+                                                <label className={`custom-floating-label`} htmlFor={'lastName'}>Last name</label>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            
+                            <div className={`form-row form-row-2`}>
+                                <div className={`form-item-col`}>
+                                    <div className="row">
+                                        <div className='col-5 pe-0'>
+                                            <div className='custom-input-element'>
+                                                <label className='input-element-wrapper'>
+
+                                                    <div className='input-element country-code-element text-element'>
+                                                        <input type='text' name='countryCode' value={'India (+91)'} />
+
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div className='col-7'>
+                                            <div className='custom-input-element'>
+                                                <label className='input-element-wrapper'>
+
+                                                    <div className='input-element text-element phone-number-element'>
+                                                        <input type='text' name='phoneNumber' />
+                                                        <label className={`custom-floating-label`} htmlFor={'phoneNumber'}>Phone number</label>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={`form-item-col`}>
+
+                                <div className='custom-input-element'>
+                                    <label className='input-element-wrapper'>
+
+                                        <div className='input-element email-element'>
+                                            <input type='email' name='email' />
+                                            <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                </div>
+                            </div>
+
+
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+                                    <button className="custom-submit-btn" style={isMobile ? {'width':'100%'}: {'width':'70%', 'margin':'auto'}}>Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                </div>
+            </div> :
+            ""
+          }
+           {/* Custom popup modal */}
 
       <Head>
         <title>Community - Damac</title>
@@ -239,7 +357,7 @@ function Community({entity1}) {
                     <div className='right-area'>
                       
                       <div className='booking-btns'>
-                        <a className='btn btn-primary btn-icon'>
+                        <a className='btn btn-primary btn-icon' onClick={()=>{openCustomModal(true)}}>
                           <span className='fa-icon' style={{'margin': '0'}}>
                             <FontAwesomeIcon icon={faEnvelope} style={{'margin-right':'0'}}/>
                           </span>

@@ -41,8 +41,9 @@ import { FaStreetView } from "react-icons/fa";
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import {PROJECT} from '../../graphql/project';
 
-
-
+// Carousel plugin import
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 
 
@@ -51,6 +52,14 @@ import {PROJECT} from '../../graphql/project';
 function ProjectPage() {
   const router = useRouter()
 
+// Carousel
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 0 },
+      items: 1
+    }
+  };
 
   const [customModal, openCustomModal] = useState(false)
 
@@ -115,10 +124,9 @@ function ProjectPage() {
           {
             customModal ? 
             <div className="custom_modal_contain">
-              <a onClick={()=>{openCustomModal(false)}}>
+              <a onClick={()=>{openCustomModal(false)}}> </a>
                 <div className={`${styles["project_slug_modal"]} popup_modal`}>
-                  <div className={styles['banner_area']}>
-                    <div className="close" onClick={()=>{
+                   <div className="close" onClick={()=>{
                       openCustomModal(false);
                       }}>
                       <span>
@@ -129,10 +137,55 @@ function ProjectPage() {
 
                       </span>
                     </div>
-                    <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                  <Carousel responsive={responsive}>
+                    <div className={styles['banner_area']}>
+                      <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                    </div>
+                    <div className={styles['banner_area']}>
+                      <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                    </div>
+                    <div className={styles['banner_area']}>
+                      <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                    </div>
+                    <div className={styles['banner_area']}>
+                      <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                    </div>
+                  </Carousel>
+                  <div className={styles['lower_img_section']}>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div><div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
                   </div>
                 </div>
-              </a>
             </div> :
             ""
           }

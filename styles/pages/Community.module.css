@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+.schedule_callback_modal{
+    background: #fff;
+}
+.schedule_callback_modal input{
+    padding:15px 8px
+}
 /* Community banner */
 .community-banner {
     display: block;
