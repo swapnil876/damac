@@ -44,7 +44,7 @@ const WhyDubai= ({entity1})=> {
        
 
        <HeroSection
-         bannerImage={entity1.fieldMainImageDesktopd.url}
+         bannerImage={ isMobile ? entity1.fieldMainImageMobile.url : entity1.fieldMainImageDesktopd.url}
        >
 
            <div className="banner-conent-style-1">
