@@ -759,12 +759,14 @@ section.damac-about-chairman .aboutChairmanbox {
 
 
 @media (max-width: 767px) {
-    .chairmans-photo{
+    .chairmans-photo {
         margin-top: 20px;
     }
+
     .chairmans-message-text h2 {
         font-size: 32px !important;
     }
+
     section.damac-about-chairman {
         padding-top: 50px;
     }
@@ -1179,7 +1181,16 @@ section.building-documentation-para .main-text {
     padding: 15px 0;
     font-size: 18px;
 }
-
+.building-documentation-link li .doc-name a {
+    padding: 15px 0;
+    font-size: 18px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 172%;
+    color: #000000;
+}
 .building-documentation-link li .doc-link a {
     text-decoration: none;
     font-size: 16px;
@@ -1327,7 +1338,9 @@ footer.damac-footer .footer-logo {
 }
 
 @media (max-width: 767px) {
-
+    .building-documentation-link li .doc-name a, .building-documentation-link li .doc-name {
+        padding: 8px 0;
+    }
     .footer-text-block {
         padding: 30px 0;
         font-weight: 300;
@@ -2189,7 +2202,60 @@ PAGE:  NEWS
     color: #fff;
 }
 
+.why-damac-map-img {
+    object-fit: cover;
+}
+
+.build-doc-download-text {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 172%;
+    color: #000000;
+    opacity: 0.6;
+}
+
 @media(max-width: 768px) {
+    .why-damac-map-img {
+        aspect-ratio: 16/9;
+    }
+
+    ul.district-items-nav-list {
+        flex-wrap: unset;
+        max-width: 100%;
+        overflow: auto;
+    }
+
+    ul.district-items-nav-list li {
+        margin-right: 10px;
+        min-width: 130px;
+    }
+
+    ul.district-items-nav-list li a {
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    .dubais-success-icons .icon-box {
+        padding: 0px;
+    }
+
+    .why-dubai-section-2 p,
+    .why-dubai-section-3 p {
+        font-size: 18px;
+    }
+
+    .why-dubai-section-2 h3,
+    .why-dubai-section-3 h3 {
+        font-size: 24px;
+    }
+
+    .why-dubai-section-2,
+    .why-dubai-section-6 {
+        padding: 60px 0
+    }
+
     .damac-latest-news {
         padding-left: 0;
     }

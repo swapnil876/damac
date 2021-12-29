@@ -10,6 +10,7 @@ import PageTitle from '../components/PageTitle'
 
 
 import React, { Component } from "react";
+import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive'
 // import { getStaticProps } from './project'
 
@@ -43,7 +44,7 @@ function BuildingDocumentation({entity1}) {
              <div className="container">
                
                <p className="main-text">Welcome to DAMAC Properties Documentation section where you can find the required documents pertaining to your investment as well as floor plans.</p>
-
+               { isMobile ? <p className="build-doc-download-text">Click to downlaod the JOPD</p> : ''}
 
                <ul className="building-documentation-link">
                  {/* <li>
@@ -76,11 +77,18 @@ function BuildingDocumentation({entity1}) {
                  </li> */}
 
 
-              {               
+              {    
+              isMobile ? 
+              entity1.map((item, index)=>(
+                <li key={ index }>
+                  <div className="doc-name"><Link href={item.fieldFile.entity.url}><a  target="_blank">{item.entityLabel}</a></Link></div>
+                </li>
+               ))
+              :
                entity1.map((item, index)=>(
                  <li key={ index }>
                    <div className="doc-name">{item.entityLabel}</div>
-                   <div className="doc-link"><Link href={item.fieldFile.entity.url}><a>Download</a></Link></div>
+                   <div className="doc-link"><Link href={item.fieldFile.entity.url}><a  target="_blank">Download</a></Link></div>
                  </li>
                 ))
               }

@@ -101,7 +101,7 @@ function QuickFactsheet( { mobileDevice } ) {
 
         <section className='section' style={{'padding-bottom': '12px'}}>
           <div className='container'>
-             <h3 className='section-title' style={{'font-size':'32px', 'max-width': '420px'}}>Pioneering luxury real estate across the region</h3>
+             <h3 className='section-title' style={ isMobile ? {'font-size':'24px', 'max-width': '100%'} : {'font-size':'32px', 'max-width': '420px'}}>Pioneering luxury real estate across the region</h3>
 
              <div className='two-col-text'>
                <div className='text'>

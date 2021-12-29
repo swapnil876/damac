@@ -399,6 +399,7 @@ List grid
 @media ( max-width: 768px ) {
   .communityListGrid {
     grid-template-columns: repeat(1, 1fr);
+    padding:0
   }
 }
 .image-card-item{
