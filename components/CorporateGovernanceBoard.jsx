@@ -15,7 +15,7 @@ export default function CorporateGovernanceBoard({entity1}) {
 
                             {/* {
                                 entity1.map((item, index)=>{
-                                    <div className="col-md-3 col-sm-6" key={index}>
+                                    <div className="col-md-3 col-6" key={index}>
                                     <div className={styles['leadershipbox']}>
                                         <div className={styles['leadershipimg']}>
                                             <img src={item.fieldBimage.url} />
@@ -33,7 +33,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                             
                          
 
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />
@@ -45,7 +45,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                                 </div>
                             </div>
 
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />
@@ -57,7 +57,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                                 </div>
                             </div>
 
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />
@@ -68,7 +68,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />
@@ -79,7 +79,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />
@@ -90,7 +90,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />
@@ -101,7 +101,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />
@@ -112,7 +112,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />
@@ -123,7 +123,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />
@@ -134,7 +134,7 @@ export default function CorporateGovernanceBoard({entity1}) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-3 col-sm-6">
+                            <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
                                         <img src="/images/chairman-portrait.jpg" />

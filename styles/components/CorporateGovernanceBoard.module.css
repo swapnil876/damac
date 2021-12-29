@@ -1,6 +1,12 @@
 .damac-about-leadership{
     padding:68px 0;
 }
+
+@media(max-width:767px){
+    .damac-about-leadership{
+        padding:0;
+    }
+}
 .leadership-boxes {}
 
 .leadershipbox {

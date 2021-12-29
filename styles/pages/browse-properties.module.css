@@ -1,9 +1,9 @@
-
-.browse-hero{
+.browse-hero {
 	width: 100%;
 	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
 }
-.browse-hero-text{
+
+.browse-hero-text {
 	font-size: 43px;
 	line-height: 49px;
 	font-weight: 500;
@@ -12,20 +12,26 @@
 	padding-top: 121px;
 	/* padding-bottom: 93px; */
 }
-.browse-hero-text span{
+
+.browse-hero-text span {
 	color: #ffffff !important;
 }
-.form-field input,.form-field select{
+
+.form-field input,
+.form-field select {
 	height: 48px;
-	border:none;
+	border: none;
 }
-.search_filter{
+
+.search_filter {
 	position: relative;
 }
-.search_filter input{
+
+.search_filter input {
 	padding-left: 24px;
 }
-.search_filter i{
+
+.search_filter i {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
@@ -34,23 +40,35 @@
 	font-weight: 300;
 	opacity: 0.7;
 }
-.more-filter-btn a{
+
+.more-filter-btn a {
 	line-height: 48px;
 	margin-left: 10px;
 	font-size: 16px;
 	font-weight: 300;
 	letter-spacing: 0.04em;
+	color: #111;
+	text-decoration: none;
 }
-.more-filter-btn a span{
+
+.more-filter-btn a span {
 	width: 5px;
 	height: 5px;
 	display: inline-block;
 	margin-bottom: 4px;
 	margin-left: 4px;
-	border-radius:50%;
-	border:1px solid #000;
+	border-radius: 50%;
+	border: 1px solid #000;
 }
-.search_btn_filter a{
+
+.page_btn a {
+	/* padding: 13px; */
+	border-radius: 50%;
+	box-shadow: 0px 4px 15px 0px #00000026;
+	background: #ffffff;
+}
+
+.search_btn_filter a {
 	height: 48px;
 	padding: 15px 37px;
 	font-size: 16px;
@@ -59,21 +77,25 @@
 	line-height: 18px;
 	float: right;
 }
-.filter_option_wrap{
-	padding:14px;
+
+.filter_option_wrap {
+	padding: 14px;
 	background: #FFFFFF;
 	box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
 	border-radius: 8px;
-	margin-top: -45px;
+	margin-top: 20px;
 }
-.filter_tag_main{
+
+.filter_tag_main {
 	margin-top: 17px;
 }
-.map_list_view ul{
+
+.map_list_view ul {
 	margin: 0px;
 	margin-top: 10px;
 }
-.map_list_view ul li a{
+
+.map_list_view ul li a {
 	padding: 10.5px 15px;
 	font-size: 16px;
 	line-height: 24px;
@@ -82,228 +104,270 @@
 	font-weight: 300;
 	border: 0.5px solid #D0BB83;
 }
-.map_list_view ul li.active a{
+
+.map_list_view ul li.active a {
 	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
 	color: #fff;
 }
-.map_list_view ul li:nth-child(1) a{
+
+.map_list_view ul li:nth-child(1) a {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 	margin-right: -1px;
 }
-.map_list_view ul li:nth-child(2) a{
+
+.map_list_view ul li:nth-child(2) a {
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
 }
-.map_filter_main .form-field select{
+
+.map_filter_main .form-field select {
 	margin-right: 10px;
 	height: 42px;
 }
-.tag_list ul li a{
+
+.tag_list ul li a {
 	font-size: 18px;
 	font-weight: 300;
-	line-height: 20px;	
+	line-height: 20px;
 	letter-spacing: 0.04em;
 	margin-right: 32px;
 	opacity: 0.6;
+	color: #111;
+	text-decoration: none;
 }
-.tag_list ul li.active a{
+
+.tag_list ul li.active a {
 	opacity: 1;
 }
-.space_divider_filter{
+
+.space_divider_filter {
 	width: 100%;
 	height: 15px;
 	background: #F8F8F8;
 	margin-top: 10px;
 }
-.show_property_main{
+
+.show_property_main {
 	padding-top: 44px;
 }
-.property_search_head h3{
+
+.property_search_head h3 {
 	font-size: 18px;
 	line-height: 20px;
 	letter-spacing: 0.03em;
 	margin-bottom: 8px;
 }
-.property_search_head p{
+
+.property_search_head p {
 	font-size: 16px;
 	font-weight: 300px;
 	letter-spacing: 0.04em;
 	opacity: 0.65;
 	line-height: 18px;
 }
+
 /*property slider css start here*/
 .property-slider-wrap {
-    position: relative;
+	position: relative;
 }
+
 .project-card {
-    margin-bottom: 66px;
+	margin-bottom: 66px;
 }
+
 .project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
 }
+
 .project-card h6 {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 41px;
-    margin-top: 12px;
-    margin-bottom: 0;
-    letter-spacing: 0.02em;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 41px;
+	margin-top: 12px;
+	margin-bottom: 0;
+	letter-spacing: 0.02em;
 }
+
 .project-card p {
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 27px;
-    letter-spacing: 0.04em;
-    opacity: 65%;
-    margin-bottom: 12px;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 27px;
+	letter-spacing: 0.04em;
+	opacity: 65%;
+	margin-bottom: 12px;
 }
+
 ul.bedroom-detail {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    list-style-type: none;
-    padding: 0;
-    align-items: center;
-    margin-bottom: 8px;
-}	
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	list-style-type: none;
+	padding: 0;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
 ul.bedroom-detail li a img {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
+	width: 16px;
+	height: 16px;
+	margin-right: 8px;
 }
+
 .project-detail-nav .left-nav {
-    position: absolute;
-    top: 25%;
-    left: 0px;
+	position: absolute;
+	top: 25%;
+	left: 0px;
 }
-.bookmark_main li a img{
+
+.bookmark_main li a img {
 	width: 16px;
 	height: 20px;
 	margin-left: 30px;
 	margin-top: 21px;
 }
-.bedroom-detail li a{
+
+.bedroom-detail li a {
 	font-size: 16px;
 	line-height: 16px;
 	font-weight: 300;
 	letter-spacing: 0.02em;
-	color:#111;
+	color: #111;
 	text-decoration: none;
 }
+
 .project-detail-nav a {
 	display: block;
-    background: rgba( 0, 0, 0, 0.4 );
-    box-shadow: none;
-    backdrop-filter: blur( 5.5px );
-    -webkit-backdrop-filter: blur( 5.5px );
-    border-radius: 50%;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    padding: 7px ;
-    margin-left: 7px;
+	background: rgba(0, 0, 0, 0.4);
+	box-shadow: none;
+	backdrop-filter: blur(5.5px);
+	-webkit-backdrop-filter: blur(5.5px);
+	border-radius: 50%;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	padding: 7px;
+	margin-left: 7px;
 }
-.project-detail-nav a i, .project-detail-nav a svg {
-    color: #fff;
+
+.project-detail-nav a i,
+.project-detail-nav a svg {
+	color: #fff;
 	font-size: 22px;
 }
+
 .project-detail-nav .right-nav {
-    position: absolute;
-    top: 25%;
-    right: 6px;
+	position: absolute;
+	top: 25%;
+	right: 6px;
 }
+
 .shape-wrap-plan {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: end;
-    margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: end;
+	margin-top: 20px;
 }
+
 .shape-contact ul {
-    list-style-type: none;
+	list-style-type: none;
 }
+
 .shape-contact ul li {
-    margin-left: 8px;
+	margin-left: 8px;
 }
-.shape-contact ul li a i{
+
+.shape-contact ul li a i {
 	font-size: 18px;
 }
+
 .solid-icon {
-    background: linear-gradient(
-90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
-    color: #fff;
-    padding: 14px;
-    border-radius: 4px;
+	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+	color: #fff;
+	padding: 14px;
+	border-radius: 4px;
 }
+
 a.border-icon {
-    border: 2px solid #D0BB83;
-    padding: 12px;
-    border-radius: 4px;
-    color: #D0BB83;
+	border: 2px solid #D0BB83;
+	padding: 12px;
+	border-radius: 4px;
+	color: #D0BB83;
 }
-a.border-icon .whatsapp-ico{
-	width:22px;
+
+a.border-icon .whatsapp-ico {
+	width: 22px;
 	height: 22px;
 }
+
 /*property slider css start here*/
 /*pagination css start here*/
 .pagination_main_wrap {
-    margin-top: 56px;
-    margin-bottom: 82px;
+	margin-top: 56px;
+	margin-bottom: 82px;
 }
-.pagination_main_wrap .page_btn a{
-	padding:13px;
-	color:#111;
+
+.pagination_main_wrap .page_btn a svg {
+	width: 22px;
+	height: 22px;
+	color: #111;
 	text-decoration: none;
 }
-.pagination_main_wrap .page_btn a svg{
-	width:22px;
-	height:22px;
-	color:#111;
-	text-decoration: none;
-}
+
 .page_btn a {
-    padding: 13px 17.5px;
-    border-radius: 50%;
-    box-shadow: 0px 4px 15px 0px #00000026;
-    background: #ffffff;
-	color:#111;
+	/* padding: 13px 17.5px; */
+	border-radius: 50%;
+	box-shadow: 0px 4px 15px 0px #00000026;
+	background: #ffffff;
+	color: #111;
 	text-decoration: none;
+	width: 45px;
+	height: 45px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
 .pagination_no {
-    margin: 0 32px;
+	margin: 0 32px;
 }
+
 .pagination_no ul li:not(:last-child) {
-    padding-right: 42px;
+	padding-right: 42px;
 }
+
 .pagination_no ul li {
-    font-size: 16px;
-    line-height: 27px;
-    opacity: 0.65;
+	font-size: 16px;
+	line-height: 27px;
+	opacity: 0.65;
 }
-.pagination_no ul li a{
-	color:#111;
+
+.pagination_no ul li a {
+	color: #111;
 	text-decoration: none;
 }
+
 /*pagination css end here*/
-.filtered_properties{
+.filtered_properties {
 	padding-top: 94px;
 }
 
-.about_dubai_main{
+.about_dubai_main {
 	padding-top: 105px;
 	padding-bottom: 25px;
 	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
 	color: #fff;
 }
-.about_dubai_main h1{
+
+.about_dubai_main h1 {
 	font-size: 44px;
 	font-weight: 500;
 	line-height: 52px;
 	/*height: 156px;*/
 	margin-bottom: 30px;
 }
-.about_dubai_main p{
+
+.about_dubai_main p {
 	font-size: 20px;
 	font-weight: 300;
 	line-height: 34px;
@@ -311,166 +375,201 @@ a.border-icon .whatsapp-ico{
 
 /*why invest section*/
 .why-invest {
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding-top: 171px;
-    padding-bottom: 70px;
-    color: #fff;
+	background-position: top;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding-top: 171px;
+	padding-bottom: 70px;
+	color: #fff;
 }
-.why-invest-container{
+
+.why-invest-container {
 	background: #000;
-    padding-top: 65px;
-    padding-left: 64px;
-    padding-bottom: 84px;
-    padding-right: 110px;
+	padding-top: 65px;
+	padding-left: 64px;
+	padding-bottom: 84px;
+	padding-right: 110px;
 }
+
 .invest-wrap h2 {
-    margin-bottom: 9px;
-    font-size: 44px;
-    font-weight: 500;
-    line-height: 50px;
-    letter-spacing: 0.01em;
+	margin-bottom: 9px;
+	font-size: 44px;
+	font-weight: 500;
+	line-height: 50px;
+	letter-spacing: 0.01em;
 }
+
 .invest-wrap p {
-    margin-bottom: 35px;
-    font-size: 22px;
-    font-weight: 300;
-    line-height: 33px;
-    letter-spacing: 0.02em;
+	margin-bottom: 35px;
+	font-size: 22px;
+	font-weight: 300;
+	line-height: 33px;
+	letter-spacing: 0.02em;
 }
-.invest-wrap a.read-more, .read-more {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 18px;
-    letter-spacing: 0.04em;
+
+.invest-wrap a.read-more,
+.read-more {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 0.04em;
 	text-decoration: none;
 }
+
 /*why invest end here*/
 /*faq-section css start here*/
 section.faq-section {
-    background: #000;
-    color: #fff;
-    padding-top: 60px;
-    padding-bottom: 199px;
+	background: #000;
+	color: #fff;
+	padding-top: 60px;
+	padding-bottom: 199px;
 }
+
 .faq-icon h2 {
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 44px;
-    margin-top: 8px;
-    margin-bottom: 60px;
+	font-size: 32px;
+	font-weight: 500;
+	line-height: 44px;
+	margin-top: 8px;
+	margin-bottom: 60px;
 }
-section.faq-section div.accordion, section.faq-section .accordion-item, section.faq-section div.accordion button {
-    background: transparent !important;
-    color: #fff;
+
+section.faq-section div.accordion,
+section.faq-section .accordion-item,
+section.faq-section div.accordion button {
+	background: transparent !important;
+	color: #fff;
 }
+
 section.faq-section .accordion-body {
-    padding-top: 0;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 24px;
-    letter-spacing: 0.03em;
+	padding-top: 0;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 24px;
+	letter-spacing: 0.03em;
 	padding: 1rem 1.25rem;
 }
+
 .faq-wrap button.accordion-button {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0.03em;
-    
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 1rem 1.25rem;
-    font-size: 1rem;
-    color: #212529;
-    text-align: left;
-    background-color: #fff;
-    border: 0;
-    border-radius: 0;
-    overflow-anchor: none;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,border-radius .15s ease;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 24px;
+	letter-spacing: 0.03em;
+
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 1rem 1.25rem;
+	font-size: 1rem;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;
+	border: 0;
+	border-radius: 0;
+	overflow-anchor: none;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, border-radius .15s ease;
 }
+
 .faq-wrap .accordion-body {
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: 0.03em;
-    color: rgba(255,255,255,0.75);
+	font-size: 20px;
+	line-height: 24px;
+	letter-spacing: 0.03em;
+	color: rgba(255, 255, 255, 0.75);
 }
+
 /*faq section css ennd here*/
 
-@media (max-width: 1024px){
-	.filter_option_wrap .col-md-3,.filter_option_wrap .col-md-6{
+@media (max-width: 1024px) {
+
+	.filter_option_wrap .col-md-3,
+	.filter_option_wrap .col-md-6 {
 		width: 100%;
 	}
-	.tag_list ul li a{
+
+	.tag_list ul li a {
 		font-size: 16px;
 		margin-right: 22px;
 	}
-	.bedroom-detail li a{
+
+	.bedroom-detail li a {
 		font-size: 15px;
 	}
-	.project-card h6{
+
+	.project-card h6 {
 		font-size: 20px;
 		line-height: 24px;
 		max-height: 48px;
 		height: 48px;
 		text-overflow: ellipsis;
 	}
-	.about_dubai_main h1{
+
+	.about_dubai_main h1 {
 		font-size: 32px;
 		line-height: 36px;
 	}
-	.about_dubai_main p{
+
+	.about_dubai_main p {
 		font-size: 18px;
 		line-height: 22px;
 	}
-	.invest-wrap h2{
-		font-size: 32px;	
+
+	.invest-wrap h2 {
+		font-size: 32px;
 		line-height: 36px;
 	}
-	.invest-wrap p{
+
+	.invest-wrap p {
 		font-size: 18px;
 		line-height: 22px;
 	}
-	.search_btn_filter a{
+
+	.search_btn_filter a {
 		float: left;
 	}
 }
-@media (max-width: 767px){
-	.filter_tag_main{
+
+@media (max-width: 767px) {
+	.filter_tag_main {
 		flex-direction: column;
 	}
-	.tag_list ul{
+
+	.tag_list ul {
 		flex-wrap: wrap;
 		justify-content: center;
 		margin-bottom: 10px !important;
 	}
-	.show_property_main{
+
+	.show_property_main {
 		padding-top: 30px;
 	}
-	.filtered_properties{
+
+	.filtered_properties {
 		padding-top: 40px;
 	}
-	.browse-hero-text{
+
+	.browse-hero-text {
 		font-size: 36px;
 		line-height: 40px;
 	}
-	.pagination_main_wrap{
+
+	.pagination_main_wrap {
 		margin: 30px 0;
 	}
-	.why-invest{
+
+	.why-invest {
 		padding: 0px;
 	}
-	.why-invest-container{
+
+	.why-invest-container {
 		padding: 57px 12px;
 	}
-	section.faq-section{
-		padding:50px 0;
+
+	section.faq-section {
+		padding: 50px 0;
 	}
-	.faq-wrap button.accordion-button,section.faq-section .accordion-body{
-        font-size: 16px;
-    }
-}	
+
+	.faq-wrap button.accordion-button,
+	section.faq-section .accordion-body {
+		font-size: 16px;
+	}
+}

@@ -89,7 +89,10 @@ function CorporateGovCommittee( { mobileDevice, entity1 } ) {
 
       <main className="main main-regular capital-history">
 
-        <Breadcrumbs crumbs={ crumbs }/>
+       {
+          isMobile ? '' :   <Breadcrumbs crumbs={ crumbs }/>
+        }
+
 
         <HeadingTitle 
           title="Corporate Governance" 
@@ -117,7 +120,7 @@ function CorporateGovCommittee( { mobileDevice, entity1 } ) {
         </div>
 
         <section className='section'>
-          <div className='container'>
+          <div className=''>
 
 
         <CorporateGovernance entity1={entity1}/>
