@@ -62,12 +62,12 @@ function Blog({entity1}) {
              <div className="row">
                <div className="col-md-9">
                <div className="primary-cta">
-                 <img alt=""src={isMobile?entity1.fieldFeatureImageMobile:entity1.fieldFeatureImageDesktop} className="img-responsive full-width"/>
+                 <img alt=""src={isMobile?entity1.fieldFeatureImageMobile.url:entity1.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
                  <label>{entity1.fieldCategory.entity.name}</label>
                  <h2>
                  <Link href="#"><a>{entity1.title}</a></Link>
                  </h2>
-                 <p> {entity1.body.value} </p>
+                 <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
                </div>
              </div>
              <div className="col-md-3">
@@ -251,7 +251,7 @@ function Blog({entity1}) {
 
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
