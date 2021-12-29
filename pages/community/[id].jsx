@@ -153,12 +153,12 @@ function Community({entity1}) {
           </div>
           { !deviceIsMobile && 
             <div className={`containerRightImage`}>
-              <Image alt="" src='/images/textsection-right-1.jpg' layout='fill' objectfit="cover"/>
+              <img alt="" src={entity1.fieldCol1ImageDesktopc.url} layout='fill' objectfit="cover"/>
             </div>
           }
           { deviceIsMobile && 
             <div className={`containerBottomImage`}>
-              <Image alt="" src='/images/textsection-right-1.jpg' layout='fill' objectfit="cover"/>
+              <img alt="" src={entity1.fieldCol1ImageMobilec.url} layout='fill' objectfit="cover"/>
             </div>
           }
         </section>
@@ -302,15 +302,15 @@ function Community({entity1}) {
             </div>
             <div style={{'margin-top':'50px'}}>
             <div class="row">
-              {entity1.fieldAmenities.map((item)=>{
-                <div class="col-6">
-                <div className={styles['icon-area']}>
-                  <img alt=""src="/images/icons/building (1) 2.svg" />
-                  <h4>{item.entity.fieldValueAmi}</h4>
-                  <p>{item.entity.fieldTextAmi}</p>
+              {entity1.fieldAmenities.map((item,key)=>(
+                <div key={key} class="col-6">
+                  <div className={styles['icon-area']}>
+                    <img alt={item.entity.fieldTextAmi} src={item.entity.fieldIcona.url} />
+                    <h4>{item.entity.fieldValueAmi}</h4>
+                    <p>{item.entity.fieldTextAmi}</p>
+                  </div>
                 </div>
-                </div>
-              })}
+              ))}
               
                 {/* <div class="col-6">
                 <div className={styles['icon-area']}>
@@ -453,7 +453,7 @@ function Community({entity1}) {
       <div className={styles['angry-grid']}>
         <div className={styles['gr-item-0']}>
            <div className={styles['right-side-gallery']}>
-           {/* <img alt=""src={isMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url}/> */}
+           <img alt=""src={isMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url}/>
            <div className={styles['gal-content']}>
             <p>{entity1.fieldCol1Textc5}</p>
           </div>         
@@ -461,17 +461,17 @@ function Community({entity1}) {
         </div>
         <div className={styles['gr-item-1']}>
             <div className={styles['sm-gal-right']}>
-              {/* <img alt=""src={isMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/> */}
+              <img alt=""src={isMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-2']}>
            <div className={styles['sm-gal-left']}>
-              {/* <img alt=""src={isMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/> */}
+              <img alt=""src={isMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-3']}>
            <div className={styles['gal-gr']}>
-            {/* <img alt=""src={isMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/>  */}
+             <img alt=""src={isMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/>
             
           </div>
         </div>
@@ -514,14 +514,18 @@ function Community({entity1}) {
           </div>
 
             <div className={styles['map']}>
-             {/* <img alt=""src={entity1.fieldMasterplan.entity.url}/> */}
+             <img alt=""src={entity1.fieldMasterplan.entity.url}/>
             </div>
 
-            <div className={styles['video']}>
-             <video>
-               {/* <source src={entity1.fieldVideo} /> */}
-             </video>
-            </div>
+            {
+              entity1.fieldVideo!=null?
+              (<div className={styles['video']}>
+                 <video>
+                   <source src={entity1.fieldVideo} />
+                 </video>
+                </div>):
+              (<span></span>)
+            }
 
         </div>
       </section>
@@ -646,7 +650,7 @@ function Community({entity1}) {
           <div className="col-md-6">
             <div className={styles['property-slider-wrap']}>
               <div className={styles['project-card']}>
-                <img alt=""src="images/project-gal4.jpg" className="img-fluid" />               
+                <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
                 <h6>Kiara 2 Bedroom Apartment</h6>
                 <p>DAMAC Hills, Dubailand, Dubai</p>
                 <ul className={styles['bedroom-detail']}>
@@ -654,7 +658,7 @@ function Community({entity1}) {
                     <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>                              
                             
@@ -674,15 +678,15 @@ function Community({entity1}) {
            <div className="col-md-6">
             <div className={styles['property-slider-wrap']}>
               <div className={styles['project-card']}>
-                <img alt=""src="images/project-gal3.jpg" className="img-fluid" />
+                <img alt=""src="/images/project-gal3.jpg" className="img-fluid" />
                 <h6>Kiara 2 Bedroom Apartment</h6>
                 <p>Starting AED 1,213,515*</p>  
                   <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="#"><img alt=""src="/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>               
               </div>
@@ -699,15 +703,15 @@ function Community({entity1}) {
            <div className="col-md-6">
             <div className={styles['property-slider-wrap']}>
               <div className={styles['project-card']}>
-              <img alt=""src="images/project-1.jpg" className="img-fluid" />
+              <img alt=""src="/images/project-1.jpg" className="img-fluid" />
               <h6>Kiara 2 Bedroom Apartment</h6>
               <p><span>Starting AED 1,213,515*</span></p>
                 <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="#"><img alt=""src="/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>             
             </div>
@@ -725,15 +729,15 @@ function Community({entity1}) {
            <div className="col-md-6">
             <div className={styles['property-slider-wrap']}>
               <div className={styles['project-card']}>
-              <img alt=""src="images/project-2.jpg" className="img-fluid" />
+              <img alt=""src="/images/project-2.jpg" className="img-fluid" />
               <h6>Kiara 2 Bedroom Apartment</h6>
               <p><span>Starting AED 1,213,515*</span></p> 
                <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="#"><img alt=""src="/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>             
             </div>
@@ -759,7 +763,7 @@ function Community({entity1}) {
                   <section className={styles['faq-section']}>
                     <div className="container">
                         <div className={styles['faq-icon']}>
-                        <img src="damac-static/images/speech-bubble 1.png"/>
+                        <img src="/images/speech-bubble 1.png"/>
                         <h2>Frequently Asked Questions</h2>          
                         </div>
                         <div className="row">
@@ -828,6 +832,7 @@ export const getServerSideProps = async () => {
 
   const  data  = await client.query({ query: COMMUNITY });
   let entity1 = data.data.nodeQuery.entities[0];
+  console.log('***data****comm',entity1);
   // const  data1  = await client.query({ query: PROJECT,filter:{conditions: [{operator: EQUAL, field: "fieldCommunity.entity.nid", value: [entity1.fieldCommunity.entity.id]}]} });
   
   // console.log('entity1',data1.data);
