@@ -79,7 +79,7 @@ function Home( {entity1} ) {
                   
                   <div className="homemobileBannerText">
                     <h3>{entity1.title}</h3>
-                    <p dangerouslySetInnerHTML={{ __html: entity1.body.value }}></p>
+                    <p>{entity1.body.value}</p>
                   </div>
 
                   <div className="bannerBtnGroup">

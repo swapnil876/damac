@@ -132,7 +132,7 @@ function Community({entity1}) {
               <div className={`text-wrapper`}> 
                 <div className="top-text">
                   <h2>{entity1.fieldTitle2}</h2>
-                  <p>{entity1.fieldDescriptionc2.value}</p>
+                  <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionc2.value }}></div>
                 </div>
 
                 <div className="section-data-boxes">

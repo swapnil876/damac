@@ -28,7 +28,7 @@ export default function PagePagination( { breadCrumbs, breadCrumbActive  } ) {
         <li>
           <a href='#'>1</a>
         </li>
-        <li>
+        {/*<li>
           <a href='#'>2</a>
         </li>
         <li>
@@ -41,7 +41,7 @@ export default function PagePagination( { breadCrumbs, breadCrumbActive  } ) {
 
         <li>
           <a href='#'>12</a>
-        </li>
+        </li>*/}
       </ul>
 
       <div className={  `${styles['pagination-arrow']} pagination-arrow-right disabled` }>

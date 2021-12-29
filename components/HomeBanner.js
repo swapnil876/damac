@@ -31,7 +31,7 @@ export default function HomeBanner( { bannerImage, children, entity1} ) {
           <div className="row">
             <div className={styles["hero-content-text"]}>
               <h2>{entity1.title}</h2>
-              <p className={styles["subtext"]} dangerouslySetInnerHTML={{ __html: entity1.body.value }}></p>
+              <div className={styles["subtext"]} dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
 
               <div className={styles['hero-cta-btns']}>
                 <Link href="#">

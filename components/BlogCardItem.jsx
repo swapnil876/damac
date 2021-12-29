@@ -48,23 +48,23 @@ export default function BlogCardItem( { className, cardDetails  } ) {
       <div className={`card-details-box`}>
         <h3 className={`${styles['blogitem-title']}`}><Link href={cardDetails.url}><a>{cardDetails.title}</a></Link></h3>
 
-        <div className={` ${ styles['blogitem-meta'] }`} >
-          <div className={`${styles['metatags']}`}>
+        {/*<div className={` ${ styles['blogitem-meta'] }`} >*/}
+          {/*<div className={`${styles['metatags']}`}>
             {
               cardDetails.tags.map( (tag, idx) => 
                 <span key={idx} className={`taglabel taglabel-${tag}`}>{tag}</span>
               )
             }
-          </div>
+          </div>*/}
 
-          <div className={`${styles['dateandauthor']}`}>
-            <span className='posted-date'>{cardDetails.date}</span>
-            <span className='by-text'>by</span>
-            <span className='posted-by-author'>{cardDetails.author}</span>
-          </div>
-        </div>
+          {/*<div className={`${styles['dateandauthor']}`}>*/}
+            {/*<span className='posted-date'>{cardDetails.date}</span>*/}
+            {/*<span className='by-text'>by</span>*/}
+            {/*<span className='posted-by-author'>{cardDetails.author}</span>*/}
+          {/*</div>*/}
+        {/*</div>*/}
 
-        <p>{cardDetails.excerpt}</p>
+        <div dangerouslySetInnerHTML={{ __html: cardDetails.excerpt }}></div>
       </div>
       <div className={`cta-btn-wrapper`}>
         <Link href={cardDetails.url}><a className={`btn btn-primary`}>{cardDetails.ctaText}</a></Link>
