@@ -91,7 +91,7 @@ function Community({entity1}) {
               <div className={ styles['banner-text-left'] }>
                 <div>
                   <h1>{entity1.title}</h1>
-                  <p><span>{entity1.fieldTagline}</span></p>
+                  <p><span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span></p>
                 </div>
 
                 <div className={ styles['location-community'] }>
@@ -129,7 +129,7 @@ function Community({entity1}) {
 
         <section className={`damac-section text-image-section`}> 
           <div className={`container`}>
-              <div class={`text-wrapper`}> 
+              <div className={`text-wrapper`}> 
                 <div className="top-text">
                   <h2>{entity1.fieldTitle2}</h2>
                   <p>{entity1.fieldDescriptionc2.value}</p>
@@ -292,18 +292,18 @@ function Community({entity1}) {
 
       <section className={styles['township-amenities']}>
         <div className="container">
-          <div class="row">
+          <div className="row">
           <div className="col-md-6">
-          <div class={`text-wrapper`}>
+          <div className={`text-wrapper`}>
                 <div className="top-text">
             <h2 style={{'color':'#ffffff'}}>Township Amenities</h2>
             <p>{entity1.fieldDescriptionc4}</p>
             </div>
             </div>
             <div style={{'margin-top':'50px'}}>
-            <div class="row">
+            <div className="row">
               {entity1.fieldAmenities.map((item,key)=>(
-                <div key={key} class="col-6">
+                <div key={key} className="col-6">
                   <div className={styles['icon-area']}>
                     <img alt={item.entity.fieldTextAmi} src={item.entity.fieldIcona.url} />
                     <h4>{item.entity.fieldValueAmi}</h4>
@@ -312,21 +312,21 @@ function Community({entity1}) {
                 </div>
               ))}
               
-                {/* <div class="col-6">
+                {/* <div className="col-6">
                 <div className={styles['icon-area']}>
                   <img alt=""src="/images/icons/building (1) 2.svg" />
                   <h4>27</h4>
                   <p>Residential Towers</p>
                 </div>
                 </div>
-                <div class="col-6">
+                <div className="col-6">
                 <div className={styles['icon-area']}>
                   <img alt=""src="/images/icons/building (1) 2.svg" />
                   <h4>27</h4>
                   <p>Residential Towers</p>
                 </div>
                 </div>
-                <div class="col-6">
+                <div className="col-6">
                 <div className={styles['icon-area']}>
                   <img alt=""src="/images/icons/building (1) 2.svg" />
                   <h4>27</h4>
@@ -340,17 +340,17 @@ function Community({entity1}) {
             {/* {
             (isMobile) ? 
             entity1.fieldGalleryMobileC4.map((item)=>{
-                 <div class="img">
+                 <div className="img">
                  <img alt=""src={item.url}/>
                 </div>        
               }) 
               :entity1.fieldDescriptionc4.map((item)=>{
-                 <div class="img">
+                 <div className="img">
                  <img alt=""src={item.url}/>
                 </div>        
               })
               } */}
-            <div class="img">
+            <div className="img">
             <img alt=""src="/images/textsection-right-1.jpg"/>
             </div>
           </div>
@@ -360,9 +360,9 @@ function Community({entity1}) {
 
       <section className={styles['projects-section']}>
         <div className="container">
-          <div class="row">
+          <div className="row">
           <div className="col-6">
-          <div class={`text-wrapper`}>
+          <div className={`text-wrapper`}>
                 <div className="top-text">
             <h2>Projects at DAMAC Hills</h2>
             </div>
@@ -375,7 +375,7 @@ function Community({entity1}) {
 
 
 
-          <div class="row" style={{'padding':'30px 0'}}>
+          <div className="row" style={{'padding':'30px 0'}}>
             <div className="col-md-3 col-6">
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
@@ -480,9 +480,9 @@ function Community({entity1}) {
 
       <section className={styles['about-location']}>
         <div className="container">
-          <div class="row">
+          <div className="row">
           <div className="col-md-6">
-          <div class={`text-wrapper`}>
+          <div className={`text-wrapper`}>
                 <div className="top-text">
             <h2>About Community Location</h2>
             </div>
@@ -507,7 +507,7 @@ function Community({entity1}) {
 
       <section className={styles['master-plan']}>
         <div className="container">  
-          <div class={`text-wrapper`}>
+          <div className={`text-wrapper`}>
             <div className="top-text">
               <h2>Community Master Plan</h2>
             </div>
@@ -566,7 +566,7 @@ function Community({entity1}) {
         <div className="row">
           <div className="col-md-8">
             <img alt=""src="/damac-static/images/invoice-1.png"/>
-            <div class={`text-wrapper`}>
+            <div className={`text-wrapper`}>
             <div className="top-text">
             <h2>Get an estimate</h2>
             </div>
