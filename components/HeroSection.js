@@ -9,13 +9,11 @@ import styles from '../styles/HeroSection.module.css'
 export default function HomeBanner( { bannerImage, children } ) {
   
   const banner = (
-    <Image 
+    <img 
     className={styles['bg-image']}
     src={bannerImage}
     layout="fill"
-    >
-      
-    </Image>
+    />
 
     );
   
