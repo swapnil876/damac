@@ -95,7 +95,7 @@ export const getServerSideProps = async () => {
   let blogs = []
   entitiy.map((v,i)=>{
     console.log(v);
-    blogs.push({title:v.title,url:'/blog/1',imageUrl: v.fieldFeatureImageDesktop.url,ctaText:'Read More',excerpt:v.body.value})
+    blogs.push({title:v.title,url:'/blog',imageUrl: v.fieldFeatureImageDesktop.url,ctaText:'Read More',excerpt:v.body.value})
   });
   // const blogs = [
   //     {
