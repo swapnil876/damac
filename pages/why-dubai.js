@@ -77,47 +77,12 @@ const WhyDubai= ({entity1})=> {
                   {entity1.fieldMultipleCounters.map((counter,index) => (
                      <div key={index} className="col-md-4 col-6">
                        <div className="icon-box">
-                         <img alt=""src="/images/icons/building 1.png"/>
-                         <h3>{counter.targetRevisionId}</h3>
-                         <p>Occupied room nights in 2018</p>
+                         <img alt={counter.entity.fieldText} src={counter.entity.fieldIcon.url}/>
+                         <h3>{counter.entity.value}</h3>
+                         <p>{counter.entity.fieldText}</p>
                        </div>
                      </div>
                    ))}
-                 {/*<div className="col-4">
-                   <div className="icon-box">
-                     <img alt=""src="/images/icons/building 1.png"/>
-                     <h3>#1</h3>
-                     <p>The World's busiest international airport</p>
-                   </div>
-                 </div>
-                 <div className="col-4">
-                   <div className="icon-box">
-                     <img alt=""src="/images/icons/building 1.png"/>
-                     <h3>15.9M</h3>
-                     <p>Visitors annually</p>
-                   </div>
-                 </div>
-                 <div className="col-4">
-                   <div className="icon-box">
-                     <img alt=""src="/images/icons/building 1.png"/>
-                     <h3>$29.7B</h3>
-                     <p>#1 in Worldwide visitor spend</p>
-                   </div>
-                 </div>
-                 <div className="col-4">
-                   <div className="icon-box">
-                     <img alt=""src="/images/icons/building 1.png"/>
-                     <h3>26%</h3>
-                     <p>Projected visitor growth</p>
-                   </div>
-                 </div>
-                 <div className="col-4">
-                   <div className="icon-box">
-                     <img alt=""src="/images/icons/building 1.png"/>
-                     <h3>15.9M</h3>
-                     <p>Visitors annually</p>
-                   </div>
-                 </div>*/}
 
                </div>
              </div>
