@@ -11,6 +11,7 @@ import Footer from '../components/Footer'
 
 
 import React, { Component } from "react";
+import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive'
 
 // import styles from '../styles/.module.css'
@@ -43,7 +44,7 @@ const WhyDubai= ({entity1})=> {
        
 
        <HeroSection
-         bannerImage={entity1.fieldMainImageDesktopd.url}
+         bannerImage={ isMobile ? entity1.fieldMainImageMobile.url : entity1.fieldMainImageDesktopd.url}
        >
 
            <div className="banner-conent-style-1">
@@ -74,7 +75,7 @@ const WhyDubai= ({entity1})=> {
              <div className="dubais-success-icons">
                <div className="row">
                   {entity1.fieldMultipleCounters.map((counter,index) => (
-                     <div key={index} className="col-4">
+                     <div key={index} className="col-md-4 col-6">
                        <div className="icon-box">
                          <img alt={counter.entity.fieldText} src={counter.entity.fieldIcon.url}/>
                          <h3>{counter.entity.value}</h3>
@@ -93,17 +94,17 @@ const WhyDubai= ({entity1})=> {
        <section className="why-dubai-section-2">
          <div className="container">
            <div className="row">
-               <div className="col-6 mb-4">
+               <div className="col-md-6 mb-4">
                  <h3>{entity1.fieldHeaderw2}</h3>
 
                </div>
            </div>
 
            <div className="row">
-               <div className="col-6 mb-2">
+               <div className="col-md-6 mb-2">
                  <p>{entity1.fieldCol1Text2}</p>
                </div>
-               <div className="col-6 mb-2">
+               <div className="col-md-6 mb-2">
                  <p>{entity1.fieldCol1Text3}</p>
                </div>
            </div>
@@ -112,14 +113,14 @@ const WhyDubai= ({entity1})=> {
 
 
        <section>
-         <img alt=""src='/images/why-dubai/dubaipalm.jpg' className="img-responsive full-width"/>
+         <img alt=""src='/images/why-dubai/dubaipalm.jpg' className="img-responsive full-width why-damac-map-img"/>
        </section>
 
 
        <section className="why-dubai-section-3">
          <div className="container">
            <div className="row">
-               <div className="col-6 mb-4">
+               <div className="col-md-6 mb-4">
                  <h3>{entity1.fieldHeaderw3}</h3>
 
                </div>
@@ -128,19 +129,19 @@ const WhyDubai= ({entity1})=> {
            <div className="dubai-districts-items">
              <div className="dubai-district-item">
                <div className="row justify-content-between">
-                   <div className="col-6 mb-2">
+                   <div className="col-md-6 mb-2">
                      <p>{entity1.fieldCol1Text3}</p>
                    </div>
-                   <div className="col-5 mb-2 pb-5">
+                   <div className="col-md-5 mb-2 pb-5">
                      <p>{entity1.fieldCol2Text3}</p>
                    </div>
                </div>
 
                <div className="row justify-content-between">
-                   <div className="col-6 mb-2">
+                   <div className="col-md-6 mb-2">
                      <h4>Dubai Marina</h4>
                    </div>
-                   <div className="col-5 mb-2">
+                   <div className="col-md-5 mb-2">
                      <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
                    </div>
                </div>
@@ -219,8 +220,9 @@ const WhyDubai= ({entity1})=> {
        </TextSection>
 
 
-
-       <TextSection className="text-section-whhydubai-4">
+       {
+         isMobile ? '' :       
+      <TextSection className="text-section-whhydubai-4">
          <div className="row justify-content-between">
            <div className="col-md-3">
              <h3>An Investor’s Favourite</h3>
@@ -230,6 +232,11 @@ const WhyDubai= ({entity1})=> {
            </div>
          </div>
        </TextSection>
+       }
+
+
+
+
 
 
        <section className="why-dubai-section-then-now">
@@ -271,6 +278,8 @@ const WhyDubai= ({entity1})=> {
          </div>
        </section>
 
+       {
+         isMobile ? '' : 
 
        <section className="why-dubai-section-5">
          <div className="container">
@@ -283,6 +292,7 @@ const WhyDubai= ({entity1})=> {
 
          </div>
        </section>
+        }
 
        <section className="why-dubai-section-6">
          <div className="container">

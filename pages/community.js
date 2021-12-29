@@ -107,6 +107,8 @@ function Community({entity1}) {
 
               <div className={ styles['banner-text-right'] }>
                 <div className={styles['btn-list']}>
+                  {isMobile ? <button className={styles['schedule_call_back_btn']}>Schedule a call-back</button> : ''}
+
                   <Link href={entity1.fieldBrochure.entity.url}>
                   {/* {entity1.fieldBrochure.url} */}
                     <a className={`${styles["cust_banner_btn"]} btn btn-dark-blur`} target="_blank" download>
@@ -352,7 +354,7 @@ function Community({entity1}) {
               })
               } */}
             <div class="img">
-            <img alt=""src="/images/textsection-right-1.jpg"/>
+            <img alt=""src="/images/textsection-right-1.jpg" style={{'max-width':'100%'}}/>
             </div>
           </div>
           </div> 
@@ -454,7 +456,7 @@ function Community({entity1}) {
       <div className={styles['angry-grid']}>
         <div className={styles['gr-item-0']}>
            <div className={styles['right-side-gallery']}>
-           {/* <img alt=""src={isMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url}/> */}
+           <img alt=""src={isMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url}/>
            <div className={styles['gal-content']}>
             <p>{entity1.fieldCol1Textc5}</p>
           </div>         
@@ -462,17 +464,17 @@ function Community({entity1}) {
         </div>
         <div className={styles['gr-item-1']}>
             <div className={styles['sm-gal-right']}>
-              {/* <img alt=""src={isMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/> */}
+              <img alt=""src={isMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-2']}>
            <div className={styles['sm-gal-left']}>
-              {/* <img alt=""src={isMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/> */}
+              <img alt=""src={isMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-3']}>
            <div className={styles['gal-gr']}>
-            {/* <img alt=""src={isMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/>  */}
+            <img alt=""src={isMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/> 
             
           </div>
         </div>

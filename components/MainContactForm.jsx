@@ -217,7 +217,7 @@ export default function ContactForm({ initialValues }) {
                 </div>
                 {/* <!-- office address section --> */}
                 <section className={styles['office-wrap']}>
-                    <div className="container">
+                    <div className="">
                         <div className={`${styles["office-main"]} d-flex justify-content-between`}>
                             <h1>Office Address</h1>
                             <div className={styles['dropdown']}>

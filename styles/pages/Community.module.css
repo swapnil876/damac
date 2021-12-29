@@ -63,11 +63,12 @@
     margin-bottom: 36px;
 }
 
-.cust_banner_btn{
+.cust_banner_btn {
     color: #fff !important;
-    background-color: rgba(0, 0, 0, 0.7) !important;
+    background: rgba(0, 0, 0, 0.7) !important;
     margin: 3px;
 }
+
 .banner-text-left .location-community a {
     color: #fff;
     font-weight: 300;
@@ -147,6 +148,7 @@
 
 .gal-content {
     width: 385px;
+    max-width: 300px;
     margin: 0 auto;
     position: absolute;
     bottom: 55px;
@@ -591,10 +593,12 @@ ul.bedroom-detail {
     padding: 0;
     align-items: center;
 }
-ul.bedroom-detail li a{
-    color:#000;
+
+ul.bedroom-detail li a {
+    color: #000;
     text-decoration: none;
 }
+
 ul.bedroom-detail li a img {
     width: 16px;
     height: 16px;
@@ -682,10 +686,64 @@ ul.shape-count {
     gap: 40px;
 }
 
+.schedule_call_back_btn {
+    width: 100%;
+    display: block;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%) !important;
+    backdrop-filter: blur(38px);
+    border-radius: 4px;
+    margin: 25px 0 13px;
+    cursor: pointer;
+    border: 0;
+}
+
 @media(max-width:767px) {
+    .community-banner-text {
+        justify-content: center;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .banner-text-left h1,
+    .banner-text-left .title {
+        font-size: 44px;
+    }
+
+    .cust_banner_btn {
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(38px);
+        width: 48%;
+    }
+
+    .cust_banner_btn span {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 113.6%;
+        letter-spacing: 0.02em;
+        color: #FFFFFF;
+    }
+
+    .banner-text-left p {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .border-white {
+        padding: 15px 10px;
+    }
+
     .invest-wrap {
         padding: 20px;
         width: 100%;
+    }
+
+    section.text-image-section .text-wrapper {
+        max-width: 100%;
     }
 
     .about-location .brand-partners .brand-icons {
@@ -705,7 +763,22 @@ ul.shape-count {
 }
 
 @media(max-width:450px) {
+    .community-banner-text {
+        /* flex-wrap: wrap; */
+    }
+
     .txt-over-grid {
         width: 90%;
+    }
+
+    .gal-content {
+        bottom: 6px;
+        left: 10px;
+        max-width: 90%;
+    }
+
+    .gal-content p {
+        font-size: 16px;
+        line-height: 20px;
     }
 }

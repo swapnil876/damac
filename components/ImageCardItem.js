@@ -36,7 +36,7 @@ export default function ImageCardItem( { className, cardDetails  } ) {
 
     <div className={ 'image-card-item' }>
       
-      <div className={ `card-image` }>
+      <div className={ `card-image` } style={{'margin-bottom':'12px'}}>
         {/*<img 
              src={cardDetails.imageUrl}
              width={594}
