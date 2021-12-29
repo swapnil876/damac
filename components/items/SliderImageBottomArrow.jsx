@@ -92,7 +92,7 @@ export default function SliderImageBottomArrow({
 		  >
 		    { slideItems.map( (slide, idx) => 
 		      <div className={`carousel-slide-item ${styles['carousel-item']}`} key={idx}>
-		        <Image 
+		        <img 
 		        src={slide.img} 
 		        width={616} 
 		        height={680} 

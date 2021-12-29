@@ -55,23 +55,23 @@ export default function GridImageSection({
           <div className={styles['desktop-image-grid']}>
             <div className={styles['grid-image-outer']}>
               <div className={styles['full-grid-img']}>
-                <Image src={gridImages[0]} layout="fill" objecfit="cover"/>
+                <img src={gridImages[0]} layout="fill" objecfit="cover"/>
               </div>
             </div>
             <div className={styles['desktop-image-grid-right']}>
               <div className={styles['grid-image-outer']}>
                 <div className={styles['full-grid-img']}>
-                  <Image src={gridImages[1]} layout="fill" objecfit="cover"/>
+                  <img src={gridImages[1]} layout="fill" objecfit="cover"/>
                 </div>
               </div>
               <div className={styles['grid-image-outer']}>
                 <div className={styles['full-grid-img']}>
-                  <Image src={gridImages[2]} layout="fill" objecfit="cover"/>
+                  <img src={gridImages[2]} layout="fill" objecfit="cover"/>
                 </div>
               </div>
               <div className={styles['grid-image-outer']}>
                 <div className={styles['full-grid-img']}>
-                  <Image src={gridImages[3]} layout="fill" objecfit="cover"/>
+                  <img src={gridImages[3]} layout="fill" objecfit="cover"/>
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function GridImageSection({
 
             <div className={styles['maintext-box']}>
               <div className={styles['bgimage']}>
-                <Image src={mobileImages[0]} layout="fill" objectfit="cover"/>
+                <img src={mobileImages[0]} layout="fill" objectfit="cover"/>
               </div>
               <div className={styles['text-content']}>
                 <ShowMoreText
@@ -114,10 +114,10 @@ export default function GridImageSection({
 
             <div className={styles['mobile-twoimages']}>
               <div className={styles['mob-bottom-img']}>
-                <Image src={mobileImages[1]} layout="responsive" width={188} height={185}/>
+                <img src={mobileImages[1]} layout="responsive" width={188} height={185}/>
               </div>
               <div className={styles['mob-bottom-img']}>
-                <Image src={mobileImages[2]} layout="responsive" width={188} height={185}/>
+                <img src={mobileImages[2]} layout="responsive" width={188} height={185}/>
               </div>
             </div>
 

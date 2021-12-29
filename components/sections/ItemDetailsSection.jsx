@@ -46,7 +46,7 @@ export default function ItemDetailsSection({
       
       { !deviceIsMobile && 
         <div className={styles['bg-image']}>
-          <Image src={imageBanner} layout="fill" objectfit="cover"/>
+          <img src={imageBanner} style={{'width':'100%'}} layout="fill" objectfit="cover"/>
         </div>
       }
 

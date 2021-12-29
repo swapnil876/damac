@@ -65,7 +65,7 @@ export default function GridImageSection({
           
           <div className={styles['boxed-wrapper-desktop']}>
                     <div className={styles['bg-image']}>
-                      <Image src={bgImage} layout="fill" alt="bg image" objectfit="cover" objectPosition="center"/>
+                      <img src={bgImage} layout="fill" alt="bg image" objectfit="cover" objectPosition="center"/>
                     </div>
                     <div className='container'>
                       <div className={styles['the-box']}>

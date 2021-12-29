@@ -28,7 +28,7 @@ export default function PropertyTextImageSection({
 
 
   const img = (
-    <Image src={ bgImage } layout="fill" objectfit="cover" objectPosition="center"/>
+    <img src={ bgImage } style={{'width':'100%'}} layout="fill" objectfit="cover" objectPosition="center"/>
   );
 
 
