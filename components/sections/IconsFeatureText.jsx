@@ -49,7 +49,7 @@ export default function IconsFeatureText({
             icons.map((elm,idx) => 
               <div key={idx } className={styles['icons-grid-item']}>
                 <div className={styles['icons-image']}>
-                  <Image src={elm.icon} width={44} height={44} layout="responsive" alt="icon"/>
+                  <img src={elm.icon} width={44} height={44} layout="responsive" alt="icon"/>
                 </div>
                 <h4 className={styles['title']}>{elm.title}</h4>
                 <p className={styles['description']}>{elm.description}</p>

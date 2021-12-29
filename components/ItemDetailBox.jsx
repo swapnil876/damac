@@ -35,7 +35,7 @@ export default function ItemDetailBox({
     <div className={ detailBoxClassnames }>
       {icon && <>
         <div className={styles['itemdetail-icon-image']}>
-          <Image src={icon} width={32} height={32}/>
+          <img src={icon} width={32} height={32}/>
         </div>
       </>}
       <h4 className={ styles['main-title'] }>{title}</h4>

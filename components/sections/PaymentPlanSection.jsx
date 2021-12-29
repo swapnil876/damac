@@ -54,7 +54,7 @@ export default function PaymentPlanSection({
      <div className="container">
        <div className={styles['header-title-container']}>
          <div className={styles['title-container']}>
-           <Image src="/images/icons/wallet 1-white.svg" width={32} height={32} alt="wallet icon"/>
+           <img src="/images/icons/wallet 1-white.svg" width={32} height={32} alt="wallet icon"/>
            <h3 class={`section-title`}>{title}</h3>
            <div className={`section-text`}>
              <p>{subtitle}</p>
