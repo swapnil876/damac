@@ -72,7 +72,7 @@ function Community({entity1}) {
             customModal ? 
             <div className="custom_modal_contain">
               <a onClick={()=>{openCustomModal(false)}}> </a>
-                <div className={`${style["schedule_callback_modal"]} popup_modal`}>
+                <div className={`${styles["schedule_callback_modal"]} popup_modal`}>
                    <div className="close" onClick={()=>{
                       openCustomModal(false);
                       }}>
@@ -123,19 +123,6 @@ function Community({entity1}) {
                             
                             <div className={`form-row form-row-2`}>
                                 <div className={`form-item-col`}>
-                                    <div className="row">
-                                        <div className='col-5 pe-0'>
-                                            <div className='custom-input-element'>
-                                                <label className='input-element-wrapper'>
-
-                                                    <div className='input-element country-code-element text-element'>
-                                                        <input type='text' name='countryCode' value={'India (+91)'} />
-
-                                                    </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className='col-7'>
                                             <div className='custom-input-element'>
                                                 <label className='input-element-wrapper'>
 
@@ -145,8 +132,6 @@ function Community({entity1}) {
                                                     </div>
                                                 </label>
                                             </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div className={`form-item-col`}>
 
@@ -171,8 +156,6 @@ function Community({entity1}) {
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 </div>
             </div> :

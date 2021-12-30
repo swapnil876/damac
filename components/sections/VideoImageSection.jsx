@@ -43,7 +43,7 @@ export default function VideoImageSection({ image }) {
         <div className='container'>
           <div className={styles['video-image-wrapper']}>
             <div className={styles['video-image']}>
-              <img src={image} width={1232} height={649} layout="fill" objectfit="cover" objectPosition="center"/>
+              <img src={image} layout="fill" objectfit="cover" objectPosition="center" style={{'max-width':'100%'}}/>
             </div>
             <a className={styles['bannerPlayBtn']}>
               <span className={styles['bannerPlayBtnIcon']}>

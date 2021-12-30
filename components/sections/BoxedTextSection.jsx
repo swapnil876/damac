@@ -44,26 +44,25 @@ export default function GridImageSection({
 
 
         { isMobile && <>
-          
-          <div className={styles['boxed-wrapper']}>
-                    <h3 className={styles['title']}>{title}</h3>
-                    <p className={styles['subtext']}>{subtext}</p>
+                  <div className={styles['boxed-wrapper']} style={{'padding':'50px 24px'}}>
+                            <h3 className={styles['title']}>{title}</h3>
+                            <p className={styles['subtext']}>{subtext}</p>
 
-                    <div className={styles['ctatext']}>
-                      <Link href={cta.href}>
-                        <a className={`cta cta-btn`}>
-                          <span>{cta.text}</span>
-                        </a>
-                      </Link>
+                            <div className={styles['ctatext']}>
+                              <Link href={cta.href}>
+                                <a className={`cta cta-btn`}>
+                                  <span>{cta.text}</span>
+                                </a>
+                              </Link>
+                            </div>
                     </div>
-                  </div>
-
+               
         </>}
 
 
         { !isMobile && <>
           
-          <div className={styles['boxed-wrapper-desktop']}>
+                 <div className={styles['boxed-wrapper-desktop']}>
                     <div className={styles['bg-image']}>
                       <img src={bgImage} layout="fill" alt="bg image" objectfit="cover" objectPosition="center"/>
                     </div>

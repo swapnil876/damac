@@ -22,7 +22,7 @@ import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function Navbar({ className, children, navbarStyle }) {
+export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn }) {
 
   
   // const slideOutMenu = {
@@ -272,12 +272,17 @@ export default function Navbar({ className, children, navbarStyle }) {
                     </div>
 
                     <div className="header-item-wrapper header-dropdown-container not-on-mobile">
-                      <a href="#" 
-                      className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`}
-                      data-dropdownkey={'enquire'} 
-                      >
+                      {
+                        whiteEnquiryBtn ? 
+                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'} style={{'background':'#fff', 'color':'#111'}}>
                         Enquire
-                      </a>
+                       </a>
+                        :
+                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'}>
+                          Enquire
+                        </a>
+                      }
+                      
 
                       <div data-dropdownkey={'enquire'} className={ `custom-nav-dropdown ${ customDropdowns['enquire'] ? 'is-active': '' } ` }>
                         

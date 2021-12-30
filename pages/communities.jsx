@@ -34,7 +34,7 @@ function Communities( { communities } ) {
       </Head>
 
 
-      <Navbar></Navbar>
+      <Navbar whiteEnquiryBtn='true' ></Navbar>
 
 
       <main className="main communities-page">
