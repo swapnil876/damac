@@ -255,7 +255,7 @@ export const getServerSideProps = async () => {
     });
 
     const  data  = await client.query({ query: OFFERS });
-    let entity1 = data.data.nodeQuery.entities[0];
+    let entity1 = data.data.nodeQuery.entities[2];
 
     console.log(entity1);
 
