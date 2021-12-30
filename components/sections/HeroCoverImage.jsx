@@ -42,16 +42,14 @@ export default function HeroCoverImage({
 
   const imageWidth = deviceIsMobile ? 640 : 1920;
   const imageHeight = deviceIsMobile ?  1600 : 1080;
-  const banner = coverImage ? (<Image 
+  const banner = coverImage ? (<img 
         className={styles['coverImage']}
         src={coverImage} 
         width={1920} 
         objectfit='cover'
         height={1080}
         layout="fill"
-    >
-      
-    </Image>) : "";
+    />) : "";
   
 
   return (
