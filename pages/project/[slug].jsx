@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import Head from "next/head";
@@ -49,7 +49,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 // FA
 
-function ProjectPage() {
+function ProjectPage({entity1}) {
   const router = useRouter()
 
 // Carousel
@@ -68,7 +68,10 @@ function ProjectPage() {
   // Use the postid prop for retrieving info
   const { slug } = router.query;
   console.log("slug", slug);
-
+  useEffect(() => {
+      // setSlugId( slug );
+      console.log('kfdfkdlk****',this);
+   }, [])
   const id = 33; // Fetch id here..
 
   //
@@ -164,11 +167,11 @@ function ProjectPage() {
       <main className="main listing-main">
         <HeroCoverImage
           itemId={id}
-          coverImage={"../images/project-bg.jpg"}
+          coverImage={entity1.fieldMainImageDesktopP.url}
           slug={"some-listing-slug"}
-          title={"Studio Apartment"}
-          description={"Menaro Tower at Business bay"}
-          location={"Dubailand, Dubai, United Arab Emirates"}
+          title={entity1.title}
+          description={entity1.fieldTaglingP}
+          location={entity1.fieldCityp.entity.name+','+entity1.fieldCountryP.entity.name}
         />
 
 
@@ -433,16 +436,13 @@ export const getServerSideProps = async () => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache(),
   });
-  // console.log(this.router);
+  console.log('slugId');
   const data = await client.query({ query: PROJECT });
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
-  // console.log('entity224',slug);
-  // console.log('entity2',entity2);
-  // console.log(data.data.nodeQuery.entities);
   return {
     props: {
-      entity1: "entity1",
+      entity1: entity1,
       // entity2: entity2
     },
   };
