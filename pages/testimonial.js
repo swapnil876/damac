@@ -27,8 +27,21 @@ import { BsBookmark } from 'react-icons/bs';
 import { FaBed } from 'react-icons/fa';
 import { FaBath } from 'react-icons/fa';
 
+// Carousel plugin import
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 function Bookstep2({entity1}) {
+
+  // Carousel
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 0 },
+      items: 1
+    }
+  };
+  
   return (
     <div id="appBody">
       <Head>
@@ -77,12 +90,13 @@ function Bookstep2({entity1}) {
                 </div>
               </div>
               <div className="col-md-6">
-                <div className="client-slider">              
-                    <img src="damac-static/images/client-img.jpg" className="img-fluid"/>
-                    <div className={`${styles["slider-nav"]} ${styles["text-center"]}`}>
-                      <img src="damac-static/images/slider-nav.png"/>                  
-                    </div>
-                </div>
+              <div className={styles['client-slider']}> 
+                <Carousel className={styles['slider']} responsive={responsive}>
+                <img src="damac-static/images/client-img.jpg" className="img-fluid"/>       
+                <img src="damac-static/images/gal-8.jpg" className="img-fluid"/>              
+                <img src="damac-static/images/client-img.jpg" className="img-fluid"/>     
+                </Carousel>
+              </div>
               </div>
             </div>
           </div>
