@@ -49,7 +49,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 // FA
 
-function ProjectPage() {
+function ProjectPage({entity1}) {
   const router = useRouter()
 
 // Carousel
