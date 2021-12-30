@@ -24,12 +24,12 @@ export default function ImageCardItem( { className, cardDetails  } ) {
   const imageBox = (
     <img 
     src={cardDetails.imageUrl} 
-    width={567} 
+    // width={567} 
     // entity1.fieldMainImageDesktopHome
-    height={320}
+    height={200}
     // layout='responsive'
     // objectfit='cover'
-    />    );
+    style={{'width':'100%'}} />    );
 
 
   return (

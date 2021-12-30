@@ -95,7 +95,7 @@ export default function GridImageSection({
 
             <div className={styles['maintext-box']}>
               <div className={styles['bgimage']}>
-                <img src={mobileImages[0]} layout="fill" objectfit="cover"/>
+                <img src={mobileImages[0]} layout="fill" objectfit="cover" style={{'max-width':'100%'}}/>
               </div>
               <div className={styles['text-content']}>
                 <ShowMoreText

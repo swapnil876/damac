@@ -6,6 +6,9 @@
 .schedule_callback_modal input{
     padding:15px 8px
 }
+.popup_map_img img{
+    width:100%
+}
 /* Community banner */
 .community-banner {
     display: block;
@@ -707,6 +710,9 @@ ul.shape-count {
 }
 
 @media(max-width:767px) {
+    /* .popup_map_img img{
+        width:500px
+    } */
     .community-banner-text {
         justify-content: center;
         flex-direction: column;

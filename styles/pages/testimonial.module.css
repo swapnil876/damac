@@ -49,6 +49,16 @@
 	line-height: 18px;
 	font-weight: 300;
 }
+.slider{
+	width:80%
+}
+.client-slider img{
+	width: 100%;
+    display: block;
+    margin: auto;
+	aspect-ratio: 1/1.2;
+	object-fit: cover;
+}
 @media (max-width: 767px){
 	.main_client_sec {
 	    padding-top: 50px;
@@ -75,6 +85,10 @@
 	    margin-bottom: 30px;
 	}
 }
-
+@media (max-width: 450px){
+	.client-slider img{
+		width: 100%;
+	}
+}
 
 

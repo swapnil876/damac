@@ -61,7 +61,8 @@ function ProjectPage({entity1}) {
     }
   };
 
-  const [customModal, openCustomModal] = useState(false)
+  const [customModal, openCustomModal] = useState(false); 
+  const [floorPlan, openFloorPlan] = useState(false);
 
 
   // Use the postid prop for retrieving info
@@ -109,6 +110,59 @@ function ProjectPage({entity1}) {
       </Head>
 
       <Navbar className="navbar-normal"></Navbar>
+
+      
+          {/* Floor Plan Custom popup modal */}
+          {
+            floorPlan ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{openFloorPlan(false)}}> </a>
+                <div className="popup_modal">
+                   <div className="close" onClick={()=>{
+                      openFloorPlan(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+                      <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                      </svg>
+                      </span>
+                    </div>
+                    <div className="row justify-content-center">
+                    <div className="col-lg-6 col-md-9">
+                        <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
+                            <div style={{'margin-bottom':'60px'}}>
+                            <h2 className="example-class" style={{ 'margin': '0', 'textAlign':'center' }}>Download Floor plan</h2>
+                            <p style={{ 'margin': '0', 'textAlign':'center' }}>Enter your email to receive the floor plan link directly in your inbox</p>
+                            </div>                           
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+
+                                <div className='custom-input-element'>
+                                    <label className='input-element-wrapper'>
+
+                                        <div className='input-element email-element'>
+                                            <input type='email' name='email' />
+                                            <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                </div>
+                            </div>
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+                                    <button className="custom-submit-btn">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div> :
+            ""
+          }
+           {/* Floor Plan Custom popup modal */}
 
       <main className="main listing-main">
         <HeroCoverImage
