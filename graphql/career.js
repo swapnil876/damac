@@ -5,6 +5,7 @@ const CAREERS = gql`
     nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["career"]}]}) {
       entities {
         ... on NodeCareer{
+            nid
             title
              fieldHeaderImageVideoMobile{
               targetId

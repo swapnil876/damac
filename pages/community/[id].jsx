@@ -134,10 +134,18 @@ function Community({entity1}) {
                   <h2>{entity1.fieldTitle2}</h2>
                   <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionc2.value }}></div>
                 </div>
-
+                <div className={styles['shape-item']}>
+                  <h4>
+                  {entity1.fieldPropertyTypec.map((item,key)=>(
+                    <span>{item.entity.name}{key!=entity1.fieldPropertyTypec.length-1?('-'):('')}</span>
+                   ))}
+                  </h4>
+                  <p><span>Properties</span></p>
+                 </div>
                 <div className="section-data-boxes">
+                  
                   <div className="data-box">
-                    <h2 className="heading-medium">{entity1.fieldArea}</h2>
+                    <h2 className="heading-medium">{entity1.fieldArea} sqft.</h2>
                     <p>Starting area</p>
                   </div>
                   <div className="data-box">
@@ -163,44 +171,48 @@ function Community({entity1}) {
           }
         </section>
 
-{/* 
-      <section className="shape-wrap">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-6">
-            <div className={styles['shape-content-wrap']}>
-              <div className={styles['shape-item']}>
-                  <h2>{entity1.fieldTitle2}</h2>
-                  <p>{entity1.fieldDescriptionc2.value}</p>
-              </div>
-              <div className={styles['shape-item']}>
-                <h4>{entity1.fieldPropertyTypec[0].entity.name}</h4>
-                <p><span>Properties</span></p>               
 
-                <ul className="d-flex shape-count">
-                  <li>
-                    <h4>{entity1.fieldStartingFromPrice}</h4>
-                    <p>Prince starting from, in AED</p>
-                  </li>
-                  <li>
-                    <h4>{entity1.fieldArea}</h4>
-                    <p>Starting area</p>
-                  </li>
-                  <li>
-                    <h4>{entity1.fieldBedRooms}</h4>
-                    <p>Bedrooms</p>
-                  </li>
-                </ul>                
+      {/*<section className="shape-wrap">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-6">
+              <div className={styles['shape-content-wrap']}>
+                <div className={styles['shape-item']}>
+                    <h2>{entity1.fieldTitle2}</h2>
+                    <p>{entity1.fieldDescriptionc2.value}</p>
+                </div>
+                <div className={styles['shape-item']}>
+                  <h4>
+                  {entity1.fieldPropertyTypec.map((item,key)=>(
+                    <span>{item.name}</span>
+                   ))}
+                  </h4>
+                  <p><span>Properties</span></p>               
+
+                  <ul className="d-flex shape-count">
+                    <li>
+                      <h4>{entity1.fieldStartingFromPrice}</h4>
+                      <p>Prince starting from, in AED</p>
+                    </li>
+                    <li>
+                      <h4>{entity1.fieldArea}</h4>
+                      <p>Starting area</p>
+                    </li>
+                    <li>
+                      <h4>{entity1.fieldBedRooms}</h4>
+                      <p>Bedrooms</p>
+                    </li>
+                  </ul>                
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-6 p-0">            
-            <div className="shape-image float-end">
-              <img alt=""src="images/shape-right.jpg" className="img-fluid" />              
-            </div>
-          </div>          
-        </div>        
-      </div>      
+            <div className="col-md-6 p-0">            
+              <div className="shape-image float-end">
+                <img alt="" src={entity1.fieldCol1ImageDesktopc.url} className="img-fluid" />              
+              </div>
+            </div>          
+          </div>        
+        </div>      
      </section> */}
 
 
