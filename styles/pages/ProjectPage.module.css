@@ -15,3 +15,29 @@
     height: 100%;
 	object-fit: cover;
 }
+
+.project_slug_modal .lower_img_section{
+	margin: 20px 50px;
+	display: flex;
+	align-items: center;
+	max-width: 100%;
+	overflow: auto;
+}
+.project_slug_modal .lower_img_section .img{
+	min-width:170px;
+	aspect-ratio: 1/1;
+	margin:0 5px;
+}
+.project_slug_modal .lower_img_section .img img{
+	width:100%;
+	height:100%
+}
+
+@media(max-width:768px){
+	.project_slug_modal .lower_img_section .img{
+		min-width:100px;
+	}
+	.project_slug_modal .lower_img_section{
+		margin: 20px;
+	}
+}

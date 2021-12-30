@@ -38,15 +38,31 @@ import styles from "../../styles/pages/ProjectPage.module.css";
 // icons
 import { FiArrowDown } from "react-icons/fi";
 import { FaStreetView } from "react-icons/fa";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { PROJECT } from "../../graphql/project";
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {PROJECT} from '../../graphql/project';
+
+// Carousel plugin import
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+
 
 // FA
 
-function ProjectPage({entity1}) {
-  const router = useRouter();
+function ProjectPage() {
+  const router = useRouter()
 
-  const [customModal, openCustomModal, slugId] = useState(false);
+// Carousel
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 0 },
+      items: 1
+    }
+  };
+
+  const [customModal, openCustomModal] = useState(false)
+
 
   // Use the postid prop for retrieving info
   const { slug } = router.query;
@@ -104,62 +120,83 @@ function ProjectPage({entity1}) {
           location={entity1.fieldCityp.entity.name+','+entity1.fieldCountryP.entity.name}
         />
 
-        {/* Custom popup modal */}
-        {customModal ? (
-          <div className="custom_modal_contain">
-            <a
-              onClick={() => {
-                openCustomModal(false);
-              }}
-            >
-              <div className={`${styles["project_slug_modal"]} popup_modal`}>
-                <div className={styles["banner_area"]}>
-                  <div
-                    className="close"
-                    onClick={() => {
+
+          {/* Custom popup modal */}
+          {
+            customModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{openCustomModal(false)}}> </a>
+                <div className={`${styles["project_slug_modal"]} popup_modal`}>
+                   <div className="close" onClick={()=>{
                       openCustomModal(false);
-                    }}
-                  >
-                    <span>
-                      <svg
-                        width="29"
-                        height="29"
-                        viewBox="0 0 29 29"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <rect
-                          x="6.36719"
-                          y="8.17578"
-                          width="3"
-                          height="20"
-                          rx="1.5"
-                          transform="rotate(-45 6.36719 8.17578)"
-                          fill="white"
-                        />
-                        <rect
-                          x="8.48828"
-                          y="22.3203"
-                          width="3"
-                          height="20"
-                          rx="1.5"
-                          transform="rotate(-135 8.48828 22.3203)"
-                          fill="white"
-                        />
-                      </svg>
-                    </span>
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+          <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+          </svg>
+
+                      </span>
+                    </div>
+                  <Carousel responsive={responsive}>
+                    <div className={styles['banner_area']}>
+                      <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                    </div>
+                    <div className={styles['banner_area']}>
+                      <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                    </div>
+                    <div className={styles['banner_area']}>
+                      <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                    </div>
+                    <div className={styles['banner_area']}>
+                      <img src="/damac-static/img/hero-image-sm.png" alt="banner" />
+                    </div>
+                  </Carousel>
+                  <div className={styles['lower_img_section']}>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
+                     <div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div><div className={styles['img']}>
+                       <img src="/damac-static/img/hero-image-sm.png" alt="banner"/>
+                     </div>
                   </div>
                   <img src="../img/hero-image-sm.png" alt="banner" />
                 </div>
-              </div>
-            </a>
-          </div>
-        ) : (
-          ""
-        )}
-        {/* Custom popup modal */}
+            </div> :
+            ""
+          }
+           {/* Custom popup modal */}
 
-        <ItemDetailsSection imageBanner="../images/3d-tour-listing.jpg" />
+        
+
+        <ItemDetailsSection imageBanner='/images/3d-tour-listing.jpg' />
+
 
         <GridImageSection
           gridImages={gridImages}

@@ -120,7 +120,9 @@ h1,
     font-size: calc(1.375rem + 1.5vw);
 }
 
-
+.dropdown-toggle::after{
+    border:none
+}
 .custom_modal_contain {
     position: fixed;
     top: 0;
@@ -169,6 +171,7 @@ h1,
     align-items: center;
     border-radius: 50%;
     cursor: pointer;
+    z-index: 9;
 }
 
 .custom_modal_contain .popup_modal .close span {
@@ -193,6 +196,15 @@ h1,
 @media (max-width:768px) {
     .custom_modal_contain .popup_modal {
         width: 90%
+    }
+    .custom_modal_contain .popup_modal .close {
+        right: 10px;
+        top: 10px;
+        background: transparent;
+        backdrop-filter: unset;
+    }
+    .custom_modal_contain .popup_modal .close span svg{
+        color:#111
     }
 }
 
@@ -1537,6 +1549,7 @@ footer.damac-footer .footer-logo {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: 9;
 }
 
 .video-box-wrapper .playbtn-wrapper {
