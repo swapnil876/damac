@@ -1,18 +1,13 @@
 
 import React, { Component, useState, useEffect } from "react";
+import { useMediaQuery } from 'react-responsive'
+
 
 import Link from 'next/link'
 import styles from '../styles/components/PageTabs.module.css';
 
 
-
-
-
 // import styles from '../styles/.module.css'
-
-
-
-
 
 export default function PageTabs( { tabLinks } ) {
 

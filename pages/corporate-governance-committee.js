@@ -103,7 +103,7 @@ function CorporateGovCommittee( { mobileDevice, entity1 } ) {
           
         </HeadingTitle>
 
-        <div className='container'>
+        <div className="container">
             <PageTabs tabLinks={ [
               {
                 url: '/corporate-governance-board',
@@ -111,7 +111,7 @@ function CorporateGovCommittee( { mobileDevice, entity1 } ) {
                 active: false,
             },
                 {
-                  url: '/',
+                  url: '/corporate-governance-committee',
                   label: 'Governance Committees',
                   active: true,
               },

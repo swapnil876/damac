@@ -46,3 +46,10 @@
 .pagetabs-link.active {
     font-weight: 500;
 }
+
+@media(max-width: 768px){
+    .pagetabs-link  {
+        margin-right: 0;
+        padding: 0 15px 15px;
+    }
+}

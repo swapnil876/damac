@@ -1,7 +1,13 @@
 .investor_relations_container {
     padding: 40px 0;
 }
-
+.currency{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    opacity: 0.45;
+    font-weight: 500;
+}
 .heading {
     padding-bottom: 40px;
     font-family: "Roboto";

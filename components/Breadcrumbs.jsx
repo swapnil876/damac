@@ -33,7 +33,7 @@ export default function Breadcrums( { crumbs } ) {
 
   return (
 
-    <div className={`${styles['page-breadcrumbs']}`}>
+    <div className={`page-breadcrumbs`}>
       <div className={`container`}>
            <div className={`${styles['breadcrumbLinks']}`}>
              <ul>
