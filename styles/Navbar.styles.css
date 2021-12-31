@@ -8,12 +8,12 @@ header.damac-header {
     left: 0;
     right: 0;
     top: 0;
-    padding: 20px 0;
+    padding: 30px 0;
     z-index: 999;
 }
 
 header.damac-header:not(.damac-header-fixed) ~ .main {
-    margin-top: -88px;
+    margin-top: -108px;
 }
 
 @media ( max-width: 768px ) {
@@ -29,7 +29,8 @@ header.damac-header:not(.damac-header-fixed) ~ .main {
     }
 
     header.damac-header:not(.damac-header-fixed) ~ .main {
-        margin-top: -59px;
+        /* margin-top: -59px; */
+        margin-top: -80px;
     }
 } 
 
