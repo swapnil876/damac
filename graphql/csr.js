@@ -5,6 +5,7 @@ const _CSR = gql`
     nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["csr"]}]}) {
       entities {
         ... on NodeCsr{
+            nid
             title
              fieldOurCause
             fieldMilestones {

@@ -5,6 +5,7 @@ const COMMUNITY = gql`
     nodeQuery(limit: 1, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["community"]}]}) {
       entities {
         ... on NodeCommunity{
+            nid
             title
             fieldTagline
             fieldCity {

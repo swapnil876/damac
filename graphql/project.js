@@ -5,6 +5,7 @@ const PROJECT = gql`
     nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["project"]}]}) {
       entities {
         ... on NodeProject{
+            nid
             title
              fieldTaglingP
             fieldCityp {
