@@ -197,7 +197,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                       {
                       navbarStyle=='dark'?
                       <a href="#" className="mainmenutoggle" onClick={handleMenuToggle} style={{'backgroundImage':'unset'}}>
-                    <img src="images/icons/Menu/menu.png" style={navbarStyle=='dark'?{'width':'28px', 'height':'18px'}:{'display':'none'}}/>
+                    <img src="/images/icons/Menu/menu.png" style={navbarStyle=='dark'?{'width':'28px', 'height':'18px'}:{'display':'none'}}/>
                     </a> :
                     <a href="#" className="mainmenutoggle" onClick={handleMenuToggle}>
                     </a>
@@ -222,7 +222,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                     {
                       navbarStyle=='dark'?
                       <a href="#" className="mainmenutoggle" onClick={handleMenuToggle} style={{'background-image':'unset'}}>
-                    <img src="images/icons/Menu/menu.png" style={navbarStyle=='dark'?{'width':'28px', 'height':'18px'}:{'display':'none'}}/>
+                    <img src="/images/icons/Menu/menu.png" style={navbarStyle=='dark'?{'width':'28px', 'height':'18px'}:{'display':'none'}}/>
                     </a> :
                     <a href="#" className="mainmenutoggle" onClick={handleMenuToggle}>
                     </a>

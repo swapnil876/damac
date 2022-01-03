@@ -107,16 +107,16 @@ function BuildingDocumentation({entity1}) {
 }
 
 
-export async function getStaticProps(context){
+export async function getServerSideProps(context){
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
 
-  const  data  = await client.query({ query: BUILDING_DOCUMENTATION});
+  const  data  = await client.query({ query: BUILDING_DOCUMENTATION,variables:{id:""}});
 
   let entity1 = data.data.nodeQuery.entities;
-  console.log('entity1',entity1);
+  console.log('entity1*****////',entity1);
 
   return {
     props: {
