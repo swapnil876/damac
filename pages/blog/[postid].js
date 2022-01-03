@@ -1,5 +1,4 @@
-import { useRouter } from "next/router";
-import Router from 'next/router'
+import { useRouter } from "next/router"
 import Head from "next/head";
 import Image from "next/image";
 
@@ -27,10 +26,9 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
 
 function BlogPost({entity1}) {
-  const {router} = useRouter();
+  const router = useRouter();
   
   // Use the postid prop for retrieving info
-  const { route } = router;
   const { postid } = router.query;
 
   const blogDetails = {
