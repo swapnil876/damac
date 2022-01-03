@@ -23,7 +23,7 @@ import { useMediaQuery } from 'react-responsive'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { BLOGS } from '../graphql/blogs';
+import { BLOGSDETAILS } from '../graphql/master/blogdetails';
 
 function Blog({entity1}) {
  var img_url;
@@ -258,10 +258,11 @@ export const getServerSideProps = async () => {
     cache: new InMemoryCache()
   });
 
-  const  data  = await client.query({ query: BLOGS });
+  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:"65"} });
+  console.log('entity1*/*/*/*',data.data.nodeQuery.entities);
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log('entity1',entity1);
+  
   // console.log('entity2',entity2);
   // console.log(data.data.nodeQuery.entities);
    return {

@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 const BUILDING_DOCUMENTATION = gql`
-query {
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["building_documentation"]}]}) {
+query BUILDING_DOCUMENTATION($id: String!){
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "nid", value: [$id]}]}) {
     entities {
       ... on NodeBuildingDocumentation{
          nid
