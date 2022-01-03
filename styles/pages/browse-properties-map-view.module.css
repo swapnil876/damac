@@ -3,7 +3,7 @@
     background: #FFFFFF;
     box-shadow: 0px 6px 18px rgb(0 0 0 / 8%);
     border-radius: 8px;
-    margin-top: -45px;
+    margin-top: -25px;
     position: relative;
     z-index: 9;
 }
@@ -21,9 +21,14 @@
     font-weight: 300;
     opacity: 0.7;
 }
-
+.search_filter .search_icon{
+    color: #979797;
+    position: absolute;
+    top: 16px;
+    left: 20px;
+}
 .search_filter input {
-    padding-left: 24px;
+    padding-left: 45px;
 }
 
 .form-field input,
@@ -32,6 +37,26 @@
     border: none;
 }
 
+.form-field select {
+    appearance: none;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 113.6%;
+    letter-spacing: 0.04em;
+    color: #000000;
+    padding-right: 32px;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+.form-field select:focus, .form-field input:focus{
+	outline:none;
+	border:none;
+	box-shadow: none;
+}
 .more-filter-btn a {
     line-height: 48px;
     margin-left: 5px;
@@ -168,7 +193,8 @@ a.border-icon {
     align-items: center;
 }
 
-.project-detail-nav a i, .project-detail-nav a svg {
+.project-detail-nav a i,
+.project-detail-nav a svg {
     color: #fff;
     font-size: 22px;
 }

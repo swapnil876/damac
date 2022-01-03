@@ -22,6 +22,7 @@
 }
 .graph-damac {
     height: 100%;
+	height: unset
 }
 
 .graph-damac img {

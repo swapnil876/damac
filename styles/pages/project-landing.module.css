@@ -39,7 +39,8 @@
 	width: 170px;
     width: 130px;
 }
-.form-select{
+
+/* .form-select{
     display: block;
     width: 100%;
     padding: .375rem .25rem .375rem .75rem;
@@ -59,6 +60,21 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+} */
+.form-field select {
+    appearance: none;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 113.6%;
+    letter-spacing: 0.04em;
+    color: #000000;
+    padding-right: 32px;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
 }
 /* .filter_option_wrap .form-field select:first-child
 {
@@ -110,7 +126,7 @@
 ul.bedroom-detail {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 16px;
     height: 58px;
     list-style-type: none;
     padding: 0;
@@ -127,6 +143,10 @@ ul.bedroom-detail li a img, ul.bedroom-detail li a svg {
     width: 16px;
     height: 16px;
     margin-right: 8px;
+}
+.small_icons{
+    width:18px !important;
+    height:18px !important
 }
 .shape-wrap-plan {
     display: flex;
