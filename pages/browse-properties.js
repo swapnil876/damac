@@ -12,7 +12,7 @@ import PageTitle from '../components/PageTitle'
 import PagePagination from '../components/PagePagination'
 import BlogCardItem from '../components/BlogCardItem'
 
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+import { FaAngleLeft, FaAngleRight, FaSearch } from 'react-icons/fa'
 
 import styles from '../styles/pages/browse-properties.module.css'
 
@@ -41,7 +41,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
      return(
          <div className="browse-properties">
-             <Navbar></Navbar>
+             <Navbar whiteEnquiryBtn="true"></Navbar>
              <main className="main">
              {/* <!-- Browse Properties Hero section --> */}
             <section className={`${styles["browse-hero"]} d-flex align-items-center`}>
@@ -55,15 +55,14 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             </section>
 
            
-              <section className="filter_main_wrap">
+              <section className={styles['filter_main_wrap']}>
               <div className="container">
                   <div className={styles['filter_option_wrap']}>
                       <form action="">
                           <div className="row">
                               <div className="col-md-3">
-                                  <div className={`${styles["form-field"]} ${styles["search_filter"]}`}
->
-                                      <i className="fas fa-search"></i>
+                                  <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
+                                      <FaSearch className={styles['search_icon']}/>
                                       <input type="text" placeholder="Search Project or Area" className="form-control"/>
                                   </div>
                               </div>
@@ -428,8 +427,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             </section>
             {/* <!-- Why Invest in Dubai --> */}
             <section className={styles['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
-              <div className={`container ${styles["why-invest-container"]}`}
->
+              <div className="container">
+                <div className={styles['why-invest-container']}>
                 <div className="row ">
                   <div className="col-md-6">
                     <div className={styles['invest-wrap']}>
@@ -453,7 +452,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                          <div className="col-md-6">
                            <a href="#" className="read-more" style={{'color':'#fff', 'text-decoration':'none'}}>Read more</a>
                          </div>
-                       </div>       
+                       </div>   
+                       </div>    
               </div>     
             </section>
             {/* <!-- faq section --> */}

@@ -68,10 +68,10 @@ function Bookstep2({entity1}) {
                                         <a href="#"><img src="images/house (2) 1.png" className={ styles["img-fluid"]} />2,750 sqft</a>
                                     </li>
                                     <li>
-                                        <a href="#"><FaBed /> 3 Bedrooms</a>
+                                        <a href="#"><img src="images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> 3 Bedrooms</a>
                                     </li>
                                     <li>
-                                        <a href="#"><FaBath />3 Bathrooms</a>
+                                        <a href="#"><img src="images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'26px', 'height':'26px'}}/>3 Bathrooms</a>
                                     </li>
                                 </ul>
                             </div>

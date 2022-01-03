@@ -42,7 +42,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 
      return(
          <div className="saved-properties">
-             <Navbar></Navbar>
+             <Navbar whiteEnquiryBtn="true"></Navbar>
              <main className="main">
 
 
@@ -61,7 +61,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                     <div className={styles['project-card']}>
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
                                           <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 2 Bedroom Apartment</h6>
@@ -102,7 +102,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                     <div className={styles['project-card']}>
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
                                           <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>
@@ -143,7 +143,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                     <div className={styles['project-card']}>
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
                                           <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>
@@ -184,7 +184,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                     <div className={styles['project-card']}>
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
                                           <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>
@@ -225,7 +225,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                     <div className={styles['project-card']}>
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
                                           <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>
@@ -266,7 +266,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                     <div className={styles['project-card']}>
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
                                           <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>

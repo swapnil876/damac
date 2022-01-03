@@ -89,6 +89,15 @@
   max-width: 100%;
   overflow: auto;
 }
+.accordion-button::after{
+  background-image: url("../../public/images/icons/arrow-down.png") !important;
+}
+.accordion-button:hover::after{
+  background-image: url("../../public/images/icons/gold-arrow-down.png") !important;
+}
+.accordion-button:focus{
+  box-shadow: none !important;
+}
 
 @media (max-width: 575.98px) {
   .table-responsive-sm {
@@ -321,9 +330,24 @@
     outline: none;
     position: relative;
     z-index: 1;
-
+}
+.custom-input-element .input-element > select{
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
 }
 
+.countryCodeSelectDropDown{
+  padding-top: 15px !important;
+  padding-bottom: 13px !important;
+}
+select:focus, input:focus{
+	outline:none;
+	border:none;
+	box-shadow: none;
+}
 .custom-input-element .input-element.country-code-element > input {
   padding: 15px 14px;
 }
@@ -451,6 +475,7 @@ List grid
     color: #fff;
     margin-bottom: 10px;
     position: relative;
+    height: 300px;
 }
 
 .page-title .container {

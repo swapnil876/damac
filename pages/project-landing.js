@@ -97,10 +97,10 @@ const ProjectLanding= ({projects,countries,cities})=> {
                                                     <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />{project.fieldAreaP2} sqft</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"><FaBed/>{project.fieldBedRoomsP2} Bedrooms</a>
+                                                    <a href="#"><img src="images/icons/bed.png" className={`img-fluid ${styles["small_icons"]}`}/>{project.fieldBedRoomsP2} Bedrooms</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"><FaHome/>{project.fieldLocalityP2}</a>
+                                                    <a href="#"><img src="images/icons/bathtub.png" className={`img-fluid ${styles["small_icons"]}`}/>{project.fieldLocalityP2}</a>
                                                 </li>
                                             </ul>
                                             <div className={styles['shape-wrap-plan']}>

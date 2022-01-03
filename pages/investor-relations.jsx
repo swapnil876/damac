@@ -7,7 +7,7 @@ import Link from 'next/link'
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
 import FooterMoreLinks from '../components/FooterMoreLinks'
-
+import ContactForm from '../components/ContactForm'
 import PageTitle from '../components/PageTitle'
 
 import styles from '../styles/InvestorRelation.module.css'
@@ -145,7 +145,7 @@ function InvestorRelations( {  } ) {
                 </div>
               </div>
               <div className={style['graph-damac']}>
-                <img src="damac-static/images/graph.jpg" className="img-fluid"/>
+                <img src="damac-static/images/graph.png" className="img-fluid"/>
                 
               </div>
             </div>
@@ -158,76 +158,21 @@ function InvestorRelations( {  } ) {
       <section className={style['enquiry-wrap']}>
         <div className="container">
           <div className="contact-form">
-            <form>
+          
               <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-5">
                   <div className={style['enquiry-head']}>
                     <h1>Send us an Enquiry</h1>
                   </div>
                 </div>
-                <div className="col-md-4 dm-col-4">
-                    <div className={style['form-feild']}>
-                        <select className="form-select" aria-label="Default select example">
-                          <option selected>Gender</option>
-                          <option value="1">Male</option>
-                          <option value="2">Female</option>
-                        </select>
-                    </div>
-                    <div className={style['form-feild']}>
-                      <input type="text" className="form-control" id="name" placeholder="First Name" />                    
-                    </div>
-                    <div className="d-flex align-items-center phone-feild">
-                      <div className={style['form-feild']}>
-                        <select className="form-select" aria-label="Default select example">
-                          <option selected="">India (91)</option>
-                          <option value="1"></option>
-                          <option value="2"></option>
-                          <option value="3"></option>
-                        </select>
-                      </div>
-                      <div className={style['form-feild']}>
-                        <input type="text" className="form-control" id="phone-number" placeholder="Phone number"/> 
-                      </div>                                        
-                    </div>
-                    <div className={style['form-feild']}>
-                      <input type="text" className="form-control" id="period" placeholder="Select dividend period*"/>                    
-                    </div>
-                    
+                <div className="col-md-7">
+                <ContactForm initialValues={ {'gender': 'Mr'} }/>
                 </div>
-                <div className="col-md-4 dm-col-4">
-                  <div className={style['form-feild']}>
-                      <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email"/>                   
-                    </div>
-                    <div className={style['form-feild']}>
-                      <input type="text" className="form-control" id="name" placeholder="Last Name"/>                    
-                    </div>
-                    <div className={style['form-feild']}>
-                      <input type="text" className="form-control" id="nin" placeholder="DFM National Investor Number (NIN)*"/>                    
-                    </div>
-                    <div className={style['form-feild']}>
-                      <input type="text" className="form-control" id="nin" placeholder="No of Shares Held"/>                    
-                    </div>
-                    
                 </div>
-              </div>
-              <div className="row justify-content-end">
-                <div className="col-md-4 dm-col-4">
-                  <label className={style['main-label']}>* Required fields</label>
-                  <div className={`${style["form-feild"]} verification`}>
-                      <input type="text" className="form-control" id="period" placeholder="13+7 = Solve Verification"/>                    
-                    </div>
-                </div>
-                <div className="col-md-4 dm-col-4">
-                  <div className={style['form-feild']}>
-                      <a href="" className={`${style["contact-form-btn"]} w-100`} style={{'marginTop':'24px', 'textDecoration':'none'}}>Enquire</a>                    
-                    </div>
-                </div>
-              </div>
-            </form>
+
           </div>
         </div>
       </section>
-
  
       <FooterMoreLinks/>
 

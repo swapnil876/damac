@@ -134,6 +134,10 @@ export default function FooterMoreLinks({ items }) {
         url: '/building-documentation',
         label: 'Building Documentation'
       },
+      {
+        url: '/corporate-governance-board',
+        label: 'Corporate Governance'
+      },
   ];
 
   return (

@@ -5,11 +5,12 @@ import Link from 'next/link'
 import styles from '../styles/components/ContactForm.module.css';
 
 
-
-
+import { FaBeer } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import styles from '../styles/.module.css'
 
-
+import {US, IN}  from 'country-flag-icons/string/3x2'
+// const Flag = Flags[US];
 
 
 
@@ -70,8 +71,8 @@ export default function ContactForm( { initialValues } ) {
                 <label className='input-element-wrapper'>
                   
                   <div className='input-element text-element'>
-                    <input type='text' name='firstName'  onChange={handleChange}/>
-                    <label className={`custom-floating-label ${values.firstName && 'filled'}`} htmlFor={'firstName'}>First name</label>
+                    <input type='text' name='firstName'  onChange={handleChange} required/>
+                    <label className={`custom-floating-label ${values.firstName && 'filled'}`} htmlFor={'firstName'}>First name*</label>
                   </div>
                 </label>
               </div>
@@ -82,8 +83,8 @@ export default function ContactForm( { initialValues } ) {
                 <label className='input-element-wrapper'>
                   
                   <div className='input-element text-element'>
-                    <input type='text' name='lastName'  onChange={handleChange}/>
-                    <label className={`custom-floating-label ${values.lastName && 'filled'}`} htmlFor={'lastName'}>Last name</label>
+                    <input type='text' name='lastName'  onChange={handleChange} required/>
+                    <label className={`custom-floating-label ${values.lastName && 'filled'}`} htmlFor={'lastName'}>Last name*</label>
                   </div>
                 </label>
               </div>
@@ -99,7 +100,13 @@ export default function ContactForm( { initialValues } ) {
                   <div className='custom-input-element'>
                     <label className='input-element-wrapper'>
                       <div className='input-element country-code-element text-element'>
-                        <input type='text' name='countryCode' value={'India (+91)'}  onChange={handleChange}/>
+                        {/* <input type='text' name='countryCode' value={'India (+91)'}  onChange={handleChange}/> */}
+                        <select name="countryCode" onChange={handleChange} className='countryCodeSelectDropDown'>
+                          <option value="India (+91)" selected> India (+91)</option>
+                          <option value="United States (+1)">US (+1)</option>
+                          <option value="United States (+1)">US (+1)</option>
+                          <option value="United States (+1)">UAE (+971)</option>
+                        </select>
                       </div>
                     </label>
                   </div>
@@ -175,20 +182,18 @@ export default function ContactForm( { initialValues } ) {
           <div className={`form-row form-row-2`}>
             <div className={`form-item-col`}>
               <div className='custom-input-element'>
-                <label className='input-element-wrapper'>
+                {/* <label className='input-element-wrapper'>
                   
                   <div className='input-element select-element'>
                     <input name='captchaSolveInput'  onChange={handleChange} />
                     <label className={`custom-floating-label ${values.captchaSolveInput && 'filled'}`} htmlFor={'captchaSolveInput'}>13+7 = Solve Verification</label>
                   </div>
-                </label>
+                </label> */}
                 
               </div>
             </div>
-            <div className={`form-item-col`}>
-
+            <div className={`form-item-col`}> 
               <button className="custom-submit-btn">Enquire</button>
-
             </div>
           </div>
 

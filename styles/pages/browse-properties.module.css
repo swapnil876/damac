@@ -1,5 +1,6 @@
 .browse-hero {
 	width: 100%;
+	height:300px;
 	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
 }
 
@@ -22,13 +23,21 @@
 	height: 48px;
 	border: none;
 }
-
+.filter_main_wrap{
+	position: relative;
+	top:-50px
+}
 .search_filter {
 	position: relative;
 }
-
+.search_filter .search_icon{
+    color: #979797;
+    position: absolute;
+    top: 16px;
+    left: 20px;
+}
 .search_filter input {
-	padding-left: 24px;
+	padding-left: 45px;
 }
 
 .search_filter i {
@@ -124,8 +133,19 @@
 .map_filter_main .form-field select {
 	margin-right: 10px;
 	height: 42px;
+	font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 113.6%;
+    letter-spacing: 0.04em;
+    color: #000000;
+    margin-right: 32px;
 }
-
+.form-field select:focus, .form-field input:focus{
+	outline:none;
+	border:none;
+	box-shadow: none;
+}
 .tag_list ul li a {
 	font-size: 18px;
 	font-weight: 300;
@@ -150,6 +170,8 @@
 
 .show_property_main {
 	padding-top: 44px;
+	position: relative;
+    top: -50px;
 }
 
 .property_search_head h3 {
@@ -529,6 +551,9 @@ section.faq-section .accordion-body {
 }
 
 @media (max-width: 767px) {
+	.show_property_main {
+		top: 0px;
+	}
 	.filter_tag_main {
 		flex-direction: column;
 	}
