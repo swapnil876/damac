@@ -36,14 +36,15 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
          <div className="PressRelease">
              <Navbar></Navbar>
              <main className="main">
-                <section className={styles['press-hero']} style={{'background-image': 'url(damac-static/images/press-realease-banner.jpg)'}}>               
-                <div className={styles['press-hero-wrap']}>
-                    <div className={styles['press-content']}>
+                <section className={styles['press-hero']} style={{'background-image': 'url(damac-static/images/press-realease-banner.jpg)'}}>   
+                <div className="container" style={{'height':'100%'}}>
+                <div className={styles['press-hero-wrap']} style={{'padding-right':'0'}}>
+                    <div className={styles['press-content']} style={{'padding':'0 !important'}}>
                     <h2>DAMAC Properties to Hold First Ever Ramadan Sports Festival at AKOYA</h2>
                     <p>We reflected on DAMAC’s years of history and created an infographic summary.</p>
                     <span>Dec, 15 2021 By Financial Times</span>
                     </div> 
-                </div>                   
+                </div> </div>                              
                 </section>  
 
                 <section className={styles['newsdetail-content']}>
@@ -77,7 +78,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 <section className={styles['related-post']}>
                 <div className="container">
                     <div className={styles['related-title']}>
-                    <h2>Related Posts</h2>          
+                    <h2>Related News</h2>          
                     </div>
                     <div className="row">
                     <div className="col-md-4">

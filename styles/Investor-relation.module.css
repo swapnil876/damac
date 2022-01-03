@@ -72,6 +72,9 @@
 	background: #F4F7FA;
 	border-radius: 8px;
 }
+.dfm-left-txt p{
+	margin: 0;
+}
 .dfm-left-txt p,.dm-ul-dfm li,.dfm-4-content p,.dfm-4-content h2{
 	font-size: 16px;
 	line-height: 21.7px;
@@ -125,6 +128,9 @@
 .form-feild input, .form-feild select {
     height: 48px;
     margin-bottom: 16px;
+}
+.form-feild input:focus, .form-feild select:focus{
+	box-shadow:none
 }
 .d-flex.align-items-center.phone-feild {
     gap: 16px;

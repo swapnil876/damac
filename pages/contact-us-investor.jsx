@@ -75,7 +75,6 @@ function ContactUsInvestor( { mobileDevice } ) {
 
       <Head>
         <title>Contact Us - Damac</title>
-
         <meta name="description" content="Contact Us - Damac Properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -84,9 +83,7 @@ function ContactUsInvestor( { mobileDevice } ) {
       <Navbar navbarStyle='dark' className='navbar-dark'></Navbar>
 
       <main className="main main-regular contactusinvestor">
-
         <Breadcrumbs crumbs={ crumbs }/>
-
         <HeadingTitle 
           title="Contact Us" 
           deviceIsMobile={ deviceIsMobile }
@@ -98,11 +95,9 @@ function ContactUsInvestor( { mobileDevice } ) {
         <section >
         {/*className={ `section ${styles['contactus-investor']}` }*/}
           <div className='container'>
-            
             <div className='row'>
-              
               <div className='col-xl-3 col-md-4'>
-                <div >
+                <div style={{'marginBottom':'20px'}}>
                 {/*className={ styles['contactus-left-area'] }*/}
                   <h3>Investor Relations</h3>
                   <p>DAMAC Properties Dubai PJSC<br/> PO Box 2195<br/> Dubai, United Arab Emirates</p>

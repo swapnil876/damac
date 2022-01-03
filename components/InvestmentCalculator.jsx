@@ -8,6 +8,7 @@ export default function InvestmentCalculator({ initialValues }) {
 
 
   const [values, setValues] = useState(initialValues);
+  const [showGraph, setShowGraph] = useState(false);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -57,6 +58,7 @@ export default function InvestmentCalculator({ initialValues }) {
                         <input type='text' name='amt_invested' id="amt_invested" onChange={handleChange} />
                         {/* value={values.amt_invested} */}
                         <label className={`custom-floating-label`} htmlFor={'amt_invested'}>Amount Invested</label>
+                        <span className={styles['currency']}>AED</span>
                       </div>
                     </label>
                   </div>
@@ -70,9 +72,9 @@ export default function InvestmentCalculator({ initialValues }) {
                     <label className='input-element-wrapper'>
 
                       <div className='input-element text-element'>
-                        <input type='text' name='date' id='date' onChange={handleChange} />
+                        <input type='date' name='date' id='date' onChange={handleChange} />
                         {/* value={values.date} */}
-                        <label className={`custom-floating-label `} htmlFor={'date'}>Date of investment</label>
+                        <label className={`filled custom-floating-label `} htmlFor={'date'}>Date of investment</label>
                       </div>
                     </label>
                   </div>
@@ -83,9 +85,9 @@ export default function InvestmentCalculator({ initialValues }) {
                     <label className='input-element-wrapper'>
 
                       <div className='input-element text-element'>
-                        <input type='text' name='end_date'  id='end_date' onChange={handleChange}  />
+                        <input type='date' name='end_date'  id='end_date' onChange={handleChange}  />
                         {/* value={values.end_date} */}
-                        <label className={`custom-floating-label `} htmlFor={'end_date'}>End date of investment</label>
+                        <label className={`filled custom-floating-label `} htmlFor={'end_date'}>End date of investment</label>
                       </div>
                     </label>
                   </div>
@@ -98,15 +100,19 @@ export default function InvestmentCalculator({ initialValues }) {
                 </div>
                 <div className={`form-item-col`}>
 
-                  <button className="custom-submit-btn">Show results</button>
+                  <button className="custom-submit-btn" onClick={()=>{setShowGraph(true)}}>Show results</button>
 
                 </div>
               </div>
             </div>
             <div className="col-md-6">
-              <div className={ styles['side_chart'] }>
+              {
+                showGraph ? 
+                <div className={ styles['side_chart'] }>
                 <img src="../images/content/share-information/investment_calculator.png" alt="Share Price Look Up" />
-              </div>
+                </div>
+                : ''
+              }
             </div>
           </div>
         </div>
