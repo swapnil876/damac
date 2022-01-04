@@ -29,10 +29,11 @@ export default function ImageCardItem( { className, cardDetails  } ) {
     height={200}
     // layout='responsive'
     // objectfit='cover'
-    style={{'width':'100%'}} />    );
+    style={{'width':'100%','height':'200px'}} />    );
 
 
   return (
+
 
     <div className={ 'image-card-item' }>
       

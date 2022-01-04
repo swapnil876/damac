@@ -61,18 +61,28 @@ function Bookstep2({entity1}) {
                                 <h6>Kiara 2 Bedroom Apartment</h6>
                                 <p>DAMAC Hills, Dubailand, Dubai</p>
                                 <ul className={`${styles["bedroom-detail"]} ${styles["list-unstyled"]}`}>
-                                    <li>
+                                    <div className="row">
+                                        <div className="col-md-7">
+                                        <li>
                                         <a href="#"><img src="images/price-tag 1.png" className={ styles["img-fluid"]} />From AED 1,213,515*</a>
-                                    </li>
-                                    <li>
+                                        </li>
+                                        </div>
+                                        <div className="col-md-5">
+                                        <li>
                                         <a href="#"><img src="images/house (2) 1.png" className={ styles["img-fluid"]} />2,750 sqft</a>
-                                    </li>
-                                    <li>
+                                        </li>
+                                        </div>
+                                        <div className="col-md-7">
+                                        <li>
                                         <a href="#"><img src="images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> 3 Bedrooms</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'26px', 'height':'26px'}}/>3 Bathrooms</a>
-                                    </li>
+                                        </li>
+                                        </div>
+                                        <div className="col-md-5">
+                                        <li>
+                                        <a href="#"><img src="images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
+                                         </li>
+                                        </div>
+                                    </div>   
                                 </ul>
                             </div>
                         </div>

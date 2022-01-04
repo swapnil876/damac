@@ -10,8 +10,13 @@
 
 .text-section p {
 	font-size: 20px;
-	font-weight: 300;
-	line-height: 1.8;
+	font-weight: 200;
+	font-family: "Roboto";
+	font-style: normal;
+	font-size: 16px;
+	line-height: 149.6%;
+	letter-spacing: 0.03em;
+	color: #FFFFFF;
 }
 
 @media (max-width:767px) {

@@ -9,10 +9,38 @@ section.offermain-hero {
     background-repeat: no-repeat;
 }
 
+.range-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    height: 1px;
+    margin-top: 22px;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 23px;
+    height: 24px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
+.range-slider::-moz-range-thumb {
+    width: 23px;
+    height: 24px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
 .offerhero-container {
     position: absolute;
     bottom: 100px;
-    left: 104px;
+    /* left: 104px; */
 }
 
 .offermain-banner-txt h1 {
@@ -46,7 +74,7 @@ section.hospitality {
     line-height: 52px;
     margin: 0;
 }
-
+.hospitality-maintxt,
 .hospitality-maintxt p,
 .hospitality-maintxt ul {
     margin: 0;
@@ -130,12 +158,21 @@ p.estimate-tagline {
 }
 
 .border-white {
-    padding: 15px 20px;
+    padding: 14px 14px;
     width: 50%;
     margin-bottom: 22px;
     border: 0.5px solid #FFFFFF;
 }
-
+.border-white .side_icons{
+    position: relative;
+    left:50%;
+    font-size: 22px;
+    opacity: unset;
+}
+.border-white .side_icons svg{
+    margin:5px;
+    cursor: pointer;
+}
 .estimate-inner p {
     font-size: 20px;
 }
@@ -187,11 +224,19 @@ span.text-right.dark i {
 }
 
 .estimate-cost ul li {
-    margin-bottom: 26px;
+    /* margin-bottom: 26px; */
+    margin-bottom: 12px;
     font-size: 26px;
     float: right;
     text-align: right;
     width: 100%;
+}
+
+.estimate-cost ul.fees li i {
+    font-size: 16px;
+    line-height: 148%;
+    letter-spacing: 0.07em;
+    font-style: normal;
 }
 
 .estimate-cost span.text-left {
@@ -204,6 +249,21 @@ span.text-right.dark i {
 
 .estimate-cost span {
     opacity: 0.7;
+}
+
+.enquire_btn_white {
+    background: #FFFFFF;
+    box-shadow: 0px -6px 84px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113.6%;
+    letter-spacing: 0.02em;
+    padding:14px 73px;
+    font-family: "Roboto";
+    font-weight: 400;
+    border:0;
+    color: #c6b078;
 }
 
 section.faq-section {
@@ -240,12 +300,24 @@ section.faq-section div.accordion button {
     color: rgba(255, 255, 255, 0.75);
     font-size: 20px;
 }
-
+@media (max-width: 1200px){
+    .border-white .side_icons{
+        left:30%;
+    }    
+}
+@media (max-width: 992px){
+    .border-white .side_icons{
+        left:15%;
+    }    
+}
 
 @media (max-width: 768px) {
     .border-white {
         width: 100%;
     }
+    .border-white .side_icons{
+        left: 100px;
+    }    
 
     .estimate-inner {
         width: 100%;
@@ -271,7 +343,7 @@ section.faq-section div.accordion button {
     .offerhero-container {
         position: absolute;
         bottom: 100px;
-        left: 0;
+        /* left: 0; */
     }
 
     .hospitality-main-head h1 {

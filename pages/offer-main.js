@@ -15,6 +15,9 @@ import Footer from '../components/Footer'
 
 import Slider from "react-slick";
 
+import { FaAngleRight, FaAngleLeft, FaMinus, FaPlus } from 'react-icons/fa'
+
+
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { OFFERS } from '../graphql/master/offers';
 
@@ -84,7 +87,8 @@ function OfferMain({entity1}) {
       <main className="main">
       {/* <!-- community Hero section --> */}
       <section className={styles['offermain-hero']} style={{'background-image':'url(' + entity1.fieldImageOffer.url + ')'}}>        
-        <div className={`container ${styles["offerhero-container"]}`}>
+        <div className="container">
+          <div className={styles['offerhero-container']}>
           <div className="row align-items-end">
             <div className="col-md-12">
               <div className={styles['offermain-banner-txt']}>
@@ -92,6 +96,7 @@ function OfferMain({entity1}) {
                 <p><span>Invest in Luxury hotel rooms</span></p>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -144,22 +149,27 @@ function OfferMain({entity1}) {
               <div className={styles['estimate-inner']}>
                 <div className={`price ${styles["border-white"]}`}>
                   <p><span>Property Price</span></p>
-                  <p><span>AED </span> 120,000 <span className="text-right dark"><i className="fas fa-angle-left"></i> <i className="fas fa-angle-right"></i></span></p>
+                  <p><span>AED </span> 120,000 <span className={`text-right dark ${styles["side_icons"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
                 </div>
                 <div className={`rate ${styles["border-white"]}`}>
                   <p><span>Interest Rate</span> <span className="text-right">%</span> </p>
-                  <p>1.99 <span className="text-right dark"><i className="fas fa-minus"></i><i className="fas fa-plus"></i></span></p>
+                  <p>1.99 <span className={`text-right dark ${styles["side_icons"]}`}><FaPlus/><FaMinus/></span></p>
                 </div>
               </div>
               <div className={styles['estimate-inner']}>
                 <div className={`down-payment ${styles["border-white"]}`}>
                   <p>Down Payment <span className="text-right">%</span></p>
                   <p>25 </p>
+                  <input type="range" className={styles['range-slider']} />
                 </div>
                 <div className={`loan ${styles["border-white"]}`}>
                   <p><span>Loan Period</span> <span className="text-right">Y R S</span></p>
                   <p> 5</p>
+                  <input type="range" className={styles['range-slider']} />
                 </div>
+              </div>
+              <div className={styles['estimate-inner']}>
+                <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
               </div>
             </div>
             <div className="col-md-4">
@@ -172,11 +182,11 @@ function OfferMain({entity1}) {
                   <li><span className={styles['text-left']}>For Years</span>5</li>
                 </ul>
                 <h4>Fees</h4>
-                <ul>
-                  <li><span className={styles['text-left']}>Land Department Fee</span> <span>AED</span> 120,000</li>
-                  <li><span className={styles['text-left']}>Registration Fee</span> <span>AED</span> 120,000</li>
-                  <li><span className={styles['text-left']}>Mortgage Registration Fee</span> <span>AED</span> 120,000</li>
-                  <li><span className={styles['text-left']}>Valuation Fee</span><span>AED</span> 120,000</li>
+                <ul className={styles['fees']}>
+                  <li><span className={styles['text-left']}>Land Department Fee</span> <i><span>AED</span> 120,000</i></li>
+                  <li><span className={styles['text-left']}>Registration Fee</span> <i><span>AED</span> 120,000</i></li>
+                  <li><span className={styles['text-left']}>Mortgage Registration Fee</span> <i><span>AED</span> 120,000</i></li>
+                  <li><span className={styles['text-left']}>Valuation Fee</span><i><span>AED</span> 120,000</i></li>
                 </ul>
               </div>
             </div>

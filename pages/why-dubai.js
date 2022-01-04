@@ -22,7 +22,22 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { WHY_DUBAI } from '../graphql/why_dubai';
 
 
+// Carousel plugin import
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+
 const WhyDubai= ({entity1})=> {
+
+  // Carousel
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 0 },
+      items: 1
+    }
+  };
+
   return (
     <div className='whydubaibody'>
 
@@ -79,7 +94,7 @@ const WhyDubai= ({entity1})=> {
                        <div className="icon-box">
                          <img alt={counter.entity.fieldText} src={counter.entity.fieldIcon.url}/>
                          <h3>{counter.entity.value}</h3>
-                         <p>{counter.entity.fieldText}</p>
+                         <p style={{'color':'#111'}}>{counter.entity.fieldText}</p>
                        </div>
                      </div>
                    ))}
@@ -137,51 +152,124 @@ const WhyDubai= ({entity1})=> {
                    </div>
                </div>
 
+             
                <div className="row justify-content-between">
-                   <div className="col-md-6 mb-2">
-                     <h4>Dubai Marina</h4>
-                   </div>
-                   <div className="col-md-5 mb-2">
-                     <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
-                   </div>
+                    <Carousel responsive={responsive}>
+                      <div>
+                          <div className="col-md-6 mb-2">
+                            <h4>Dubai Marina</h4>
+                          </div>
+                          <div className="col-md-5 mb-2">
+                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
+                          </div>
+                          <div className="district-items-nav">
+                            <div className="row justify-content-between align-items-center">
+                              <div className="col-md-9">
+                                <ul className="district-items-nav-list">
+                                  <li><a href="#" className="active">Dubai Marina</a></li>
+                                  <li><a href="#">Business Bay </a></li>
+                                  <li><a href="#">Jumeirah Village</a></li>
+                                  <li><a href="#">Barsha Heights</a></li>
+                                  <li><a href="#">Dubai Sports City</a></li>
+
+                                </ul>
+                              </div>
+                              <div className="col-md-auto">
+                                {/* <div className="text-md-right text-center">
+                                  <div className={`sliderArrows sliderArrowsDark`}>
+                                    <a href="#" className="sliderArrow">
+                                      <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path  d="M8.75 15.875L1.875 9L8.75 2.125" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                                        </svg>
+                                        </span>
+                                    </a>
+                                    <a href="#" className="sliderArrow">
+                                      <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path  d="M2.25 2.125L9.125 9L2.25 15.875" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                                        </svg>
+
+                                        </span>
+                                    </a>
+                                  </div>
+                                </div> */}
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+                      <div>
+                          <div className="col-md-6 mb-2">
+                            <h4>Dubai Marina</h4>
+                          </div>
+                          <div className="col-md-5 mb-2">
+                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
+                          </div>
+                          <div className="district-items-nav">
+                            <div className="row justify-content-between align-items-center">
+                              <div className="col-md-9">
+                                <ul className="district-items-nav-list">
+                                  <li><a href="#" className="active">Dubai Marina</a></li>
+                                  <li><a href="#">Business Bay </a></li>
+                                  <li><a href="#">Jumeirah Village</a></li>
+                                  <li><a href="#">Barsha Heights</a></li>
+                                  <li><a href="#">Dubai Sports City</a></li>
+
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+                      <div>
+                          <div className="col-md-6 mb-2">
+                            <h4>Dubai Marina</h4>
+                          </div>
+                          <div className="col-md-5 mb-2">
+                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
+                          </div>
+                          <div className="district-items-nav">
+                            <div className="row justify-content-between align-items-center">
+                              <div className="col-md-9">
+                                <ul className="district-items-nav-list">
+                                  <li><a href="#" className="active">Dubai Marina</a></li>
+                                  <li><a href="#">Business Bay </a></li>
+                                  <li><a href="#">Jumeirah Village</a></li>
+                                  <li><a href="#">Barsha Heights</a></li>
+                                  <li><a href="#">Dubai Sports City</a></li>
+
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+                      <div>
+                          <div className="col-md-6 mb-2">
+                            <h4>Dubai Marina</h4>
+                          </div>
+                          <div className="col-md-5 mb-2">
+                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
+                          </div>
+                          <div className="district-items-nav">
+                            <div className="row justify-content-between align-items-center">
+                              <div className="col-md-9">
+                                <ul className="district-items-nav-list">
+                                  <li><a href="#" className="active">Dubai Marina</a></li>
+                                  <li><a href="#">Business Bay </a></li>
+                                  <li><a href="#">Jumeirah Village</a></li>
+                                  <li><a href="#">Barsha Heights</a></li>
+                                  <li><a href="#">Dubai Sports City</a></li>
+
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      </Carousel>
                </div>
              </div>
            </div>
 
-
-           <div className="district-items-nav">
-             <div className="row justify-content-between align-items-center">
-               <div className="col-md-9">
-                 <ul className="district-items-nav-list">
-                   <li><a href="#" className="active">Dubai Marina</a></li>
-                   <li><a href="#">Business Bay </a></li>
-                   <li><a href="#">Jumeirah Village</a></li>
-                   <li><a href="#">Barsha Heights</a></li>
-                   <li><a href="#">Dubai Sports City</a></li>
-
-                 </ul>
-               </div>
-               <div className="col-md-auto">
-                 <div className="text-md-right text-center">
-                   <div className={`sliderArrows sliderArrowsDark`}>
-                     <a href="#" className="sliderArrow">
-                       <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path  d="M8.75 15.875L1.875 9L8.75 2.125" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                        </span>
-                     </a>
-                     <a href="#" className="sliderArrow">
-                       <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path  d="M2.25 2.125L9.125 9L2.25 15.875" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-
-                        </span>
-                     </a>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
 
          </div>
        </section>

@@ -434,6 +434,7 @@ List grid
 }
 .image-card-item .card-image img{
   max-width: 100%;
+  object-fit: cover;
 }
 .image-card-item .card-details-box {
     max-width: 550px;
@@ -450,7 +451,11 @@ List grid
 }
 .image-card-item p {
     font-size: 16px;
-    margin:0
+    margin:0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .image-card-item h5 {
     font-size: 20px;

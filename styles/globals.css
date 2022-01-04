@@ -120,9 +120,10 @@ h1,
     font-size: calc(1.375rem + 1.5vw);
 }
 
-.dropdown-toggle::after{
-    border:none
+.dropdown-toggle::after {
+    border: none
 }
+
 .custom_modal_contain {
     position: fixed;
     top: 0;
@@ -197,14 +198,16 @@ h1,
     .custom_modal_contain .popup_modal {
         width: 90%
     }
+
     .custom_modal_contain .popup_modal .close {
         right: 10px;
         top: 10px;
         /* background: transparent;
         backdrop-filter: unset; */
     }
-    .custom_modal_contain .popup_modal .close span svg{
-        color:#111
+
+    .custom_modal_contain .popup_modal .close span svg {
+        color: #111
     }
 }
 
@@ -1193,6 +1196,7 @@ section.building-documentation-para .main-text {
     padding: 15px 0;
     font-size: 18px;
 }
+
 .building-documentation-link li .doc-name a {
     padding: 15px 0;
     font-size: 18px;
@@ -1203,6 +1207,7 @@ section.building-documentation-para .main-text {
     line-height: 172%;
     color: #000000;
 }
+
 .building-documentation-link li .doc-link a {
     text-decoration: none;
     font-size: 16px;
@@ -1350,9 +1355,12 @@ footer.damac-footer .footer-logo {
 }
 
 @media (max-width: 767px) {
-    .building-documentation-link li .doc-name a, .building-documentation-link li .doc-name {
+
+    .building-documentation-link li .doc-name a,
+    .building-documentation-link li .doc-name {
         padding: 8px 0;
     }
+
     .footer-text-block {
         padding: 30px 0;
         font-weight: 300;
@@ -1662,12 +1670,14 @@ WHY DUBAI PAGE
 .dubais-success-icons .icon-box img {
     width: 60px;
     margin-bottom: 20px;
+    width: 48px;
+    height: 48px;
 }
 
 .dubais-success-icons h3 {
     font-size: 44px;
     font-weight: 400;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 .dubais-success-icons p {
@@ -1810,6 +1820,7 @@ WHY DUBAI PAGE
 .text-section-whhydubai-investorsfav h4 {
     font-size: 28px;
     font-weight: 400;
+    margin-bottom: 6px;
 }
 
 .text-section-whhydubai-investorsfav p {
@@ -1994,6 +2005,16 @@ PAGE:  NEWS
     padding: 64px 0px 0px 0px;
 }
 
+.industry-news .card-body .card-title {
+    margin-bottom: 16px;
+    font-size: 20px;
+    line-height: 124.6%;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+.industry-news .card-body .card-title a{
+    font-weight: 500;
+}
 .industry-news.bg-light .card {
     width: 200px;
 }
@@ -2312,10 +2333,15 @@ PAGE:  NEWS
     .news-wrap h5 {
         font-size: 17px;
         line-height: 20px;
+        margin-bottom: 16px;
+        font-size: 500;
     }
-
+    .news-wrap h5 .head_link{
+        font-weight: 500;
+    }
     .news-wrap h5 a {
         color: #fff;
+        font-weight: 500;
     }
 
     .news-wrap h5 a:hover {

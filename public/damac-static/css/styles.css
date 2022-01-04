@@ -22,8 +22,18 @@ a {
 
 
 
-
-
+.react-multiple-carousel__arrow{
+    bottom:0 !important
+}
+.react-multiple-carousel__arrow .react-multiple-carousel__arrow--left{
+    left: unset !important;
+    right: 110px !important;
+}
+button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled){
+    left: unset !important;
+    right: 122px !important;
+    margin:10px
+}
 /* Common Style */
 :root {
   --font-family: "Roboto", sans-serif;
