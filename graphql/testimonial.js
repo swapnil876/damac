@@ -1,9 +1,12 @@
+import { gql } from '@apollo/client';
+
+const TESTIMONIAL = gql
 `query {
   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["testimonial_main"]}]}) {
     entities {
       ... on NodeTestimonialMain{
         nid
-        title
+        title,
         fieldMainVideo{
             title
           	url {
@@ -14,7 +17,7 @@
         	entity{
             ... on ParagraphTestimonials{
               fieldTestimonialText,
-              
+              fieldTestimonialHeading
             }
           }
         }
@@ -22,3 +25,5 @@
     }
   }
 }`
+
+export { TESTIMONIAL };

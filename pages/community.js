@@ -241,7 +241,7 @@ function Community({entity1}) {
 
                 <div className="section-data-boxes">
                   <div className="data-box">
-                    <h2 className="heading-medium">{entity1.fieldArea}</h2>
+                    <h2 className="heading-medium"><img src="/images/icons/location-marker.png"/>{entity1.fieldArea}</h2>
                     <p>Starting area</p>
                   </div>
                   <div className="data-box">

@@ -19,7 +19,6 @@ import TextSection from '../components/text-section'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { CAREERS } from '../graphql/career';
 
 import {isMobile} from 'react-device-detect';
 import styles from '../styles/pages/testimonial.module.css';
@@ -30,6 +29,7 @@ import { FaBath } from 'react-icons/fa';
 // Carousel plugin import
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { TESTIMONIAL } from '../graphql/testimonial';
 
 function Bookstep2({entity1}) {
 
@@ -124,15 +124,16 @@ export const getStaticProps = async () => {
     cache: new InMemoryCache()
   });
 
-  const  data  = await client.query({ query: CAREERS });
-  let entity1 = data.data.nodeQuery.entities[0];
-  console.log('entity1',entity1);
+  const  data  = await client.query({ query: TESTIMONIAL });
+  console.log('entity1',data.data.nodeQuery.entities);
+  console.log('------------------------------------------------')
+  console.log(data.data.nodeQuery.entities[1].fieldMultipleTestimonails)
    return {
       props: {
-        entity1: entity1,
+        entity1: 'entity1',
         // entity2: entity2
       }
-    }
+   }
 
 }
 

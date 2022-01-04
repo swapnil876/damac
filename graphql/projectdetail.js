@@ -1,10 +1,11 @@
 import { gql } from '@apollo/client';
 
-const PROJECT = gql`
-  query {
-    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["project"]}]}) {
+const PROJECTDETAIL = gql`
+  query PROJECTDETAIL($id: String!){
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "nid", value: [$id]}]}) {
       entities {
         ... on NodeProject{
+            nid
             title
              fieldTaglingP
             fieldCityp {
@@ -180,4 +181,4 @@ const PROJECT = gql`
     }
   }`;
 
-export { PROJECT };
+export { PROJECTDETAIL };

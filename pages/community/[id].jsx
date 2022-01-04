@@ -97,7 +97,7 @@ function Community({entity1}) {
                 <div className={ styles['location-community'] }>
                   <a href="#">
                      <span className={styles['text-icon']}>
-                       <Image alt="" src="/images/icons/location.png" width={16} height={16}/> 
+                       <img alt="" src="/images/icons/location-marker.png" style={{'margin-right':'0'}}/> 
                      </span>
                      {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}
                   </a>
@@ -137,7 +137,7 @@ function Community({entity1}) {
                 <div className={styles['shape-item']}>
                   <h4>
                   {entity1.fieldPropertyTypec.map((item,key)=>(
-                    <span>{item.entity.name}{key!=entity1.fieldPropertyTypec.length-1?('-'):('')}</span>
+                    <span key={key}>{item.entity.name}{key!=entity1.fieldPropertyTypec.length-1?('-'):('')}</span>
                    ))}
                   </h4>
                   <p><span>Properties</span></p>

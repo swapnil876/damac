@@ -50,7 +50,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                                 <div className="col-md-6">
                                     <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
                                         <i className="fas fa-search"></i>
-                                        <input type="text" placeholder="Search Project or Area" className="form-control" />
+                                        <input type="text" placeholder="Search Project or Area" className="form-control" onkeyup="myFunction()" />
                                     </div>
                                 </div>
                                 <div className="col-md-6 d-flex flex-wrap justify-content-between">
@@ -106,7 +106,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                                             <div className={styles['shape-wrap-plan']}>
                                                 <div className={styles['shape-contact']}>
                                                     <ul className="d-flex align-items-center p-0">
-                                                        <li><a href="#" className={styles['border-icon']}>Know more</a></li>
+                                                        <li><a href={'/project/'+project.nid} className={styles['border-icon']}>Know more</a></li>
                                                         <li><a href="#" className={styles['solid-icon']}>View units</a></li>
                                                     </ul>
                                                 </div>
