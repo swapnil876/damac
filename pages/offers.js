@@ -46,16 +46,20 @@ function OffersPage( { offers } ) {
            <section className={`${liststyle.listcontainer} offers-list-page`}>
              <div className="container">
                
-               <div className={`${liststyle.listgrid}`}>
-                 {
-                   offers.map( (offer, index) => (
-
-                     <ImageCardItem key={ index } cardDetails={ offer } />
-
-                   ) )
-                 }
-               </div>
-
+                 
+                  <div className={`${liststyle.listgrid}`}>
+                  <div className="row">
+                    {
+                      offers.map( (offer, index) => (
+                        <div className="col-md-6">
+                        <ImageCardItem key={ index } cardDetails={ offer } />
+                        </div>
+                      ) )
+                    }
+                    </div>
+                  </div>
+            
+               
              </div>
            </section>
         

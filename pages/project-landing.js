@@ -35,7 +35,7 @@ import {CITY} from '../graphql/master/cityjs';
 const ProjectLanding= ({projects,countries,cities})=> {
     return (
       <div className="ProjectLanding">
-            <Navbar></Navbar>
+            <Navbar whiteEnquiryBtn="true"></Navbar>
              <main className="main">
              <PageTitle  
              title="Projects" 
@@ -100,7 +100,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                                                     <a href="#"><img src="images/icons/bed.png" className={`img-fluid ${styles["small_icons"]}`}/>{project.fieldBedRoomsP2} Bedrooms</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"><img src="images/icons/bathtub.png" className={`img-fluid ${styles["small_icons"]}`}/>{project.fieldLocalityP2}</a>
+                                                    <a href="#"><img src="images/icons/door.png" className={`img-fluid ${styles["small_icons"]}`}/>{project.fieldLocalityP2}</a>
                                                 </li>
                                             </ul>
                                             <div className={styles['shape-wrap-plan']}>
