@@ -274,7 +274,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                     <div className="header-item-wrapper header-dropdown-container not-on-mobile">
                       {
                         whiteEnquiryBtn ? 
-                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'} style={{'background':'#fff', 'color':'#111'}}>
+                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'} style={{'background':'#fff', 'color':'#111', 'font-weight':'400'}}>
                         Enquire
                        </a>
                         :
@@ -405,38 +405,64 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                               <a>CSR</a>
                             </Link>
                           </li>
-                         
                           <li>
-                            {/* <Link href="#">
-                              <a>Rent</a>
-                            </Link> */}
-                          </li>
-                        
-                          <li>
-                            {/* <Link href="#">
-                              <a>FAQs</a>
-                            </Link> */}
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div className="col-md-4 menu-list-col">
-                        <ul className="menu-list">
-                          <li>
-                              <Link href="/career">
-                                <a >Career</a>
-                              </Link>
+                            <Link href="/blog">
+                              <a>Blog</a>
+                            </Link>
                           </li>
                           <li>
                             <Link href="/news">
                               <a>News</a>
                             </Link>
                           </li>
+                          <li>
+                            <Link href="#">
+                              <a>Mortgage Calculator</a>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/corporate-governance-board">
+                              <a> Corporate Governance</a>
+                            </Link>
+                          </li>
+                         
+                        </ul>
+                      </div>
+
+                      <div className="col-md-4 menu-list-col">
+                        <ul className="menu-list">
+                       
                           {/* <li><a href="#">Hotels and Resorts</a></li>
                           <li><a href="#">Sitemap</a></li>
                           <li><a href="#">Terms and Conditions</a></li>
                           <li><a href="#">Privacy Policy</a></li>
                           <li><a href="#">Agent Login</a></li> */}
+                           <li>
+                            <Link href="#">
+                              <a>FAQs</a>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/career">
+                              <a>Careers</a>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <a>Hotels and Resorts</a>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <a>Sitemaps</a>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <a> Customer Login</a>
+                            </Link>
+                          </li>
+                         
                         </ul>
                       </div>
 
@@ -446,18 +472,37 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                           <li><a href="/damac-static/mortage_calculator.html">Mortgage Calculator</a></li>
                           <li><a href="#">Customer Login</a></li>
                           <li><a href="#">Cookie Policy</a></li> */}
+                           <li>
+                            <Link href="#">
+                              <a>Terms and Conditions</a>
+                            </Link> 
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <a>Privacy Policy</a>
+                            </Link> 
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <a>Agent Loginn</a>
+                            </Link> 
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <a>Mortgage Assist</a>
+                            </Link> 
+                          </li>
                           <li>
                             <Link href="/building-documentation">
                               <a>Building Documentation</a>
-                            </Link>
-                            
+                            </Link> 
                           </li>
+                         
                           <li>
-                            <Link href="/blog">
-                              <a>Blog</a>
-                            </Link>
+                            <Link href="#">
+                              <a>Cookie Policy</a>
+                            </Link> 
                           </li>
-                          
                         </ul>
                       </div>
 

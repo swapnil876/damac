@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-import { FaPlay, FaAngleLeft, FaAngleRight, FaEnvelope } from 'react-icons/fa'
+import { FaPlay, FaAngleLeft, FaAngleRight, FaEnvelope, FaRegQuestionCircle, FaPlus, FaMinus } from 'react-icons/fa'
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -19,6 +19,11 @@ import styles from '../styles/pages/Community.module.css'
 import style from '../styles/pages/listing.module.css'
 
 import React, { Component, useState, useEffect } from "react";
+
+
+// Carousel plugin import
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
@@ -49,6 +54,15 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
         //   importing bootstrap js
        import("bootstrap/dist/js/bootstrap");
      }, [])
+
+      // Carousel
+    const responsive = {
+      superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 0 },
+        items: 1
+      }
+    };
 
      return(
          <div className="listing">
@@ -354,17 +368,19 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         
                         <div className="col-md-6">
                             <div className={style['town-slider']}>
-                            {listing.fieldGalleryDesktopL.map((a,i) => (
-                                <img src={a.entity.url} className="img-fluid" />
-                             ))}
-                                <div className={`${style["slider-nav"]} text-center`}>
+                              <Carousel responsive={responsive} className="unit_amenities_slider_for_listing">
+                                {listing.fieldGalleryDesktopL.map((a,i) => (
+                                  <img src={a.entity.url} className="img-fluid" />
+                                ))}
+                              </Carousel>
+                                {/* <div className={`${style["slider-nav"]} text-center`}>
                                 <div className={style['left-nav']}>
                                     <a href="#"><FaAngleLeft/></a>
                                 </div>
                                 <div className={style['right-nav']}>
                                     <a href="#"><FaAngleRight/></a>
                                 </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         
@@ -514,45 +530,46 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                       <img src="damac-static/images/invoice-1.png" />
                       <h2>Get an estimate</h2>
                       <p className={style['estimate-tagline']}>Receive an upfront estimate on your new home.</p>
-                      <div className={style['estimate-inner']}>
-                        <div className={`${style["price"]} ${style["border-white"]}`}>
+                      <div className={styles['estimate-inner']}>
+                        <div className={`${style["price"]} ${styles["border-white"]}`}>
                           <p><span>Property Price</span></p>
-                          <p><span>AED </span> 120,000 <span className={`${style["text-right"]} ${style["dark"]}`}><i className="fas fa-angle-left"></i> <i
-                                className="fas fa-angle-right"></i></span></p>
+                          <p><span>AED </span> 120,000 <span className={`text-right dark ${styles["side_icons"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
                         </div>
-                        <div className={`${style["rate"]} ${style["border-white"]}`}>
+                        <div className={`${style["rate"]} ${styles["border-white"]}`}>
                           <p><span>Interest Rate</span> <span className="text-right">%</span> </p>
-                          <p>1.99 <span className={`${style["text-right"]} ${style["dark"]}`}><i className="fas fa-minus"></i><i className="fas fa-plus"></i></span>
-                          </p>
+                          <p>1.99 <span className={`text-right dark ${styles["side_icons"]}`}><FaPlus/><FaMinus/></span></p>
                         </div>
                       </div>
-                      <div className="estimate-inner">
+                      <div className={styles['estimate-inner']}>
                         <div className={`${style["down-payment"]} ${style["border-white"]}`}>
                           <p>Down Payment <span className={style['text-right']}>%</span></p>
                           <p>25 </p>
+                          <input type="range" className={styles['range-slider']} />
                         </div>
 
                         <div className={`${style["loan"]} ${style["border-white"]}`}>
                           <p><span>Loan Period</span> <span className={style['text-right']}>Y R S</span></p>
                           <p> 5</p>
+                          <input type="range" className={styles['range-slider']} />
                         </div>
                       </div>
+                      <a href="#" className={`${style["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71', 'padding': '14px 73px'}}>Enquire Now</a>
                     </div>
                     <div className="col-md-4">
                       <div className={style['estimate-cost']}>
                         <h4>Cost Breakdown</h4>
                         <ul>
-                          <li><span className={style['text-left']}>60 months of</span> <span>AED</span> 120,000</li>
-                          <li><span className={style['text-left']}>Down Payment</span> <span>AED</span> 120,000</li>
-                          <li><span className={style['text-left']}>With Interest rate of</span> <span>%</span>120,000</li>
+                          <li><span className={style['text-left']}>60 months of</span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={style['text-left']}>Down Payment</span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={style['text-left']}>With Interest rate of</span> <i><span>%</span>120,000</i></li>
                           <li><span className={style['text-left']}>For Years</span>5</li>
                         </ul>
                         <h4>Fees</h4>
-                        <ul>
-                          <li><span className={style['text-left']}>Land Department Fee</span> <span>AED</span> 120,000</li>
-                          <li><span className={style['text-left']}>Registration Fee</span> <span>AED</span> 120,000</li>
-                          <li><span className={style['text-left']}>Mortgage Registration Fee</span> <span>AED</span> 120,000</li>
-                          <li><span className={style['text-left']}>Valuation Fee</span><span>AED</span> 120,000</li>
+                        <ul className={styles['fees']}>
+                          <li><span className={style['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={style['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={style['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={style['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><i><span>AED</span> 120,000</i></li>
                         </ul>
                       </div>
                     </div>
@@ -674,8 +691,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             </div>
           </section>
 
-                  {/* <!-- faq section --> */}
-                  <section className={style['faq-section']}>
+                {/* <!-- faq section --> */}
+                <section className={style['faq-section']}>
                     <div className="container">
                         <div className={style['faq-icon']}>
                         <img src="damac-static/images/speech-bubble 1.png"/>

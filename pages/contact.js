@@ -28,7 +28,7 @@ function ContactUs() {
       </Head>
 
 
-      <Navbar></Navbar>
+      <Navbar whiteEnquiryBtn="true"></Navbar>
 
 
       <main className="main buildingdocumentation-main">

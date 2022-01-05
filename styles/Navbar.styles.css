@@ -215,6 +215,7 @@ header.damac-header.slideout-active .mobileNavContainer {
 .main-menu-slideout .biglinks {
     padding: 0 90px;
     margin-top: 24px;
+    margin-top:48px
 }
 
 .main-menu-slideout .biglinks a {
@@ -228,6 +229,7 @@ header.damac-header.slideout-active .mobileNavContainer {
 .main-menu-slideout .biglinks a:hover,
 .main-menu-slideout .biglinks a.active {
     opacity: 1;
+    color:#fff !important
 }
 
 
@@ -272,6 +274,7 @@ span.menuItemIcon {
 .menulinks-cols ul li a:hover {
     font-weight: 300;
     opacity: 1;
+    color: #fff;
 }
 
 .slideout-active .menuicon-wrapper {

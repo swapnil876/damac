@@ -1,3 +1,6 @@
 .lang_drop:after{
-    
+    display:none !important
 }
+/* .lang_drop_no_default_arrow::after{
+    display:none !important
+} */

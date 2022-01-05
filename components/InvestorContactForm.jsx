@@ -120,8 +120,13 @@ export default function InvestorContactForm({ initialValues }){
                                                 <label className='input-element-wrapper'>
 
                                                     <div className='input-element country-code-element text-element'>
-                                                        <input type='text' name='countryCode' value={'India (+91)'} onChange={handleChange} />
-
+                                                        {/* <input type='text' name='countryCode' value={'India (+91)'} onChange={handleChange} /> */}
+                                                        <select name="countryCode" onChange={handleChange} className='countryCodeSelectDropDown'>
+                                                        <option value="India (+91)" selected> India (+91)</option>
+                                                        <option value="United States (+1)">US (+1)</option>
+                                                        <option value="United States (+1)">US (+1)</option>
+                                                        <option value="United States (+1)">UAE (+971)</option>
+                                                        </select>
                                                     </div>
                                                 </label>
                                             </div>

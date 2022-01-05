@@ -45,7 +45,7 @@ function Communities( { communities } ) {
            <section className="communities-list-page">
              <div className="container">
                
-               <div className='communityListGrid'>
+               <div className='communityListGrid' style={{'padding':'44px 0'}}>
                  {
                    communities.map( (community, index) => (
 

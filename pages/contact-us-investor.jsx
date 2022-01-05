@@ -108,7 +108,7 @@ function ContactUsInvestor( { mobileDevice } ) {
                    </div>
                 </div>
               </div>
-              <div className='col-xl-6 col-lg-8'>
+              <div className='col-xl-7 col-lg-8'>
               <InvestorContactForm initialValues={ {'gender': 'Mr'} }></InvestorContactForm>
               </div>
             </div>

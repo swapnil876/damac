@@ -474,6 +474,7 @@ List grid
 
 .page-title {
     padding: 80px;
+    padding:80px 0;
     padding-top: 120px;
     background-color: var(--primary);
     background-image: var(--primary-gradient);

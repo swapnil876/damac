@@ -128,7 +128,7 @@ function Blog({entity1}) {
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
-                    <Link href="#"><a className="head_link">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link>
+                    <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link>
                     </h5>
                     <p className="card-text">7-minute read • Kim</p>
                     
@@ -141,7 +141,7 @@ function Blog({entity1}) {
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
-                    <Link href="#"><a className="head_link">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
+                    <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
                     <p className="card-text">7-minute read • Kim</p>
                     
                   </div>
@@ -153,7 +153,7 @@ function Blog({entity1}) {
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
-                    <Link href="#"><a className="head_link">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
+                    <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
                     <p className="card-text">7-minute read • Kim</p>
                     
                   </div>
@@ -165,7 +165,7 @@ function Blog({entity1}) {
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
-                    <Link href="#"><a className="head_link">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
+                    <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
                     <p className="card-text">7-minute read • Kim</p>
                    
                   </div>

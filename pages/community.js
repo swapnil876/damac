@@ -7,6 +7,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import MainContactForm from '../components/MainContactForm'
 
+import { FaPlay, FaAngleLeft, FaAngleRight, FaEnvelope, FaRegQuestionCircle, FaPlus, FaMinus } from 'react-icons/fa'
+
 // Navbar
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
@@ -675,45 +677,46 @@ function Community({entity1}) {
            <div className={styles['estimate-inner']}>             
              <div className={`price ${styles["border-white"]}`}>
                <p><span>Property Price</span></p>
-              <p><span>AED          </span> 120,000 <span className={`${styles["text-right"]} ${styles["dark"]}`}>
-                <i className="fas fa-angle-left"></i> <i className="fas fa-angle-right"></i></span></p> 
+               <p><span>AED </span> 120,000 <span className={`text-right dark ${styles["side_icons"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
              </div>
              <div className={`rate ${styles["border-white"]}`}>
-               <p><span>Interest Rate</span> <span className={styles['text-right']} >%</span>  </p>
-              <p>1.99 <span className={`${styles["text-right"]} ${styles["dark"]}`} ><i className="fas fa-minus"></i><i className="fas fa-plus"></i></span></p> 
+               <p><span>Interest Rate %</span> <span className={styles['text-right']} ></span>  </p>
+               <p>1.99 <span className={`text-right dark ${styles["side_icons"]}`}><FaPlus/><FaMinus/></span></p>
              </div> 
            </div>
           <div className={styles['estimate-inner']}>
            <div className={`down-payment ${styles["border-white"]}`}>
                <p>Down Payment <span className={styles['text-right']} >%</span></p> 
               <p>25  </p> 
+              <input type="range" className={styles['range-slider']} />
              </div>
 
              <div className={`loan ${styles["border-white"]}`}>
                <p><span>Loan Period</span> <span className={styles['text-right']} >Y R S</span></p>
               <p> 5</p> 
+               <input type="range" className={styles['range-slider']} />
              </div>
           </div>
-          <a href="#" className={`${styles["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71'}}>Enquire Now</a>
+          <a href="#" className={`${styles["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71', 'padding': '14px 73px'}}>Enquire Now</a>
           </div>
-          <div className="col-md-4">
-            <div className={styles['estimate-cost']}>
-              <h4>Cost Breakdown</h4>
-              <ul>
-                <li><span className={styles['text-left']}>60 months of</span> <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>Down Payment</span>  <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>With Interest rate of</span>  <span>%</span>120,000</li>
-                <li><span className={styles['text-left']}>For Years</span>5</li>
-              </ul>
-              <h4>Fees</h4>
-              <ul>
-                <li><span className={styles['text-left']}>Land Department Fee</span> <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>Registration Fee</span>  <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>Mortgage Registration Fee</span>  <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>Valuation Fee</span><span>AED</span> 120,000</li>
-              </ul>
-            </div>
-          </div>
+                <div className="col-md-4">
+                      <div className={styles['estimate-cost']}>
+                        <h4>Cost Breakdown</h4>
+                        <ul>
+                          <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>120,000</i></li>
+                          <li><span className={styles['text-left']}>For Years</span>5</li>
+                        </ul>
+                        <h4>Fees</h4>
+                        <ul className={styles['fees']}>
+                          <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                          <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><i><span>AED</span> 120,000</i></li>
+                        </ul>
+                      </div>
+                    </div>
         </div>
        </div>
      </section>

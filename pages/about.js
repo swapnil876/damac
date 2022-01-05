@@ -42,7 +42,9 @@ const sliderSettings = {
 
 // import styles from '../styles/.module.css'
 
-
+// Carousel plugin import
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 // Banner image
 
@@ -71,6 +73,20 @@ function About({entity1}) {
        { maxDeviceWidth: 767 },
        // { deviceWidth: 767 } // `device` prop
   );
+
+  
+    // Carousel
+    const responsive = {
+      superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 768 },
+        items: 2
+      },
+      tabScreens: {
+        breakpoint: { max: 768, min: 0 },
+        items: 1
+      }
+    };
 
   return (
     <div className='aboutbody'>
@@ -322,7 +338,7 @@ function About({entity1}) {
                  <p>DAMAC Properties has grown to become one of the world’s foremost luxury  , with projects spanning the GCC, Levant, Middle East and United Kingdom.</p>
                </div>
 
-               <div className="historyArrows d-md-flex d-none">
+               {/* <div className="historyArrows d-md-flex d-none">
                  <a href="#" className="historyArrow arrow-disabled">
                    <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.75 15.875L1.875 9L8.75 2.125" stroke="black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
@@ -336,30 +352,15 @@ function About({entity1}) {
 
                     </span>
                  </a>
-               </div>
+               </div> */}
              </div>
 
              <div className="col-md-8">
                
                <div className="historyslidercontainer">
-                 <div className="historyArrows d-md-none d-flex">
-                   <a href="#" className="historyArrow arrow-disabled">
-                     <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8.75 15.875L1.875 9L8.75 2.125" stroke="black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      </span>
-                   </a>
-                   <a href="#" className="historyArrow">
-                     <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2.25 2.125L9.125 9L2.25 15.875" stroke="black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-
-                      </span>
-                   </a>
-                 </div>
                  <div className="historyslides">
-
-                     <div className="historyslide">
+                 <Carousel responsive={responsive}>
+                       <div className="historyslide">
                              <div className="inner">
                                <h5>2020</h5>
                                <div className="historytext">
@@ -378,10 +379,47 @@ function About({entity1}) {
                                </div>
                              </div>
                       </div>
+                      <div className="historyslide">
+                             <div className="inner">
+                               <h5>2019</h5>
+                               <div className="historytext">
+                                 <p>DAMAC introduces its online design-your-home concept, A La Carte Villas at DAMAC Hills.</p>
 
+                                 <p>Part of its ongoing community activities, DAMAC supports the Internations Humanitarian Day initiative, ‘Your families... our people’, to help families...</p>
+                               </div>
+                               <div className="projectsdelivered">
+                                 <b>Projects Delivered:</b>
+
+                                 <ul>
+                                   <li>Merano Tower, Business Bay</li>
+                                   <li>DAMAC Prive, Business Bay</li>
+                                   <li>Multiple clusters at AKOYA and DAMAC Hills</li>
+                                 </ul>
+                               </div>
+                             </div>
+                      </div>
+                      <div className="historyslide">
+                             <div className="inner">
+                               <h5>2018</h5>
+                               <div className="historytext">
+                                 <p>DAMAC introduces its online design-your-home concept, A La Carte Villas at DAMAC Hills.</p>
+
+                                 <p>Part of its ongoing community activities, DAMAC supports the Internations Humanitarian Day initiative, ‘Your families... our people’, to help families...</p>
+                               </div>
+                               <div className="projectsdelivered">
+                                 <b>Projects Delivered:</b>
+
+                                 <ul>
+                                   <li>Merano Tower, Business Bay</li>
+                                   <li>DAMAC Prive, Business Bay</li>
+                                   <li>Multiple clusters at AKOYA and DAMAC Hills</li>
+                                 </ul>
+                               </div>
+                             </div>
+                      </div>
                      <div className="historyslide">
                          <div className="inner d-md-block d-none">
-                           <h5>2019</h5>
+                           <h5>2017</h5>
                            <div className="historytext">
                              <p>DAMAC introduces its online design-your-home concept, A La Carte Villas at DAMAC Hills.</p>
 
@@ -389,12 +427,12 @@ function About({entity1}) {
                            </div>
                            
                          </div>
-                     </div>
-
-               
+                     </div>  
+                 </Carousel>
                  </div>
                </div>
 
+             
              </div>
 
            </div>

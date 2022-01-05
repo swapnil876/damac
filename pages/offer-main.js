@@ -15,7 +15,7 @@ import Footer from '../components/Footer'
 
 import Slider from "react-slick";
 
-import { FaAngleRight, FaAngleLeft, FaMinus, FaPlus } from 'react-icons/fa'
+import { FaAngleRight, FaAngleLeft, FaMinus, FaPlus, FaRegQuestionCircle } from 'react-icons/fa'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
@@ -183,10 +183,10 @@ function OfferMain({entity1}) {
                 </ul>
                 <h4>Fees</h4>
                 <ul className={styles['fees']}>
-                  <li><span className={styles['text-left']}>Land Department Fee</span> <i><span>AED</span> 120,000</i></li>
-                  <li><span className={styles['text-left']}>Registration Fee</span> <i><span>AED</span> 120,000</i></li>
-                  <li><span className={styles['text-left']}>Mortgage Registration Fee</span> <i><span>AED</span> 120,000</i></li>
-                  <li><span className={styles['text-left']}>Valuation Fee</span><i><span>AED</span> 120,000</i></li>
+                  <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                  <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                  <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                  <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><i><span>AED</span> 120,000</i></li>
                 </ul>
               </div>
             </div>

@@ -268,9 +268,11 @@ h6,
     font-size: 1rem;
 }
 
-
-
-
+.unit_amenities_slider_for_listing.react-multi-carousel-list, 
+.unit_amenities_slider_for_listing .react-multi-carousel-track{
+    height:100% !important;
+    min-height: 100% !important;
+}
 
 .cookie-consent-bar {
     position: fixed;
@@ -688,6 +690,27 @@ a.btn.btn-blur-dark {
     display: block;
     width: 50%;
 }
+
+.numberdata h4 {
+    margin-bottom: 14px;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 99.6%;
+    letter-spacing: -0.01em;
+    color: #000000;
+}
+button.accordion-button{
+    padding: 1rem 0rem !important;
+}
+.numberdata p {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 136.6%;
+    letter-spacing: 0.03em;
+    color: #000000;
+    opacity: 0.8;
+}
+
 
 @media (max-width: 768px) {
     .aboutbody .numbersdata {
@@ -1193,7 +1216,7 @@ section.building-documentation-para .main-text {
 }
 
 .building-documentation-link li .doc-name {
-    padding: 15px 0;
+    padding: 25px 0;
     font-size: 18px;
 }
 
@@ -1358,7 +1381,7 @@ footer.damac-footer .footer-logo {
 
     .building-documentation-link li .doc-name a,
     .building-documentation-link li .doc-name {
-        padding: 8px 0;
+        padding: 20px 0 10px 0;
     }
 
     .footer-text-block {
@@ -1490,6 +1513,18 @@ footer.damac-footer .footer-logo {
     text-align: left;
 }
 
+.milestone-carousel .carousel .carousel-status {
+    display: none;
+}
+
+.milestone-carousel .carousel .slide img {
+    height: 100%
+}
+
+.milestone-carousel .react-multiple-carousel__arrow {
+    bottom: 0 !important
+}
+
 .milestone-carousel-item {}
 
 
@@ -1530,6 +1565,7 @@ footer.damac-footer .footer-logo {
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
 }
 
 
@@ -1894,6 +1930,10 @@ PAGE:  NEWS
     margin-bottom: 8px !important;
 }
 
+.primary-cta h2 a {
+    font-weight: 500;
+}
+
 .primary-cta label {
     font-size: 16px;
     font-style: normal;
@@ -1916,6 +1956,10 @@ PAGE:  NEWS
     line-height: 21px;
     letter-spacing: 0.02em;
     margin-bottom: 4px;
+}
+
+.news h6 a {
+    font-weight: 500;
 }
 
 .news p {
@@ -1992,6 +2036,10 @@ PAGE:  NEWS
     margin-top: 2px;
 }
 
+.news-wrap h5 a {
+    font-weight: 500;
+}
+
 .news-wrap .card-body {
     padding: 0px;
 }
@@ -2012,9 +2060,11 @@ PAGE:  NEWS
     letter-spacing: 0.02em;
     color: #000000;
 }
-.industry-news .card-body .card-title a{
+
+.industry-news .card-body .card-title a {
     font-weight: 500;
 }
+
 .industry-news.bg-light .card {
     width: 200px;
 }
@@ -2073,6 +2123,7 @@ PAGE:  NEWS
     letter-spacing: 0em;
     text-align: left;
     color: #fff;
+    margin-bottom: 5px;
 }
 
 .press-release p {
@@ -2336,12 +2387,14 @@ PAGE:  NEWS
         margin-bottom: 16px;
         font-size: 500;
     }
-    .news-wrap h5 .head_link{
-        font-weight: 500;
+
+    a.head_link {
+        font-weight: 500 !important;
     }
+
     .news-wrap h5 a {
         color: #fff;
-        font-weight: 500;
+        font-weight: 500 !important;
     }
 
     .news-wrap h5 a:hover {

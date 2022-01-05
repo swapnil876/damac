@@ -12,15 +12,16 @@ import Footer from '../components/Footer'
 
 import React, { Component } from "react";
 import { useMediaQuery } from 'react-responsive'
-// import styles from '../styles/.module.css'
+import styles from '../styles/pages/csr.module.css'
 
 import TextSection from '../components/text-section'
 
 
 
 import ReactDOM from 'react-dom';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+// Carousel plugin import
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
@@ -28,6 +29,16 @@ import { _CSR } from '../graphql/csr';
 import { isMobile } from 'react-device-detect'
 
 function CSR({entity1}) {
+
+    // Carousel
+    const responsive = {
+      superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 0 },
+        items: 1
+      }
+    };
+  
   return (
     <div className='aboutbody'>
 
@@ -45,26 +56,28 @@ function CSR({entity1}) {
        <VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner>
 
        <TextSection className="text-section-csr-1">
-         <h2>Why Corporate Social Responsibility (CSR)?</h2>
-         <p>As a Company born in the United Arab Emirates, DAMAC Properties believes in giving back to the country that has played such a seminal role in its success story. DAMAC and its Chairman, Hussain Sajwani, have contributed to many philanthropic activities over the years, supporting initiatives and organisations such as the Arab Hope Makers 2020, Emirates Red Crescent, Dubai Cares and Dar Al Ber Society. Philanthropy is also entrenched in the value system of the Sajwani family. Collectively, DAMAC and Hussain Sajwani are supporting His Highness Sheikh Mohammed bin Rashid Al Maktoum’s vision for a better future, where people are happier and enjoy a better quality of life.</p>
+         <h2 className={styles['csr_heading']}>Why Corporate Social Responsibility (CSR)?</h2>
+         <p style={{'color':'#111'}}>As a Company born in the United Arab Emirates, DAMAC Properties believes in giving back to the country that has played such a seminal role in its success story. DAMAC and its Chairman, Hussain Sajwani, have contributed to many philanthropic activities over the years, supporting initiatives and organisations such as the Arab Hope Makers 2020, Emirates Red Crescent, Dubai Cares and Dar Al Ber Society. Philanthropy is also entrenched in the value system of the Sajwani family. Collectively, DAMAC and Hussain Sajwani are supporting His Highness Sheikh Mohammed bin Rashid Al Maktoum’s vision for a better future, where people are happier and enjoy a better quality of life.</p>
        </TextSection>
-
-
-
 
        <section className="damac-slider-section">
          <div className="container">
            <div className="row">
              
              <div className="col-md-4">
-             {entity1.fieldMilestones.map((milestone) => (
+             {/* {entity1.fieldMilestones.map((milestone) => (
                <div className="text-box" key={milestone.entity.id}>
                  <h4>{milestone.entity.fieldHeaderMile}</h4>
                  <p>{milestone.entity.fieldTextMile}</p>
                </div>
-              ))}
+              ))} */}
 
-               <div className="sliderArrows">
+                <div className="text-box">
+                 <h4>{entity1.fieldMilestones[0].entity.fieldHeaderMile}</h4>
+                 <p>{entity1.fieldMilestones[0].entity.fieldTextMile}</p>
+                </div>
+
+               {/* <div className="sliderArrows">
                  <a href="#" className="sliderArrow">
                    <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.75 15.875L1.875 9L8.75 2.125" stroke="black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
@@ -78,19 +91,19 @@ function CSR({entity1}) {
 
                     </span>
                  </a>
-               </div>
+               </div> */}
              </div>
 
              <div className="col-md-8">
                
                <div className="responsive-slider-container">
-                  <Carousel className="milestone-carousel">
+                  <Carousel responsive={responsive} className="milestone-carousel">
                   {entity1.fieldMilestones.map((milestone) => (
                      <div key={milestone.entity.id}>
                          <div className="milestone-carousel-item">
                            <div className="image-text">
                              <div className="img">
-                               <img alt=""src={milestone.entity.fieldImageMile.url} className='img-responsive'/>
+                               <img alt="milestones"src={milestone.entity.fieldImageMile.url} className='img-responsive'/>
                              </div>
                              <div className='text'>
                                <h3>Zayed Day for Humanitarian action</h3>
@@ -109,14 +122,12 @@ function CSR({entity1}) {
          </div>
        </section>
 
-
-       <TextSection className="text-section-csr-2">
-         
+       <TextSection className="text-section-csr-2">         
          <div className="textsectionpart1 mb-5">
-           <h2>Hussain Sajwani – DAMAC Foundation</h2>
+           <h2 className={styles['csr_heading']}>Hussain Sajwani – DAMAC Foundation</h2>
            <div className="row align-items-center">
              <div className="col-md-8">
-               <p>{entity1.fieldFoundationText}</p>
+               <p style={{'color':'#111'}}>{entity1.fieldFoundationText}</p>
              </div>
              <div className="col-md-4">
                <div className="text-md-end text-center py-2">
@@ -128,20 +139,20 @@ function CSR({entity1}) {
 
 
          <div className="textsectionpart2 mb-5">
-           <h2>Our Mission</h2>
+           <h2 className={styles['csr_heading']}>Our Mission</h2>
            <div className="row align-items-center">
              <div className="col-md-12">
-               <p>{entity1.fieldOurMission}</p>
+               <p style={{'color':'#111'}}>{entity1.fieldOurMission}</p>
              </div>
            
            </div>
          </div>
 
          <div className="textsectionpart3 mb-5">
-           <h2>Our Cause</h2>
+           <h2 className={styles['csr_heading']}>Our Cause</h2>
            <div className="row align-items-center">
              <div className="col-md-12">
-               <p>{entity1.fieldOurCause}</p>
+               <p style={{'color':'#111'}}>{entity1.fieldOurCause}</p>
              </div>
            
            </div>
@@ -154,7 +165,6 @@ function CSR({entity1}) {
              </Link>
            </div>
          </div>
-
        </TextSection>
 
         

@@ -321,110 +321,11 @@ import 'bootstrap/dist/css/bootstrap.css'
                     </div>
                 </div>
             </section>
-            {/* <!-- About Dubai Section --> */}
-            <section className={styles['about_dubai_main']}>
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h1>Dubai: A Safe Haven and the Region’s Most Dynamic City</h1>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                     <p>Dubai is considered one of the safest cities in the world, while the UAE is an economic and political safe haven and a beacon of stability in the Middle East. Dubai was ranked the best city for quality of living and public infrastructure across the Middle East and Africa (MEA) region in Mercer’s 2018 Quality of Living Survey.</p>
-                      <p>The city took 74th place in the global ranking, making it the MEA region’s top city for the fifth year running. Dubai is a magnet for foreign talent and multinational companies that view the city as the ideal location from which to serve to markets across the MEA region. </p>
-                  </div>
-                  <div className="col-md-6">
-                    <p>The city took 74th place in the global ranking, making it the MEA region’s top city for the fifth year running. Dubai is a magnet for foreign talent and multinational companies that view the city as the ideal location from which to serve to markets across the MEA region.</p>
-                  </div>
-                </div>
-              </div>
-            </section>
-            {/* <!-- Why Invest in Dubai --> */}
-            <section className={styles['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
-              <div className={`container ${styles["why-invest-container"]}`}
->
-                <div className="row ">
-                  <div className="col-md-6">
-                    <div className={styles['invest-wrap']}>
-                      <h2>Why Invest in Dubai</h2>
-                    </div>  
-                  </div>          
-                </div> 
-                <div className="row">
-                  <div className="col-md-6">
-                       <div className={styles['invest-wrap']}>
-                         <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
-                       </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className={styles['invest-wrap']}>
-                      <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                         <div className="col-md-6">
-                           <a href="#" className={styles['read-more']} style={{'color':'#fff'}}>Read more</a>
-                         </div>
-                       </div>       
-              </div>     
-            </section>
+      
+          
 
 
-                  {/* <!-- faq section --> */}
-                  <section className={styles['faq-section']}>
-                    <div className="container">
-                        <div className={styles['faq-icon']}>
-                        <img src="damac-static/images/speech-bubble 1.png"/>
-                        <h2>Frequently Asked Questions</h2>          
-                        </div>
-                        <div className="row">
-                        <div className="col-md-12">
-                            <div className={styles['faq-wrap']}>
-                            <div className={styles['accordion']} id="accordionExample">
-                                <div className={styles['accordion-item']}>
-                                <h2 className={styles['accordion-header']} id="headingOne">
-                                    <button className={`accordion-button ${styles["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div className={styles['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                    </div>
-                                </div>
-                                </div>
-                                <div className={styles['accordion-item']}>
-                                <h2 className={styles['accordion-header']} id="headingTwo">
-                                    <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div className={styles['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                    </div>
-                                </div>
-                                </div>
-                                <div className={styles['accordion-item']}>
-                                <h2 className={styles['accordion-header']} id="headingThree">
-                                    <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div className={styles['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                    </div>
-                                </div>
-                                </div>
-                            </div>                            
-                            </div>            
-                        </div>          
-                        </div>        
-                    </div>      
-                </section>
+               
             
              </main>
              <Footer></Footer>
