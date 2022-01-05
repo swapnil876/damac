@@ -390,7 +390,7 @@ function Community({entity1,projectlist,otherProjects}) {
           <div className="row" style={{'padding':'30px 0'}}>
           {
            projectlist.map( (proj, index) => (
-            <div className="col-md-3 col-6">
+            <div className="col-md-3 col-6" key={index}>
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
                 <img alt="" src={proj.fieldMainImageDesktopP.url} />
@@ -611,34 +611,34 @@ function Community({entity1,projectlist,otherProjects}) {
         <div className="row">
         {
           otherProjects.map( (proj, index) => (
-            <div className="col-md-6">
-            <div className={styles['property-slider-wrap']}>
-              <div className={styles['project-card']}>
-                <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
-                <h6>{proj.title}</h6>
-                <p>{proj.fieldCityp.entity.name}, {proj.fieldCountryP.entity.name}</p>
-                <ul className={styles['bedroom-detail']}>
-                  <li>
-                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {proj.fieldStartingFromPrice}*</a>
-                  </li>
-                   <li>
-                    <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />{}{
-                      proj.fieldPropertyTypeP2.map( (prop, i) => (<span>{prop.entity.name}{i!=proj.fieldPropertyTypeP2.length-1?'-':''}</span>))} {proj.fieldBedRoomsP2} Bedrooms</a>
-                  </li>                  
-                </ul>                              
-                            
-               </div>
-               <div className="project-detail-nav">
-                  <div className="left-nav">
-                    <a href="#"><i className="fas fa-chevron-left"></i></a>
-                  </div>
-                   <div className="right-nav">
-                    <a href="#"><i className="fas fa-chevron-right"></i></a>
-                  </div>   
+            <div className="col-md-6" key={index}>
+              <div className={styles['property-slider-wrap']}>
+                <div className={styles['project-card']}>
+                  <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
+                  <h6>{proj.title}</h6>
+                  <p>{proj.fieldCityp.entity.name}, {proj.fieldCountryP.entity.name}</p>
+                  <ul className={styles['bedroom-detail']}>
+                    <li>
+                      <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {proj.fieldStartingFromPrice}*</a>
+                    </li>
+                     <li>
+                      <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />{}{
+                        proj.fieldPropertyTypeP2.map( (prop, i) => (<span key={i}>{prop.entity.name}{i!=proj.fieldPropertyTypeP2.length-1?'-':''}</span>))} {proj.fieldBedRoomsP2} Bedrooms</a>
+                    </li>                  
+                  </ul>                              
+                              
+                 </div>
+                 <div className="project-detail-nav">
+                    <div className="left-nav">
+                      <a href="#"><i className="fas fa-chevron-left"></i></a>
+                    </div>
+                     <div className="right-nav">
+                      <a href="#"><i className="fas fa-chevron-right"></i></a>
+                    </div>   
+                </div>
               </div>
-            </div>
             
-          </div>
+            </div>
           ))
         }
           
