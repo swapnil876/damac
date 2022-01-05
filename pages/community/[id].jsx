@@ -37,7 +37,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function Community({entity1}) {
+function Community({entity1,projectlist,otherProjects}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -376,83 +376,33 @@ function Community({entity1}) {
           <div className="col-6">
           <div className={`text-wrapper`}>
                 <div className="top-text">
-            <h2>Projects at DAMAC Hills</h2>
+            <h2>Projects at {entity1.title}</h2>
             </div>
             </div>
           </div>
           <div className="col-6">
-            <a className="btn btn-primary btn-icon" style={{ 'float': 'right'}}>View All Projects</a>
+            <a href="project-landing" className="btn btn-primary btn-icon" style={{ 'float': 'right'}}>View All Projects</a>
           </div>
           </div> 
 
 
 
           <div className="row" style={{'padding':'30px 0'}}>
-            <div className="col-md-3 col-6">
+          {
+           projectlist.map( (proj, index) => (
+            <div className="col-md-3 col-6" key={index}>
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
-                <img alt=""src="/images/project-gal4.jpg" />
+                <img alt="" src={proj.fieldMainImageDesktopP.url} />
                 </div>
                 <div className={styles['info']}>
-                  <h4>Kiara</h4>
-                  <p>Starting AED 1,213,515*</p>
+                  <h4>{proj.title}</h4>
+                  <p>Starting AED {proj.fieldStartingFromPriceP2}*</p>
                 </div>
               </div>
             </div>
-            <div className="col-md-3 col-6">
-              <div className={styles['single-project']}>
-                <div className={styles['img']}>
-                <img alt=""src="/images/project-gal4.jpg" />
-                </div>
-                <div className={styles['info']}>
-                  <h4>Kiara</h4>
-                  <p>Starting AED 1,213,515*</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className={styles['single-project']}>
-                <div className={styles['img']}>
-                <img alt=""src="/images/project-gal4.jpg" />
-                </div>
-                <div className={styles['info']}>
-                  <h4>Kiara</h4>
-                  <p>Starting AED 1,213,515*</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className={styles['single-project']}>
-                <div className={styles['img']}>
-                <img alt=""src="/images/project-gal4.jpg" />
-                </div>
-                <div className={styles['info']}>
-                  <h4>Kiara</h4>
-                  <p>Starting AED 1,213,515*</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className={styles['single-project']}>
-                <div className={styles['img']}>
-                <img alt=""src="/images/project-gal4.jpg" />
-                </div>
-                <div className={styles['info']}>
-                  <h4>Kiara</h4>
-                  <p>Starting AED 1,213,515*</p>
-                </div>
-              </div>
-            </div>    <div className="col-md-3 col-6">
-              <div className={styles['single-project']}>
-                <div className={styles['img']}>
-                <img alt=""src="/images/project-gal4.jpg" />
-                </div>
-                <div className={styles['info']}>
-                  <h4>Kiara</h4>
-                  <p>Starting AED 1,213,515*</p>
-                </div>
-              </div>
-            </div>
+            )
+           )}
 
           </div>
 
@@ -659,111 +609,38 @@ function Community({entity1}) {
       
 
         <div className="row">
-          <div className="col-md-6">
-            <div className={styles['property-slider-wrap']}>
-              <div className={styles['project-card']}>
-                <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
-                <h6>Kiara 2 Bedroom Apartment</h6>
-                <p>DAMAC Hills, Dubailand, Dubai</p>
-                <ul className={styles['bedroom-detail']}>
-                  <li>
-                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                  </li>
-                   <li>
-                    <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                  </li>                  
-                </ul>                              
-                            
-              </div>
-               <div className="project-detail-nav">
-                  <div className="left-nav">
-                    <a href="#"><i className="fas fa-chevron-left"></i></a>
-                  </div>
-                   <div className="right-nav">
-                    <a href="#"><i className="fas fa-chevron-right"></i></a>
-                  </div>   
-              </div>
-            </div>
-            
-          </div>
-
-           <div className="col-md-6">
-            <div className={styles['property-slider-wrap']}>
-              <div className={styles['project-card']}>
-                <img alt=""src="/images/project-gal3.jpg" className="img-fluid" />
-                <h6>Kiara 2 Bedroom Apartment</h6>
-                <p>Starting AED 1,213,515*</p>  
+        {
+          otherProjects.map( (proj, index) => (
+            <div className="col-md-6" key={index}>
+              <div className={styles['property-slider-wrap']}>
+                <div className={styles['project-card']}>
+                  <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
+                  <h6>{proj.title}</h6>
+                  <p>{proj.fieldCityp.entity.name}, {proj.fieldCountryP.entity.name}</p>
                   <ul className={styles['bedroom-detail']}>
-                  <li>
-                    <a href="#"><img alt=""src="/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                  </li>
-                   <li>
-                    <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                  </li>                  
-                </ul>               
-              </div>
-              <div className="project-detail-nav">
-                  <div className="left-nav">
-                    <a href="#"><i className="fas fa-chevron-left"></i></a>
-                  </div>
-                   <div className="right-nav">
-                    <a href="#"><i className="fas fa-chevron-right"></i></a>
-                  </div>   
-              </div>
-            </div>            
-          </div>
-           <div className="col-md-6">
-            <div className={styles['property-slider-wrap']}>
-              <div className={styles['project-card']}>
-              <img alt=""src="/images/project-1.jpg" className="img-fluid" />
-              <h6>Kiara 2 Bedroom Apartment</h6>
-              <p><span>Starting AED 1,213,515*</span></p>
-                <ul className={styles['bedroom-detail']}>
-                  <li>
-                    <a href="#"><img alt=""src="/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                  </li>
-                   <li>
-                    <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                  </li>                  
-                </ul>             
-            </div>
-            <div className="project-detail-nav">
-                <div className="left-nav">
-                  <a href="#"><i className="fas fa-chevron-left"></i></a>
+                    <li>
+                      <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {proj.fieldStartingFromPrice}*</a>
+                    </li>
+                     <li>
+                      <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />{}{
+                        proj.fieldPropertyTypeP2.map( (prop, i) => (<span key={i}>{prop.entity.name}{i!=proj.fieldPropertyTypeP2.length-1?'-':''}</span>))} {proj.fieldBedRoomsP2} Bedrooms</a>
+                    </li>                  
+                  </ul>                              
+                              
+                 </div>
+                 <div className="project-detail-nav">
+                    <div className="left-nav">
+                      <a href="#"><i className="fas fa-chevron-left"></i></a>
+                    </div>
+                     <div className="right-nav">
+                      <a href="#"><i className="fas fa-chevron-right"></i></a>
+                    </div>   
                 </div>
-                 <div className="right-nav">
-                  <a href="#"><i className="fas fa-chevron-right"></i></a>
-                </div>   
-            </div>
-            </div>
+              </div>
             
-          </div>
-           <div className="col-md-6">
-            <div className={styles['property-slider-wrap']}>
-              <div className={styles['project-card']}>
-              <img alt=""src="/images/project-2.jpg" className="img-fluid" />
-              <h6>Kiara 2 Bedroom Apartment</h6>
-              <p><span>Starting AED 1,213,515*</span></p> 
-               <ul className={styles['bedroom-detail']}>
-                  <li>
-                    <a href="#"><img alt=""src="/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                  </li>
-                   <li>
-                    <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                  </li>                  
-                </ul>             
             </div>
-            <div className="project-detail-nav">
-                <div className="left-nav">
-                  <a href="#"><i className="fas fa-chevron-left"></i></a>
-                </div>
-                 <div className="right-nav">
-                  <a href="#"><i className="fas fa-chevron-right"></i></a>
-                </div>   
-            </div>
-            </div>
-            
-          </div>
+          ))
+        }
           
         </div>   
       </div>      
@@ -843,14 +720,20 @@ export const getServerSideProps = async () => {
   });
 
   const  data  = await client.query({ query: COMMUNITY });
+  const  data1  = await client.query({ query: PROJECT });
+  const  data2  = await client.query({ query: PROJECT });
   let entity1 = data.data.nodeQuery.entities[0];
-  console.log('***data****comm',entity1);
-  // const  data1  = await client.query({ query: PROJECT,filter:{conditions: [{operator: EQUAL, field: "fieldCommunity.entity.nid", value: [entity1.fieldCommunity.entity.id]}]} });
+  let projectlist = data1.data.nodeQuery.entities;
+  let otherProjects = data2.data.nodeQuery.entities;
+  console.log('***data****comm',data1.data.nodeQuery.entities);
+  
   
   // console.log('entity1',data1.data);
    return {
       props: {
         entity1: entity1,
+        projectlist:projectlist,
+        otherProjects:otherProjects
       }
     }
 

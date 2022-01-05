@@ -24,8 +24,9 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
+import { BLOGS } from '../../graphql/blogs';
 
-function BlogPost({entity1}) {
+function BlogPost({entity1,bloglist}) {
   const router = useRouter();
   
   // Use the postid prop for retrieving info
@@ -81,12 +82,17 @@ function BlogPost({entity1}) {
                    <h3>Latest</h3>
                   
                  </div>
-                 <div className="news">
-                   <label>Curated</label>
-                   <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                   <p> 21/12 2020 by The Guardian </p>              
-                 </div>
-                 <div className="news">
+                 {
+                   bloglist.map( (blog, index) => (
+                     <div className="news">
+                       <label>{blog.fieldCategory.entity.name}</label>
+                       <h6><Link href="#"><a>{blog.title}</a></Link></h6>
+                       {/*<p> 21/12 2020 by The Guardian </p>              */}
+                     </div>
+                   ))
+                 }
+                 
+                 {/*<div className="news">
                    <label>Trending</label>
                    <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
                    <p> 21/12 2020 by The Guardian </p>              
@@ -100,7 +106,7 @@ function BlogPost({entity1}) {
                    <label>Press Release</label>
                    <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
                    <p> 21/12 2020 by The Guardian </p>              
-                 </div>
+                 </div>*/}
                </div>          
              </div>
              </div>      
@@ -262,6 +268,7 @@ export const getServerSideProps = async (cp) => {
   });
   
   const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.postid} });
+  const data1 = await client.query({ query: BLOGS });
   if(data.data.nodeQuery.entities.length == 0){
     console.log(cp);
     // Router.push('/blog-list');
@@ -269,6 +276,7 @@ export const getServerSideProps = async (cp) => {
     // cp.push('/blog-list');
   }
   let entity1 = data.data.nodeQuery.entities[0];
+  let bloglist = data.data.nodeQuery.entities;
   // let entity2 = data.data.nodeQuery.entities[1];
   
   // console.log('entity2',entity2);
@@ -276,6 +284,7 @@ export const getServerSideProps = async (cp) => {
    return {
       props: {
         entity1: entity1,
+        bloglist: bloglist
         // entity2: entity2
       }
     }

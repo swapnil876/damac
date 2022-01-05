@@ -19,11 +19,20 @@ query {
           title
           url
         },
+        fieldThumbnailDesktop{
+          targetId
+          url
+        }
+        fieldThumbnailMobile{
+          targetId
+          url
+        }
         fieldFeatureImageDesktop {
           targetId
           title
           url
         }
+        fieldShortText
         body{
           value
         }
