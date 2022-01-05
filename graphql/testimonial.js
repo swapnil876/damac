@@ -17,7 +17,11 @@ const TESTIMONIAL = gql
         	entity{
             ... on ParagraphTestimonials{
               fieldTestimonialText,
-              fieldTestimonialHeading
+              fieldTestimonialName,
+              fieldTestimonialHeading,
+              fieldTestimonialImage{
+                url
+              }
             }
           }
         }
