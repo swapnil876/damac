@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-.estimate-cost ul.fees li i{
+.estimate-cost ul.fees li i, ul.fees li i{
     font-size: 16px;
 }
 .estimate-inner{
@@ -781,6 +781,7 @@ ul.shape-count {
     } */
     .border-white .side_icons{
         left: 100px;
+        left: 15px;
     }  
     .community-banner-text {
         justify-content: center;

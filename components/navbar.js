@@ -394,57 +394,45 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                   <div className="container-fluid">
                     <div className="row">
                       <div className="col-md-4 menu-list-col">
-                        <ul className="menu-list">
-                          <li>
-                            <Link href="/chairmans-message">
-                              <a>Chairman’s message</a>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="/csr">
-                              <a>CSR</a>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="/blog">
-                              <a>Blog</a>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="/news">
-                              <a>News</a>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="#">
-                              <a>Mortgage Calculator</a>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="/corporate-governance-board">
-                              <a> Corporate Governance</a>
-                            </Link>
-                          </li>
-                         
-                        </ul>
+                      <ul className="menu-list">
+                        <li>
+                          <Link href="/chairmans-message">
+                            <a>Chairman’s message</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/csr">
+                            <a>CSR</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/news">
+                            <a>News</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/">
+                            <a>Rent</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/blog">
+                            <a>Blog</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="#">
+                            <a>FAQs</a>
+                          </Link>
+                        </li>
+                      </ul>
                       </div>
 
                       <div className="col-md-4 menu-list-col">
                         <ul className="menu-list">
-                       
-                          {/* <li><a href="#">Hotels and Resorts</a></li>
-                          <li><a href="#">Sitemap</a></li>
-                          <li><a href="#">Terms and Conditions</a></li>
-                          <li><a href="#">Privacy Policy</a></li>
-                          <li><a href="#">Agent Login</a></li> */}
-                           <li>
-                            <Link href="#">
-                              <a>FAQs</a>
-                            </Link>
-                          </li>
                           <li>
                             <Link href="/career">
-                              <a>Careers</a>
+                              <a>Career</a>
                             </Link>
                           </li>
                           <li>
@@ -454,25 +442,10 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                           </li>
                           <li>
                             <Link href="#">
-                              <a>Sitemaps</a>
+                              <a>Sitemap</a>
                             </Link>
                           </li>
                           <li>
-                            <Link href="#">
-                              <a> Customer Login</a>
-                            </Link>
-                          </li>
-                         
-                        </ul>
-                      </div>
-
-                      <div className="col-md-4 menu-list-col">
-                        <ul className="menu-list">
-                          {/* <li><a href="#">Mortgage Assist</a></li>
-                          <li><a href="/damac-static/mortage_calculator.html">Mortgage Calculator</a></li>
-                          <li><a href="#">Customer Login</a></li>
-                          <li><a href="#">Cookie Policy</a></li> */}
-                           <li>
                             <Link href="#">
                               <a>Terms and Conditions</a>
                             </Link> 
@@ -487,9 +460,31 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                               <a>Agent Loginn</a>
                             </Link> 
                           </li>
+                        
+                         </ul>
+                      </div>
+
+                      <div className="col-md-4 menu-list-col">
+                        <ul className="menu-list">
+                            <li>
+                                <Link href="#">
+                                  <a>Mortgage Assist</a>
+                                </Link> 
+                              </li>
+                              <li>
+                                <Link href="/mortgage-calculator">
+                                  <a>Mortgage Calculator</a>
+                                </Link> 
+                              </li>
+                            
                           <li>
                             <Link href="#">
-                              <a>Mortgage Assist</a>
+                              <a>Customer Login</a>
+                            </Link> 
+                          </li>
+                          <li>
+                            <Link href="#">
+                              <a>Cookie Policy</a>
                             </Link> 
                           </li>
                           <li>
@@ -497,15 +492,8 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                               <a>Building Documentation</a>
                             </Link> 
                           </li>
-                         
-                          <li>
-                            <Link href="#">
-                              <a>Cookie Policy</a>
-                            </Link> 
-                          </li>
                         </ul>
                       </div>
-
                     </div>
                   </div>
                 </div>

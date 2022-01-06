@@ -1,4 +1,23 @@
+.title_sec {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 14px 0 !important
+}
 
+.title_sec h6 {
+    margin: 0 !important;
+    max-width: 80%;
+}
+
+.title_sec img {
+    width: 22px !important;
+    height: 22px !important;
+}
+
+.golf_town_banner .react-multiple-carousel__arrow {
+    bottom: 0 !important
+}
 
 .project-left h1 {
     font-family: Roboto;
@@ -73,9 +92,14 @@ section.inner-wrap-hero {
 }
 
 .hero-container {
-    position: absolute;
-    bottom: 20px;
-    left: 104px;
+    /* position: absolute;
+    bottom: 20px; */
+    /* left: 104px; */
+
+    /* New Styles */
+    position: relative;
+    top: 55vh;
+    width: 100%
 }
 
 .shape-content-wrap {
@@ -138,7 +162,12 @@ section.shape-wrap.side-img-content {
 .shape-detail {
     box-shadow: 0px 0px 12px 0px #0000001f;
     padding: 18px 0;
-    position: relative;
+    /* position: relative; */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 9999;
+    background: #fff;
 }
 
 .vs-range h5 {
@@ -151,6 +180,7 @@ section.shape-wrap.side-img-content {
 .vs-range h5 a {
     text-decoration: none;
     color: #111;
+    font-weight: 500;
 }
 
 .vs-range p {
@@ -252,13 +282,15 @@ a.border-icon svg,
     padding-bottom: 53px;
     color: #fff;
 }
-.town-ship-detail .slider-nav{
+
+.town-ship-detail .slider-nav {
     display: flex;
     justify-content: center;
     /* padding:10px */
     position: relative;
     top: -20px;
 }
+
 .town-ship-detail .slider-nav .left-nav,
 .town-ship-detail .slider-nav .right-nav {
     width: 45px;
@@ -269,15 +301,17 @@ a.border-icon svg,
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    color:#fff;
+    color: #fff;
     font-size: 22px;
-    margin:3px
+    margin: 3px
 }
+
 .town-ship-detail .slider-nav .left-nav a,
-.town-ship-detail .slider-nav .right-nav a{
-    color:#fff;
+.town-ship-detail .slider-nav .right-nav a {
+    color: #fff;
     text-decoration: none;
 }
+
 .town-ship-title h2 {
     font-size: 44px;
     font-style: normal;
@@ -300,6 +334,11 @@ a.border-icon svg,
 
 .town-card {
     margin-bottom: 47px;
+}
+
+.town-card img {
+    width: 32px;
+    height: 32px;
 }
 
 .town-card h6 {
@@ -406,7 +445,10 @@ a.border-icon svg,
 .plan-video {
     position: relative;
 }
-
+.plan-video video,.plan-video iframe {
+    width:100%;
+    aspect-ratio: 1/.5;
+}
 section.destance {
     background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
     padding-bottom: 81px;
@@ -656,10 +698,12 @@ span.text-right i {
 span.text-right.dark {
     opacity: 100%;
 }
+
 .white-btn {
     background: #fff;
     color: #C0AA71;
 }
+
 span.text-right.dark i {
     margin-left: 20px;
 }
@@ -704,7 +748,8 @@ span.text-right.dark i {
     justify-content: space-between;
     align-items: center;
 }
-.estimate-cost ul li i{
+
+.estimate-cost ul li i {
     font-style: normal;
 }
 
@@ -717,9 +762,11 @@ span.text-right.dark i {
     display: flex;
     align-items: center;
 }
-.estimate-cost span.text-left svg{
+
+.estimate-cost span.text-left svg {
     margin-left: 4px
 }
+
 section.estimate .col-md-8 {
     padding-right: 156px;
 }
@@ -747,7 +794,8 @@ section.estimate .col-md-8 {
 }
 
 section.\33 d-tour {
-    margin-bottom: 42px;
+    /* margin-bottom: 42px; */
+    padding: 82px 0px
 }
 
 a.play-button {
@@ -1042,9 +1090,15 @@ ul.bedroom-detail {
 }
 
 @media(max-width: 768px) {
+    section.\33 d-tour {
+        /* margin-bottom: 42px; */
+        padding: 82px 0px
+    }
+
     .shape-content-wrap {
         padding: 0px 0;
     }
+
     .golf_town_banner {
         aspect-ratio: 1/.5 !important;
     }

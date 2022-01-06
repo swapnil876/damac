@@ -152,18 +152,20 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
              <main className="main">
 
                 <section className={style['inner-wrap-hero']} style={{'background-image': 'url(images/project-bg.jpg)'}}>
-
                     <div className='project-hero-wrap'>
                         <div className={`container ${style["hero-container"]}`}>
-                            <div className="row align-items-end">
+                        <div className="row align-items-end">
                                 <div className="col-md-7">
                                     <div className={style['project-left']}>
                                     <h1>{listing.title}</h1>
                                     <p><span>{listing.fieldTaglingL}</span></p>
-                                    <a href="#"><img src="damac-static/images/location.png"/>  {listing.fieldCityL.name}, {listing.fieldCountryL.name}</a>
+                                    {/* <a href="#"><img src="damac-static/images/location.png"/>  {listing.fieldCityL.name}, {listing.fieldCountryL.name}</a> */}
                                     </div>
                                 </div>
-                                <div className="col-md-5">
+                              </div>
+                              <div className="row align-items-center" style={{'justifyContent':'space-between'}}>
+                                <a href="#" style={{'width':'fit-content'}}><img src="damac-static/images/location.png"/>  {listing.fieldCityL.name}, {listing.fieldCountryL.name}</a>
+                                <div style={{'width':'fit-content'}}>
                                     <div className={style['project-right']}>
                                     <ul className="d-flex align-items-center">
                                         <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
@@ -174,7 +176,9 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                     </ul>              
                                     </div>
                                 </div>          
-                            </div>       
+                            </div>    
+                          <div >
+                          </div>   
                         </div>  
                     </div>
                     
@@ -245,7 +249,11 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         </div>        
                     </div>
 
-                    <div className={style['shape-detail']}>
+                    
+                </section>
+
+
+                <div className={style['shape-detail']}>
                         <div className="container">
                             <div className="row">
                             <div className="col-md-6">
@@ -277,8 +285,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                             </div>            
                             </div>          
                         </div>        
-                    </div>       
-                </section>
+                    </div>    
 
                 {/* <!-- Gallery Section --> */}
                 <section className={style['damac-gallery']}>
