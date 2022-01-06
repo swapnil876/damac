@@ -103,86 +103,86 @@ export const getServerSideProps = async () => {
 
   const data  = await client.query({ query: NEWS });
   let entitiy = data.data.nodeQuery.entities;
-  // let blogs = []
+  let blogs = [];
   entitiy.map((v,i)=>{
     console.log(v);
     console.log('---------------------')
-    // blogs.push({title:v.title,url:'/damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.fieldShortText})
+    blogs.push({title:v.title,url:'/damac-in-the-news',imageUrl: v.fieldFeatureImageDesktopNews.url,ctaText:'Read More',excerpt:v.body.value})
   });
-  const blogs = [
-      {
-        title: 'DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: '/images/news-list-1.jpg',
-        ctaText: 'Read More',
-        tags: ['Tourism'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
+  // const blogs = [
+  //     {
+  //       title: 'DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh',
+  //       url: '/blog/19292938',
+  //       excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
+  //       imageUrl: '/images/news-list-1.jpg',
+  //       ctaText: 'Read More',
+  //       tags: ['Tourism'],
+  //       date: '21/02/2021',
+  //       author: 'The Gaurdian',
+  //       id: '1929392',
+  //     },
 
-      {
-        title: 'Five top tips for entrepreneurs to get real and start-up',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: '/images/blog-list-2.jpg',
-        ctaText: 'Read More',
-        tags: ['Business'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
+  //     {
+  //       title: 'Five top tips for entrepreneurs to get real and start-up',
+  //       url: '/blog/19292938',
+  //       excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
+  //       imageUrl: '/images/blog-list-2.jpg',
+  //       ctaText: 'Read More',
+  //       tags: ['Business'],
+  //       date: '21/02/2021',
+  //       author: 'The Gaurdian',
+  //       id: '1929392',
+  //     },
 
-      {
-        title: '10 Emerging Real Estate Trends That You Should Pay Attention To',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: '/images/blog-list-3.jpg',
-        ctaText: 'Read More',
-        tags: ['Tag Label'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
+  //     {
+  //       title: '10 Emerging Real Estate Trends That You Should Pay Attention To',
+  //       url: '/blog/19292938',
+  //       excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
+  //       imageUrl: '/images/blog-list-3.jpg',
+  //       ctaText: 'Read More',
+  //       tags: ['Tag Label'],
+  //       date: '21/02/2021',
+  //       author: 'The Gaurdian',
+  //       id: '1929392',
+  //     },
 
-      {
-        title: 'DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: '/images/blog-list-1.jpg',
-        ctaText: 'Read More',
-        tags: ['Tourism'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
+  //     {
+  //       title: 'DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh',
+  //       url: '/blog/19292938',
+  //       excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
+  //       imageUrl: '/images/blog-list-1.jpg',
+  //       ctaText: 'Read More',
+  //       tags: ['Tourism'],
+  //       date: '21/02/2021',
+  //       author: 'The Gaurdian',
+  //       id: '1929392',
+  //     },
 
-      {
-        title: 'Five top tips for entrepreneurs to get real and start-up',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: '/images/blog-list-2.jpg',
-        ctaText: 'Read More',
-        tags: ['Business'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
+  //     {
+  //       title: 'Five top tips for entrepreneurs to get real and start-up',
+  //       url: '/blog/19292938',
+  //       excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
+  //       imageUrl: '/images/blog-list-2.jpg',
+  //       ctaText: 'Read More',
+  //       tags: ['Business'],
+  //       date: '21/02/2021',
+  //       author: 'The Gaurdian',
+  //       id: '1929392',
+  //     },
 
-      {
-        title: '10 Emerging Real Estate Trends That You Should Pay Attention To',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: '/images/news-list-1.jpg',
-        ctaText: 'Read More',
-        tags: ['Tag Label'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
+  //     {
+  //       title: '10 Emerging Real Estate Trends That You Should Pay Attention To',
+  //       url: '/blog/19292938',
+  //       excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
+  //       imageUrl: '/images/news-list-1.jpg',
+  //       ctaText: 'Read More',
+  //       tags: ['Tag Label'],
+  //       date: '21/02/2021',
+  //       author: 'The Gaurdian',
+  //       id: '1929392',
+  //     },
       
-  ];
+  // ];
 
   return {
     props: {

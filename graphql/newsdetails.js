@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-const NEWS = gql`
-query {
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["news"]}]}) {
+const NEWSDETAILS = gql`
+query NEWSDETAIL($id: String!){
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "nid", value: [$id]}]}) {
     entities {
       ... on NodeNews{
          nid,
@@ -33,4 +33,4 @@ query {
   }
 }`;
 
-export { NEWS };
+export { NEWSDETAILS };
