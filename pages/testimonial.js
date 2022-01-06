@@ -31,7 +31,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { TESTIMONIAL } from '../graphql/testimonial';
 
-function Bookstep2({entity1}) {
+function Bookstep2({entity}) {
 
   // Carousel
   const responsive = {
@@ -69,36 +69,58 @@ function Bookstep2({entity1}) {
 
       <section className={styles['main_client_sec']}>
         <div className={`${styles["heading_testimonial"]} text-center`}>
-          <h1>Testimonials</h1>
+          <h1>{entity.title}</h1>
           <p>See what our happy clients have to say</p>
         </div>
         <div className={styles['client_reviews']}>
           <div className="container">
-            <div className="row">
-              <div className="col-md-6">
-                <div className={styles['client_says']}>
-                  <div className={styles['client_says_txt']}>
-                    <h1>It was a great experience.</h1>
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-                  </div>
-                  <div className={styles['client_name']}>
-                    <p>Hamdah Al Ali</p>
-                  </div>
-                  <div className={styles['client_designation']}>
-                    <p>Investor</p>
-                  </div>
+              
+              {/*{
+                   entity.fieldMultipleTestimonails.map( (blog, index) => (
+                    <div className="col-md-6">
+                      <div className={styles['client_says']}>
+                        <div className={styles['client_says_txt']}>
+                          <h1>It was a great experience.</h1>
+                          <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                        </div>
+                        <div className={styles['client_name']}>
+                          <p>Hamdah Al Ali</p>
+                        </div>
+                        <div className={styles['client_designation']}>
+                          <p>Investor</p>
+                        </div>
+                      </div>
+                    </div>
+                    ))
+              }*/}
+                <div className={styles['client-slider']}> 
+                  <Carousel className={styles['slider']} responsive={responsive}>
+                  {
+                   entity.fieldMultipleTestimonails.map( (testimonial, index) => (
+                     <div className="row">
+                     <div className="col-md-6">
+                        <div className={styles['client_says']}>
+                          <div className={styles['client_says_txt']}>
+                            <h1>{testimonial.entity.fieldTestimonialHeading}</h1>
+                            <p>{testimonial.entity.fieldTestimonialText}</p>
+                          </div>
+                          <div className={styles['client_name']}>
+                            <p>{testimonial.entity.fieldTestimonialName}</p>
+                          </div>
+                          <div className={styles['client_designation']}>
+                            <p>Investor</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <img src={testimonial.entity.fieldTestimonialImage.url} className="img-fluid"/>
+                      </div>   
+                     </div>
+                      ))
+                  }    
+                       
+                  </Carousel>
                 </div>
-              </div>
-              <div className="col-md-6">
-              <div className={styles['client-slider']}> 
-                <Carousel className={styles['slider']} responsive={responsive}>
-                <img src="damac-static/images/client-img.jpg" className="img-fluid"/>       
-                <img src="damac-static/images/gal-8.jpg" className="img-fluid"/>              
-                <img src="damac-static/images/client-img.jpg" className="img-fluid"/>     
-                </Carousel>
-              </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -125,12 +147,13 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: TESTIMONIAL });
-  console.log('entity1',data.data.nodeQuery.entities);
+  let entity = data.data.nodeQuery.entities[0];
+  console.log('entity',data.data.nodeQuery.entities);
   console.log('------------------------------------------------')
-  console.log(data.data.nodeQuery.entities[1].fieldMultipleTestimonails)
+  console.log(data.data.nodeQuery.entities[0].fieldMultipleTestimonails)
    return {
       props: {
-        entity1: 'entity1',
+        entity: entity,
         // entity2: entity2
       }
    }
