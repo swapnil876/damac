@@ -17,7 +17,8 @@ import style from '../styles/pages/damac-in-the-news.module.css'
 
 import React, { Component } from "react";
 import { useMediaQuery } from 'react-responsive'
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {NEWS} from '../graphql/news';
 
 
 // import styles from '../styles/.module.css'
@@ -91,11 +92,23 @@ export default DamacInTheNewsList
 
 
 
-export async function getStaticProps(context) {
+export const getServerSideProps = async () => {
 
 
   // Device React
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
 
+  const data  = await client.query({ query: NEWS });
+  let entitiy = data.data.nodeQuery.entities;
+  // let blogs = []
+  entitiy.map((v,i)=>{
+    console.log(v);
+    console.log('---------------------')
+    // blogs.push({title:v.title,url:'/damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.fieldShortText})
+  });
   const blogs = [
       {
         title: 'DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh',

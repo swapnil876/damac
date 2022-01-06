@@ -132,34 +132,16 @@ const ProjectLanding= ({projects,countries,cities})=> {
                     </div>
                     <div className={styles['similar_proprty_card_main']}>
                         <div className="row">
-                            <div className="col-md-3">
+                        {projects.map((project,k) => (
+                            <div key={k} className="col-md-3">
                                 <div className={styles['property_similar_card']}>
-                                    <img src="damac-static/images/similar-property-1.jpg" alt="similar-property-img" className="img-fluid" />
-                                    <h1><a href="#">Kiara</a></h1>
-                                    <p>Starting AED 1,213,515*</p>
+                                    <img src={project.fieldMainImageDesktopP.url} alt="similar-property-img" className="img-fluid" />
+                                    <h1><a href="#">{project.title}</a></h1>
+                                    <p>Starting AED {project.fieldStartingFromPriceP2}*</p>
                                 </div>
                             </div>
-                            <div className="col-md-3">
-                                <div className={styles['property_similar_card']}>
-                                    <img src="damac-static/images/similar-property-2.jpg" alt="similar-property-img" className="img-fluid" />
-                                    <h1><a href="#">DAMAC Villas</a></h1>
-                                    <p>Starting AED 1,213,515*</p>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className={styles['property_similar_card']}>
-                                    <img src="damac-static/images/similar-property-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                    <h1><a href="#">Gold Town</a></h1>
-                                    <p>Starting AED 1,213,515*</p>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className={styles['property_similar_card']}>
-                                    <img src="damac-static/images/similar-property-4.jpg" alt="similar-property-img" className="img-fluid" />
-                                    <h1><a href="#">ROYALE</a></h1>
-                                    <p>Starting AED 1,213,515*</p>
-                                </div>
-                            </div>
+                            ))
+                        }
                         </div>
                     </div>
                 </div>
@@ -184,11 +166,11 @@ export const getServerSideProps = async () => {
     const  data  = await client.query({ query: PROJECT });
     const  data1  = await client.query({ query: COUNTRY });
     const  data2  = await client.query({ query: CITY });
-    // console.log('projectdata',data.data.nodeQuery.entities);
+    console.log('projectdata',data);
     let projects = data.data.nodeQuery.entities;
     let country = data1.data.taxonomyTermQuery.entities;
     let city = data2.data.taxonomyTermQuery.entities
-    console.log('entity1',projects);
+    // console.log('entity1',projects);
   
     return {
       props: {
