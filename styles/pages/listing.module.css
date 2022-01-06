@@ -1,3 +1,5 @@
+
+
 .project-left h1 {
     font-family: Roboto;
     font-size: 72px;
@@ -323,16 +325,18 @@ a.border-icon svg,
 .town-slider,
 .town-slider img {
     height: 100%;
+    object-fit: cover;
 }
 
 .damac-light-title h2 {
     font-size: 44px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 52px;
 }
 
 .project-detail {
-    padding-top: 40px;
+    /* padding-top: 40px; */
+    padding-top: 80px;
     padding-bottom: 98px;
 }
 
@@ -652,13 +656,17 @@ span.text-right i {
 span.text-right.dark {
     opacity: 100%;
 }
-
+.white-btn {
+    background: #fff;
+    color: #C0AA71;
+}
 span.text-right.dark i {
     margin-left: 20px;
 }
 
 .estimate-cost {
     margin-top: 40px;
+    margin-top: 47px;
 }
 
 .estimate-cost h4 {
@@ -692,6 +700,12 @@ span.text-right.dark i {
     float: right;
     text-align: right;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.estimate-cost ul li i{
+    font-style: normal;
 }
 
 .estimate-cost span.text-left {
@@ -699,9 +713,13 @@ span.text-right.dark i {
     font-size: 16px;
     font-weight: 300;
     float: left;
-    width: 50%
+    width: 50%;
+    display: flex;
+    align-items: center;
 }
-
+.estimate-cost span.text-left svg{
+    margin-left: 4px
+}
 section.estimate .col-md-8 {
     padding-right: 156px;
 }
@@ -1014,7 +1032,7 @@ ul.bedroom-detail {
 }
 
 .accordion-body {
-    padding: 1rem 1.25rem;
+    padding: 1rem 0rem;
 }
 
 @media(min-width: 1400px) {

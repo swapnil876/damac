@@ -1,5 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
+.estimate-cost ul.fees li i{
+    font-size: 16px;
+}
+.estimate-inner{
+    display: flex;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+    grid-gap: 20px;
+    gap: 20px;
+    -moz-box-align: center;
+    align-items: center;
+}
+input.range-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    height: 1px;
+    margin-top: 22px;
+  }
+  
+  .range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 23px;
+    height: 24px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+  }
+  
+  .range-slider::-moz-range-thumb {
+    width: 23px;
+    height: 24px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+  }
 .schedule_callback_modal{
     background: #fff;
 }
@@ -495,13 +534,18 @@ span.text-right {
 }
 
 .estimate-cost ul li {
-    margin-bottom: 26px;
+    margin-bottom: 20px;
     font-size: 26px;
     float: right;
     text-align: right;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
+.estimate-cost ul li i{
+    font-style: normal;
+}
 .estimate-cost h4 {
     font-weight: 500;
     font-size: 22px;
@@ -645,11 +689,24 @@ section.faq-section .accordion-item>h2>button {
     background: transparent !important;
     color: #fff;
 }
-
+.border-white .side_icons{
+    position: relative;
+    left:50%;
+    font-size: 22px;
+    opacity: unset;
+}
+.border-white .side_icons svg{
+    margin:5px;
+    cursor: pointer;
+    font-size: 22px;
+}
+.town-slider .react-multi-carousel-list, .town-slider .react-multi-carousel-track{
+    height:100%
+}
 section.faq-section .accordion-body {
     color: rgba(255, 255, 255, 0.75);
     font-size: 20px;
-    padding: 1rem 1.25rem;
+    padding: 1rem 0rem;
 }
 
 .white-btn {
@@ -708,11 +765,23 @@ ul.shape-count {
     cursor: pointer;
     border: 0;
 }
-
+@media (max-width: 1200px){
+    .border-white .side_icons{
+        left:30%;
+    }    
+}
+@media (max-width: 992px){
+    .border-white .side_icons{
+        left:15%;
+    }    
+}
 @media(max-width:767px) {
     /* .popup_map_img img{
         width:500px
     } */
+    .border-white .side_icons{
+        left: 100px;
+    }  
     .community-banner-text {
         justify-content: center;
         flex-direction: column;

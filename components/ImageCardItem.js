@@ -51,7 +51,7 @@ export default function ImageCardItem( { className, cardDetails  } ) {
         <h5>{cardDetails.subtitle}</h5>
         <p>{cardDetails.description}</p>
       </div>
-      <div className={`cta-btn-wrapper`}>
+      <div className={`cta-btn-wrapper`} style={{'textAlign':'right'}}>
         <Link href={cardDetails.link?cardDetails.link:'/'}><a className={`btn btn-primary`}>Know more</a></Link>
       </div>
 

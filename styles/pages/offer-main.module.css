@@ -245,8 +245,12 @@ span.text-right.dark i {
     font-weight: 300;
     float: left;
     width: 50%;
+    display: flex;
+    align-items: center;
 }
-
+.estimate-cost span.text-left svg{
+    margin-left:5px
+}
 .estimate-cost span {
     opacity: 0.7;
 }
@@ -293,7 +297,7 @@ section.faq-section div.accordion button {
 }
 
 .accordion-body {
-    padding: 1rem 1.25rem;
+    padding: 1rem 0rem;
 }
 
 .faq-wrap .accordion-body {

@@ -4,7 +4,7 @@ import React, { Component, useState, useEffect } from "react";
 import Link from 'next/link'
 import styles from '../styles/components/ContactForm.module.css';
 
-
+import { FaPhoneAlt } from 'react-icons/fa';
 
 
 
@@ -12,7 +12,8 @@ import styles from '../styles/components/ContactForm.module.css';
 
 
 
-
+// Bootstrap Css
+import 'bootstrap/dist/css/bootstrap.css'
 
 
 
@@ -20,6 +21,11 @@ export default function ContactForm({ initialValues }) {
 
 
     const [values, setValues] = useState(initialValues);
+
+    useEffect(() => {
+         //   importing bootstrap js
+         import("bootstrap/dist/js/bootstrap");
+     }, [])
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -101,8 +107,13 @@ export default function ContactForm({ initialValues }) {
                                                 <label className='input-element-wrapper'>
 
                                                     <div className='input-element country-code-element text-element'>
-                                                        <input type='text' name='countryCode' value={'India (+91)'} onChange={handleChange} />
-
+                                                        {/* <input type='text' name='countryCode' value={'India (+91)'} onChange={handleChange} /> */}
+                                                        <select name="countryCode" onChange={handleChange} className='countryCodeSelectDropDown'>
+                                                        <option value="India (+91)" selected> India (+91)</option>
+                                                        <option value="United States (+1)">US (+1)</option>
+                                                        <option value="United States (+1)">US (+1)</option>
+                                                        <option value="United States (+1)">UAE (+971)</option>
+                                                        </select>
                                                     </div>
                                                 </label>
                                             </div>
@@ -188,7 +199,7 @@ export default function ContactForm({ initialValues }) {
 
                             <div className={`form-row form-row-2`}>
                                 <div className={`form-item-col`}>
-                                    <div className={`${styles["form-feild"]} form-check`} style={{'display':'flex'}}>
+                                    <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
                                         <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked" />
                                         <label className={styles['form-check-label']} for="flexCheckChecked">
                                             I’d like to hear about news and offers
@@ -196,7 +207,7 @@ export default function ContactForm({ initialValues }) {
                                     </div>
                                 </div>
                                 <div className={`form-item-col`}>
-                                    <div className={`${styles["form-feild"]} form-check`} style={{'display':'flex'}}>
+                                    <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
                                         <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked" />
                                         <label className={styles['form-check-label']} for="flexCheckChecked">
                                             I’ve read and Agree to <span style={styling_here.privacy_pg_txt}>Privacy Policy</span>
@@ -220,7 +231,7 @@ export default function ContactForm({ initialValues }) {
                     <div className="">
                         <div className={`${styles["office-main"]} d-flex justify-content-between`}>
                             <h1>Office Address</h1>
-                            <div className={styles['dropdown']}>
+                            {/* <div className={styles['dropdown']}>
                                 <button className={`${styles["btn-form-dropdown"]} ${styles["text-start"]}`} type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     All <span class="fas fa-chevron-down"></span>
                                 </button>
@@ -228,15 +239,32 @@ export default function ContactForm({ initialValues }) {
                                     <li><a className={`${styles["dropdown-item"]} ${styles["active"]}`} href="#">All</a></li>
                                     <li><a className={styles['dropdown-item']} href="#">Some</a></li>
                                 </ul>
-                            </div>
+                            </div> */}
+
+                               <div className={styles['accordion-item']}>
+                                <h2 className={styles['accordion-header']} id="headingOne">
+                                    <button className={`accordion-button ${styles["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    All
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div className={styles['accordion-body']}>
+                                    <ul className={`${styles["dropdown-menu"]} ${styles["form-dropdown-menu"]}`} aria-labelledby="dropdownMenuButton1">
+                                    <li><a className={`${styles["dropdown-item"]} ${styles["active"]}`} href="#">All</a></li>
+                                    <li><a className={styles['dropdown-item']} href="#">Some</a></li>
+                                    </ul>
+                                    </div>
+                                </div>
+                                </div>
                         </div>
-                        <div className={`${styles["contact-detail-row"]} row`}>
+
+                     <div className={`${styles["contact-detail-row"]} row`}>
                             <div className="col-md-4">
                                 <div className={styles['contact-detail']}>
                                     <h2>General Contact</h2>
                                     <p>DAMAC Properties Dubai PJSC<br />PO Box 2195 <br /> Dubai, UAE</p>
                                     <div className={styles['contact-number']}>
-                                        <i className="fas fa-phone-alt"></i>
+                                       <FaPhoneAlt/>
                                         <a href="#">+971 4 373 1000</a>
                                     </div>
                                 </div>
@@ -246,7 +274,7 @@ export default function ContactForm({ initialValues }) {
                                     <h2>Park Towers</h2>
                                     <p>Dubai International Financial Centre <br />Dubai, UAE</p>
                                     <div className={styles['contact-number']}>
-                                        <i className="fas fa-phone-alt"></i>
+                                       <FaPhoneAlt/>
                                         <a href="#">+971 4 270 2700</a>
                                     </div>
                                 </div>
@@ -256,7 +284,7 @@ export default function ContactForm({ initialValues }) {
                                     <h2>Saudi Arabia - Riyadh</h2>
                                     <p>DAMAC Towers Riyadh South Tower Olaya District King Fahd Road <br />PO Box 102460 <br /> Riyadh, Saudi Arabia</p>
                                     <div className={styles['contact-number']}>
-                                        <i className="fas fa-phone-alt"></i>
+                                       <FaPhoneAlt/>
                                         <a href="#">+971 4 270 2700</a>
                                     </div>
                                 </div>
@@ -266,7 +294,7 @@ export default function ContactForm({ initialValues }) {
                                     <h2>General Contact</h2>
                                     <p>DAMAC Properties Dubai PJSC<br />PO Box 2195 <br /> Dubai, UAE</p>
                                     <div className={styles['contact-number']}>
-                                        <i className="fas fa-phone-alt"></i>
+                                       <FaPhoneAlt/>
                                         <a href="#">+971 4 373 1000</a>
                                     </div>
                                 </div>
@@ -276,7 +304,7 @@ export default function ContactForm({ initialValues }) {
                                     <h2>Park Towers</h2>
                                     <p>Dubai International Financial Centre <br />Dubai, UAE</p>
                                     <div className={styles['contact-number']}>
-                                        <i className="fas fa-phone-alt"></i>
+                                       <FaPhoneAlt/>
                                         <a href="#">+971 4 270 2700</a>
                                     </div>
                                 </div>
@@ -286,7 +314,7 @@ export default function ContactForm({ initialValues }) {
                                     <h2>Saudi Arabia - Riyadh</h2>
                                     <p>DAMAC Towers Riyadh South Tower Olaya District King Fahd Road <br />PO Box 102460 <br /> Riyadh, Saudi Arabia</p>
                                     <div className={styles['contact-number']}>
-                                        <i className="fas fa-phone-alt"></i>
+                                       <FaPhoneAlt/>
                                         <a href="#">+971 4 270 2700</a>
                                     </div>
                                 </div>
@@ -296,7 +324,7 @@ export default function ContactForm({ initialValues }) {
                                     <h2>China - shanghai</h2>
                                     <p>Room 803 8th Floor, Building 2 1266 West Nanjing Road Jing’an District, Shanghai <br /> PO Box 200040 <br /> China</p>
                                     <div className={styles['contact-number']}>
-                                        <i className="fas fa-phone-alt"></i>
+                                       <FaPhoneAlt/>
                                         <a href="#">+86 21 6086 1266</a>
                                     </div>
                                 </div>

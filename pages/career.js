@@ -12,7 +12,7 @@ import Footer from '../components/Footer'
 
 import React, { Component } from "react";
 
-// import styles from '../styles/.module.css'
+import styles from '../styles/pages/career.module.css'
 
 import TextSection from '../components/text-section'
 
@@ -48,8 +48,8 @@ function Career({entity1}) {
 
        <TextSection>         
          <div className="section-title text-center">
-           <h3 className="section-title-gradient">Welcome to our World</h3>
-           <p>Make a career with DAMAC Properties and the DICO Group</p>
+           <h3 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Welcome to our World</h3>
+           <p className={styles['under_main_in_career_title']}>Make a career with DAMAC Properties and the DICO Group</p>
          </div>
 
          <div className="py-4">
@@ -60,7 +60,7 @@ function Career({entity1}) {
                    <div className="icon-box-svg">
                      <img alt=""src={item.url}/>
                    </div>
-                   <p>{item.title}</p>
+                   <p style={{'color':'#111'}}>{item.title}</p>
                  </div>
                </div>
              ))}
@@ -74,8 +74,8 @@ function Career({entity1}) {
        <TextSection>
          
          <div className="section-title text-center">
-           <h3 className="section-title-gradient">Words from our Staff</h3>
-           <p>See what some of our people have to say.</p>
+           <h3 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Words from our Staff</h3>
+           <p className={styles['under_main_in_career_title']}>See what some of our people have to say.</p>
          </div>
 
          <div className="py-4">
