@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-import { FaPlay, FaAngleLeft, FaAngleRight, FaArrowDown } from 'react-icons/fa'
+import { FaPlay, FaAngleLeft, FaAngleRight, FaArrowDown, FaRegQuestionCircle, FaPlus, FaMinus } from 'react-icons/fa'
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -31,6 +31,11 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 import { AspectRatio } from '@chakra-ui/react'
 
+// Carousel plugin import
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -38,6 +43,15 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import {PROJECT} from '../graphql/project';
 
  export default function Project({entity1}){
+
+     // Carousel
+     const responsive = {
+      superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 0 },
+        items: 1
+      }
+    };
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     useEffect(() => {
@@ -62,10 +76,13 @@ import {PROJECT} from '../graphql/project';
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
                                         <p><span>{entity1.fieldTaglingP}</span></p>
-                                        <a href="#"><img src="damac-static/images/location.png"/>  {entity1.fieldCityp.entity.name}, {entity1.fieldCountryP.entity.name}</a>
+                                       
                                     </div>
                                 </div>
-                                <div className="col-md-5">
+                            </div>
+                            <div className="row align-items-center" style={{'justifyContent':'space-between'}}>
+                             <a href="#" style={{'width':'fit-content', 'color':'#fff', 'text-decoration':'none'}}><img src="damac-static/images/location.png"/>  {entity1.fieldCityp.entity.name}, {entity1.fieldCountryP.entity.name}</a>
+                                <div className="" style={{'width':'fit-content'}}>
                                     <div className={style['project-right']}>
                                         <ul className="d-flex align-items-center">
                                             <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
@@ -87,10 +104,14 @@ import {PROJECT} from '../graphql/project';
                               <div  dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionP2.value }}></div>
                             </div>
 
-                            <div className="section-data-boxes">
+                            <div className="section-data-boxes" style={{'justify-content':'space-between'}}>
                             <div className="data-box" style={{'width':'fit-content'}}>
                                 <h2 className="heading-medium">{entity1.fieldPropertyTypeP2[0].entity.name}</h2>
                                 <p>Properties</p>
+                              </div>
+                              <div className="data-box" style={{'width':'fit-content'}}>
+                                <h2 className="heading-medium">Ready</h2>
+                                <p>Status</p>
                               </div>
                               </div>
                               <div className="section-data-boxes" style={{'justify-content':'space-between'}}>
@@ -112,12 +133,12 @@ import {PROJECT} from '../graphql/project';
                       </div>
                       { !deviceIsMobile && 
                         <div className={`containerRightImage`}>
-                          <img alt="" src={entity1.fieldCol1ImageDesktopP2.entity.url} layout='fill' objectFit="cover" style={{'max-width':'100%'}}/>
+                          <img alt="" src={entity1.fieldCol1ImageDesktopP2.entity.url} layout='fill' objectFit="cover" style={{'max-width':'100%', 'height':'100%'}}/>
                         </div>
                       }
                       { deviceIsMobile && 
                         <div className={`containerBottomImage`}>
-                          <img alt="" src={entity1.fieldCol1ImageMobileP3.entity.url} layout='fill' objectFit="cover" style={{'max-width':'100%'}}/>
+                          <img alt="" src={entity1.fieldCol1ImageMobileP3.entity.url} layout='fill' objectFit="cover" style={{'max-width':'100%', 'height':'100%'}}/>
                         </div>
                       }
                     </section>
@@ -248,15 +269,12 @@ import {PROJECT} from '../graphql/project';
                             </div>
                             <div className="col-md-6">
                             <div className={style['town-slider']}>
+                                
+                                <Carousel responsive={responsive} className="unit_amenities_slider_for_listing">
                                 <img src="damac-static/images/listing-slider.png" className="img-fluid" />
-                                <div className={`${style["slider-nav"]} text-center`}>
-                                <div className={style['left-nav']}>
-                                    <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                    <a href="#"><FaAngleRight/></a>
-                                </div>
-                                </div>
+                                <img src="damac-static/images/listing-slider.png" className="img-fluid" />
+                                <img src="damac-static/images/listing-slider.png" className="img-fluid" />
+                              </Carousel>
                             </div>
                             </div>
                         </div>
@@ -290,6 +308,67 @@ import {PROJECT} from '../graphql/project';
                         </div> 
                       </div>
                     </section>
+
+                    
+                        {/* golf town section */}
+                        <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'background-image': 'url(images/project-bg.jpg)'}}>
+                                    <div className='project-hero-wrap'>
+                                        <div className={`container ${style["hero-container"]}`}>
+                                        {/* <div className="row align-items-center">
+                                        <div className="col-md-7">
+                                            <div className={style['project-left']}>
+                                            <h1>Golf Town </h1>
+                                            <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                            </div>
+                                        </div>  
+                                        <div className="col-md-5">
+                                          <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px', 'float':'right'}}>Learn more</button>
+                                        </div>   
+                                        </div>        */}
+                                                <Carousel responsive={responsive}>
+                                                  <div>
+                                                    <div className="row align-items-center">        
+                                                      <div className="col-md-7">
+                                                        <div className={style['project-left']}>
+                                                          <h1>Golf Town </h1>
+                                                          <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                                        </div>
+                                                      </div>
+                                                      <div className="col-md-5">
+                                                        <button type="button" className={style['solid-icon']} style={{ 'border': '0', 'padding': '15px 35px', 'float': 'right' }}>Learn more</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div className="row align-items-center">        
+                                                      <div className="col-md-7">
+                                                        <div className={style['project-left']}>
+                                                          <h1>Golf Town </h1>
+                                                          <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                                        </div>
+                                                      </div>
+                                                      <div className="col-md-5">
+                                                        <button type="button" className={style['solid-icon']} style={{ 'border': '0', 'padding': '15px 35px', 'float': 'right' }}>Learn more</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div className="row align-items-center">        
+                                                      <div className="col-md-7">
+                                                        <div className={style['project-left']}>
+                                                          <h1>Golf Town </h1>
+                                                          <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                                        </div>
+                                                      </div>
+                                                      <div className="col-md-5">
+                                                        <button type="button" className={style['solid-icon']} style={{ 'border': '0', 'padding': '15px 35px', 'float': 'right' }}>Learn more</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </Carousel>
+                                    </div>  
+                                    </div>              
+                        </section>
 
                     {/* <!-- payment Plan  --> */}
                     <section className={style['payment-plan']}>
@@ -382,58 +461,64 @@ import {PROJECT} from '../graphql/project';
                       </section>
 
                       {/* <!-- Estimate Section --> */}
-                      <section className={style['estimate']}>
-                        <div className="container">
-                          <div className="row">
-                            <div className="col-md-8">
-                              <img src="damac-static/images/invoice-1.png" />
-                              <h2>Get an estimate</h2>
-                              <p className={style['estimate-tagline']}>Receive an upfront estimate on your new home.</p>
-                              <div className={style['estimate-inner']}>
-                                <div className={`${style["price"]} ${style["border-white"]}`}>
-                                  <p><span>Property Price</span></p>
-                                  <p><span>AED </span> 120,000 <span className={`${style["text-right"]} ${style["dark"]}`}><i className="fas fa-angle-left"></i> <i
-                                        className="fas fa-angle-right"></i></span></p>
-                                </div>
-                                <div className={`${style["rate"]} ${style["border-white"]}`}>
-                                  <p><span>Interest Rate</span> <span className="text-right">%</span> </p>
-                                  <p>1.99 <span className={`${style["text-right"]} ${style["dark"]}`}><i className="fas fa-minus"></i><i className="fas fa-plus"></i></span>
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="estimate-inner">
-                                <div className={`${style["down-payment"]} ${style["border-white"]}`}>
-                                  <p>Down Payment <span className={style['text-right']}>%</span></p>
-                                  <p>25 </p>
-                                </div>
-
-                                <div className={`${style["loan"]} ${style["border-white"]}`}>
-                                  <p><span>Loan Period</span> <span className={style['text-right']}>Y R S</span></p>
-                                  <p> 5</p>
-                                </div>
-                              </div>
+                     {/* <!-- Estimate Section --> */}
+                    <section className={styles['estimate']}>      
+                      <div className="container">
+                        <div className="row">
+                          <div className="col-md-8">
+                            <img alt=""src="/damac-static/images/invoice-1.png"/>
+                            <div class={`text-wrapper`}>
+                            <div className="top-text">
+                            <h2>Get an estimate</h2>
                             </div>
-                            <div className="col-md-4">
-                              <div className={style['estimate-cost']}>
-                                <h4>Cost Breakdown</h4>
-                                <ul>
-                                  <li><span className={style['text-left']}>60 months of</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>Down Payment</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>With Interest rate of</span> <span>%</span>120,000</li>
-                                  <li><span className={style['text-left']}>For Years</span>5</li>
-                                </ul>
-                                <h4>Fees</h4>
-                                <ul>
-                                  <li><span className={style['text-left']}>Land Department Fee</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>Registration Fee</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>Mortgage Registration Fee</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>Valuation Fee</span><span>AED</span> 120,000</li>
-                                </ul>
-                              </div>
+                          </div> 
+                          <p className={styles['estimate-tagline']} >Receive an upfront estimate on your new home.</p>
+                          <div className={styles['estimate-inner']}>             
+                            <div className={`price ${styles["border-white"]}`}>
+                              <p><span>Property Price</span></p>
+                              <p><span>AED </span> 120,000 <span className={`text-right dark ${styles["side_icons"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                            </div>
+                            <div className={`rate ${styles["border-white"]}`}>
+                              <p><span>Interest Rate %</span> <span className={styles['text-right']} ></span>  </p>
+                              <p>1.99 <span className={`text-right dark ${styles["side_icons"]}`}><FaPlus/><FaMinus/></span></p>
+                            </div> 
+                          </div>
+                          <div className={styles['estimate-inner']}>
+                          <div className={`down-payment ${styles["border-white"]}`}>
+                              <p>Down Payment <span className={styles['text-right']} >%</span></p> 
+                              <p>25  </p> 
+                              <input type="range" className={styles['range-slider']} />
+                            </div>
+
+                            <div className={`loan ${styles["border-white"]}`}>
+                              <p><span>Loan Period</span> <span className={styles['text-right']} >Y R S</span></p>
+                              <p> 5</p> 
+                              <input type="range" className={styles['range-slider']} />
                             </div>
                           </div>
+                          <a href="#" className={`${styles["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71', 'padding': '14px 73px'}}>Enquire Now</a>
+                          </div>
+                                <div className="col-md-4">
+                                      <div className={styles['estimate-cost']}>
+                                        <h4>Cost Breakdown</h4>
+                                        <ul>
+                                          <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> 120,000</i></li>
+                                          <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> 120,000</i></li>
+                                          <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>120,000</i></li>
+                                          <li><span className={styles['text-left']}>For Years</span>5</li>
+                                        </ul>
+                                        <h4>Fees</h4>
+                                        <ul className={styles['fees']}>
+                                          <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                                          <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                                          <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                                          <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><i><span>AED</span> 120,000</i></li>
+                                        </ul>
+                                      </div>
+                                    </div>
                         </div>
-                      </section>
+                      </div>
+                    </section>
 
 
                         {/* <!-- Similar Properties --> */}
@@ -459,8 +544,14 @@ import {PROJECT} from '../graphql/project';
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                  <Carousel responsive={responsive}>
+                                  <Carousel responsive={responsive}>
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                  </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -473,22 +564,26 @@ import {PROJECT} from '../graphql/project';
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
+                                  {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
                                       <a href="#"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
                                       <a href="#"><FaAngleRight/></a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
 
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -501,21 +596,25 @@ import {PROJECT} from '../graphql/project';
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
+                                  {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
                                       <a href="#"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
                                       <a href="#"><FaAngleRight/></a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -528,21 +627,25 @@ import {PROJECT} from '../graphql/project';
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
+                                  {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
                                       <a href="#"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
                                       <a href="#"><FaAngleRight/></a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -555,21 +658,25 @@ import {PROJECT} from '../graphql/project';
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
+                                  {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
                                       <a href="#"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
                                       <a href="#"><FaAngleRight/></a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -582,21 +689,25 @@ import {PROJECT} from '../graphql/project';
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
+                                  {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
                                       <a href="#"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
                                       <a href="#"><FaAngleRight/></a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -609,21 +720,25 @@ import {PROJECT} from '../graphql/project';
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
+                                  {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
                                       <a href="#"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
                                       <a href="#"><FaAngleRight/></a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -636,21 +751,25 @@ import {PROJECT} from '../graphql/project';
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
+                                  {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
                                       <a href="#"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
                                       <a href="#"><FaAngleRight/></a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -663,22 +782,26 @@ import {PROJECT} from '../graphql/project';
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
+                                  {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
                                       <a href="#"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
                                       <a href="#"><FaAngleRight/></a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
 
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="damac-static/images/project-2.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                  <Carousel responsive={responsive}>
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="images/icons/save-outline.png" alt="save"/></span>
                                     <p><span>Starting AED 1,213,515*</span></p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -690,14 +813,14 @@ import {PROJECT} from '../graphql/project';
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
                                   </div>
-                                  <div className={style['project-detail-nav']}>
+                                  {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
                                       <a href="#"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
                                       <a href="#"><FaAngleRight/></a>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
 
                               </div>
@@ -725,11 +848,13 @@ import {PROJECT} from '../graphql/project';
 
                       {/* <!-- Experince section --> */}
                       <section className={style['3d-tour']}>
-                        <div className={style['3d-tour-inner']} style={{'background-image':'url(images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px'}}>
+                        <div className={ !deviceIsMobile ? 'container' : 'container-fluid'} style={ deviceIsMobile ? {'padding':'0'} : {}}>
+                        <div className={style['3d-tour-inner']} style={{'background-image':'url(images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>
-                            <a href="#" className="btn btn-primary"><img src="damac-static/images/per.png" />Take a 3D Tour</a>
+                            <a href="#" className="btn btn-primary"><img src="damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
                           </div>
+                        </div>
                         </div>
                       </section>
 
@@ -792,24 +917,6 @@ import {PROJECT} from '../graphql/project';
                         </section>
 
 
-                        {/* golf town section */}
-                        <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'background-image': 'url(images/project-bg.jpg)'}}>
-                                    <div className='project-hero-wrap'>
-                                        <div className={`container ${style["hero-container"]}`}>
-                                        <div className="row align-items-center">
-                                        <div className="col-md-7">
-                                            <div className={style['project-left']}>
-                                            <h1>Golf Town </h1>
-                                            <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
-                                            </div>
-                                        </div>  
-                                        <div className="col-md-5">
-                                          <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px', 'float':'right'}}>Learn more</button>
-                                        </div>   
-                                        </div>       
-                                    </div>  
-                                    </div>              
-                        </section>
 
                         {/* <!-- faq section --> */}
                         <section className={style['faq-section']}>
