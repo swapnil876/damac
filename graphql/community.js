@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const COMMUNITY = gql`
   query {
-    nodeQuery(limit: 1, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["community"]}]}) {
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["community"]}]}) {
       entities {
         ... on NodeCommunity{
             nid

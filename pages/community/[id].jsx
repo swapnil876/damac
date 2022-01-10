@@ -480,13 +480,13 @@ function Community({entity1,projectlist,otherProjects}) {
             </div>
 
             {
-              entity1.fieldVideo!=null?
+              entity1.fieldVideop4!=null?
               (<div className={styles['video']}>
                  <video>
-                   <source src={entity1.fieldVideo} />
+                   <source src={entity1.fieldVideop4.url} />
                  </video>
                 </div>):
-              (<span></span>)
+              (<span>{JSON.stringify(entity1.fieldVideop4)}</span>)
             }
 
         </div>
@@ -725,7 +725,7 @@ export const getServerSideProps = async () => {
   let entity1 = data.data.nodeQuery.entities[0];
   let projectlist = data1.data.nodeQuery.entities;
   let otherProjects = data2.data.nodeQuery.entities;
-  console.log('***data****comm',data1.data.nodeQuery.entities);
+  console.log('***data****comm',entity1);
   
   
   // console.log('entity1',data1.data);

@@ -125,13 +125,13 @@ export const getServerSideProps = async () => {
   var communities_data = data.data.nodeQuery.entities;
   // console.log('*****data*****',data.data.nodeQuery.entities);
   communities_data.map((v,i)=>{
-    console.log('************'+i,v);
+    console.log('************'+i);
     if(v.fieldImageDesktop != null){
       communities.push({title:v.title,imageUrl:v.fieldImageDesktop.url,subtitle:v.fieldCity.entity.name+','+v.fieldCountry.entity.name,description:v.fieldTagline,link:'/community/1'})
     }
      
   });
-  console.log('*****',communities);
+  // console.log('*****',communities);
   return {
     props: {
        communities: communities
