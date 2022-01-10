@@ -158,7 +158,10 @@ section.shape-wrap.side-img-content {
     margin-top: 82px;
     margin-bottom: 82px;
 }
-
+.map-wrap{
+    width:100%;
+    aspect-ratio: 1/.5;
+}
 .shape-detail {
     box-shadow: 0px 0px 12px 0px #0000001f;
     padding: 18px 0;
@@ -1090,6 +1093,11 @@ ul.bedroom-detail {
 }
 
 @media(max-width: 768px) {
+    .map-wrap{
+        width:100%;
+        aspect-ratio: unset;
+        height: 100vh;
+    }
     section.\33 d-tour {
         /* margin-bottom: 42px; */
         padding: 82px 0px

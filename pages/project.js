@@ -42,6 +42,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import {PROJECT} from '../graphql/project';
 
+// Google Map Plugin
+import GoogleMapReact from 'google-map-react';
+
  export default function Project({entity1}){
 
      // Carousel
@@ -63,6 +66,19 @@ import {PROJECT} from '../graphql/project';
      useEffect(() => {
         import("bootstrap/dist/js/bootstrap");
       }, []);
+
+      
+    // Google Map Items
+    const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+    const defaultProps = {
+      center: {
+        lat: 59.95,
+        lng: 30.33
+      },
+      zoom: 11
+    };
+  // Google Map Items
 
      return(
          <div className="Project">
@@ -313,7 +329,7 @@ import {PROJECT} from '../graphql/project';
                         {/* golf town section */}
                         <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'background-image': 'url(images/project-bg.jpg)'}}>
                                     <div className='project-hero-wrap'>
-                                        <div className={`container ${style["hero-container"]}`}>
+                                        <div className={`container ${style["hero-container"]}`} style={{'top':'44vh'}}>
                                         {/* <div className="row align-items-center">
                                         <div className="col-md-7">
                                             <div className={style['project-left']}>
@@ -456,7 +472,18 @@ import {PROJECT} from '../graphql/project';
                       {/* <!-- Map section --> */}
                       <section className={style['map-section']}>
                         <div className={style['map-wrap']}>
-                          <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/>
+                          {/* <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/> */}
+                          <GoogleMapReact
+                              bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
+                              defaultCenter={defaultProps.center}
+                              defaultZoom={defaultProps.zoom}
+                            >
+                            <AnyReactComponent
+                              lat={59.955413}
+                              lng={30.337844}
+                              text="Damac"
+                            />
+                          </GoogleMapReact>
                         </div>
                       </section>
 

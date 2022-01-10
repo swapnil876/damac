@@ -41,6 +41,13 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { ApolloClient, InMemoryCache } from '@apollo/client';
  import { LISTING } from '../graphql/listing';
 
+
+// Google Map Plugin
+import GoogleMapReact from 'google-map-react';
+
+
+
+
  export default function Listing({mobileDevice,listing}){
 
     const [brochureModal, openBrochureModal] = useState(false);
@@ -63,6 +70,18 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
         items: 1
       }
     };
+
+    // Google Map Items
+    const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+    const defaultProps = {
+      center: {
+        lat: 59.95,
+        lng: 30.33
+      },
+      zoom: 11
+    };
+  // Google Map Items
 
      return(
          <div className="listing">
@@ -524,10 +543,23 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
                {/* <!-- Map section --> */}
               <section className={style['map-section']}>
-                <div className={style['map-wrap']}>
-                  <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/>
+                <div className={style['map-wrap']} style={{'width':'100%', 'aspect-ratio':'1/.5'}}>
+                  {/* <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/> */}
+                    <GoogleMapReact
+                        bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
+                        defaultCenter={defaultProps.center}
+                        defaultZoom={defaultProps.zoom}
+                      >
+                      <AnyReactComponent
+                        lat={59.955413}
+                        lng={30.337844}
+                        text="Damac"
+                      />
+                    </GoogleMapReact>
                 </div>
               </section>
+
+
 
               {/* <!-- Estimate Section --> */}
               <section className={style['estimate']}>

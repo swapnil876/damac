@@ -30,6 +30,9 @@ import style from '../../styles/pages/listing.module.css';
 import styles from '../../styles/pages/Community.module.css'
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
+ // Google Map Plugin
+import GoogleMapReact from 'google-map-react';
+
 import {
   FaPlay,
   FaAngleLeft,
@@ -108,6 +111,18 @@ function ProjectPage({entity1}) {
       </a>
     </Link>
   );
+
+      // Google Map Items
+      const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+      const defaultProps = {
+        center: {
+          lat: 59.95,
+          lng: 30.33
+        },
+        zoom: 11
+      };
+    // Google Map Items
 
   return (
     <div className="blogbody">
@@ -496,7 +511,18 @@ function ProjectPage({entity1}) {
                       {/* <!-- Map section --> */}
                       <section className={style['map-section']}>
                         <div className={style['map-wrap']}>
-                          <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/>
+                          {/* <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/> */}
+                          <GoogleMapReact
+                              bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
+                              defaultCenter={defaultProps.center}
+                              defaultZoom={defaultProps.zoom}
+                            >
+                            <AnyReactComponent
+                              lat={59.955413}
+                              lng={30.337844}
+                              text="Damac"
+                            />
+                          </GoogleMapReact>
                         </div>
                       </section>
 
