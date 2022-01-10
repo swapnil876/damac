@@ -10,6 +10,7 @@ import Link from 'next/link'
 import Navbar from '../../components/navbar'
 import Footer from '../../components/Footer'
 import styles from '../../styles/pages/Community.module.css'
+import style from '../../styles/pages/listing.module.css';
 
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
@@ -36,6 +37,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
+// Google Map Plugin
+import GoogleMapReact from 'google-map-react';
 
 function Community({entity1,projectlist,otherProjects}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -60,6 +63,18 @@ function Community({entity1,projectlist,otherProjects}) {
        // { deviceWidth: 767 } // `device` prop
   );
 
+   // Google Map Items
+   const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+   const defaultProps = {
+     center: {
+       lat: 59.95,
+       lng: 30.33
+     },
+     zoom: 11
+   };
+ // Google Map Items
+
   return (
     <div className='communitybody'>
 
@@ -73,59 +88,33 @@ function Community({entity1,projectlist,otherProjects}) {
       <Navbar></Navbar>
 
       <main className="main about-main">
-        <header className={styles['community-banner']}>
-          <div className={styles['bg-image']}>
-            <img alt={entity1.title} 
-              className={styles['bg-image']}
-              src={entity1.fieldImageDesktop.url} 
-              width={1600} 
-              height={700}
-              layout="fill"
-            />
-          </div>
-          <div className={styles['bottom-gradient']}></div>
+      
 
-          <div className={`container ${styles['bottom-flex']}`}>
-            <div className={styles['community-banner-text']}>
-              
-              <div className={ styles['banner-text-left'] }>
-                <div>
-                  <h1>{entity1.title}</h1>
-                  <p><span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span></p>
-                </div>
-
-                <div className={ styles['location-community'] }>
-                  <a href="#">
-                     <span className={styles['text-icon']}>
-                       <img alt="" src="/images/icons/location-marker.png" style={{'margin-right':'0'}}/> 
-                     </span>
-                     {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}
-                  </a>
-                </div>
-              </div> 
-
-              <div className={ styles['banner-text-right'] }>
-                <div className={styles['btn-list']}>
-                  <Link href={entity1.fieldBrochure.entity.url}>
-                  {/* {entity1.fieldBrochure.url} */}
-                    <a className={`${styles["cust_banner_btn"]} btn btn-dark-blur`} target="_blank" download>
-                      <span>Download Brochure</span>
-                    </a>
-                  </Link>
-
-                  <Link href="#">
-                    <a className={`${styles["cust_banner_btn"]} btn btn-dark-blur`}>
-                      <span>View Gallery (19)</span>
-                    </a>
-                  </Link>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-
-        </header>
+                     <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}:{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}}>
+                        <div className='project-hero-wrap'>
+                            <div className={`container ${style["hero-container"]}`}>
+                            <div className="row align-items-end">
+                                <div className="col-md-7">
+                                    <div className={style['project-left']}>
+                                        <h1>{entity1.title}</h1>
+                                        <span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
+                                        <a href="#"><img src="/damac-static/images/location.png"/>   {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}</a>
+                                    </div>
+                                </div>
+                                <div className="col-md-5">
+                                    <div className={style['project-right']}>
+                                        <ul className="d-flex align-items-center">
+                                            <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
+                                            <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
+                                            <li><a href={entity1.fieldBrochure.entity.url} target="_blank">Download Brochure</a></li>
+                                            <li><a href="#">View Gallery (19)</a></li>                
+                                        </ul>              
+                                    </div>
+                                </div>    
+                            </div>       
+                        </div>  
+                        </div>              
+                    </section>
 
         <section className={`damac-section text-image-section`}> 
           <div className={`container`}>
@@ -363,7 +352,7 @@ function Community({entity1,projectlist,otherProjects}) {
               })
               } */}
             <div className="img">
-            <img alt=""src="/images/textsection-right-1.jpg"/>
+            <img alt=""src="/images/textsection-right-1.jpg" style={{'max-width':'100%'}}/>
             </div>
           </div>
           </div> 
@@ -516,8 +505,19 @@ function Community({entity1,projectlist,otherProjects}) {
 
      {/* <!-- Map section --> */}
     <section className={styles['map-section']}>
-      <div className="map-wrap">
-        <img alt=""src="/damac-static/images/map.jpg" className="img-fluid"/>        
+      <div className={styles['map-wrap']}>
+        {/* <img alt=""src="/damac-static/images/map.jpg" className="img-fluid"/>         */}
+                     <GoogleMapReact
+                        bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
+                        defaultCenter={defaultProps.center}
+                        defaultZoom={defaultProps.zoom}
+                      >
+                      <AnyReactComponent
+                        lat={59.955413}
+                        lng={30.337844}
+                        text="Damac"
+                      />
+                    </GoogleMapReact>
       </div>       
    </section>
 
