@@ -457,7 +457,7 @@ function About({entity1}) {
                  <div className="awardsbox2">
                    <div className="text-box">
                    <h4>{entity1.fieldHeader5}</h4>
-                   <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescription5.value }}>{entity1.fieldDescription5.value}</div>
+                   <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescription5.value }}></div>
                       {/* <h4>Awards</h4> */}
                    
                      {/* <p>Since the early days of DAMAC Properties, the organisation has continually received recognition and accolades for its contribution to the real estate development sector. 
