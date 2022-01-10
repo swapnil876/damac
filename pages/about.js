@@ -176,7 +176,7 @@ function About({entity1}) {
                <div className="aboutChairmanbox">
                  <h3>{entity1.fieldHeader4}</h3>
                  <div className="chairmanTextBody">
-                   <p>{entity1.fieldDescription4.value}</p>
+                   <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescription4.value }}></div>
                    {/* <p>In 2002, Dubai’s leadership opened up the real estate market to international investors by allowing freehold ownership. DAMAC Properties was incorporated the same year, and purchased land for its very first project in the Dubai Marina area.</p> */}
 
                    
@@ -457,7 +457,7 @@ function About({entity1}) {
                  <div className="awardsbox2">
                    <div className="text-box">
                    <h4>{entity1.fieldHeader5}</h4>
-                   <p>{entity1.fieldDescription5.value}</p>
+                   <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescription5.value }}>{entity1.fieldDescription5.value}</div>
                       {/* <h4>Awards</h4> */}
                    
                      {/* <p>Since the early days of DAMAC Properties, the organisation has continually received recognition and accolades for its contribution to the real estate development sector. 
