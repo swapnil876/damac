@@ -41,6 +41,10 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
+
+// Google Map Plugin
+import GoogleMapReact from 'google-map-react';
+
 function Community({entity1}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
@@ -65,6 +69,19 @@ function Community({entity1}) {
   );
 
   const [customModal, openCustomModal] = useState(false)
+
+  
+    // Google Map Items
+    const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+    const defaultProps = {
+      center: {
+        lat: 59.95,
+        lng: 30.33
+      },
+      zoom: 11
+    };
+  // Google Map Items
 
   return (
     <div className='communitybody'>
@@ -656,9 +673,20 @@ function Community({entity1}) {
 
      {/* <!-- Map section --> */}
     <section className={styles['map-section']}>
-      <div className="map-wrap">
-        <img alt=""src="/damac-static/images/map.jpg" className="img-fluid"/>        
-      </div>       
+      <div className={styles['map-wrap']}>
+        {/* <img alt=""src="/damac-static/images/map.jpg" className="img-fluid"/>         */}
+                   <GoogleMapReact
+                        bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
+                        defaultCenter={defaultProps.center}
+                        defaultZoom={defaultProps.zoom}
+                      >
+                      <AnyReactComponent
+                        lat={59.955413}
+                        lng={30.337844}
+                        text="Damac"
+                      />
+                    </GoogleMapReact>
+       </div>       
    </section>
 
 

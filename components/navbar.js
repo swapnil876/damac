@@ -179,7 +179,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
     <header className={`damac-header ${damacHeaderClass} ${ navbarStyle == 'transparent' ? 'nv-transparent': '' } damac-nav  ${className} ${ slideOutMenuVisible ? 'slideout-active' : 'slideout-not-active'} `}>
           
           { (deviceIsMobile) && 
-            <div className={ `mobileNavContainer` }>
+            <div className={ `mobileNavContainer` } style={{'backdrop-filter':'4px'}}>
               <div className="container">
                 <div className="row justify-content-between">
                   <div className="col-7">

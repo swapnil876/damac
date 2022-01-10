@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+.map-wrap{
+    width:100%;
+    aspect-ratio: 1/.5;
+}
 .estimate-cost ul.fees li i, ul.fees li i{
     font-size: 16px;
 }
@@ -779,6 +783,11 @@ ul.shape-count {
     /* .popup_map_img img{
         width:500px
     } */
+    .map-wrap{
+        width:100%;
+        aspect-ratio: unset;
+        height: 100vh;
+    }
     .border-white .side_icons{
         left: 100px;
         left: 15px;
