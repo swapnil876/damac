@@ -166,7 +166,7 @@ section.shape-wrap.side-img-content {
     position: fixed;
     width: 100%;
     bottom: 0;
-    z-index: 9999;
+    z-index: 99;
     background: #fff;
 }
 
