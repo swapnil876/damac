@@ -74,7 +74,7 @@ function ProjectPage({entity1}) {
 
   const [customModal, openCustomModal] = useState(false); 
   const [floorPlan, openFloorPlan] = useState(false);
-
+  const [galleryModal, openGalleryModal] = useState(false);
 
   // Use the postid prop for retrieving info
   const { slug } = router.query;
@@ -123,6 +123,7 @@ function ProjectPage({entity1}) {
         zoom: 11
       };
     // Google Map Items
+
 
   return (
     <div className="blogbody">
@@ -234,6 +235,62 @@ function ProjectPage({entity1}) {
             </div> :
             ""
           }
+           {
+            galleryModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{openGalleryModal(false)}}> </a>
+                <div className="popup_modal">
+                   <div className="close" onClick={()=>{
+                      openGalleryModal(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+                      <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                      </svg>
+                      </span>
+                    </div>
+                    <div className={styles['gallery_main_img']}>
+                    <div className={styles['single_img']}>
+                    <Carousel responsive={responsive}>
+                     
+                        <img src="/damac-static/images/3d-tour-listing.jpg" />
+                        <img src="/damac-static/images/3d-tour-listing.jpg" />
+                        <img src="/damac-static/images/3d-tour-listing.jpg" />
+                        <img src="/damac-static/images/3d-tour-listing.jpg" />
+                        <img src="/damac-static/images/3d-tour-listing.jpg" />
+                    
+                    </Carousel>
+                    </div> 
+                    </div>
+                    <div className={styles['lower_images']}>
+                      <div className="row">
+                        <div className="col-3">
+                          <div className={styles['image']}>
+                            <img src="/damac-static/images/3d-tour-listing.jpg" />
+                          </div>
+                        </div>
+                        <div className="col-3">
+                          <div className={styles['image']}>
+                            <img src="/damac-static/images/3d-tour-listing.jpg" />
+                          </div>
+                        </div>
+                        <div className="col-3">
+                          <div className={styles['image']}>
+                            <img src="/damac-static/images/3d-tour-listing.jpg" />
+                          </div>
+                        </div>
+                        <div className="col-3">
+                          <div className={styles['image']}>
+                            <img src="/damac-static/images/3d-tour-listing.jpg" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div> :
+            ""
+          }
           {/* Floor Plan Custom popup modal */}
 
             <main className="main">
@@ -254,7 +311,7 @@ function ProjectPage({entity1}) {
                                             <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
                                             <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
                                             <li><a href={entity1.fieldBrochureP} target="_blank">Download Brochure</a></li>
-                                            <li><a href="#" onClick={()=>{openCustomModal(true)}}>View Gallery (19)</a></li>                
+                                            <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery (19)</a></li>                
                                         </ul>              
                                     </div>
                                 </div>    
