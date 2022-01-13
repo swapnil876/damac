@@ -26,6 +26,9 @@ import BoxedTextSection from "../../components/sections/BoxedTextSection";
 
 import SimilarPropertiesGridSection from "../../components/sections/SimilarPropertiesGridSection";
 
+// Bootstrap Css
+import 'bootstrap/dist/css/bootstrap.css'
+
 import style from '../../styles/pages/listing.module.css';
 import styles from '../../styles/pages/Community.module.css'
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
@@ -62,6 +65,9 @@ function ProjectPage({entity1}) {
       if ( isMobile ) {
         setDeviceIsMobile( true );
       }
+
+        //   importing bootstrap js
+        import("bootstrap/dist/js/bootstrap");
    }, [])
 // Carousel
   const responsive = {
@@ -72,6 +78,7 @@ function ProjectPage({entity1}) {
     }
   };
 
+  const [brochureModal, openBrochureModal] = useState(false);
   const [customModal, openCustomModal] = useState(false); 
   const [floorPlan, openFloorPlan] = useState(false);
   const [galleryModal, openGalleryModal] = useState(false);
@@ -291,11 +298,61 @@ function ProjectPage({entity1}) {
             </div> :
             ""
           }
+           {/* Brochure Custom popup modal */}
+           {
+            brochureModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{openBrochureModal(false)}}> </a>
+                <div className={`${styles["schedule_callback_modal"]} popup_modal`}>
+                   <div className="close" onClick={()=>{
+                      openBrochureModal(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+          <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                      </svg>
+                      </span>
+                    </div>
+                    <div className="row justify-content-center">
+                    <div className="col-lg-6 col-md-9">
+                        <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
+                            <div style={{'margin-bottom':'60px'}}>
+                            <h2 className={style['example-class']} style={{ 'margin': '0', 'textAlign':'center' }}>Download Brochure</h2>
+                            <p style={{ 'margin': '0', 'textAlign':'center' }}>Enter your email to receive the brochure link directly in your inbox</p>
+                            </div>                           
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+
+                                <div className='custom-input-element'>
+                                    <label className='input-element-wrapper'>
+
+                                        <div className='input-element email-element'>
+                                            <input type='email' name='email' />
+                                            <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                </div>
+                            </div>
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+                                    <button className="custom-submit-btn">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div> :
+            ""
+          }
           {/* Floor Plan Custom popup modal */}
 
             <main className="main">
                     <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldMainImageDesktopP.url + ')'}:{'background-image': 'url(' + entity1.fieldMainImageMobileP.url + ')'}}>
-                        <div className='project-hero-wrap'>
+                        <div className={style['project-hero-wrap']}>
                             <div className={`container ${style["hero-container"]}`}>
                             <div className="row align-items-end">
                                 <div className="col-md-7">
@@ -310,7 +367,7 @@ function ProjectPage({entity1}) {
                                         <ul className="d-flex align-items-center">
                                             <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
                                             <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
-                                            <li><a href={entity1.fieldBrochureP} target="_blank">Download Brochure</a></li>
+                                            <li><a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a></li>
                                             <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery (19)</a></li>                
                                         </ul>              
                                     </div>
@@ -687,276 +744,241 @@ function ProjectPage({entity1}) {
                     </section>
 
 
-                    {/* <!-- Similar Properties --> */}
-                    <section className={style['project-detail']}>
-                      <div className="container">
-                      <div className="row">
-                          <div className="col-md-8">
-                          <div className={`d-flex justify-content-between align-items-center ${style["vs-title-spacing"]}`}>
-                          <div className={style['damac-light-title']}>
-                            <h2>Available listings at DAMAC HILLS</h2>
-                          </div>
-                          <div className={style['left-side-b']}>
-
-                          </div>
-                        </div>
-                          </div>
-                          <div className="col-md-4">
-                          <button type="button" className={`${style["solid-icon"]} ${style["ava_list_btn"]}`} style={{'border':'0', 'padding':'15px 35px', 'float':'right', 'marginBottom':'20px'}}>View All </button>
-                          </div>
-                      </div>
-                      
-                        <div className="row">
-                          <div className="col-md-6">
-                            <div className={style['property-slider-wrap']}>
-                              <div className={style['project-card']}>
-                                <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                <h6>Kiara 2 Bedroom Apartment</h6>
-                                <p>DAMAC Hills, Dubailand, Dubai</p>
-                                <ul className={style['bedroom-detail']}>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                  </li>
-                                </ul>
-                                <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
+                         {/* <!-- Similar Properties --> */}
+                         <section className={style['project-detail']}>
+                          <div className="container">
+                          <div className="row">
+                              <div className="col-md-8">
+                              <div className={`d-flex justify-content-between align-items-center ${style["vs-title-spacing"]}`}>
+                              <div className={style['damac-light-title']}>
+                                <h2>Available listings at DAMAC HILLS</h2>
                               </div>
-                              <div className={style['project-detail-nav']}>
-                                <div className={style['left-nav']}>
-                                  <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                  <a href="#"><FaAngleRight/></a>
-                                </div>
+                              <div className={style['left-side-b']}>
+
                               </div>
                             </div>
-
+                              </div>
+                              <div className="col-md-4">
+                              <button type="button" className={`${style["solid-icon"]} ${style["ava_list_btn"]}`} style={{'border':'0', 'padding':'15px 35px', 'float':'right', 'margin-bottom':'20px'}}>View All </button>
+                              </div>
                           </div>
-                          <div className="col-md-6">
-                            <div className={style['property-slider-wrap']}>
-                              <div className={style['project-card']}>
-                                <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                <h6>Kiara 2 Bedroom Apartment</h6>
-                                <p>DAMAC Hills, Dubailand, Dubai</p>
-                                <ul className={style['bedroom-detail']}>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                  </li>
-                                </ul>
-                                <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+                          
+                            <div className="row">
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                  <Carousel responsive={responsive}>
+                                  <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                  </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
 
                               </div>
-                              <div className={style['project-detail-nav']}>
-                                <div className={style['left-nav']}>
-                                  <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                  <a href="#"><FaAngleRight/></a>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
                                 </div>
                               </div>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                  <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p><span>Starting AED 1,213,515*</span></p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+                                  </div>
+                                </div>
+
+                              </div>
+
                             </div>
                           </div>
-                          <div className="col-md-6">
-                            <div className={style['property-slider-wrap']}>
-                              <div className={style['project-card']}>
-                                <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                <h6>Kiara 2 Bedroom Apartment</h6>
-                                <p>DAMAC Hills, Dubailand, Dubai</p>
-                                <ul className={style['bedroom-detail']}>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                  </li>
-                                </ul>
-                                <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
-                              </div>
-                              <div className={style['project-detail-nav']}>
-                                <div className={style['left-nav']}>
-                                  <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                  <a href="#"><FaAngleRight/></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div className={style['property-slider-wrap']}>
-                              <div className={style['project-card']}>
-                                <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                <h6>Kiara 2 Bedroom Apartment</h6>
-                                <p>DAMAC Hills, Dubailand, Dubai</p>
-                                <ul className={style['bedroom-detail']}>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                  </li>
-                                </ul>
-                                <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
-                              </div>
-                              <div className={style['project-detail-nav']}>
-                                <div className={style['left-nav']}>
-                                  <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                  <a href="#"><FaAngleRight/></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div className={style['property-slider-wrap']}>
-                              <div className={style['project-card']}>
-                                <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                <h6>Kiara 2 Bedroom Apartment</h6>
-                                <p>DAMAC Hills, Dubailand, Dubai</p>
-                                <ul className={style['bedroom-detail']}>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                  </li>
-                                </ul>
-                                <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
-                              </div>
-                              <div className={style['project-detail-nav']}>
-                                <div className={style['left-nav']}>
-                                  <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                  <a href="#"><FaAngleRight/></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div className={style['property-slider-wrap']}>
-                              <div className={style['project-card']}>
-                                <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                <h6>Kiara 2 Bedroom Apartment</h6>
-                                <p>DAMAC Hills, Dubailand, Dubai</p>
-                                <ul className={style['bedroom-detail']}>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                  </li>
-                                </ul>
-                                <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
-                              </div>
-                              <div className={style['project-detail-nav']}>
-                                <div className={style['left-nav']}>
-                                  <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                  <a href="#"><FaAngleRight/></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div className={style['property-slider-wrap']}>
-                              <div className={style['project-card']}>
-                                <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                <h6>Kiara 2 Bedroom Apartment</h6>
-                                <p>DAMAC Hills, Dubailand, Dubai</p>
-                                <ul className={style['bedroom-detail']}>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                  </li>
-                                </ul>
-                                <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
-                              </div>
-                              <div className={style['project-detail-nav']}>
-                                <div className={style['left-nav']}>
-                                  <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                  <a href="#"><FaAngleRight/></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div className={style['property-slider-wrap']}>
-                              <div className={style['project-card']}>
-                                <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                <h6>Kiara 2 Bedroom Apartment</h6>
-                                <p>DAMAC Hills, Dubailand, Dubai</p>
-                                <ul className={style['bedroom-detail']}>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                  </li>
-                                </ul>
-                                <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
-                              </div>
-                              <div className={style['project-detail-nav']}>
-                                <div className={style['left-nav']}>
-                                  <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                  <a href="#"><FaAngleRight/></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="col-md-6">
-                            <div className={style['property-slider-wrap']}>
-                              <div className={style['project-card']}>
-                                <img src="/damac-static/images/project-2.jpg" className="img-fluid" />
-                                <h6>Kiara 2 Bedroom Apartment</h6>
-                                <p><span>Starting AED 1,213,515*</span></p>
-                                <ul className={style['bedroom-detail']}>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                  </li>
-                                  <li>
-                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                  </li>
-                                </ul>
-                                <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-                              </div>
-                              <div className={style['project-detail-nav']}>
-                                <div className={style['left-nav']}>
-                                  <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                  <a href="#"><FaAngleRight/></a>
-                                </div>
-                              </div>
-                            </div>
-
-                          </div>
-
-                        </div>
-                      </div>
-                    </section>
-
+                        </section>
 
                     {/* <!-- Invest section --> */}
                     <section className={style['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
@@ -983,14 +1005,27 @@ function ProjectPage({entity1}) {
                           </div>
                         </div>
                       </section>*/}
-                      <HighlightImageSection
+                      {/* <HighlightImageSection
                         title="Experience it remotely"
                         cta={tour3dcta}
                         bgImage={`../images/3d-tour-listing.png`}
-                      />
+                      /> */}
 
 
-                    <section className="industry-news bg-light" style={{'padding':'auto 0', 'background':'#fff !important'}}>
+                         {/* <!-- Experince section --> */}
+                        <section className={style['3d-tour']}>
+                        <div className={ !deviceIsMobile ? 'container' : 'container-fluid'} style={ deviceIsMobile ? {'padding':'0'} : {}}>
+                        <div className={style['3d-tour-inner']} style={{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
+                          <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
+                            <h2>Experience it <br/>remotely</h2>
+                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
+                          </div>
+                        </div>
+                        </div>
+                      </section>
+
+
+                        <section className="industry-news" style={{'padding':'auto 0', 'background':'#fff !important'}}>
                                 <div className="container">
                                   <div className="d-flex justify-content-between">
                                     <div className="light-title">
@@ -1045,27 +1080,58 @@ function ProjectPage({entity1}) {
 
                                 </div>
                                 
-                    </section>
+                        </section>
 
 
-                    {/* golf town section */}
-                    <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'background-image': 'url(/images/project-bg.jpg)'}}>
-                                <div className='project-hero-wrap'>
-                                    <div className={`container ${style["hero-container"]}`}>
-                                    <div className="row align-items-center">
-                                    <div className="col-md-7">
-                                        <div className={style['project-left']}>
-                                        <h1>Golf Town </h1>
-                                        <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
-                                        </div>
-                                    </div>  
-                                    <div className="col-md-5">
-                                      <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px', 'float':'right'}}>Learn more</button>
-                                    </div>   
-                                    </div>       
-                                </div>  
-                                </div>              
-                    </section>
+
+                       {/* golf town section */}
+                       <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'background-image': 'url(/images/project-bg.jpg)'}}>
+                                    <div className={style['project-hero-wrap']}>
+                                        <div className={`container ${style["hero-container-small"]}`}>
+                                                <Carousel responsive={responsive}>
+                                                  <div>
+                                                    <div className="row align-items-center">        
+                                                      <div className="col-md-7">
+                                                        <div className={style['project-left']}>
+                                                          <h1>Golf Town </h1>
+                                                          <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                                        </div>
+                                                      </div>
+                                                      <div className="col-md-5">
+                                                        <button type="button" className={style['solid-icon']} style={{ 'border': '0', 'padding': '15px 35px', 'float': 'right' }}>Learn more</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div className="row align-items-center">        
+                                                      <div className="col-md-7">
+                                                        <div className={style['project-left']}>
+                                                          <h1>Golf Town </h1>
+                                                          <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                                        </div>
+                                                      </div>
+                                                      <div className="col-md-5">
+                                                        <button type="button" className={style['solid-icon']} style={{ 'border': '0', 'padding': '15px 35px', 'float': 'right' }}>Learn more</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div className="row align-items-center">        
+                                                      <div className="col-md-7">
+                                                        <div className={style['project-left']}>
+                                                          <h1>Golf Town </h1>
+                                                          <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                                        </div>
+                                                      </div>
+                                                      <div className="col-md-5">
+                                                        <button type="button" className={style['solid-icon']} style={{ 'border': '0', 'padding': '15px 35px', 'float': 'right' }}>Learn more</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </Carousel>
+                                        </div>  
+                                    </div>              
+                        </section>
 
                         {/* <!-- faq section --> */}
                     <section className={style['faq-section']}>
