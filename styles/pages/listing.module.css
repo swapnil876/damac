@@ -90,7 +90,10 @@ section.inner-wrap-hero {
 .shape-image.float-end img {
     height: 100%;
 }
-
+.project-hero-wrap{
+    width:100%;
+    height:100%
+}
 .hero-container {
     /* position: absolute;
     bottom: 20px; */
@@ -98,10 +101,14 @@ section.inner-wrap-hero {
 
     /* New Styles */
     position: relative;
-    top: 55vh;
+    top:60%;
     width: 100%
 }
-
+.hero-container-small{
+    position: relative;
+    top:60%;
+    width: 100%
+}
 .shape-content-wrap {
     padding: 70px 0;
     padding-left: 105px;
@@ -1085,7 +1092,9 @@ ul.bedroom-detail {
 .accordion-body {
     padding: 1rem 0rem;
 }
-
+.project-detail .react-multiple-carousel__arrow{
+    z-index: 10;
+}
 @media(min-width: 1400px) {
     ul.shape-count {
         width: 50%;
@@ -1093,6 +1102,9 @@ ul.bedroom-detail {
 }
 
 @media(max-width: 768px) {
+    .hero-container-small{
+        top:50%;
+    }
     .map-wrap{
         width:100%;
         aspect-ratio: unset;
@@ -1181,6 +1193,7 @@ ul.bedroom-detail {
         font-size: 13px;
         width: 100%;
         display: block;
+        cursor: pointer;
     }
 
     .project-right ul li {
@@ -1379,8 +1392,12 @@ ul.bedroom-detail {
     }
 
 }
-
-@media(max-width: 550px) {
+@media(max-width: 600px){
+    .hero-container-small{
+        top:20%;
+    }
+}
+@media(max-width: 550px) { 
     .golf_town_banner {
         aspect-ratio: 1/.7 !important;
     }

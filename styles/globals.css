@@ -286,7 +286,9 @@ h6,
     padding: 8px 0;
     margin-bottom: 0;
 }
-
+.react-multiple-carousel__arrow{
+    z-index: 10 !important;
+}
 /*
 * Global Responsive
 */

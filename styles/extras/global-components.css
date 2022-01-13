@@ -89,6 +89,7 @@
   max-width: 100%;
   overflow: auto;
 }
+
 .accordion-button::after{
   background-image: url("../../public/images/icons/arrow-down.png") !important;
 }
