@@ -510,15 +510,15 @@ function ProjectPage({entity1}) {
                                     <p>at your doorstep</p>
                                 </div>
                                 </div> */}
-                                 {entity1.fieldAmenitiesP3.map((item)=>{
+                                 {entity1.fieldAmenitiesP3.map((item)=>(
                                     <div className="col-6">
                                     <div className={styles['icon-area']}>
-                                      <img alt=""src="/images/icons/building (1) 2.svg" />
+                                      <img alt=""src={item.entity.fieldIcona.url} />
                                       <h4>{item.entity.fieldValueAmi}</h4>
                                       <p>{item.entity.fieldTextAmi}</p>
                                     </div>
                                     </div>
-                                  })}
+                                 ))}
                                 <div className="col-6 col-md-6">
                                 <div className={style['town-card']}>
                                     <button type="button"  onClick={()=>{openFloorPlan(true)}} className={style['custom_white_btn']}> <FaArrowDown/> Get the Floor plan</button>
@@ -619,7 +619,7 @@ function ProjectPage({entity1}) {
                           <div className="row">
 
                             {
-                              entity1.fieldMultipleLocatorsp4.map((item)=>{
+                              entity1.fieldMultipleLocatorsp4.map((item)=>(
                                 <div className="col-6 col-md-4">
                                 <div className="distance-card text-center">
                                   <img alt=""src={item.entity.fieldIconm.url} />
@@ -627,7 +627,7 @@ function ProjectPage({entity1}) {
                                   <p>{item.entity.fieldTextc6}</p>            
                                 </div>
                               </div>
-                              })
+                              ))
                             }
                             {/* <div className="col-6 col-md-4">
                             <div className="distance-card text-center">
@@ -1185,7 +1185,7 @@ export const getServerSideProps = async (cp) => {
   const data = await client.query({ query: PROJECTDETAIL, variables:{id:cp.query.slug} });
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log(entity1.fieldGalleryDesktopP);
+  console.log(entity1.fieldAmenitiesP3);
   return {
     props: {
       entity1: entity1,
