@@ -253,38 +253,21 @@ function ProjectPage({entity1}) {
                     <div className={styles['gallery_main_img']}>
                     <div className={styles['single_img']}>
                     <Carousel responsive={responsive}>
-                     
-                        <img src="/damac-static/images/3d-tour-listing.jpg" />
-                        <img src="/damac-static/images/3d-tour-listing.jpg" />
-                        <img src="/damac-static/images/3d-tour-listing.jpg" />
-                        <img src="/damac-static/images/3d-tour-listing.jpg" />
-                        <img src="/damac-static/images/3d-tour-listing.jpg" />
-                    
+                    {entity1.fieldGalleryDesktopP.map((item,k) => (
+                      <img src={item.url} />
+                    ))}                    
                     </Carousel>
                     </div> 
                     </div>
                     <div className={styles['lower_images']}>
                       <div className="row">
+                      {entity1.fieldGalleryDesktopP.map((item,k) => (
                         <div className="col-3">
                           <div className={styles['image']}>
-                            <img src="/damac-static/images/3d-tour-listing.jpg" />
+                            <img src={item.url} />
                           </div>
                         </div>
-                        <div className="col-3">
-                          <div className={styles['image']}>
-                            <img src="/damac-static/images/3d-tour-listing.jpg" />
-                          </div>
-                        </div>
-                        <div className="col-3">
-                          <div className={styles['image']}>
-                            <img src="/damac-static/images/3d-tour-listing.jpg" />
-                          </div>
-                        </div>
-                        <div className="col-3">
-                          <div className={styles['image']}>
-                            <img src="/damac-static/images/3d-tour-listing.jpg" />
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                 </div>
@@ -1132,10 +1115,11 @@ export const getServerSideProps = async (cp) => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache(),
   });
-  console.log(cp);
+  
   const data = await client.query({ query: PROJECTDETAIL, variables:{id:cp.query.slug} });
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
+  console.log(entity1.fieldGalleryDesktopP);
   return {
     props: {
       entity1: entity1,
