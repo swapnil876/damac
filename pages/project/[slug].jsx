@@ -351,7 +351,7 @@ function ProjectPage({entity1}) {
                                             <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
                                             <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
                                             <li><a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a></li>
-                                            <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery (19)</a></li>                
+                                            <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a></li>                
                                         </ul>              
                                     </div>
                                 </div>    
