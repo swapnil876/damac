@@ -186,6 +186,7 @@
 	letter-spacing: 0.05em;
 	font-weight: 300;
 	border: 0.5px solid #D0BB83;
+	text-decoration: none;
 }
 
 .map_list_view ul li.active a {
@@ -633,6 +634,7 @@ section.faq-section .accordion-body {
 		bottom: 0px;
 	}
 }
+
 @media (max-width: 767px) {
 	.banner_under_filters{
 		aspect-ratio: 16/5;

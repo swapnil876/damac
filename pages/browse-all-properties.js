@@ -61,16 +61,16 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                   <div className={styles['filter_option_wrap']}>
                       <form action="">
                           <div className="row">
-                              <div className="col-md-3">
-                                  <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
-                                      <FaSearch className={styles['search_icon']}/>
-                                      <input type="text" placeholder="Search Project or Area" className="form-control"/>
+                              <div className="col-md-9 d-flex flex-wrap" style={{'justifyContent':'space-between'}}>
+                              <div className={styles['form-field']}>
+                                      <select name="property_type" className="form-select" id="">
+                                          <option value="">Buy</option>
+                                          <option value="">Rent</option>
+                                      </select>
                                   </div>
-                              </div>
-                              <div className="col-md-6 d-flex flex-wrap">
                                   <div className={styles['form-field']}>
                                       <select name="property_type" className="form-select" id="">
-                                          <option value="">Property Type</option>
+                                          <option value="">Any Property Type</option>
                                           <option value="">Apartment</option>
                                           <option value="">Hotel</option>
                                           <option value="">Office</option>
@@ -87,12 +87,21 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                   </div>
                                   <div className={styles['form-field']}>
                                       <select name="locality" className="form-select" id="">
-                                          <option value="">Locality</option>
+                                          <option value="">Any Locality</option>
                                           <option value="">local</option>
                                       </select>
                                   </div>
-                                  <div className={styles['more-filter-btn']}>
-                                      <a href="#">More filters <span></span><span></span><span></span></a>
+                                  <div className={styles['form-field']}>
+                                      <select name="locality" className="form-select" id="">
+                                          <option value="">Price Range</option>
+                                          <option value="">local</option>
+                                      </select>
+                                  </div>
+                                  <div className={styles['form-field']}>
+                                      <select name="locality" className="form-select" id="">
+                                          <option value="">Project Status</option>
+                                          <option value="">local</option>
+                                      </select>
                                   </div>
                               </div>
                               <div className="col-md-3">
