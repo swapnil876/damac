@@ -1,6 +1,6 @@
 .browse-hero {
 	width: 100%;
-	height:300px;
+	height: 300px;
 	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
 }
 
@@ -14,6 +14,76 @@
 	/* padding-bottom: 93px; */
 }
 
+.banner_under_filters {
+	background: url('../../public/images/community-bg.jpg') top center/100% no-repeat;
+	aspect-ratio: 16/3;
+	position: relative;
+	border-radius: 4px;
+}
+
+.text_area {
+	position: absolute;
+	bottom: 38px;
+	left: 40px;
+}
+
+.text_area h2 {
+	font-weight: 500;
+	font-size: 29px;
+	line-height: 109.6%;
+	letter-spacing: 0.02em;
+	color: #FFFFFF;
+}
+
+.text_area p {
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 169.6%;
+	letter-spacing: 0.04em;
+	color: #FFFFFF;
+	margin-bottom: 8px
+}
+
+.about_project {
+	margin-top: 35px
+}
+
+.about_project .more_about_btn {
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 113.6%;
+	letter-spacing: 0.05em;
+	color: #000000;
+	background: #F8F8F8;
+	border: 0.5px solid rgba(206, 206, 206, 0.6);
+	box-sizing: border-box;
+	border-radius: 4px;
+	padding: 11px 10px 14px 17px;
+}
+
+.about_project .feature .icon img {
+	width: 25px;
+	height: 25px;
+}
+
+.about_project .feature .info {}
+
+.about_project .feature .info h4 {
+	font-weight: 300;
+	font-size: 16px;
+	color: #000000;
+	line-height: 99.6%;
+	margin: 14px 0 7px
+}
+
+.about_project .feature .info p {
+	font-weight: 300;
+	font-size: 16px;
+	color: #000000;
+	line-height: 136.6%;
+	letter-spacing: 0.02em;
+}
+
 .browse-hero-text span {
 	color: #ffffff !important;
 }
@@ -23,19 +93,23 @@
 	height: 48px;
 	border: none;
 }
-.filter_main_wrap{
+
+.filter_main_wrap {
 	position: relative;
-	top:-50px
+	top: -50px
 }
+
 .search_filter {
 	position: relative;
 }
-.search_filter .search_icon{
-    color: #979797;
-    position: absolute;
-    top: 16px;
-    left: 20px;
+
+.search_filter .search_icon {
+	color: #979797;
+	position: absolute;
+	top: 16px;
+	left: 20px;
 }
+
 .search_filter input {
 	padding-left: 45px;
 }
@@ -134,18 +208,21 @@
 	margin-right: 10px;
 	height: 42px;
 	font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 113.6%;
-    letter-spacing: 0.04em;
-    color: #000000;
-    margin-right: 32px;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 113.6%;
+	letter-spacing: 0.04em;
+	color: #000000;
+	margin-right: 32px;
 }
-.form-field select:focus, .form-field input:focus{
-	outline:none;
-	border:none;
+
+.form-field select:focus,
+.form-field input:focus {
+	outline: none;
+	border: none;
 	box-shadow: none;
 }
+
 .tag_list ul li a {
 	font-size: 18px;
 	font-weight: 300;
@@ -171,7 +248,7 @@
 .show_property_main {
 	padding-top: 44px;
 	position: relative;
-    top: -50px;
+	top: -50px;
 }
 
 .property_search_head h3 {
@@ -502,7 +579,9 @@ section.faq-section .accordion-body {
 /*faq section css ennd here*/
 
 @media (max-width: 1024px) {
-
+	.text_area {
+		bottom: 18px;
+	}
 	.filter_option_wrap .col-md-3,
 	.filter_option_wrap .col-md-6 {
 		width: 100%;
@@ -549,11 +628,25 @@ section.faq-section .accordion-body {
 		float: left;
 	}
 }
-
+@media (max-width: 992px) {
+	.text_area {
+		bottom: 0px;
+	}
+}
 @media (max-width: 767px) {
+	.banner_under_filters{
+		aspect-ratio: 16/5;
+	}
+	.text_area {
+		left: 10px;
+	}
+	.text_area h2{
+		font-size: 24px;
+	}
 	.show_property_main {
 		top: 0px;
 	}
+
 	.filter_tag_main {
 		flex-direction: column;
 	}
@@ -596,5 +689,15 @@ section.faq-section .accordion-body {
 	.faq-wrap button.accordion-button,
 	section.faq-section .accordion-body {
 		font-size: 16px;
+	}
+}
+
+@media (max-width: 450px){
+	.banner_under_filters{
+		aspect-ratio: 16/6;
+	}
+	.about_project .more_about_btn{
+		width: 100%;
+		text-align: center;
 	}
 }
