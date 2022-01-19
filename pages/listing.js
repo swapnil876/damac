@@ -516,7 +516,7 @@ import GoogleMapReact from 'google-map-react';
                         <div className={style['shape-content-wrap']}>
                           <div className={style['shape-item']}>
                             <h2>About DAMAC Hills</h2>
-                            <p>{listing.fieldAboutTextL.value}</p>
+                            <div dangerouslySetInnerHTML={{ __html: listing.fieldAboutTextL.value }}></div>
                             <p>Dubailand, Dubai, United Arab Emirates</p>
                             <a href="" className="btn btn-primary"> View more</a>
                           </div>

@@ -58,6 +58,12 @@ function OffersPage( { offers } ) {
                     }
                     </div>
                   </div>
+
+
+
+                  <div class="view_more_btn_area" style={{'margin-top':'82px'}}>
+                    <a class="btn btn-primary" href="#" style={{'margin':'auto', 'display':'block', 'width':'fit-content'}}>View more</a>
+                  </div>
             
                
              </div>

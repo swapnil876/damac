@@ -113,6 +113,17 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                <div className="container" style={{'display':'flex'}}>
                            <div className="col-md-5 px-0 sider-bar-overflow">
                             <div className={styles['properties-sidebar-wrap']}>
+                                <div className={styles['search_results_text']}>
+                                    <div style={{'max-width':'60%'}}>
+                                        <h3>Search results “Dubai”</h3>
+                                        <p>32 properties found</p>
+                                    </div>
+                                    <div>
+                                        <select>
+                                            <option value="all" selected>All</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
                                         <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
