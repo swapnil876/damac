@@ -653,7 +653,6 @@ a.btn.btn-blur-dark {
     background-attachment: fixed;
     background-image: url(/images/aboutsectionbg-2.jpg);
     color: #fff;
-
 }
 
 @media (min-width: 768px) {
@@ -744,7 +743,7 @@ button.accordion-button{
 /* About chairman section  */
 section.damac-about-chairman {
     position: relative;
-
+    margin-top:60px
 }
 
 

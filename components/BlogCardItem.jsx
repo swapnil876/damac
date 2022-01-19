@@ -64,7 +64,7 @@ export default function BlogCardItem( { className, cardDetails  } ) {
           {/*</div>*/}
         {/*</div>*/}
 
-        <div dangerouslySetInnerHTML={{ __html: cardDetails.excerpt }}></div>
+        <div className={styles['blog_desc']} dangerouslySetInnerHTML={{ __html: cardDetails.excerpt }}></div>
       </div>
       <div className={`cta-btn-wrapper`}>
         <Link href={cardDetails.url}><a className={`btn btn-primary`}>{cardDetails.ctaText}</a></Link>

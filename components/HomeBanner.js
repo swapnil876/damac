@@ -21,7 +21,7 @@ export default function HomeBanner( { bannerImage, children, entity1} ) {
   
 
   return (
-    <div className={styles['homepage-hero-section']} style={{'background': 'url(' + entity1.fieldMainImageDesktopHome.url + ') center/100% no-repeat'}} >
+    <div className={styles['homepage-hero-section']} style={{'background': 'url(' + entity1.fieldMainImageDesktopHome.url + ') top center/100% 100% no-repeat'}} >
       {/* style={{'background': 'url(' + entity1.fieldMainImageDesktopHome + ') center/100% no-repeat'}} */}
       { banner }
       { children }
