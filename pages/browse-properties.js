@@ -16,6 +16,7 @@ import { FaAngleLeft, FaAngleRight, FaSearch } from 'react-icons/fa'
 
 import styles from '../styles/pages/browse-properties.module.css'
 import style from '../styles/pages/listing.module.css'
+import project_landing_styles from '../styles/pages/project-landing.module.css'
 
 import React, { Component, useEffect } from "react";
 
@@ -123,7 +124,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                           </form>
                           <div className={styles['map_list_view']}>
                               <ul className="list-unstyled d-flex">
-                                  <li className="active"><a href="#">List</a></li>
+                                  <li className="active"><a href="#" class="map_list">List</a></li>
                                   <li><a href="#">Map</a></li>
                               </ul>
                           </div>
@@ -407,6 +408,53 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     </div>
                 </div>
             </section>
+
+
+            {/* <!-- Similar properties section --> */}
+            <section className={project_landing_styles['similar_property']}>
+                            <div className="container">
+                                <div className={project_landing_styles['similar_property_head']}>
+                                    <h1>Similar Properties</h1>
+                                </div>
+                                <div className={project_landing_styles['similar_proprty_card_main']}>
+                                    <div className="row">
+                                    
+                                        <div className="col-md-3">
+                                            <div className={project_landing_styles['property_similar_card']}>
+                                                <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                                <h1><a href="#">DAMAC Villas</a></h1>
+                                                <p>Starting AED 1,213,515*</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-3">
+                                            <div className={project_landing_styles['property_similar_card']}>
+                                                <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                                <h1><a href="#">DAMAC Villas</a></h1>
+                                                <p>Starting AED 1,213,515*</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-3">
+                                            <div className={project_landing_styles['property_similar_card']}>
+                                                <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                                <h1><a href="#">DAMAC Villas</a></h1>
+                                                <p>Starting AED 1,213,515*</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-3">
+                                            <div className={project_landing_styles['property_similar_card']}>
+                                                <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                                <h1><a href="#">DAMAC Villas</a></h1>
+                                                <p>Starting AED 1,213,515*</p>
+                                            </div>
+                                        </div>
+                                      
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
             {/* <!-- About Dubai Section --> */}
             <section className={styles['about_dubai_main']}>
               <div className="container">
