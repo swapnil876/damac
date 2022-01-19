@@ -348,8 +348,8 @@ import GoogleMapReact from 'google-map-react';
                             and Abu Dhabi.</p>
                         </div>
                         <div className="row align-items-center">
-                        {listing.fieldAmenitiesL.map((a) => (
-                            <div className="col-6 col-md-6">
+                        {listing.fieldAmenitiesL.map((a,i) => (
+                            <div className="col-6 col-md-6" key={i}>
                                 <div className={style['town-card']}>
                                     <img src={a.entity.fieldIcona.url} />
                                     <h6>{a.entity.fieldTextAmi}</h6>
@@ -397,7 +397,7 @@ import GoogleMapReact from 'google-map-react';
                             <div className={style['town-slider']}>
                               <Carousel responsive={responsive} className="unit_amenities_slider_for_listing">
                                 {listing.fieldGalleryDesktopL.map((a,i) => (
-                                  <img src={a.entity.url} className="img-fluid" />
+                                  <img key={i} src={a.entity.url} className="img-fluid" />
                                 ))}
                               </Carousel>
                                 {/* <div className={`${style["slider-nav"]} text-center`}>
@@ -530,7 +530,7 @@ import GoogleMapReact from 'google-map-react';
                   <div className="container">
                     <div className="row">
                     {listing.fieldLocatorsL.map((a,i) => (
-                      <div className="col-6 col-md-4">
+                      <div className="col-6 col-md-4" key={i}>
                         <div className={`${style["distance-card"]} text-center`}> 
                           <img src={a.entity.fieldIconm.url}/>
                           <h5>{a.entity.fieldTextc6}</h5>
@@ -815,6 +815,16 @@ import GoogleMapReact from 'google-map-react';
     let entity1 = data.data.nodeQuery.entities[0];
     // let entity2 = data.data.nodeQuery.entities[1];
     console.log('about',entity1.fieldLocatorsL);
+
+    fetch('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=1', {
+      method: 'GET',
+      headers:{
+        'Authorization':'Zoho-oauthtoken 1000.72c27d3953f02f09f42cdaf009e6c4d5.aab1f8a10b254939e080a2f98b4921be'
+      },
+      cache: 'default',
+    }).then(json => console.log('json',json)).catch(function(error) {
+      console.log('Looks like there was a problem: ', error);
+    });
   
     return {
       props: {
