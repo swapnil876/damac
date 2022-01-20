@@ -19,7 +19,7 @@ export default function HomeBanner( { bannerImage, children, entity1} ) {
     </Image>
     );
   
-
+    
   return (
     <div className={styles['homepage-hero-section']} style={{'background': 'url(' + entity1.fieldMainImageDesktopHome.url + ') top center/100% 100% no-repeat'}} >
       {/* style={{'background': 'url(' + entity1.fieldMainImageDesktopHome + ') center/100% no-repeat'}} */}
@@ -30,7 +30,7 @@ export default function HomeBanner( { bannerImage, children, entity1} ) {
           
           <div className="row">
             <div className={styles["hero-content-text"]}>
-              <h2>{entity1.title}</h2>
+              <h1>{entity1.title}</h1>
               <div className={styles["subtext"]} dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
 
               <div className={styles['hero-cta-btns']}>

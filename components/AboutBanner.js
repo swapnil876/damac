@@ -46,7 +46,7 @@ export default function AboutBanner( { bannerImage, children, entity1}  ) {
             <div className="col-md-6">
               <div className={styles["about-banner-text"]}>
                 <div className={ styles['about-banner-top-area'] }>
-                  <h2>{entity1.fieldHeader1}</h2>
+                  <h1>{entity1.fieldHeader1}</h1>
 
                 {
                   !isMobile ?

@@ -15,7 +15,7 @@
     margin:24px 0
 }
 
-.search_results_text h3 {
+.search_results_text h3, .search_results_text h1 {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;

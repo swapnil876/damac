@@ -48,7 +48,7 @@ function Career({entity1}) {
 
        <TextSection>         
          <div className="section-title text-center">
-           <h3 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Welcome to our World</h3>
+           <h1 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Welcome to our World</h1>
            <p className={styles['under_main_in_career_title']}>Make a career with DAMAC Properties and the DICO Group</p>
          </div>
 

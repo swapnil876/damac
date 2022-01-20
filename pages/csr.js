@@ -56,7 +56,7 @@ function CSR({entity1}) {
        <VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner>
 
        <TextSection className="text-section-csr-1">
-         <h2 className={styles['csr_heading']}>Why Corporate Social Responsibility (CSR)?</h2>
+         <h1 className={styles['csr_heading']}>Why Corporate Social Responsibility (CSR)?</h1>
          <p style={{'color':'#111'}}>As a Company born in the United Arab Emirates, DAMAC Properties believes in giving back to the country that has played such a seminal role in its success story. DAMAC and its Chairman, Hussain Sajwani, have contributed to many philanthropic activities over the years, supporting initiatives and organisations such as the Arab Hope Makers 2020, Emirates Red Crescent, Dubai Cares and Dar Al Ber Society. Philanthropy is also entrenched in the value system of the Sajwani family. Collectively, DAMAC and Hussain Sajwani are supporting His Highness Sheikh Mohammed bin Rashid Al Maktoum’s vision for a better future, where people are happier and enjoy a better quality of life.</p>
        </TextSection>
 

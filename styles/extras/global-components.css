@@ -100,9 +100,10 @@
 
 
 .heading_dropdown {
-  height:36px;
+  height: 36px;
   position: relative;
 }
+
 .heading_dropdown select {
   z-index: 9;
   position: relative;
@@ -341,6 +342,13 @@
   margin-bottom: 0;
 }
 
+.title-wrapper-box h1 {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 117.6%;
+  color: #000000;
+  margin-bottom: 0;
+}
 
 /*
 * Contact Form
@@ -454,8 +462,14 @@ input:focus {
 
 
 @media (max-width: 768px) {
-  .title-wrapper-box h2 {
-    width: 40%
+  .title-wrapper-box {
+    margin: 42px 0 58px
+  }
+
+  .title-wrapper-box h2,
+  .title-wrapper-box h1 {
+    width: 40%;
+    font-size: 32px;
   }
 
   .form-row-2 {
@@ -598,9 +612,14 @@ List grid
   position: relative;
 }
 
-.page-title h2 {
+.page-title h2,
+.page-title h1 {
   margin: 0;
   position: relative;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 117.6%;
+  color: #FFFFFF;
 }
 
 .page-title .pagetitle-subtitle {
@@ -622,8 +641,10 @@ List grid
     height: 200px;
   }
 
-  .page-title h2 {
+  .page-title h2,
+  .page-title h1 {
     margin: 0;
+    font-size: 32px;
   }
 }
 

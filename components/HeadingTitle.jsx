@@ -34,7 +34,7 @@ export default function HeadingTitle( { title, btnLink, mobileDevice, className 
       <div className={`'heading-title ${className}`}>
         <div className='container'>
          <div className='title-wrapper-box'>
-            <h2>{ title }</h2>
+            <h1>{ title }</h1>
 
             { btnLink && 
               <>
