@@ -97,17 +97,82 @@
   overflow: auto;
 }
 
+
+
+.heading_dropdown {
+  height:36px;
+  position: relative;
+}
+.heading_dropdown select {
+  z-index: 9;
+  position: relative;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 113.6%;
+  letter-spacing: 0.04em;
+  color: #000000;
+  border: none;
+  -webkit-appearance: none;
+  padding-right: 30px;
+  background: transparent;
+}
+
+.heading_dropdown .arrow {
+  background: url('../../public/images/icons/down-chevron-black.png') right/16px 16px no-repeat;
+  position: absolute;
+  height: 36px;
+  width: 30px;
+  right: 0;
+  top: -8px;
+}
+
+/* faq accordion styling */
+
 .accordion-button::after {
   background-image: url("../../public/images/icons/arrow-down.png") !important;
 }
+
+.accordion-button.first-faq-drop::after {
+  background-image: url("../../public/images/icons/arrow-down.png") !important;
+}
+
+
+
+
+.accordion-button:not(.collapsed)::after {
+  transform: none !important;
+}
+
+.accordion-button.first-faq-drop:not(.collapsed)::after {
+  transform: rotate(180deg) !important;
+}
+
+.accordion-button.second-faq-drop:not(.collapsed)::after {
+  /* transform: rotate(180deg) !important; */
+  /* transform: none !important; */
+}
+
+.accordion-button.third-faq-drop:not(.collapsed)::after {
+  /* transform: rotate(180deg) !important; */
+  /* transform: none !important; */
+}
+
 
 .accordion-button:hover::after {
   background-image: url("../../public/images/icons/gold-arrow-down.png") !important;
 }
 
+.accordion-button.first-faq-drop:hover::after {
+  background-image: url("../../public/images/icons/gold-arrow-down.png") !important;
+}
+
+
+
 .accordion-button:focus {
   box-shadow: none !important;
 }
+
+/* faq accordion styling */
 
 @media (max-width: 575.98px) {
   .table-responsive-sm {

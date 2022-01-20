@@ -41,9 +41,19 @@ export default function HeadingTitle( { title, btnLink, mobileDevice, className 
                 <Link href={btnLink.url}>
                   <a className='icon-link' style={{'text-decoration':'none', 'color':'#000'}}>
                     <span className={ `ui-icon ${btnLink.icon}` }></span>
-                    {/* <span>{btnLink.title}</span> */}
+                    <span>{btnLink.title}</span>
                   </a>
                 </Link>
+              </>
+            }
+            { !btnLink && 
+              <>
+              <div className="heading_dropdown">
+               <select>
+                 <option>DAMAC Properties Dubai Co PJSC</option>
+               </select>
+               <span className="arrow"></span>
+               </div>
               </>
             }
          </div>
