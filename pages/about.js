@@ -524,8 +524,8 @@ export const getStaticProps = async () => {
   let entity1 = data.data.nodeQuery.entities[0];
   let entity2 = history.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log('about',entity2);
-  // console.log('entity2',entity2);
+  // console.log('about',entity1);
+  console.log('entity2',entity1);
   // console.log(data.data.nodeQuery.entities);
    return {
       props: {

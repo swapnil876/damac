@@ -20,6 +20,9 @@ query {
             }
           }
         }
+        fieldMetaTitle
+        fieldMetaKeywords
+        fieldMetaDescription
         fieldDescription1
         fieldDescription2
         fieldDescription3

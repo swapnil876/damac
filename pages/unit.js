@@ -45,8 +45,10 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 // Google Map Plugin
 import GoogleMapReact from 'google-map-react';
+import * as axios from 'axios';
 
 
+ 
 
 
  export default function Listing({mobileDevice,listing}){
@@ -171,7 +173,7 @@ import GoogleMapReact from 'google-map-react';
 
              <main className="main">
 
-                <section className={style['inner-wrap-hero']} style={{'background-image': 'url(images/project-bg.jpg)'}}>
+                <section className={style['inner-wrap-hero']} style={{'backgroundImage': 'url(images/project-bg.jpg)'}}>
                     <div className={style['project-hero-wrap']}>
                         <div className={`container ${style["hero-container"]}`}>
                         <div className="row align-items-end">
@@ -493,10 +495,10 @@ import GoogleMapReact from 'google-map-react';
                  {/* <!-- Experince section --> */}
                  <section className={style['3d-tour']}>
                         <div className={ !deviceIsMobile ? 'container' : 'container-fluid'} style={ deviceIsMobile ? {'padding':'0'} : {}}>
-                        <div className={style['3d-tour-inner']} style={{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
+                        <div className={style['3d-tour-inner']} style={{'backgroundImage':'url(/images/3d-tour-listing.jpg)','backgroundRepeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'maxWidth':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>
-                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
+                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'marginRight':'13px'}}/>Take a 3D Tour</a>
                           </div>
                         </div>
                         </div>
@@ -546,7 +548,7 @@ import GoogleMapReact from 'google-map-react';
 
                {/* <!-- Map section --> */}
               <section className={style['map-section']}>
-                <div className={style['map-wrap']} style={{'width':'100%', 'aspect-ratio':'1/.5'}}>
+                <div className={style['map-wrap']} style={{'width':'100%', 'aspectRatio':'1/.5'}}>
                   {/* <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/> */}
                     <GoogleMapReact
                         bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
@@ -620,7 +622,7 @@ import GoogleMapReact from 'google-map-react';
               </section>
 
           {/* <!-- Invest section --> */}
-          <section className={style['why-invest']} style={{'background-image':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
+          <section className={style['why-invest']} style={{'backgroundImage':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
             <div className="container">
               <div className="row justify-content-end align-items-end">
                 <div className="col-md-12">
@@ -797,6 +799,10 @@ import GoogleMapReact from 'google-map-react';
      )
  }
 
+ // refreshToken(t){
+ //   console.log(t);
+ // }
+
 
 
  export async function getServerSideProps(context) {
@@ -814,17 +820,19 @@ import GoogleMapReact from 'google-map-react';
     // console.log('listing',data);
     let entity1 = data.data.nodeQuery.entities[0];
     // let entity2 = data.data.nodeQuery.entities[1];
-    console.log('about',entity1.fieldLocatorsL);
+    // console.log('about',entity1.fieldLocatorsL);
 
-    fetch('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=1', {
-      method: 'GET',
-      headers:{
-        'Authorization':'Zoho-oauthtoken 1000.72c27d3953f02f09f42cdaf009e6c4d5.aab1f8a10b254939e080a2f98b4921be'
-      },
-      cache: 'default',
-    }).then(json => console.log('json',json)).catch(function(error) {
-      console.log('Looks like there was a problem: ', error);
-    });
+    axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=1',
+        {
+            headers:{
+                'Authorization':'Zoho-oauthtoken 1000.fce6b8b913fbcc2ed02b5b63cdd2e79b.df6e9b2423e38e6db3097ee7202b85b9'
+            }
+        }).then(response => {
+            console.log('response',response);
+            // let entity = response.data.data[0]
+        }).catch(e=>{
+            // console.log('error',e);
+        });
   
     return {
       props: {
