@@ -24,9 +24,13 @@ function ChairmansMessage({entity1}) {
       <Head>
         <title>Damac - Chairman's Message</title>
         
-        <meta name="description" content="Chairman's Message - Damac Properties" />
+        <meta name="title" content={entity1.fieldMetaTitleCm} />
+        <meta name="description" content={entity1.fieldMetaDescriptionCm} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsCm} />
         
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlCm} />
       </Head>
 
 

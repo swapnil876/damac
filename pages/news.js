@@ -37,9 +37,13 @@ function News( {entity1} ) {
 
       <Head>
         <title>Damac - News</title>
-        <meta name="description" content="News - Damac Properties" />
-        
+       
+        <meta name="title" content={entity1.fieldMetaTitleNews} />
+        <meta name="description" content={entity1.fieldMetaDescriptionNews} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsNews} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlNews} />
       </Head>
 
 

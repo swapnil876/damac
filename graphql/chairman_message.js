@@ -6,7 +6,10 @@ const CHAIRMANMESSAGE = gql`
       entities {
         ... on NodeChairmanSMessage{
           fieldTextChairman
-          fieldDescriptiveText
+          fieldMetaKeywordsCm
+          fieldMetaTitleCm
+          fieldMetaDescriptionCm
+          fieldCanonicalUrlCm
           fieldImageChairman{
             targetId
             url
@@ -15,5 +18,5 @@ const CHAIRMANMESSAGE = gql`
       }
     }
 }`;
-
+// fieldDescriptiveText
 export { CHAIRMANMESSAGE };

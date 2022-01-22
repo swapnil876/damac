@@ -29,9 +29,13 @@ function Career({entity1}) {
 
       <Head>
         <title>Damac - Career</title>
-        <meta name="description" content="Career - Damac Properties" />
-        
+       
+        <meta name="title" content={entity1.fieldMetaTitleCareer} />
+        <meta name="description" content={entity1.fieldMetaDescriptionCareer} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsCareer} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlCareer} />
       </Head>
 
 

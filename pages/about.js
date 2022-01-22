@@ -94,8 +94,12 @@ function About({entity1}) {
       <Head>
         <title>Damac - About</title>
 
-        <meta name="description" content="About Us - Damac Properties" />
+        <meta name="title" content={entity1.fieldMetaTitle} />
+        <meta name="description" content={entity1.fieldMetaDescription} />
+        <meta name="keywords" content={entity1.fieldMetaKeywords} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrl} />
       </Head>
 
 
