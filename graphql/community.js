@@ -25,7 +25,23 @@ const COMMUNITY = gql`
                 url
               }
             }
-          
+            fieldBrandIcons{
+              entity{
+                ... on ParagraphMultipleIcons{
+                  fieldIconText
+                  fieldIconImage{
+                    url
+                  }
+                }
+                
+              }
+            }
+            fieldPropertyTypec {
+              entity{
+                tid
+                name
+              }
+            }
             fieldTitle2
             fieldDescriptionc2 {
               value
