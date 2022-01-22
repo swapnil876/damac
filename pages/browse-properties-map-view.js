@@ -115,7 +115,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                             <div className={styles['properties-sidebar-wrap']}>
                                 <div className={styles['search_results_text']}>
                                     <div style={{'max-width':'60%'}}>
-                                        <h3>Search results “Dubai”</h3>
+                                        <h1>Search results “Dubai”</h1>
                                         <p>32 properties found</p>
                                     </div>
                                     <div>

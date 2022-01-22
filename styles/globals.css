@@ -268,9 +268,9 @@ h6,
     font-size: 1rem;
 }
 
-.unit_amenities_slider_for_listing.react-multi-carousel-list, 
-.unit_amenities_slider_for_listing .react-multi-carousel-track{
-    height:100% !important;
+.unit_amenities_slider_for_listing.react-multi-carousel-list,
+.unit_amenities_slider_for_listing .react-multi-carousel-track {
+    height: 100% !important;
     min-height: 100% !important;
 }
 
@@ -286,9 +286,11 @@ h6,
     padding: 8px 0;
     margin-bottom: 0;
 }
-.react-multiple-carousel__arrow{
+
+.react-multiple-carousel__arrow {
     z-index: 10 !important;
 }
+
 /*
 * Global Responsive
 */
@@ -398,7 +400,7 @@ b {
     font-size: 20px;
 }
 
-h3.section-title {
+h3.section-title, h1.section-title {
     font-size: 44px;
 }
 
@@ -407,7 +409,7 @@ h3.section-title {
         font-size: 18px;
     }
 
-    h3.section-title {
+    h3.section-title, h1.section-title {
         font-size: 32px;
     }
 }
@@ -612,7 +614,8 @@ a.btn.btn-blur-dark {
     padding-bottom: 100px;
 }
 
-.homeMobileBanner .homemobileBannerText h3 {
+.homeMobileBanner .homemobileBannerText h3,
+.homeMobileBanner .homemobileBannerText h1 {
     font-size: 60px;
     max-width: 260px;
     margin: 0 auto;
@@ -700,9 +703,11 @@ a.btn.btn-blur-dark {
     letter-spacing: -0.01em;
     color: #000000;
 }
-button.accordion-button{
+
+button.accordion-button {
     padding: 1rem 0rem !important;
 }
+
 .numberdata p {
     font-weight: 300;
     font-size: 20px;
@@ -743,7 +748,7 @@ button.accordion-button{
 /* About chairman section  */
 section.damac-about-chairman {
     position: relative;
-    margin-top:60px
+    margin-top: 60px
 }
 
 
@@ -1664,10 +1669,10 @@ footer.damac-footer .footer-logo {
     padding: 80px 0;
 }
 
-.banner-conent-style-1 .banner-text-body h3 {
+.banner-conent-style-1 .banner-text-body h3,
+.banner-conent-style-1 .banner-text-body h1 {
     font-size: 44px;
     margin-bottom: 30px;
-
 }
 
 .banner-conent-style-1 .banner-text-body p {
@@ -1676,6 +1681,14 @@ footer.damac-footer .footer-logo {
 }
 
 @media (max-width: 768px) {
+    .text-section-whhydubai-1 h3{
+        font-size: 26px !important;
+    }
+    .banner-conent-style-1 .banner-text-body h3,
+    .banner-conent-style-1 .banner-text-body h1 {
+        font-size: 32px;
+    }
+
     .banner-conent-style-1>.bg {
         position: absolute;
         left: 0;
@@ -1923,7 +1936,8 @@ PAGE:  NEWS
     opacity: 60%;
 }
 
-.primary-cta h2 {
+.primary-cta h2,
+.primary-cta h1 {
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
@@ -1932,7 +1946,8 @@ PAGE:  NEWS
     margin-bottom: 8px !important;
 }
 
-.primary-cta h2 a {
+.primary-cta h2 a,
+.primary-cta h1 a {
     font-weight: 500;
 }
 
@@ -2304,6 +2319,13 @@ PAGE:  NEWS
 }
 
 @media(max-width: 768px) {
+
+    .primary-cta h2,
+    .primary-cta h1 {
+        font-size: 22px;
+        line-height: 131.6%;
+    }
+
     .why-damac-map-img {
         aspect-ratio: 16/9;
     }

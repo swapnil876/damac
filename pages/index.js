@@ -78,7 +78,7 @@ function Home( {entity1} ) {
                 <div className="container">
                   
                   <div className="homemobileBannerText">
-                    <h3>{entity1.title}</h3>
+                    <h1>{entity1.title}</h1>
                     <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
                   </div>
 

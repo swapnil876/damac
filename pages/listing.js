@@ -747,7 +747,7 @@ import GoogleMapReact from 'google-map-react';
                             <div className={style['accordion']} id="accordionExample">
                                 <div className={style['accordion-item']}>
                                 <h2 className={style['accordion-header']} id="headingOne">
-                                    <button className={`accordion-button ${style["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button className={`accordion-button first-faq-drop ${style["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     What is the lowest mortgage rate in UAE?
                                     </button>
                                 </h2>
@@ -759,7 +759,7 @@ import GoogleMapReact from 'google-map-react';
                                 </div>
                                 <div className={style['accordion-item']}>
                                 <h2 className={style['accordion-header']} id="headingTwo">
-                                    <button className={`accordion-button ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <button className={`accordion-button second-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     What is the lowest mortgage rate in UAE?
                                     </button>
                                 </h2>
@@ -771,7 +771,7 @@ import GoogleMapReact from 'google-map-react';
                                 </div>
                                 <div className={style['accordion-item']}>
                                 <h2 className={style['accordion-header']} id="headingThree">
-                                    <button className={`accordion-button ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <button className={`accordion-button third-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     What is the lowest mortgage rate in UAE?
                                     </button>
                                 </h2>

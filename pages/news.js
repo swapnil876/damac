@@ -56,10 +56,10 @@ function News( {entity1} ) {
                <div className="primary-cta">
                  <img alt="" src={isMobile?entity1.fieldFeatureImageMobileNews.url:entity1.fieldFeatureImageDesktopNews.url} className="img-responsive full-width"/>
                  <label>{entity1.fieldCategoryn.entity.name}</label>
-                 <h2>
+                 <h1>
                  <Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link>
-                 </h2>
-                 <p> {entity1.body.value} </p>
+                 </h1>
+                 <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
                </div>
              </div>
              <div className="col-md-4">

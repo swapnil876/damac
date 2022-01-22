@@ -69,7 +69,7 @@ const WhyDubai= ({entity1})=> {
                <div className="row">
                  <div className="col-md-7">
                    <div className="banner-text-body">
-                     <h3>{entity1.fieldHeaderw2}</h3>
+                     <h1>{entity1.fieldHeaderw2}</h1>
                      <p>{entity1.fieldDescription}</p>
                    </div>
                  </div>
