@@ -61,7 +61,7 @@ function CSR({entity1}) {
 
        <TextSection className="text-section-csr-1">
          <h1 className={styles['csr_heading']}>Why Corporate Social Responsibility (CSR)?</h1>
-         <p style={{'color':'#111'}}>As a Company born in the United Arab Emirates, DAMAC Properties believes in giving back to the country that has played such a seminal role in its success story. DAMAC and its Chairman, Hussain Sajwani, have contributed to many philanthropic activities over the years, supporting initiatives and organisations such as the Arab Hope Makers 2020, Emirates Red Crescent, Dubai Cares and Dar Al Ber Society. Philanthropy is also entrenched in the value system of the Sajwani family. Collectively, DAMAC and Hussain Sajwani are supporting His Highness Sheikh Mohammed bin Rashid Al Maktoum’s vision for a better future, where people are happier and enjoy a better quality of life.</p>
+         <p style={{'color':'#111'}}>{entity1.fieldWhyCsr}</p>
        </TextSection>
 
        <section className="damac-slider-section">
@@ -146,7 +146,7 @@ function CSR({entity1}) {
            <h2 className={styles['csr_heading']}>Our Mission</h2>
            <div className="row align-items-center">
              <div className="col-md-12">
-               <p style={{'color':'#111'}}>{entity1.fieldOurMission}</p>
+               <p style={{'color':'#111'}}>{entity1.fieldMission}</p>
              </div>
            
            </div>
@@ -156,7 +156,7 @@ function CSR({entity1}) {
            <h2 className={styles['csr_heading']}>Our Cause</h2>
            <div className="row align-items-center">
              <div className="col-md-12">
-               <p style={{'color':'#111'}}>{entity1.fieldOurCause}</p>
+               <p style={{'color':'#111'}}>{entity1.fieldCause}</p>
              </div>
            
            </div>

@@ -29,9 +29,13 @@ function OffersPage( { offers } ) {
 
       <Head>
         <title>Offers - Damac</title>
-        <meta name="description" content="Offers - Damac Properties" />
-        
+       
+        <meta name="title" content={offers.fieldMetaTitleOffers} />
+        <meta name="description" content={offers.fieldMetaDescriptionOffers} />
+        <meta name="keywords" content={offers.fieldMetaKeywordsOffers} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={offers.fieldCanonicalUrlOffers} />
       </Head>
 
 
