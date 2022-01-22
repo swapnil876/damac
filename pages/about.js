@@ -113,7 +113,7 @@ function About({entity1}) {
 
 
        <div className="damac-text-section-container">
-         <div className="damac-text-section" style={{'background-image': 'url(' + entity1.fieldImage2.url + ')'}}>
+         <div className="damac-text-section" style={{'backgroundImage': 'url(' + entity1.fieldImage2.url + ')'}}>
 
            <div className="container">
              <div className="damac-text-section-right">
@@ -134,7 +134,7 @@ function About({entity1}) {
        </div>
 
 
-       <section className="damac-about-section-2" style={{'background-image': 'url(' + entity1.fieldImage3.url + ')'}}>
+       <section className="damac-about-section-2" style={{'backgroundImage': 'url(' + entity1.fieldImage3.url + ')'}}>
          <div className="container">
            
            <div className="aboutsection-2">
@@ -228,102 +228,23 @@ function About({entity1}) {
            </div>
 
            <div className="leadership-boxes">
-            <div class="row">
-               <div class="col-md-3 col-6">
-             <div className="leadershipbox">
-               <div className="leadershipimg">
-                 <img alt="" src="/images/chairman-portrait.jpg"/>
-               </div>
-               <div className="leadership-details">
-                 <h5>Kyoko Matsushita</h5>
-                 <p>Global CEO</p>
-               </div>
-             </div>
-             </div>
+            <div className="row">
+            {
+                   entity1.fieldMultipleTeam.map( (team, index) => (
+                      <div className="col-md-3 col-6" key={index}>
+                         <div className="leadershipbox">
+                           <div className="leadershipimg">
+                             <img alt="" src={team.entity.fieldImage.url}/>
+                           </div>
+                           <div className="leadership-details">
+                             <h5>{team.entity.fieldName}</h5>
+                             <p>{team.entity.fieldTitleTeam}</p>
+                           </div>
+                         </div>
+                      </div>
+                  ))
+            }
             
-             <div class="col-md-3 col-6">
-             <div className="leadershipbox">
-               <div className="leadershipimg">
-                 <img alt="" src="/images/chairman-portrait.jpg"/>
-               </div>
-               <div className="leadership-details">
-                 <h5>Kyoko Matsushita</h5>
-                 <p>Global CEO</p>
-               </div>
-             </div>
-             </div>
-            
-             <div class="col-md-3 col-6">
-             <div className="leadershipbox">
-               <div className="leadershipimg">
-                 <img alt="" src="/images/chairman-portrait.jpg"/>
-               </div>
-               <div className="leadership-details">
-                 <h5>Kyoko Matsushita</h5>
-                 <p>Global CEO</p>
-               </div>
-             </div>
-             </div>
-            
-             <div class="col-md-3 col-6">
-             <div className="leadershipbox">
-               <div className="leadershipimg">
-                 <img alt="" src="/images/chairman-portrait.jpg"/>
-               </div>
-               <div className="leadership-details">
-                 <h5>Kyoko Matsushita</h5>
-                 <p>Global CEO</p>
-               </div>
-             </div>
-             </div>
-           
-             <div class="col-md-3 col-6">
-                <div className="leadershipbox">
-               <div className="leadershipimg">
-                 <img alt="" src="/images/chairman-portrait.jpg"/>
-               </div>
-               <div className="leadership-details">
-                 <h5>Kyoko Matsushita</h5>
-                 <p>Global CEO</p>
-               </div>
-             </div>
-             </div>
-            
-             <div class="col-md-3 col-6">
-             <div className="leadershipbox">
-               <div className="leadershipimg">
-                 <img alt="" src="/images/chairman-portrait.jpg"/>
-               </div>
-               <div className="leadership-details">
-                 <h5>Kyoko Matsushita</h5>
-                 <p>Global CEO</p>
-               </div>
-             </div>
-             </div>
-            
-             <div class="col-md-3 col-6">
-             <div className="leadershipbox">
-               <div className="leadershipimg">
-                 <img alt="" src="/images/chairman-portrait.jpg"/>
-               </div>
-               <div className="leadership-details">
-                 <h5>Kyoko Matsushita</h5>
-                 <p>Global CEO</p>
-               </div>
-             </div>
-             </div>
-          
-             <div class="col-md-3 col-6">
-             <div className="leadershipbox">
-               <div className="leadershipimg">
-                 <img alt="" src="/images/chairman-portrait.jpg"/>
-               </div>
-               <div className="leadership-details">
-                 <h5>Kyoko Matsushita</h5>
-                 <p>Global CEO</p>
-               </div>
-             </div>
-             </div>
             </div>
            </div>
 
@@ -364,74 +285,18 @@ function About({entity1}) {
                <div className="historyslidercontainer">
                  <div className="historyslides">
                  <Carousel responsive={responsive}>
-                       <div className="historyslide">
+                 {
+                   entity1.fieldMultipleHistory.map( (history, index) => (
+                       <div className="historyslide" key={index}>
                              <div className="inner">
-                               <h5>2020</h5>
-                               <div className="historytext">
-                                 <p>DAMAC introduces its online design-your-home concept, A La Carte Villas at DAMAC Hills.</p>
-
-                                 <p>Part of its ongoing community activities, DAMAC supports the Internations Humanitarian Day initiative, ‘Your families... our people’, to help families...</p>
-                               </div>
-                               <div className="projectsdelivered">
-                                 <b>Projects Delivered:</b>
-
-                                 <ul>
-                                   <li>Merano Tower, Business Bay</li>
-                                   <li>DAMAC Prive, Business Bay</li>
-                                   <li>Multiple clusters at AKOYA and DAMAC Hills</li>
-                                 </ul>
+                               <h5>{history.entity.fieldYear}</h5>
+                               <div className="historytext" dangerouslySetInnerHTML={{ __html: history.entity.fieldBody.value }}>
+                                 
                                </div>
                              </div>
-                      </div>
-                      <div className="historyslide">
-                             <div className="inner">
-                               <h5>2019</h5>
-                               <div className="historytext">
-                                 <p>DAMAC introduces its online design-your-home concept, A La Carte Villas at DAMAC Hills.</p>
-
-                                 <p>Part of its ongoing community activities, DAMAC supports the Internations Humanitarian Day initiative, ‘Your families... our people’, to help families...</p>
-                               </div>
-                               <div className="projectsdelivered">
-                                 <b>Projects Delivered:</b>
-
-                                 <ul>
-                                   <li>Merano Tower, Business Bay</li>
-                                   <li>DAMAC Prive, Business Bay</li>
-                                   <li>Multiple clusters at AKOYA and DAMAC Hills</li>
-                                 </ul>
-                               </div>
-                             </div>
-                      </div>
-                      <div className="historyslide">
-                             <div className="inner">
-                               <h5>2018</h5>
-                               <div className="historytext">
-                                 <p>DAMAC introduces its online design-your-home concept, A La Carte Villas at DAMAC Hills.</p>
-
-                                 <p>Part of its ongoing community activities, DAMAC supports the Internations Humanitarian Day initiative, ‘Your families... our people’, to help families...</p>
-                               </div>
-                               <div className="projectsdelivered">
-                                 <b>Projects Delivered:</b>
-
-                                 <ul>
-                                   <li>Merano Tower, Business Bay</li>
-                                   <li>DAMAC Prive, Business Bay</li>
-                                   <li>Multiple clusters at AKOYA and DAMAC Hills</li>
-                                 </ul>
-                               </div>
-                             </div>
-                      </div>
-                     <div className="historyslide">
-                         <div className="inner d-md-block d-none">
-                           <h5>2017</h5>
-                           <div className="historytext">
-                             <p>DAMAC introduces its online design-your-home concept, A La Carte Villas at DAMAC Hills.</p>
-
-                             <p>Part of its ongoing community activities, DAMAC supports the Internations Humanitarian Day initiative, ‘Your families... our people’, to help families...</p>
-                           </div>
-                           
-                         </div>
-                     </div>  
+                       </div> 
+                      ))
+                 }
                  </Carousel>
                  </div>
                </div>
@@ -529,7 +394,7 @@ export const getStaticProps = async () => {
   let entity2 = history.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
   // console.log('about',entity1);
-  console.log('entity2',entity1);
+  console.log('entity2',entity1.fieldMultipleHistory);
   // console.log(data.data.nodeQuery.entities);
    return {
       props: {

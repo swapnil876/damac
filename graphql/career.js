@@ -25,6 +25,16 @@ const CAREERS = gql`
               url
             }
           }
+          fieldMutlipleIcons{
+            entity{
+              ... on ParagraphMultipleIcons{
+                fieldIconImage{
+                  url
+                }
+                fieldIconText
+              }
+            }
+          }
           fieldIcons{
             targetId
             title

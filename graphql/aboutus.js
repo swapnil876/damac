@@ -20,10 +20,27 @@ query {
             }
           }
         }
-        
-        fieldMetaTitle
-        fieldMetaKeywords
-        fieldMetaDescription
+        fieldMultipleTeam{
+          entity{
+            ... on ParagraphMultipleTeamAbout{
+              fieldName,
+              fieldImage{
+                url
+              }
+              fieldTitleTeam
+            }
+          }
+        }
+        fieldMultipleHistory{
+          entity{
+            ... on ParagraphMultipleHistoryAbout{
+              fieldBody{
+                value
+              }
+              fieldYear
+            }
+          }
+        }
         fieldDescription1
         fieldDescription2
         fieldDescription3
