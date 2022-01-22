@@ -43,9 +43,13 @@ const WhyDubai= ({entity1})=> {
 
       <Head>
         <title>Damac - Why Dubai</title>
-        <meta name="description" content="Why Dubai - Damac Properties" />
-        
+
+        <meta name="title" content={entity1.fieldMetaTitleWhydubai} />
+        <meta name="description" content={entity1.fieldMetaDescriptionWhydubai} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsWhydubai} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlWhydubai} />
       </Head>
 
 

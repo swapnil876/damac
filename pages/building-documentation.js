@@ -27,9 +27,13 @@ function BuildingDocumentation({entity1}) {
 
       <Head>
         <title>Damac - Building Documentation</title>
-        <meta name="description" content="Building Documentation - Damac Properties" />
-        
+               
+        <meta name="title" content={entity1.fieldMetaTitleBldgdoc} />
+        <meta name="description" content={entity1.fieldMetaDescriptionBldgdoc} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsBldgdoc} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlBldgdoc} />
       </Head>
 
 

@@ -57,9 +57,14 @@ function Home( {entity1} ) {
 
       <Head>
         <title>Damac - Home</title>
-        <meta name="description" content="Damac Properties" />
+
+        <meta name="title" content={entity1.fieldMetaTitleHome} />
+        <meta name="description" content={entity1.fieldMetaDescriptionHome} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsHome} />
         
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlHome} />
       </Head>
 
 

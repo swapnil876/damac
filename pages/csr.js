@@ -44,9 +44,13 @@ function CSR({entity1}) {
 
       <Head>
         <title>Damac - Corporate Social Responsibility</title>
-        <meta name="description" content="Corporate Social Responsibility - Damac Properties" />
-        
+
+        <meta name="title" content={entity1.fieldMetaTitleCsr} />
+        <meta name="description" content={entity1.fieldMetaDescriptionCsr} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsCsr} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlCsr} />
       </Head>
 
       <Navbar></Navbar>

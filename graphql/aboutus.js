@@ -49,6 +49,10 @@ query {
           display
           description
         }
+        fieldCanonicalUrl
+        fieldMetaDescription
+        fieldMetaTitle
+        fieldMetaKeywords
       }
     }
   }

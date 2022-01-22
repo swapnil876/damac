@@ -6,6 +6,11 @@ const WHY_DUBAI = gql`
     entities {
       ... on NodeWhyDubai{
       nid
+      fieldCanonicalUrlWhydubai
+      fieldMetaTitleWhydubai
+      fieldMetaKeywordsWhydubai
+      fieldMetaDescriptionWhydubai
+      fieldCanonicalUrlWhydubai
       fieldMainImageDesktopd {
         targetId
         url

@@ -36,6 +36,10 @@ const CAREERS = gql`
               path
             }
           }
+          fieldMetaKeywordsCareer
+          fieldMetaTitleCareer
+          fieldMetaDescriptionCareer
+          fieldCanonicalUrlCareer
         }
       }
     }
