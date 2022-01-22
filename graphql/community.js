@@ -91,6 +91,10 @@ const COMMUNITY = gql`
           }}
           fieldLongitude
           fieldLatitude
+          fieldMetaTitleComm
+          fieldMetaDescriptionComm
+          fieldMetaKeywordsComm
+          fieldCanonicalUrlComm
         }
       }
     }

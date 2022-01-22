@@ -136,8 +136,13 @@ function ProjectPage({entity1}) {
     <div className="blogbody">
       <Head>
         <title>Damac - Project</title>
-        <meta name="description" content="Project - Damac Properties" />
+        
+        <meta name="title" content={entity1.fieldMetaTitleProj} />
+        <meta name="description" content={entity1.fieldMetaDescriptionProj} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsProj} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlProj} />
       </Head>
 
       <Navbar className="navbar-normal"></Navbar>

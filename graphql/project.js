@@ -176,6 +176,11 @@ const PROJECT = gql`
           
           fieldLongitudeP4
           fieldLatitudeP4
+
+          fieldMetaTitleProj
+          fieldMetaDescriptionProj
+          fieldMetaKeywordsProj
+          fieldCanonicalUrlProj
         }
       }
     }

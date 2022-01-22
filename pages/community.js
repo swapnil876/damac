@@ -185,8 +185,12 @@ function Community({entity1}) {
       <Head>
         <title>Community - Damac</title>
 
-        <meta name="description" content="Community - Damac Properties" />
+        <meta name="title" content={entity1.fieldMetaTitleComm} />
+        <meta name="description" content={entity1.fieldMetaDescriptionComm} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsComm} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlComm} />
       </Head>
 
       <Navbar></Navbar>

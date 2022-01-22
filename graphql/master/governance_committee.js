@@ -9,6 +9,10 @@ const GOVERNANCE_COMMITTEE = gql`
         body{
           value
         }
+        fieldMetaTitleGc
+        fieldMetaDescriptionGc
+        fieldMetaKeywordsGc
+        fieldCanonicalUrlGc
       }
     }
   }
