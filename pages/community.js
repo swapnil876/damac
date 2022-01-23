@@ -429,12 +429,12 @@ function Community({entity1}) {
             </div>
             <div style={{'margin-top':'50px'}}>
             <div class="row">
-              {entity1.fieldAmenities.map((item)=>{
+              {entity1.fieldBrandIcons.map((item)=>{
                 <div class="col-6">
                 <div className={styles['icon-area']}>
-                  <img alt=""src="/images/icons/building (1) 2.svg" />
-                  <h4>{item.entity.fieldValueAmi}</h4>
-                  <p>{item.entity.fieldTextAmi}</p>
+                  <img alt=""src={item.entity.fieldIconImage.url} />
+                  <h4>{item.entity.fieldIconText}</h4>
+                  {/* <p>{item.entity.fieldTextAmi}</p> */}
                 </div>
                 </div>
               })}
