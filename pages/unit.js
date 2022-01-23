@@ -799,9 +799,29 @@ import * as axios from 'axios';
      )
  }
 
- // refreshToken(t){
- //   console.log(t);
- // }
+ function refreshToken(stats=null){
+   console.log(stats);
+       if(stats == 401){
+        let data = {
+            refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
+            client_id:"1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL",
+            client_secret:"fbb31a11fcaee62b9e53e98dfee5c6da952747ff09",
+            grant_type:"refresh_token"
+        }
+        axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
+            if(typeof window !== 'undefined'){
+               console.log('lol',window); 
+            }
+            // console.log('response',response.data);
+            // localStorage.setItem("access_token", "Zoho-oauthtoken "+response.data.access_token)
+            // let entity = response.data.data[0]
+        }).catch((e,status)=>{
+            if(e.response.status == 401){
+                console.log(refreshToken(e.response.status));
+            }
+        });
+       }
+ }
 
 
 
@@ -819,20 +839,24 @@ import * as axios from 'axios';
     const  data  = await client.query({ query: LISTING });
     // console.log('listing',data);
     let entity1 = data.data.nodeQuery.entities[0];
+    // let token = window.localStorage.getItem('access_token')
     // let entity2 = data.data.nodeQuery.entities[1];
     // console.log('about',entity1.fieldLocatorsL);
 
     axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=1',
-        {
-            headers:{
-                'Authorization':'Zoho-oauthtoken 1000.fce6b8b913fbcc2ed02b5b63cdd2e79b.df6e9b2423e38e6db3097ee7202b85b9'
-            }
-        }).then(response => {
-            console.log('response',response);
-            // let entity = response.data.data[0]
-        }).catch(e=>{
-            // console.log('error',e);
-        });
+    {
+        headers:{
+            'Authorization':'Zoho-oauthtoken 1000.92e4113edac4572f55848b8be9e1ac7f.7835ff8e4c64629fa52ce849d521d80e'
+        }
+    }).then(response => {
+        console.log('response',response);
+        // let entity = response.data.data[0]
+    }).catch((e,status)=>{
+        
+        if(e.response.status == 401){
+            console.log(refreshToken(e.response.status));
+        }
+    });
   
     return {
       props: {

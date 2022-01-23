@@ -491,7 +491,7 @@ function Community({entity1}) {
           <div className="col-6">
           <div class={`text-wrapper`}>
                 <div className="top-text">
-            <h2>Projects at DAMAC Hills</h2>
+            <h2>Projects at {entity1.fieldName}</h2>
             </div>
             </div>
           </div>
