@@ -127,11 +127,11 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
     'browse-properties': [
         {
           label: 'All Projects',
-          url: '/all-projects'
+          url: '/project-landing'
         },
         {
           label: 'Projects',
-          url: '/projects'
+          url: '/project-landing'
         },
         {
           label: 'Community',

@@ -56,7 +56,7 @@ export default function Projects({ entity1, mobileDevice }) {
       <Navbar></Navbar>
       <main className="main">
 
-        <section className={style['inner-wrap-hero']} style={!isMobile ? { 'background-image': 'url(' + entity1.fieldMainImageDesktopP + ')' } : { 'background-image': 'url(' + entity1.fieldMainImageMobileP + ')' }}>
+        <section className={style['inner-wrap-hero']} style={!isMobile ? { 'background-image': 'url(' + entity1.fieldMainImageDesktopP.url + ')' } : { 'background-image': 'url(' + entity1.fieldMainImageMobileP.url + ')' }}>
           <div className='project-hero-wrap'>
             <div className={`container ${style["hero-container"]}`}>
               <div className="row align-items-end">
@@ -64,7 +64,7 @@ export default function Projects({ entity1, mobileDevice }) {
                   <div className={style['project-left']}>
                     <h1>{entity1.title}</h1>
                     <p><span>{entity1.fieldTaglingP}</span></p>
-                    <a href="#"><img src="damac-static/images/location.png" />  {entity1.fieldCityp}, {entity1.fieldCountryP}, United Arab Emirates</a>
+                    <a href="#"><img src="damac-static/images/location.png" />  {entity1.fieldCityp.entity.name}, {entity1.fieldCountryP.entity.name}, United Arab Emirates</a>
                   </div>
                 </div>
                 <div className="col-md-5">
@@ -72,7 +72,7 @@ export default function Projects({ entity1, mobileDevice }) {
                     <ul className="d-flex align-items-center">
                       <li><a href="#"><img src="/damac-static/images/save.png" /></a></li>
                       <li><a href="#"><img src="/damac-static/images/Vector.png" /></a></li>
-                      <li><a href={entity1.fieldBrochureP} target="_blank">Download Brochure</a></li>
+                      <li><a href={entity1.fieldBrochureP.url} target="_blank">Download Brochure</a></li>
                       <li><a href="#">View Gallery (19)</a></li>
                     </ul>
                   </div>
