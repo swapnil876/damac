@@ -12,6 +12,10 @@ const OFFERS = gql`
            url
         },
         fieldDescriptionOffer
+        fieldMetaTitleOffers
+        fieldMetaDescriptionOffers
+        fieldMetaKeywordsOffers
+        fieldCanonicalUrlOffers
       }
     }
   }

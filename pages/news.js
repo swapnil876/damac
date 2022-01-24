@@ -37,9 +37,13 @@ function News( {entity1} ) {
 
       <Head>
         <title>Damac - News</title>
-        <meta name="description" content="News - Damac Properties" />
-        
+       
+        <meta name="title" content={entity1.fieldMetaTitleNews} />
+        <meta name="description" content={entity1.fieldMetaDescriptionNews} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsNews} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlNews} />
       </Head>
 
 
@@ -56,10 +60,10 @@ function News( {entity1} ) {
                <div className="primary-cta">
                  <img alt="" src={isMobile?entity1.fieldFeatureImageMobileNews.url:entity1.fieldFeatureImageDesktopNews.url} className="img-responsive full-width"/>
                  <label>{entity1.fieldCategoryn.entity.name}</label>
-                 <h2>
+                 <h1>
                  <Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link>
-                 </h2>
-                 <p> {entity1.body.value} </p>
+                 </h1>
+                 <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
                </div>
              </div>
              <div className="col-md-4">

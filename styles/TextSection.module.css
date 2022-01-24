@@ -3,7 +3,8 @@
 	padding: 90px 0;
 }
 
-.text-section h2 {
+.text-section h2,
+.text-section h1 {
 	font-size: 44px;
 	margin-bottom: 42px;
 }
@@ -20,7 +21,9 @@
 }
 
 @media (max-width:767px) {
-	.text-section h2 {
+
+	.text-section h2,
+	.text-section h1 {
 		font-size: 32px;
 	}
 }

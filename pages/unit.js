@@ -1,4 +1,3 @@
-
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -46,8 +45,10 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 // Google Map Plugin
 import GoogleMapReact from 'google-map-react';
+import * as axios from 'axios';
 
 
+ 
 
 
  export default function Listing({mobileDevice,listing}){
@@ -172,7 +173,7 @@ import GoogleMapReact from 'google-map-react';
 
              <main className="main">
 
-                <section className={style['inner-wrap-hero']} style={{'background-image': 'url(images/project-bg.jpg)'}}>
+                <section className={style['inner-wrap-hero']} style={{'backgroundImage': 'url(images/project-bg.jpg)'}}>
                     <div className={style['project-hero-wrap']}>
                         <div className={`container ${style["hero-container"]}`}>
                         <div className="row align-items-end">
@@ -349,8 +350,8 @@ import GoogleMapReact from 'google-map-react';
                             and Abu Dhabi.</p>
                         </div>
                         <div className="row align-items-center">
-                        {listing.fieldAmenitiesL.map((a) => (
-                            <div className="col-6 col-md-6">
+                        {listing.fieldAmenitiesL.map((a,i) => (
+                            <div className="col-6 col-md-6" key={i}>
                                 <div className={style['town-card']}>
                                     <img src={a.entity.fieldIcona.url} />
                                     <h6>{a.entity.fieldTextAmi}</h6>
@@ -398,7 +399,7 @@ import GoogleMapReact from 'google-map-react';
                             <div className={style['town-slider']}>
                               <Carousel responsive={responsive} className="unit_amenities_slider_for_listing">
                                 {listing.fieldGalleryDesktopL.map((a,i) => (
-                                  <img src={a.entity.url} className="img-fluid" />
+                                  <img key={i} src={a.entity.url} className="img-fluid" />
                                 ))}
                               </Carousel>
                                 {/* <div className={`${style["slider-nav"]} text-center`}>
@@ -494,10 +495,10 @@ import GoogleMapReact from 'google-map-react';
                  {/* <!-- Experince section --> */}
                  <section className={style['3d-tour']}>
                         <div className={ !deviceIsMobile ? 'container' : 'container-fluid'} style={ deviceIsMobile ? {'padding':'0'} : {}}>
-                        <div className={style['3d-tour-inner']} style={{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
+                        <div className={style['3d-tour-inner']} style={{'backgroundImage':'url(/images/3d-tour-listing.jpg)','backgroundRepeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'maxWidth':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>
-                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
+                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'marginRight':'13px'}}/>Take a 3D Tour</a>
                           </div>
                         </div>
                         </div>
@@ -516,7 +517,7 @@ import GoogleMapReact from 'google-map-react';
                         <div className={style['shape-content-wrap']}>
                           <div className={style['shape-item']}>
                             <h2>About DAMAC Hills</h2>
-                            <div dangerouslySetInnerHTML={{ __html: listing.fieldAboutTextL.value }}></div>
+                            <p>{listing.fieldAboutTextL.value}</p>
                             <p>Dubailand, Dubai, United Arab Emirates</p>
                             <a href="" className="btn btn-primary"> View more</a>
                           </div>
@@ -531,7 +532,7 @@ import GoogleMapReact from 'google-map-react';
                   <div className="container">
                     <div className="row">
                     {listing.fieldLocatorsL.map((a,i) => (
-                      <div className="col-6 col-md-4">
+                      <div className="col-6 col-md-4" key={i}>
                         <div className={`${style["distance-card"]} text-center`}> 
                           <img src={a.entity.fieldIconm.url}/>
                           <h5>{a.entity.fieldTextc6}</h5>
@@ -547,7 +548,7 @@ import GoogleMapReact from 'google-map-react';
 
                {/* <!-- Map section --> */}
               <section className={style['map-section']}>
-                <div className={style['map-wrap']} style={{'width':'100%', 'aspect-ratio':'1/.5'}}>
+                <div className={style['map-wrap']} style={{'width':'100%', 'aspectRatio':'1/.5'}}>
                   {/* <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/> */}
                     <GoogleMapReact
                         bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
@@ -621,7 +622,7 @@ import GoogleMapReact from 'google-map-react';
               </section>
 
           {/* <!-- Invest section --> */}
-          <section className={style['why-invest']} style={{'background-image':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
+          <section className={style['why-invest']} style={{'backgroundImage':'url(damac-static/images/invest-dubai-bg.jpg)'}}>
             <div className="container">
               <div className="row justify-content-end align-items-end">
                 <div className="col-md-12">
@@ -747,7 +748,7 @@ import GoogleMapReact from 'google-map-react';
                             <div className={style['accordion']} id="accordionExample">
                                 <div className={style['accordion-item']}>
                                 <h2 className={style['accordion-header']} id="headingOne">
-                                    <button className={`accordion-button first-faq-drop ${style["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button className={`accordion-button ${style["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     What is the lowest mortgage rate in UAE?
                                     </button>
                                 </h2>
@@ -759,7 +760,7 @@ import GoogleMapReact from 'google-map-react';
                                 </div>
                                 <div className={style['accordion-item']}>
                                 <h2 className={style['accordion-header']} id="headingTwo">
-                                    <button className={`accordion-button second-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <button className={`accordion-button ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     What is the lowest mortgage rate in UAE?
                                     </button>
                                 </h2>
@@ -771,7 +772,7 @@ import GoogleMapReact from 'google-map-react';
                                 </div>
                                 <div className={style['accordion-item']}>
                                 <h2 className={style['accordion-header']} id="headingThree">
-                                    <button className={`accordion-button third-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <button className={`accordion-button ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     What is the lowest mortgage rate in UAE?
                                     </button>
                                 </h2>
@@ -798,6 +799,30 @@ import GoogleMapReact from 'google-map-react';
      )
  }
 
+ function refreshToken(stats=null){
+   console.log(stats);
+       if(stats == 401){
+        let data = {
+            refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
+            client_id:"1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL",
+            client_secret:"fbb31a11fcaee62b9e53e98dfee5c6da952747ff09",
+            grant_type:"refresh_token"
+        }
+        axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
+            if(typeof window !== 'undefined'){
+               console.log('lol',window); 
+            }
+            // console.log('response',response.data);
+            // localStorage.setItem("access_token", "Zoho-oauthtoken "+response.data.access_token)
+            // let entity = response.data.data[0]
+        }).catch((e,status)=>{
+            if(e.response.status == 401){
+                console.log(refreshToken(e.response.status));
+            }
+        });
+       }
+ }
+
 
 
  export async function getServerSideProps(context) {
@@ -814,8 +839,24 @@ import GoogleMapReact from 'google-map-react';
     const  data  = await client.query({ query: LISTING });
     // console.log('listing',data);
     let entity1 = data.data.nodeQuery.entities[0];
+    // let token = window.localStorage.getItem('access_token')
     // let entity2 = data.data.nodeQuery.entities[1];
-    console.log('about',entity1.fieldLocatorsL);
+    // console.log('about',entity1.fieldLocatorsL);
+
+    axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=1',
+    {
+        headers:{
+            'Authorization':'Zoho-oauthtoken 1000.92e4113edac4572f55848b8be9e1ac7f.7835ff8e4c64629fa52ce849d521d80e'
+        }
+    }).then(response => {
+        console.log('response',response);
+        // let entity = response.data.data[0]
+    }).catch((e,status)=>{
+        
+        if(e.response.status == 401){
+            console.log(refreshToken(e.response.status));
+        }
+    });
   
     return {
       props: {

@@ -41,6 +41,10 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
+
+// Google Map Plugin
+import GoogleMapReact from 'google-map-react';
+
 function Community({entity1}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
@@ -65,6 +69,19 @@ function Community({entity1}) {
   );
 
   const [customModal, openCustomModal] = useState(false)
+
+  
+    // Google Map Items
+    const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+    const defaultProps = {
+      center: {
+        lat: 59.95,
+        lng: 30.33
+      },
+      zoom: 11
+    };
+  // Google Map Items
 
   return (
     <div className='communitybody'>
@@ -168,8 +185,12 @@ function Community({entity1}) {
       <Head>
         <title>Community - Damac</title>
 
-        <meta name="description" content="Community - Damac Properties" />
+        <meta name="title" content={entity1.fieldMetaTitleComm} />
+        <meta name="description" content={entity1.fieldMetaDescriptionComm} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsComm} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlComm} />
       </Head>
 
       <Navbar></Navbar>
@@ -238,7 +259,7 @@ function Community({entity1}) {
               <div class={`text-wrapper`}> 
                 <div className="top-text">
                   <h2>{entity1.fieldTitle2}</h2>
-                  <p>{entity1.fieldDescriptionc2.value}</p>
+                  <div  dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionc2.value }}></div>
                 </div>
 
                 <div className="section-data-boxes">
@@ -408,12 +429,12 @@ function Community({entity1}) {
             </div>
             <div style={{'margin-top':'50px'}}>
             <div class="row">
-              {entity1.fieldAmenities.map((item)=>{
+              {entity1.fieldBrandIcons.map((item)=>{
                 <div class="col-6">
                 <div className={styles['icon-area']}>
-                  <img alt=""src="/images/icons/building (1) 2.svg" />
-                  <h4>{item.entity.fieldValueAmi}</h4>
-                  <p>{item.entity.fieldTextAmi}</p>
+                  <img alt=""src={item.entity.fieldIconImage.url} />
+                  <h4>{item.entity.fieldIconText}</h4>
+                  {/* <p>{item.entity.fieldTextAmi}</p> */}
                 </div>
                 </div>
               })}
@@ -470,7 +491,7 @@ function Community({entity1}) {
           <div className="col-6">
           <div class={`text-wrapper`}>
                 <div className="top-text">
-            <h2>Projects at DAMAC Hills</h2>
+            <h2>Projects at {entity1.fieldName}</h2>
             </div>
             </div>
           </div>
@@ -656,9 +677,20 @@ function Community({entity1}) {
 
      {/* <!-- Map section --> */}
     <section className={styles['map-section']}>
-      <div className="map-wrap">
-        <img alt=""src="/damac-static/images/map.jpg" className="img-fluid"/>        
-      </div>       
+      <div className={styles['map-wrap']}>
+        {/* <img alt=""src="/damac-static/images/map.jpg" className="img-fluid"/>         */}
+                   <GoogleMapReact
+                        bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
+                        defaultCenter={defaultProps.center}
+                        defaultZoom={defaultProps.zoom}
+                      >
+                      <AnyReactComponent
+                        lat={59.955413}
+                        lng={30.337844}
+                        text="Damac"
+                      />
+                    </GoogleMapReact>
+       </div>       
    </section>
 
 

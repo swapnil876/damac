@@ -29,9 +29,13 @@ function OffersPage( { offers } ) {
 
       <Head>
         <title>Offers - Damac</title>
-        <meta name="description" content="Offers - Damac Properties" />
-        
+       
+        <meta name="title" content={offers.fieldMetaTitleOffers} />
+        <meta name="description" content={offers.fieldMetaDescriptionOffers} />
+        <meta name="keywords" content={offers.fieldMetaKeywordsOffers} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={offers.fieldCanonicalUrlOffers} />
       </Head>
 
 
@@ -57,6 +61,12 @@ function OffersPage( { offers } ) {
                       ) )
                     }
                     </div>
+                  </div>
+
+
+
+                  <div class="view_more_btn_area" style={{'margin-top':'82px'}}>
+                    <a class="btn btn-primary" href="#" style={{'margin':'auto', 'display':'block', 'width':'fit-content'}}>View more</a>
                   </div>
             
                

@@ -90,7 +90,10 @@ section.inner-wrap-hero {
 .shape-image.float-end img {
     height: 100%;
 }
-
+.project-hero-wrap{
+    width:100%;
+    height:100%
+}
 .hero-container {
     /* position: absolute;
     bottom: 20px; */
@@ -98,10 +101,14 @@ section.inner-wrap-hero {
 
     /* New Styles */
     position: relative;
-    top: 55vh;
+    top:60%;
     width: 100%
 }
-
+.hero-container-small{
+    position: relative;
+    top:60%;
+    width: 100%
+}
 .shape-content-wrap {
     padding: 70px 0;
     padding-left: 105px;
@@ -151,22 +158,25 @@ ul.shape-count {
     padding: 0;
     gap: 40px;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 section.shape-wrap.side-img-content {
     margin-top: 82px;
     margin-bottom: 82px;
 }
-
+.map-wrap{
+    width:100%;
+    aspect-ratio: 1/.5;
+}
 .shape-detail {
     box-shadow: 0px 0px 12px 0px #0000001f;
     padding: 18px 0;
-    /* position: relative; */
-    position: fixed;
+    position: relative;
+    /* position: fixed; */
     width: 100%;
-    bottom: 0;
-    z-index: 9999;
+    /* bottom: 0; */
+    z-index: 99;
     background: #fff;
 }
 
@@ -725,7 +735,7 @@ span.text-right.dark i {
 }
 
 .estimate-cost ul li {
-    margin-bottom: 26px;
+    margin-bottom: 16px;
 }
 
 .estimate-cost span.text-left {
@@ -739,7 +749,7 @@ span.text-right.dark i {
 }
 
 .estimate-cost ul li {
-    margin-bottom: 26px;
+    margin-bottom: 16px;
     font-size: 26px;
     float: right;
     text-align: right;
@@ -830,7 +840,7 @@ a.play-button svg {
 }
 
 .shape-item a {
-    padding: 10px 62px;
+    padding: 15px 44px;
 }
 
 .\33 d-content-inner.text-center {
@@ -862,7 +872,9 @@ section.golf-town .row {
 .button-list a i {
     padding-right: 10px !important;
 }
-
+.button-list a svg{
+    margin-right: 14px;
+}
 .shape-image.float-end {
     width: 100%;
 }
@@ -1082,7 +1094,9 @@ ul.bedroom-detail {
 .accordion-body {
     padding: 1rem 0rem;
 }
-
+.project-detail .react-multiple-carousel__arrow{
+    z-index: 10;
+}
 @media(min-width: 1400px) {
     ul.shape-count {
         width: 50%;
@@ -1090,6 +1104,14 @@ ul.bedroom-detail {
 }
 
 @media(max-width: 768px) {
+    .hero-container-small{
+        top:50%;
+    }
+    .map-wrap{
+        width:100%;
+        aspect-ratio: unset;
+        height: 100vh;
+    }
     section.\33 d-tour {
         /* margin-bottom: 42px; */
         padding: 82px 0px
@@ -1173,6 +1195,7 @@ ul.bedroom-detail {
         font-size: 13px;
         width: 100%;
         display: block;
+        cursor: pointer;
     }
 
     .project-right ul li {
@@ -1314,7 +1337,8 @@ ul.bedroom-detail {
     }
 
     ul.shape-count {
-        gap: 40px;
+        gap: 100px;
+        justify-content: start;
     }
 
     ul.d-flex.shape-count p {
@@ -1371,8 +1395,12 @@ ul.bedroom-detail {
     }
 
 }
-
-@media(max-width: 550px) {
+@media(max-width: 600px){
+    .hero-container-small{
+        top:20%;
+    }
+}
+@media(max-width: 550px) { 
     .golf_town_banner {
         aspect-ratio: 1/.7 !important;
     }

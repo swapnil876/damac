@@ -16,6 +16,10 @@ query BUILDING_DOCUMENTATION($id: String!){
          body{
           value
         }
+        fieldMetaTitleBldgdoc
+        fieldMetaDescriptionBldgdoc
+        fieldMetaKeywordsBldgdoc
+        fieldCanonicalUrlBldgdoc
       }
     }
   }

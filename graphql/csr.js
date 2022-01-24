@@ -57,6 +57,16 @@ const _CSR = gql`
               targetId
               url
             }
+
+            fieldMission
+            fieldWhyCsr
+            fieldCause
+            
+            fieldCanonicalUrlCsr
+            fieldMetaTitleCsr
+            fieldMetaKeywordsCsr
+            fieldMetaDescriptionCsr
+            fieldCanonicalUrlCsr
           }
       }
     }

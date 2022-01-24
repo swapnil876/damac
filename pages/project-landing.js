@@ -23,6 +23,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { useMediaQuery } from 'react-responsive'
 
 import styles from '../styles/pages/project-landing.module.css'
+
+
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import {PROJECT} from '../graphql/project';
 import {COUNTRY} from '../graphql/master/country';

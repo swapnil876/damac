@@ -26,7 +26,7 @@ export default function AboutBanner( { bannerImage, children} ) {
     loop
     muted
     >
-       <source {...{bannerImage}}/>
+       <source src={bannerImage}/>
     </video>
 
     );

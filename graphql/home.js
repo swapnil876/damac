@@ -17,6 +17,10 @@ const HOME = gql`
           body{
             value
           }
+          fieldMetaKeywordsHome
+          fieldMetaTitleHome
+          fieldMetaDescriptionHome
+          fieldCanonicalUrlHome
         }
       }
     }

@@ -5,8 +5,11 @@ const CHAIRMANMESSAGE = gql`
     nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["chairman_s_message"]}]}) {
       entities {
         ... on NodeChairmanSMessage{
-          title
           fieldTextChairman
+          fieldMetaKeywordsCm
+          fieldMetaTitleCm
+          fieldMetaDescriptionCm
+          fieldCanonicalUrlCm
           fieldImageChairman{
             targetId
             url
@@ -15,5 +18,5 @@ const CHAIRMANMESSAGE = gql`
       }
     }
 }`;
-
+// fieldDescriptiveText
 export { CHAIRMANMESSAGE };

@@ -49,6 +49,7 @@ section.text-image-section .containerRightImage {
 }
 section.text-image-section .containerRightImage img{
 	object-fit: cover;
+	max-width:100%
 }
 @media(max-width: 1280px){
     section.text-image-section .text-wrapper {

@@ -16,7 +16,6 @@ import { FaAngleLeft, FaAngleRight, FaSearch } from 'react-icons/fa'
 
 import styles from '../styles/pages/browse-properties.module.css'
 import style from '../styles/pages/listing.module.css'
-import project_landing_styles from '../styles/pages/project-landing.module.css'
 
 import React, { Component, useEffect } from "react";
 
@@ -62,16 +61,16 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                   <div className={styles['filter_option_wrap']}>
                       <form action="">
                           <div className="row">
-                              <div className="col-md-3">
-                                  <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
-                                      <FaSearch className={styles['search_icon']}/>
-                                      <input type="text" placeholder="Search Project or Area" className="form-control"/>
+                              <div className="col-md-9 d-flex flex-wrap" style={{'justifyContent':'space-between'}}>
+                              <div className={styles['form-field']}>
+                                      <select name="property_type" className="form-select" id="">
+                                          <option value="">Buy</option>
+                                          <option value="">Rent</option>
+                                      </select>
                                   </div>
-                              </div>
-                              <div className="col-md-6 d-flex flex-wrap">
                                   <div className={styles['form-field']}>
                                       <select name="property_type" className="form-select" id="">
-                                          <option value="">Property Type</option>
+                                          <option value="">Any Property Type</option>
                                           <option value="">Apartment</option>
                                           <option value="">Hotel</option>
                                           <option value="">Office</option>
@@ -88,12 +87,21 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                   </div>
                                   <div className={styles['form-field']}>
                                       <select name="locality" className="form-select" id="">
-                                          <option value="">Locality</option>
+                                          <option value="">Any Locality</option>
                                           <option value="">local</option>
                                       </select>
                                   </div>
-                                  <div className={styles['more-filter-btn']}>
-                                      <a href="#">More filters <span></span><span></span><span></span></a>
+                                  <div className={styles['form-field']}>
+                                      <select name="locality" className="form-select" id="">
+                                          <option value="">Price Range</option>
+                                          <option value="">local</option>
+                                      </select>
+                                  </div>
+                                  <div className={styles['form-field']}>
+                                      <select name="locality" className="form-select" id="">
+                                          <option value="">Project Status</option>
+                                          <option value="">local</option>
+                                      </select>
                                   </div>
                               </div>
                               <div className="col-md-3">
@@ -124,7 +132,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                           </form>
                           <div className={styles['map_list_view']}>
                               <ul className="list-unstyled d-flex">
-                                  <li className="active"><a href="#" class="map_list">List</a></li>
+                                  <li className="active"><a href="#">List</a></li>
                                   <li><a href="#">Map</a></li>
                               </ul>
                           </div>
@@ -137,9 +145,60 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
             <section className={styles['show_property_main']}>
                 <div className="container">
-                    <div className={styles['property_search_head']}>
+                    {/* <div className={styles['property_search_head']}>
                         <h3>All DAMAC properties </h3>
                         <p>3102 properties found</p>
+                    </div> */}
+
+                    <div className={styles['banner_under_filters']}>
+                       <div className={styles['text_area']}>
+                           <p>Kiara Downtown</p>
+                          <h2> The prefect home with <br/> none of the planning</h2>
+                       </div>
+                    </div>
+                    <div className={styles['about_project']}>
+                        <div className='row'>
+                            <div className='col-md-9'>
+                               <div className='row'>
+                                   <div className='col-md-4'>
+                                       <div className={styles['feature']}>
+                                           <div className={styles['icon']}>
+                                               <img src="images/icons/AirplaneInFlight.png" />
+                                           </div>
+                                           <div className={styles['info']}>
+                                               <h4>10 min</h4>
+                                               <p>from Dubai International Airport</p>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div className='col-md-4'>
+                                       <div className={styles['feature']}>
+                                           <div className={styles['icon']}>
+                                               <img src="images/icons/drop.png" />
+                                           </div>
+                                           <div className={styles['info']}>
+                                               <h4>Beachfront</h4>
+                                               <p>Apartments overlooking the sea</p>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div className='col-md-4'>
+                                       <div className={styles['feature']}>
+                                           <div className={styles['icon']}>
+                                               <img src="images/icons/ShoppingBag.png" />
+                                           </div>
+                                           <div className={styles['info']}>
+                                               <h4>Dubai Mariana</h4>
+                                               <p>at your doorstep</p>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                            </div>
+                            <div className='col-md-3'>
+                                <button className={styles['more_about_btn']}>More about this project</button>
+                            </div>
+                        </div>
                     </div>
                     <div className={styles['filtered_properties']}>
                         <div className="row">
@@ -408,53 +467,6 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     </div>
                 </div>
             </section>
-
-
-            {/* <!-- Similar properties section --> */}
-            <section className={project_landing_styles['similar_property']}>
-                            <div className="container">
-                                <div className={project_landing_styles['similar_property_head']}>
-                                    <h1>Similar Properties</h1>
-                                </div>
-                                <div className={project_landing_styles['similar_proprty_card_main']}>
-                                    <div className="row">
-                                    
-                                        <div className="col-md-3">
-                                            <div className={project_landing_styles['property_similar_card']}>
-                                                <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                                <h1><a href="#">DAMAC Villas</a></h1>
-                                                <p>Starting AED 1,213,515*</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-3">
-                                            <div className={project_landing_styles['property_similar_card']}>
-                                                <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                                <h1><a href="#">DAMAC Villas</a></h1>
-                                                <p>Starting AED 1,213,515*</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-3">
-                                            <div className={project_landing_styles['property_similar_card']}>
-                                                <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                                <h1><a href="#">DAMAC Villas</a></h1>
-                                                <p>Starting AED 1,213,515*</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-3">
-                                            <div className={project_landing_styles['property_similar_card']}>
-                                                <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                                <h1><a href="#">DAMAC Villas</a></h1>
-                                                <p>Starting AED 1,213,515*</p>
-                                            </div>
-                                        </div>
-                                      
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-
             {/* <!-- About Dubai Section --> */}
             <section className={styles['about_dubai_main']}>
               <div className="container">

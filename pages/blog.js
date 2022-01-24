@@ -42,9 +42,13 @@ function Blog({entity1}) {
 
       <Head>
         <title>Damac - Blog</title>
-        <meta name="description" content="Blog - Damac Properties" />
         
+        <meta name="title" content={entity1.fieldMetaTitleBlog} />
+        <meta name="description" content={entity1.fieldMetaDescriptionBlog} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsBlog} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlBlog} />
       </Head>
 
 

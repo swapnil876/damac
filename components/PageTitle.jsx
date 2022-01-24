@@ -32,7 +32,7 @@ export default function PageTitle( { title, subtitle, backgroundImage, isMobile 
             <p className={'pagetitle-subtitle'}>{subtitle}</p>
           }
 
-          <h2>{ title }</h2>
+          <h1>{ title }</h1>
           
         </div>
       </div>

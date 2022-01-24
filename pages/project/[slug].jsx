@@ -26,9 +26,15 @@ import BoxedTextSection from "../../components/sections/BoxedTextSection";
 
 import SimilarPropertiesGridSection from "../../components/sections/SimilarPropertiesGridSection";
 
+// Bootstrap Css
+import 'bootstrap/dist/css/bootstrap.css'
+
 import style from '../../styles/pages/listing.module.css';
 import styles from '../../styles/pages/Community.module.css'
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
+
+ // Google Map Plugin
+import GoogleMapReact from 'google-map-react';
 
 import {
   FaPlay,
@@ -59,6 +65,9 @@ function ProjectPage({entity1}) {
       if ( isMobile ) {
         setDeviceIsMobile( true );
       }
+
+        //   importing bootstrap js
+        import("bootstrap/dist/js/bootstrap");
    }, [])
 // Carousel
   const responsive = {
@@ -69,9 +78,10 @@ function ProjectPage({entity1}) {
     }
   };
 
+  const [brochureModal, openBrochureModal] = useState(false);
   const [customModal, openCustomModal] = useState(false); 
   const [floorPlan, openFloorPlan] = useState(false);
-
+  const [galleryModal, openGalleryModal] = useState(false);
 
   // Use the postid prop for retrieving info
   const { slug } = router.query;
@@ -109,12 +119,30 @@ function ProjectPage({entity1}) {
     </Link>
   );
 
+      // Google Map Items
+      const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+      const defaultProps = {
+        center: {
+          lat: 59.95,
+          lng: 30.33
+        },
+        zoom: 11
+      };
+    // Google Map Items
+
+
   return (
     <div className="blogbody">
       <Head>
         <title>Damac - Project</title>
-        <meta name="description" content="Project - Damac Properties" />
+        
+        <meta name="title" content={entity1.fieldMetaTitleProj} />
+        <meta name="description" content={entity1.fieldMetaDescriptionProj} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsProj} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlProj} />
       </Head>
 
       <Navbar className="navbar-normal"></Navbar>
@@ -170,11 +198,149 @@ function ProjectPage({entity1}) {
             </div> :
             ""
           }
-           {/* Floor Plan Custom popup modal */}
+          {
+            customModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{openCustomModal(false)}}> </a>
+                <div className="popup_modal">
+                   <div className="close" onClick={()=>{
+                      openCustomModal(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+                      <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                      </svg>
+                      </span>
+                    </div>
+                    <div className="row justify-content-center">
+                    <div className="col-lg-6 col-md-9">
+                        <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
+                            <div style={{'marginBottom':'60px'}}>
+                            <h2 className="example-class" style={{ 'margin': '0', 'textAlign':'center' }}>Download Floor plan</h2>
+                            <p style={{ 'margin': '0', 'textAlign':'center' }}>Enter your email to receive the floor plan link directly in your inbox</p>
+                            </div>                           
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
 
-      <main className="main">
+                                <div className='custom-input-element'>
+                                    <label className='input-element-wrapper'>
+
+                                        <div className='input-element email-element'>
+                                            <input type='email' name='email' />
+                                            <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                </div>
+                            </div>
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+                                    <button className="custom-submit-btn">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div> :
+            ""
+          }
+           {
+            galleryModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{openGalleryModal(false)}}> </a>
+                <div className="popup_modal">
+                   <div className="close" onClick={()=>{
+                      openGalleryModal(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+                      <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                      </svg>
+                      </span>
+                    </div>
+                    <div className={styles['gallery_main_img']}>
+                    <div className={styles['single_img']}>
+                    <Carousel responsive={responsive}>
+                    {entity1.fieldGalleryDesktopP.map((item,k) => (
+                      <img src={item.url} />
+                    ))}                    
+                    </Carousel>
+                    </div> 
+                    </div>
+                    <div className={styles['lower_images']}>
+                      <div className="row">
+                      {entity1.fieldGalleryDesktopP.map((item,k) => (
+                        <div className="col-3">
+                          <div className={styles['image']}>
+                            <img src={item.url} />
+                          </div>
+                        </div>
+                        ))}
+                      </div>
+                    </div>
+                </div>
+            </div> :
+            ""
+          }
+           {/* Brochure Custom popup modal */}
+           {
+            brochureModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{openBrochureModal(false)}}> </a>
+                <div className={`${styles["schedule_callback_modal"]} popup_modal`}>
+                   <div className="close" onClick={()=>{
+                      openBrochureModal(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+          <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                      </svg>
+                      </span>
+                    </div>
+                    <div className="row justify-content-center">
+                    <div className="col-lg-6 col-md-9">
+                        <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
+                            <div style={{'margin-bottom':'60px'}}>
+                            <h2 className={style['example-class']} style={{ 'margin': '0', 'textAlign':'center' }}>Download Brochure</h2>
+                            <p style={{ 'margin': '0', 'textAlign':'center' }}>Enter your email to receive the brochure link directly in your inbox</p>
+                            </div>                           
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+
+                                <div className='custom-input-element'>
+                                    <label className='input-element-wrapper'>
+
+                                        <div className='input-element email-element'>
+                                            <input type='email' name='email' />
+                                            <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                </div>
+                            </div>
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+                                    <button className="custom-submit-btn">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div> :
+            ""
+          }
+          {/* Floor Plan Custom popup modal */}
+
+            <main className="main">
                     <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldMainImageDesktopP.url + ')'}:{'background-image': 'url(' + entity1.fieldMainImageMobileP.url + ')'}}>
-                        <div className='project-hero-wrap'>
+                        <div className={style['project-hero-wrap']}>
                             <div className={`container ${style["hero-container"]}`}>
                             <div className="row align-items-end">
                                 <div className="col-md-7">
@@ -189,8 +355,8 @@ function ProjectPage({entity1}) {
                                         <ul className="d-flex align-items-center">
                                             <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
                                             <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
-                                            <li><a href={entity1.fieldBrochureP} target="_blank">Download Brochure</a></li>
-                                            <li><a href="#">View Gallery (19)</a></li>                
+                                            <li><a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a></li>
+                                            <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a></li>                
                                         </ul>              
                                     </div>
                                 </div>    
@@ -349,15 +515,15 @@ function ProjectPage({entity1}) {
                                     <p>at your doorstep</p>
                                 </div>
                                 </div> */}
-                                 {entity1.fieldAmenitiesP3.map((item)=>{
+                                 {entity1.fieldAmenitiesP3.map((item)=>(
                                     <div className="col-6">
                                     <div className={styles['icon-area']}>
-                                      <img alt=""src="/images/icons/building (1) 2.svg" />
+                                      <img alt=""src={item.entity.fieldIcona.url} />
                                       <h4>{item.entity.fieldValueAmi}</h4>
                                       <p>{item.entity.fieldTextAmi}</p>
                                     </div>
                                     </div>
-                                  })}
+                                 ))}
                                 <div className="col-6 col-md-6">
                                 <div className={style['town-card']}>
                                     <button type="button"  onClick={()=>{openFloorPlan(true)}} className={style['custom_white_btn']}> <FaArrowDown/> Get the Floor plan</button>
@@ -458,7 +624,7 @@ function ProjectPage({entity1}) {
                           <div className="row">
 
                             {
-                              entity1.fieldMultipleLocatorsp4.map((item)=>{
+                              entity1.fieldMultipleLocatorsp4.map((item)=>(
                                 <div className="col-6 col-md-4">
                                 <div className="distance-card text-center">
                                   <img alt=""src={item.entity.fieldIconm.url} />
@@ -466,7 +632,7 @@ function ProjectPage({entity1}) {
                                   <p>{item.entity.fieldTextc6}</p>            
                                 </div>
                               </div>
-                              })
+                              ))
                             }
                             {/* <div className="col-6 col-md-4">
                             <div className="distance-card text-center">
@@ -494,14 +660,25 @@ function ProjectPage({entity1}) {
                     </section>
 
                       {/* <!-- Map section --> */}
-                      <section className={style['map-section']}>
+                    <section className={style['map-section']}>
                         <div className={style['map-wrap']}>
-                          <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/>
+                          {/* <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/> */}
+                          <GoogleMapReact
+                              bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
+                              defaultCenter={defaultProps.center}
+                              defaultZoom={defaultProps.zoom}
+                            >
+                            <AnyReactComponent
+                              lat={59.955413}
+                              lng={30.337844}
+                              text="Damac"
+                            />
+                          </GoogleMapReact>
                         </div>
-                      </section>
+                    </section>
 
                       {/* <!-- Estimate Section --> */}
-                      <section className={style['estimate']}>
+                    <section className={style['estimate']}>
                         <div className="container">
                           <div className="row">
                             <div className="col-md-8">
@@ -552,11 +729,11 @@ function ProjectPage({entity1}) {
                             </div>
                           </div>
                         </div>
-                      </section>
+                    </section>
 
 
-                        {/* <!-- Similar Properties --> */}
-                        <section className={style['project-detail']}>
+                         {/* <!-- Similar Properties --> */}
+                         <section className={style['project-detail']}>
                           <div className="container">
                           <div className="row">
                               <div className="col-md-8">
@@ -570,7 +747,7 @@ function ProjectPage({entity1}) {
                             </div>
                               </div>
                               <div className="col-md-4">
-                              <button type="button" className={`${style["solid-icon"]} ${style["ava_list_btn"]}`} style={{'border':'0', 'padding':'15px 35px', 'float':'right', 'marginBottom':'20px'}}>View All </button>
+                              <button type="button" className={`${style["solid-icon"]} ${style["ava_list_btn"]}`} style={{'border':'0', 'padding':'15px 35px', 'float':'right', 'margin-bottom':'20px'}}>View All </button>
                               </div>
                           </div>
                           
@@ -578,8 +755,14 @@ function ProjectPage({entity1}) {
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                  <Carousel responsive={responsive}>
+                                  <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                  </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -592,22 +775,18 @@ function ProjectPage({entity1}) {
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
-                                    <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
-                                    </div>
-                                    <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
-                                    </div>
-                                  </div>
                                 </div>
 
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -620,21 +799,17 @@ function ProjectPage({entity1}) {
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
-                                    <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
-                                    </div>
-                                    <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -647,21 +822,17 @@ function ProjectPage({entity1}) {
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
-                                    <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
-                                    </div>
-                                    <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -674,21 +845,17 @@ function ProjectPage({entity1}) {
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
-                                    <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
-                                    </div>
-                                    <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -701,21 +868,17 @@ function ProjectPage({entity1}) {
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
-                                    <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
-                                    </div>
-                                    <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -728,21 +891,17 @@ function ProjectPage({entity1}) {
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
-                                    <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
-                                    </div>
-                                    <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -755,21 +914,17 @@ function ProjectPage({entity1}) {
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
-                                    <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
-                                    </div>
-                                    <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -782,22 +937,18 @@ function ProjectPage({entity1}) {
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
                                   </div>
-                                  <div className={style['project-detail-nav']}>
-                                    <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
-                                    </div>
-                                    <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
 
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
-                                    <img src="/damac-static/images/project-2.jpg" className="img-fluid" />
-                                    <h6>Kiara 2 Bedroom Apartment</h6>
+                                  <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
                                     <p><span>Starting AED 1,213,515*</span></p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
@@ -809,14 +960,6 @@ function ProjectPage({entity1}) {
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
                                   </div>
-                                  <div className={style['project-detail-nav']}>
-                                    <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
-                                    </div>
-                                    <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
-                                    </div>
-                                  </div>
                                 </div>
 
                               </div>
@@ -825,22 +968,21 @@ function ProjectPage({entity1}) {
                           </div>
                         </section>
 
-
-                        {/* <!-- Invest section --> */}
-                        <section className={style['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
-                          <div className="container">
-                            <div className="row justify-content-end align-items-end">
-                              <div className="col-md-12">
-                                <div className={style['invest-wrap']}>
-                                  <h2>Why Invest in Dubai</h2>
-                                  <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
-                                    investors can achieve gross rental yields<br/> of between 5-9%</p>
-                                  <a href="#" className={style['read-more']}>Read more</a>
-                                </div>
-                              </div>
+                    {/* <!-- Invest section --> */}
+                    <section className={style['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+                      <div className="container">
+                        <div className="row justify-content-end align-items-end">
+                          <div className="col-md-12">
+                            <div className={style['invest-wrap']}>
+                              <h2>Why Invest in Dubai</h2>
+                              <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
+                                investors can achieve gross rental yields<br/> of between 5-9%</p>
+                              <a href="#" className={style['read-more']}>Read more</a>
                             </div>
                           </div>
-                        </section>
+                        </div>
+                      </div>
+                    </section>
 
                       {/* <!-- Experince section --> */}
                       {/*<section className={style['3d-tour']}>
@@ -851,14 +993,27 @@ function ProjectPage({entity1}) {
                           </div>
                         </div>
                       </section>*/}
-                      <HighlightImageSection
+                      {/* <HighlightImageSection
                         title="Experience it remotely"
                         cta={tour3dcta}
                         bgImage={`../images/3d-tour-listing.png`}
-                      />
+                      /> */}
 
 
-                        <section className="industry-news bg-light" style={{'padding':'auto 0', 'background':'#fff !important'}}>
+                         {/* <!-- Experince section --> */}
+                        <section className={style['3d-tour']}>
+                        <div className={ !deviceIsMobile ? 'container' : 'container-fluid'} style={ deviceIsMobile ? {'padding':'0'} : {}}>
+                        <div className={style['3d-tour-inner']} style={{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
+                          <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
+                            <h2>Experience it <br/>remotely</h2>
+                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
+                          </div>
+                        </div>
+                        </div>
+                      </section>
+
+
+                        <section className="industry-news" style={{'padding':'auto 0', 'background':'#fff !important'}}>
                                 <div className="container">
                                   <div className="d-flex justify-content-between">
                                     <div className="light-title">
@@ -916,79 +1071,110 @@ function ProjectPage({entity1}) {
                         </section>
 
 
-                        {/* golf town section */}
-                        <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'background-image': 'url(/images/project-bg.jpg)'}}>
-                                    <div className='project-hero-wrap'>
-                                        <div className={`container ${style["hero-container"]}`}>
-                                        <div className="row align-items-center">
-                                        <div className="col-md-7">
-                                            <div className={style['project-left']}>
-                                            <h1>Golf Town </h1>
-                                            <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
-                                            </div>
+
+                       {/* golf town section */}
+                       <section className={`${style["inner-wrap-hero"]} ${style["golf_town_banner"]}`} style={{'background-image': 'url(/images/project-bg.jpg)'}}>
+                                    <div className={style['project-hero-wrap']}>
+                                        <div className={`container ${style["hero-container-small"]}`}>
+                                                <Carousel responsive={responsive}>
+                                                  <div>
+                                                    <div className="row align-items-center">        
+                                                      <div className="col-md-7">
+                                                        <div className={style['project-left']}>
+                                                          <h1>Golf Town </h1>
+                                                          <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                                        </div>
+                                                      </div>
+                                                      <div className="col-md-5">
+                                                        <button type="button" className={style['solid-icon']} style={{ 'border': '0', 'padding': '15px 35px', 'float': 'right' }}>Learn more</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div className="row align-items-center">        
+                                                      <div className="col-md-7">
+                                                        <div className={style['project-left']}>
+                                                          <h1>Golf Town </h1>
+                                                          <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                                        </div>
+                                                      </div>
+                                                      <div className="col-md-5">
+                                                        <button type="button" className={style['solid-icon']} style={{ 'border': '0', 'padding': '15px 35px', 'float': 'right' }}>Learn more</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div className="row align-items-center">        
+                                                      <div className="col-md-7">
+                                                        <div className={style['project-left']}>
+                                                          <h1>Golf Town </h1>
+                                                          <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
+                                                        </div>
+                                                      </div>
+                                                      <div className="col-md-5">
+                                                        <button type="button" className={style['solid-icon']} style={{ 'border': '0', 'padding': '15px 35px', 'float': 'right' }}>Learn more</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </Carousel>
                                         </div>  
-                                        <div className="col-md-5">
-                                          <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px', 'float':'right'}}>Learn more</button>
-                                        </div>   
-                                        </div>       
-                                    </div>  
                                     </div>              
                         </section>
 
                         {/* <!-- faq section --> */}
-                        <section className={style['faq-section']}>
-                            <div className="container">
-                                <div className={style['faq-icon']}>
-                                <img src="/damac-static/images/speech-bubble 1.png"/>
-                                <h2>Frequently Asked Questions</h2>          
-                                </div>
-                                <div className="row">
-                                <div className="col-md-12">
-                                    <div className={style['faq-wrap']}>
-                                    <div className={style['accordion']} id="accordionExample">
-                                        <div className={style['accordion-item']}>
-                                        <h2 className={style['accordion-header']} id="headingOne">
-                                            <button className={`accordion-button ${styles["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            What is the lowest mortgage rate in UAE?
-                                            </button>
-                                        </h2>
-                                        <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div className={style['accordion-body']}>
-                                            The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                            </div>
+                    <section className={style['faq-section']}>
+                        <div className="container">
+                            <div className={style['faq-icon']}>
+                            <img src="/damac-static/images/speech-bubble 1.png"/>
+                            <h2>Frequently Asked Questions</h2>          
+                            </div>
+                            <div className="row">
+                            <div className="col-md-12">
+                                <div className={style['faq-wrap']}>
+                                <div className={style['accordion']} id="accordionExample">
+                                    <div className={style['accordion-item']}>
+                                    <h2 className={style['accordion-header']} id="headingOne">
+                                        <button className={`accordion-button ${styles["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div className={style['accordion-body']}>
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
                                         </div>
+                                    </div>
+                                    </div>
+                                    <div className={style['accordion-item']}>
+                                    <h2 className={style['accordion-header']} id="headingTwo">
+                                        <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div className={style['accordion-body']}>
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
                                         </div>
-                                        <div className={style['accordion-item']}>
-                                        <h2 className={style['accordion-header']} id="headingTwo">
-                                            <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            What is the lowest mortgage rate in UAE?
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                            <div className={style['accordion-body']}>
-                                            The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                            </div>
+                                    </div>
+                                    </div>
+                                    <div className={style['accordion-item']}>
+                                    <h2 className={style['accordion-header']} id="headingThree">
+                                        <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div className={style['accordion-body']}>
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
                                         </div>
-                                        </div>
-                                        <div className={style['accordion-item']}>
-                                        <h2 className={style['accordion-header']} id="headingThree">
-                                            <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            What is the lowest mortgage rate in UAE?
-                                            </button>
-                                        </h2>
-                                        <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                            <div className={style['accordion-body']}>
-                                            The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>                            
-                                    </div>            
-                                </div>          
-                                </div>        
-                            </div>      
-                        </section>
-                 </main>
+                                    </div>
+                                    </div>
+                                </div>                            
+                                </div>            
+                            </div>          
+                            </div>        
+                        </div>      
+                    </section>
+            </main>
 
       <Footer></Footer>
     </div>
@@ -1000,10 +1186,11 @@ export const getServerSideProps = async (cp) => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache(),
   });
-  console.log(cp);
+  
   const data = await client.query({ query: PROJECTDETAIL, variables:{id:cp.query.slug} });
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
+  console.log(entity1.fieldAmenitiesP3);
   return {
     props: {
       entity1: entity1,

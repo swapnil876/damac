@@ -34,7 +34,7 @@ export default function HeadingTitle( { title, btnLink, mobileDevice, className 
       <div className={`'heading-title ${className}`}>
         <div className='container'>
          <div className='title-wrapper-box'>
-            <h2>{ title }</h2>
+            <h1>{ title }</h1>
 
             { btnLink && 
               <>
@@ -44,6 +44,16 @@ export default function HeadingTitle( { title, btnLink, mobileDevice, className 
                     <span>{btnLink.title}</span>
                   </a>
                 </Link>
+              </>
+            }
+            { !btnLink && 
+              <>
+              <div className="heading_dropdown">
+               <select>
+                 <option>DAMAC Properties Dubai Co PJSC</option>
+               </select>
+               <span className="arrow"></span>
+               </div>
               </>
             }
          </div>

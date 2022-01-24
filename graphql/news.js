@@ -28,6 +28,10 @@ query {
         body{
           value
         }
+        fieldMetaTitleNews
+        fieldMetaDescriptionNews
+        fieldMetaKeywordsNews
+        fieldCanonicalUrlNews
       }
     }
   }

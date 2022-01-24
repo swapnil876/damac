@@ -89,7 +89,6 @@ function FinancialInformation( { mobileDevice } ) {
       <Breadcrumbs crumbs={ crumbs }/>
         <HeadingTitle 
         title="Financial Information" 
-        btnLink={ downloadBtn } 
         deviceIsMobile={ deviceIsMobile }
         > 
         </HeadingTitle>

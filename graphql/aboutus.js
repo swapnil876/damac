@@ -20,6 +20,27 @@ query {
             }
           }
         }
+        fieldMultipleTeam{
+          entity{
+            ... on ParagraphMultipleTeamAbout{
+              fieldName,
+              fieldImage{
+                url
+              }
+              fieldTitleTeam
+            }
+          }
+        }
+        fieldMultipleHistory{
+          entity{
+            ... on ParagraphMultipleHistoryAbout{
+              fieldBody{
+                value
+              }
+              fieldYear
+            }
+          }
+        }
         fieldDescription1
         fieldDescription2
         fieldDescription3
@@ -49,6 +70,10 @@ query {
           display
           description
         }
+        fieldCanonicalUrl
+        fieldMetaDescription
+        fieldMetaTitle
+        fieldMetaKeywords
       }
     }
   }

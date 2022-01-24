@@ -57,9 +57,14 @@ function Home( {entity1} ) {
 
       <Head>
         <title>Damac - Home</title>
-        <meta name="description" content="Damac Properties" />
+
+        <meta name="title" content={entity1.fieldMetaTitleHome} />
+        <meta name="description" content={entity1.fieldMetaDescriptionHome} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsHome} />
         
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlHome} />
       </Head>
 
 
@@ -78,7 +83,7 @@ function Home( {entity1} ) {
                 <div className="container">
                   
                   <div className="homemobileBannerText">
-                    <h3>{entity1.title}</h3>
+                    <h1>{entity1.title}</h1>
                     <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
                   </div>
 

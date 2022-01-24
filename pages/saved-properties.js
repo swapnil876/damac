@@ -62,7 +62,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 2 Bedroom Apartment</h6>
                                         <p>DAMAC Hills, Dubailand, Dubai</p>
@@ -103,7 +103,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>
                                         <p>DAMAC Hills, Dubailand, Dubai</p>
@@ -144,7 +144,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>
                                         <p>DAMAC Hills, Dubailand, Dubai</p>
@@ -185,7 +185,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>
                                         <p>DAMAC Hills, Dubailand, Dubai</p>
@@ -226,7 +226,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>
                                         <p>DAMAC Hills, Dubailand, Dubai</p>
@@ -267,7 +267,7 @@ import 'bootstrap/dist/css/bootstrap.css'
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
+                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
                                         </ul>
                                         <h6>Kiara 3 Bedroom Villa</h6>
                                         <p>DAMAC Hills, Dubailand, Dubai</p>

@@ -29,9 +29,13 @@ function Career({entity1}) {
 
       <Head>
         <title>Damac - Career</title>
-        <meta name="description" content="Career - Damac Properties" />
-        
+       
+        <meta name="title" content={entity1.fieldMetaTitleCareer} />
+        <meta name="description" content={entity1.fieldMetaDescriptionCareer} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsCareer} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlCareer} />
       </Head>
 
 
@@ -48,19 +52,19 @@ function Career({entity1}) {
 
        <TextSection>         
          <div className="section-title text-center">
-           <h3 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Welcome to our World</h3>
+           <h1 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Welcome to our World</h1>
            <p className={styles['under_main_in_career_title']}>Make a career with DAMAC Properties and the DICO Group</p>
          </div>
 
          <div className="py-4">
            <div className="row justify-content-center">
-             {entity1.fieldIcons.map((item) => (
+             {entity1.fieldMutlipleIcons.map((item) => (
                <div className="col-md-3 col-sm-4 col-6">
                  <div className="icon-box">
                    <div className="icon-box-svg">
-                     <img alt=""src={item.url}/>
+                     <img alt=""src={item.entity.fieldIconImage.url}/>
                    </div>
-                   <p style={{'color':'#111'}}>{item.title}</p>
+                   <p style={{'color':'#111'}}>{item.entity.fieldIconText}</p>
                  </div>
                </div>
              ))}

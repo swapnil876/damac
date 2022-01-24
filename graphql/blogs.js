@@ -36,6 +36,10 @@ query {
         body{
           value
         }
+        fieldMetaTitleBlog
+        fieldMetaDescriptionBlog
+        fieldMetaKeywordsBlog
+        fieldCanonicalUrlBlog
       }
     }
   }

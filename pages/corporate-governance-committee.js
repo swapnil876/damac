@@ -80,8 +80,12 @@ function CorporateGovCommittee( { mobileDevice, entity1 } ) {
       <Head>
         <title>Corporate Governance - Damac</title>
 
-        <meta name="description" content="Corporate Governance - Damac Properties" />
+        <meta name="title" content={entity1.fieldMetaTitleGc} />
+        <meta name="description" content={entity1.fieldMetaDescriptionGc} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsGc} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlGc} />
       </Head>
 
 

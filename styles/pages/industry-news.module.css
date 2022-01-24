@@ -21,7 +21,7 @@
     max-width: 100%;
     width: 100%;
 }
-.press-content h2 {
+.press-content h2, .press-content h1 {
     font-size: 32px;
     margin-bottom: 52px;
     margin-bottom: 16px;
@@ -208,8 +208,8 @@ a.read-more {
     .content-wrap-news{
         width: 100%;
     }
-    .press-content h2 {   
-        font-size: 32px;
+    .press-content h2, .press-content h1 {   
+        font-size: 24px;
         font-weight: 500;
         line-height: 38px;
         letter-spacing: 0em;

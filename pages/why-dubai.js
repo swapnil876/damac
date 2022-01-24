@@ -43,9 +43,13 @@ const WhyDubai= ({entity1})=> {
 
       <Head>
         <title>Damac - Why Dubai</title>
-        <meta name="description" content="Why Dubai - Damac Properties" />
-        
+
+        <meta name="title" content={entity1.fieldMetaTitleWhydubai} />
+        <meta name="description" content={entity1.fieldMetaDescriptionWhydubai} />
+        <meta name="keywords" content={entity1.fieldMetaKeywordsWhydubai} />
         <link rel="icon" href="/favicon.ico" />
+
+        <link rel="canonical" href={entity1.fieldCanonicalUrlWhydubai} />
       </Head>
 
 
@@ -69,7 +73,7 @@ const WhyDubai= ({entity1})=> {
                <div className="row">
                  <div className="col-md-7">
                    <div className="banner-text-body">
-                     <h3>{entity1.fieldHeaderw2}</h3>
+                     <h1>{entity1.fieldHeaderw2}</h1>
                      <p>{entity1.fieldDescription}</p>
                    </div>
                  </div>
