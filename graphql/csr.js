@@ -7,7 +7,6 @@ const _CSR = gql`
         ... on NodeCsr{
             nid
             title
-             fieldOurCause
             fieldMilestones {
               entity{
                 ... on ParagraphMultipleMilestones{
@@ -21,7 +20,6 @@ const _CSR = gql`
                 }
               }
             }
-            fieldOurMission
             fieldFoundationText
             fieldHeaderImageVideoMobCs{
                 targetId

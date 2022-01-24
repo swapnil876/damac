@@ -31,14 +31,14 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
  import { useMediaQuery } from 'react-responsive'
+ import * as axios from 'axios';
 
-
- export default function BrowseProperties(){
-
-  useEffect(() => {
-     //   importing bootstrap js
-     import("bootstrap/dist/js/bootstrap");
- }, [])
+ export default function BrowseProperties(entity){
+    console.log('list',entity);
+    useEffect(() => {
+        //   importing bootstrap js
+        import("bootstrap/dist/js/bootstrap");
+    }, [])
 
      return(
          <div className="browse-properties">
@@ -202,7 +202,9 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     </div>
                     <div className={styles['filtered_properties']}>
                         <div className="row">
-                            <div className="col-md-6">
+                        {
+                            entity.entity.map( (unit, index) => (
+                            <div className="col-md-6" key={index}>
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
@@ -210,14 +212,14 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                           <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
                                           <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
                                         </ul>
-                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
+                                        <h6>{unit.Project_Name}</h6>
+                                        <p>{unit.address},{unit.Country.display_value}</p>
                                         <ul className={styles['bedroom-detail']}>
                                             <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
+                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED {unit.Unit_price_AED}*</a>
                                             </li>
                                             <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
+                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>Villa {unit.Number_of_Bedrooms1} Bedrooms</a>
                                             </li>
                                         </ul>
                                         <div className={styles['shape-wrap-plan']}>              
@@ -225,9 +227,9 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                             <ul className="d-flex align-items-center p-0">
                                               <li><a href="#" className={styles['solid-icon']}>
                                                 <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
+                                            </svg>
+                                            </a></li>
                                               <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
                                             </ul>                  
                                           </div>                
@@ -243,211 +245,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            ))
+                        }
 
                         </div>
                         <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
@@ -578,4 +377,85 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
              <Footer></Footer>
          </div>
      )
+ }
+
+ function buildHtml(data){
+    console.log('buildHtml',data);
+ }
+
+ function useStickyState(defaultValue, key) {
+
+    console.log('jjhfdjskjf')
+    const [value, setValue] = React.useState(defaultValue);
+  
+    React.useEffect(() => {
+      const stickyValue = window.localStorage.getItem(key);
+  
+      if (stickyValue !== null) {
+        setValue(JSON.parse(stickyValue));
+      }
+    }, [key]);
+  
+    React.useEffect(() => {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    }, [key, value]);
+  
+    return [value, setValue];
+  }
+
+ function refreshToken(stats=null){
+    console.log(stats);
+        if(stats == 401){
+         let data = {
+             refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
+             client_id:"1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL",
+             client_secret:"fbb31a11fcaee62b9e53e98dfee5c6da952747ff09",
+             grant_type:"refresh_token"
+         }
+         axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
+             // if(typeof window !== 'undefined'){
+             //    console.log('lol',window); 
+             // }
+             useStickyState("Zoho-oauthtoken "+response.data.access_token,'access_token');
+             // console.log('response',response.data);
+             // localStorage.setItem("access_token", "Zoho-oauthtoken "+response.data.access_token)
+             // let entity = response.data.data[0]
+         }).catch((e,status)=>{
+             if(typeof e.response != "undefined"){
+                 if(e.response.status == 401){
+                     console.log(refreshToken(e.response.status));
+                 }
+             }
+         });
+        }
+  }
+
+ export async function getServerSideProps(context) {
+    // Device React
+    const deviceIsMobile = isMobile;
+    const deviceType = deviceIsMobile;
+    let entity = [];
+    await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=50',
+    {
+        headers:{
+            'Authorization':'Zoho-oauthtoken 1000.c4e642b30edc686215d45d7909079ec6.5dbe27620c321bfcd5efaefa0c655cd5'
+        }
+    }).then(response => {
+        // console.log('response',response.data.data);
+        // BrowseProperties(response.data.data);
+        entity = response.data.data;
+    }).catch((e,status)=>{
+        console.log('response',e.response);
+        if(typeof e.response != 'undefined'){
+            if(e.response.status == 401){
+                console.log(refreshToken(e.response.status));
+            }
+        }
+    });
+    return {
+        props: {
+           mobileDevice: deviceType,
+           entity:entity
+        }, // will be passed to the page component as props
+      }
  }
