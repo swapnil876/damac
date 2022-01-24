@@ -56,14 +56,20 @@ import * as axios from 'axios';
     const [brochureModal, openBrochureModal] = useState(false);
     const [floorPlanImg, openFloorPlanImg] = useState(false);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+    const [localStorage, setLocalStorage] = useState(false);
     useEffect(() => {
         if ( isMobile ) {
           setDeviceIsMobile( true );
         }
+        setLocalStorage( localStorage );
+        // localStorage.setItem('access_token','4554541')
+        
 
         //   importing bootstrap js
        import("bootstrap/dist/js/bootstrap");
      }, [])
+
+    
 
       // Carousel
     const responsive = {
@@ -799,6 +805,33 @@ import * as axios from 'axios';
      )
  }
 
+ const setSession = (accessToken) => {
+
+   if (typeof window !== 'undefined'){
+     localStorage.setItem('accessToken', accessToken);
+   }
+};
+
+function useStickyState(defaultValue, key) {
+
+  console.log('jjhfdjskjf')
+  const [value, setValue] = React.useState(defaultValue);
+
+  React.useEffect(() => {
+    const stickyValue = window.localStorage.getItem(key);
+
+    if (stickyValue !== null) {
+      setValue(JSON.parse(stickyValue));
+    }
+  }, [key]);
+
+  React.useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+}
+
  function refreshToken(stats=null){
    console.log(stats);
        if(stats == 401){
@@ -809,15 +842,18 @@ import * as axios from 'axios';
             grant_type:"refresh_token"
         }
         axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
-            if(typeof window !== 'undefined'){
-               console.log('lol',window); 
-            }
+            // if(typeof window !== 'undefined'){
+            //    console.log('lol',window); 
+            // }
+            useStickyState("Zoho-oauthtoken "+response.data.access_token,'access_token');
             // console.log('response',response.data);
             // localStorage.setItem("access_token", "Zoho-oauthtoken "+response.data.access_token)
             // let entity = response.data.data[0]
         }).catch((e,status)=>{
-            if(e.response.status == 401){
-                console.log(refreshToken(e.response.status));
+            if(typeof e.response != "undefined"){
+                if(e.response.status == 401){
+                    console.log(refreshToken(e.response.status));
+                }
             }
         });
        }
@@ -826,8 +862,6 @@ import * as axios from 'axios';
 
 
  export async function getServerSideProps(context) {
-
-
     // Device React
     const deviceIsMobile = isMobile;
     const deviceType = deviceIsMobile;
@@ -852,7 +886,7 @@ import * as axios from 'axios';
         console.log('response',response);
         // let entity = response.data.data[0]
     }).catch((e,status)=>{
-        
+        console.log('response',e.response);
         if(e.response.status == 401){
             console.log(refreshToken(e.response.status));
         }
