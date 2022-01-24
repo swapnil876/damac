@@ -18,7 +18,8 @@ import styles from '../styles/pages/browse-properties.module.css'
 import style from '../styles/pages/listing.module.css'
 
 import React, { Component, useEffect } from "react";
-
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -34,6 +35,16 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import * as axios from 'axios';
 
  export default function BrowseProperties(entity){
+
+    // carousel setting
+    const responsive = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 0 },
+            items: 1
+        }
+    };
+
     console.log('list',entity);
     useEffect(() => {
         //   importing bootstrap js
@@ -207,13 +218,15 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                             <div className="col-md-6" key={index}>
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
+                                        <Carousel className={styles['slider']} responsive={responsive}>
+                                            <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
+                                        </Carousel>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
                                           <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
                                         </ul>
                                         <h6>{unit.Project_Name}</h6>
-                                        <p>{unit.address},{unit.Country.display_value}</p>
+                                        <p>{unit.Address},{unit.Country.display_value}</p>
                                         <ul className={styles['bedroom-detail']}>
                                             <li>
                                                 <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED {unit.Unit_price_AED}*</a>
