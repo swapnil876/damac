@@ -4,7 +4,42 @@
     width: 100%;
     aspect-ratio: 1/.5;
 }
+.payment-plan .custom_accordion_item {
+    background-color: transparent !important;
+    border: 0 !important;
+}
 
+.payment-plan .custom_accordion_body {
+    padding: 0
+}
+
+.payment-plan .custom_accordion_body table {
+    width: 100%;
+}
+.payment-plan .custom_accordion_body table thead{
+    padding:16px 0;
+    border-bottom:1px solid #fff
+}
+.payment-plan .custom_accordion_body table tbody{
+    margin:20px 0
+}
+.payment-plan .custom_accordion_body table th {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 113.6%;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    padding: 16px 0;
+}
+
+.payment-plan .custom_accordion_body table td {
+    font-size: 20px;
+    /* line-height: 149.6%; */
+    line-height: 45px;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    margin-bottom:16px
+}
 .estimate-cost ul.fees li i,
 ul.fees li i {
     font-size: 16px;
