@@ -1,14 +1,16 @@
+.calculator_mortage {
+    padding-top: 130px;
+    background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+}
 
-.calculator_mortage{
-	padding-top: 130px;
-	background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+.mortage_calculator_left {
+    padding-bottom: 22px;
 }
-.mortage_calculator_left{
-	padding-bottom: 22px;
-}
+
 section.calculator_mortage .col-md-8 {
     padding-right: 156px;
 }
+
 .mortage_calculator_left h1 {
     font-size: 42px;
     font-weight: 500;
@@ -16,32 +18,36 @@ section.calculator_mortage .col-md-8 {
     margin: 8px 0;
     color: #ffffff;
 }
+
 .mortage_calculator_left p {
     font-size: 16px;
     line-height: 24px;
     color: #ffffff;
     margin-bottom: 32px;
 }
+
 .border-white {
     padding: 14px 20px;
     width: 50%;
     margin-bottom: 22px;
     border: 0.5px solid #FFFFFF;
 }
+
 .calculator-inner {
     display: flex;
     columns: 2;
     gap: 20px;
     align-items: center;
 }
+
 .calculator-inner p:nth-child(2) {
     font-size: 20px;
     line-height: 30px;
     letter-spacing: 0.07em;
     margin: 0;
     font-weight: 500;
-
 }
+
 .calculator-inner span {
     font-weight: 300;
     font-size: 16px;
@@ -49,72 +55,83 @@ section.calculator_mortage .col-md-8 {
     letter-spacing: 0.03em;
     color: #FFFFFF;
 }
-.calculator-inner .border-white p:first-child{
-	margin-bottom: 8px;
-}
-.calculator-inner .border-white p .currency{
-	opacity: 0.6;
-	font-weight: 500;
-	font-size: 20px;
 
+.calculator-inner .border-white p:first-child {
+    margin-bottom: 8px;
 }
+
+.calculator-inner .border-white p .currency {
+    opacity: 0.6;
+    font-weight: 500;
+    font-size: 20px;
+}
+
 span.text-right.dark {
     float: right;
 }
-.rate.border-white span.float-end,.down-payment.border-white span.float-end,.loan.border-white span.float-end{
+
+.rate.border-white span.float-end,
+.down-payment.border-white span.float-end,
+.loan.border-white span.float-end {
     opacity: 0.6;
 }
+
 span.text-right.dark i {
     margin-left: 20px;
 }
+
 .down-payment.border-white p {
     font-weight: 500;
 }
+
 input.range-slider {
-  width: 100%;
-  -webkit-appearance: none;
-  border-radius: 10px;
-  height: 1px;
-  margin-top: 22px;
+    width: 100%;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    height: 1px;
+    margin-top: 22px;
 }
 
 .range-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 23px;
-  height: 24px;
-  border: 0;
-  border-radius: 50%;
-  background: #fff;
-  cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 23px;
+    height: 24px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
 }
 
 .range-slider::-moz-range-thumb {
-  width: 23px;
-  height: 24px;
-  border: 0;
-  border-radius: 50%;
-  background: #fff;
-  cursor: pointer;
+    width: 23px;
+    height: 24px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
 }
-.calculator-cost-main-wrap{
-	position: absolute;
-	right: 0;
-	color: #ffffff;
-	padding: 0 24px;
-	padding-top: 27px;
-	padding-bottom: 24px;
-	background: #000000;
-	border: 1px solid #000000;
-	box-sizing: border-box;
-	box-shadow: 0px 14px 34px rgba(59, 27, 3, 0.08);
-	border-radius: 4px;
+
+.calculator-cost-main-wrap {
+    position: absolute;
+    right: 0;
+    color: #ffffff;
+    padding: 0 24px;
+    padding-top: 27px;
+    padding-bottom: 24px;
+    background: #000000;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 14px 34px rgba(59, 27, 3, 0.08);
+    border-radius: 4px;
 }
+
 .calculator-cost h4 {
     font-weight: 500;
     font-size: 22px;
-    margin-bottom: 31px;	
+    margin-bottom: 31px;
 }
+
 .calculator-cost ul li {
     margin-bottom: 12px;
     font-size: 26px;
@@ -123,9 +140,11 @@ input.range-slider {
     text-align: right;
     width: 100%;
 }
-.calculator-cost ul li:last-child{
-	margin-bottom: 24px;
+
+.calculator-cost ul li:last-child {
+    margin-bottom: 24px;
 }
+
 .calculator-cost span.text-left {
     text-align: left;
     font-size: 16px;
@@ -136,90 +155,99 @@ input.range-slider {
     width: 50%;
     opacity: 0.7;
 }
+
 .calculator-cost span {
     opacity: 0.6;
 }
+
 .calculator-cost h4 {
     font-weight: 500;
     font-size: 22px;
     margin-bottom: 30px;
 }
-.calculator-cost ul{
-	padding-bottom:13px;
-	border-bottom: 1px solid rgba(255,255,255,0.6);
+
+.calculator-cost ul {
+    padding-bottom: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 }
-.fees_main h4{
-	font-size: 20px;
-	font-weight: 500;
-	line-height: 28px;
-	margin-bottom: 23px;
+
+.fees_main h4 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    margin-bottom: 23px;
 }
-.fees_main ul{
-	border:none;
+
+.fees_main ul {
+    border: none;
 }
-.fees_main ul li{
-	font-size: 16px;
-	line-height: 24px;
-	letter-spacing: 0.03em;
-	white-space: nowrap;
-	margin-bottom: 8px;
+
+.fees_main ul li {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    margin-bottom: 8px;
 }
-.fees_main ul li span i{
-	font-size: 16px;
-	font-weight: 300;
-	margin-left: 4px;
+
+.fees_main ul li span i {
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 4px;
 }
-.enquir_btn a{
-	display: block;
-	text-align: center;
-	font-size: 16px;
-	letter-spacing:0.02em;
-	line-height: 18px;
-	font-weight: 500;
-	border-radius: 4px;
-	background: #fff;
-	color: #000;
-	padding: 14px 20px;
-	margin-top: 55px;
+
+.enquir_btn a {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    line-height: 18px;
+    font-weight: 500;
+    border-radius: 4px;
+    background: #fff;
+    color: #000;
+    padding: 14px 20px;
+    margin-top: 55px;
     text-decoration: none;
 }
 
-.interest_mortage{
-	padding-top: 73px;
-	padding-bottom: 138px;
+.interest_mortage {
+    padding-top: 73px;
+    padding-bottom: 138px;
 }
-.mortage_main h1{
-	font-size: 32px;
-	line-height: 38px;
-	margin-bottom: 16px;
+
+.mortage_main h1 {
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 16px;
     font-weight: normal;
 }
-.mortage_main p{
-	font-size: 20px;
-	font-weight: 300;
-	line-height: 34px;
-	opacity: 0.65;
-	margin-bottom: 44px;
+
+.mortage_main p {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 34px;
+    opacity: 0.65;
+    margin-bottom: 44px;
 }
-.mortage_main .form-field input{
-	height: 48px;
-	background: #f5f5f5;
-	margin-bottom: 16px;
-	border-radius: 4px;
-	border:none;
+
+.mortage_main .form-field input {
+    height: 48px;
+    background: #f5f5f5;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border: none;
 }
-.mortage_main .form-field input:focus{
+
+.mortage_main .form-field input:focus {
     box-shadow: none;
-    border:none;
+    border: none;
     outline: none;
 }
 
-.form-check{
+.form-check {
     padding-left: 0;
 }
-
-
-
 
 .form-check-input[type="checkbox"] {
     border-radius: 0.25em;
@@ -246,37 +274,43 @@ input.range-slider {
 }
 
 .form-check-input[type="checkbox"]:checked {
-    background-color: #C0AA71 !important; 
+    background-color: #C0AA71 !important;
     border-color: #C0AA71 !important;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e")
 }
 
-.checkbox_main{
-	margin-top: 51px;
+.checkbox_main {
+    margin-top: 51px;
 }
+
 .form-feild.form-check input {
     height: 20px;
     width: 20px;
 }
-.mortage_main form .col-md-5{
-	padding: 0 19.5px;
-}
-.form-feild.form-check label{
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 24px;
-	opacity: 0.6;
-	margin-bottom: 12px;
-	margin-left: 11px;
+
+.mortage_main form .col-md-5 {
+    padding: 0 19.5px;
 }
 
+.form-feild.form-check label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 0.6;
+    margin-bottom: 12px;
+    margin-left: 11px;
+}
+
+
 /*faq-section css start here*/
+
 section.faq-section {
     background: #000;
     color: #fff;
     padding-top: 60px;
     padding-bottom: 199px;
 }
+
 .faq-icon h2 {
     font-size: 32px;
     font-weight: 500;
@@ -284,10 +318,14 @@ section.faq-section {
     margin-top: 8px;
     margin-bottom: 60px;
 }
-section.faq-section div.accordion, section.faq-section .accordion-item, section.faq-section div.accordion button {
+
+section.faq-section div.accordion,
+section.faq-section .accordion-item,
+section.faq-section div.accordion button {
     background: transparent !important;
     color: #fff;
 }
+
 section.faq-section .accordion-body {
     padding-top: 0;
     font-size: 20px;
@@ -295,16 +333,19 @@ section.faq-section .accordion-body {
     line-height: 24px;
     letter-spacing: 0.03em;
 }
+
 .faq-wrap button.accordion-button-custom {
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0.03em;
 }
+
 .accordion-button.collapsed::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     transform: rotate(-180deg);
 }
+
 .accordion-button::after {
     flex-shrink: 0;
     width: 1.25rem;
@@ -318,55 +359,60 @@ section.faq-section .accordion-body {
 }
 
 .accordion-body {
-    padding: 1rem 1.25rem;
+    padding: 1rem 0rem;
 }
+
 .faq-wrap .accordion-body {
     font-size: 20px;
     line-height: 24px;
     letter-spacing: 0.03em;
 }
+
+
 /*faq section css ennd here*/
 
-@media (max-width: 1024px){
-	.calculator-cost-main-wrap{
-		position: relative;
-		width: 100%;
-	}
-	section.calculator_mortage .col-md-8{
-		padding-right: 12px;
-		width: 100%;
-	}
+@media (max-width: 1024px) {
+    .calculator-cost-main-wrap {
+        position: relative;
+        width: 100%;
+    }
+    section.calculator_mortage .col-md-8 {
+        padding-right: 12px;
+        width: 100%;
+    }
 }
-@media (max-width: 767px){
-    .calculator_mortage{
+
+@media (max-width: 767px) {
+    .calculator_mortage {
         background: #111;
     }
-	.mortage_calculator_left h1{
-		font-size: 32px;
-	}
-	.calculator-inner{
-		flex-direction: column;
-		gap:0;
-	}
-	.border-white{
-		width: 100%;
-	}
-	.calculator-cost ul li{
-		font-size: 20px;
-	}
-	.fees_main ul li {
-	    font-size: 16px;
-	}
-	.interest_mortage{
-		padding: 50px 0;
-	}
-	.faq-wrap button.accordion-button-custom,section.faq-section .accordion-body{
-		font-size: 16px;
-	}
-	section.faq-section{
-		padding-bottom: 60px;
-	}
-	.faq-icon h2{
-		margin-bottom: 30px;
-	}
+    .mortage_calculator_left h1 {
+        font-size: 32px;
+    }
+    .calculator-inner {
+        flex-direction: column;
+        gap: 0;
+    }
+    .border-white {
+        width: 100%;
+    }
+    .calculator-cost ul li {
+        font-size: 20px;
+    }
+    .fees_main ul li {
+        font-size: 16px;
+    }
+    .interest_mortage {
+        padding: 50px 0;
+    }
+    .faq-wrap button.accordion-button-custom,
+    section.faq-section .accordion-body {
+        font-size: 16px;
+    }
+    section.faq-section {
+        padding-bottom: 60px;
+    }
+    .faq-icon h2 {
+        margin-bottom: 30px;
+    }
 }

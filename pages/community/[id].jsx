@@ -90,7 +90,7 @@ function Community({entity1,projectlist,otherProjects}) {
 
       <main className="main about-main">
       
-
+{/* 
                      <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}:{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}}>
                         <div className='project-hero-wrap'>
                             <div className={`container ${style["hero-container"]}`}>
@@ -115,7 +115,41 @@ function Community({entity1,projectlist,otherProjects}) {
                             </div>       
                         </div>  
                         </div>              
+                    </section> */}
+
+
+
+                    <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}:{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}}>
+                        <div className={style['project-hero-wrap']}>
+                            <div className={`container ${style["hero-container"]}`}>
+                            <div className="row align-items-end">
+                                <div className="col-md-7">
+                                    <div className={style['project-left']}>
+                                        <h1>{entity1.title}</h1>
+                                        <span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
+                                        <a href="#"><img src="/damac-static/images/location.png"/>   {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}</a>
+                                    </div>
+                                </div>
+                                <div className="col-md-5">
+                                    <div className={style['project-right']}>
+                                        <ul className="d-flex align-items-center">
+                                            <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
+                                            <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
+                                            <li><a href={entity1.fieldBrochure.entity.url} target="_blank">Download Brochure</a></li>
+                                            <li><a href="#">View Gallery (19)</a></li>              
+                                        </ul>              
+                                    </div>
+                                </div>    
+                            </div>       
+                        </div>  
+                        </div>              
                     </section>
+
+
+
+
+
+
 
         <section className={`damac-section text-image-section`}> 
           <div className={`container`}>
@@ -652,49 +686,49 @@ function Community({entity1,projectlist,otherProjects}) {
 
 
 
-                  {/* <!-- faq section --> */}
-                  <section className={styles['faq-section']}>
+                   {/* <!-- faq section --> */}
+                   <section className={style['faq-section']}>
                     <div className="container">
-                        <div className={styles['faq-icon']}>
-                        <img src="/images/speech-bubble 1.png"/>
+                        <div className={style['faq-icon']}>
+                        <img src="/damac-static/images/speech-bubble 1.png"/>
                         <h2>Frequently Asked Questions</h2>          
                         </div>
                         <div className="row">
                         <div className="col-md-12">
-                            <div className={styles['faq-wrap']}>
-                            <div className={styles['accordion']} id="accordionExample">
-                                <div className={styles['accordion-item']}>
-                                <h2 className={styles['accordion-header']} id="headingOne">
-                                    <button className={`accordion-button ${styles["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <div className={style['faq-wrap']}>
+                            <div className={style['accordion']} id="accordionExample">
+                                <div className={style['accordion-item']}>
+                                <h2 className={style['accordion-header']} id="headingOne">
+                                    <button className={`accordion-button first-faq-drop ${style["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     What is the lowest mortgage rate in UAE?
                                     </button>
                                 </h2>
                                 <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div className={styles['accordion-body']}>
+                                    <div className={style['accordion-body']}>
                                     The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
                                     </div>
                                 </div>
                                 </div>
-                                <div className={styles['accordion-item']}>
-                                <h2 className={styles['accordion-header']} id="headingTwo">
-                                    <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <div className={style['accordion-item']}>
+                                <h2 className={style['accordion-header']} id="headingTwo">
+                                    <button className={`accordion-button second-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     What is the lowest mortgage rate in UAE?
                                     </button>
                                 </h2>
                                 <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div className={styles['accordion-body']}>
+                                    <div className={style['accordion-body']}>
                                     The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
                                     </div>
                                 </div>
                                 </div>
-                                <div className={styles['accordion-item']}>
-                                <h2 className={styles['accordion-header']} id="headingThree">
-                                    <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <div className={style['accordion-item']}>
+                                <h2 className={style['accordion-header']} id="headingThree">
+                                    <button className={`accordion-button third-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     What is the lowest mortgage rate in UAE?
                                     </button>
                                 </h2>
                                 <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div className={styles['accordion-body']}>
+                                    <div className={style['accordion-body']}>
                                     The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
                                     </div>
                                 </div>

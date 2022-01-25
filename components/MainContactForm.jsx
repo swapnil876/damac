@@ -15,8 +15,6 @@ import { FaPhoneAlt } from 'react-icons/fa';
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
 
-
-
 export default function ContactForm({ initialValues }) {
 
 
