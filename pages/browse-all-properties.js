@@ -17,7 +17,7 @@ import { FaAngleLeft, FaAngleRight, FaSearch } from 'react-icons/fa'
 import styles from '../styles/pages/browse-properties.module.css'
 import style from '../styles/pages/listing.module.css'
 
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 // Bootstrap Css
@@ -36,6 +36,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
  export default function BrowseProperties(entity){
 
+    const [localStorage, setLocalStorage] = useState(false);
+
     // carousel setting
     const responsive = {
         superLargeDesktop: {
@@ -46,10 +48,30 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
     };
 
     console.log('list',entity);
+    // console.log('storage',localStorage)
     useEffect(() => {
         //   importing bootstrap js
         import("bootstrap/dist/js/bootstrap");
-    }, [])
+        if(window.localStorage.getItem('access_token')==null){
+            let data = {
+                refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
+                client_id:"1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL",
+                client_secret:"fbb31a11fcaee62b9e53e98dfee5c6da952747ff09",
+                grant_type:"refresh_token"
+            }
+            axios.post('https://accounts.zoho.com/oauth/v2/token',{data:data},{
+                headers:{
+                    'Access-Control-Allow-Origin':'*'
+                }
+            }).then(response => {
+                setLocalStorage(response.data.access_token);
+            })
+        }
+        else{
+            setLocalStorage(window.localStorage.getItem('access_token'));
+        }
+        
+    }, [localStorage, setLocalStorage])
 
      return(
          <div className="browse-properties">
@@ -392,32 +414,9 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
      )
  }
 
- function buildHtml(data){
-    console.log('buildHtml',data);
- }
-
- function useStickyState(defaultValue, key) {
-
-    console.log('jjhfdjskjf')
-    const [value, setValue] = React.useState(defaultValue);
-  
-    React.useEffect(() => {
-      const stickyValue = window.localStorage.getItem(key);
-  
-      if (stickyValue !== null) {
-        setValue(JSON.parse(stickyValue));
-      }
-    }, [key]);
-  
-    React.useEffect(() => {
-      window.localStorage.setItem(key, JSON.stringify(value));
-    }, [key, value]);
-  
-    return [value, setValue];
-  }
 
  function refreshToken(stats=null){
-    console.log(stats);
+    console.log(localStorage);
         if(stats == 401){
          let data = {
              refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
@@ -425,7 +424,11 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
              client_secret:"fbb31a11fcaee62b9e53e98dfee5c6da952747ff09",
              grant_type:"refresh_token"
          }
-         axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
+         axios.post('https://accounts.zoho.com/oauth/v2/token',{data:data},{
+            headers:{
+                'Access-Control-Allow-Origin':'*'
+            }
+        }).then(response => {
              // if(typeof window !== 'undefined'){
              //    console.log('lol',window); 
              // }
@@ -436,7 +439,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
          }).catch((e,status)=>{
              if(typeof e.response != "undefined"){
                  if(e.response.status == 401){
-                     console.log(refreshToken(e.response.status));
+                     refreshToken(e.response.status);
                  }
              }
          });
@@ -448,20 +451,16 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
     const deviceIsMobile = isMobile;
     const deviceType = deviceIsMobile;
     let entity = [];
-    await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=50',
-    {
-        headers:{
-            'Authorization':'Zoho-oauthtoken 1000.c4e642b30edc686215d45d7909079ec6.5dbe27620c321bfcd5efaefa0c655cd5'
-        }
-    }).then(response => {
+    // console.log(localStorage)
+    await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=50').then(response => {
         // console.log('response',response.data.data);
         // BrowseProperties(response.data.data);
         entity = response.data.data;
     }).catch((e,status)=>{
-        console.log('response',e.response);
+        // console.log('response',e.response);
         if(typeof e.response != 'undefined'){
             if(e.response.status == 401){
-                console.log(refreshToken(e.response.status));
+                refreshToken(e.response.status);
             }
         }
     });

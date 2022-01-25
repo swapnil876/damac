@@ -39,6 +39,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 // Google Map Plugin
 import GoogleMapReact from 'google-map-react';
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 function Community({entity1,projectlist,otherProjects}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -440,10 +441,13 @@ function Community({entity1,projectlist,otherProjects}) {
             </div>
             <div className={styles['brand-partners']}>
               <h4>Brand Partners</h4>
+              
               <div className={styles['brand-icons']}>
-                <img alt=""src="/images/brand-logo/image 26.png"/>
-                <img alt=""src="/images/brand-logo/trumporg.png"/>
-                <img alt=""src="/images/brand-logo/trumporg.png"/>
+                  {
+                    entity1.fieldBrandIcons.map( (icon, index) => (
+                      <img alt=""src={icon.entity.fieldIconImage.url}/>
+                    ))
+                  }
               </div>
             </div>
           </div>

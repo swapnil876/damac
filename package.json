@@ -11,6 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.5",
     "@chakra-ui/react": "^1.6.7",
+    "@createnextapp/async-local-storage": "^1.0.1",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
