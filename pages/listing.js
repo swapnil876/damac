@@ -473,7 +473,7 @@ import GoogleMapReact from 'google-map-react';
 
                     </div>
 
-                      <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div className={`accordion-body ${style["custom_accordion_body"]}`}>
                           <table border='0'>
                             <thead className={style['t_head']}>

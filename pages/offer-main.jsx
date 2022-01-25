@@ -195,59 +195,59 @@ function OfferMain({entity1}) {
       </section>
 
 
-                {/* <!-- faq section --> */}
-                <section className={styles['faq-section']}>
-                    <div className="container">
-                        <div className={styles['faq-icon']}>
-                        <img src="damac-static/images/speech-bubble 1.png"/>
-                        <h2>Frequently Asked Questions</h2>          
-                        </div>
-                        <div className="row">
-                        <div className="col-md-12">
-                            <div className={styles['faq-wrap']}>
-                            <div className={styles['accordion']} id="accordionExample">
-                                <div className={styles['accordion-item']}>
-                                <h2 className={styles['accordion-header']} id="headingOne">
-                                    <button className={`accordion-button ${styles["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div className={styles['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                    </div>
-                                </div>
-                                </div>
-                                <div className={styles['accordion-item']}>
-                                <h2 className={styles['accordion-header']} id="headingTwo">
-                                    <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div className={styles['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                    </div>
-                                </div>
-                                </div>
-                                <div className={styles['accordion-item']}>
-                                <h2 className={styles['accordion-header']} id="headingThree">
-                                    <button className={`accordion-button ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div className={styles['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                    </div>
-                                </div>
-                                </div>
-                            </div>                            
-                            </div>            
-                        </div>          
-                        </div>        
-                    </div>      
-                </section>
+                  {/* <!-- faq section --> */}
+          <section className={styles['faq-section']}>
+                          <div className="container">
+                              <div className={styles['faq-icon']}>
+                              <img src="/damac-static/images/speech-bubble 1.png"/>
+                              <h2>Frequently Asked Questions</h2>          
+                              </div>
+                              <div className="row">
+                              <div className="col-md-12">
+                                  <div className={styles['faq-wrap']}>
+                                  <div className={styles['accordion']} id="accordionExample">
+                                      <div className={styles['accordion-item']}>
+                                      <h2 className={styles['accordion-header']} id="headingOne">
+                                          <button className={`accordion-button first-faq-drop ${styles["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                          What is the lowest mortgage rate in UAE?
+                                          </button>
+                                      </h2>
+                                      <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                          <div className={styles['accordion-body']}>
+                                          The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                          </div>
+                                      </div>
+                                      </div>
+                                      <div className={styles['accordion-item']}>
+                                      <h2 className={styles['accordion-header']} id="headingTwo">
+                                          <button className={`accordion-button second-faq-drop ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                          What is the lowest mortgage rate in UAE?
+                                          </button>
+                                      </h2>
+                                      <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                          <div className={styles['accordion-body']}>
+                                          The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                          </div>
+                                      </div>
+                                      </div>
+                                      <div className={styles['accordion-item']}>
+                                      <h2 className={styles['accordion-header']} id="headingThree">
+                                          <button className={`accordion-button third-faq-drop ${styles["accordion-button-custom"]} ${styles["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                          What is the lowest mortgage rate in UAE?
+                                          </button>
+                                      </h2>
+                                      <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                          <div className={styles['accordion-body']}>
+                                          The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                          </div>
+                                      </div>
+                                      </div>
+                                  </div>                            
+                                  </div>            
+                              </div>          
+                              </div>        
+                          </div>      
+            </section>
 
       </main>
 
