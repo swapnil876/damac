@@ -49,7 +49,7 @@ function CSR({entity1}) {
 
     // Slick slider 
     const settings = {
-      dots: true,
+      dots: false,
       infinite: true,
       speed: 500,
       slidesToShow: 1,

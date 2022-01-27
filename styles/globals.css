@@ -996,7 +996,9 @@ section.damac-about-chairman .aboutChairmanbox {
 }
 
 .historyslidercontainer .historyslides {
-    overflow-x: auto;
+    max-width: 100%;
+    width: 100%;
+    /* overflow-x: auto; */
 
     white-space: pre;
     vertical-align: top;
@@ -1005,8 +1007,8 @@ section.damac-about-chairman .aboutChairmanbox {
 
 .historyslidercontainer .historyslide {
     display: inline-block;
-    min-width: 420px;
-    width: 420px;
+    /* min-width: 420px; */
+    width: 100%;
     word-wrap: wrap;
     white-space: normal;
     padding: 15px;
@@ -1017,10 +1019,13 @@ section.damac-about-chairman .aboutChairmanbox {
     margin-bottom: 20px;
     font-size: 32px;
 }
-
+.historyslidercontainer .historyslide .historytext{
+    max-width: 100%;
+}
 .historyslidercontainer .historyslide p {
     font-family: "Roboto";
     font-weight: 300;
+    word-break: break-word;
 }
 
 .historyslidercontainer .historyslide ul {

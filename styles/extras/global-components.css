@@ -125,40 +125,54 @@
 }
 
 .csr_page_slider .slick-prev,
-.csr_page_slider .slick-next {
+.csr_page_slider .slick-next,
+.historyslidercontainer .slick-prev,
+.historyslidercontainer .slick-next {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     background-color: #fff;
     background-image: url('../../public/images/icons/down-chevron-black.png') !important;
-    background-size: 20px;
+    background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    z-index: 1;
 }
 
 .csr_page_slider .slick-prev:hover,
 .csr_page_slider .slick-prev:focus,
 .csr_page_slider .slick-next:hover,
-.csr_page_slider .slick-next:focus {
+.csr_page_slider .slick-next:focus,
+.historyslidercontainer .slick-prev:hover,
+.historyslidercontainer .slick-prev:focus,
+.historyslidercontainer .slick-next:hover,
+.historyslidercontainer .slick-next:focus {
     background-color: #fff !important;
     background-image: url('../../public/images/icons/down-chevron-black.png') !important;
-    background-size: 20px;
+    background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
     color: #111 !important;
     z-index: 999;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-.csr_page_slider .slick-prev {
+.csr_page_slider .slick-prev,
+.historyslidercontainer .slick-prev {
     transform: rotate(90deg);
 }
 
-.csr_page_slider .slick-next {
+.csr_page_slider .slick-next,
+.historyslidercontainer .slick-next {
     transform: rotate(-90deg);
 }
 
 .csr_page_slider .slick-prev::before,
-.csr_page_slider .slick-next::before {
+.csr_page_slider .slick-next::before,
+.historyslidercontainer .slick-prev::before,
+.historyslidercontainer .slick-next::before {
     display: none;
 }
 
@@ -173,9 +187,18 @@
 }
 
 
+/* About Us History Section Slider Arrows */
 
+.historyslidercontainer .slick-prev {
+    left: -434px;
+    top: 200px;
+}
 
-
+.historyslidercontainer .slick-next {
+    left: -370px;
+    right:unset;
+    top: 200px;
+}
 
 
 
@@ -285,6 +308,15 @@ button.accordion-button {
 
 
 @media (max-width: 1400px) {
+    .historyslidercontainer .slick-prev {
+        left: -370px;
+        top: 210px;
+    }
+    
+    .historyslidercontainer .slick-next {
+        left: -310px;
+        top: 210px;
+    }
     .testimonial_container .slick-prev {
         top: 450px;
         right: 225px;
@@ -307,6 +339,15 @@ button.accordion-button {
 }
 
 @media (max-width: 1200px) {
+    .historyslidercontainer .slick-prev {
+        left: -310px;
+        top: 250px;
+    }
+    
+    .historyslidercontainer .slick-next {
+        left: -250px;
+        top: 250px;
+    }
     .testimonial_container .slick-prev {
         top: 370px;
         right: 180px;
@@ -329,6 +370,15 @@ button.accordion-button {
 }
 
 @media (max-width: 992px) {
+    .historyslidercontainer .slick-prev {
+        left: -232px;
+        top: 300px;
+    }
+    
+    .historyslidercontainer .slick-next {
+        left: -170px;
+        top: 300px;
+    }
     .csr_page_slider .slick-prev {
         left: -220px !important;
         top: 450px !important;
@@ -348,12 +398,23 @@ button.accordion-button {
 }
 
 @media (max-width: 767.98px) {
+    .historyslidercontainer .slick-prev {
+        left: unset;
+        top: 0px;
+        right: 60px;
+    }
+    
+    .historyslidercontainer .slick-next {
+        left: unset;
+        top: 0px;
+        right: 0px;
+    }
     .testimonial_container .slick-arrow {
         background: #fff;
         background-image: url('../../public/images/icons/down-chevron-black.png') !important;
         background-repeat: no-repeat;
         background-position: center;
-        background-size:16px;
+        background-size: 16px;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
     }
 
@@ -365,7 +426,7 @@ button.accordion-button {
         background-image: url('../../public/images/icons/down-chevron-black.png') !important;
         background-repeat: no-repeat;
         background-position: center;
-        background-size:16px;
+        background-size: 16px;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
     }
 

@@ -13,22 +13,19 @@ import AboutBanner from '../components/AboutBanner'
 import Footer from '../components/Footer'
 
 
+import Slider from "react-slick";
+
+// slick-carousel css
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ABOUT_US } from '../graphql/aboutus';
 import { HISTORY } from '../graphql/master/history';
 
 
-import Slider from "react-slick";
 
-
-const sliderSettings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
- };
 
 
 
@@ -87,6 +84,26 @@ function About({entity1}) {
         items: 1
       }
     };
+
+
+  // Slick slider 
+  var settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
   return (
     <div className='aboutbody'>
@@ -284,7 +301,7 @@ function About({entity1}) {
                
                <div className="historyslidercontainer">
                  <div className="historyslides">
-                 <Carousel responsive={responsive}>
+                 {/* <Carousel responsive={responsive}>
                  {
                    entity1.fieldMultipleHistory.map( (history, index) => (
                        <div className="historyslide" key={index}>
@@ -297,7 +314,21 @@ function About({entity1}) {
                        </div> 
                       ))
                  }
-                 </Carousel>
+                 </Carousel> */}
+                 <Slider {...settings}>
+                 {
+                   entity1.fieldMultipleHistory.map( (history, index) => (
+                       <div className="historyslide" key={index}>
+                             <div className="inner" style={{'max-width':'100%'}}>
+                               <h5>{history.entity.fieldYear}</h5>
+                               <div className="historytext" dangerouslySetInnerHTML={{ __html: history.entity.fieldBody.value }}>
+                                 
+                               </div>
+                             </div>
+                       </div> 
+                      ))
+                 }
+                 </Slider>
                  </div>
                </div>
 
