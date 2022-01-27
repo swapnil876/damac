@@ -72,7 +72,7 @@ function Bookstep2({entity}) {
 
 
       <section className={`${styles["main_client_sec"]} testimonial_container`}>
-        <div className={`${styles["heading_testimonial"]} text-center`}>
+        <div className={`${styles["heading_testimonial"]} text-center container`}>
           <h1>{entity.title}</h1>
           <p>See what our happy clients have to say</p>
         </div>

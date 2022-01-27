@@ -79,6 +79,16 @@
 }
 
 @media (max-width: 767px) {
+	.heading_testimonial h1 {
+		font-size: 32px;
+		line-height: 117.6%;
+	}
+
+	.heading_testimonial p {
+		font-size: 14px;
+		line-height: 171.5%;
+	}
+
 	.client-slider img {
 		padding: 0
 	}
@@ -130,7 +140,7 @@
 	}
 }
 
-@media (max-width: 375px){
+@media (max-width: 375px) {
 	.client_says {
 		top: -80px;
 	}
