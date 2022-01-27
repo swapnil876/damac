@@ -1,42 +1,49 @@
-
-.testimonial_main_wrap{
+.testimonial_main_wrap {
 	width: 100%;
 	height: 800px;
-	background: linear-gradient(rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.25));
+	background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25));
 }
-.main_client_sec{
+
+.main_client_sec {
 	padding-top: 76px;
 	padding-bottom: 89px;
 }
-.heading_testimonial h1{
+
+.heading_testimonial h1 {
 	font-size: 44px;
 	margin-bottom: 8px;
 	line-height: 50px;
 }
-.heading_testimonial p{
+
+.heading_testimonial p {
 	font-size: 22px;
 	line-height: 38px;
 	opacity: 0.7;
 }
-.slider-nav{
+
+.slider-nav {
 	margin-top: -22px;
 }
-.client_reviews{
+
+.client_reviews {
 	padding-top: 80px;
 }
-.client_says_txt h1{
+
+.client_says_txt h1 {
 	font-size: 32px;
 	line-height: 37px;
 	padding-top: 47px;
 	padding-bottom: 14px;
 }
-.client_says_txt p{
+
+.client_says_txt p {
 	font-size: 20px;
 	font-weight: 300;
 	line-height: 34px;
 	letter-spacing: 0.48px;
 }
-.client_name p{
+
+.client_name p {
 	font-size: 20px;
 	font-weight: 500;
 	line-height: 23px;
@@ -44,53 +51,87 @@
 	margin-top: 54px;
 	margin-bottom: 8px;
 }
-.client_designation p{
+
+.client_designation p {
 	font-size: 16px;
 	line-height: 18px;
 	font-weight: 300;
 }
-.slider{
-	width:80%;
+
+.slider {
+	width: 80%;
 	margin: auto;
 }
-.client-slider img{
+
+.client-slider img {
 	width: 100%;
-    display: block;
-    margin: auto;
-    padding: 7%;
+	display: block;
+	margin: auto;
+	padding: 7%;
 	aspect-ratio: 1/1.2;
 	object-fit: cover;
 }
-@media (max-width: 767px){
-	.main_client_sec {
-	    padding-top: 50px;
-	    padding-bottom: 50px;
-	}
-	.heading_testimonial h1{
-		font-size: 32px;
-		line-height: 35px;
-	}
-	.heading_testimonial p{
+
+@media(max-width:1200px) {
+	.client_says_txt p {
 		font-size: 18px;
-		line-height: 22px;
-	}
-	.client_reviews {
-	    padding-top: 20px;
-	}
-	.client_says_txt h1{
-		font-size: 28px;
-	}
-	.client_says_txt p{
-		font-size:18px;
-	}
-	.client_says {
-	    margin-bottom: 30px;
 	}
 }
-@media (max-width: 450px){
-	.client-slider img{
+
+@media (max-width: 767px) {
+	.client-slider img {
+		padding: 0
+	}
+
+	.client_says {
+		position: relative;
+		top: -130px;
+		left: -1px;
+	}
+
+	.client_says_txt h1 {
+		background: #fff;
+		width: 85%;
+		padding-right: 10px;
+	}
+
+	.client_says_txt p {
+		font-size: 18px;
+		line-height: 169.6%;
+	}
+
+	.main_client_sec {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+
+	.client_reviews {
+		padding-top: 20px;
+	}
+
+	.client_says_txt h1 {
+		/* font-size: 32px; */
+		line-height: 114.6%;
+	}
+
+	.client_says_txt p {
+		font-size: 18px;
+	}
+
+	.client_says {
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 450px) {
+	.client-slider img {
 		width: 100%;
 	}
 }
 
-
+@media (max-width: 375px){
+	.client_says {
+		top: -80px;
+	}
+}
