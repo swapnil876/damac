@@ -18,10 +18,17 @@ import TextSection from '../components/text-section'
 
 
 
+// slick-carousel css
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
+
 import ReactDOM from 'react-dom';
 // Carousel plugin import
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+
+import Slider from "react-slick";
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
@@ -38,6 +45,18 @@ function CSR({entity1}) {
         items: 1
       }
     };
+
+
+    // Slick slider 
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+
+    
   
   return (
     <div className='aboutbody'>
@@ -100,8 +119,8 @@ function CSR({entity1}) {
 
              <div className="col-md-8">
                
-               <div className="responsive-slider-container">
-                  <Carousel responsive={responsive} className="milestone-carousel">
+               <div className="responsive-slider-container csr_page_slider">
+                  {/* <Carousel responsive={responsive} className="milestone-carousel">
                   {entity1.fieldMilestones.map((milestone) => (
                      <div key={milestone.entity.id}>
                          <div className="milestone-carousel-item">
@@ -117,7 +136,25 @@ function CSR({entity1}) {
                          </div>
                      </div>
                   ))}
-                 </Carousel>
+                 </Carousel> */}
+
+                 <Slider {...settings} className="milestone-carousel">
+                 {entity1.fieldMilestones.map((milestone) => (
+                     <div key={milestone.entity.id}>
+                         <div className="milestone-carousel-item">
+                           <div className="image-text">
+                             <div className="img">
+                               <img alt="milestones"src={milestone.entity.fieldImageMile.url} className='img-responsive'/>
+                             </div>
+                             <div className='text'>
+                               <h3>Zayed Day for Humanitarian action</h3>
+                               <p>To mark the occassion of the International Humanitarian Day initiative under the slogan og 'Your families .. our people', there was an assembly held during which, the Director od the Red Crescent, Mr. Khalfan Sarhan Al-Rumaithi, received a cheque from Brigadier General Jamal Salem Al Ameri, Executive Director of the Saed Association, to help families affected by the novel coronavirus,COVID-19.</p>
+                             </div>
+                           </div>
+                         </div>
+                     </div>
+                  ))}
+                  </Slider>
                </div>
 
              </div>

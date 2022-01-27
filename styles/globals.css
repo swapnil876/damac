@@ -1505,8 +1505,13 @@ footer.damac-footer .footer-logo {
 .milestone-carousel-item .image-text .img {
     min-width: 420px;
     margin-right: 20px;
+    aspect-ratio: 494/347;
 }
-
+.milestone-carousel-item .image-text .img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .milestone-carousel-item .image-text .text {
     text-align: left;
 }
@@ -1514,6 +1519,7 @@ footer.damac-footer .footer-logo {
 .milestone-carousel-item .image-text h3 {
     font-size: 32px;
     text-align: left;
+    margin-bottom: 12px;
 }
 
 .milestone-carousel .carousel .carousel-status {
@@ -1676,8 +1682,22 @@ footer.damac-footer .footer-logo {
     font-size: 20px;
     max-width: 480px;
 }
-
+@media(max-width: 1200px){
+    .milestone-carousel-item .image-text {
+        flex-direction: column;
+    }
+    .milestone-carousel-item .image-text .img{
+        margin-bottom: 24px;
+    }
+}
+@media(max-width: 992px){
+}
 @media (max-width: 768px) {
+    .milestone-carousel-item .image-text .img{
+        width:60%;
+        min-width: unset;
+        aspect-ratio: 1/1;
+    }
     .text-section-whhydubai-1 h3{
         font-size: 26px !important;
     }
