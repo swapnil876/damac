@@ -51,12 +51,15 @@ import * as axios from 'axios';
  
 
 
- export default function Listing({mobileDevice,listing}){
+ export default function Listing({mobileDevice,listing,entity}){
 
     const [brochureModal, openBrochureModal] = useState(false);
     const [floorPlanImg, openFloorPlanImg] = useState(false);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     const [localStorage, setLocalStorage] = useState(false);
+
+    console.log('entity',entity);
+
     useEffect(() => {
         if ( isMobile ) {
           setDeviceIsMobile( true );
@@ -68,8 +71,6 @@ import * as axios from 'axios';
         //   importing bootstrap js
        import("bootstrap/dist/js/bootstrap");
      }, [])
-
-    
 
       // Carousel
     const responsive = {
@@ -185,14 +186,15 @@ import * as axios from 'axios';
                         <div className="row align-items-end">
                                 <div className="col-md-7">
                                     <div className={style['project-left']}>
-                                    <h1>{listing.title}</h1>
-                                    <p><span>{listing.fieldTaglingL}</span></p>
+                                    <h1>{entity.Number_of_Bedrooms1}{entity.Identifier}</h1>
+                                    <p><span>{entity.Building_Name} at {entity.Location}</span></p>
                                     {/* <a href="#"><img src="damac-static/images/location.png"/>  {listing.fieldCityL.name}, {listing.fieldCountryL.name}</a> */}
                                     </div>
                                 </div>
                               </div>
                               <div className="row align-items-center" style={{'justifyContent':'space-between'}}>
-                                <a href="#" style={{'width':'fit-content'}}><img src="damac-static/images/location.png"/>  {listing.fieldCityL.name}, {listing.fieldCountryL.name}</a>
+                              <a href="#" style={{'width':'fit-content','font-family': 'Roboto','font-size': '16px','font-style': 'normal','font-weight': '300','line-height': '22px','letter-spacing': '0.02em','text-align': 'left','text-decoration': 'none','color': '#fff'}}><img src="damac-static/images/location.png"/>{entity.Address}, {entity.Country.display_value}</a>
+                                
                                 <div style={{'width':'fit-content'}}>
                                     <div className={style['project-right']}>
                                     <ul className="d-flex align-items-center">
@@ -227,29 +229,29 @@ import * as axios from 'axios';
                             <div className="col-md-6">
                             <div className={style['shape-content-wrap']}>
                                 <div className={style['shape-item']}>
-                                <h4>{listing.fieldPrice}</h4>
+                                <h4>{entity.Unit_price_AED}</h4>
                                 <p><span>AED</span></p>
 
-                                <h4>{listing.fieldUnitType.entity}</h4>
+                                <h4>{entity.Number_of_Bedrooms1}{entity.Identifier}</h4>
                                 <p><span>Unit Type</span></p>               
 
                                 <ul className={`d-flex ${style["shape-count"]}`}>
                                     <li>
-                                    <h4>{listing.fieldBedrooms}</h4>
+                                    <h4>{entity.Number_of_Bedrooms1}</h4>
                                     <p>Bedrooms</p>
                                     </li>
                                     <li>
-                                    <h4>{listing.fieldBathrooms}</h4>
+                                    <h4>{entity.Bathrooms}</h4>
                                     <p>Bathrooms</p>
                                     </li>
                                 </ul> 
                                     <ul className={`d-flex ${style["shape-count"]}`}>
                                     <li>
-                                    <h4>{listing.fieldAreaL1} sqft</h4>
+                                    <h4>{entity.property_size_Sqft_sqmt} sqft</h4>
                                     <p>Total Area</p>
                                     </li>
                                     <li>
-                                    <h4>{listing.fieldStatusL1}</h4>
+                                    <h4>{entity.Status}</h4>
                                     <p>Status</p>
                                     </li>
                                 </ul>
@@ -257,11 +259,11 @@ import * as axios from 'axios';
 
                                 <ul className={`d-flex ${style["shape-count"]}`}>
                                     <li>
-                                    <h4>{listing.fieldMaidRoom?'Yes':'No'}</h4>
+                                    <h4>{entity.Maidroom?'Yes':'No'}</h4>
                                     <p>Maidroom</p>
                                     </li>
                                     <li>
-                                    <h4>{listing.fieldReferenceNumber}</h4>
+                                    <h4>{entity.Unit_Number}</h4>
                                     <p>Reference no.</p>
                                     </li>
                                 </ul>
@@ -287,15 +289,15 @@ import * as axios from 'axios';
                             <div className="col-md-6">
                                 <div className="d-flex justify-content-between">
                                 <div className={style['vs-range']}>
-                                    <h5><a href="#">AED {listing.fieldPrice}</a></h5>
+                                    <h5><a href="#">AED {entity.Unit_price_AED}</a></h5>
                                     <p>Starting from</p>
                                 </div>
                                 <div className={style['vs-range']}>
-                                    <h5><a href="#">{listing.fieldCityL.name}</a></h5>
+                                    <h5><a href="#">{entity.Location}</a></h5>
                                     <p>Locality</p>
                                 </div>
                                 <div className={style['vs-range']}>
-                                    <h5><a href="#">{listing.fieldStatusL1}</a></h5>
+                                    <h5><a href="#">{entity.Status}</a></h5>
                                     <p>Status</p>
                                 </div>
 
@@ -751,44 +753,44 @@ import * as axios from 'axios';
                         <div className="row">
                         <div className="col-md-12">
                             <div className={style['faq-wrap']}>
-                            <div className={style['accordion']} id="accordionExample">
-                                <div className={style['accordion-item']}>
-                                <h2 className={style['accordion-header']} id="headingOne">
-                                    <button className={`accordion-button ${style["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div className={style['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                            <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
+                                      </h2>
+                                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        </div>
+                                      </div>
                                     </div>
-                                </div>
-                                </div>
-                                <div className={style['accordion-item']}>
-                                <h2 className={style['accordion-header']} id="headingTwo">
-                                    <button className={`accordion-button ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div className={style['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
+                                      </h2>
+                                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        </div>
+                                      </div>
                                     </div>
-                                </div>
-                                </div>
-                                <div className={style['accordion-item']}>
-                                <h2 className={style['accordion-header']} id="headingThree">
-                                    <button className={`accordion-button ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div className={style['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
+                                      </h2>
+                                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        </div>
+                                      </div>
                                     </div>
-                                </div>
-                                </div>
-                            </div>                            
+                                  </div>                            
                             </div>            
                         </div>          
                         </div>        
@@ -865,6 +867,7 @@ function useStickyState(defaultValue, key) {
     // Device React
     const deviceIsMobile = isMobile;
     const deviceType = deviceIsMobile;
+    let entity = {};
     const client = new ApolloClient({
         uri: process.env.STRAPI_GRAPHQL_URL,
         cache: new InMemoryCache()
@@ -872,19 +875,19 @@ function useStickyState(defaultValue, key) {
 
     const  data  = await client.query({ query: LISTING });
     // console.log('listing',data);
-    let entity1 = data.data.nodeQuery.entities[0];
+    let listingdata = data.data.nodeQuery.entities[0];
     // let token = window.localStorage.getItem('access_token')
     // let entity2 = data.data.nodeQuery.entities[1];
     // console.log('about',entity1.fieldLocatorsL);
 
-    axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=1',
+    await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=1',
     {
         headers:{
-            'Authorization':'Zoho-oauthtoken 1000.92e4113edac4572f55848b8be9e1ac7f.7835ff8e4c64629fa52ce849d521d80e'
+            'Authorization':'Zoho-oauthtoken 1000.35cf7a0f891b0d5a2fd1b074ed49b96f.ac814f4d28e4d20ae9ad32a10c0c6782'
         }
     }).then(response => {
         console.log('response',response);
-        // let entity = response.data.data[0]
+        entity = response.data.data[0]
     }).catch((e,status)=>{
         console.log('response',e.response);
         if(e.response.status == 401){
@@ -895,7 +898,8 @@ function useStickyState(defaultValue, key) {
     return {
       props: {
          mobileDevice: deviceType,
-         listing:entity1
+         listing:listingdata,
+         entity:entity
       }, // will be passed to the page component as props
     }
  }

@@ -631,13 +631,6 @@ section.faq-section .accordion-item>h2>button {
     letter-spacing: 0.03em;
 }
 
-section.faq-section .accordion-body {
-    padding-top: 0;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 24px;
-    letter-spacing: 0.03em;
-}
 
 section.faq-section button {
     background: transparent;
@@ -1143,9 +1136,6 @@ ul.bedroom-detail {
     color: #111
 }
 
-.accordion-body {
-    padding: 1rem 0rem;
-}
 
 .project-detail .react-multiple-carousel__arrow {
     z-index: 10;

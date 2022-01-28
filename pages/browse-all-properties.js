@@ -17,7 +17,7 @@ import { FaAngleLeft, FaAngleRight, FaSearch } from 'react-icons/fa'
 import styles from '../styles/pages/browse-properties.module.css'
 import style from '../styles/pages/listing.module.css'
 
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 // Bootstrap Css
@@ -36,6 +36,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
  export default function BrowseProperties(entity){
 
+    const [localStorage, setLocalStorage] = useState(false);
+
     // carousel setting
     const responsive = {
         superLargeDesktop: {
@@ -46,10 +48,30 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
     };
 
     console.log('list',entity);
+    // console.log('storage',localStorage)
     useEffect(() => {
         //   importing bootstrap js
         import("bootstrap/dist/js/bootstrap");
-    }, [])
+        if(window.localStorage.getItem('access_token')==null){
+            let data = {
+                refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
+                client_id:"1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL",
+                client_secret:"fbb31a11fcaee62b9e53e98dfee5c6da952747ff09",
+                grant_type:"refresh_token"
+            }
+            axios.post('https://accounts.zoho.com/oauth/v2/token',{data:data},{
+                headers:{
+                    'Access-Control-Allow-Origin':'*'
+                }
+            }).then(response => {
+                setLocalStorage(response.data.access_token);
+            })
+        }
+        else{
+            setLocalStorage(window.localStorage.getItem('access_token'));
+        }
+        
+    }, [localStorage, setLocalStorage])
 
      return(
          <div className="browse-properties">
@@ -331,59 +353,60 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             </section>
           
 
-               {/* <!-- faq section --> */}
-                <section className={style['faq-section']}>
-                          <div className="container">
-                              <div className={style['faq-icon']}>
-                              <img src="/damac-static/images/speech-bubble 1.png"/>
-                              <h2>Frequently Asked Questions</h2>          
-                              </div>
-                              <div className="row">
-                              <div className="col-md-12">
-                                  <div className={style['faq-wrap']}>
-                                  <div className={style['accordion']} id="accordionExample">
-                                      <div className={style['accordion-item']}>
-                                      <h2 className={style['accordion-header']} id="headingOne">
-                                          <button className={`accordion-button first-faq-drop ${style["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                          What is the lowest mortgage rate in UAE?
-                                          </button>
+            {/* <!-- faq section --> */}
+            <section className={style['faq-section']}>
+                            <div className="container">
+                                <div className={style['faq-icon']}>
+                                <img src="damac-static/images/speech-bubble 1.png"/>
+                                <h2>Frequently Asked Questions</h2>          
+                                </div>
+                                <div className="row">
+                                <div className="col-md-12">
+                                    <div className={style['faq-wrap']}>
+                                    <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
                                       </h2>
-                                      <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                          <div className={style['accordion-body']}>
-                                          The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                          </div>
+                                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        </div>
                                       </div>
-                                      </div>
-                                      <div className={style['accordion-item']}>
-                                      <h2 className={style['accordion-header']} id="headingTwo">
-                                          <button className={`accordion-button second-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                          What is the lowest mortgage rate in UAE?
-                                          </button>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
                                       </h2>
-                                      <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                          <div className={style['accordion-body']}>
-                                          The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                          </div>
+                                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        </div>
                                       </div>
-                                      </div>
-                                      <div className={style['accordion-item']}>
-                                      <h2 className={style['accordion-header']} id="headingThree">
-                                          <button className={`accordion-button third-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                          What is the lowest mortgage rate in UAE?
-                                          </button>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
                                       </h2>
-                                      <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                          <div className={style['accordion-body']}>
-                                          The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                          </div>
+                                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        </div>
                                       </div>
-                                      </div>
-                                  </div>                            
-                                  </div>            
-                              </div>          
-                              </div>        
-                          </div>      
-            </section>
+                                    </div>
+                                  </div>                         
+                                    </div>            
+                                </div>          
+                                </div>        
+                            </div>      
+                        </section>
+
 
              </main>
              <Footer></Footer>
@@ -391,32 +414,9 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
      )
  }
 
- function buildHtml(data){
-    console.log('buildHtml',data);
- }
-
- function useStickyState(defaultValue, key) {
-
-    console.log('jjhfdjskjf')
-    const [value, setValue] = React.useState(defaultValue);
-  
-    React.useEffect(() => {
-      const stickyValue = window.localStorage.getItem(key);
-  
-      if (stickyValue !== null) {
-        setValue(JSON.parse(stickyValue));
-      }
-    }, [key]);
-  
-    React.useEffect(() => {
-      window.localStorage.setItem(key, JSON.stringify(value));
-    }, [key, value]);
-  
-    return [value, setValue];
-  }
 
  function refreshToken(stats=null){
-    console.log(stats);
+    console.log(localStorage);
         if(stats == 401){
          let data = {
              refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
@@ -424,18 +424,22 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
              client_secret:"fbb31a11fcaee62b9e53e98dfee5c6da952747ff09",
              grant_type:"refresh_token"
          }
-         axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
+         axios.post('https://accounts.zoho.com/oauth/v2/token',{data:data},{
+            headers:{
+                'Access-Control-Allow-Origin':'*'
+            }
+        }).then(response => {
              // if(typeof window !== 'undefined'){
              //    console.log('lol',window); 
              // }
-             useStickyState("Zoho-oauthtoken "+response.data.access_token,'access_token');
+            //  useStickyState("Zoho-oauthtoken "+response.data.access_token,'access_token');
              // console.log('response',response.data);
              // localStorage.setItem("access_token", "Zoho-oauthtoken "+response.data.access_token)
              // let entity = response.data.data[0]
          }).catch((e,status)=>{
              if(typeof e.response != "undefined"){
                  if(e.response.status == 401){
-                     console.log(refreshToken(e.response.status));
+                     refreshToken(e.response.status);
                  }
              }
          });

@@ -26,27 +26,31 @@ import { BsBookmark } from 'react-icons/bs';
 import { FaBed } from 'react-icons/fa';
 import { FaBath } from 'react-icons/fa';
 
-// Carousel plugin import
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Slider from "react-slick";
+
+// slick-carousel css
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
+
 import { TESTIMONIAL } from '../graphql/testimonial';
 
 function Bookstep2({entity}) {
 
-  // Carousel
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 0 },
-      items: 1
-    }
+  // Slick slider 
+  const settings = {
+    dots: false,
+    infinite: true,
+    arrows:true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
   };
-  
   return (
     <div id="appBody">
       <Head>
-        <title>Damac - Book Step 2</title>
-        <meta name="description" content="Book Step 2" />
+        <title>Damac - Testimonials</title>
+        <meta name="description" content="Testimonials" />
         
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -67,8 +71,8 @@ function Bookstep2({entity}) {
       {/* <!-- testimonial main section --> */}
 
 
-      <section className={styles['main_client_sec']}>
-        <div className={`${styles["heading_testimonial"]} text-center`}>
+      <section className={`${styles["main_client_sec"]} testimonial_container`}>
+        <div className={`${styles["heading_testimonial"]} text-center container`}>
           <h1>{entity.title}</h1>
           <p>See what our happy clients have to say</p>
         </div>
@@ -94,7 +98,7 @@ function Bookstep2({entity}) {
                     ))
               }*/}
                 <div className={styles['client-slider']}> 
-                  <Carousel className={styles['slider']} responsive={responsive}>
+                  {/* <Carousel className={styles['slider']} responsive={responsive}>
                   {
                    entity.fieldMultipleTestimonails.map( (testimonial, index) => (
                      <div className="row">
@@ -119,7 +123,34 @@ function Bookstep2({entity}) {
                       ))
                   }    
                        
-                  </Carousel>
+                  </Carousel> */}
+                  <Slider {...settings} className={styles['slider']}>
+                  {
+                   entity.fieldMultipleTestimonails.map( (testimonial, index) => (
+                     <div>
+                      <div className="row">
+                      <div className="col-lg-6 order-md-1 order-2">
+                          <div className={styles['client_says']}>
+                            <div className={styles['client_says_txt']}>
+                              <h1>{testimonial.entity.fieldTestimonialHeading}</h1>
+                              <p>{testimonial.entity.fieldTestimonialText}</p>
+                            </div>
+                            <div className={styles['client_name']}>
+                              <p>{testimonial.entity.fieldTestimonialName}</p>
+                            </div>
+                            <div className={styles['client_designation']}>
+                              <p>Investor</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-lg-6 order-md-2 order-1">
+                          <img src={testimonial.entity.fieldTestimonialImage.url} className="img-fluid"/>
+                        </div>   
+                      </div>
+                     </div>
+                      ))
+                  }    
+                  </Slider>
                 </div>
           </div>
         </div>

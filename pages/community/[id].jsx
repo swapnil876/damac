@@ -39,6 +39,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 // Google Map Plugin
 import GoogleMapReact from 'google-map-react';
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 function Community({entity1,projectlist,otherProjects}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -474,10 +475,13 @@ function Community({entity1,projectlist,otherProjects}) {
             </div>
             <div className={styles['brand-partners']}>
               <h4>Brand Partners</h4>
+              
               <div className={styles['brand-icons']}>
-                <img alt=""src="/images/brand-logo/image 26.png"/>
-                <img alt=""src="/images/brand-logo/trumporg.png"/>
-                <img alt=""src="/images/brand-logo/trumporg.png"/>
+                  {
+                    entity1.fieldBrandIcons.map( (icon, index) => (
+                      <img alt=""src={icon.entity.fieldIconImage.url}/>
+                    ))
+                  }
               </div>
             </div>
           </div>
@@ -692,44 +696,44 @@ function Community({entity1,projectlist,otherProjects}) {
                         <div className="row">
                         <div className="col-md-12">
                             <div className={style['faq-wrap']}>
-                            <div className={style['accordion']} id="accordionExample">
-                                <div className={style['accordion-item']}>
-                                <h2 className={style['accordion-header']} id="headingOne">
-                                    <button className={`accordion-button first-faq-drop ${style["accordion-button-custom"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div className={style['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                            <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
+                                      </h2>
+                                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        </div>
+                                      </div>
                                     </div>
-                                </div>
-                                </div>
-                                <div className={style['accordion-item']}>
-                                <h2 className={style['accordion-header']} id="headingTwo">
-                                    <button className={`accordion-button second-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div className={style['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
+                                      </h2>
+                                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        </div>
+                                      </div>
                                     </div>
-                                </div>
-                                </div>
-                                <div className={style['accordion-item']}>
-                                <h2 className={style['accordion-header']} id="headingThree">
-                                    <button className={`accordion-button third-faq-drop ${style["accordion-button-custom"]} ${style["collapsed"]}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    What is the lowest mortgage rate in UAE?
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div className={style['accordion-body']}>
-                                    The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        What is the lowest mortgage rate in UAE?
+                                        </button>
+                                      </h2>
+                                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        </div>
+                                      </div>
                                     </div>
-                                </div>
-                                </div>
-                            </div>                            
+                                  </div>                        
                             </div>            
                         </div>          
                         </div>        
