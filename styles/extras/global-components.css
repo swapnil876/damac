@@ -196,7 +196,7 @@
 
 .historyslidercontainer .slick-next {
     left: -370px;
-    right:unset;
+    right: unset;
     top: 200px;
 }
 
@@ -306,17 +306,33 @@ button.accordion-button {
 
 /* faq accordion */
 
+.country_code_glag_image {
+    margin-right: 12px;
+    width: 16px;
+    height: 16px
+}
+
+.input-element.country-code-element.text-element .css-wmw4vi-ReactDropdownSelect {
+    padding: 14px 14px !important;
+    border: none;
+}
+
+.css-wmw4vi-ReactDropdownSelect:focus,
+.css-wmw4vi-ReactDropdownSelect:focus-within {
+    box-shadow: none !important;
+}
 
 @media (max-width: 1400px) {
     .historyslidercontainer .slick-prev {
         left: -370px;
         top: 210px;
     }
-    
+
     .historyslidercontainer .slick-next {
         left: -310px;
         top: 210px;
     }
+
     .testimonial_container .slick-prev {
         top: 450px;
         right: 225px;
@@ -343,11 +359,12 @@ button.accordion-button {
         left: -310px;
         top: 250px;
     }
-    
+
     .historyslidercontainer .slick-next {
         left: -250px;
         top: 250px;
     }
+
     .testimonial_container .slick-prev {
         top: 370px;
         right: 180px;
@@ -374,11 +391,12 @@ button.accordion-button {
         left: -232px;
         top: 300px;
     }
-    
+
     .historyslidercontainer .slick-next {
         left: -170px;
         top: 300px;
     }
+
     .csr_page_slider .slick-prev {
         left: -220px !important;
         top: 450px !important;
@@ -403,12 +421,13 @@ button.accordion-button {
         top: 0px;
         right: 60px;
     }
-    
+
     .historyslidercontainer .slick-next {
         left: unset;
         top: 0px;
         right: 0px;
     }
+
     .testimonial_container .slick-arrow {
         background: #fff;
         background-image: url('../../public/images/icons/down-chevron-black.png') !important;

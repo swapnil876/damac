@@ -5,6 +5,9 @@ import Link from 'next/link'
 import styles from '../styles/components/ContactForm.module.css';
 
 
+
+import Select from "react-dropdown-select";
+
 export default function InvestorContactForm({ initialValues }){
   
     
@@ -44,6 +47,16 @@ export default function InvestorContactForm({ initialValues }){
         }
     }
 
+
+    
+    const iconIndia = '/images/icons/country_flags/india.png'
+    const iconDubai = '/images/icons/country_flags/uae.png'
+    const iconUsa = '/images/icons/country_flags/usa.png'
+    const options = [
+        { value: 'India', label: <div><img src={iconIndia} className="country_code_glag_image"/>(+91) </div> },
+        { value: 'UAE', label: <div><img src={iconDubai} className="country_code_glag_image"/>(+971) </div> },
+        { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
+      ];
 
     return (
 
@@ -120,13 +133,9 @@ export default function InvestorContactForm({ initialValues }){
                                                 <label className='input-element-wrapper'>
 
                                                     <div className='input-element country-code-element text-element'>
-                                                        {/* <input type='text' name='countryCode' value={'India (+91)'} onChange={handleChange} /> */}
-                                                        <select name="countryCode" onChange={handleChange} className='countryCodeSelectDropDown'>
-                                                        <option value="India (+91)" selected> India (+91)</option>
-                                                        <option value="United States (+1)">US (+1)</option>
-                                                        <option value="United States (+1)">US (+1)</option>
-                                                        <option value="United States (+1)">UAE (+971)</option>
-                                                        </select>
+                                                    <Select name="countryCode"
+                                                            value={options.value}
+                                                            options={options}/> 
                                                     </div>
                                                 </label>
                                             </div>
