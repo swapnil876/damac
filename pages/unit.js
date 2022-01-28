@@ -879,11 +879,14 @@ function useStickyState(defaultValue, key) {
     // let token = window.localStorage.getItem('access_token')
     // let entity2 = data.data.nodeQuery.entities[1];
     // console.log('about',entity1.fieldLocatorsL);
-
+    let token = '';
+    await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
+        token = response.data.access_token
+    })
     await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=1',
     {
         headers:{
-            'Authorization':'Zoho-oauthtoken 1000.35cf7a0f891b0d5a2fd1b074ed49b96f.ac814f4d28e4d20ae9ad32a10c0c6782'
+            'Authorization':'Zoho-oauthtoken '+token
         }
     }).then(response => {
         console.log('response',response);
