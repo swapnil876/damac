@@ -19,6 +19,8 @@ import ContactForm from '../components/ContactForm'
 // import styles from '../styles/pages/Quick.module.css'
 
 
+
+
 import styles from '../styles/pages/dividends.module.css'
 
  // React Responsive
@@ -64,6 +66,7 @@ function Dividends( { mobileDevice } ) {
   }
 
   
+
 
   return (
     <div className='quickfactsheetbody'>
