@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import styles from '../styles/HomeBanner.module.css'
 
+import ReactPlayer from 'react-player'
 
 export default function AboutBanner( { bannerImage, children} ) {
   
@@ -28,6 +29,8 @@ export default function AboutBanner( { bannerImage, children} ) {
     >
        <source src={bannerImage}/>
     </video>
+
+  //  <ReactPlayer className={styles['bg-image']} url={bannerImage} playIcon />
 
     );
 
