@@ -449,108 +449,100 @@ import GoogleMapReact from 'google-map-react';
 
 
                 {/* <!-- payment Plan  --> */}
-                <section className={style['payment-plan']}>
+                 {/* <!-- payment Plan  --> */}
+                 <section className={style['payment-plan']}>
                   <div className="container">
                    
 
                     <div className="accordion" id="accordionExample">
-                    <div className={`accordion-item ${style["custom_accordion_item"]}`}>
-                    <div className="row align-items-center" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style={{'cursor':'pointer'}}>
-                      <div className="col-11 col-md-11">
-                        <div className={style['payment-wrap']}>
-                          <img src="damac-static/images/wallet 1.png" className="img-fluid"/>
-                          <h2>Payment Plan</h2>
-                          <p>Get simple and transparent Financial plan</p>
-                        </div>
+                    <div className={`accordion-item payment_plan_accordion ${style["custom_accordion_item"]}`}>
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <div className={style['payment-wrap']}>
+                            <img src="/damac-static/images/wallet 1.png" className="img-fluid"/>
+                            <h2>Payment Plan</h2>
+                            <p>Get simple and transparent Financial plan</p>
+                          </div>
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div className={`accordion-body ${style["custom_accordion_body"]}`}>
+                          <table border='0' className="payment_plan_table_comp">
+                                <thead className={style['t_head']}>
+                                  <tr>
+                                    <th>Installment</th>
+                                    <th>Milestone</th>
+                                    <th>Payment(%)</th>
+                                  </tr>
+                                </thead>
+                                <tbody className={style['t_body']}>
+                                    <tr>
+                                      <td>Deposit</td>
+                                      <td></td>
+                                      <td className='payment_col'>14</td>
+                                    </tr>
+                                    <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
+                                    <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
+                                    <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
+                                    <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
+                                    <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
+                                    <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
+                                    <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
+                                    <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
+                                    <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
 
-                      </div>
-                      <div className="col-1 col-md-1">
-                        <div className={style['down-arrow']}>
-                          <a href="#"><i className="fas fa-angle-down"></i></a>
-                        </div>
+                                      <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
+                                      <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>   <tr>
+                                      <td>1st Installment</td>
+                                      <td>Within 90 days of sale date</td>
+                                      <td className='payment_col'>12.5</td>
+                                    </tr>
 
-                      </div>
-
-                    </div>
-
-                      <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div className={`accordion-body ${style["custom_accordion_body"]}`}>
-                          <table border='0'>
-                            <thead className={style['t_head']}>
-                              <tr>
-                                <th>Installment</th>
-                                <th>Milestone</th>
-                                <th>Payement(%)</th>
-                              </tr>
-                            </thead>
-                            <tbody className={style['t_body']}>
-                                <tr>
-                                  <td>Deposit</td>
-                                  <td></td>
-                                  <td>14</td>
-                                </tr>
-                                <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-                                <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-                                <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-                                <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-                                <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-                                <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-                                <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-                                <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-                                <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-
-                                   <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-                                   <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>   <tr>
-                                  <td>1st Installment</td>
-                                  <td>Within 90 days of sale date</td>
-                                  <td>12.5</td>
-                                </tr>
-
-                            </tbody>                         
+                                </tbody>                         
                           </table>
                         </div>
                       </div>

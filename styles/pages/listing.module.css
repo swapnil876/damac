@@ -196,6 +196,8 @@ ul.shape-count {
     list-style-type: none;
     padding: 0;
     gap: 40px;
+    max-width: 100%;
+    overflow: auto;
 }
 
 ul.d-flex.shape-count li {
@@ -647,13 +649,13 @@ section.payment-plan {
     color: #fff;
 }
 
-.payment-wrap {
+/* .payment_plan_click_area .payment-wrap {
     background: url('../../public/images/icons/arrow-down.png') right 70px/20px no-repeat;
 }
 
-.payment-wrap:focus {
+.payment_plan_click_area:focus .payment-wrap {
     background: url('../../public/images/icons/arrow-up.png') right 70px/20px no-repeat;
-}
+} */
 
 .payment-wrap h2 {
     font-size: 44px;

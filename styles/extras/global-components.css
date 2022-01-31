@@ -261,7 +261,9 @@
 .accordion-item button {
     color: #fff;
 }
-
+.accordion-button.collapsed{
+    background-color: transparent;
+}
 button.accordion-button {
     padding: 1rem 0rem 4px !important;
 }
@@ -298,6 +300,10 @@ button.accordion-button {
     background-image: url("../../public/images/icons/gold-arrow-down.png") !important;
 }
 
+.payment_plan_accordion .accordion-button:hover::after {
+    background-image: url("../../public/images/icons/arrow-down.png") !important;
+}
+
 .accordion-button:not(.collapsed) {
     color: unset !important;
     background: unset !important;
@@ -321,6 +327,8 @@ button.accordion-button {
 .css-wmw4vi-ReactDropdownSelect:focus-within {
     box-shadow: none !important;
 }
+
+
 
 @media (max-width: 1400px) {
     .historyslidercontainer .slick-prev {
@@ -502,6 +510,10 @@ button.accordion-button {
 }
 
 @media (max-width: 500px) {
+    .payment_plan_table_comp .payment_col{
+        text-align: center;
+    }
+
     .testimonial_container .slick-prev {
         top: 275px;
     }
@@ -512,6 +524,13 @@ button.accordion-button {
 }
 
 @media (max-width: 480px) {
+
+    .payment_plan_table_comp {
+        width: 120% !important;
+        overflow: auto;
+    }
+
+    
 
     .testimonial_container .slick-prev,
     .testimonial_container .slick-next {
