@@ -620,7 +620,7 @@ import * as axios from 'axios';
                   <div className="container">
                     <div className="row">
                     {listing.fieldLocatorsL.map((a,i) => (
-                      <div className="col-6 col-md-4" key={i}>
+                      <div className="col-sm-6 col-md-4" key={i}>
                         <div className={`${style["distance-card"]} text-center`}> 
                           <img src={a.entity.fieldIconm.url}/>
                           <h5>{a.entity.fieldTextc6}</h5>

@@ -38,7 +38,33 @@
 	max-width: 272px;
 }
 
+.icons-grid-item h5 {
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 59px;
+    letter-spacing: 0.01em;
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+.icons-grid-item p {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 149.6%;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+}
 @media ( min-width: 768px ) {
+	.icons-grid-item h5 {
+        font-size: 32px;
+        line-height: 113.6%;
+        letter-spacing: 0.01em;
+    }
+
+    .icons-grid-item p {
+        font-size: 18px;
+        line-height: 149.6%;
+    }
 	.icons-grid {
 		display: grid;
 		grid-gap: 20px;

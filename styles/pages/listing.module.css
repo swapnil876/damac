@@ -532,6 +532,15 @@ section.destance {
     margin-bottom: 12px;
 }
 
+.distance-card p {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 149.6%;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+}
+
 .why-invest {
     background-position: top;
     background-size: cover;
@@ -1150,49 +1159,72 @@ ul.bedroom-detail {
 }
 
 @media(max-width: 768px) {
+    .distance-card h5 {
+        font-size: 32px;
+        line-height: 113.6%;
+        letter-spacing: 0.01em;
+    }
+
+    .distance-card p {
+        font-size: 18px;
+        line-height: 149.6%;
+    }
+
     .payment-plan .custom_accordion_body table th {
         padding: 16px 10px;
     }
+
     .payment-plan .custom_accordion_body table td {
         padding: 6px 5px;
     }
+
     .payment-wrap h2 {
         font-size: 32px;
         line-height: 113.6%;
     }
+
     .payment-plan .custom_accordion_body {
         margin-top: 30px;
     }
+
     .payment-plan .custom_accordion_body table .t_head th {
         font-size: 18px;
         line-height: 113.6%;
         letter-spacing: 0.01em;
     }
+
     .payment-plan .custom_accordion_body table .t_body td {
         font-size: 14px;
         line-height: 149.6%;
     }
+
     .hero-container-small {
         top: 50%;
     }
+
     .map-wrap {
         width: 100%;
         aspect-ratio: unset;
         height: 100vh;
     }
+
     section.\33 d-tour {
         /* margin-bottom: 42px; */
         padding: 82px 0px
     }
+
     .shape-content-wrap {
         padding: 0px 0;
     }
+
     .golf_town_banner {
         aspect-ratio: 1/.5 !important;
     }
+
     .ava_list_btn {
         margin-top: -70px;
     }
+
     a.play-button {
         position: absolute;
         top: calc(50% - 30px);
@@ -1206,41 +1238,52 @@ ul.bedroom-detail {
         padding: 20px 23px 20px 28px;
         text-align: center;
     }
+
     a.play-button i {
         font-size: 20px;
         color: #fff;
     }
+
     .damac-gallery {
         position: relative;
         height: 60vh;
         color: #fff !important;
     }
+
     .damac-gallery img {
         object-fit: cover;
     }
+
     section.golf-town {
         padding-bottom: 9px;
     }
+
     .hero-container {
         left: 0px;
     }
+
     section.estimate .col-md-8 {
         padding-right: calc(var(--bs-gutter-x) * .5);
     }
+
     .estimate-inner {
         width: 100%;
         flex-direction: column;
     }
+
     .border-white {
         width: 100%;
     }
+
     .shape-content-wrap {
         padding-left: 0;
     }
+
     .project-left h1 {
         font-size: 40px;
         line-height: 45px;
     }
+
     .project-right ul li a {
         padding: 9px;
         margin-right: 0px;
@@ -1249,54 +1292,68 @@ ul.bedroom-detail {
         display: block;
         cursor: pointer;
     }
+
     .project-right ul li {
         margin-right: 5px;
     }
+
     .project-left span {
         font-size: 18px;
     }
+
     .project-left a {
         font-size: 14px;
         text-decoration: none;
         color: #111
     }
+
     .project-left a:hover {
         color: #111 !important
     }
+
     .project-hero-image img {
         height: 100%;
         object-fit: cover;
     }
+
     .project-hero-image {
         height: 100vh;
     }
+
     .project-right ul {
         list-style-type: none;
         padding: 0;
         padding-top: 20px;
     }
+
     .shape-item h2 {
         font-size: 33px;
         line-height: 33px;
         margin-bottom: 20px;
     }
+
     .shape-item {
         padding-bottom: 20px;
         padding-top: 50px;
     }
+
     .shape-item h4 {
         font-size: 24px;
         line-height: 28px;
     }
+
     .shape-item p {
         font-size: 16px;
     }
+
     ul.shape-count {
         gap: 0;
     }
+
     .shape-image.float-end {
         padding-top: 0;
     }
+
     .gal-content {
         width: 35vw;
         margin: 0 auto;
@@ -1305,12 +1362,14 @@ ul.bedroom-detail {
         left: 13px;
         color: #fff;
     }
+
     .town-slider,
     .town-slider img {
         height: 100%;
         object-fit: cover;
         object-position: left;
     }
+
     .invest-wrap {
         width: 100%;
     }
@@ -1320,89 +1379,111 @@ ul.bedroom-detail {
     .gal-content {
         left: 0px;
     }
+
     .shape-wrap-plan {
         justify-content: inherit;
         margin-top: 25px;
     }
+
     .shape-item p br {
         display: none;
     }
+
     .gal-content {
         width: 100%;
         padding: 10px;
     }
+
     section.damac-gallery .d-flex {
         display: block !important;
     }
+
     section.damac-gallery .left-side-gallery .d-flex {
         display: flex !important;
     }
+
     .town-slider,
     .town-slider img {
         height: 100%;
         object-fit: cover;
         object-position: center;
     }
+
     .invest-wrap p {
         margin-bottom: 40px;
         font-size: 16px;
         line-height: 28px;
     }
+
     .invest-wrap p br {
         display: none;
     }
+
     .invest-wrap h2 {
         margin-bottom: 9px;
         font-size: 31px;
         letter-spacing: 0.01em;
     }
+
     .invest-wrap {
         padding: 20px;
         width: 100%;
     }
+
     ul.shape-count {
         gap: 100px;
         justify-content: start;
     }
+
     ul.d-flex.shape-count p {
         line-height: 20px;
     }
+
     .shape-plan {
         border-left: none;
         padding-left: 0px;
     }
+
     .project-detail {
         padding-top: 50px;
         padding-bottom: 50px;
     }
+
     .damac-light-title h2 {
         font-size: 32px;
         line-height: 32px;
     }
+
     .brand-loc {
         margin-top: 40px;
         margin-bottom: 40px;
     }
+
     .comm-location {
         padding-top: 50px;
         padding-bottom: 50px;
         color: #000;
     }
+
     .master-plan {
         padding-bottom: 50px;
         padding-bottom: 50px;
     }
+
     .town-ship-title p br {
         display: none;
     }
+
     section.other-community {
         padding-top: 50px;
         padding-bottom: 50px;
     }
+
     section.faq-section {
         padding-top: 50px;
         padding-bottom: 50px;
     }
+
     .hero-container {
         left: 0;
     }

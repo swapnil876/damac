@@ -705,7 +705,7 @@ function ProjectPage({entity1}) {
 
                             {
                               entity1.fieldMultipleLocatorsp4.map((item)=>(
-                                <div className="col-6 col-md-4">
+                                <div className="col-sm-6 col-md-4">
                                 <div className="distance-card text-center">
                                   <img alt=""src={item.entity.fieldIconm.url} />
                                   <h5>{item.entity.fieldValuec6}</h5>

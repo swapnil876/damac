@@ -612,7 +612,7 @@ import GoogleMapReact from 'google-map-react';
                   <div className="container">
                     <div className="row">
                     {listing.fieldLocatorsL.map((a,i) => (
-                      <div className="col-6 col-md-4">
+                      <div className="col-sm-6 col-md-4">
                         <div className={`${style["distance-card"]} text-center`}> 
                           <img src={a.entity.fieldIconm.url}/>
                           <h5>{a.entity.fieldTextc6}</h5>

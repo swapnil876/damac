@@ -519,7 +519,14 @@ input.range-slider {
     margin-top: 16px;
     margin-bottom: 12px;
 }
-
+.destance p {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 149.6%;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+}
 .map-section img {
     width: 100%
 }
@@ -852,7 +859,16 @@ ul.shape-count {
 }
 
 @media(max-width:767px) {
+    .destance h5 {
+        font-size: 32px;
+        line-height: 113.6%;
+        letter-spacing: 0.01em;
+    }
 
+    .destance p {
+        font-size: 18px;
+        line-height: 149.6%;
+    }
     /* .popup_map_img img{
         width:500px
     } */

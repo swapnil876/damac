@@ -526,7 +526,7 @@ function Community({entity1,projectlist,otherProjects}) {
           {
             (entity1.fieldMultipleLocators.length > 0) ?
             entity1.fieldMultipleLocators.forEach((item)=>{
-              <div className="col-6 col-md-4">
+              <div className="col-sm-6 col-md-4">
               <div className="distance-card text-center">
                 <img alt={item.entity.fieldTextc6} src={item.entity.fieldIconm.url} />
                 <h5>{item.entity.fieldValuec6}</h5>
