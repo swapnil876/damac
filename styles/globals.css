@@ -77,7 +77,18 @@ a:hover {
     min-height: 300px;
 }
 
-
+.form-submit {
+    background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%) !important;
+    border-radius: 4px;
+    padding: 14px 0;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 113.6%;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+}
 
 
 @media (min-width: 1200px) {
@@ -195,6 +206,9 @@ h1,
 }
 
 @media (max-width:768px) {
+    .form-submit{
+        margin-top:78px
+    }
     .custom_modal_contain .popup_modal {
         width: 90%
     }
@@ -400,7 +414,8 @@ b {
     font-size: 20px;
 }
 
-h3.section-title, h1.section-title {
+h3.section-title,
+h1.section-title {
     font-size: 44px;
 }
 
@@ -409,7 +424,8 @@ h3.section-title, h1.section-title {
         font-size: 18px;
     }
 
-    h3.section-title, h1.section-title {
+    h3.section-title,
+    h1.section-title {
         font-size: 32px;
     }
 }
@@ -418,6 +434,14 @@ h3.section-title, h1.section-title {
 .heading-medium {
     font-size: 32px;
     margin-bottom: 16px;
+}
+
+.heading-medium p {
+    margin-bottom: 0;
+}
+
+.section-data-boxes .data-box {
+    margin-bottom: 15px;
 }
 
 @media (min-width: 768px) {
@@ -688,11 +712,12 @@ a.btn.btn-blur-dark {
     color: #111;
     padding: 30px;
     display: flex;
+    justify-content: space-around;
 }
 
 .aboutbody .numbersdata .numberdata {
     display: block;
-    width: 50%;
+    width: 45%;
 }
 
 .numberdata h4 {
@@ -716,8 +741,18 @@ a.btn.btn-blur-dark {
 
 
 @media (max-width: 768px) {
+    .numberdata h4 {
+        font-size: 32px;
+        line-height: 99.6%;
+    }
+       
+    .numberdata p {
+        font-size: 18px;
+        line-height: 136.6%;
+        letter-spacing: 0.02em;
+    }
     .aboutbody .numbersdata {
-        margin-bottom: 52px;
+        /* margin-bottom: 52px; */
         padding: 30px 24px;
     }
 
@@ -739,6 +774,8 @@ a.btn.btn-blur-dark {
     .aboutbody .numbers-row-col {
         padding-left: 0 !important;
         padding-right: 0 !important;
+        position: relative;
+    top: -52px;
     }
 }
 
@@ -1019,9 +1056,11 @@ section.damac-about-chairman .aboutChairmanbox {
     margin-bottom: 20px;
     font-size: 32px;
 }
-.historyslidercontainer .historyslide .historytext{
+
+.historyslidercontainer .historyslide .historytext {
     max-width: 100%;
 }
+
 .historyslidercontainer .historyslide p {
     font-family: "Roboto";
     font-weight: 300;
@@ -1512,11 +1551,13 @@ footer.damac-footer .footer-logo {
     margin-right: 20px;
     aspect-ratio: 494/347;
 }
-.milestone-carousel-item .image-text .img img{
+
+.milestone-carousel-item .image-text .img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 .milestone-carousel-item .image-text .text {
     text-align: left;
 }
@@ -1687,25 +1728,30 @@ footer.damac-footer .footer-logo {
     font-size: 20px;
     max-width: 480px;
 }
-@media(max-width: 1200px){
+
+@media(max-width: 1200px) {
     .milestone-carousel-item .image-text {
         flex-direction: column;
     }
-    .milestone-carousel-item .image-text .img{
+
+    .milestone-carousel-item .image-text .img {
         margin-bottom: 24px;
     }
 }
-@media(max-width: 992px){
-}
+
+@media(max-width: 992px) {}
+
 @media (max-width: 768px) {
-    .milestone-carousel-item .image-text .img{
-        width:60%;
+    .milestone-carousel-item .image-text .img {
+        width: 60%;
         min-width: unset;
         aspect-ratio: 1/1;
     }
-    .text-section-whhydubai-1 h3{
+
+    .text-section-whhydubai-1 h3 {
         font-size: 26px !important;
     }
+
     .banner-conent-style-1 .banner-text-body h3,
     .banner-conent-style-1 .banner-text-body h1 {
         font-size: 32px;

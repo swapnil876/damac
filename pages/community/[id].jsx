@@ -131,14 +131,31 @@ function Community({entity1,projectlist,otherProjects}) {
                                     </div>
                                 </div>
                                 <div className="col-md-5">
+                                  {
+                                    !isMobile ?
                                     <div className={style['project-right']}>
-                                        <ul className="d-flex align-items-center">
-                                            <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
-                                            <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
-                                            <li><a href={entity1.fieldBrochure.entity.url} target="_blank">Download Brochure</a></li>
-                                            <li><a href="#">View Gallery (19)</a></li>              
-                                        </ul>              
+                                    <ul className="d-flex align-items-center">
+                                        <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
+                                        <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
+                                        <li><a href={entity1.fieldBrochure.entity.url} target="_blank">Download Brochure</a></li>
+                                        <li><a href="#">View Gallery (19)</a></li>              
+                                    </ul>              
+                                   </div>
+                                    :
+                                    <div className="project-right-for-mobile">
+                                    <button type="button" className="schedule_a_callback_btn">Schedule a call-back</button>
+                                    <div className="row">
+                                    <div className="col-6">
+                                    <a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a>             
                                     </div>
+                                    <div className="col-6">
+                                    <a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a>              
+                                    </div>
+                                    </div>
+                                 
+                                  </div>
+                                  }
+                                   
                                 </div>    
                             </div>       
                         </div>  
@@ -167,7 +184,7 @@ function Community({entity1,projectlist,otherProjects}) {
                   <p><span>Properties</span></p>
                  </div>
                 <div className="section-data-boxes">
-                  
+                  <div className="container">
                   <div className="data-box">
                     <h2 className="heading-medium">{entity1.fieldArea} sqft.</h2>
                     <p>Starting area</p>
@@ -179,6 +196,7 @@ function Community({entity1,projectlist,otherProjects}) {
                   <div className="data-box">
                     <h2 className="heading-medium">{entity1.fieldStartingFromPrice}</h2>
                     <p>AED</p>
+                  </div>
                   </div>
                 </div>  
               </div>

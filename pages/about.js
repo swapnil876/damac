@@ -105,6 +105,18 @@ function About({entity1}) {
     ]
   };
 
+  var leadership = {
+    dots: false,
+    infinite: false,
+    arrows: false,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    rows: 2,
+    slidesPerRow: 5
+  };
+
   return (
     <div className='aboutbody'>
 
@@ -200,10 +212,7 @@ function About({entity1}) {
                    <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescription4.value }}></div>
                    {/* <p>In 2002, Dubai’s leadership opened up the real estate market to international investors by allowing freehold ownership. DAMAC Properties was incorporated the same year, and purchased land for its very first project in the Dubai Marina area.</p> */}
 
-                   
-                 </div>
-               </div>
-               <div className="ctabtn-container">
+                   <div className="ctabtn-container">
                  <div className="cta-container">
                    <Link href="#">
                      <a className="btn btn-primary cta-btn">
@@ -212,6 +221,9 @@ function About({entity1}) {
                    </Link>
                  </div>
                </div>
+                 </div>
+               </div>
+             
              </div>
              <div className="col-md-5 ps-md-0" >
                   { !deviceIsMobile && 
@@ -247,21 +259,39 @@ function About({entity1}) {
            <div className="leadership-boxes">
             <div className="row">
             {
-                   entity1.fieldMultipleTeam.map( (team, index) => (
-                      <div className="col-md-3 col-6" key={index}>
-                         <div className="leadershipbox">
-                           <div className="leadershipimg">
-                             <img alt="" src={team.entity.fieldImage.url}/>
-                           </div>
-                           <div className="leadership-details">
-                             <h5>{team.entity.fieldName}</h5>
-                             <p>{team.entity.fieldTitleTeam}</p>
-                           </div>
-                         </div>
+              !isMobile ? 
+                entity1.fieldMultipleTeam.map( (team, index) => (
+                   <div className="col-md-3 col-6" key={index}>
+                      <div className="leadershipbox">
+                        <div className="leadershipimg">
+                          <img alt={team.entity.fieldName} src={team.entity.fieldImage.url}/>
+                        </div>
+                        <div className="leadership-details">
+                          <h5>{team.entity.fieldName}</h5>
+                          <p>{team.entity.fieldTitleTeam}</p>
+                        </div>
                       </div>
-                  ))
+                   </div>
+               ))
+              :
+              <Slider {...leadership}>
+              {
+                entity1.fieldMultipleTeam.map( (team, index) => (
+                  <div className="col-6" key={index}>
+                  <div className="leadershipbox">
+                    <div className="leadershipimg">
+                      <img alt={team.entity.fieldName} src={team.entity.fieldImage.url}/>
+                    </div>
+                    <div className="leadership-details">
+                      <h5>{team.entity.fieldName}</h5>
+                      <p>{team.entity.fieldTitleTeam}</p>
+                    </div>
+                    </div>
+                  </div>
+                   ))
+              }
+              </Slider>
             }
-            
             </div>
            </div>
 
