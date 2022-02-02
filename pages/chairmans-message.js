@@ -70,7 +70,7 @@ function ChairmansMessage({entity1}) {
 
            <section className="chairmans-message-para">
              <div className="container">
-               <p>{entity1.fieldTextChairman}</p>
+               <p>{entity1.fieldDescriptiveText}</p>
               
                <h4 className="chairmans-name">Hussain Sajwani</h4>
 

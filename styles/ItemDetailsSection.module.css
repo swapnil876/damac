@@ -1,6 +1,7 @@
 /**/
 .item-details-section {
 	position: relative;
+	background-color: #fff;
 }
 .bg-image {
 	position: absolute;
