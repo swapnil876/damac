@@ -13,6 +13,7 @@ import { useMediaQuery } from 'react-responsive'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { CHAIRMANMESSAGE } from '../graphql/chairman_message';
+import { isMobile } from 'react-device-detect'
 
 
 // import styles from '../styles/.module.css'
@@ -62,26 +63,24 @@ function ChairmansMessage({entity1}) {
                      <h2>{entity1.title}</h2>
                    </div>
                  </div>
-
                </div>
-
              </div>
            </section>
 
            <section className="chairmans-message-para">
              <div className="container">
-               <p>{entity1.fieldDescriptiveText}</p>
+               {/* <p>{entity1.fieldDescriptiveText.value}</p> */}
+
+               <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptiveText.value }}></div>
               
                <h4 className="chairmans-name">Hussain Sajwani</h4>
-
+               {
+               !isMobile ? "" : <Link href=""><a className="read_more_btn">Read More</a></Link>
+             }
              </div>
-           </section>
-        
+           </section> 
       </main>
-
-      <Footer></Footer>
-
-      
+      <Footer></Footer>  
     </div>
   )
 }

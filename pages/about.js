@@ -213,13 +213,13 @@ function About({entity1}) {
                    {/* <p>In 2002, Dubai’s leadership opened up the real estate market to international investors by allowing freehold ownership. DAMAC Properties was incorporated the same year, and purchased land for its very first project in the Dubai Marina area.</p> */}
 
                    <div className="ctabtn-container">
-                 <div className="cta-container">
-                   <Link href="#">
-                     <a className="btn btn-primary cta-btn">
-                       <span>Read the Chairman’s message</span>
-                     </a>
-                   </Link>
-                 </div>
+                    <div className="cta-container">
+                      <Link href="#">
+                        <a className="btn btn-primary cta-btn">
+                          <span>Read the Chairman’s message</span>
+                        </a>
+                      </Link>
+                    </div>
                </div>
                  </div>
                </div>

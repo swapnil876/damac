@@ -12,9 +12,10 @@
     border-radius: 4px;
 }
 
-.form-check-cust{
+.form-check-cust {
     padding-left: 0 !important;
 }
+
 /* .checkbox_input input[type=checkbox]:checked {
     background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%) !important;
 } */
@@ -88,7 +89,7 @@
     padding: 1px 20px;
     display: block;
     text-decoration: none;
-    color:#111
+    color: #111
 }
 
 .dropdown-item:active,
@@ -152,23 +153,30 @@ span.form-title {
 }
 
 .office-main h1 {
-    padding-bottom: 70px;
+    padding-bottom: 30px;
 }
-.accordion-button-custom{
-    color:black !important;
-    box-shadow:none;
-    border:none
+
+.accordion-button-custom {
+    color: black !important;
+    box-shadow: none;
+    border: none;
+    min-width: 70px;
+    opacity: 0.6;
 }
-.accordion-button-custom:not(.collapsed){
+
+.accordion-button-custom:not(.collapsed) {
     background: transparent !important;
 }
-.accordion-button-custom{
+
+.accordion-button-custom {
     width: 100px !important;
 }
-.accordion-button-custom:not(.collapsed)::after{
-    background-image: url("../../public/images/icons/up-chevron-black.png") !important;
+
+.accordion-button-custom:not(.collapsed)::after {
+    background-image: url("../../public/images/icons/angle-down.png") !important;
     background-size: 14px !important;
 }
+
 .contact-detail h2 {
     font-size: 22px;
     letter-spacing: 0.03em;
@@ -182,11 +190,14 @@ span.form-title {
     line-height: 24px;
     margin-bottom: 8px;
 }
-.contact-number{
+
+.contact-number {
     display: flex;
     align-items: center;
 }
-.contact-number i, .contact-number svg {
+
+.contact-number i,
+.contact-number svg {
     font-size: 16px;
     margin-right: 8px;
 }
@@ -195,7 +206,7 @@ span.form-title {
     font-size: 16px;
     font-weight: 300;
     text-decoration: none;
-    color:#111
+    color: #111
 }
 
 .contact-number a:hover {
@@ -328,7 +339,26 @@ a.contact-form-btn {
     margin-bottom: 50px;
 }
 
+.office-main{
+    border-bottom: 1px solid #f1f1f1;
+    margin-bottom: 40px;
+}
+
 @media(max-width: 767px) {
+    .accordion-button-custom {
+        min-width: 50px;
+    }
+    .form-check-input {
+        width: 20px;
+        height: 20px;
+    }
+
+    .form-feild input,
+    .form-feild select {
+        /* height: 48px; */
+        margin-bottom: 0px;
+    }
+
     a.contact-form-btn {
         width: 100%;
     }

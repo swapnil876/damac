@@ -206,9 +206,10 @@ h1,
 }
 
 @media (max-width:768px) {
-    .form-submit{
-        margin-top:78px
+    .form-submit {
+        margin-top: 78px
     }
+
     .custom_modal_contain .popup_modal {
         width: 90%
     }
@@ -745,12 +746,13 @@ a.btn.btn-blur-dark {
         font-size: 32px;
         line-height: 99.6%;
     }
-       
+
     .numberdata p {
         font-size: 18px;
         line-height: 136.6%;
         letter-spacing: 0.02em;
     }
+
     .aboutbody .numbersdata {
         /* margin-bottom: 52px; */
         padding: 30px 24px;
@@ -775,7 +777,7 @@ a.btn.btn-blur-dark {
         padding-left: 0 !important;
         padding-right: 0 !important;
         position: relative;
-    top: -52px;
+        top: -52px;
     }
 }
 
@@ -1415,6 +1417,7 @@ footer.damac-footer .footer-logo {
 }
 
 @media (min-width: 768px) {
+
     .footer2ndrow {
         margin-top: 180px;
     }
@@ -1425,6 +1428,23 @@ footer.damac-footer .footer-logo {
 }
 
 @media (max-width: 767px) {
+    .chairmans-message-para {
+        position: relative;
+        position: relative;
+        top: -164px;
+        background: #fff;
+        padding-top: 50px
+    }
+
+    .chairmans-portrait-section .chairmans-message-text {
+        padding-top: 0px;
+        padding: 24px 20px 0 0;
+        width: 90%;
+        background: #fff;
+        position: relative;
+        top: -133px;
+        left: -1px;
+    }
 
     .building-documentation-link li .doc-name a,
     .building-documentation-link li .doc-name {

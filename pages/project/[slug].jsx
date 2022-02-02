@@ -376,8 +376,7 @@ function ProjectPage({entity1}) {
                                      <div className={style['project-right']}>
                                         <ul className="d-flex align-items-center">
                                             <li><a onClick={()=>{
-                                              document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'd', 'ctrlKey': true}));  
-                                              console.log("clicked"); 
+                                              document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'd', 'ctrlKey': true}));   
                                             }}><img src="/damac-static/images/save.png" /></a></li>
                                             <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
                                             <li><a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a></li>
