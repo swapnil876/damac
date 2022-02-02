@@ -438,7 +438,7 @@ button.accordion-button {
     text-align: center;
     letter-spacing: 0.02em;
     color: #FFFFFF;
-    margin-top:16px
+    margin-top: 16px
 }
 
 @media (max-width: 1400px) {
@@ -914,7 +914,8 @@ button.accordion-button {
 }
 
 .custom-input-element .input-element>input,
-.custom-input-element .input-element>select {
+.custom-input-element .input-element>select,
+.mr_mrs_drop select {
     background-color: transparent;
     color: #333;
     border: 0;
@@ -927,8 +928,19 @@ button.accordion-button {
     position: relative;
     z-index: 1;
 }
+.mr_mrs_drop select {
+    background-color: #f5f5f5;
+}
+.custom-input-element .input-element>input::placeholder {
+    font-size: 16px;
+    line-height: 113.6%;
+    letter-spacing: 0.02em;
+    color: #000000;
+    opacity: 0.4;
+}
 
-.custom-input-element .input-element>select {
+.custom-input-element .input-element>select,
+.mr_mrs_drop select {
     appearance: none;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
