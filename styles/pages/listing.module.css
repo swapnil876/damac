@@ -82,7 +82,7 @@
 }
 
 .project-left p {
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
 }
 
 .project-right ul li a {
@@ -149,7 +149,7 @@ section.inner-wrap-hero {
     /* left: 104px; */
     /* New Styles */
     position: relative;
-    top: 60%;
+    top: 70%;
     width: 100%
 }
 
@@ -253,6 +253,7 @@ section.shape-wrap.side-img-content {
     line-height: 22px;
     letter-spacing: 0.02em;
     opacity: 80%;
+    margin-bottom: 0;
 }
 
 .shape-plan h2 {
@@ -1159,6 +1160,31 @@ ul.bedroom-detail {
 }
 
 @media(max-width: 768px) {
+    .invest-wrap a.read-more {
+        background: #FFFFFF;
+        border-radius: 4px;
+        padding: 15px 0;
+        text-align: center;
+        width: 100%;
+        display: block;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 113.6%;
+        letter-spacing: 0.02em;
+        color: #000000;
+        opacity: 0.85;
+        margin-top:65px;
+    }
+
+    .why-invest {
+        padding: 57px 0 48px
+    }
+
+    .about-location-style-2 .solid-icon {
+        display: block;
+        margin: auto;
+    }
+
     .distance-card h5 {
         font-size: 32px;
         line-height: 113.6%;
@@ -1304,11 +1330,11 @@ ul.bedroom-detail {
     .project-left a {
         font-size: 14px;
         text-decoration: none;
-        color: #111
+        color: #fff
     }
 
     .project-left a:hover {
-        color: #111 !important
+        color: #fff !important
     }
 
     .project-hero-image img {
@@ -1374,15 +1400,23 @@ ul.bedroom-detail {
         width: 100%;
     }
 }
+section.estimate .custom_white_btn{
+    box-shadow: 0px -6px 84px rgba(0, 0, 0, 0.15);
+
+}
 
 @media(max-width: 767px) {
+    section.estimate .custom_white_btn{
+        margin:auto;
+        margin-top:40px
+    }
     .gal-content {
         left: 0px;
     }
 
     .shape-wrap-plan {
         justify-content: inherit;
-        margin-top: 25px;
+        /* margin-top: 25px; */
     }
 
     .shape-item p br {
@@ -1498,6 +1532,12 @@ ul.bedroom-detail {
 @media(max-width: 550px) {
     .golf_town_banner {
         aspect-ratio: 1/.7 !important;
+    }
+}
+
+@media(max-width: 375px) {
+    .hero-container {
+        top: 60%;
     }
 }
 

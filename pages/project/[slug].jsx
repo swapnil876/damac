@@ -26,6 +26,13 @@ import BoxedTextSection from "../../components/sections/BoxedTextSection";
 
 import SimilarPropertiesGridSection from "../../components/sections/SimilarPropertiesGridSection";
 
+
+import Slider from "react-slick";
+
+// slick-carousel css
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -130,6 +137,19 @@ function ProjectPage({entity1}) {
         zoom: 11
       };
     // Google Map Items
+
+
+
+
+  // Slick slider 
+  var settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+  };
 
 
   return (
@@ -351,14 +371,32 @@ function ProjectPage({entity1}) {
                                     </div>
                                 </div>
                                 <div className="col-md-5">
-                                    <div className={style['project-right']}>
+                                   {
+                                     !isMobile ?
+                                     <div className={style['project-right']}>
                                         <ul className="d-flex align-items-center">
-                                            <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
+                                            <li><a onClick={()=>{
+                                              document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'd', 'ctrlKey': true}));  
+                                              console.log("clicked"); 
+                                            }}><img src="/damac-static/images/save.png" /></a></li>
                                             <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
                                             <li><a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a></li>
                                             <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a></li>                
                                         </ul>              
+                                    </div> :
+                                    <div className={`${styles["project-right"]} project-right-for-mobile`}>
+                                      <button type="button" className="schedule_a_callback_btn">Schedule a call-back</button>
+                                      <div className="row">
+                                      <div className="col-6">
+                                      <a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a>             
+                                      </div>
+                                      <div className="col-6">
+                                      <a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a>              
+                                      </div>
+                                      </div>
+                                   
                                     </div>
+                                   } 
                                 </div>    
                             </div>       
                         </div>  
@@ -408,40 +446,65 @@ function ProjectPage({entity1}) {
                     </section>
                     <div className={style['shape-detail']}>
                         <div className="container">
+                          {
+                            !isMobile ? 
                             <div className="row">
-                                <div className="col-md-6">
-                                    <div className="d-flex justify-content-between">
-                                    <div className={style['vs-range']}>
-                                        <h5><a href="#">{entity1.fieldStartingFromPriceP2}</a></h5>
-                                        <p>Starting from</p>
-                                    </div>
-                                    <div className={style['vs-range']}>
-                                        <h5><a href="#">{entity1.fieldLocalityP2}</a></h5>
-                                        <p>Locality</p>
-                                    </div>
-                                    <div className={style['vs-range']}>
-                                        <h5><a href="#">{entity1.fieldStatusP2}</a></h5>
-                                        <p>Status</p>
-                                    </div>
-
-                                    </div>
+                            <div className="col-md-6">
+                                <div className="d-flex justify-content-between">
+                                <div className={style['vs-range']}>
+                                    <h5><a href="#">{entity1.fieldStartingFromPriceP2}</a></h5>
+                                    <p>Starting from</p>
                                 </div>
-                                <div className="col-md-6">
-                                    <div className={style['shape-wrap-plan']}>              
-                                        <div className={`${style["shape-contact"]} float-end`}>
-                                            <ul className="d-flex align-items-center p-0">
-                                            <li><a href="#" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
-                                            <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
-                                            </ul>                  
-                                        </div>                
-                                    </div>              
-                                </div>            
-                            </div>          
+                                <div className={style['vs-range']}>
+                                    <h5><a href="#">{entity1.fieldLocalityP2}</a></h5>
+                                    <p>Locality</p>
+                                </div>
+                                <div className={style['vs-range']}>
+                                    <h5><a href="#">{entity1.fieldStatusP2}</a></h5>
+                                    <p>Status</p>
+                                </div>
+
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className={style['shape-wrap-plan']}>              
+                                    <div className={`${style["shape-contact"]} float-end`}>
+                                        <ul className="d-flex align-items-center p-0">
+                                        <li><a href="#" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                        <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
+                                        </ul>                  
+                                    </div>                
+                                </div>              
+                            </div>            
+                        </div>   :
+                          <div className="row">
+                          <div className="col-8">
+                              <div>
+                              <div className={style['vs-range']}>
+                                  <h5><a href="#">{entity1.fieldLocalityP2}</a></h5>
+                                  <p>Locality</p>
+                              </div>
+                              </div>
+                          </div>
+                          <div className="col-4">
+                              <div className={style['shape-wrap-plan']}>              
+                                  <div className={`${style["shape-contact"]} float-end`}>
+                                      <ul className="d-flex align-items-center p-0">
+                                      <li><a href="#" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                      <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
+                                      </ul>                  
+                                  </div>                
+                              </div>              
+                          </div>            
+                      </div>   
+                          }       
                         </div>        
                     </div> 
                     {/* <!-- Gallery Section --> */}
                     <section className={style['damac-gallery']}>
-                        <div className={style['angry-grid']}>
+                        {
+                          !isMobile ? 
+                          <div className={style['angry-grid']}>
                             <div className={style['gr-item-0']}>
                             <div className={style['right-side-gallery']}>
                             <img src={isMobile?entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
@@ -468,7 +531,27 @@ function ProjectPage({entity1}) {
                                 
                             </div>
                             </div>
-                        </div>           
+                        </div> :
+
+                        <div className="container-fluid sec_3_gallery_grid_for_mobile p-0">
+                          <div className="text_on_img_sec">
+                          <img src={isMobile?entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
+                            <div className="gal-content-2">
+                                <p>
+                                  {entity1.fieldCol1TextP3}
+                                </p>
+                            </div>     
+                          </div>
+                          <div className="row">
+                            <div classnName="col-6 p-0">
+                            <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} classnNameName="img-fluid"/>
+                            </div>
+                            <div classnName="col-6 p-0">
+                            <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} className="img-fluid"/>
+                            </div>
+                          </div>
+                        </div>
+                        }          
                     </section> 
                     {/* <!-- Township detail  --> */}
                     <section className={style['town-ship-detail']}>
@@ -531,32 +614,41 @@ function ProjectPage({entity1}) {
                                 </div>
                             </div>
                             </div>
-                            <div className="col-md-6">
-                            <div className={style['town-slider']}>
-                                <img src="/damac-static/images/listing-slider.png" className="img-fluid" />
-                                <div className={`${style["slider-nav"]} text-center`}>
-                                <div className={style['left-nav']}>
-                                    <a href="#"><FaAngleLeft/></a>
-                                </div>
-                                <div className={style['right-nav']}>
-                                    <a href="#"><FaAngleRight/></a>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
+                            {
+                              !isMobile ? 
+                              <div className="col-md-6">
+                              <div className={style['town-slider']}>
+                                  <img src="/damac-static/images/listing-slider.png" className="img-fluid" />
+                                  <div className={`${style["slider-nav"]} text-center`}>
+                                  <div className={style['left-nav']}>
+                                      <a href="#"><FaAngleLeft/></a>
+                                  </div>
+                                  <div className={style['right-nav']}>
+                                      <a href="#"><FaAngleRight/></a>
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+                              : ""
+                            }
+                           
                         </div>
                         </div>
                     </section>
 
-                    <section className={styles['about-location']}>
+                    <section className={`${styles["about-location"]} ${style["about-location-style-2"]}`}>
                       <div className="container">
-                        <div className="row">
-                        <div className="col-md-6">
-                        <div className={`text-wrapper`}>
+                      <div className="row">
+                        <div className="col-md-6 col-8">
+                         <div className={`text-wrapper`}>
                               <div className="top-text">
                           <h2>Community and Area</h2>
                           </div>
                           </div>
+                          </div>
+                          </div>
+                        <div className="row">
+                        <div className="col-md-6 order-md-1 order-2">
                           <div className={styles['brand-partners']}>
                             <h4>Brand Partners</h4>
                             <div className={styles['brand-icons']}>
@@ -566,7 +658,7 @@ function ProjectPage({entity1}) {
                             </div>
                           </div>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 order-md-2 order-1">
                           <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
                           <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
                           <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
@@ -788,6 +880,7 @@ function ProjectPage({entity1}) {
                                   <p> 5</p>
                                 </div>
                               </div>
+                              
                             </div>
                             <div className="col-md-4">
                               <div className={style['estimate-cost']}>
@@ -808,6 +901,12 @@ function ProjectPage({entity1}) {
                               </div>
                             </div>
                           </div>
+                          <div className="row">
+                          <div className="col-md-8">
+                          <button type="button" className={style['custom_white_btn']}>Enquire Now</button>
+                          </div>
+                          </div>
+                          
                         </div>
                     </section>
 
@@ -826,12 +925,17 @@ function ProjectPage({entity1}) {
                               </div>
                             </div>
                               </div>
+                            {
+                              !isMobile ?
                               <div className="col-md-4">
                               <button type="button" className={`${style["solid-icon"]} ${style["ava_list_btn"]}`} style={{'border':'0', 'padding':'15px 35px', 'float':'right', 'margin-bottom':'20px'}}>View All </button>
-                              </div>
+                              </div> : ""
+                            }
                           </div>
                           
-                            <div className="row">
+                            {
+                              !isMobile ? 
+                              <div className="row">
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
@@ -1019,7 +1123,6 @@ function ProjectPage({entity1}) {
                                   </div>
                                 </div>
                               </div>
-
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
                                   <div className={style['project-card']}>
@@ -1043,26 +1146,152 @@ function ProjectPage({entity1}) {
                                 </div>
 
                               </div>
+                              </div> : 
+                               <div className="row project_detail_mobile_sliders">
+                               <Slider {...settings}>
+                               <div>
+                                 <div className={style['property-slider-wrap']}>
+                                   <div className={style['project-card']}>
+                                   <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />  
+                                   </Carousel>
+                                     <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                     <p>DAMAC Hills, Dubailand, Dubai</p>
+                                     <ul className={`${styles["bedroom-detail"]} bedroom-detail-for-mobile`}>
+                                       <div className="row">
+                                       <div className="col-6">
+                                       <li>
+                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                       </li>
+                                       </div>
+                                       <div className="col-6">
+                                       <li>
+                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                       </li>
+                                       </div>
+                                       </div>
+                                     </ul>
+                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
 
-                            </div>
+                                   </div>
+                                   <div className={style['project-card']}>
+                                   <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />  
+                                   </Carousel>
+                                     <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                     <p>DAMAC Hills, Dubailand, Dubai</p>
+                                     <ul className={`${styles["bedroom-detail"]} bedroom-detail-for-mobile`}>
+                                       <div className="row">
+                                       <div className="col-6">
+                                       <li>
+                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                       </li>
+                                       </div>
+                                       <div className="col-6">
+                                       <li>
+                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                       </li>
+                                       </div>
+                                       </div>
+                                     </ul>
+                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                   </div>
+                                 </div>
+                                </div>  
+                                <div>
+                                 <div className={style['property-slider-wrap']}>
+                                   <div className={style['project-card']}>
+                                   <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />  
+                                   </Carousel>
+                                     <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                     <p>DAMAC Hills, Dubailand, Dubai</p>
+                                     <ul className={`${styles["bedroom-detail"]} bedroom-detail-for-mobile`}>
+                                       <div className="row">
+                                       <div className="col-6">
+                                       <li>
+                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                       </li>
+                                       </div>
+                                       <div className="col-6">
+                                       <li>
+                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                       </li>
+                                       </div>
+                                       </div>
+                                     </ul>
+                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                   </div>
+                                   <div className={style['project-card']}>
+                                   <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />  
+                                   </Carousel>
+                                     <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                     <p>DAMAC Hills, Dubailand, Dubai</p>
+                                     <ul className={`${styles["bedroom-detail"]} bedroom-detail-for-mobile`}>
+                                       <div className="row">
+                                       <div className="col-6">
+                                       <li>
+                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                       </li>
+                                       </div>
+                                       <div className="col-6">
+                                       <li>
+                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                       </li>
+                                       </div>
+                                       </div>
+                                     </ul>
+                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                   </div>
+                                 </div>
+                                </div>      
+                               </Slider>  
+                               </div>                   
+                            }
                           </div>
                         </section>
 
                     {/* <!-- Invest section --> */}
-                    <section className={style['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
-                      <div className="container">
-                        <div className="row justify-content-end align-items-end">
-                          <div className="col-md-12">
-                            <div className={style['invest-wrap']}>
-                              <h2>Why Invest in Dubai</h2>
-                              <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
-                                investors can achieve gross rental yields<br/> of between 5-9%</p>
-                              <a href="#" className={style['read-more']}>Read more</a>
-                            </div>
+                   {
+                     !isMobile ?
+                     <section className={style['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+                     <div className="container">
+                       <div className="row justify-content-end align-items-end">
+                         <div className="col-md-12">
+                           <div className={style['invest-wrap']}>
+                             <h2>Why Invest in Dubai</h2>
+                             <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
+                               investors can achieve gross rental yields<br/> of between 5-9%</p>
+                             <a href="#" className={style['read-more']}>Read more</a>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </section> :
+
+                    <section className={style['why-invest']} style={{'background':'#111 !important'}}>
+                    <div className="container">
+                          <div className={style['invest-wrap']}>
+                            <h2>Why Invest in Dubai</h2>
+                            <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
+                              investors can achieve gross rental yields<br/> of between 5-9%</p>
+                            <a href="#" className={style['read-more']}>Read more</a>
                           </div>
-                        </div>
-                      </div>
+                    </div>
                     </section>
+                   }
 
                       {/* <!-- Experince section --> */}
                       {/*<section className={style['3d-tour']}>
@@ -1082,7 +1311,7 @@ function ProjectPage({entity1}) {
 
                          {/* <!-- Experince section --> */}
                         <section className={style['3d-tour']}>
-                        <div className={ !deviceIsMobile ? 'container' : 'container-fluid'} style={ deviceIsMobile ? {'padding':'0'} : {}}>
+                        <div className={ !isMobile ? 'container' : 'container-fluid'} style={ !isMobile ? {} : {'padding':'0'}}>
                         <div className={style['3d-tour-inner']} style={{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>

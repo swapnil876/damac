@@ -414,44 +414,13 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
      )
  }
 
-
- function refreshToken(stats=null){
-    // console.log(localStorage);
-        if(stats == 401){
-         let data = {
-             refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
-             client_id:"1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL",
-             client_secret:"fbb31a11fcaee62b9e53e98dfee5c6da952747ff09",
-             grant_type:"refresh_token"
-         }
-         axios.post('https://accounts.zoho.com/oauth/v2/token',{data:data},{
-            headers:{
-                'Access-Control-Allow-Origin':'*'
-            }
-        }).then(response => {
-             // if(typeof window !== 'undefined'){
-             //    console.log('lol',window); 
-             // }
-            //  useStickyState("Zoho-oauthtoken "+response.data.access_token,'access_token');
-             // console.log('response',response.data);
-             // localStorage.setItem("access_token", "Zoho-oauthtoken "+response.data.access_token)
-             // let entity = response.data.data[0]
-         }).catch((e,status)=>{
-             if(typeof e.response != "undefined"){
-                 if(e.response.status == 401){
-                     refreshToken(e.response.status);
-                 }
-             }
-         });
-        }
-  }
-
  export async function getServerSideProps(context) {
     // Device React
     const deviceIsMobile = isMobile;
     const deviceType = deviceIsMobile;
     let entity = [];
     let token = '';
+    console.log(context);
     await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
         token = response.data.access_token
     })
@@ -471,7 +440,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             console.log('response',e.response);
             if(typeof e.response != 'undefined'){
                 if(e.response.status == 401){
-                    console.log(refreshToken(e.response.status));
+                    // console.log(refreshToken(e.response.status));
                 }
             }
         });

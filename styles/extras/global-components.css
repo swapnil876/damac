@@ -261,9 +261,11 @@
 .accordion-item button {
     color: #fff;
 }
-.accordion-button.collapsed{
+
+.accordion-button.collapsed {
     background-color: transparent;
 }
+
 button.accordion-button {
     padding: 1rem 0rem 4px !important;
 }
@@ -294,6 +296,7 @@ button.accordion-button {
 
 .accordion-button::after {
     background-image: url("../../public/images/icons/arrow-down.png") !important;
+    background-position-y: center;
 }
 
 .accordion-button:hover::after {
@@ -312,6 +315,31 @@ button.accordion-button {
 
 /* faq accordion */
 
+.get_estimate_box_arrows{
+    position: absolute;
+    right:9px;
+    bottom:9px
+}
+.get_estimate_box_arrows svg{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.get_estimate_box_arrows.plus_minus svg{
+    width: 22px;
+    height: 22px;
+}
+.project_detail_mobile_sliders .slick-slide img{
+    display: inline-block;
+}
+.bedroom-detail-for-mobile{
+    display: block !important;
+    gap: 0px !important;
+    list-style-type: none !important;
+    padding: 0;
+    max-width: 100vw !important;
+    width: 100vw !important;
+}
 .country_code_glag_image {
     margin-right: 12px;
     width: 16px;
@@ -328,8 +356,66 @@ button.accordion-button {
     box-shadow: none !important;
 }
 
+.project-right-for-mobile {
+    margin-top: 25px
+}
 
+.project-right-for-mobile a {
+    width: 100%;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(38px);
+    border-radius: 4px;
+    padding: 16px 0;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 113.6%;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+}
 
+.project-right-for-mobile .schedule_a_callback_btn {
+    border: 0;
+    display: block;
+    width: 100%;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 113.6%;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    padding: 14px 0 16px;
+    background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+    backdrop-filter: blur(38px);
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.sec_3_gallery_grid_for_mobile .text_on_img_sec{
+    position: relative;
+}
+.sec_3_gallery_grid_for_mobile .text_on_img_sec .gal-content-2 p {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.01em;
+
+    position: absolute;
+    bottom: 28px;
+    padding: 0 24px;
+    width:100%;
+}
+.sec_3_gallery_grid_for_mobile .text_on_img_sec img, .sec_3_gallery_grid_for_mobile img{
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1/1;
+}
+.sec_3_gallery_grid_for_mobile img{
+    margin:14px 0;
+}
 @media (max-width: 1400px) {
     .historyslidercontainer .slick-prev {
         left: -370px;
@@ -424,6 +510,10 @@ button.accordion-button {
 }
 
 @media (max-width: 767.98px) {
+    .get_estimate_box_arrows svg{
+        width: 22px;
+        height: 22px;
+    }
     .historyslidercontainer .slick-prev {
         left: unset;
         top: 0px;
@@ -505,12 +595,12 @@ button.accordion-button {
     }
 
     .accordion-button::after {
-        background-size: 16px !important;
+        background-size: 14px !important;
     }
 }
 
 @media (max-width: 500px) {
-    .payment_plan_table_comp .payment_col{
+    .payment_plan_table_comp .payment_col {
         text-align: center;
     }
 
@@ -530,7 +620,7 @@ button.accordion-button {
         overflow: auto;
     }
 
-    
+
 
     .testimonial_container .slick-prev,
     .testimonial_container .slick-next {

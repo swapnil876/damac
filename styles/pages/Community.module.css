@@ -414,16 +414,16 @@ input.range-slider {
     opacity: 0.7;
 }
 
-.township-amenities .icon-area {
+.township-amenities .icon-area, .icon-area {
     margin-bottom: 45px
 }
 
-.township-amenities .icon-area img {
+.township-amenities .icon, .icon-area img-area img {
     width: 32px;
     height: 32px;
 }
 
-.township-amenities .icon-area h4 {
+.township-amenities .icon-area h4, .icon-area h4 {
     font-family: "Roboto";
     font-style: normal;
     font-weight: normal;
@@ -435,7 +435,7 @@ input.range-slider {
     word-break: break-word;
 }
 
-.township-amenities .icon-area p {
+.township-amenities .icon-area p, .icon-area p {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 300;
@@ -859,6 +859,9 @@ ul.shape-count {
 }
 
 @media(max-width:767px) {
+    .about-location .brand-partners {
+        margin-top: 50px;
+    }
     .destance h5 {
         font-size: 32px;
         line-height: 113.6%;

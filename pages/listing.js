@@ -186,17 +186,37 @@ import GoogleMapReact from 'google-map-react';
                               </div>
                               <div className="row align-items-center" style={{'justifyContent':'space-between'}}>
                                 <a href="#" style={{'width':'fit-content'}}><img src="damac-static/images/location.png"/>  {listing.fieldCityL.name}, {listing.fieldCountryL.name}</a>
-                                <div style={{'width':'fit-content'}}>
-                                    <div className={style['project-right']}>
-                                    <ul className="d-flex align-items-center">
-                                        <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
-                                        <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
-                                        <li><a onClick={()=>{openBrochureModal(true)}}>Download Brochure</a></li>
-                                        {/* href={listing.fieldBrochureL1} */}
-                                        <li><a href="#">View Gallery (19)</a></li>                
-                                    </ul>              
-                                    </div>
-                                </div>          
+                               
+                                    {
+                                      !isMobile ? 
+                                      <div style={{'width':'fit-content'}}>
+                                      <div className={style['project-right']}>
+                                      <ul className="d-flex align-items-center">
+                                          <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
+                                          <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
+                                          <li><a onClick={()=>{openBrochureModal(true)}}>Download Brochure</a></li>
+                                          {/* href={listing.fieldBrochureL1} */}
+                                          <li><a href="#">View Gallery (19)</a></li>                
+                                      </ul>              
+                                      </div>
+                                      </div>:
+                                      <div>
+                                       <div className={`${styles["project-right"]} project-right-for-mobile`}>
+                                       <button type="button" className="schedule_a_callback_btn">Schedule a call-back</button>
+                                       <div className="row">
+                                       <div className="col-6">
+                                       <a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a>             
+                                       </div>
+                                       <div className="col-6">
+                                       <a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery (19)</a>              
+                                       </div>
+                                       </div>
+                                    
+                                       </div>
+                                     </div>
+                                    }
+                                   
+                                      
                             </div>    
                           <div >
                           </div>   
@@ -223,7 +243,7 @@ import GoogleMapReact from 'google-map-react';
                                 <h4>{listing.fieldPrice}</h4>
                                 <p><span>AED</span></p>
 
-                                <h4>{listing.fieldUnitType.entity}</h4>
+                                {/* <h4>{listing.fieldUnitType.entity}</h4> */}
                                 <p><span>Unit Type</span></p>               
 
                                 <ul className={`d-flex ${style["shape-count"]}`}>
@@ -896,7 +916,7 @@ import GoogleMapReact from 'google-map-react';
     // console.log('listing',data);
     let entity1 = data.data.nodeQuery.entities[0];
     // let entity2 = data.data.nodeQuery.entities[1];
-    console.log('about',entity1.fieldLocatorsL);
+    console.log('about',entity1);
   
     return {
       props: {

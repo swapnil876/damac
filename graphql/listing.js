@@ -57,12 +57,7 @@ const LISTING = gql`
               }
             }
             fieldPrice
-            fieldUnitType{
-              entity{
-                tid
-                name
-              }
-            }
+            
             fieldBedrooms
             fieldBathrooms
             fieldMaidroom
