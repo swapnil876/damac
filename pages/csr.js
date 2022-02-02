@@ -167,12 +167,12 @@ function CSR({entity1}) {
          <div className="textsectionpart1 mb-5">
            <h2 className={styles['csr_heading']}>Hussain Sajwani – DAMAC Foundation</h2>
            <div className="row align-items-center">
-             <div className="col-md-8">
+             <div className="col-md-8 order-md-1 order-2">
                <p style={{'color':'#111'}}>{entity1.fieldFoundationText}</p>
              </div>
-             <div className="col-md-4">
+             <div className="col-md-4 order-md-2 order-1">
                <div className="text-md-end text-center py-2">
-                 <img alt=""src={isMobile?entity1.fieldFoundationImageMobile.url:entity1.fieldFoundationImageDesktop.url} className='img-responsive'/>
+                 <img alt=""src={isMobile?entity1.fieldFoundationImageMobile.url:entity1.fieldFoundationImageDesktop.url} className='img-responsive' style={isMobile ? {'margin-bottom':'30px'} : {}}/>
                </div>
              </div>
            </div>

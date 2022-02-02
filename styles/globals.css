@@ -775,7 +775,7 @@ a.btn.btn-blur-dark {
         padding-left: 0 !important;
         padding-right: 0 !important;
         position: relative;
-    top: -52px;
+        top: -52px;
     }
 }
 
@@ -1415,6 +1415,7 @@ footer.damac-footer .footer-logo {
 }
 
 @media (min-width: 768px) {
+    
     .footer2ndrow {
         margin-top: 180px;
     }
@@ -1425,6 +1426,19 @@ footer.damac-footer .footer-logo {
 }
 
 @media (max-width: 767px) {
+    .chairmans-message-para {
+        position: relative;
+        top: -133px;
+    }
+    .chairmans-portrait-section .chairmans-message-text {
+        padding-top: 0px;
+        padding: 24px 20px 0 0;
+        width: 90%;
+        background: #fff;
+        position: relative;
+        top: -133px;
+        left: -1px;
+    }
 
     .building-documentation-link li .doc-name a,
     .building-documentation-link li .doc-name {
