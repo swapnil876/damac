@@ -69,7 +69,10 @@ function ChairmansMessage({entity1}) {
 
            <section className="chairmans-message-para">
              <div className="container">
-               <p>{entity1.fieldTextChairman}</p>
+               {/* <p>{entity1.fieldDescriptiveText.value}</p> */}
+
+               <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptiveText.value }}></div>
+              
                <h4 className="chairmans-name">Hussain Sajwani</h4>
                {
                !isMobile ? "" : <Link href=""><a className="read_more_btn">Read More</a></Link>
