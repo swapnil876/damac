@@ -10,6 +10,13 @@ import HeroSection from '../components/HeroSection'
 import Footer from '../components/Footer'
 
 
+import Slider from "react-slick";
+
+// slick-carousel css
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
+
 import React, { Component } from "react";
 import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive'
@@ -38,6 +45,17 @@ const WhyDubai= ({entity1})=> {
     }
   };
 
+
+    // Slick slider 
+    var settings = {
+      dots: false,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      initialSlide: 0,
+    };
+
   return (
     <div className='whydubaibody'>
 
@@ -54,10 +72,6 @@ const WhyDubai= ({entity1})=> {
 
 
       <Navbar></Navbar>
-
-
-      
-
 
       <main className="main about-main">
        
@@ -158,51 +172,9 @@ const WhyDubai= ({entity1})=> {
 
              
                <div className="row justify-content-between">
-                    <Carousel responsive={responsive}>
-                      <div>
-                          <div className="col-md-6 mb-2">
-                            <h4>Dubai Marina</h4>
-                          </div>
-                          <div className="col-md-5 mb-2">
-                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
-                          </div>
-                          <div className="district-items-nav">
-                            <div className="row justify-content-between align-items-center">
-                              <div className="col-md-9">
-                                <ul className="district-items-nav-list">
-                                  <li><a href="#" className="active">Dubai Marina</a></li>
-                                  <li><a href="#">Business Bay </a></li>
-                                  <li><a href="#">Jumeirah Village</a></li>
-                                  <li><a href="#">Barsha Heights</a></li>
-                                  <li><a href="#">Dubai Sports City</a></li>
-
-                                </ul>
-                              </div>
-                              <div className="col-md-auto">
-                                {/* <div className="text-md-right text-center">
-                                  <div className={`sliderArrows sliderArrowsDark`}>
-                                    <a href="#" className="sliderArrow">
-                                      <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path  d="M8.75 15.875L1.875 9L8.75 2.125" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                                        </svg>
-                                        </span>
-                                    </a>
-                                    <a href="#" className="sliderArrow">
-                                      <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path  d="M2.25 2.125L9.125 9L2.25 15.875" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                                        </svg>
-
-                                        </span>
-                                    </a>
-                                  </div>
-                                </div> */}
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-
-                      <div>
-                          <div className="col-md-6 mb-2">
+                 <Slider {...settings}>
+                 <div>
+                          <div className="col-md-6 col-8 mb-2">
                             <h4>Dubai Marina</h4>
                           </div>
                           <div className="col-md-5 mb-2">
@@ -225,18 +197,18 @@ const WhyDubai= ({entity1})=> {
                       </div>
 
                       <div>
-                          <div className="col-md-6 mb-2">
-                            <h4>Dubai Marina</h4>
+                          <div className="col-md col-8-6 mb-2">
+                            <h4>Business Bay</h4>
                           </div>
                           <div className="col-md-5 mb-2">
-                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
+                            <p>Introducing Business Bay, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
                           </div>
                           <div className="district-items-nav">
                             <div className="row justify-content-between align-items-center">
                               <div className="col-md-9">
                                 <ul className="district-items-nav-list">
-                                  <li><a href="#" className="active">Dubai Marina</a></li>
-                                  <li><a href="#">Business Bay </a></li>
+                                  <li><a href="#">Dubai Marina</a></li>
+                                  <li><a href="#" className="active">Business Bay </a></li>
                                   <li><a href="#">Jumeirah Village</a></li>
                                   <li><a href="#">Barsha Heights</a></li>
                                   <li><a href="#">Dubai Sports City</a></li>
@@ -248,7 +220,30 @@ const WhyDubai= ({entity1})=> {
                       </div>
 
                       <div>
-                          <div className="col-md-6 mb-2">
+                          <div className="col-md col-8-6 mb-2">
+                            <h4>Jumeirah Village</h4>
+                          </div>
+                          <div className="col-md-5 mb-2">
+                            <p>Introducing Jumeirah Village, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
+                          </div>
+                          <div className="district-items-nav">
+                            <div className="row justify-content-between align-items-center">
+                              <div className="col-md-9">
+                                <ul className="district-items-nav-list">
+                                  <li><a href="#">Dubai Marina</a></li>
+                                  <li><a href="#">Business Bay </a></li>
+                                  <li><a href="#" className="active">Jumeirah Village</a></li>
+                                  <li><a href="#">Barsha Heights</a></li>
+                                  <li><a href="#">Dubai Sports City</a></li>
+
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+                      <div>
+                          <div className="col-md col-8-6 mb-2">
                             <h4>Dubai Marina</h4>
                           </div>
                           <div className="col-md-5 mb-2">
@@ -269,7 +264,7 @@ const WhyDubai= ({entity1})=> {
                             </div>
                           </div>
                       </div>
-                      </Carousel>
+                   </Slider>
                </div>
              </div>
            </div>
@@ -316,11 +311,11 @@ const WhyDubai= ({entity1})=> {
          isMobile ? '' :       
       <TextSection className="text-section-whhydubai-4">
          <div className="row justify-content-between">
-           <div className="col-md-3">
+           <div className="col-md-4">
              <h3>An Investor’s Favourite</h3>
            </div>
            <div className="col-md-5">
-             <p>{entity1.fieldInvestorText}</p>
+             <p className='investors_fav_para'>{entity1.fieldInvestorText}</p>
            </div>
          </div>
        </TextSection>
@@ -334,7 +329,7 @@ const WhyDubai= ({entity1})=> {
        <section className="why-dubai-section-then-now">
          <div className="container">
            <div className="row justify-content-between mb-4">
-               <div className="col-12">
+               {/* <div className="col-12">
                  <div className={`sliderArrows sliderArrowsDark`}>
                    <a href="#" className="sliderArrow">
                      <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -350,14 +345,15 @@ const WhyDubai= ({entity1})=> {
                       </span>
                    </a>
                  </div>
-               </div>
-               <div className="col-md-5">
+               </div> */}
+               <div className="col-md-5 col-7">
                  <h3>Dubai, then and now</h3>
-                 
                </div>
            </div>
 
-           <div className="row justify-content-between">
+           <Slider {...settings}>
+             <div>
+             <div className="row justify-content-between">
                <div className="col-md-5">
                  <p>The story of Dubai’s growth is one of sheer determination and unprecedented global ambition. A centre for fishing, pearling and sea trade since the early 1800s, Dubai was well established as one of the region’s top trading ports by the beginning of the 20th Century. The Deira souk, which stands to this day, was one of the largest in the region at this time. It attracted businessmen and visitors from around the world, creating a sizeable expatriate population, and in that respect, mirroring the Dubai we know today.</p>
                </div>
@@ -365,43 +361,70 @@ const WhyDubai= ({entity1})=> {
                  <p>Striking oil in 1966, Dubai was transformed forever. Oil revenues were used to fund massive infrastructure projects such as Jebel Ali Port, which helped establish Dubai as the biggest trading hub in the MENA region, and the expansion of Dubai International Airport, which would eventually become the world’s biggest international aviation hub.</p>
                </div>
            </div>
-
+             </div>
+             <div>
+             <div className="row justify-content-between">
+               <div className="col-md-5">
+                 <p>The story of Dubai’s growth is one of sheer determination and unprecedented global ambition. A centre for fishing, pearling and sea trade since the early 1800s, Dubai was well established as one of the region’s top trading ports by the beginning of the 20th Century. The Deira souk, which stands to this day, was one of the largest in the region at this time. It attracted businessmen and visitors from around the world, creating a sizeable expatriate population, and in that respect, mirroring the Dubai we know today.</p>
+               </div>
+               <div className="col-md-5">
+                 <p>Striking oil in 1966, Dubai was transformed forever. Oil revenues were used to fund massive infrastructure projects such as Jebel Ali Port, which helped establish Dubai as the biggest trading hub in the MENA region, and the expansion of Dubai International Airport, which would eventually become the world’s biggest international aviation hub.</p>
+               </div>
+           </div>
+             </div>
+           </Slider>
 
          </div>
        </section>
 
        {
-         isMobile ? '' : 
-
-       <section className="why-dubai-section-5">
+         !isMobile ? 
+         <section className="why-dubai-section-5 d-md-block d-none">
          <div className="container">
            <div className="row">
                <div className="col-md-5 img-grid-text-1">
                  <p>{entity1.fieldCol1Text5}</p>
                </div>
            </div>
-
-
          </div>
-       </section>
+       </section> : ''
         }
 
-       <section className="why-dubai-section-6">
-         <div className="container">
-           <div className="row">
-               <div className="col-md-10">
-               <div className="mb-4">
-                 <img alt=""src="/images/why-dubai/ticket-1.png" width="46"/>
-               </div>
-                 <h4>The Opportunity</h4>
-                 <p>{entity1.fieldOpportunityText}</p>
-               </div>
-           </div>
 
 
-         </div>
-       </section>
-        
+          <section className="why-dubai-section-6">
+          <div className="container">
+            <div className="row">
+                <div className="col-md-10">
+                <div className="mb-4">
+                  <img alt=""src="/images/why-dubai/ticket-1.png" width="46"/>
+                </div>
+                  <h4>The Opportunity</h4>
+                  <p>{entity1.fieldOpportunityText}</p>
+                </div>
+            </div>
+          </div>
+          </section>
+
+
+          {/* {
+            !isMobile ?
+            <section className="why-dubai-opportunity">
+            <div className="container">
+              <div className="row">
+                  <div className="col-md-10">
+                  <div className="mb-4">
+                    <img alt=""src="/images/why-dubai/ticket-1.png" width="46"/>
+                  </div>
+                    <h4>The Opportunity</h4>
+                    <p>{entity1.fieldOpportunityText}</p>
+                  </div>
+              </div>
+            </div>
+            </section> : ''
+          } */}
+  
+           
       </main>
 
       <Footer></Footer>

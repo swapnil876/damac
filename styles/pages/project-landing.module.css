@@ -189,7 +189,7 @@ ul.bedroom-detail li a i {
     font-size: 44px;
     font-weight: 500;
     line-height: 52px;
-    margin-bottom: 49px;
+    margin-bottom: 20px;
 }
 .property_similar_card img {
     width: 100%;
@@ -215,6 +215,9 @@ ul.bedroom-detail li a i {
     line-height: 34px;
     opacity: 0.8;
 }
+
+
+
 @media (max-width: 1024px){
     /* .filter_option_wrap .form-field select:first-child{
         margin-right: 40px;
@@ -231,6 +234,9 @@ ul.bedroom-detail li a i {
 	}
 }
 @media (max-width: 767px){
+    .similar_property_head h1{
+        max-width: 70%;
+    }
     .filter_option_wrap {
         margin-top: -20px;
     }
@@ -241,7 +247,7 @@ ul.bedroom-detail li a i {
         margin-right: 30px;
     } */
 	.similar_property{
-		padding: 50px 0;
+		padding: 120px 0 30px;
 	}
 	.property_similar_card{
 		margin-bottom: 30px;

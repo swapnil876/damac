@@ -946,7 +946,12 @@ ul.shape-count {
         margin-top: 60px
     }
 }
-
+@media(max-width: 576px) {
+    .faq-icon h2 {
+        font-size: 22px;
+        margin-bottom: 44px;
+    }
+}
 @media(max-width:450px) {
     .community-banner-text {
         /* flex-wrap: wrap; */

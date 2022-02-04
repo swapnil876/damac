@@ -124,6 +124,66 @@
     top: -8px;
 }
 
+#similar_proprty_card_main_global{
+    position: relative;
+}
+/* Browse Properties Page - Similar Properties Slider Arrows  */
+
+#similar_proprty_card_main_global .slick-prev,
+#similar_proprty_card_main_global .slick-next {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #fff;
+    background-image: url('../../public/images/icons/down-chevron-black.png') !important;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+#similar_proprty_card_main_global .slick-prev:hover,
+#similar_proprty_card_main_global .slick-prev:focus,
+#similar_proprty_card_main_global .slick-next:hover,
+#similar_proprty_card_main_global .slick-next:focus {
+    background-color: #fff !important;
+    background-image: url('../../public/images/icons/down-chevron-black.png') !important;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #111 !important;
+    z-index: 999;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+#similar_proprty_card_main_global .slick-prev {
+    transform: rotate(90deg);
+}
+
+#similar_proprty_card_main_global .slick-next {
+    transform: rotate(-90deg);
+}
+
+#similar_proprty_card_main_global .slick-prev::before,
+#similar_proprty_card_main_global .slick-next::before{
+    display: none;
+}
+#similar_proprty_card_main_global .slick-next{
+    top: 126px;
+    left: unset;
+    right: 10px;
+}
+#similar_proprty_card_main_global .slick-prev{
+    top: 126px;
+    left: unset;
+    right: 63px;
+}
+/* Browse Properties Page - Similar Properties Slider Arrows  */
+
+
+
 .csr_page_slider .slick-prev,
 .csr_page_slider .slick-next,
 .historyslidercontainer .slick-prev,
@@ -204,7 +264,9 @@
 
 /* Testimonials Slider Buttons */
 
-.testimonial_container .slick-arrow {
+.testimonial_container .slick-arrow,
+.why-dubai-section-then-now .slick-arrow,
+.dubai-districts-items .slick-arrow {
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -216,19 +278,30 @@
     background-size: 20px;
 }
 
+.dubai-districts-items .slick-prev:hover,
+.dubai-districts-items .slick-prev:focus,
+.dubai-districts-items .slick-next:hover,
+.dubai-districts-items .slick-next:focus,
 .testimonial_container .slick-prev:hover,
 .testimonial_container .slick-prev:focus,
 .testimonial_container .slick-next:hover,
-.testimonial_container .slick-next:focus {
+.testimonial_container .slick-next:focus,
+.why-dubai-section-then-now .slick-prev:hover,
+.why-dubai-section-then-now .slick-prev:focus,
+.why-dubai-section-then-now .slick-next:hover,
+.why-dubai-section-then-now .slick-next:focus {
     background: rgba(0, 0, 0, 0.46);
     background-image: url('../../public/images/icons/arrow-down.png') !important;
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: center;
 }
-
+.dubai-districts-items .slick-prev:before,
 .testimonial_container .slick-prev:before,
-.testimonial_container .slick-next:before {
+.why-dubai-section-then-now .slick-prev:before,
+.dubai-districts-items .slick-next:before,
+.testimonial_container .slick-next:before,
+.why-dubai-section-then-now .slick-next:before {
     display: none
 }
 
@@ -249,8 +322,37 @@
 
 /* Testimonials Slider Buttons */
 
+.why-dubai-section-then-now .slick-prev {
+    top: -155px;
+    left: 0;
+    right: unset;
+    z-index: 1;
+    transform: rotate(90deg);
+}
 
-
+.why-dubai-section-then-now .slick-next {
+    top: -155px;
+    left: 53px;
+    right: unset;
+    z-index: 1;
+    transform: rotate(-90deg);
+}
+.dubai-districts-items .slick-prev {
+    top: unset;
+    bottom: 3px;
+    left: unset;
+    right: 53px;
+    z-index: 1;
+    transform: rotate(90deg);
+}
+.dubai-districts-items .slick-next {
+    top: unset;
+    bottom: 3px;
+    left: unset;
+    right: 0;
+    z-index: 1;
+    transform: rotate(-90deg);
+}
 
 /* faq accordion */
 .accordion-item {
@@ -474,6 +576,9 @@ button.accordion-button {
 }
 
 @media (max-width: 1200px) {
+    .dubai-districts-items .slick-prev, .dubai-districts-items .slick-next {
+        bottom: 30px;
+    }
     .historyslidercontainer .slick-prev {
         left: -310px;
         top: 250px;
@@ -506,6 +611,12 @@ button.accordion-button {
 }
 
 @media (max-width: 992px) {
+
+    .why-dubai-section-then-now .slick-next,
+    .why-dubai-section-then-now .slick-prev {
+        top: -190px;
+    }
+
     .historyslidercontainer .slick-prev {
         left: -232px;
         top: 300px;
@@ -535,6 +646,22 @@ button.accordion-button {
 }
 
 @media (max-width: 767.98px) {
+    .dubai-districts-items .slick-prev, .dubai-districts-items .slick-next {
+        bottom: unset;
+        top: -5px;
+    }
+    .why-dubai-section-then-now .slick-next {
+        top: -110px;
+        left: unset;
+        right: 0;
+    }
+
+    .why-dubai-section-then-now .slick-prev {
+        top: -110px;
+        left: unset;
+        right: 53px;
+    }
+
     .get_estimate_box_arrows svg {
         width: 22px;
         height: 22px;
@@ -622,6 +749,9 @@ button.accordion-button {
 
     .accordion-button::after {
         background-size: 14px !important;
+    }
+    .why-dubai-section-then-now .slick-arrow{
+        display: none !important;
     }
 }
 
@@ -928,9 +1058,11 @@ button.accordion-button {
     position: relative;
     z-index: 1;
 }
+
 .mr_mrs_drop select {
     background-color: #f5f5f5;
 }
+
 .custom-input-element .input-element>input::placeholder {
     font-size: 16px;
     line-height: 113.6%;
@@ -1007,8 +1139,14 @@ List grid
 }
 
 @media (max-width: 768px) {
+    .image-card-item .cta-btn-wrapper {
+        text-align: left !important;
+    }
+
     .ItemListGrid {
         grid-template-columns: repeat(1, 1fr);
+        padding: 30px 0;
+        grid-gap: 0;
     }
 }
 
@@ -1059,7 +1197,7 @@ List grid
 
 .image-card-item .card-details-box p {
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -1096,7 +1234,7 @@ List grid
 }
 
 .image-card-item .cta-btn-wrapper {
-    text-align: left;
+    text-align: right;
 }
 
 .active a.map_list {

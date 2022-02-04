@@ -89,7 +89,7 @@ function OfferMain({entity1}) {
       <section className={styles['offermain-hero']} style={{'background-image':'url(' + entity1.fieldImageOffer.url + ')'}}>        
         <div className="container">
           <div className={styles['offerhero-container']}>
-          <div className="row align-items-end">
+          <div className="row align-items-end" style={{'max-width':'100%'}}>
             <div className="col-md-12">
               <div className={styles['offermain-banner-txt']}>
                 <h1>8% Guaranteed returns for 3 years</h1>
@@ -121,7 +121,7 @@ function OfferMain({entity1}) {
                 <h6>DAMAC Towers by Paramount Hotels and Resorts Dubai</h6>
                 <p className={styles['callback-card-desc']}>An established and prestigious international golf callback in Dubailands</p>
                 <div className={styles['community-card-btn']}>
-                  <a href="#" className="btn btn-primary">Know more</a>
+                  <a href="#" className="btn btn-primary">Schdule a Call-back</a>
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@ function OfferMain({entity1}) {
                 <h6>DAMAC Paramount Tower Hotel and Residences Dubai</h6>
                 <p className={styles['callback-card-desc']}>An established and prestigious international golf callback in Dubailands</p>
                 <div className={styles['community-card-btn']}>
-                  <a href="#" className="btn btn-primary">Know more</a>
+                  <a href="#" className="btn btn-primary">Schdule a Call-back</a>
                 </div>
               </div>
             </div>
@@ -181,6 +181,9 @@ function OfferMain({entity1}) {
                   <li><span className={styles['text-left']}>With Interest rate of</span> <span>%</span>120,000</li>
                   <li><span className={styles['text-left']}>For Years</span>5</li>
                 </ul>
+
+                 <hr className={styles['hr_tag']} />
+
                 <h4>Fees</h4>
                 <ul className={styles['fees']}>
                   <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>

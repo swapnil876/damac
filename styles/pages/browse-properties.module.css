@@ -583,6 +583,7 @@ section.faq-section .accordion-body {
 	.text_area {
 		bottom: 18px;
 	}
+
 	.filter_option_wrap .col-md-3,
 	.filter_option_wrap .col-md-6 {
 		width: 100%;
@@ -629,6 +630,7 @@ section.faq-section .accordion-body {
 		float: left;
 	}
 }
+
 @media (max-width: 992px) {
 	.text_area {
 		bottom: 0px;
@@ -636,15 +638,32 @@ section.faq-section .accordion-body {
 }
 
 @media (max-width: 767px) {
-	.banner_under_filters{
+	.why-invest .read_more_btn {
+		background: #FFFFFF;
+		border-radius: 4px;
+		padding: 15px 0;
+		width: 100%;
+		display: block;
+		text-align: center;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 113.6%;
+		letter-spacing: 0.02em;
+		color: #000000 !important;
+	}
+
+	.banner_under_filters {
 		aspect-ratio: 16/5;
 	}
+
 	.text_area {
 		left: 10px;
 	}
-	.text_area h2{
+
+	.text_area h2 {
 		font-size: 24px;
 	}
+
 	.show_property_main {
 		top: 0px;
 	}
@@ -661,6 +680,7 @@ section.faq-section .accordion-body {
 
 	.show_property_main {
 		padding-top: 30px;
+		padding-top: 0px;
 	}
 
 	.filtered_properties {
@@ -694,11 +714,12 @@ section.faq-section .accordion-body {
 	}
 }
 
-@media (max-width: 450px){
-	.banner_under_filters{
+@media (max-width: 450px) {
+	.banner_under_filters {
 		aspect-ratio: 16/6;
 	}
-	.about_project .more_about_btn{
+
+	.about_project .more_about_btn {
 		width: 100%;
 		text-align: center;
 	}

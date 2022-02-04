@@ -1728,7 +1728,7 @@ footer.damac-footer .footer-logo {
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
+    bottom: -1px;
     right: 0;
     background-color: #fff;
     max-width: 65%;
@@ -1762,6 +1762,25 @@ footer.damac-footer .footer-logo {
 @media(max-width: 992px) {}
 
 @media (max-width: 768px) {
+    .text-section-whhydubai-1 h3 {
+        margin: auto;
+        margin-bottom: 30px;
+        max-width: 60%;
+        text-align: center;
+    }
+
+    .banner-conent-style-1 .container {
+        position: relative;
+        width: 90%;
+        margin: unset;
+        background: #fff;
+        margin-top: -278px;
+    }
+
+    .banner-conent-style-1 .banner-text-body {
+        padding: 40px 0;
+    }
+
     .milestone-carousel-item .image-text .img {
         width: 60%;
         min-width: unset;
@@ -1781,7 +1800,7 @@ footer.damac-footer .footer-logo {
         position: absolute;
         left: 0;
         top: 0;
-        bottom: 0;
+        bottom: -1px;
         right: 0;
         background-color: #fff;
         max-width: 100%;
@@ -1887,12 +1906,33 @@ WHY DUBAI PAGE
 
 }
 
+.why-dubai-section-5 .container {
+    position: absolute;
+    left: 100px;
+    bottom: 140px;
+}
+
+.investors_fav_para {
+    font-size: 20px;
+    line-height: 169.6%;
+    letter-spacing: 0.02em;
+    color: #000000;
+    opacity: 0.75;
+}
+
+@media (max-width: 1200px) {
+    .why-dubai-section-5 .container {
+        position: absolute;
+        left: 50px;
+        bottom: 140px;
+    }
+}
+
 @media (min-width: 768px) {
     .why-dubai-section-5 .img-grid-text-1 {
         margin-top: 400px;
         font-size: 20px;
     }
-
 
     .why-dubai-section-5 {
         background-image: url('/images/why-dubai/img-grid-full-bg.jpg');
@@ -1902,7 +1942,7 @@ WHY DUBAI PAGE
         background-repeat: no-repeat;
         background-position: center;
         min-height: 100vh;
-
+        position: relative;
     }
 }
 
@@ -2407,6 +2447,31 @@ PAGE:  NEWS
 }
 
 @media(max-width: 768px) {
+    .why-dubai-opportunity {
+        padding: 60px;
+        background-color: #111;
+        color: #fff;
+    }
+
+    .why-dubai-opportunity h4 {
+        margin-bottom: 30px;
+    }
+
+    .why-dubai-opportunity p {
+        font-size: 20px;
+    }
+
+    .why-dubai-section-5 {
+        padding: 80px 0;
+        background: #111;
+        color: #fff;
+    }
+
+    .why-dubai-section-6 {
+        padding: 80px;
+        background-color: #111;
+        color: #fff;
+    }
 
     .primary-cta h2,
     .primary-cta h1 {

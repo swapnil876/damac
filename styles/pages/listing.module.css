@@ -1173,7 +1173,7 @@ ul.bedroom-detail {
         letter-spacing: 0.02em;
         color: #000000;
         opacity: 0.85;
-        margin-top:65px;
+        margin-top: 65px;
     }
 
     .why-invest {
@@ -1400,16 +1400,18 @@ ul.bedroom-detail {
         width: 100%;
     }
 }
-section.estimate .custom_white_btn{
+
+section.estimate .custom_white_btn {
     box-shadow: 0px -6px 84px rgba(0, 0, 0, 0.15);
 
 }
 
 @media(max-width: 767px) {
-    section.estimate .custom_white_btn{
-        margin:auto;
-        margin-top:40px
+    section.estimate .custom_white_btn {
+        margin: auto;
+        margin-top: 40px
     }
+
     .gal-content {
         left: 0px;
     }
@@ -1526,6 +1528,13 @@ section.estimate .custom_white_btn{
 @media(max-width: 600px) {
     .hero-container-small {
         top: 20%;
+    }
+}
+
+@media(max-width: 576px) {
+    .faq-icon h2 {
+        font-size: 22px;
+        margin-bottom: 44px;
     }
 }
 
