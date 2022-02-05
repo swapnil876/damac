@@ -12,7 +12,7 @@ import CookieConsent from '../components/CookieConsent'
 
 import styles from '../styles/Home.module.css'
 
-
+// import Bookmark from 'react-bookmark';
 
 
 // React Responsive
@@ -28,7 +28,6 @@ import bannerImage from '../public/images/hero-image-sm.png'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { HOME } from '../graphql/home';
-
 
 
 
@@ -72,6 +71,8 @@ function Home( {entity1} ) {
 
 
       <main className="main home-main">
+
+       {/* <Bookmark href="https://damac-development.vercel.app/" title="My Cool Website" /> */}
 
           <>
             { (!deviceIsMobile) &&

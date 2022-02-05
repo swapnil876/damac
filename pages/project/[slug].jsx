@@ -383,7 +383,7 @@ function ProjectPage({entity1}) {
                                             <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a></li>                
                                         </ul>              
                                     </div> :
-                                    <div className={`${styles["project-right"]} project-right-for-mobile`}>
+                                    <div className={`${style["project-right"]} project-right-for-mobile`}>
                                       <button type="button" className="schedule_a_callback_btn">Schedule a call-back</button>
                                       <div className="row">
                                       <div className="col-6">
@@ -478,11 +478,9 @@ function ProjectPage({entity1}) {
                         </div>   :
                           <div className="row">
                           <div className="col-8">
-                              <div>
                               <div className={style['vs-range']}>
                                   <h5><a href="#">{entity1.fieldLocalityP2}</a></h5>
                                   <p>Locality</p>
-                              </div>
                               </div>
                           </div>
                           <div className="col-4">
@@ -530,26 +528,26 @@ function ProjectPage({entity1}) {
                                 
                             </div>
                             </div>
-                        </div> :
+                          </div> :
 
-                        <div className="container-fluid sec_3_gallery_grid_for_mobile p-0">
-                          <div className="text_on_img_sec">
-                          <img src={isMobile?entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
-                            <div className="gal-content-2">
-                                <p>
-                                  {entity1.fieldCol1TextP3}
-                                </p>
-                            </div>     
-                          </div>
-                          <div className="row">
-                            <div classnName="col-6 p-0">
-                            <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} classnNameName="img-fluid"/>
+                          <div className="container-fluid sec_3_gallery_grid_for_mobile p-0">
+                            <div className="text_on_img_sec">
+                            <img src={isMobile?entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
+                              <div className="gal-content-2">
+                                  <p>
+                                    {entity1.fieldCol1TextP3}
+                                  </p>
+                              </div>     
                             </div>
-                            <div classnName="col-6 p-0">
-                            <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} className="img-fluid"/>
+                            <div className="row">
+                              <div classnName="col-6 p-0">
+                              <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} classnNameName="img-fluid"/>
+                              </div>
+                              <div classnName="col-6 p-0">
+                              <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} className="img-fluid"/>
+                              </div>
                             </div>
                           </div>
-                        </div>
                         }          
                     </section> 
                     {/* <!-- Township detail  --> */}
@@ -1265,7 +1263,7 @@ function ProjectPage({entity1}) {
                     {/* <!-- Invest section --> */}
                    {
                      !isMobile ?
-                     <section className={style['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+                     <section className={style['why-invest']} style={{'background':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
                      <div className="container">
                        <div className="row justify-content-end align-items-end">
                          <div className="col-md-12">

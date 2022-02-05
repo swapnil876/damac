@@ -130,7 +130,7 @@ ul.more-link-ul li a i {
     line-height: 38px;
     margin-bottom: 18px;
 }
-.gov_main_content p,.gov_main_content ol li{
+.gov_main_content p,.gov_main_content ol li, .gov_main_content .para{
     font-size: 20px;
     font-weight: 300;
     line-height: 34px;
@@ -161,7 +161,7 @@ ul.more-link-ul li a i {
         font-size: 22px;
         line-height: 25px;
     }
-    .gov_main_content p, .gov_main_content ol li{
+    .gov_main_content p, .gov_main_content ol li, .gov_main_content .para{
         font-size: 18px;
         line-height: 25px;
     }

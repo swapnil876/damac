@@ -90,6 +90,7 @@ function FinancialInformation( { mobileDevice } ) {
         <HeadingTitle 
         title="Financial Information" 
         deviceIsMobile={ deviceIsMobile }
+        className = "financial_info_heading"
         > 
         </HeadingTitle>
         

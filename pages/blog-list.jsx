@@ -41,7 +41,7 @@ function BlogList( { blogs } ) {
 
       <main className="main bloglist-main">
 
-           <PageTitle title="Blogs" background-image={'/images/investor-relation-hero.jpg'}/>
+           <PageTitle title="Blogs" backgroundImage='/damac-static/images/investor-relation-hero.jpg' />
 
 
            <section className="bloglist-list-page">

@@ -234,9 +234,6 @@ ul.bedroom-detail li a i {
 	}
 }
 @media (max-width: 767px){
-    .similar_property_head h1{
-        max-width: 70%;
-    }
     .filter_option_wrap {
         margin-top: -20px;
     }
@@ -254,6 +251,7 @@ ul.bedroom-detail li a i {
 	}
 	.similar_property_head h1{
 		font-size: 32px;
+        max-width: 70%;
 	}
 	.filter_option_wrap .form-field select{
 		/* width: unset; */

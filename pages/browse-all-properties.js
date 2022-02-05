@@ -16,12 +16,21 @@ import { FaAngleLeft, FaAngleRight, FaSearch } from 'react-icons/fa'
 
 import styles from '../styles/pages/browse-properties.module.css'
 import style from '../styles/pages/listing.module.css'
+import project_landing_styles from '../styles/pages/project-landing.module.css'
 
 import React, { Component, useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
+
+
+
+import Slider from "react-slick";
+
+// slick-carousel css
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 // FA
 import ReactDOM from 'react-dom'
@@ -71,7 +80,17 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             setLocalStorage(window.localStorage.getItem('access_token'));
         }
         
-    }, [localStorage, setLocalStorage])
+    }, [localStorage, setLocalStorage]);
+
+
+    var settings = {
+        dots: false,
+        infinite: false,
+        arrows: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      };
 
      return(
          <div className="browse-properties">
@@ -301,6 +320,96 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     </div>
                 </div>
             </section>
+
+               {/* <!-- Similar properties section --> */}
+               <section className={project_landing_styles['similar_property']} id="similar_proprty_card_main_global">
+                            <div className="container">
+                                <div className={project_landing_styles['similar_property_head']}>
+                                    <h1>Similar Properties</h1>
+                                </div>
+                             {
+                               !isMobile ? 
+                               <div className={project_landing_styles['similar_proprty_card_main']}>
+                               <div className="row">
+                               
+                                   <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <p>Starting AED 1,213,515*</p>
+                                       </div>
+                                   </div>
+                                   <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <p>Starting AED 1,213,515*</p>
+                                       </div>
+                                   </div>
+                                   <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <p>Starting AED 1,213,515*</p>
+                                       </div>
+                                   </div>
+                                   <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <p>Starting AED 1,213,515*</p>
+                                       </div>
+                                   </div>
+                                 
+                               
+                               </div>
+                               </div>
+                           :
+                           <div className={project_landing_styles['similar_proprty_card_main']}>
+                                <div className="row">
+                            <Slider {...settings}>
+                                <div>
+                                <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <p>Starting AED 1,213,515*</p>
+                                </div>
+                               </div>
+                               </div>
+                               <div>
+                                <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <p>Starting AED 1,213,515*</p>
+                                </div>
+                               </div>
+                               </div>
+                               <div>
+                                <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <p>Starting AED 1,213,515*</p>
+                                </div>
+                               </div>
+                               </div>
+                               <div>
+                                <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <p>Starting AED 1,213,515*</p>
+                                </div>
+                               </div>
+                               </div>
+                            </Slider>
+                            </div>                         
+                           </div>
+                             }
+                            </div>
+                        </section>
             {/* <!-- About Dubai Section --> */}
             <section className={styles['about_dubai_main']}>
               <div className="container">
@@ -321,7 +430,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
               </div>
             </section>
             {/* <!-- Why Invest in Dubai --> */}
-            <section className={styles['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+            <section className={styles['why-invest']} style={!isMobile ? {'background':'url(/damac-static/images/invest-dubai-bg.jpg)'} : {'background':'#111'}}>
               <div className="container">
                 <div className={styles['why-invest-container']}>
                 <div className="row ">
