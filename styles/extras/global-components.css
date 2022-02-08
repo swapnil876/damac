@@ -551,22 +551,25 @@ button.accordion-button {
     margin-top: 16px
 }
 
-.financial_info_page_side_drop.css-wmw4vi-ReactDropdownSelect {
+.financial_info_page_side_drop.css-wmw4vi-ReactDropdownSelect, .page_tabs_for_mobile.css-wmw4vi-ReactDropdownSelect  {
     width: 300px;
     border: 0
 }
 
-.financial_info_page_side_drop.css-wmw4vi-ReactDropdownSelect:focus {
+.financial_info_page_side_drop.css-wmw4vi-ReactDropdownSelect:focus, .page_tabs_for_mobile.css-wmw4vi-ReactDropdownSelect:focus {
     border: 0
 }
 
 .financial_info_page_side_drop .css-745438-InputComponent,
-.financial_info_page_side_drop .css-745438-InputComponent::placeholder {
+.financial_info_page_side_drop .css-745438-InputComponent::placeholder,
+.page_tabs_for_mobile .css-745438-InputComponent,
+.page_tabs_for_mobile .css-745438-InputComponent::placeholder {
     font-size: 16px;
     line-height: 113.6%;
     letter-spacing: 0.04em;
 }
-.financial_info_page_side_drop .css-148o527-ItemComponent.react-dropdown-select-item-selected{
+.financial_info_page_side_drop .css-148o527-ItemComponent.react-dropdown-select-item-selected,
+.page_tabs_for_mobile .css-148o527-ItemComponent.react-dropdown-select-item-selected{
     background-color: #fff;
     padding:16px;
     color: #111;
@@ -690,7 +693,7 @@ button.accordion-button {
     .enquiry-form-wrapper{
         margin-top:46px
     }
-    .financial_info_page_side_drop.css-wmw4vi-ReactDropdownSelect{
+    .financial_info_page_side_drop.css-wmw4vi-ReactDropdownSelect, .page_tabs_for_mobile.css-wmw4vi-ReactDropdownSelect{
         width: 100%;
         background: #F5F5F5;
         border-radius: 4px;
@@ -698,11 +701,14 @@ button.accordion-button {
         margin: 20px 0 0;
     }
     .financial_info_page_side_drop .css-745438-InputComponent,
-    .financial_info_page_side_drop .css-745438-InputComponent::placeholder {
+    .financial_info_page_side_drop .css-745438-InputComponent::placeholder,
+    .page_tabs_for_mobile .css-745438-InputComponent,
+    .page_tabs_for_mobile .css-745438-InputComponent::placeholder {
         font-size: 14px;
         line-height: 113.6%;
     }
-    .financial_info_page_side_drop .css-148o527-ItemComponent.react-dropdown-select-item-selected{
+    .financial_info_page_side_drop .css-148o527-ItemComponent.react-dropdown-select-item-selected,
+    .page_tabs_for_mobile .css-148o527-ItemComponent.react-dropdown-select-item-selected{
         width: 100%;
         font-size: 14px;
         line-height: 113.6%;
@@ -1068,7 +1074,9 @@ button.accordion-button {
 .enquiry-form-section {
     padding: 80px 0;
 }
-
+.enquiry-form-section h2{
+    margin:0
+}
 .form-row {
     display: grid;
     grid-gap: 40px;
@@ -1179,13 +1187,18 @@ input:focus {
 }
 
 @media (max-width: 768px) {
+    /* .title-wrapper-box {
+        margin: 42px 0 58px;
+    } */
     .title-wrapper-box {
-        margin: 42px 0 0px;
+        margin: 20px 0 16px;
     }
 
     .title-wrapper-box h2,
     .title-wrapper-box h1 {
         width: 40%;
+        max-width: 40%;
+        word-break: break-word;
         font-size: 32px;
     }
 
@@ -1361,6 +1374,9 @@ List grid
 }
 
 @media (max-width: 768px) {
+    .heading_dropdown {
+        height: unset;
+    }
     .page-title {
         padding: 20px 0;
         /* padding-top: 80px; */
@@ -1378,7 +1394,11 @@ List grid
         font-size: 32px;
     }
 }
-
+@media(max-width: 360px){
+    .icon-link .ui-icon {
+        margin-right: -2px;
+    }
+}
 
 /*
 Global Carousel and Sliders stylings

@@ -48,6 +48,10 @@
 }
 
 @media(max-width: 768px){
+    .pagetabs{
+        display: block;
+        margin-bottom: 0;
+    }
     .pagetabs-link  {
         margin-right: 0;
         padding: 0 15px 15px;
