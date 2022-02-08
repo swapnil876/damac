@@ -6,15 +6,18 @@ query {
     entities {
       ... on NodeBoardMembers{
          nid,
-         fieldBname,
-        fieldBimage {
-          targetId
-          title
-          url
-        },
-        body{
-          value
-        }
+         fieldPageTitleBm{
+           value
+         }
+         fieldMembers {
+           targetId
+           targetRevisionId
+           entity {
+             id
+             parentFieldName
+             
+           }
+         }
       }
     }
   }
