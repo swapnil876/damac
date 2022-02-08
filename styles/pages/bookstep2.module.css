@@ -175,6 +175,13 @@ ul.bedroom-detail li a {
 .book-form-main .checkbox-form-field .form-check {
 	width: 20px;
 	height: 20px;
+	border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 4px;
+background-color: transparent;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .book-form-main .form-control {
@@ -251,12 +258,19 @@ ul.bedroom-detail li a {
 	font-weight: 300;
 	opacity: 0.42;
 }
-
-@media (max-width: 1200px) {
+.book-form-main .checkbox-form-field .form-check:checked{
+	background-color: #111;
+	background-image: url("../../public/images/icons/tick.png");
+	background-position: center center;
+	background-size: 10px 9px;
+	background-repeat: no-repeat;
+}
+@media (max-width: 1200px) {	
 	.book-form-main h1 {
 		font-size: 26px;
 		line-height: 32px;
 	}
+
 
 	.book-form-main .form-field label {
 		font-size: 20px;
@@ -271,9 +285,31 @@ ul.bedroom-detail li a {
 }
 
 @media (max-width: 767px) {
+	.book-form-main .checkbox-form-field label{
+		font-size: 26px;
+line-height: 99.6%;
+	}
+	.book-form-btn button{
+		margin-top: 24px;
+	}
+	.checkbox-form-field{
+		margin-bottom: 16px;
+	}
+	.book-form-main .form-control {
+		border: 0;
+	}
+	.book-form-main{
+		padding:50px 12px;
+	}
 	.book-left-main h1 {
 		font-size: 32px;
 		line-height: 40px;
+	}
+	.book-form-main h1{
+		margin-bottom: 16px;
+	}
+	.book-form-main h1, .book-form-main p{
+		text-align: left;
 	}
 
 	.book-left-main {
@@ -288,7 +324,7 @@ ul.bedroom-detail li a {
 		width: 100%;
 	}
 
-	.book-form-main {
+	/* .book-form-main {
 		padding: 12px;
-	}
+	} */
 }
