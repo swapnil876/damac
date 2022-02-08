@@ -1180,7 +1180,7 @@ input:focus {
 
 @media (max-width: 768px) {
     .title-wrapper-box {
-        margin: 42px 0 58px;
+        margin: 42px 0 0px;
     }
 
     .title-wrapper-box h2,

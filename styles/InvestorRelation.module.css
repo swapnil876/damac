@@ -79,6 +79,13 @@
 }
 
 @media (max-width: 768px) {
+    .profile-inner-main {
+        background: #fff !important;
+    }
+    .profile-main-head h1, .profile-main-head p{
+        color:#111 !important;
+        text-align: left !important;
+    }
     .annual-reports-item h3 {
         font-size: 18px;
     }

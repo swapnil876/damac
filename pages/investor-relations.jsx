@@ -13,7 +13,7 @@ import PageTitle from '../components/PageTitle'
 import styles from '../styles/InvestorRelation.module.css'
 import style from '../styles/Investor-relation.module.css'
 
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { useMediaQuery } from 'react-responsive'
 
 
@@ -33,7 +33,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 function InvestorRelations( {  } ) {
 
-
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  useEffect(() => {
+      if ( isMobile ) {
+        setDeviceIsMobile( true );
+      }
+   }, [])
+ 
   return (
     <div className={ styles['investor-relationsbody'] }>
 
@@ -204,7 +210,7 @@ function InvestorRelations( {  } ) {
            <h1>News Releases</h1>
          </div>
          <div className="row">
-           <div className="col-md-3">
+           <div className="col-lg-3 col-md-4">
              <div className={style['dm-card-main']}>
                <div className={style['dm-card-image']}>
                  <img src="damac-static/images/news-1.jpg" alt="news-1"/>
@@ -222,7 +228,7 @@ function InvestorRelations( {  } ) {
                </div>
              </div>
            </div>
-           <div className="col-md-3">
+           <div className="col-lg-3 col-md-4">
              <div className={style['dm-card-main']}>
                <div className={style['dm-card-image']}>
                  <img src="damac-static/images/news-2.jpg" alt="news-1" />
@@ -240,7 +246,7 @@ function InvestorRelations( {  } ) {
                </div>
              </div>
            </div>
-           <div className="col-md-3">
+           <div className="col-lg-3 col-md-4">
              <div className={style['dm-card-main']}>
                <div className={style['dm-card-image']}>
                  <img src="damac-static/images/news-3.jpg" alt="news-1" />
@@ -258,7 +264,7 @@ function InvestorRelations( {  } ) {
                </div>
              </div>
            </div>
-           <div className="col-md-3">
+           <div className="col-lg-3 col-md-4">
              <div className={style['dm-card-main']}>
                <div className={style['dm-card-image']}>
                  <img src="damac-static/images/news-3.jpg" alt="news-1" />

@@ -10,7 +10,7 @@ import VideoBanner from '../components/VideoBanner'
 import Footer from '../components/Footer'
 
 
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 
 // import styles from '../styles/.module.css'
 
@@ -30,6 +30,14 @@ import { FaBath } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive'
 
 function Bookstep2({entity1}) {
+    
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  useEffect(() => {
+      if ( isMobile ) {
+        setDeviceIsMobile( true );
+      }
+   }, [])
+
   return (
     <div id="appBody">
       <Head>
@@ -88,7 +96,9 @@ function Bookstep2({entity1}) {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <div className={ styles['book-form-main']}>
+                        {
+                            deviceIsMobile ? '' :
+                            <div className={ styles['book-form-main']}>
                             <h1>Make this Home Yours in 5 Steps </h1>
                             <p>Hassle-free booking experience. Only from DAMAC.</p>
                             <form action="">
@@ -135,12 +145,68 @@ function Bookstep2({entity1}) {
                                 </div>
                             </form>
                         </div>
+                        }
+                       
                     </div>
                     <div className={styles["close-btn"]}>
                       <a href="#"><i className="fas fa-times"></i></a>
                     </div>
                 </div>
             </div>
+        </section>
+
+        {
+            deviceIsMobile ? 
+            <div className={ styles['book-form-main']}>
+                            <h1>Make this Home Yours in 5 Steps </h1>
+                            <p>Hassle-free booking experience. Only from DAMAC.</p>
+                            <form action="">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="First Name" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Last Name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Mobile number" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row checkbox-row" style={{'margin-top':'32px'}}>
+                                    <div className="col-md-6">
+                                        <div className={styles["checkbox-form-field"]}>
+                                            <input type="checkbox" className={styles["form-check"]} onChange={handleChange} id="token" />
+                                            <label htmlFor="token">AED 15,120<br /><span>Token Amount</span></label>
+                                        </div>
+                                    </div> 
+                                    <div className="col-md-6">
+                                        <div className={styles["checkbox-form-field"]}>
+                                            <input type="checkbox" className={styles["form-check"]} id="total" />
+                                            <label htmlFor="total">AED 1,512,221<br /><span>Total Price</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles["book-form-btn"]}>
+                                    <button>Get Started</button>
+                                </div>
+                            </form>
+                        </div>: ""
+        }
+        <section>
+        
         </section>
        <Footer></Footer>
     </div>
