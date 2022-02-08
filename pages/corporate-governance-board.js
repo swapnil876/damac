@@ -109,7 +109,7 @@ function CorporateGovBoard( { mobileDevice, entity1 } ) {
             <PageTabs tabLinks={ [
               {
                 url: '/',
-                label: 'Meet Our Board Members',
+                label: entity1.fieldPageTitleBm.value,
                 active: true,
             },
                 {
@@ -122,9 +122,21 @@ function CorporateGovBoard( { mobileDevice, entity1 } ) {
         </div>
 
         <section className='section'>
-
-        <CorporateGovernanceBoard entity1={entity1} />
-
+        {
+          entity1.fieldMembers.map( (unit, index) => (
+            <div className="col-md-3 col-6">
+                  <div className={styles['leadershipbox']}>
+                      <div className={styles['leadershipimg']}>
+                          <img src={unit.entity.fieldImage.url} />
+                      </div>
+                      <div className={styles['leadership-details']}>
+                          <h5>{unit.entity.fieldName}</h5>
+                          <p>{unit.entity.fieldTitleTeam}</p>
+                      </div>
+                  </div>
+            </div>
+          ))
+        }
         </section>
 
         <FooterMoreLinks/>
