@@ -13,9 +13,14 @@ query {
            targetId
            targetRevisionId
            entity {
-             id
-             parentFieldName
-             
+            ... on ParagraphMultipleTeamAbout{
+                 id
+                 fieldImage{
+                    url
+                 }
+                 fieldName
+                 fieldTitleTeam
+              }
            }
          }
       }
