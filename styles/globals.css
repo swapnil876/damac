@@ -2447,6 +2447,45 @@ PAGE:  NEWS
 }
 
 @media(max-width: 768px) {
+    .press-release h2{
+        font-size: 22px;
+line-height: 131.6%;
+    }
+    .new-title h3{
+        font-size: 18px;
+line-height: 135.6%;
+    }
+    .press-rel .news h6 a{
+        font-size: 18px;
+line-height: 117.6%;
+    }
+    .primary-cta img{
+        height: unset;
+        width: 100%;
+        aspect-ratio: 343/177;
+    }
+    .border-btn{
+        font-size: 14px;
+    }
+    .industry-news .card-body .card-title{
+        margin-bottom: 8px;
+    }
+    .card-for-news-page{
+        width: 200px !important;
+        margin: auto;
+    }
+    .card .card-img-for-damac-in-news{
+ width: 100%;
+    aspect-ratio: 341/223;
+    object-fit: cover;
+    }
+    .card .card-img-for-news-page{
+    width: 200px;
+height: 211px;
+display: block;
+margin: auto;
+object-fit: cover;
+    }
     .why-dubai-opportunity {
         padding: 60px;
         background-color: #111;
@@ -2524,7 +2563,7 @@ PAGE:  NEWS
 
     .industry-news.bg-light .card {
         width: auto;
-        margin-bottom: 30px;
+        margin-bottom: 48px;
     }
 
     .news-wrap.dark-bg a {
@@ -2584,6 +2623,11 @@ PAGE:  NEWS
     }
 
     .industry-news .card-body {
-        padding: 30px 0px 0px 0px;
+        padding: 24px 0px 0px 0px;
+    }
+    .industry-news a.btn.btn-primary{
+        display: block;
+        width: fit-content;
+        margin: auto;
     }
 }
