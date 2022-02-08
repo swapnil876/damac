@@ -124,17 +124,7 @@ function CorporateGovBoard( { mobileDevice, entity1 } ) {
         <section className='section'>
         {
           entity1.fieldMembers.map( (unit, index) => (
-            <div className="col-md-3 col-6">
-                  <div className={styles['leadershipbox']}>
-                      <div className={styles['leadershipimg']}>
-                          <img src={unit.entity.fieldImage.url} />
-                      </div>
-                      <div className={styles['leadership-details']}>
-                          <h5>{unit.entity.fieldName}</h5>
-                          <p>{unit.entity.fieldTitleTeam}</p>
-                      </div>
-                  </div>
-            </div>
+        <CorporateGovernanceBoard entity1={unit} />
           ))
         }
         </section>
