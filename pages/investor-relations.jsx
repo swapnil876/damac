@@ -26,12 +26,13 @@ import 'bootstrap/dist/css/bootstrap.css'
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+ import {INVESTORRELATIONS} from '../graphql/master/investor_relations';
 
 
 // import styles from '../styles/.module.css'
 
-function InvestorRelations( {  } ) {
+function InvestorRelations( { entity1 } ) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
@@ -58,7 +59,7 @@ function InvestorRelations( {  } ) {
 
         <PageTitle 
              className={styles['investor-relationsbody']} 
-             title="Investor Relations" 
+             title={entity1.fieldTitleIr.value} 
              subtitle="Investor Relations" 
              backgroundImage={'/images/investor-relation-hero.jpg'}
            />
@@ -70,8 +71,8 @@ function InvestorRelations( {  } ) {
           <div className={styles['profile-outer-white']}>
             <div className={`${styles["profile-inner-main"]}  d-flex justify-content-center`}>
               <div className={styles['profile-main-head']}>
-                <h1 className="text-center">Corporate Profile</h1>
-                <p className="text-center">DAMAC Properties has been shaping the Middle East’s luxury real estate market since 2002, delivering iconic residential, commercial and leisure properties across the region and beyond. DAMAC adds vibrancy to the cities in which its projects are located, with a huge and diverse portfolio that includes two world-class master-planned golf developments. To date, DAMAC has delivered 30,900+ quality homes, with 34,000 more under way.</p>
+                <h1 className="text-center">{entity1.fieldDescriptionHeading.value}</h1>
+                <p className="text-center">{entity1.fieldTextHeading.value}</p>
               </div>
             </div>
           </div>
@@ -304,12 +305,23 @@ export default InvestorRelations
 
 export async function getStaticProps(context) {
 
-
   // Device React
+  const deviceIsMobile = isMobile;
+  const deviceType = deviceIsMobile;
 
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: INVESTORRELATIONS });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('entity1',entity1);
 
   return {
     props: {
+       mobileDevice: deviceType,
+       entity1: entity1
     }, // will be passed to the page component as props
   }
 }
