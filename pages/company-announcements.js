@@ -28,6 +28,9 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {COMPANY_ANNOUNCEMENTS} from '../graphql/company_announcements'
+
 
 export default function CompanyAnnouncements(){
 
@@ -225,4 +228,29 @@ return (
 </div>
 )
 
+}
+
+export async function getStaticProps(context) {
+
+    // Device React
+    const deviceIsMobile = isMobile;
+    const deviceType = deviceIsMobile;
+
+    const client = new ApolloClient({
+        uri: process.env.STRAPI_GRAPHQL_URL,
+        cache: new InMemoryCache()
+    });
+
+
+    const  data  = await client.query({ query: COMPANY_ANNOUNCEMENTS });
+    let entity1 = data.data.nodeQuery.entities[0];
+    console.log('entity1',entity1);
+
+
+    return {
+        props: {
+            mobileDevice: deviceType,
+            entity1: entity1
+        }, // will be passed to the page component as props
+    }
 }
