@@ -24,7 +24,8 @@ import 'react-multi-carousel/lib/styles.css';
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
 
-
+// importing React Select
+import Select from "react-dropdown-select";
 
 import Slider from "react-slick";
 
@@ -46,7 +47,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  export default function BrowseProperties(entity){
 
     const [localStorage, setLocalStorage] = useState(false);
-
+    const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     // carousel setting
     const responsive = {
         superLargeDesktop: {
@@ -79,8 +80,21 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
         else{
             setLocalStorage(window.localStorage.getItem('access_token'));
         }
+
+
+        // Checking if device is mobile
+
+        if ( isMobile ) {
+            setDeviceIsMobile( true );
+          }
         
     }, [localStorage, setLocalStorage]);
+
+    const options = [
+        { value: 'Dubailand', label: 'Dubailand, Dubai, UAE' },
+        { value: 'Dubailand', label: 'Dubailand, Dubai, UAE' },
+        { value: 'Marina', label: 'Marina, Dubai, UAE' },
+      ];
 
 
     var settings = {
@@ -107,92 +121,141 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 </div>
             </section>
 
-           
-              <section className={styles['filter_main_wrap']}>
-              <div className="container">
-                  <div className={styles['filter_option_wrap']}>
-                      <form action="">
-                          <div className="row">
-                              <div className="col-md-9 d-flex flex-wrap" style={{'justifyContent':'space-between'}}>
-                              <div className={styles['form-field']}>
-                                      <select name="property_type" className="form-select" id="">
-                                          <option value="">Buy</option>
-                                          <option value="">Rent</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="property_type" className="form-select" id="">
-                                          <option value="">Any Property Type</option>
-                                          <option value="">Apartment</option>
-                                          <option value="">Hotel</option>
-                                          <option value="">Office</option>
-                                          <option value="">Plot</option>
-                                          <option value="">Townhouse</option>
-                                          <option value="">Villa</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="bedrooms" className="form-select" id="">
-                                          <option value="">Bedrooms</option>
-                                          <option value="">Single</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="locality" className="form-select" id="">
-                                          <option value="">Any Locality</option>
-                                          <option value="">local</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="locality" className="form-select" id="">
-                                          <option value="">Price Range</option>
-                                          <option value="">local</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="locality" className="form-select" id="">
-                                          <option value="">Project Status</option>
-                                          <option value="">local</option>
-                                      </select>
-                                  </div>
-                              </div>
-                              <div className="col-md-3">
-                                  <div className={styles['search_btn_filter']}>
-                                      <a href="#" className="btn btn-primary">Search</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </form>
-                  </div>
-                  <div className={`${styles["filter_tag_main"]} d-flex justify-content-between align-items-center`}>
-                      <div className={styles['tag_list']}>
-                          <ul className="list-unstyled d-flex m-0">
-                              <li className="active"><a href="#">All</a></li>
-                              <li><a href="#">Communities</a></li>
-                              <li><a href="#">Projects</a></li>
-                              <li><a href="#">Our Picks</a></li>
-                              <li><a href="#">Saved</a></li>
-                          </ul>
-                      </div>
-                      <div className={`${styles["map_filter_main"]} d-flex`}>
-                          <form action="">
-                              <div className={`${styles["form-field"]} d-flex`}>
-                                  <select name="period" id="" className="form-select">
-                                      <option value="">Newest</option>
-                                  </select>
-                              </div>
-                          </form>
-                          <div className={styles['map_list_view']}>
-                              <ul className="list-unstyled d-flex">
-                                  <li className="active"><a href="#">List</a></li>
-                                  <li><a href="#">Map</a></li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div className={styles['space_divider_filter']}></div>
-              </section>
+           {
+               deviceIsMobile ? 
+               <section class="footer_filter_for_mobile">
+                   <div className='container'>
+                       <div className='row'>
+                           <div className='col-4'>
+                           <div className='single_option'>
+                               <div className='option_icon'>
+                                   <img src="/images/icons/home.png" />
+                               </div>
+                               <div className='option_name'>Browse</div>
+                           </div>
+                           </div>
+                           <div className='col-4'>
+                           <div className='single_option'>
+                               <div className='option_icon'>
+                                   <img src="/images/icons/search.png" />
+                               </div>
+                               <div className='option_name'>Search</div>
+                           </div>
+                           </div>
+                           <div className='col-4'>
+                           <div className='single_option'>
+                               <div className='option_icon'>
+                                   <img src="/images/icons/save-filled.png" />
+                               </div>
+                               <div className='option_name'>Saved</div>
+                           </div>
+                           </div>
+                       </div>
+                   </div>
+               </section>
+               :
+               <section className={styles['filter_main_wrap']}>
+               <div className="container">
+                   <div className={styles['filter_option_wrap']}>
+                       <form action="">
+                           <div className="row">
+                               <div className="col-md-9 d-flex flex-wrap" style={{'justifyContent':'space-between'}}>
+                               <div className={styles['form-field']}>
+                                       <select name="property_type" className="form-select" id="">
+                                           <option value="">Buy</option>
+                                           <option value="">Rent</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="property_type" className="form-select" id="">
+                                           <option value="">Any Property Type</option>
+                                           <option value="">Apartment</option>
+                                           <option value="">Hotel</option>
+                                           <option value="">Office</option>
+                                           <option value="">Plot</option>
+                                           <option value="">Townhouse</option>
+                                           <option value="">Villa</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="bedrooms" className="form-select" id="">
+                                           <option value="">Bedrooms</option>
+                                           <option value="">Single</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="locality" className="form-select" id="">
+                                           <option value="">Any Locality</option>
+                                           <option value="">local</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="locality" className="form-select" id="">
+                                           <option value="">Price Range</option>
+                                           <option value="">local</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="locality" className="form-select" id="">
+                                           <option value="">Project Status</option>
+                                           <option value="">local</option>
+                                       </select>
+                                   </div>
+                               </div>
+                               <div className="col-md-3">
+                                   <div className={styles['search_btn_filter']}>
+                                       <a href="#" className="btn btn-primary">Search</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+                   <div className={`${styles["filter_tag_main"]} d-flex justify-content-between align-items-center`}>
+                       <div className={styles['tag_list']}>
+                           <ul className="list-unstyled d-flex m-0">
+                               <li className="active"><a href="#">All</a></li>
+                               <li><a href="#">Communities</a></li>
+                               <li><a href="#">Projects</a></li>
+                               <li><a href="#">Our Picks</a></li>
+                               <li><a href="#">Saved</a></li>
+                           </ul>
+                       </div>
+                       <div className={`${styles["map_filter_main"]} d-flex`}>
+                           <form action="">
+                               <div className={`${styles["form-field"]} d-flex`}>
+                                   <select name="period" id="" className="form-select">
+                                       <option value="">Newest</option>
+                                   </select>
+                               </div>
+                           </form>
+                           <div className={styles['map_list_view']}>
+                               <ul className="list-unstyled d-flex">
+                                   <li className="active"><a href="#">List</a></li>
+                                   <li><a href="#">Map</a></li>
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div className={styles['space_divider_filter']}></div>
+               </section>
+           }
+             
+
+             <div className='filter_side_slide_for_mobile'>
+                 <div className='top_area'>
+                     <h3>Add a filter</h3>
+                     <Select className='top_dropdown'
+                        value={options.value}
+                        options={options}/>  
+                 </div>
+                 <div className='filter_type'>
+                     <div className='head_tag'>
+                       Property Type
+                     </div>
+                     <div className=''></div>
+                 </div>
+             </div>
          
 
             <section className={styles['show_property_main']}>
