@@ -7,6 +7,7 @@ const COMPANY_ANNOUNCEMENTS = gql`
          ... on NodeCompanyAnnouncements{
                nid
                fieldTitleCa
+               fieldDate
             
          }
          }

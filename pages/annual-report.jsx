@@ -18,7 +18,8 @@ import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
 
 import styles from '../styles/InvestorRelation.module.css'
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ANNUALREPORTS } from '../graphql/master/annual_reports';
 // import styles from '../styles/pages/Quick.module.css'
 
 
@@ -44,9 +45,9 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function AnnualReport( { mobileDevice } ) {
+function AnnualReport( { annualreport } ) {
 
-
+  console.log('while rendering...',annualreport);
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -141,36 +142,25 @@ function AnnualReport( { mobileDevice } ) {
           <div className='container'>
             
             <div className={ styles['annual-reports-list'] }>
-              
+            {
+                   annualreport.map( (report, index) => (
               <div className={ styles['annual-reports-item']}>
                 <h3 className={`annual-report-title`}>
-                  DAMAC Properties Dubai Co PJSC Annual Report 2020 Arabic
+                  {report.fieldTitleAr.value}
                 </h3>
 
                 <div className={`${styles['annual-report-meta']}`}>
-                  <div className={`${styles['datetime']}`}>April 29, 2021 4:00 PM EST</div>
+                  <div className={`${styles['datetime']}`}>{report.fieldDateAr.value}</div>
                   <div className={`${styles['downloadlink']}`}>
-                    <Link href="#">
+                    <Link href={report.fieldFileAr.entity.url}>
                       <a>Download</a>
                     </Link>
                   </div>
                 </div>
               </div>
+                   ))
+            }
 
-              <div className={ styles['annual-reports-item']}>
-                <h3 className={`annual-report-title`}>
-                  DAMAC Properties Dubai Co PJSC Annual Report 2020 Arabic
-                </h3>
-
-                <div className={`${styles['annual-report-meta']}`}>
-                  <div className={`${styles['datetime']}`}>April 29, 2021 4:00 PM EST</div>
-                  <div className={`${styles['downloadlink']}`}>
-                    <Link href="#">
-                      <a>Download</a>
-                    </Link>
-                  </div>
-                </div>
-              </div>
 
             </div>
 
@@ -192,17 +182,23 @@ export default AnnualReport
 
 
 
-export async function getStaticProps(context) {
+export const getServerSideProps = async () => {
 
 
   // Device React
-  const deviceIsMobile = isMobile;
-  const deviceType = deviceIsMobile;
+   const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: ANNUALREPORTS });
+  let entitiy = data.data.nodeQuery.entities;
+  console.log('entity....',entitiy);
 
 
   return {
     props: {
-       mobileDevice: deviceType
+       annualreport: entitiy
     }, // will be passed to the page component as props
   }
 }
