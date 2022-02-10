@@ -17,7 +17,8 @@ import HeadingTitle from '../components/HeadingTitle'
 import FooterMoreLinks from '../components/FooterMoreLinks'
 import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { COMPANY_ANNOUNCEMENTS } from '../graphql/company_announcements';
 
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
@@ -226,3 +227,20 @@ return (
 )
 
 }
+
+export const getStaticProps = async () => {
+    const client = new ApolloClient({
+      uri: process.env.STRAPI_GRAPHQL_URL,
+      cache: new InMemoryCache()
+    });
+    let year_announcement = [];
+    const  data  = await client.query({ query: COMPANY_ANNOUNCEMENTS });
+    let entity1 = data.data.nodeQuery.entities;
+    
+    return {
+        props: {
+          entity1: entity1,
+        }
+    }
+  
+  }
