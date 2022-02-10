@@ -231,7 +231,6 @@ return (
 
 }
 
-<<<<<<< HEAD
 export const getStaticProps = async () => {
     const client = new ApolloClient({
       uri: process.env.STRAPI_GRAPHQL_URL,
@@ -248,29 +247,3 @@ export const getStaticProps = async () => {
     }
   
   }
-=======
-export async function getStaticProps(context) {
-
-    // Device React
-    const deviceIsMobile = isMobile;
-    const deviceType = deviceIsMobile;
-
-    const client = new ApolloClient({
-        uri: process.env.STRAPI_GRAPHQL_URL,
-        cache: new InMemoryCache()
-    });
-
-
-    const  data  = await client.query({ query: COMPANY_ANNOUNCEMENTS });
-    let entity1 = data.data.nodeQuery.entities[0];
-    console.log('entity1',entity1);
-
-
-    return {
-        props: {
-            mobileDevice: deviceType,
-            entity1: entity1
-        }, // will be passed to the page component as props
-    }
-}
->>>>>>> 1488ec15c50f6c75dabab5e511595f72680f617d
