@@ -583,7 +583,9 @@ section.faq-section .accordion-body {
 	.text_area {
 		bottom: 18px;
 	}
-
+.show_property_main{
+	margin-top: 30px;
+}
 	.filter_option_wrap .col-md-3,
 	.filter_option_wrap .col-md-6 {
 		width: 100%;
