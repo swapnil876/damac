@@ -29,9 +29,6 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import {COMPANY_ANNOUNCEMENTS} from '../graphql/company_announcements'
-
 
 export default function CompanyAnnouncements(){
 
