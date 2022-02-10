@@ -234,6 +234,23 @@ ul.bedroom-detail li a i {
 	}
 }
 @media (max-width: 767px){
+    .shape-contact{
+        width: 100%;
+    }
+    .shape-contact ul{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .shape-contact ul li {
+        margin-left: 0px;
+        width: 47%;
+    }
+    .shape-contact ul li a.border-icon, .shape-contact ul li .solid-icon{
+        width: 100%;
+        display: block;
+        text-align: center;
+        padding:15px 20px;
+    }
     .filter_option_wrap {
         margin-top: -20px;
     }
@@ -257,6 +274,6 @@ ul.bedroom-detail li a i {
 		/* width: unset; */
 	}
     a.border-icon,.solid-icon{
-        padding:10px 20px;
+        padding:15px 35px;
     }
 }
