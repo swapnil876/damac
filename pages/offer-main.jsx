@@ -146,24 +146,27 @@ function OfferMain({entity1}) {
               <img src="damac-static/images/invoice-1.png"/>
               <h2>Get an estimate</h2>
               <p className={styles['estimate-tagline']}>Receive an upfront estimate on your new home.</p>
-              <div className={styles['estimate-inner']}>
+              {
+                deviceIsMobile ? 
+              <div>
+                 <div className={styles['estimate-inner']}>
                 <div className={`price ${styles["border-white"]}`}>
-                  <p><span>Property Price</span></p>
-                  <p><span>AED </span> 120,000 <span className={`text-right dark ${styles["side_icons"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                  <p className={styles['heading']}>Property Price</p>
+                  <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
                 </div>
-                <div className={`rate ${styles["border-white"]}`}>
-                  <p><span>Interest Rate</span> <span className="text-right">%</span> </p>
-                  <p>1.99 <span className={`text-right dark ${styles["side_icons"]}`}><FaPlus/><FaMinus/></span></p>
-                </div>
-              </div>
-              <div className={styles['estimate-inner']}>
                 <div className={`down-payment ${styles["border-white"]}`}>
-                  <p>Down Payment <span className="text-right">%</span></p>
+                  <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
                   <p>25 </p>
                   <input type="range" className={styles['range-slider']} />
                 </div>
+              </div>
+              <div className={styles['estimate-inner']}>
+                <div className={`rate ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                  <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                </div>
                 <div className={`loan ${styles["border-white"]}`}>
-                  <p><span>Loan Period</span> <span className="text-right">Y R S</span></p>
+                  <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                   <p> 5</p>
                   <input type="range" className={styles['range-slider']} />
                 </div>
@@ -171,6 +174,36 @@ function OfferMain({entity1}) {
               <div className={styles['estimate-inner']}>
                 <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
               </div>
+              </div>
+               :
+              <div>
+                 <div className={styles['estimate-inner']}>
+                <div className={`price ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Property Price</p>
+                  <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                </div>
+                <div className={`rate ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                  <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                </div>
+              </div>
+              <div className={styles['estimate-inner']}>
+                <div className={`down-payment ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
+                  <p>25 </p>
+                  <input type="range" className={styles['range-slider']} />
+                </div>
+                <div className={`loan ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
+                  <p> 5</p>
+                  <input type="range" className={styles['range-slider']} />
+                </div>
+              </div>
+              <div className={styles['estimate-inner']}>
+                <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
+              </div>
+              </div>
+              }
             </div>
             <div className="col-md-4">
               <div className={styles['estimate-cost']}>

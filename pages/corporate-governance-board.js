@@ -16,7 +16,7 @@ import HeadingTitle from '../components/HeadingTitle'
 import FooterMoreLinks from '../components/FooterMoreLinks'
 import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
-
+import styles from "../styles/components/CorporateGovernanceBoard.module.css";
 // import styles from '../styles/pages/Quick.module.css'
 
 
@@ -122,11 +122,30 @@ function CorporateGovBoard( { mobileDevice, entity1 } ) {
         </div>
 
         <section className='section'>
-        {
-          entity1.fieldMembers.map( (unit, index) => (
-        <CorporateGovernanceBoard entity1={unit} />
-          ))
-        }
+          <section className={ styles['damac-about-leadership'] }>
+            <div className="container">
+              <div className={styles['leadership-boxes']}>
+                  <div className="row">
+                  {
+                    entity1.fieldMembers.map( (unit, index) => (
+                  // <CorporateGovernanceBoard entity1={unit} />
+                  <div className="col-md-3 col-6" key={index}>
+                      <div className={styles['leadershipbox']}>
+                          <div className={styles['leadershipimg']}>
+                              <img src={unit.entity.fieldImage.url} />
+                          </div>
+                          <div className={styles['leadership-details']}>
+                              <h5>{unit.entity.fieldName}</h5>
+                              <p>{unit.entity.fieldTitleTeam}</p>
+                          </div>
+                      </div>
+                  </div>
+                    ))
+                  }
+                  </div>
+                </div>
+            </div>
+          </section>
         </section>
 
         <FooterMoreLinks/>
@@ -140,7 +159,7 @@ function CorporateGovBoard( { mobileDevice, entity1 } ) {
   )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
 
   // Device React
   const deviceIsMobile = isMobile;

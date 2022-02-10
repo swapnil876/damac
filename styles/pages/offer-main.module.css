@@ -167,9 +167,13 @@ p.estimate-tagline {
 
 .border-white .side_icons {
     position: relative;
-    left: 50%;
+    /* left: 50%; */
     font-size: 22px;
     opacity: unset;
+}
+
+.border-white .side_icons_calc {
+    font-size: 18px;
 }
 
 .border-white .side_icons svg {
@@ -179,11 +183,21 @@ p.estimate-tagline {
 
 .estimate-inner p {
     font-size: 20px;
+    line-height: 148%;
+    font-weight: 500;
+    margin: 0
+}
+
+.estimate-inner p.heading {
+    font-size: 16px;
+    line-height: 148%;
+    letter-spacing: 0.03em;
+    font-weight: 300;
 }
 
 .estimate-inner span {
-    font-weight: 300;
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 20px;
     line-height: 148%;
     letter-spacing: 0.03em;
     color: #FFFFFF;
@@ -204,6 +218,9 @@ span.text-right.dark i {
 
 .estimate-inner p {
     font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .estimate-cost {
@@ -324,15 +341,18 @@ section.faq-section div.accordion button {
 }
 
 @media (max-width: 1200px) {
-    .border-white .side_icons {
+    /* .border-white .side_icons {
         left: 30%;
     }
+    .border-white .side_icons_calc {
+        left: 60%;
+    } */
 }
 
 @media (max-width: 992px) {
-    .border-white .side_icons {
+    /* .border-white .side_icons {
         left: 15%;
-    }
+    } */
 }
 
 @media (max-width: 768px) {
@@ -341,9 +361,9 @@ section.faq-section div.accordion button {
         width: 100%;
     }
 
-    .border-white .side_icons {
+    /* .border-white .side_icons {
         left: 100px;
-    }
+    } */
 
     .estimate-inner {
         width: 100%;

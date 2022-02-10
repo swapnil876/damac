@@ -583,7 +583,9 @@ section.faq-section .accordion-body {
 	.text_area {
 		bottom: 18px;
 	}
-
+.show_property_main{
+	margin-top: 30px;
+}
 	.filter_option_wrap .col-md-3,
 	.filter_option_wrap .col-md-6 {
 		width: 100%;
@@ -601,8 +603,8 @@ section.faq-section .accordion-body {
 	.project-card h6 {
 		font-size: 20px;
 		line-height: 24px;
-		max-height: 48px;
-		height: 48px;
+		/* max-height: 48px;
+		height: 48px; */
 		text-overflow: ellipsis;
 	}
 
@@ -638,6 +640,12 @@ section.faq-section .accordion-body {
 }
 
 @media (max-width: 767px) {
+	.project-card {
+		margin-bottom: 30px;
+	}
+	.project-card p {
+		margin-bottom: 8px;
+	}
 	.why-invest .read_more_btn {
 		background: #FFFFFF;
 		border-radius: 4px;
