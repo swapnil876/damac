@@ -14,7 +14,14 @@ query {
          fieldStaticCol2{
            value
          }
-         
+         fieldMultipleFaqsBw{
+           entity{
+             ... on ParagraphMultipleFaqs{
+               fieldAnswer
+               fieldQuestion
+             }
+           }
+         }
        }
      }
    }

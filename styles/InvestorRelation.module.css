@@ -85,7 +85,7 @@
     font-weight: 500;
 }
 
-.pagetabs > li.active {
+.pagetabs > li > a.active {
     font-weight: 500;
 }
 
