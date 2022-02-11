@@ -6,7 +6,8 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { DIVIDENDS } from '../graphql/master/dividends';
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -34,7 +35,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function Dividends( { mobileDevice } ) {
+function Dividends( { mobileDevice , entity1,fieldTabs} ) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -86,7 +87,7 @@ function Dividends( { mobileDevice } ) {
         <Breadcrumbs crumbs={ crumbs }/>
 
         <HeadingTitle 
-          title="Dividends" 
+          title={entity1.fieldPageTitleD.value} 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
@@ -95,19 +96,7 @@ function Dividends( { mobileDevice } ) {
         </HeadingTitle>
 
         <div className='container'>
-            <PageTabs tabLinks={ [
-                {
-                    url: '/dividends',
-                    label: 'Dividends',
-                    active: true,
-                },
-
-                {
-                    url: '/capital-history',
-                    label: 'Capital History',
-                    active: false,
-                }
-            ] }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs}></PageTabs>
         </div>
 
         <section className='section'>
@@ -218,6 +207,37 @@ export default Dividends
 
 
 export async function getStaticProps(context) {
+  // Device React
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: DIVIDENDS });
+  let entity1 = data.data.nodeQuery.entities[0];
+  let fieldTabs = [];
+  entity1.fieldTabs.map((v,i)=>{
+    if(v.entity.fieldTabHeading == 'Dividends')
+    {
+      fieldTabs.push(
+        {url: '/dividends',
+          label: 'Dividends',
+          active: true
+        }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Capital History'){
+      fieldTabs.push(
+        {url: '/capital-history',
+          label: 'Capital History',
+          active: false
+        }
+      )
+    }
+     
+  });
+  console.log(entity1.fieldTabs);
+
 
 
   // Device React
@@ -227,7 +247,9 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       entity1: entity1,
+       fieldTabs:fieldTabs
     }, // will be passed to the page component as props
   }
 }

@@ -6,7 +6,8 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { SHARE_INFO } from '../graphql/master/share_information';
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -18,9 +19,6 @@ import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
 
 // import styles from '../styles/pages/Quick.module.css'
-
-
-
 
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
@@ -42,7 +40,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function ShareInformation( { mobileDevice } ) {
+function ShareInformation( { mobileDevice, entity1, fieldTabs } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -95,7 +93,7 @@ function ShareInformation( { mobileDevice } ) {
         <Breadcrumbs crumbs={ crumbs }/>
 
         <HeadingTitle 
-          title="Share Information" 
+          title={entity1.fieldPageTitleS} 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
@@ -104,38 +102,7 @@ function ShareInformation( { mobileDevice } ) {
         </HeadingTitle>
 
         <div className='container'>
-            <PageTabs tabLinks={ [
-                {
-                    url: '/share-information',
-                    label: 'Share Graph Monitor',
-                    active: true,
-                },
-
-                {
-                    url: '/share-overview',
-                    label: 'Share Overview',
-                    active: false,
-                },
-
-                {
-                    url: '/investment-calculator',
-                    label: 'Investment Calculator',
-                    active: false,
-                },
-
-
-                {
-                    url: '/share-price-lookup',
-                    label: 'Share Price Look Up',
-                    active: false,
-                },
-
-                {
-                    url: '/sharia-compliance',
-                    label: 'Sharia Compliance',
-                    active: false,
-                },
-            ] }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs }></PageTabs>
         </div>
 
         <section className='section'>
@@ -248,16 +215,80 @@ export default ShareInformation
 
 
 export async function getStaticProps(context) {
-
-
   // Device React
   const deviceIsMobile = isMobile;
   const deviceType = deviceIsMobile;
 
+   const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+
+  const  data  = await client.query({ query: SHARE_INFO });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log(entity1);
+
+  let fieldTabs = [];
+  entity1.fieldTabsS.map((v,i)=>{
+    if(v.entity.fieldTabHeading == 'Share Graph Monitor')
+    {
+      fieldTabs.push(
+        {
+          url: '/share-information',
+          label: 'Share Graph Monitor',
+          active: true,
+        }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Share Overview'){
+      fieldTabs.push(
+        {
+          url: '/share-overview',
+          label: 'Share Overview',
+          active: false,
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Investment Calculator'){
+      fieldTabs.push(
+        {
+          url: '/investment-calculator',
+          label: 'Investment Calculator',
+          active: false,
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Share Price Look Up'){
+      fieldTabs.push(
+        {
+          url: '/share-price-lookup',
+          label: 'Share Price Look Up',
+          active: false,
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Sharia Compliance'){
+      fieldTabs.push(
+        {
+          url: '/sharia-compliance',
+          label: 'Sharia Compliance',
+          active: false,
+      }
+      )
+    }
+     
+  });
+  console.log(fieldTabs);
+
+
+
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       entity1: entity1,
+       fieldTabs:fieldTabs
     }, // will be passed to the page component as props
   }
 }
