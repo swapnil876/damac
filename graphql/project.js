@@ -1,3 +1,6 @@
+import { gql } from '@apollo/client';
+
+const PROJECT = gql`
 query {
   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["project"]}]}) {
     entities {
@@ -188,4 +191,6 @@ query {
       }
     }
   }
-}
+}`;
+
+export { PROJECT };
