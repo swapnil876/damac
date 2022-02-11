@@ -142,7 +142,7 @@
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   position: absolute;
   z-index: 1;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 #similar_proprty_card_main_global .slick-prev:hover,
@@ -183,6 +183,12 @@
   left: unset;
   right: 63px;
 }
+
+#similar_proprty_card_main_global.project_detail_mobile_sliders .slick-next, #similar_proprty_card_main_global.project_detail_mobile_sliders .slick-prev {
+  top: -100px;
+}
+
+
 
 .read_more_btn_for_mob {
   background-color: #fff;
@@ -448,8 +454,8 @@ button.accordion-button {
 }
 
 .get_estimate_box_arrows.plus_minus svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .project_detail_mobile_sliders .slick-slide img {
@@ -547,7 +553,7 @@ button.accordion-button {
 }
 
 .sec_3_gallery_grid_for_mobile img {
-  margin: 14px 0;
+  margin: 0 0 14px;
 }
 
 .read_more_btn {
@@ -709,6 +715,30 @@ button.accordion-button {
 }
 
 @media (max-width: 767.98px) {
+  .leadershipbox{
+    margin-right: 10px;
+  }
+  .more_projects_image{
+    width: 100% !important;
+    aspect-ratio: 342/109 !important;
+  }
+  .containerBottomImage.for_mobile_screen{
+    height: unset;
+  }
+  .containerBottomImage.for_mobile_screen img{
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 390/220;
+  }
+  .chairmans-msg-cover{
+    position: relative;    
+    top: -325px;
+  }
+  .chairmans-message-main .page-title{
+    width:100%;
+    height:unset;
+    aspect-ratio: 390/347;
+  }
   .investor_contact_form {
     margin: 64px 0 50px;
   }
@@ -857,8 +887,17 @@ button.accordion-button {
     display: none !important;
   }
 }
-
+@media (max-width: 576px){
+  .chairmans-msg-cover{
+    position: relative;    
+    top: -250px;
+  }
+}
 @media (max-width: 500px) {
+  .chairmans-msg-cover{
+    position: relative;    
+    top: -200px;
+  }
   .payment_plan_table_comp .payment_col {
     text-align: center;
   }
@@ -893,7 +932,9 @@ button.accordion-button {
 }
 
 @media (max-width: 420px) {
-
+  .chairmans-msg-cover{
+    top: -140px;
+  }
   .testimonial_container .slick-prev,
   .testimonial_container .slick-next {
     top: 200px;
@@ -909,7 +950,9 @@ button.accordion-button {
 }
 
 @media (max-width: 375px) {
-
+  .chairmans-msg-cover{
+    top: -130px;
+  }
   .testimonial_container .slick-prev,
   .testimonial_container .slick-next {
     top: 206px;
@@ -923,7 +966,11 @@ button.accordion-button {
     top: 180px;
   }
 }
-
+@media (max-width: 340px) {
+  .chairmans-msg-cover{
+    top: -110px;
+  }
+}
 @media (max-width: 330px) {
 
   .testimonial_container .slick-prev,

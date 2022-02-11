@@ -17,7 +17,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive'
 
@@ -45,6 +45,12 @@ const WhyDubai= ({entity1})=> {
     }
   };
 
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  useEffect(() => {
+      if ( isMobile ) {
+        setDeviceIsMobile( true );
+      }
+   }, [])
 
     // Slick slider 
     var settings = {
@@ -77,7 +83,7 @@ const WhyDubai= ({entity1})=> {
        
 
        <HeroSection
-         bannerImage={ isMobile ? entity1.fieldMainImageMobile.url : entity1.fieldMainImageDesktopd.url}
+         bannerImage={ deviceIsMobile ? entity1.fieldMainImageMobile.url : entity1.fieldMainImageDesktopd.url}
        >
 
            <div className="banner-conent-style-1">
@@ -308,7 +314,7 @@ const WhyDubai= ({entity1})=> {
 
 
        {
-         isMobile ? '' :       
+         deviceIsMobile ? '' :       
       <TextSection className="text-section-whhydubai-4">
          <div className="row justify-content-between">
            <div className="col-md-4">
@@ -378,7 +384,7 @@ const WhyDubai= ({entity1})=> {
        </section>
 
        {
-         !isMobile ? 
+         !deviceIsMobile ? 
          <section className="why-dubai-section-5 d-md-block d-none">
          <div className="container">
            <div className="row">
@@ -408,7 +414,7 @@ const WhyDubai= ({entity1})=> {
 
 
           {/* {
-            !isMobile ?
+            !deviceIsMobile ?
             <section className="why-dubai-opportunity">
             <div className="container">
               <div className="row">

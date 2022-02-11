@@ -11,7 +11,7 @@ section.calculator_mortage .col-md-8 {
     padding-right: 156px;
 }
 
-.mortage_calculator_left h1 {
+.cost_breakdown .mortage_calculator_left h1 {
     font-size: 42px;
     font-weight: 500;
     line-height: 49px;
@@ -157,6 +157,7 @@ input.range-slider {
     width: 50%;
     opacity: 0.7;
 }
+
 .fees_main_for_mortgage_cal_page span.text-left {
     text-align: left;
     font-size: 16px;
@@ -167,7 +168,14 @@ input.range-slider {
     align-items: center;
 }
 
-.calculator-cost span {
+.cost_breakdown .right_side_txt {
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 148%;
+    color: #FFFFFF;
+}
+
+.calculator-cost span.opaque_txt {
     opacity: 0.6;
 }
 
@@ -387,6 +395,7 @@ section.faq-section .accordion-body {
         position: relative;
         width: 100%;
     }
+
     section.calculator_mortage .col-md-8 {
         padding-right: 12px;
         width: 100%;
@@ -397,32 +406,41 @@ section.faq-section .accordion-body {
     .calculator_mortage {
         background: #111;
     }
+
     .mortage_calculator_left h1 {
         font-size: 32px;
     }
+
     .calculator-inner {
         flex-direction: column;
         gap: 0;
     }
+
     .border-white {
         width: 100%;
     }
+
     .calculator-cost ul li {
         font-size: 20px;
     }
+
     .fees_main ul li {
         font-size: 16px;
     }
+
     .interest_mortage {
         padding: 50px 0;
     }
+
     .faq-wrap button.accordion-button-custom,
     section.faq-section .accordion-body {
         font-size: 16px;
     }
+
     section.faq-section {
         padding-bottom: 60px;
     }
+
     .faq-icon h2 {
         margin-bottom: 30px;
     }

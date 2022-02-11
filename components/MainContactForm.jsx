@@ -119,7 +119,8 @@ export default function ContactForm({ initialValues, address }) {
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
                                                            value={options.value}
-                                                           options={options}/>   
+                                                           options={options}
+                                                           placeholder={options[0].value}/>   
                                                    </div>
                                                </label>
                                            </div>
@@ -329,7 +330,8 @@ export default function ContactForm({ initialValues, address }) {
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
                                                            value={options.value}
-                                                           options={options}/>   
+                                                           options={options}
+                                                           placeholder={options[0].value}/>   
                                                    </div>
                                                </label>
                                            </div>
