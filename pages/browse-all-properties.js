@@ -611,7 +611,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                     <h1>Similar Properties</h1>
                                 </div>
                              {
-                               !isMobile ? 
+                               !deviceIsMobile ? 
                                <div className={project_landing_styles['similar_proprty_card_main']}>
                                <div className="row">
                                
@@ -692,7 +692,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                            </div>
                              }
                             </div>
-                        </section>
+               </section>
             {/* <!-- About Dubai Section --> */}
             <section className={styles['about_dubai_main']}>
               <div className="container">
@@ -712,37 +712,70 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 </div>
               </div>
             </section>
-            {/* <!-- Why Invest in Dubai --> */}
-            <section className={styles['why-invest']} style={!isMobile ? {'background':'url(/damac-static/images/invest-dubai-bg.jpg)'} : {'background':'#111'}}>
-              <div className="container">
-                <div className={styles['why-invest-container']}>
-                <div className="row ">
-                  <div className="col-md-6">
-                    <div className={styles['invest-wrap']}>
-                      <h2>Why Invest in Dubai</h2>
-                    </div>  
-                  </div>          
-                </div> 
-                <div className="row">
-                  <div className="col-md-6">
-                       <div className={styles['invest-wrap']}>
-                         <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
-                       </div>
+            {
+            !deviceIsMobile ?
+            // {/* <!-- Why Invest in Dubai --> */}
+            <section className={styles['why-invest']} style={{'background':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+            <div className="container">
+              <div className={styles['why-invest-container']}>
+              <div className="row ">
+                <div className="col-md-6">
+                  <div className={styles['invest-wrap']}>
+                    <h2>Why Invest in Dubai</h2>
+                  </div>  
+                </div>          
+              </div> 
+              <div className="row">
+                <div className="col-md-6">
+                     <div className={styles['invest-wrap']}>
+                       <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
+                     </div>
+                </div>
+                <div className="col-md-6">
+                  <div className={styles['invest-wrap']}>
+                    <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
                   </div>
-                  <div className="col-md-6">
+                </div>
+              </div>
+              <div className="row">
+                       <div className="col-md-6">
+                         <a href="#" className="read-more" style={{'color':'#fff', 'text-decoration':'none'}}>Read more</a>
+                       </div>
+                     </div>   
+              </div>    
+            </div>     
+            </section> :
+           <section className={styles['why-invest']} style={{'background':'#111'}}>
+           <div className="container">
+             <div className={styles['why-invest-container']}>
+             <div className="row ">
+               <div className="col-md-6">
+                 <div className={styles['invest-wrap']}>
+                   <h2>Why Invest in Dubai</h2>
+                 </div>  
+               </div>          
+             </div> 
+             <div className="row">
+               <div className="col-md-6">
                     <div className={styles['invest-wrap']}>
                       <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
                     </div>
-                  </div>
-                </div>
-                <div className="row">
-                         <div className="col-md-6">
-                           <a href="#" className="read-more" style={{'color':'#fff', 'text-decoration':'none'}}>Read more</a>
-                         </div>
-                       </div>   
-                       </div>    
-              </div>     
-            </section>
+               </div>
+               <div className="col-md-6">
+                 <div className={styles['invest-wrap']}>
+                   <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
+                 </div>
+               </div>
+             </div>
+             <div className="row">
+                      <div className="col-md-6">
+                        <a href="#" className="read_more_btn_for_mob">Read more</a>
+                      </div>
+                    </div>   
+             </div>    
+           </div>     
+           </section>
+            }
           
 
             {/* <!-- faq section --> */}
@@ -797,7 +830,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                 </div>          
                                 </div>        
                             </div>      
-                        </section>
+            </section>
 
 
              </main>

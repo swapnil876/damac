@@ -103,21 +103,19 @@ function QuickFactsheet( { quickfactsheet } ) {
         <section className='section' style={deviceIsMobile ? {'padding-bottom': '12px','padding-top': '36px'} :{'padding-bottom': '12px','padding-top': '68px'}}>
           <div className='container'>
              <h3 className='section-title' style={ deviceIsMobile ? {'font-size':'22px', 'max-width': '100%'} : {'font-size':'32px', 'max-width': '420px'}}>Pioneering luxury real estate across the region</h3>
-
-             <div className={quickfactsheet.fieldCol1Text.value}>
-               <div className='text'>
-                 <p>DAMAC Properties has been at the forefront of the Middle East’s luxury real estate market for more than 18 years – bringing luxury living experiences to residents from all over the world. Making its mark at the highest end of stylish living, DAMAC Properties has cemented its place as the leading luxury developer in the region, offering iconic design and the upmost quality.<br/><br/>
-                   The Company’s footprint now extends across the Middle East with projects in the UAE, Saudi Arabia, Qatar, Jordan, Lebanon and the United Kingdom.</p>
-               </div>
-
-               <div className={quickfactsheet.fieldCol2Text.value}>
-                 <p>As of 30th June 2020, DAMAC Properties has delivered over 30,000+ homes and has a development portfolio of over 34,000 units at various stages of progress and planning.
-                <br/><br/>
-                With vision and momentum, DAMAC Properties is building the next generation of Middle East luxury living.</p>
-               </div>
-             </div>
-
-
+             <div class="row">
+                        <div class="col-md-6">
+                      <div class="factsheet-main-content">
+                          <div dangerouslySetInnerHTML={{ __html: quickfactsheet.fieldCol1Text.value }}>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="factsheet-main-content second-p">
+                        <div dangerouslySetInnerHTML={{ __html: quickfactsheet.fieldCol2Text.value }}></div>
+                      </div>
+                  </div>
+              </div>
 
              <div className={'factsheet-content'}>
 

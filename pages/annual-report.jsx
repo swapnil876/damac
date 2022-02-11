@@ -144,7 +144,7 @@ function AnnualReport( { annualreport } ) {
             <div className={ styles['annual-reports-list'] }>
             {
                    annualreport.map( (report, index) => (
-              <div className={ styles['annual-reports-item']}>
+              <div className={ styles['annual-reports-item']} key={index}>
                 <h3 className={`annual-report-title`}>
                   {report.fieldTitleAr.value}
                 </h3>

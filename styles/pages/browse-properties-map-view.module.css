@@ -309,7 +309,9 @@ section.map-section .container-fluid .col-md-4 {
         box-shadow: none;
         padding: 0
     }
-
+    .project-card {
+        padding: 0px;
+    }
     .bedroom-detail {
         gap: 7px !important;
     }

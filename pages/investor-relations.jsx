@@ -72,7 +72,7 @@ function InvestorRelations( { entity1 } ) {
             <div className={`${styles["profile-inner-main"]}  d-flex justify-content-center`}>
               <div className={styles['profile-main-head']}>
                 <h1 className="text-center">{entity1.fieldDescriptionHeading.value}</h1>
-                <p className="text-center">{entity1.fieldTextHeading.value}</p>
+                <div className="text-center" dangerouslySetInnerHTML={{ __html: entity1.fieldTextHeading.value }}></div>
               </div>
             </div>
           </div>

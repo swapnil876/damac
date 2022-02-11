@@ -30,9 +30,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function CompanyAnnouncements(){
+export default function CompanyAnnouncements({entity,unique,year_announcement}){
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+    const [yearData, setYearData] = useState(year_announcement)
     useEffect(() => {
         if ( isMobile ) {
           setDeviceIsMobile( true );
@@ -52,6 +53,19 @@ export default function CompanyAnnouncements(){
       'active': true
     }
 ];
+let selectYear = (yr,arr)=>{
+    console.log(useEffect);
+    yearData.map((v,i)=>{
+        if(yr==v.year){
+            v.isShow = true;
+        }
+        else{
+            v.isShow = false;
+        }
+    }); 
+    setYearData( yearData );
+    console.log(yearData);
+}
 
 
 return (
@@ -112,11 +126,11 @@ return (
             <div className="year_sorting d-flex justify-content-between align-items-center flex-wrap">
                 <div className="announcement_tab">
                     <ul className={`${styles["announcement_tab_ul"]} list-unstyled d-flex flex-wrap align-items-center p-0`}>
-                        <li><a href="#">2020</a></li>
-                        <li><a href="#">2019</a></li>
-                        <li><a href="#">2018</a></li>
-                        <li><a href="#">2017</a></li>
-                        <li><a href="#">2014</a></li>
+                        {
+                        unique.map( (yr, i) => (
+                            <li key={i} ><a href="#" onClick={()=>{selectYear(yr,year_announcement)}}>{yr}</a></li>
+                        ))
+                        }
                         <li className={styles['active']}><a href="#">All(242)</a></li>
                     </ul>
                 </div>
@@ -127,18 +141,27 @@ return (
             {/* <!-- announcement list start here --> */}
             <div className="list_announcement_main">
                 <ul className="list-unstyled">
-                    <li>
-                        <div className={styles['announcement_list']}>
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
-                            <div className="d-flex ">
-                                <div className={styles['datetime-announcement']}>
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div className={styles['download_announcement']}><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
+                    {
+                        yearData.map((v,i)=>(
+                                v.isShow?(
+                                    <li key={i}>
+                                        <div className={styles['announcement_list']}>
+                                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                            <div className="d-flex ">
+                                                <div className={styles['datetime-announcement']}>
+                                                    <p>January 29, 2021 4:00 PM EST</p>
+                                                </div>
+                                                <div className={styles['download_announcement']}><a href="#">Download</a></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                ):
+                                ('')
+                            
+                        ))
+                    }
+                    
+                    {/* <li>
                         <div className={styles['announcement_list']}>
                             <h1><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h1>
                             <div className="d-flex ">
@@ -192,7 +215,7 @@ return (
                                 <div className={styles['download_announcement']}><a href="#">Download</a></div>
                             </div>
                         </div>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
             <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}
@@ -228,18 +251,51 @@ return (
 
 }
 
+// function selectYear(yr,arr){
+//     console.log(yr,arr,this);
+//     arr.map((v,i)=>{
+//         if(yr==v.year){
+//             v.isShow = true;
+//         }
+//         else{
+//             v.isShow = false;
+//         }
+//     }); 
+    
+// }
+
+function getDateTime(date){
+    console.log('date*****',date);
+   let split = date.split('T');
+   let y = split[0].split('-');
+   return y[0];
+}
+
 export const getStaticProps = async () => {
     const client = new ApolloClient({
       uri: process.env.STRAPI_GRAPHQL_URL,
       cache: new InMemoryCache()
     });
     let year_announcement = [];
+    let unique = [];
     const  data  = await client.query({ query: COMPANY_ANNOUNCEMENTS });
     let entity1 = data.data.nodeQuery.entities;
-    
+    console.log(entity1);
+    entity1.map((v,i)=>{
+        let year = getDateTime(v.fieldDate.value)
+        if(!unique.includes(year)){
+            unique.push(year);
+            year_announcement.push({obj:v,year:year,isShow:true});
+        }
+        else{
+            year_announcement.push({obj:v,year:year,isShow:true});
+        }
+    });
     return {
         props: {
           entity1: entity1,
+          unique: unique,
+          year_announcement:year_announcement
         }
     }
   
