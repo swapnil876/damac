@@ -2445,8 +2445,24 @@ PAGE:  NEWS
     color: #000000;
     opacity: 0.6;
 }
-
+.iframe_for_graph_quickfactsheet{
+    width:100%;
+    aspect-ratio: 1224/496;
+    object-fit: cover;
+    border: 1px solid;
+}
+.graph-left-div{
+    width:100%;
+    aspect-ratio: 700/709;
+}
+.graph-right-div{
+    width:100%;
+    aspect-ratio: 598/299;
+}
 @media(max-width: 768px) {
+    .aboutChairmanbox p{
+        margin-bottom: 23px;
+    }
     .press-release h2{
         font-size: 22px;
 line-height: 131.6%;

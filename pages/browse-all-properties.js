@@ -47,7 +47,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { useMediaQuery } from 'react-responsive'
  import * as axios from 'axios';
 
- export default function BrowseProperties(entity,entity1){
+ function BrowseProperties({entity,entity1}){
 
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
@@ -63,7 +63,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
         }
     };
 
-    // console.log('list',entity,entity1);
+    console.log('list======================================',entity1);
     // console.log('storage',localStorage)
     useEffect(() => {
         //   importing bootstrap js
@@ -121,7 +121,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className={`${styles["browse-hero-text"]} text-white`}>{}</h1>
+                            <h1 className={`${styles["browse-hero-text"]} text-white`}>{entity1.fieldPageTitleBp}</h1>
                         </div>
                     </div>
                 </div>
@@ -844,6 +844,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
      )
  }
 
+ export default BrowseProperties;
+
  export async function getServerSideProps(context) {
     // Device React
     const deviceIsMobile = isMobile;
@@ -853,8 +855,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
         cache: new InMemoryCache()
       });
       const  data  = await client.query({ query: BROWSE_PROPERTIES });
-  let entity1 = data.data.nodeQuery.entities;
-  console.log('--------',entity1);
+      let properties = data.data.nodeQuery.entities[0];
+    
     let entity = [];
     let token = '';
     await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
@@ -865,26 +867,26 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             headers:{
                 'Authorization':'Zoho-oauthtoken '+token
             }
-        }).then(response => {
-            // console.log('response',response.data.data);
-            // BrowseProperties({
-            //     mobileDevice: deviceType,
-            //     entity:entity
-            //  });
-            entity = response.data.data;
-        }).catch((e,status)=>{
-            // console.log('response',e.response);
-            if(typeof e.response != 'undefined'){
-                if(e.response.status == 401){
-                    // console.log(refreshToken(e.response.status));
-                }
+    }).then(response => {
+        // console.log('response',response.data.data);
+        // BrowseProperties({
+        //     mobileDevice: deviceType,
+        //     entity:entity
+        //  });
+        entity = response.data.data;
+    }).catch((e,status)=>{
+        // console.log('response',e.response);
+        if(typeof e.response != 'undefined'){
+            if(e.response.status == 401){
+                // console.log(refreshToken(e.response.status));
             }
-        });
+        }
+    });
+    console.log('--------',entity.entity);
     return {
         props: {
-            
            entity:entity,
-           entity1:entity1
+           entity1:properties
         }, // will be passed to the page component as props
       }
  }
