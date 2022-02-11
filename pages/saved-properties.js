@@ -15,10 +15,13 @@ import BlogCardItem from '../components/BlogCardItem'
 
 import { FaPlay, FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 
+// importing React Select
+import Select from "react-dropdown-select";
+
 
 import styles from '../styles/pages/browse-properties.module.css'
 
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 
 // FA
 import ReactDOM from 'react-dom'
@@ -30,15 +33,32 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { Context as ResponsiveContext } from 'react-responsive'
  import { useMediaQuery } from 'react-responsive'
 
+ import { isMobile } from 'react-device-detect';
+
  // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
 
  export default function SavedProperties(){
 
+  const [filterClicked, setFilterClicked] = useState(false);
+  const [searchClicked, setSearchClicked] = useState(false);
+
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
      //   importing bootstrap js
      import("bootstrap/dist/js/bootstrap");
+
+     if ( isMobile ) {
+      setDeviceIsMobile( true );
+    }
  }, [])
+
+
+ const options = [
+  { value: 'Dubailand', label: 'Dubailand, Dubai, UAE' },
+  { value: 'Dubailand', label: 'Dubailand, Dubai, UAE' },
+  { value: 'Marina', label: 'Marina, Dubai, UAE' },
+];
 
      return(
          <div className="saved-properties">
@@ -322,11 +342,272 @@ import 'bootstrap/dist/css/bootstrap.css'
                 </div>
             </section>
       
-          
+           {/* This is the filter menu, for mobile its in form of footer  */}
+           {
+               deviceIsMobile ? 
+               <section class="footer_filter_for_mobile">
+                   <div className='container'>
+                       <div className='row'>
+                           <div className='col-4'>
+                           <div className='single_option' onClick={()=>{setFilterClicked(true)}}>
+                               <div className='option_icon'>
+                                   <img src="/images/icons/home.png" />
+                               </div>
+                               <div className='option_name'>Browse</div>
+                           </div>
+                           </div>
+                           <div className='col-4'>
+                           <div className='single_option' onClick={()=>{setSearchClicked(true)}}>
+                               <div className='option_icon'>
+                                   <img src="/images/icons/search.png" />
+                               </div>
+                               <div className='option_name'>Search</div>
+                           </div>
+                           </div>
+                           <div className='col-4'>
+                           <div className='single_option'>
+                               <div className='option_icon'>
+                                   <img src="/images/icons/save-filled.png" />
+                               </div>
+                               <div className='option_name'>Saved</div>
+                           </div>
+                           </div>
+                       </div>
+                   </div>
+               </section>
+               :
+             ""
+           }
+             
+            {/* Filter menu for mobile */}
+            {
+                filterClicked ? 
+                <div className='filter_side_slide_for_mobile'>
+                <div className='back_btn' onClick={()=>{setFilterClicked(false)}}>
+                    <img src="images/icons/angle-down.png" />
+                </div>
+                <div className='top_area'>
+                    <h3>Add a filter</h3>
+                    <Select className='top_dropdown'
+                    value={options.value}
+                    options={options} placeholder="Dubailand, Dubai, UAE" />  
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Property Type
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Plot
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Apartment
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Townhouse
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Number of bedrooms
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 1 Bedroom
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 2 Bedrooms
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 3 Bedrooms
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Price Range
+                    </div>
+                    <div className='options-box'>
+                    <img src="images/menu-graph.png" className='range_graph_img' />
+                    <div className='price_range_area'>
+                        <div className='slider_range_area'>
+                        <input type="range"/>
+                        </div>
+                        <div class="slide_range_text">
+                            <span>AED 100,000</span>
+                            <span>AED 2,000,000 {'>'}</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Project Status
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Move in Ready
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Under Construction
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>: ''
+            }
 
-
-               
-            
+            {/* Search menu for mobile */}
+            {
+                searchClicked ? 
+                <div className='filter_side_slide_for_mobile'>
+                <div className='back_btn' onClick={()=>{setSearchClicked(false)}}>
+                    <img src="images/icons/angle-down.png" />
+                </div>
+                <div className='top_area'>
+                    <h3>Search</h3>
+                    <Select className='top_dropdown'
+                    value={options.value}
+                    options={options} placeholder="Dubailand, Dubai, UAE" />  
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Property Type
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Plot
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Apartment
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Townhouse
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Number of bedrooms
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 1 Bedroom
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 2 Bedrooms
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 3 Bedrooms
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Price Range
+                    </div>
+                    <div className='options-box'>
+                    <img src="images/menu-graph.png" className='range_graph_img' />
+                    <div className='price_range_area'>
+                        <div className='slider_range_area'>
+                        <input type="range"/>
+                        </div>
+                        <div class="slide_range_text">
+                            <span>AED 100,000</span>
+                            <span>AED 2,000,000 {'>'}</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Project Status
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Move in Ready
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Under Construction
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>: ''
+            }      
              </main>
              <Footer></Footer>
          </div>
