@@ -42,7 +42,7 @@ function ChairmansMessage({entity1}) {
 
            <div className="page-title">
              <div className="container">
-               <h2>Chairman's Message</h2>
+               <h2>{entity1.fieldPageTitleCm}</h2>
              </div>
            </div>
 

@@ -107,12 +107,12 @@ query {
         }}
         fieldMultipleFaqs{
          entity{
-           ... on ParagraphMultipleFaqs{
-             fieldAnswer
-             fieldQuestion
-           }
-         }
-       }
+            ... on ParagraphMultipleFaqs{
+              fieldAnswer
+              fieldQuestion
+            }
+          }
+        }
         fieldLongitude
         fieldLatitude
         fieldMetaTitleComm
