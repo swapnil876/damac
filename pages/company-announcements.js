@@ -34,6 +34,8 @@ export default function CompanyAnnouncements({entity,unique,year_announcement}){
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     const [yearData, setYearData] = useState(year_announcement)
+    const [uniqueYear, setUniqueYear] = useState(unique)
+    const [allYear, setAllYear] = useState(true)
     useEffect(() => {
         if ( isMobile ) {
           setDeviceIsMobile( true );
@@ -53,18 +55,67 @@ export default function CompanyAnnouncements({entity,unique,year_announcement}){
       'active': true
     }
 ];
-let selectYear = (yr,arr)=>{
+let selectYear = (yr,arr,l,type)=>{
     console.log(useEffect);
-    yearData.map((v,i)=>{
-        if(yr==v.year){
-            v.isShow = true;
-        }
-        else{
-            v.isShow = false;
-        }
-    }); 
-    setYearData( yearData );
-    console.log(yearData);
+    if(type==1){
+        let yearr = yearData;
+        let uniquee = uniqueYear;
+        setYearData( [] );
+        // setUniqueYear( [] );
+        setTimeout(function(){
+            uniquee.map((m,n)=>{
+                if(n==l){
+                    m.isActive = true;
+                }
+                else{
+                    m.isActive = false;
+                }
+                if((n+1) == uniquee.length){
+                    setUniqueYear( uniquee );
+                }
+            })
+            yearr.map((v,i)=>{
+                if(yr.year==v.year){
+                    // yearr[i] = {...yearr[i], isShow: true};
+                    // this.setState({ yearData });
+                    // setYearData( yearData );
+                    v.isShow = true;
+                }
+                else{
+                    // yearr[i] = {...yearr[i], isShow: false};
+                    // this.setState({ yearData });
+                    // setYearData( yearData );
+                    v.isShow = false;
+                }
+                if((i+1) == yearr.length){
+                    setYearData( yearr );
+                }
+            }); 
+            setAllYear(false)
+        },2000)
+    }
+    else{
+        let yearr = yearData;
+        let uniquee = uniqueYear;
+        setYearData( [] );
+        setTimeout(function(){
+            uniquee.map((m,n)=>{
+                m.isActive = false;
+                if((n+1) == uniquee.length){
+                    setUniqueYear( uniquee );
+                    setAllYear(true)
+                }
+            })
+            yearr.map((v,i)=>{
+                v.isShow = true;
+                if((i+1) == yearr.length){
+                    setYearData( yearr );
+                }
+            }); 
+        },2000)
+    }
+    
+    
 }
 
 
@@ -127,11 +178,11 @@ return (
                 <div className="announcement_tab">
                     <ul className={`${styles["announcement_tab_ul"]} list-unstyled d-flex flex-wrap align-items-center p-0`}>
                         {
-                        unique.map( (yr, i) => (
-                            <li key={i} ><a href="#" onClick={()=>{selectYear(yr,year_announcement)}}>{yr}</a></li>
+                        uniqueYear.map( (yr, i) => (
+                            <li className={`${yr.isActive ? styles['active'] : ""}`} key={i} ><a style={{'cursor':'pointer'}} onClick={()=>{selectYear(yr,year_announcement,i,1 )}}>{yr.year}</a></li>
                         ))
                         }
-                        <li className={styles['active']}><a href="#">All(242)</a></li>
+                        <li className={`${allYear ? styles['active'] : ""}`} onClick={()=>{selectYear(null,null,null,0 )}}><a href="#">All({yearData.length})</a></li>
                     </ul>
                 </div>
                 <div className={styles['clear_main']}>
@@ -142,14 +193,15 @@ return (
             <div className="list_announcement_main">
                 <ul className="list-unstyled">
                     {
-                        yearData.map((v,i)=>(
+                        yearData.length>0?(
+                            yearData.map((v,i)=>(
                                 v.isShow?(
                                     <li key={i}>
                                         <div className={styles['announcement_list']}>
-                                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                            <h1><a href="#">{v.obj.fieldTitleCa.value}</a></h1>
                                             <div className="d-flex ">
                                                 <div className={styles['datetime-announcement']}>
-                                                    <p>January 29, 2021 4:00 PM EST</p>
+                                                    <p>{v.obj.fieldDate.value}</p>
                                                 </div>
                                                 <div className={styles['download_announcement']}><a href="#">Download</a></div>
                                             </div>
@@ -158,7 +210,9 @@ return (
                                 ):
                                 ('')
                             
-                        ))
+                            ))
+                        ):('')
+                        
                     }
                     
                     {/* <li>
@@ -220,10 +274,10 @@ return (
             </div>
             <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}
             >
-                <div className={`${styles["page_btn"]} prev_btn`}>
+                {/* <div className={`${styles["page_btn"]} prev_btn`}>
                     <a href="#"><FaAngleLeft/></a>
-                </div>
-                <div className={styles['pagination_no']}>
+                </div> */}
+                {/* <div className={styles['pagination_no']}>
                     <ul className="list-unstyled d-flex">
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
@@ -231,10 +285,10 @@ return (
                         <li><span>....</span></li>
                         <li><a href="#">12</a></li>
                     </ul>
-                </div>
-                <div className={`${styles["page_btn"]} prev_btn`}>
+                </div> */}
+                {/* <div className={`${styles["page_btn"]} prev_btn`}>
                     <a href="#"><FaAngleRight/></a>
-                </div>
+                </div> */}
             </div>
         </div>
     </section>
@@ -278,13 +332,15 @@ export const getStaticProps = async () => {
     });
     let year_announcement = [];
     let unique = [];
+    let checkUniqe = [];
     const  data  = await client.query({ query: COMPANY_ANNOUNCEMENTS });
     let entity1 = data.data.nodeQuery.entities;
     console.log(entity1);
     entity1.map((v,i)=>{
         let year = getDateTime(v.fieldDate.value)
-        if(!unique.includes(year)){
-            unique.push(year);
+        if(!checkUniqe.includes(year)){
+            unique.push({year:year,isActive:false});
+            checkUniqe.push(year);
             year_announcement.push({obj:v,year:year,isShow:true});
         }
         else{
