@@ -124,12 +124,12 @@ export const getStaticProps = async () => {
   // console.log('entity1',data);
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log('entity1',entity1);
+  // console.log('entity1',entity1);
   let url=entity1.fieldMainImageDesktopHome.url;
   let urlArr = entity1.fieldMainImageDesktopHome.url.split('/');
   urlArr[0] = "https://damac.techsperia.in";
   let updatedlink = urlArr.join('/');
-  console.log(updatedlink);
+  // console.log(updatedlink);
   // console.log('entity2',entity2);
   // console.log(data.data.nodeQuery.entities);
    return {

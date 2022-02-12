@@ -119,6 +119,9 @@ query {
         fieldMetaDescriptionComm
         fieldMetaKeywordsComm
         fieldCanonicalUrlComm
+        fieldSection4Heading
+        fieldText, 
+        fieldHeading
       }
     }
   }

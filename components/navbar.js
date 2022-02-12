@@ -23,14 +23,10 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
 export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn, navigation }) {
-
-  
-  // const slideOutMenu = {
-  //   visible: false,
-  // };
 
   const [slideOutMenuVisible, setMenuActive] = useState(false);
 
@@ -524,6 +520,8 @@ export const getServerSideProps = async () => {
   });
 
   const  data  = await client.query({ query: NAVIGATION });
+  const  data1  = await client.query({ query: PARENTMENUITEMS });
+  console.log(data);
   let entitiy = data.data.nodeQuery.entities;
   console.log(entitiy);
   let navigation = []

@@ -141,10 +141,10 @@ const WhyDubai= ({entity1})=> {
 
            <div className="row">
                <div className="col-md-6 mb-2">
-                 <p>{entity1.fieldCol1Text2}</p>
+                 <p>{entity1.fieldSec2Col1Text}</p>
                </div>
                <div className="col-md-6 mb-2">
-                 <p>{entity1.fieldCol1Text3}</p>
+                 <p>{entity1.fieldSec2Col2Text}</p>
                </div>
            </div>
          </div>
@@ -169,10 +169,10 @@ const WhyDubai= ({entity1})=> {
              <div className="dubai-district-item">
                <div className="row justify-content-between">
                    <div className="col-md-6 mb-2">
-                     <p>{entity1.fieldCol1Text3}</p>
+                     <p>{entity1.fieldSec3Col1Text}</p>
                    </div>
                    <div className="col-md-5 mb-2 pb-5">
-                     <p>{entity1.fieldCol2Text3}</p>
+                     <p>{entity1.fieldSec3Col2Text}</p>
                    </div>
                </div>
 
@@ -451,7 +451,7 @@ export const getStaticProps = async () => {
   console.log('entity1',data);
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log('entity1',entity1);
+  console.log('entity1',entity1.fieldSec3Col2Text);
   // console.log('entity2',entity2);
   // console.log(data.data.nodeQuery.entities);
    return {
