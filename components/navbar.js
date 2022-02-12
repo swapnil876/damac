@@ -21,8 +21,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { NAVIGATION } from '../graphql/master/navigation';
 
-export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn }) {
+
+export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn, navigation }) {
 
   
   // const slideOutMenu = {
@@ -508,4 +511,36 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
 
 
   )
+}
+
+
+export const getServerSideProps = async () => {
+
+
+  // Device React
+   const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: NAVIGATION });
+  let entitiy = data.data.nodeQuery.entities;
+  console.log(entitiy);
+  let navigation = []
+  entitiy.fieldMultipleMenuItems.map((v,i)=>{
+    console.log(v);
+    navigation.push(
+      {
+        url: v.entity.fieldLink,
+        label: v.entity.fieldMenuNam,
+        active: true,
+      }
+    )
+  });
+
+  return {
+    props: {
+      navigation: navigation
+    }, // will be passed to the page component as props
+  }
 }

@@ -185,13 +185,11 @@ function ShareInformation( { mobileDevice, entity1, fieldTabs } ) {
                    <div className="col-md-6">
                      <div className="graph-left-div">
                        <img src="/images/content/share-information/graph-left.jpg" alt="graph" className="img-fluid" />
-                       {/* <iframe className="iframe_left_share_info" src=""></iframe> */}
                      </div>
                    </div>
                    <div className="col-md-6">
                      <div className="graph-right-div">
                        <img src="/images/content/share-information/graph-right.jpg" alt="graph" className="img-fluid" />
-                       {/* <iframe className="iframe_right_share_info" src=""></iframe> */}
                      </div>
                    </div>
                  </div>
@@ -281,7 +279,6 @@ export async function getStaticProps(context) {
     }
      
   });
-  console.log(fieldTabs);
 
 
 
