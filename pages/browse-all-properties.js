@@ -541,7 +541,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     <div className={styles['filtered_properties']}>
                         <div className="row">
                         {
-                            entity.entity.map( (unit, index) => (
+                            entity.map( (unit, index) => (
                             <div className="col-md-6" key={index}>
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
@@ -882,7 +882,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             }
         }
     });
-    console.log('--------',entity.entity);
+    console.log('--------',entity);
     return {
         props: {
            entity:entity,
