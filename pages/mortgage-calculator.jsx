@@ -155,7 +155,7 @@ function MortgageCalculator() {
                     <div className="col-md-8">
                     <div className={styles['mortage_main']}>
                         <img src="/damac-static/images/discount-icon.png" alt=""/>
-                        <h1>Interested in Mortgage?</h1>
+                        <h2>Interested in Mortgage?</h2>
                         <p>Get the best mortgage @ 1.99%. Only from DAMAC.</p>
                         <form action="">
                         <div className="row">

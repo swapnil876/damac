@@ -66,8 +66,8 @@
     bottom: 0 !important
 }
 
-.project-left h1 {
-    font-family: Roboto;
+.project-left h1, .project-left h2 {
+    font-family: "Roboto";
     font-size: 72px;
     font-style: normal;
     font-weight: 500;
@@ -1307,7 +1307,7 @@ ul.bedroom-detail {
         padding-left: 0;
     }
 
-    .project-left h1 {
+    .project-left h1, .project-left h2{
         font-size: 40px;
         line-height: 45px;
     }

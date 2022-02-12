@@ -1471,7 +1471,7 @@ function ProjectPage({entity1}) {
                                                     <div className="row align-items-center">        
                                                       <div className="col-md-7">
                                                         <div className={style['project-left']}>
-                                                          <h1>Golf Town </h1>
+                                                          <h2>Golf Town </h2>
                                                           <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
                                                         </div>
                                                       </div>
@@ -1484,7 +1484,7 @@ function ProjectPage({entity1}) {
                                                     <div className="row align-items-center">        
                                                       <div className="col-md-7">
                                                         <div className={style['project-left']}>
-                                                          <h1>Golf Town </h1>
+                                                          <h2>Golf Town </h2>
                                                           <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
                                                         </div>
                                                       </div>
@@ -1497,7 +1497,7 @@ function ProjectPage({entity1}) {
                                                     <div className="row align-items-center">        
                                                       <div className="col-md-7">
                                                         <div className={style['project-left']}>
-                                                          <h1>Golf Town </h1>
+                                                          <h2>Golf Town </h2>
                                                           <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
                                                         </div>
                                                       </div>

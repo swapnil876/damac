@@ -431,7 +431,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             <section className={project_landing_styles['similar_property']} id="similar_proprty_card_main_global">
                             <div className="container">
                                 <div className={project_landing_styles['similar_property_head']}>
-                                    <h1>Similar Properties</h1>
+                                    <h2>Similar Properties</h2>
                                 </div>
                              {
                                !isMobile ? 
@@ -441,28 +441,28 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                    <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <h2><a href="#">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                        </div>
                                    </div>
                                    <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <h2><a href="#">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                        </div>
                                    </div>
                                    <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <h2><a href="#">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                        </div>
                                    </div>
                                    <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h1><a href="#">DAMAC Villas</a></h1>
+                                           <h2><a href="#">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                        </div>
                                    </div>
@@ -476,28 +476,28 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                 <div>
                                    <div className={project_landing_styles['property_similar_card']}>
                                        <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                       <h1><a href="#">DAMAC Villas</a></h1>
+                                       <h2><a href="#">DAMAC Villas</a></h2>
                                        <p>Starting AED 1,213,515*</p>
                                    </div>
                                </div>
                                <div>
                                    <div className={project_landing_styles['property_similar_card']}>
                                        <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                       <h1><a href="#">DAMAC Villas</a></h1>
+                                       <h2><a href="#">DAMAC Villas</a></h2>
                                        <p>Starting AED 1,213,515*</p>
                                    </div>
                                </div>
                                <div>
                                    <div className={project_landing_styles['property_similar_card']}>
                                        <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                       <h1><a href="#">DAMAC Villas</a></h1>
+                                       <h2><a href="#">DAMAC Villas</a></h2>
                                        <p>Starting AED 1,213,515*</p>
                                    </div>
                                </div>
                                <div>
                                    <div className={project_landing_styles['property_similar_card']}>
                                        <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                       <h1><a href="#">DAMAC Villas</a></h1>
+                                       <h2><a href="#">DAMAC Villas</a></h2>
                                        <p>Starting AED 1,213,515*</p>
                                    </div>
                                </div>
@@ -513,7 +513,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
               <div className="container">
                 <div className="row">
                   <div className="col-md-6">
-                    <h1>Dubai: A Safe Haven and the Region’s Most Dynamic City</h1>
+                    <h2>Dubai: A Safe Haven and the Region’s Most Dynamic City</h2>
                   </div>
                 </div>
                 <div className="row">

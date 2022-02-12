@@ -45,7 +45,7 @@ import { NEWSDETAILS } from '../../graphql/newsdetails';
                 <section className={styles['press-hero']} style={{'background-image':'url(/images/damac_in_news.png)'}}>               
                 <div className={styles['press-hero-wrap']}>
                     <div className={styles['press-content']}>
-                    <h2>DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh</h2>
+                    <h1>DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh</h1>
                     <p>We reflected on DAMAC’s years of history and created an infographic summary.</p>
                     <span>Dec, 15 2021 By Financial Times</span>
                     </div> 
