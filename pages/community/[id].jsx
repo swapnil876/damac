@@ -715,42 +715,22 @@ function Community({entity1,projectlist,otherProjects}) {
                         <div className="col-md-12">
                             <div className={style['faq-wrap']}>
                             <div class="accordion" id="accordionExample">
+                            {
+                   entity1.fieldMultipleFaqs.map( (f, index) => (
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is the lowest mortgage rate in UAE?
+                                        {f.entity.fieldQuestion}
                                         </button>
                                       </h2>
                                       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        {f.entity.fieldAnswer}
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
+                   ))}
+ 
                                   </div>                        
                             </div>            
                         </div>          
@@ -783,6 +763,7 @@ export const getServerSideProps = async () => {
   let otherProjects = data2.data.nodeQuery.entities;
   console.log('***data****comm',entity1);
   
+
   
   // console.log('entity1',data1.data);
    return {
