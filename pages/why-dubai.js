@@ -17,7 +17,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useRef } from "react";
 import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive'
 
@@ -60,6 +60,12 @@ const WhyDubai= ({entity1})=> {
       slidesToShow: 1,
       slidesToScroll: 1,
       initialSlide: 0,
+    };
+
+    const sliderRef = useRef();
+
+    const handleOnClick = index => {
+      sliderRef.current.slickGoTo(index);
     };
 
   return (
@@ -178,7 +184,7 @@ const WhyDubai= ({entity1})=> {
 
              
                <div className="row justify-content-between">
-                 <Slider {...settings}>
+                 <Slider {...settings} ref={sliderRef}>
                  <div>
                           <div className="col-md-6 col-8 mb-2">
                             <h4>Dubai Marina</h4>
@@ -190,11 +196,11 @@ const WhyDubai= ({entity1})=> {
                             <div className="row justify-content-between align-items-center">
                               <div className="col-md-9">
                                 <ul className="district-items-nav-list">
-                                  <li><a href="#" className="active">Dubai Marina</a></li>
-                                  <li><a href="#">Business Bay </a></li>
-                                  <li><a href="#">Jumeirah Village</a></li>
-                                  <li><a href="#">Barsha Heights</a></li>
-                                  <li><a href="#">Dubai Sports City</a></li>
+                                  <li><a onClick={()=>{handleOnClick(0)}} className="active">Dubai Marina</a></li>
+                                  <li><a onClick={()=>{handleOnClick(1)}}>Business Bay </a></li>
+                                  <li><a onClick={()=>{handleOnClick(2)}}>Jumeirah Village</a></li>
+                                  <li><a onClick={()=>{handleOnClick(3)}}>Barsha Heights</a></li>
+                                  <li><a onClick={()=>{handleOnClick(4)}}>Dubai Sports City</a></li>
 
                                 </ul>
                               </div>
@@ -213,11 +219,11 @@ const WhyDubai= ({entity1})=> {
                             <div className="row justify-content-between align-items-center">
                               <div className="col-md-9">
                                 <ul className="district-items-nav-list">
-                                  <li><a href="#">Dubai Marina</a></li>
-                                  <li><a href="#" className="active">Business Bay </a></li>
-                                  <li><a href="#">Jumeirah Village</a></li>
-                                  <li><a href="#">Barsha Heights</a></li>
-                                  <li><a href="#">Dubai Sports City</a></li>
+                                  <li><a onClick={()=>{handleOnClick(0)}}>Dubai Marina</a></li>
+                                  <li><a onClick={()=>{handleOnClick(1)}} className="active">Business Bay </a></li>
+                                  <li><a onClick={()=>{handleOnClick(2)}}>Jumeirah Village</a></li>
+                                  <li><a onClick={()=>{handleOnClick(3)}}>Barsha Heights</a></li>
+                                  <li><a onClick={()=>{handleOnClick(4)}}>Dubai Sports City</a></li>
 
                                 </ul>
                               </div>
@@ -236,11 +242,11 @@ const WhyDubai= ({entity1})=> {
                             <div className="row justify-content-between align-items-center">
                               <div className="col-md-9">
                                 <ul className="district-items-nav-list">
-                                  <li><a href="#">Dubai Marina</a></li>
-                                  <li><a href="#">Business Bay </a></li>
-                                  <li><a href="#" className="active">Jumeirah Village</a></li>
-                                  <li><a href="#">Barsha Heights</a></li>
-                                  <li><a href="#">Dubai Sports City</a></li>
+                                  <li><a onClick={()=>{handleOnClick(0)}}>Dubai Marina</a></li>
+                                  <li><a onClick={()=>{handleOnClick(1)}}>Business Bay </a></li>
+                                  <li><a onClick={()=>{handleOnClick(2)}} className="active">Jumeirah Village</a></li>
+                                  <li><a onClick={()=>{handleOnClick(3)}}>Barsha Heights</a></li>
+                                  <li><a onClick={()=>{handleOnClick(4)}}>Dubai Sports City</a></li>
 
                                 </ul>
                               </div>
@@ -250,7 +256,7 @@ const WhyDubai= ({entity1})=> {
 
                       <div>
                           <div className="col-md col-8-6 mb-2">
-                            <h4>Dubai Marina</h4>
+                            <h4>Barsha Heights</h4>
                           </div>
                           <div className="col-md-5 mb-2">
                             <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
@@ -259,11 +265,34 @@ const WhyDubai= ({entity1})=> {
                             <div className="row justify-content-between align-items-center">
                               <div className="col-md-9">
                                 <ul className="district-items-nav-list">
-                                  <li><a href="#" className="active">Dubai Marina</a></li>
-                                  <li><a href="#">Business Bay </a></li>
-                                  <li><a href="#">Jumeirah Village</a></li>
-                                  <li><a href="#">Barsha Heights</a></li>
-                                  <li><a href="#">Dubai Sports City</a></li>
+                                  <li><a onClick={()=>{handleOnClick(0)}}>Dubai Marina</a></li>
+                                  <li><a onClick={()=>{handleOnClick(1)}}>Business Bay </a></li>
+                                  <li><a onClick={()=>{handleOnClick(2)}}>Jumeirah Village</a></li>
+                                  <li><a onClick={()=>{handleOnClick(3)}} className="active">Barsha Heights</a></li>
+                                  <li><a onClick={()=>{handleOnClick(4)}}>Dubai Sports City</a></li>
+
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+                      <div>
+                          <div className="col-md col-8-6 mb-2">
+                            <h4>Dubai Sports City</h4>
+                          </div>
+                          <div className="col-md-5 mb-2">
+                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
+                          </div>
+                          <div className="district-items-nav">
+                            <div className="row justify-content-between align-items-center">
+                              <div className="col-md-9">
+                                <ul className="district-items-nav-list">
+                                  <li><a onClick={()=>{handleOnClick(0)}}>Dubai Marina</a></li>
+                                  <li><a onClick={()=>{handleOnClick(1)}}>Business Bay </a></li>
+                                  <li><a onClick={()=>{handleOnClick(2)}}>Jumeirah Village</a></li>
+                                  <li><a onClick={()=>{handleOnClick(3)}}>Barsha Heights</a></li>
+                                  <li><a onClick={()=>{handleOnClick(4)}} className="active">Dubai Sports City</a></li>
 
                                 </ul>
                               </div>
