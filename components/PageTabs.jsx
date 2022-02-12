@@ -15,6 +15,14 @@ import Select from "react-dropdown-select";
 
 export default function PageTabs( { tabLinks } ) {
 
+  const [deviceIsmobile, setDeviceIsmobile] = useState(false);
+
+  useEffect(()=>{
+    if(isMobile){
+      setDeviceIsmobile(true);
+    }
+  }, [])
+
   const optionsInHere = tabLinks.map( (item) => {
       return { 
         value: item.url, 
@@ -26,12 +34,17 @@ export default function PageTabs( { tabLinks } ) {
     ...optionsInHere
   ];
 
+  function handleOptionClick(link){
+    window.location.href = link;
+    console.log("mobile link clicked");
+  }
+
   return (
 
     <>
         <div className={ styles['pagetabs'] }>
         {
-          !isMobile ?
+          !deviceIsmobile ?
          
             tabLinks.map( ( link, index ) => (
 
@@ -48,7 +61,9 @@ export default function PageTabs( { tabLinks } ) {
              <Select className="page_tabs_for_mobile" name=""
                    value={options.value}
                    options={options}
-                   placeholder="Meet Our Board Members"/> 
+                   placeholder="Meet Our Board Members" onClick={()=>{
+                    handleOptionClick(options.url)
+                   }} /> 
           </div>
         }
         </div>

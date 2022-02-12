@@ -2450,6 +2450,29 @@ PAGE:  NEWS
     aspect-ratio: 1224/496;
     object-fit: cover;
     border: 1px solid;
+    margin-bottom: 30px;
+}
+.iframe_left_share_info{
+    width: 100%;
+    aspect-ratio: 700/711;
+}
+.iframe_left_share_info .instrument.instrument_106542 .table1, .iframe_left_share_info .instrument.instrument_106542 .table2, .iframe_left_share_info .instrument.instrument_106542 .table3, .iframe_left_share_info .instrument.instrument_106542 .table4, .iframe_left_share_info .instrument.instrument_106542 .table5 {
+    width: auto;
+    margin: auto !important;
+}
+.investment_calc_iframe{
+    width:100%;
+    aspect-ratio: 1/.5;
+    margin-bottom:50px;
+}
+.investor_relations_iframe{
+    width: 100%;
+    aspect-ratio: 1/.45;
+    margin-top: 20px;
+}
+.financial_info_key_fig_iframe{
+    width:100%;
+    aspect-ratio: 1/.5;
 }
 .graph-left-div{
     width:100%;
@@ -2460,6 +2483,10 @@ PAGE:  NEWS
     aspect-ratio: 598/299;
 }
 @media(max-width: 768px) {
+    .investor_relations_iframe{
+        aspect-ratio: 1/.6;
+        margin-top: 20px;
+    }
     .aboutChairmanbox p{
         margin-bottom: 23px;
     }
