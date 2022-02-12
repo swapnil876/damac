@@ -197,6 +197,7 @@ function FinancialInformation( { mobileDevice } ) {
  
                <div className="my-5 pb-5">
                  <img src="damac-static/img/financialinfoimg.png" width="758" style={{'max-width':'100%'}}/>
+                 {/* <iframe class="financial_info_key_fig_iframe"></iframe> */}
                </div>
                
                 </div>

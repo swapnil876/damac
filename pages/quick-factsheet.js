@@ -120,8 +120,8 @@ function QuickFactsheet( { quickfactsheet } ) {
              <div className={'factsheet-content'}>
 
                <div className='factsheet-content-div'>
-                   <img alt=""className='img-responsive' src='/images/content/quick-factsheet/factsheet-graph.jpg'/>
-                   {/* <iframe className="iframe_for_graph_quickfactsheet" src=""></iframe> */}
+                   {/* <img alt=""className='img-responsive' src='/images/content/quick-factsheet/factsheet-graph.jpg'/> */}
+                   <iframe className="iframe_for_graph_quickfactsheet" src={quickfactsheet.fieldIframContent}></iframe>
                </div>
 
 
