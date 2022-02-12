@@ -290,14 +290,14 @@ function Community({entity1,projectlist,otherProjects}) {
                     <div className='right-area'>
                       
                       <div className='booking-btns'>
-                        <a className='btn btn-primary btn-icon'>
+                        <a href={'mailto:'+entity1.fieldEmail} className='btn btn-primary btn-icon'>
                           <span className='fa-icon' style={{'margin': '0'}}>
                             <FontAwesomeIcon icon={faEnvelope} style={{'margin-right':'0'}}/>
                           </span>
                           {/* <span className='btnlabel'>Schedule a call-back</span> */}
                         </a>
 
-                        <a className='btn btn-primary-outline btn-icon' style={{'border': '1px solid #bd8c1b'}}>
+                        <a href={entity1.fieldWhatsappNumber} className='btn btn-primary-outline btn-icon' style={{'border': '1px solid #bd8c1b'}}>
                           <span className='fa-icon' style={{'margin': '0'}}>
                             <FontAwesomeIcon icon={faWhatsapp} style={{'color':'#bd8c1b', 'margin-right':'0'}}/>
                           </span>
