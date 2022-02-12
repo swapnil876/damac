@@ -101,10 +101,10 @@ const isMobileWidth = useMediaQuery(
 
       <main className="main main-regular capital-history">
 
-        {isMobile ? '' : <Breadcrumbs crumbs={ crumbs }/>}
+        {deviceIsMobile ? '' : <Breadcrumbs crumbs={ crumbs }/>}
 
         <HeadingTitle 
-          title="Investment Calculator" 
+          title="Share Information" 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
@@ -118,8 +118,8 @@ const isMobileWidth = useMediaQuery(
                 url: '/share-information',
                 label: 'Share Graph Monitor',
                 active: false,
-            },
-                {
+              },
+              {
                   url: '/share-overview',
                   label: 'Share Overview',
                   active: false,
@@ -128,17 +128,17 @@ const isMobileWidth = useMediaQuery(
                 url: '/investment-calculator',
                 label: 'Investment Calculator',
                 active: true,
-            },
-            {
-                url: '/share-price-lookup',
-                label: 'Share Price Look Up',
-                active: false,
-            },
-            {
-                url: '/sharia-compliance',
-                label: 'Sharia Compliance',
-                active: false,
-            },
+              },
+              {
+                  url: '/share-price-lookup',
+                  label: 'Share Price Look Up',
+                  active: false,
+              },
+              {
+                  url: '/sharia-compliance',
+                  label: 'Sharia Compliance',
+                  active: false,
+              },
             ] }></PageTabs>
         </div>
 
@@ -146,6 +146,10 @@ const isMobileWidth = useMediaQuery(
 
         <InvestmentCalculator initialValues={ {'type': 'Amount', 'amt_invested': '100,000', 'date': '03/02/2020', 'end_date': '03/02/2021'} }/>
 
+        <div className="container">
+        {/* <iframe class="investment_calc_iframe"></iframe> */}
+        </div>
+       
         </section>
 
         <FooterMoreLinks/>

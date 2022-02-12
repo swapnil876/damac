@@ -152,8 +152,8 @@ function InvestorRelations( { entity1 } ) {
                 </div>
               </div>
               <div className={style['graph-damac']}>
-                <img src="damac-static/images/graph.png" className="img-fluid"/>
-                
+                {/* <img src="damac-static/images/graph.png" className="img-fluid"/> */}
+                <iframe className='investor_relations_iframe' src={entity1.fieldIframeContent}></iframe>
               </div>
             </div>
           </div>
