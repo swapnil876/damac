@@ -10,7 +10,7 @@ import PageTitle from '../components/PageTitle'
 
 import { FaPlay, FaAngleLeft, FaAngleRight, FaEnvelope, FaRegQuestionCircle, FaPlus, FaMinus, FaArrowDown } from 'react-icons/fa'
 
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { useMediaQuery } from 'react-responsive'
 
 import styles from '../styles/pages/mortgage-calculator.module.css'
@@ -19,8 +19,14 @@ import { isMobile } from 'react-device-detect'
 
 function MortgageCalculator() {
 
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+
     useEffect(() => {
         import("bootstrap/dist/js/bootstrap");
+
+        if ( isMobile ) {
+          setDeviceIsMobile( true );
+        }
       }, []);
 
   return (
@@ -41,7 +47,9 @@ function MortgageCalculator() {
                 <div className="container">
                 <div className="row position-relative">
                     <div className="col-md-8">
-                    <div className={styles['mortage_calculator_left']}>
+                      {
+                        !deviceIsMobile ? 
+                        <div className={styles['mortage_calculator_left']}>
                         <h1>Mortgage Calculator</h1>
                         <p>Estimate how much you could be paying for your mortgage.</p>
                         <div className={styles['calculator-inner']}>   
@@ -75,24 +83,61 @@ function MortgageCalculator() {
                           </div>
                           </div>          
                         </div>
-                    </div>
+                    </div>:
+                      <div className={styles['mortage_calculator_left']}>
+                      <h1>Mortgage Calculator</h1>
+                      <p>Estimate how much you could be paying for your mortgage.</p>
+                      <div className={styles['calculator-inner']}>   
+                      <div className="row">
+                        <div className="col-md-6">
+                        <div className={`${styles["price"]} ${styles["border-white"]}`}>
+                          <p><span>Property Price</span></p>
+                          <p><span className="currency">AED </span> 120,000 <span className="text-right dark get_estimate_box_arrows left_right"><FaAngleLeft style={{'margin': '0 10px 0 0'}}/><FaAngleRight/></span></p> 
+                      </div>
+                        </div>
+                        <div className="col-md-6">
+                        <div className={`${styles["down-payment"]} ${styles["border-white"]}`}>
+                          <p><span>Down Payment</span> <span className="float-end">%</span></p> 
+                          <p>25  </p> 
+                          <input type="range" className={styles['range-slider']} />
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                        <div className={`${styles["rate"]} ${styles["border-white"]}`}>
+                          <p><span>Interest Rate</span> <span className="float-end">%</span>  </p>
+                          <p>1.99 <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}}/><FaMinus/></span></p> 
+                      </div>
+                        </div>
+                     
+                       
+                        <div className="col-md-6">
+                        <div className={`${styles["loan"]} ${styles["border-white"]}`}>
+                          <p><span>Loan Period</span> <span className="float-end">Y R S</span></p>
+                          <p> 5</p> 
+                          <input type="range" className={styles['range-slider']} />
+                          </div>
+                        </div>
+                        </div>          
+                      </div>
+                  </div>
+                      }
                     </div>
                     <div className={`col-md-4 ${styles["calculator-cost-main-wrap"]}`}>
                     <div className={styles['calculator-cost']}>
                         <h4>Cost Breakdown</h4>
-                        <ul className="list-unstyled p-0">
-                        <li><span className={styles['text-left']}>60 months of</span> <span>AED</span> 120,000</li>
-                        <li><span className={styles['text-left']}>Down Payment</span>  <span>AED</span> 30,000</li>
-                        <li><span className={styles['text-left']}>With Interest rate of</span>  <span>%</span>2.56</li>
-                        <li><span className={styles['text-left']}>For Years</span>5</li>
+                        <ul className={`list-unstyled p-0 ${styles["cost_breakdown"]}`}>
+                        <li><span className={styles['text-left']}>60 months of</span> <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>AED</span> 120,000</span></li>
+                        <li><span className={styles['text-left']}>Down Payment</span>  <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>AED</span> 30,000</span></li>
+                        <li><span className={styles['text-left']}>With Interest rate of</span>  <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>%</span>2.56</span></li>
+                        <li><span className={styles['text-left']}>For Years</span> <span className={styles['right_side_txt']}>5</span></li>
                         </ul>
                         <div className={`${styles["fees_main"]} ${styles["fees_main_for_mortgage_cal_page"]}`}>
                         <h4>Fees</h4>
                         <ul className="list-unstyled p-0">
-                          <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <span>AED</span> 120,000</li>
-                          <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <span>AED</span> 120,000</li>
-                          <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <span>AED</span> 120,000</li>
-                          <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><span>AED</span> 120,000</li>
+                          <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> 120,000</li>
+                          <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> 120,000</li>
+                          <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> 120,000</li>
+                          <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><span className={styles['opaque_txt']}>AED</span> 120,000</li>
                         </ul>
                         </div>
                         <div className={styles['enquir_btn']}>
@@ -149,7 +194,7 @@ function MortgageCalculator() {
                             </div>
 
                            { 
-                             !isMobile ? ""
+                             !deviceIsMobile ? ""
                              : 
                              <div className="col-md-5">
                              <div className={styles['form-field']}>

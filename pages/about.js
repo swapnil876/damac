@@ -113,8 +113,8 @@ function About({entity1}) {
     slidesToShow: 2,
     slidesToScroll: 1,
     initialSlide: 0,
-    rows: 2,
-    slidesPerRow: 5
+    // rows: 2,
+    // slidesPerRow: 5
   };
 
   return (
@@ -164,19 +164,19 @@ function About({entity1}) {
 
 
        <section className="damac-about-section-2" style={{'backgroundImage': 'url(' + entity1.fieldImage3.url + ')'}}>
-         <div className="container">
+         <div className={ deviceIsMobile ? '' : 'container' }>
            
            <div className="aboutsection-2">
              <div className="row">
-               <div className="col-md-7">
+               <div className="col-md-7" style={deviceIsMobile ? {'padding':'57px 24px 0'}: {}}>
                  <h3>{entity1.fieldHeader3}</h3>
                </div>
-               <div className="col-md-5">
+               <div className="col-md-5" style={deviceIsMobile ? {'padding':'0px 24px'}: {}}>
                  <p className='section-text'>{entity1.fieldDescription2}</p>
                </div>
              </div>
 
-             <div className="row">
+             <div className="row"  style={deviceIsMobile ? {'maxWidth': '100%', 'margin':'auto'}: {}}>
                <div className="col-md-7 numbers-row-col">
                  <div className="numbersdata">
                    <div className="numberdata">
@@ -259,7 +259,7 @@ function About({entity1}) {
            <div className="leadership-boxes">
             <div className="row">
             {
-              !isMobile ? 
+              !deviceIsMobile ? 
                 entity1.fieldMultipleTeam.map( (team, index) => (
                    <div className="col-md-3 col-6" key={index}>
                       <div className="leadershipbox">
@@ -274,6 +274,7 @@ function About({entity1}) {
                    </div>
                ))
               :
+              <div>
               <Slider {...leadership}>
               {
                 entity1.fieldMultipleTeam.map( (team, index) => (
@@ -291,6 +292,24 @@ function About({entity1}) {
                    ))
               }
               </Slider>
+                 <Slider {...leadership}>
+                 {
+                   entity1.fieldMultipleTeam.map( (team, index) => (
+                     <div className="col-6" key={index}>
+                     <div className="leadershipbox">
+                       <div className="leadershipimg">
+                         <img alt={team.entity.fieldName} src={team.entity.fieldImage.url}/>
+                       </div>
+                       <div className="leadership-details">
+                         <h5>{team.entity.fieldName}</h5>
+                         <p>{team.entity.fieldTitleTeam}</p>
+                       </div>
+                       </div>
+                     </div>
+                      ))
+                 }
+                 </Slider>
+                </div>
             }
             </div>
            </div>

@@ -792,18 +792,20 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                 <div className="col-md-12">
                                     <div className={style['faq-wrap']}>
                                     <div class="accordion" id="accordionExample">
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    {entity1.fieldMultipleFaqsBw.map((item,k) => (
+                                        <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            {item.entity.fieldQuestion}
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                            {item.entity.fieldAnswer}
+                                            </div>
                                         </div>
-                                      </div>
-                                    </div>
+                                        </div>
+                                    ))}
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">

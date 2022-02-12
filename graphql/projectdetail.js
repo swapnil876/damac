@@ -162,6 +162,14 @@ const PROJECTDETAIL = gql`
               routed
             }
           }
+          fieldMutipleFaqs{
+            entity{
+              ... on ParagraphMultipleFaqs{
+                fieldAnswer
+                fieldQuestion
+              }
+            }
+          }
           
           fieldMultipleLocatorsp4{
             entity{

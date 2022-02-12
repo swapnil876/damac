@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 
 import Head from 'next/head'
@@ -40,6 +40,7 @@ import { FiArrowDown } from "react-icons/fi";
 import { FaStreetView } from "react-icons/fa";
 
 
+import { isMobile } from 'react-device-detect';
 
 
 
@@ -79,7 +80,16 @@ function ListingPage() {
     </Link>
   );
 
-  
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+
+  useEffect(() => {
+      if ( isMobile ) {
+        setDeviceIsMobile( true );
+      }
+
+        //   importing bootstrap js
+        import("bootstrap/dist/js/bootstrap");
+   }, [])
 
   return (
 

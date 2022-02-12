@@ -38,7 +38,8 @@ export default function HeadingTitle( { title, btnLink, mobileDevice, className 
       <div className={`'heading-title ${className}`}>
         <div className='container'>
          <div className='title-wrapper-box'>
-            <h1 style={{'width':'100%'}}>{ title }</h1>
+            <h1>{ title }</h1>
+            {/* style={{'width':'100%'}} */}
 
             { btnLink && 
               <>
