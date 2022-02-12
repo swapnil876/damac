@@ -40,7 +40,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function ShareInformation( { mobileDevice, entity1, fieldTabs } ) {
+function ShareInformation( { mobileDevice, entity1, fieldTabs, iframe } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -113,70 +113,7 @@ function ShareInformation( { mobileDevice, entity1, fieldTabs } ) {
                <div className="date-time">
                  <p className=''><strong>Date & Time: 31 January 2021 11:31 (GTM +04:00)</strong></p>
                </div>
-               <div className="share-graph-table-wrap table-responsive">
-                 <table className="table table-striped dm-graph-table">
-                         <thead>
-                           <tr>
-                             <th>Share</th>
-                             <th>Last</th>
-                             <th>High</th>
-                             <th>Low</th>
-                             <th>(+/-)</th>
-                             <th>%</th>
-                             <th>Bid</th>
-                             <th>Ask</th>
-                             <th>Volume</th>
-                           </tr>
-                         </thead>
-                         <tbody>
-                           <tr>
-                             <td>10% shares dividend of 500 mn shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>
-                           <tr>
-                             <td>Issuing, subscribing and full payment of 5,500 shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>
-                           <tr>
-                             <td>10% shares dividend of 550 mn shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>
-                           <tr>
-                             <td>Issuing, subscribing and full payment of 6,050 mn shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>                       
-
-                         </tbody>
-                       </table>
-               </div>
+               <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
              </div>
 
 
@@ -229,7 +166,7 @@ export async function getStaticProps(context) {
   const  data  = await client.query({ query: SHARE_INFO });
   let entity1 = data.data.nodeQuery.entities[0];
   console.log(entity1);
-
+  let data1 = {};
   let fieldTabs = [];
   entity1.fieldTabsS.map((v,i)=>{
     if(v.entity.fieldTabHeading == 'Share Graph Monitor')
@@ -242,6 +179,7 @@ export async function getStaticProps(context) {
           iframeContent : v.entity.fieldIframeContent
         }
       )
+      data1 = v;
     }
     else if(v.entity.fieldTabHeading == 'Share Overview'){
       fieldTabs.push(
@@ -290,7 +228,8 @@ export async function getStaticProps(context) {
     props: {
        mobileDevice: deviceType,
        entity1: entity1,
-       fieldTabs:fieldTabs
+       fieldTabs:fieldTabs,
+       iframe:data1
     }, // will be passed to the page component as props
   }
 }

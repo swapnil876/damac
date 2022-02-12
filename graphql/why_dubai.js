@@ -34,11 +34,12 @@ const WHY_DUBAI = gql`
         } 
       }
       fieldHeaderw2
-      fieldCol1Text2
-      fieldCol1Text3
+      fieldSec2Col1Text
+      fieldSec2Col2Text
+       fieldSec3Col1Text
       fieldHeaderw3
       fieldCol1Text3
-      fieldCol2Text3
+      fieldSec3Col2Text
       fieldMutlipleAreas {
         entity{
           ... on ParagraphMutlipleAreasDubai{

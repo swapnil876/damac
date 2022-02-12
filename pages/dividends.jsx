@@ -35,7 +35,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function Dividends( { mobileDevice , entity1,fieldTabs} ) {
+function Dividends( { mobileDevice , entity1,fieldTabs,iframe} ) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -66,6 +66,7 @@ function Dividends( { mobileDevice , entity1,fieldTabs} ) {
     'icon': 'arrow-down'
   }
 
+  console.log('-------------------------',iframe.entity.fieldIframeContent);
   
 
 
@@ -104,74 +105,8 @@ function Dividends( { mobileDevice , entity1,fieldTabs} ) {
              
              <div className={`${styles["table-wrapper-dividend"]} my-4`}>
                <div className={`${styles["table-main-wrap"]} ${styles["table-responsive"]}`}>
-                 <table className={`${styles["table"]} table-striped ${styles["dm-table"]}`}>
-                   <thead>
-                     <tr>
-                       <th>Period</th>
-                       <th>Cash Dividend</th>
-                       <th>Cash Dividend Per Share (AED)</th>
-                       <th>Bonus Shared %</th>
-                       <th>Entitlement Date</th>
-                       <th>Ex-Dividend Date</th>
-                       <th>Settlement Date</th>
-                       <th>Cash Distribution D..</th>
-                     </tr>
-                   </thead>
-                   <tbody>
-                     <tr>
-                       <td>2014</td>
-                       <td>NIL</td>
-                       <td>6,132,675</td>
-                       <td>10.00%</td>
-                       <td>30 Mar 15</td>
-                       <td>31 Mar 15</td>
-                       <td>01 Apr 15</td>
-                       <td>NIL</td>
-                     </tr>
-                     <tr>
-                       <td>HI 2015 - Interim Dividend</td>
-                       <td>10.00%</td>
-                       <td>2,121,037</td>
-                       <td>10.00%</td>
-                       <td>21 Sep 15</td>
-                       <td>22 Sep 15</td>
-                       <td>29 Sep 15</td>
-                       <td>05 Oct 15</td>
-                     </tr>
-                     <tr>
-                       <td>H2 2015 - Final Dividend</td>
-                       <td>15.00%</td>
-                       <td>35%</td>
-                       <td>NIL</td>
-                       <td>27 Apr 16</td>
-                       <td>28 Apr 16</td>
-                       <td>01 May 16</td>
-                       <td>16 May 16</td>
-                     </tr>
-                     <tr>
-                       <td>2016</td>
-                       <td>25.00%</td>
-                       <td>1,235,024</td>
-                       <td>NIL</td>
-                       <td>25 Apr 17</td>
-                       <td>25 Apr 17</td>
-                       <td>26 Apr 17</td>
-                       <td>10 May 17</td>
-                     </tr>
-                     <tr>
-                       <td>2017</td>
-                       <td>15.00%</td>
-                       <td>1,151,894</td>
-                       <td>NIL</td>
-                       <td>1 May 18</td>
-                       <td>1 May 18</td>
-                       <td>2 May 18</td>
-                       <td>17 May 18</td>
-                     </tr>
-
-
-                   </tbody>
-                 </table>
+                 
+                 <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
                </div>
              </div>
 
@@ -216,6 +151,7 @@ export async function getStaticProps(context) {
   const  data  = await client.query({ query: DIVIDENDS });
   let entity1 = data.data.nodeQuery.entities[0];
   let fieldTabs = [];
+  let data1 = {};
   entity1.fieldTabs.map((v,i)=>{
     if(v.entity.fieldTabHeading == 'Dividends')
     {
@@ -225,6 +161,7 @@ export async function getStaticProps(context) {
           active: true
         }
       )
+      data1 = v;
     }
     else if(v.entity.fieldTabHeading == 'Capital History'){
       fieldTabs.push(
@@ -236,7 +173,7 @@ export async function getStaticProps(context) {
     }
      
   });
-  console.log(entity1.fieldTabs);
+  console.log(data1);
 
 
 
@@ -249,7 +186,8 @@ export async function getStaticProps(context) {
     props: {
        mobileDevice: deviceType,
        entity1: entity1,
-       fieldTabs:fieldTabs
+       fieldTabs:fieldTabs,
+       iframe:data1
     }, // will be passed to the page component as props
   }
 }
