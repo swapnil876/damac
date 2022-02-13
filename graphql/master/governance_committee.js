@@ -5,7 +5,7 @@ const GOVERNANCE_COMMITTEE = gql`
   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["governance_committee"]}]}) {
     entities {
       ... on NodeGovernanceCommittee{
-         nid,
+        nid,
         body{
           value
         }
