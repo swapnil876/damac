@@ -46,9 +46,37 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
 
     const  data  = await client.query({ query: NAVIGATION });
     const  data1  = await client.query({ query: PARENTMENUITEMS });
-    if(typeof data != 'undefined'){
-      console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data.data.nodeQuery.entities);
-      console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+    let nav = [];
+    if(typeof data != 'undefined' &&  typeof data1 != 'undefined'){
+      let submenu = data.data.nodeQuery.entities[0];
+      let menu = data1.data.taxonomyTermQuery.entities;
+      // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data.data.nodeQuery.entities);
+      // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+      menu.map((m,i)=>{
+        nav.push({name:m.name,tid:m.tid,submenu:[]});
+        if((i+1)==menu.length){
+          submenu.fieldMultipleMenuItems.map((k,l)=>{
+            // console.log(k.entity);
+            if(k.entity.fieldMenuType!=null){
+              menu.filter((o,h)=>{
+            //     // console.log(k.entity);
+            //     // console.log(o.tid);
+                if(k.entity.fieldMenuType.entity.tid == o.tid){
+            //       // console.log(menu[h]);
+                  nav[h].submenu.push({label:k.fielMenuName,url:k.fieldLink});
+                }
+            //     // k.entity.fieldMenuType.entity.tid == o.id?h:null
+              });
+            //  
+            }
+            if(l+1 == submenu.fieldMultipleMenuItems.length){
+               console.log(nav);
+              setNavigation(nav)
+            }
+          })
+        }
+      });
+      
     }
     
   }
