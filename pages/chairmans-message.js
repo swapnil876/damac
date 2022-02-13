@@ -81,7 +81,7 @@ function ChairmansMessage({entity1}) {
 
                <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptiveText.value }}></div>
               
-               <h4 className="chairmans-name">Hussain Sajwani</h4>
+               <h4 className="chairmans-name">{entity1.fieldChairman}</h4>
                {
                !deviceIsMobile ? "" : <Link href=""><a className="read_more_btn">Read More</a></Link>
              }

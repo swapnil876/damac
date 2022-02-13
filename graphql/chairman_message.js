@@ -8,7 +8,7 @@ query {
         fieldDescriptiveText{
             value
         }
-        fieldTextChairman
+        fieldChairman
         fieldMetaKeywordsCm
         fieldMetaTitleCm
         fieldMetaDescriptionCm

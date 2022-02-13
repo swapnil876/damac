@@ -472,8 +472,8 @@ function ProjectPage({entity1}) {
                                 <div className={style['shape-wrap-plan']}>              
                                     <div className={`${style["shape-contact"]} float-end`}>
                                         <ul className="d-flex align-items-center p-0">
-                                        <li><a href="#" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
-                                        <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
+                                        <li><a href={'mailto:'+entity1.fieldEmailP} className={style['solid-icon']} target="_blank"> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                        <li><a href={'https://wa.me/' + entity1.fieldWhatsapp} className={style['border-icon'] } target="_blank"><FontAwesomeIcon icon={faWhatsapp}/></a></li>
                                         </ul>                  
                                     </div>                
                                 </div>              
@@ -1306,9 +1306,8 @@ function ProjectPage({entity1}) {
                        <div className="row justify-content-end align-items-end">
                          <div className="col-md-12">
                            <div className={style['invest-wrap']}>
-                             <h2>Why Invest in Dubai</h2>
-                             <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
-                               investors can achieve gross rental yields<br/> of between 5-9%</p>
+                             <h2>{entity1.fieldHeadingSec7}</h2>
+                             <p>{entity1.fieldTextSec7}</p>
                              <a href="#" className={style['read-more']}>Read more</a>
                            </div>
                          </div>
@@ -1319,9 +1318,8 @@ function ProjectPage({entity1}) {
                       <section className={style['why-invest']} style={{'background':'#111 !important'}}>
                       <div className="container">
                             <div className={style['invest-wrap']}>
-                              <h2>Why Invest in Dubai</h2>
-                              <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
-                                investors can achieve gross rental yields<br/> of between 5-9%</p>
+                              <h2>{entity1.fieldHeadingSec7}</h2>
+                              <p>{entity1.fieldTextSec7}</p>
                               <a href="#" className={style['read-more']}>Read more</a>
                             </div>
                       </div>
@@ -1350,7 +1348,7 @@ function ProjectPage({entity1}) {
                         <div className={style['3d-tour-inner']} style={{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>
-                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
+                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>{entity1.field3dTourLink}</a>
                           </div>
                         </div>
                         </div>
@@ -1558,7 +1556,7 @@ export const getServerSideProps = async (cp) => {
   const data = await client.query({ query: PROJECTDETAIL, variables:{id:cp.query.slug} });
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log(entity1.fieldAmenitiesP3);
+  console.log(entity1.fieldHeadingSec7);
   return {
     props: {
       entity1: entity1,

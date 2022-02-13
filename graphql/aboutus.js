@@ -62,6 +62,7 @@ query {
         fieldSection5Heading
         fieldTeamSubheading
         fieldHistoryHeading
+        fieldHistorySubheading
         fieldHeader1
         fieldCsrHeading
         fieldCsrDescription5

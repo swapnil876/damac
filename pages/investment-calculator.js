@@ -79,11 +79,11 @@ const isMobileWidth = useMediaQuery(
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': '#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': '#',
+  //   'icon': 'arrow-down'
+  // }
 
   
 
@@ -104,14 +104,14 @@ const isMobileWidth = useMediaQuery(
 
         {deviceIsMobile ? '' : <Breadcrumbs crumbs={ crumbs }/>}
 
-        <HeadingTitle 
+        {/* <HeadingTitle 
           title="Share Information" 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className='container'>
             <PageTabs tabLinks={ fieldTabs }></PageTabs>

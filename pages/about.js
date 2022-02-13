@@ -50,12 +50,18 @@ import aboutBanner from '../public/images/about-bg.png'
 
 
 function About({entity1}) {
-
+  var [fieldMultipleTeamOnly5, setFieldMultipleTeamOnly5] = useState('');
+  var [fieldMultipleTeamAfter5, setFieldMultipleTeamAfter5] = useState('');
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
         setDeviceIsMobile( true );
+      }
+
+      if(entity1.fieldMultipleTeam.length > 5){
+       setFieldMultipleTeamOnly5(entity1.fieldMultipleTeam.slice(0, 5));
+       setFieldMultipleTeamAfter5(entity1.fieldMultipleTeam.slice(5, entity1.fieldMultipleTeam.length));
       }
    }, [])
 
@@ -116,6 +122,7 @@ function About({entity1}) {
     // rows: 2,
     // slidesPerRow: 5
   };
+
 
   return (
     <div className='aboutbody'>
@@ -250,8 +257,8 @@ function About({entity1}) {
            <div className="row ourleadership-header">
              <div className="col-md-4">
                <div>
-                 <h4>Our Leadership</h4>
-                 <p>Our global executive team is committed to inclusivity, open collaboration, and persistent innovation.</p>
+                 <h4>{entity1.fieldSection5Heading}</h4>
+                 <p>{entity1.fieldTeamSubheading}</p>
                </div>
              </div>
            </div>
@@ -274,42 +281,65 @@ function About({entity1}) {
                    </div>
                ))
               :
-              <div>
-              <Slider {...leadership}>
-              {
-                entity1.fieldMultipleTeam.map( (team, index) => (
-                  <div className="col-6" key={index}>
-                  <div className="leadershipbox">
-                    <div className="leadershipimg">
-                      <img alt={team.entity.fieldName} src={team.entity.fieldImage.url}/>
+              
+                (entity1.fieldMultipleTeam.length) > 5 ? 
+                <div>
+                <Slider {...leadership}>
+                {
+                  fieldMultipleTeamOnly5.map( (team, index) => (
+                    <div className="col-6" key={index}>
+                    <div className="leadershipbox">
+                      <div className="leadershipimg">
+                        <img alt={team.entity.fieldName} src={team.entity.fieldImage.url}/>
+                      </div>
+                      <div className="leadership-details">
+                        <h5>{team.entity.fieldName}</h5>
+                        <p>{team.entity.fieldTitleTeam}</p>
+                      </div>
+                      </div>
                     </div>
-                    <div className="leadership-details">
-                      <h5>{team.entity.fieldName}</h5>
-                      <p>{team.entity.fieldTitleTeam}</p>
+                     ))
+                }
+                </Slider>
+                <Slider {...leadership}>
+                {
+                  fieldMultipleTeamAfter5.map( (team, index) => (
+                    <div className="col-6" key={index}>
+                    <div className="leadershipbox">
+                      <div className="leadershipimg">
+                        <img alt={team.entity.fieldName} src={team.entity.fieldImage.url}/>
+                      </div>
+                      <div className="leadership-details">
+                        <h5>{team.entity.fieldName}</h5>
+                        <p>{team.entity.fieldTitleTeam}</p>
+                      </div>
+                      </div>
                     </div>
-                    </div>
-                  </div>
-                   ))
-              }
-              </Slider>
-                 <Slider {...leadership}>
-                 {
-                   entity1.fieldMultipleTeam.map( (team, index) => (
-                     <div className="col-6" key={index}>
-                     <div className="leadershipbox">
-                       <div className="leadershipimg">
-                         <img alt={team.entity.fieldName} src={team.entity.fieldImage.url}/>
-                       </div>
-                       <div className="leadership-details">
-                         <h5>{team.entity.fieldName}</h5>
-                         <p>{team.entity.fieldTitleTeam}</p>
-                       </div>
-                       </div>
-                     </div>
-                      ))
-                 }
-                 </Slider>
+                     ))
+                }
+                </Slider>
                 </div>
+                : 
+                <div>
+                <Slider {...leadership}>
+                {
+                  entity1.fieldMultipleTeam.map( (team, index) => (
+                    <div className="col-6" key={index}>
+                    <div className="leadershipbox">
+                      <div className="leadershipimg">
+                        <img alt={team.entity.fieldName} src={team.entity.fieldImage.url}/>
+                      </div>
+                      <div className="leadership-details">
+                        <h5>{team.entity.fieldName}</h5>
+                        <p>{team.entity.fieldTitleTeam}</p>
+                      </div>
+                      </div>
+                    </div>
+                     ))
+                }
+                </Slider>
+                </div>
+              
             }
             </div>
            </div>
@@ -325,8 +355,8 @@ function About({entity1}) {
              
              <div className="col-md-4">
                <div className="text-box">
-                 <h4>History</h4>
-                 <p>DAMAC Properties has grown to become one of the world’s foremost luxury  , with projects spanning the GCC, Levant, Middle East and United Kingdom.</p>
+                 <h4>{entity1.fieldHistoryHeading}</h4>
+                 <p>{entity1.fieldHistorySubheading}</p>
                </div>
 
                {/* <div className="historyArrows d-md-flex d-none">
@@ -429,7 +459,7 @@ Having now received over 100 global awards and commendations, for everything fro
              
              <div className="col-md-7">
                <div className="coporate-responsibility-section text-center">
-                 <h2>Corporate Social Responsibility</h2>
+                 <h2>{entity1.fieldCsrHeading}</h2>
                  <p>{entity1.fieldCsrDescription5}</p>
 
                  <div className="cta-container">
@@ -475,6 +505,7 @@ export const getStaticProps = async () => {
   // let entity2 = data.data.nodeQuery.entities[1];
   // console.log('about',entity1);
   console.log('entity2',entity1.fieldMultipleHistory);
+  console.log('entity1',entity1);
   // console.log(data.data.nodeQuery.entities);
    return {
       props: {

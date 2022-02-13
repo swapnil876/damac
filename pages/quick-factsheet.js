@@ -67,11 +67,11 @@ function QuickFactsheet( { quickfactsheet } ) {
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': 'https://somepdf.com/#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': 'https://somepdf.com/#',
+  //   'icon': 'arrow-down'
+  // }
 
   
 
@@ -92,13 +92,13 @@ function QuickFactsheet( { quickfactsheet } ) {
 
         <Breadcrumbs crumbs={ crumbs }/>
 
-        <HeadingTitle 
+        {/* <HeadingTitle 
           title={quickfactsheet.fieldPageTitle.value} 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <section className='section' style={deviceIsMobile ? {'padding-bottom': '12px','padding-top': '36px'} :{'padding-bottom': '12px','padding-top': '68px'}}>
           <div className='container'>
