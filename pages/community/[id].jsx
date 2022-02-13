@@ -119,7 +119,7 @@ function Community({entity1,projectlist,otherProjects}) {
 
 
 
-                    <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}:{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}}>
+                    <section className={style['inner-wrap-hero']} style={!deviceIsMobile?{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}:{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}}>
                         <div className={style['project-hero-wrap']}>
                             <div className={`container ${style["hero-container"]}`}>
                             <div className="row align-items-end">
@@ -132,7 +132,7 @@ function Community({entity1,projectlist,otherProjects}) {
                                 </div>
                                 <div className="col-md-5">
                                   {
-                                    !isMobile ?
+                                    !deviceIsMobile ?
                                     <div className={style['project-right']}>
                                     <ul className="d-flex align-items-center">
                                         <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
@@ -290,14 +290,14 @@ function Community({entity1,projectlist,otherProjects}) {
                     <div className='right-area'>
                       
                       <div className='booking-btns'>
-                        <a href={'mailto:'+entity1.fieldEmail} className='btn btn-primary btn-icon'>
+                        <a href={'mailto:'+entity1.fieldEmail} target="_blank" className='btn btn-primary btn-icon'>
                           <span className='fa-icon' style={{'margin': '0'}}>
                             <FontAwesomeIcon icon={faEnvelope} style={{'margin-right':'0'}}/>
                           </span>
                           {/* <span className='btnlabel'>Schedule a call-back</span> */}
                         </a>
 
-                        <a href={entity1.fieldWhatsappNumber} className='btn btn-primary-outline btn-icon' style={{'border': '1px solid #bd8c1b'}}>
+                        <a href={'https://wa.me/' + entity1.fieldWhatsappNumber} target="_blank" className='btn btn-primary-outline btn-icon' style={{'border': '1px solid #bd8c1b'}}>
                           <span className='fa-icon' style={{'margin': '0'}}>
                             <FontAwesomeIcon icon={faWhatsapp} style={{'color':'#bd8c1b', 'margin-right':'0'}}/>
                           </span>
@@ -319,7 +319,7 @@ function Community({entity1,projectlist,otherProjects}) {
       <div className={styles['angry-grid']}>
         <div className={styles['gr-item-0']}>
            <div className={styles['right-side-gallery']}>
-           <img alt=""src={isMobile?entity1.fieldCol1ImageMobileC.url:entity1.fieldCol1ImageDesktopc.url}/>
+           <img alt=""src={deviceIsMobile?entity1.fieldCol1ImageMobileC.url:entity1.fieldCol1ImageDesktopc.url}/>
            <div className={styles['gal-content']}>
             <p>{entity1.fieldCol1Textc}</p>
           </div>         
@@ -327,17 +327,17 @@ function Community({entity1,projectlist,otherProjects}) {
         </div>
         <div className={styles['gr-item-1']}>
             <div className={styles['sm-gal-right']}>
-              <img alt=""src={isMobile?entity1.fieldCol2Row1Col1ImageMobic.url:entity1.fieldCol2Row1Col1ImageDeskc.url} className="img-fluid"/>
+              <img alt=""src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobic.url:entity1.fieldCol2Row1Col1ImageDeskc.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-2']}>
            <div className={styles['sm-gal-left']}>
-              <img alt=""src={isMobile?entity1.fieldCol2Row1Col2ImageMobic.url:entity1.fieldCol2Row1Col2ImageDeskc.url} className="img-fluid"/>
+              <img alt=""src={deviceIsMobile?entity1.fieldCol2Row1Col2ImageMobic.url:entity1.fieldCol2Row1Col2ImageDeskc.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-3']}>
            <div className={styles['gal-gr']}>
-            <img alt=""src={isMobile?entity1.fieldCol2Row2ImageMobilec.url:entity1.fieldCol2Row2ImageDesktopc.url} className="img-fluid"/> 
+            <img alt=""src={deviceIsMobile?entity1.fieldCol2Row2ImageMobilec.url:entity1.fieldCol2Row2ImageDesktopc.url} className="img-fluid"/> 
             
           </div>
         </div>
@@ -457,7 +457,7 @@ function Community({entity1,projectlist,otherProjects}) {
       <div className={styles['angry-grid']}>
         <div className={styles['gr-item-0']}>
            <div className={styles['right-side-gallery']}>
-           <img alt=""src={isMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url}/>
+           <img alt=""src={deviceIsMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url}/>
            <div className={styles['gal-content']}>
             <p>{entity1.fieldCol1Textc5}</p>
           </div>         
@@ -465,17 +465,17 @@ function Community({entity1,projectlist,otherProjects}) {
         </div>
         <div className={styles['gr-item-1']}>
             <div className={styles['sm-gal-right']}>
-              <img alt=""src={isMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/>
+              <img alt=""src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-2']}>
            <div className={styles['sm-gal-left']}>
-              <img alt=""src={isMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/>
+              <img alt=""src={deviceIsMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/>
             </div>
         </div>
         <div className={styles['gr-item-3']}>
            <div className={styles['gal-gr']}>
-             <img alt=""src={isMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/>
+             <img alt=""src={deviceIsMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/>
             
           </div>
         </div>
