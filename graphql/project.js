@@ -188,6 +188,7 @@ query {
         fieldMetaDescriptionProj
         fieldMetaKeywordsProj
         fieldCanonicalUrlProj
+        field3dTourLink
       }
     }
   }

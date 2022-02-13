@@ -120,8 +120,10 @@ query {
         fieldMetaKeywordsComm
         fieldCanonicalUrlComm
         fieldSection4Heading
-        fieldText, 
+        fieldText
         fieldHeading
+        fieldWhatsappNumber
+        fieldEmail
       }
     }
   }
