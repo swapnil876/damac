@@ -69,11 +69,11 @@ function CorporateGovBoard( { mobileDevice, entity1 } ) {
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': '#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': '#',
+  //   'icon': 'arrow-down'
+  // }
 
   
   return (
@@ -96,14 +96,14 @@ function CorporateGovBoard( { mobileDevice, entity1 } ) {
         }
 
 
-        <HeadingTitle 
+        {/* <HeadingTitle 
           title="Corporate Governance" 
           // btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className='container'>
             <PageTabs tabLinks={ [
