@@ -80,11 +80,11 @@ const isMobileWidth = useMediaQuery(
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': '#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': '#',
+  //   'icon': 'arrow-down'
+  // }
 
   const values={ 'type': 'Local Currency (AED)', 'amt_invested': '100,000', 'date': '03/02/2020', 'end_date': '03/02/2021' };
 
@@ -105,13 +105,13 @@ const isMobileWidth = useMediaQuery(
 
         <Breadcrumbs crumbs={ crumbs }/>
 
-        <HeadingTitle 
+        {/* <HeadingTitle 
           title="Share Price Look Up" 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'>
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className='container'>
             <PageTabs tabLinks={ fieldTabs }></PageTabs>

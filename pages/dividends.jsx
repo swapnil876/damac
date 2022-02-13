@@ -60,11 +60,11 @@ function Dividends( { mobileDevice , entity1,fieldTabs,iframe} ) {
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': 'https://somepdf.com/#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': 'https://somepdf.com/#',
+  //   'icon': 'arrow-down'
+  // }
 
   console.log('-------------------------',iframe.entity.fieldIframeContent);
   
@@ -87,14 +87,14 @@ function Dividends( { mobileDevice , entity1,fieldTabs,iframe} ) {
 
         <Breadcrumbs crumbs={ crumbs }/>
 
-        <HeadingTitle 
+        {/* <HeadingTitle 
           title={entity1.fieldPageTitleD.value} 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className='container'>
             <PageTabs tabLinks={ fieldTabs}></PageTabs>

@@ -17,7 +17,10 @@ import styles from '../styles/pages/mortgage-calculator.module.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { isMobile } from 'react-device-detect'
 
-function MortgageCalculator() {
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {MORTGAGECALCULATOR} from '../graphql/master/mortgage-calculator';
+
+ function MortgageCalculator({entity1}) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
 
@@ -50,8 +53,8 @@ function MortgageCalculator() {
                       {
                         !deviceIsMobile ? 
                         <div className={styles['mortage_calculator_left']}>
-                        <h1>Mortgage Calculator</h1>
-                        <p>Estimate how much you could be paying for your mortgage.</p>
+                        <h1>{entity1.fieldHeading1}</h1>
+                        <p>{entity1.fieldText1}</p>
                         <div className={styles['calculator-inner']}>   
                         <div className="row">
                           <div className="col-md-6">
@@ -155,8 +158,8 @@ function MortgageCalculator() {
                     <div className="col-md-8">
                     <div className={styles['mortage_main']}>
                         <img src="/damac-static/images/discount-icon.png" alt=""/>
-                        <h2>Interested in Mortgage?</h2>
-                        <p>Get the best mortgage @ 1.99%. Only from DAMAC.</p>
+                        <h2>{entity1.fieldHeading2}</h2>
+                        <p>{entity1.fieldText2}</p>
                         <form action="">
                         <div className="row">
                             <div className="col-md-5">
@@ -212,6 +215,7 @@ function MortgageCalculator() {
             </section>
 
           {/* <!-- faq section --> */}
+          
           <section className={styles['faq-section']}>
                           <div className="container">
                               <div className={styles['faq-icon']}>
@@ -219,48 +223,27 @@ function MortgageCalculator() {
                               <h2>Frequently Asked Questions</h2>          
                               </div>
                               <div className="row">
+                              {
+                              entity1.fieldMultipleFaqsM.map((f, index) => (
                               <div className="col-md-12">
                                   <div className={styles['faq-wrap']}>
                                   <div class="accordion" id="accordionExample">
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is the lowest mortgage rate in UAE?
+                                        {f.entity.fieldQuestion}
                                         </button>
                                       </h2>
                                       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        {f.entity.fieldAnswer}
                                         </div>
                                       </div>
                                     </div>
                                   </div>                         
                                   </div>            
-                              </div>          
+                              </div> 
+                   ))}         
                               </div>        
                           </div>      
             </section>
@@ -270,7 +253,33 @@ function MortgageCalculator() {
 
       
     </div>
-  )
+  
+  )}
+
+export const getServerSideProps = async () => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: MORTGAGECALCULATOR });
+  // console.log('entity1*/*/*/*',data.data.nodeQuery.entities);
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('------------',entity1.fieldMultipleFaqsM)
+  // let entity2 = data.data.nodeQuery.entities[1];
+  
+  // console.log('entity2',entity2);
+  // console.log(data.data.nodeQuery.entities);
+   return {
+      props: {
+        entity1: entity1,
+        // entity2: entity2
+      }
+    }
+
 }
+
+
 
 export default MortgageCalculator

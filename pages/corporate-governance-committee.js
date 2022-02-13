@@ -98,14 +98,14 @@ function CorporateGovCommittee( { mobileDevice, entity1 } ) {
         }
 
 
-        <HeadingTitle 
+        {/* <HeadingTitle 
           title="Corporate Governance" 
           // btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className="container">
             <PageTabs tabLinks={ [

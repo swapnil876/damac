@@ -72,11 +72,11 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe } ) {
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': '#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': '#',
+  //   'icon': 'arrow-down'
+  // }
 
   
 
@@ -97,14 +97,14 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe } ) {
 
         <Breadcrumbs crumbs={ crumbs }/>
 
-        <HeadingTitle 
+        {/* <HeadingTitle 
           title="Share Overview" 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className='container'>
             <PageTabs tabLinks={ fieldTabs }></PageTabs>

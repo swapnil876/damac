@@ -26,9 +26,11 @@ import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
-export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn, navigation }) {
+export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn }) {
 
   const [slideOutMenuVisible, setMenuActive] = useState(false);
+  const [navigation, setNavigation] = useState([]);
+  const [taxonomy, setTaxonomy] = useState([]);
 
 
   const handleMenuToggle = (e) => {
@@ -36,7 +38,21 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
     setMenuActive(!slideOutMenuVisible);
   }
 
+  async function getNavs(){
+    const client = new ApolloClient({
+      uri: process.env.STRAPI_GRAPHQL_URL,
+      cache: new InMemoryCache()
+    });
 
+    const  data  = await client.query({ query: NAVIGATION });
+    const  data1  = await client.query({ query: PARENTMENUITEMS });
+    if(typeof data != 'undefined'){
+      console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data.data.nodeQuery.entities);
+      console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+    }
+    
+  }
+  getNavs()
 
 
   // Device React
@@ -507,38 +523,4 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
 
 
   )
-}
-
-
-export const getServerSideProps = async () => {
-
-
-  // Device React
-   const client = new ApolloClient({
-    uri: process.env.STRAPI_GRAPHQL_URL,
-    cache: new InMemoryCache()
-  });
-
-  const  data  = await client.query({ query: NAVIGATION });
-  const  data1  = await client.query({ query: PARENTMENUITEMS });
-  console.log(data);
-  let entitiy = data.data.nodeQuery.entities;
-  console.log(entitiy);
-  let navigation = []
-  entitiy.fieldMultipleMenuItems.map((v,i)=>{
-    console.log(v);
-    navigation.push(
-      {
-        url: v.entity.fieldLink,
-        label: v.entity.fieldMenuNam,
-        active: true,
-      }
-    )
-  });
-
-  return {
-    props: {
-      navigation: navigation
-    }, // will be passed to the page component as props
-  }
 }
