@@ -189,6 +189,10 @@ query {
         fieldMetaKeywordsProj
         fieldCanonicalUrlProj
         field3dTourLink
+        fieldEmailP
+        fieldTextSec7
+        fieldWhatsapp
+        fieldHeadingSec7
       }
     }
   }
