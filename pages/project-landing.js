@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect, useState, useCallback } from "react";
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -42,7 +42,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
 
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
-  
+    const [projectList, setProjectList] = useState(projects);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
 
     useEffect(() => {
@@ -50,7 +50,11 @@ const ProjectLanding= ({projects,countries,cities})=> {
          setDeviceIsMobile( true );
        }
     }, [])
-   
+    
+
+    const searchFilter = useCallback((event)=>{
+        console.log(event)
+    },[])
 
     const options = [
         { value: 'Dubailand', label: 'Dubailand, Dubai, UAE' },
@@ -78,7 +82,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                                 <div className="col-md-6">
                                     <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
                                         <i className="fas fa-search"></i>
-                                        <input type="text" placeholder="Search Project or Area" className="form-control" onkeyup="myFunction()" />
+                                        <input type="text" placeholder="Search Project or Area" className="form-control"/>
                                     </div>
                                 </div>
                                 <div className="col-md-6 d-flex flex-wrap justify-content-between">
@@ -96,7 +100,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className={styles['search_btn_filter']}>
+                                    <div className={styles['search_btn_filter']} onClick={()=>{getProjects()}}>
                                         <a href="#" className="btn btn-primary">Search</a>
                                     </div>
                                 </div>
@@ -111,7 +115,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                 <div className="container">
                     <div className={styles['filtered_properties']}>
                         <div className="row">
-                            {projects.map((project,k) => (
+                            {projectList.map((project,k) => (
                                 <div key={k} className="col-md-6">
                                     <div className={styles['property-slider-wrap']}>
                                         <div className={styles['project-card']}>
@@ -161,7 +165,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                     </div>
                     <div className={styles['similar_proprty_card_main']}>
                         <div className="row">
-                        {projects.map((project,k) => (
+                        {projectList.map((project,k) => (
                             <div key={k} className="col-md-3">
                                 <div className={styles['property_similar_card']}>
                                     <img src={project.fieldMainImageDesktopP.url} alt="similar-property-img" className="img-fluid" />
@@ -449,6 +453,18 @@ const ProjectLanding= ({projects,countries,cities})=> {
              <Footer></Footer>
       </div>
     )
+}
+
+async function getProjects(){
+    const client = new ApolloClient({
+      uri: process.env.STRAPI_GRAPHQL_URL,
+      cache: new InMemoryCache()
+    });
+
+    const data = await client.query({ query: PROJECT });
+    // if(data)
+    console.log('fds***---*--',data);
+        
 }
 
 export const getServerSideProps = async () => {
