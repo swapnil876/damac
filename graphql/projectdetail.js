@@ -184,6 +184,15 @@ const PROJECTDETAIL = gql`
           
           fieldLongitudeP4
           fieldLatitudeP4
+          fieldMetaTitleProj
+          fieldMetaDescriptionProj
+          fieldMetaKeywordsProj
+          fieldCanonicalUrlProj
+          field3dTourLink
+          fieldEmailP
+          fieldTextSec7
+          fieldWhatsapp
+          fieldHeadingSec7
         }
       }
     }
