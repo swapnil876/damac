@@ -66,8 +66,8 @@
     bottom: 0 !important
 }
 
-.project-left h1 {
-    font-family: Roboto;
+.project-left h1, .project-left h2 {
+    font-family: "Roboto";
     font-size: 72px;
     font-style: normal;
     font-weight: 500;
@@ -1160,6 +1160,9 @@ ul.bedroom-detail {
 }
 
 @media(max-width: 768px) {
+    .damac-light-title h2{
+        max-width: 70%;
+    }
     .invest-wrap a.read-more {
         background: #FFFFFF;
         border-radius: 4px;
@@ -1172,8 +1175,7 @@ ul.bedroom-detail {
         line-height: 113.6%;
         letter-spacing: 0.02em;
         color: #000000;
-        opacity: 0.85;
-        margin-top:65px;
+        margin-top: 65px;
     }
 
     .why-invest {
@@ -1272,7 +1274,7 @@ ul.bedroom-detail {
 
     .damac-gallery {
         position: relative;
-        height: 60vh;
+        /* height: 60vh; */
         color: #fff !important;
     }
 
@@ -1305,7 +1307,7 @@ ul.bedroom-detail {
         padding-left: 0;
     }
 
-    .project-left h1 {
+    .project-left h1, .project-left h2{
         font-size: 40px;
         line-height: 45px;
     }
@@ -1400,16 +1402,18 @@ ul.bedroom-detail {
         width: 100%;
     }
 }
-section.estimate .custom_white_btn{
+
+section.estimate .custom_white_btn {
     box-shadow: 0px -6px 84px rgba(0, 0, 0, 0.15);
 
 }
 
 @media(max-width: 767px) {
-    section.estimate .custom_white_btn{
-        margin:auto;
-        margin-top:40px
+    section.estimate .custom_white_btn {
+        margin: auto;
+        margin-top: 40px
     }
+
     .gal-content {
         left: 0px;
     }
@@ -1526,6 +1530,13 @@ section.estimate .custom_white_btn{
 @media(max-width: 600px) {
     .hero-container-small {
         top: 20%;
+    }
+}
+
+@media(max-width: 576px) {
+    .faq-icon h2 {
+        font-size: 22px;
+        margin-bottom: 44px;
     }
 }
 

@@ -13,7 +13,7 @@ import PageTitle from '../components/PageTitle'
 import styles from '../styles/InvestorRelation.module.css'
 import style from '../styles/Investor-relation.module.css'
 
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { useMediaQuery } from 'react-responsive'
 
 
@@ -26,14 +26,21 @@ import 'bootstrap/dist/css/bootstrap.css'
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+ import {INVESTORRELATIONS} from '../graphql/master/investor_relations';
 
 
 // import styles from '../styles/.module.css'
 
-function InvestorRelations( {  } ) {
+function InvestorRelations( { entity1 } ) {
 
-
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  useEffect(() => {
+      if ( isMobile ) {
+        setDeviceIsMobile( true );
+      }
+   }, [])
+ 
   return (
     <div className={ styles['investor-relationsbody'] }>
 
@@ -52,7 +59,7 @@ function InvestorRelations( {  } ) {
 
         <PageTitle 
              className={styles['investor-relationsbody']} 
-             title="Investor Relations" 
+             title={entity1.fieldTitleIr.value} 
              subtitle="Investor Relations" 
              backgroundImage={'/images/investor-relation-hero.jpg'}
            />
@@ -64,8 +71,8 @@ function InvestorRelations( {  } ) {
           <div className={styles['profile-outer-white']}>
             <div className={`${styles["profile-inner-main"]}  d-flex justify-content-center`}>
               <div className={styles['profile-main-head']}>
-                <h1 className="text-center">Corporate Profile</h1>
-                <p className="text-center">DAMAC Properties has been shaping the Middle East’s luxury real estate market since 2002, delivering iconic residential, commercial and leisure properties across the region and beyond. DAMAC adds vibrancy to the cities in which its projects are located, with a huge and diverse portfolio that includes two world-class master-planned golf developments. To date, DAMAC has delivered 30,900+ quality homes, with 34,000 more under way.</p>
+                <h2 className="text-center investor_relation_page_titles">{entity1.fieldDescriptionHeading.value}</h2>
+                <div className="text-center" dangerouslySetInnerHTML={{ __html: entity1.fieldTextHeading.value }}></div>
               </div>
             </div>
           </div>
@@ -78,7 +85,7 @@ function InvestorRelations( {  } ) {
           <div className="row">
             <div className={`col-md-4 ${styles["dm-stock-right"]}`}>
               <div className={styles['stock-head']}>
-                <h1>Stock Quote</h1>
+                <h2 className='investor_relation_page_titles'>Stock Quote</h2>
               </div>
               <div className={styles['dfm-4-content']}>
                 <p>DAMAC DFM</p>
@@ -145,8 +152,8 @@ function InvestorRelations( {  } ) {
                 </div>
               </div>
               <div className={style['graph-damac']}>
-                <img src="damac-static/images/graph.png" className="img-fluid"/>
-                
+                {/* <img src="damac-static/images/graph.png" className="img-fluid"/> */}
+                <iframe className='investor_relations_iframe' src={entity1.fieldIframeContent}></iframe>
               </div>
             </div>
           </div>
@@ -162,7 +169,7 @@ function InvestorRelations( {  } ) {
               <div className="row">
                 <div className="col-md-5">
                   <div className={style['enquiry-head']}>
-                    <h1>Send us an Enquiry</h1>
+                    <h2 className='investor_relation_page_titles'>Send us an Enquiry</h2>
                   </div>
                 </div>
                 <div className="col-md-7">
@@ -180,7 +187,7 @@ function InvestorRelations( {  } ) {
       {/* <section className={style['more-wrap']}>
         <div className="container">
           <div className={style['more-head']}>
-            <h1>More Links</h1>
+            <h2>More Links</h2>
           </div>
           <div className={style['more-links-main']}>
             <ul className={style['more-link-ul']}>
@@ -201,10 +208,10 @@ function InvestorRelations( {  } ) {
      <section className={style['new-realease-wrap']}>
        <div className="container">
          <div className={style['new-realease-head']}>
-           <h1>News Releases</h1>
+           <h2 className='investor_relation_page_titles'>News Releases</h2>
          </div>
          <div className="row">
-           <div className="col-md-3">
+           <div className="col-lg-3 col-md-4">
              <div className={style['dm-card-main']}>
                <div className={style['dm-card-image']}>
                  <img src="damac-static/images/news-1.jpg" alt="news-1"/>
@@ -214,7 +221,7 @@ function InvestorRelations( {  } ) {
                    <p>Customer’s Stories</p>
                  </div>
                  <div className={style['dm-card-head']}>
-                   <h2><a href="#">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
+                   <h2 className='investor_relation_page_titles'><a href="#">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
                  </div>
                   <div className={style['dm-card-txt']}>
                    <p className="m-0">7-minute read • Kim</p>
@@ -222,7 +229,7 @@ function InvestorRelations( {  } ) {
                </div>
              </div>
            </div>
-           <div className="col-md-3">
+           <div className="col-lg-3 col-md-4">
              <div className={style['dm-card-main']}>
                <div className={style['dm-card-image']}>
                  <img src="damac-static/images/news-2.jpg" alt="news-1" />
@@ -240,7 +247,7 @@ function InvestorRelations( {  } ) {
                </div>
              </div>
            </div>
-           <div className="col-md-3">
+           <div className="col-lg-3 col-md-4">
              <div className={style['dm-card-main']}>
                <div className={style['dm-card-image']}>
                  <img src="damac-static/images/news-3.jpg" alt="news-1" />
@@ -258,7 +265,7 @@ function InvestorRelations( {  } ) {
                </div>
              </div>
            </div>
-           <div className="col-md-3">
+           <div className="col-lg-3 col-md-4">
              <div className={style['dm-card-main']}>
                <div className={style['dm-card-image']}>
                  <img src="damac-static/images/news-3.jpg" alt="news-1" />
@@ -298,12 +305,23 @@ export default InvestorRelations
 
 export async function getStaticProps(context) {
 
-
   // Device React
+  const deviceIsMobile = isMobile;
+  const deviceType = deviceIsMobile;
 
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: INVESTORRELATIONS });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('entity1',entity1);
 
   return {
     props: {
+       mobileDevice: deviceType,
+       entity1: entity1
     }, // will be passed to the page component as props
   }
 }

@@ -6,15 +6,23 @@ query {
     entities {
       ... on NodeBoardMembers{
          nid,
-         fieldBname,
-        fieldBimage {
-          targetId
-          title
-          url
-        },
-        body{
-          value
-        }
+         fieldPageTitleBm{
+           value
+         }
+         fieldMembers {
+           targetId
+           targetRevisionId
+           entity {
+            ... on ParagraphMultipleTeamAbout{
+                 id
+                 fieldImage{
+                    url
+                 }
+                 fieldName
+                 fieldTitleTeam
+              }
+           }
+         }
       }
     }
   }

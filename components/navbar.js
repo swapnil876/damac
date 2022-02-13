@@ -21,15 +21,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+
 
 export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn }) {
 
-  
-  // const slideOutMenu = {
-  //   visible: false,
-  // };
-
   const [slideOutMenuVisible, setMenuActive] = useState(false);
+  const [navigation, setNavigation] = useState([]);
+  const [taxonomy, setTaxonomy] = useState([]);
 
 
   const handleMenuToggle = (e) => {
@@ -37,7 +38,21 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
     setMenuActive(!slideOutMenuVisible);
   }
 
+  async function getNavs(){
+    const client = new ApolloClient({
+      uri: process.env.STRAPI_GRAPHQL_URL,
+      cache: new InMemoryCache()
+    });
 
+    const  data  = await client.query({ query: NAVIGATION });
+    const  data1  = await client.query({ query: PARENTMENUITEMS });
+    if(typeof data != 'undefined'){
+      console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data.data.nodeQuery.entities);
+      console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+    }
+    
+  }
+  getNavs()
 
 
   // Device React

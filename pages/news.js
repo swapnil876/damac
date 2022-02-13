@@ -110,15 +110,15 @@ function News( {entity1} ) {
                 <h2>DAMAC in the News</h2>
               </div>
               <div>
-                <a href="#" className="border-btn btn">View all</a>
+                <a href="#" className="border-btn btn" style={deviceIsMobile ? {'border':'0', 'position':'relative', 'top':'5px'} : {}}>View all</a>
               </div>
             </div>
            
 
             <div className="row">
-              <div className="col-6 col-md-3">
+              <div className="col-md-3">
                <div className="card">
-                  <img alt=""src="/images/news/1.png" className="card-img-top" />
+                  <img alt=""src="/images/news/1.png" className="card-img-top card-img-for-damac-in-news" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -128,9 +128,9 @@ function News( {entity1} ) {
                   </div>
                 </div>
               </div>
-               <div className="col-6 col-md-3">
-               <div className="card">
-                  <img alt=""src="/images/news/3.png" className="card-img-top" />
+               <div className="col-md-3">
+               <div className="card ">
+                  <img alt=""src="/images/news/3.png" className="card-img-top  card-img-for-damac-in-news" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -140,9 +140,9 @@ function News( {entity1} ) {
                   </div>
                 </div>
               </div>
-               <div className="col-6 col-md-3">
-               <div className="card">
-                  <img alt=""src="/images/news/2.png" className="card-img-top" />
+               <div className="col-md-3">
+               <div className="card ">
+                  <img alt=""src="/images/news/2.png" className="card-img-top  card-img-for-damac-in-news" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -152,9 +152,9 @@ function News( {entity1} ) {
                   </div>
                 </div>
               </div>
-               <div className="col-6 col-md-3">
-               <div className="card">
-                  <img alt=""src="/images/news/2.png" className="card-img-top" />
+               <div className="col-md-3">
+               <div className="card ">
+                  <img alt=""src="/images/news/2.png" className="card-img-top  card-img-for-damac-in-news" />
                   <div className="card-body">
                     <span>Customer’s Stories</span>
                     <h5 className="card-title">
@@ -175,18 +175,22 @@ function News( {entity1} ) {
         <div className="container">
           <div className="d-flex justify-content-between">
             <div className="light-title">
-              <h2>Industry News</h2>
-              <p>Discover how the best of the best use DAMAC to find a home</p>
+              <h2 style={deviceIsMobile ? {'textAlign':'center'} : {}}>Industry News</h2>
+              <p style={deviceIsMobile ? {'textAlign':'center'} : {}}>Discover how the best of the best use DAMAC to find a home</p>
             </div>
-            <div>
+            {
+              deviceIsMobile ? '' :
+              <div>
               <Link href="#"><a className="btn btn-primary">View all</a></Link>
             </div>
+            }
+           
           </div>       
           
           <div className="row">
-             <div className="col-6 col-md-3">
-             <div className="card">
-                <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top" />
+             <div className="col-md-3">
+             <div className="card card-for-news-page">
+                <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top card-img-for-news-page " />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>
@@ -194,18 +198,18 @@ function News( {entity1} ) {
                 </div>
               </div>
             </div>
-             <div className="col-6 col-md-3">
-             <div className="card">
-                <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top"/>
+             <div className="col-md-3">
+             <div className="card card-for-news-page">
+                <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top card-img-for-news-page"/>
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>  
                 </div>
               </div>
             </div>
-             <div className="col-6 col-md-3">
-             <div className="card">
-                <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top" />
+             <div className="col-md-3">
+             <div className="card card-for-news-page">
+                <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top card-img-for-news-page" />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>
@@ -213,9 +217,9 @@ function News( {entity1} ) {
                 </div>
               </div>
             </div>
-             <div className="col-6 col-md-3">
-             <div className="card">
-                <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top" />
+             <div className="col-md-3">
+             <div className="card card-for-news-page">
+                <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top card-img-for-news-page" />
                 <div className="card-body">
                   <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
                   <p className="card-text">7-minute read • Kim</p>
@@ -225,7 +229,12 @@ function News( {entity1} ) {
             </div>
             
           </div>
-
+          {
+              deviceIsMobile ? 
+              <div>
+              <Link href="#"><a className="btn btn-primary">View all</a></Link>
+            </div> : ""
+            }
         </div>
         
       </section>
@@ -256,7 +265,7 @@ function News( {entity1} ) {
               
               <div className="damac-latest-news">
                 <div className="sidebar-title">
-                <h3>Latest</h3>
+                <h3>Most read</h3>
                           
               </div>
               <div className="news">

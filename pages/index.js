@@ -12,7 +12,7 @@ import CookieConsent from '../components/CookieConsent'
 
 import styles from '../styles/Home.module.css'
 
-
+// import Bookmark from 'react-bookmark';
 
 
 // React Responsive
@@ -28,7 +28,6 @@ import bannerImage from '../public/images/hero-image-sm.png'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { HOME } from '../graphql/home';
-
 
 
 
@@ -72,6 +71,8 @@ function Home( {entity1} ) {
 
 
       <main className="main home-main">
+
+       {/* <Bookmark href="https://damac-development.vercel.app/" title="My Cool Website" /> */}
 
           <>
             { (!deviceIsMobile) &&
@@ -123,12 +124,12 @@ export const getStaticProps = async () => {
   // console.log('entity1',data);
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log('entity1',entity1);
+  // console.log('entity1',entity1);
   let url=entity1.fieldMainImageDesktopHome.url;
   let urlArr = entity1.fieldMainImageDesktopHome.url.split('/');
   urlArr[0] = "https://damac.techsperia.in";
   let updatedlink = urlArr.join('/');
-  console.log(updatedlink);
+  // console.log(updatedlink);
   // console.log('entity2',entity2);
   // console.log(data.data.nodeQuery.entities);
    return {

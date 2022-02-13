@@ -3,6 +3,9 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { BROWSE_PROPERTIES } from '../graphql/master/browse_properties';
+
 // Navbar
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
@@ -16,12 +19,22 @@ import { FaAngleLeft, FaAngleRight, FaSearch } from 'react-icons/fa'
 
 import styles from '../styles/pages/browse-properties.module.css'
 import style from '../styles/pages/listing.module.css'
+import project_landing_styles from '../styles/pages/project-landing.module.css'
 
 import React, { Component, useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
+
+// importing React Select
+import Select from "react-dropdown-select";
+
+import Slider from "react-slick";
+
+// slick-carousel css
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 // FA
 import ReactDOM from 'react-dom'
@@ -34,10 +47,13 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { useMediaQuery } from 'react-responsive'
  import * as axios from 'axios';
 
- export default function BrowseProperties(entity){
+ function BrowseProperties({entity,entity1}){
+
+    const [filterClicked, setFilterClicked] = useState(false);
+    const [searchClicked, setSearchClicked] = useState(false);
 
     const [localStorage, setLocalStorage] = useState(false);
-
+    const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     // carousel setting
     const responsive = {
         superLargeDesktop: {
@@ -47,7 +63,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
         }
     };
 
-    console.log('list',entity);
+    console.log('list======================================',entity1);
     // console.log('storage',localStorage)
     useEffect(() => {
         //   importing bootstrap js
@@ -70,8 +86,31 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
         else{
             setLocalStorage(window.localStorage.getItem('access_token'));
         }
+
+
+        // Checking if device is mobile
+
+        if ( isMobile ) {
+            setDeviceIsMobile( true );
+          }
         
-    }, [localStorage, setLocalStorage])
+    }, [localStorage, setLocalStorage]);
+
+    const options = [
+        { value: 'Dubailand', label: 'Dubailand, Dubai, UAE' },
+        { value: 'Dubailand', label: 'Dubailand, Dubai, UAE' },
+        { value: 'Marina', label: 'Marina, Dubai, UAE' },
+      ];
+
+
+    var settings = {
+        dots: false,
+        infinite: false,
+        arrows: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      };
 
      return(
          <div className="browse-properties">
@@ -82,98 +121,364 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className={`${styles["browse-hero-text"]} text-white`}>Find the best <br /> properties by <span>DAMAC</span></h1>
+                            <h1 className={`${styles["browse-hero-text"]} text-white`}>{entity1.fieldPageTitleBp}</h1>
                         </div>
                     </div>
                 </div>
             </section>
 
-           
-              <section className={styles['filter_main_wrap']}>
-              <div className="container">
-                  <div className={styles['filter_option_wrap']}>
-                      <form action="">
-                          <div className="row">
-                              <div className="col-md-9 d-flex flex-wrap" style={{'justifyContent':'space-between'}}>
-                              <div className={styles['form-field']}>
-                                      <select name="property_type" className="form-select" id="">
-                                          <option value="">Buy</option>
-                                          <option value="">Rent</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="property_type" className="form-select" id="">
-                                          <option value="">Any Property Type</option>
-                                          <option value="">Apartment</option>
-                                          <option value="">Hotel</option>
-                                          <option value="">Office</option>
-                                          <option value="">Plot</option>
-                                          <option value="">Townhouse</option>
-                                          <option value="">Villa</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="bedrooms" className="form-select" id="">
-                                          <option value="">Bedrooms</option>
-                                          <option value="">Single</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="locality" className="form-select" id="">
-                                          <option value="">Any Locality</option>
-                                          <option value="">local</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="locality" className="form-select" id="">
-                                          <option value="">Price Range</option>
-                                          <option value="">local</option>
-                                      </select>
-                                  </div>
-                                  <div className={styles['form-field']}>
-                                      <select name="locality" className="form-select" id="">
-                                          <option value="">Project Status</option>
-                                          <option value="">local</option>
-                                      </select>
-                                  </div>
-                              </div>
-                              <div className="col-md-3">
-                                  <div className={styles['search_btn_filter']}>
-                                      <a href="#" className="btn btn-primary">Search</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </form>
-                  </div>
-                  <div className={`${styles["filter_tag_main"]} d-flex justify-content-between align-items-center`}>
-                      <div className={styles['tag_list']}>
-                          <ul className="list-unstyled d-flex m-0">
-                              <li className="active"><a href="#">All</a></li>
-                              <li><a href="#">Communities</a></li>
-                              <li><a href="#">Projects</a></li>
-                              <li><a href="#">Our Picks</a></li>
-                              <li><a href="#">Saved</a></li>
-                          </ul>
-                      </div>
-                      <div className={`${styles["map_filter_main"]} d-flex`}>
-                          <form action="">
-                              <div className={`${styles["form-field"]} d-flex`}>
-                                  <select name="period" id="" className="form-select">
-                                      <option value="">Newest</option>
-                                  </select>
-                              </div>
-                          </form>
-                          <div className={styles['map_list_view']}>
-                              <ul className="list-unstyled d-flex">
-                                  <li className="active"><a href="#">List</a></li>
-                                  <li><a href="#">Map</a></li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div className={styles['space_divider_filter']}></div>
-              </section>
+
+           {/* This is the filter menu, for mobile its in form of footer  */}
+           {
+               deviceIsMobile ? 
+               <section class="footer_filter_for_mobile">
+                   <div className='container'>
+                       <div className='row'>
+                           <div className='col-4'>
+                           <div className='single_option' onClick={()=>{setFilterClicked(true)}}>
+                               <div className='option_icon'>
+                                   <img src="/images/icons/home.png" />
+                               </div>
+                               <div className='option_name'>Browse</div>
+                           </div>
+                           </div>
+                           <div className='col-4'>
+                           <div className='single_option' onClick={()=>{setSearchClicked(true)}}>
+                               <div className='option_icon'>
+                                   <img src="/images/icons/search.png" />
+                               </div>
+                               <div className='option_name'>Search</div>
+                           </div>
+                           </div>
+                           <div className='col-4'>
+                           <div className='single_option'>
+                               <div className='option_icon'>
+                                   <img src="/images/icons/save-filled.png" />
+                               </div>
+                               <div className='option_name'>Saved</div>
+                           </div>
+                           </div>
+                       </div>
+                   </div>
+               </section>
+               :
+               <section className={styles['filter_main_wrap']}>
+               <div className="container">
+                   <div className={styles['filter_option_wrap']}>
+                       <form action="">
+                           <div className="row">
+                               <div className="col-md-9 d-flex flex-wrap" style={{'justifyContent':'space-between'}}>
+                               <div className={styles['form-field']}>
+                                       <select name="property_type" className="form-select" id="">
+                                           <option value="">Buy</option>
+                                           <option value="">Rent</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="property_type" className="form-select" id="">
+                                           <option value="">Any Property Type</option>
+                                           <option value="">Apartment</option>
+                                           <option value="">Hotel</option>
+                                           <option value="">Office</option>
+                                           <option value="">Plot</option>
+                                           <option value="">Townhouse</option>
+                                           <option value="">Villa</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="bedrooms" className="form-select" id="">
+                                           <option value="">Bedrooms</option>
+                                           <option value="">Single</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="locality" className="form-select" id="">
+                                           <option value="">Any Locality</option>
+                                           <option value="">local</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="locality" className="form-select" id="">
+                                           <option value="">Price Range</option>
+                                           <option value="">local</option>
+                                       </select>
+                                   </div>
+                                   <div className={styles['form-field']}>
+                                       <select name="locality" className="form-select" id="">
+                                           <option value="">Project Status</option>
+                                           <option value="">local</option>
+                                       </select>
+                                   </div>
+                               </div>
+                               <div className="col-md-3">
+                                   <div className={styles['search_btn_filter']}>
+                                       <a href="#" className="btn btn-primary">Search</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+                   <div className={`${styles["filter_tag_main"]} d-flex justify-content-between align-items-center`}>
+                       <div className={styles['tag_list']}>
+                           <ul className="list-unstyled d-flex m-0">
+                               <li className="active"><a href="#">All</a></li>
+                               <li><a href="#">Communities</a></li>
+                               <li><a href="#">Projects</a></li>
+                               <li><a href="#">Our Picks</a></li>
+                               <li><a href="#">Saved</a></li>
+                           </ul>
+                       </div>
+                       <div className={`${styles["map_filter_main"]} d-flex`}>
+                           <form action="">
+                               <div className={`${styles["form-field"]} d-flex`}>
+                                   <select name="period" id="" className="form-select">
+                                       <option value="">Newest</option>
+                                   </select>
+                               </div>
+                           </form>
+                           <div className={styles['map_list_view']}>
+                               <ul className="list-unstyled d-flex">
+                                   <li className="active"><a href="#">List</a></li>
+                                   <li><a href="#">Map</a></li>
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div className={styles['space_divider_filter']}></div>
+               </section>
+           }
+             
+            {/* Filter menu for mobile */}
+            {
+                filterClicked ? 
+                <div className='filter_side_slide_for_mobile'>
+                <div className='back_btn' onClick={()=>{setFilterClicked(false)}}>
+                    <img src="images/icons/angle-down.png" />
+                </div>
+                <div className='top_area'>
+                    <h3>Add a filter</h3>
+                    <Select className='top_dropdown'
+                    value={options.value}
+                    options={options} placeholder="Dubailand, Dubai, UAE" />  
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Property Type
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Plot
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Apartment
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Townhouse
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Number of bedrooms
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 1 Bedroom
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 2 Bedrooms
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 3 Bedrooms
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Price Range
+                    </div>
+                    <div className='options-box'>
+                    <img src="images/menu-graph.png" className='range_graph_img' />
+                    <div className='price_range_area'>
+                        <div className='slider_range_area'>
+                        <input type="range"/>
+                        </div>
+                        <div class="slide_range_text">
+                            <span>AED 100,000</span>
+                            <span>AED 2,000,000 {'>'}</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Project Status
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Move in Ready
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Under Construction
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>: ''
+            }
+
+            {/* Search menu for mobile */}
+            {
+                searchClicked ? 
+                <div className='filter_side_slide_for_mobile'>
+                <div className='back_btn' onClick={()=>{setSearchClicked(false)}}>
+                    <img src="images/icons/angle-down.png" />
+                </div>
+                <div className='top_area'>
+                    <h3>Search</h3>
+                    <Select className='top_dropdown'
+                    value={options.value}
+                    options={options} placeholder="Dubailand, Dubai, UAE" />  
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Property Type
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Plot
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Apartment
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Townhouse
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Number of bedrooms
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 1 Bedroom
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 2 Bedrooms
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> 3 Bedrooms
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Price Range
+                    </div>
+                    <div className='options-box'>
+                    <img src="images/menu-graph.png" className='range_graph_img' />
+                    <div className='price_range_area'>
+                        <div className='slider_range_area'>
+                        <input type="range"/>
+                        </div>
+                        <div class="slide_range_text">
+                            <span>AED 100,000</span>
+                            <span>AED 2,000,000 {'>'}</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div className='filter_type'>
+                    <div className='head_tag'>
+                    Project Status
+                    </div>
+                    <div className='options-box'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Any
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Move in Ready
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='option_check'>
+                                    <input type="checkbox" /> Under Construction
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>: ''
+            }
+            
          
 
             <section className={styles['show_property_main']}>
@@ -236,7 +541,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     <div className={styles['filtered_properties']}>
                         <div className="row">
                         {
-                            entity.entity.map( (unit, index) => (
+                            entity.map( (unit, index) => (
                             <div className="col-md-6" key={index}>
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
@@ -301,12 +606,102 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     </div>
                 </div>
             </section>
+
+               {/* <!-- Similar properties section --> */}
+               <section className={project_landing_styles['similar_property']} id="similar_proprty_card_main_global">
+                            <div className="container">
+                                <div className={project_landing_styles['similar_property_head']}>
+                                    <h2>Similar Properties</h2>
+                                </div>
+                             {
+                               !deviceIsMobile ? 
+                               <div className={project_landing_styles['similar_proprty_card_main']}>
+                               <div className="row">
+                               
+                                   <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <p>Starting AED 1,213,515*</p>
+                                       </div>
+                                   </div>
+                                   <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <p>Starting AED 1,213,515*</p>
+                                       </div>
+                                   </div>
+                                   <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <p>Starting AED 1,213,515*</p>
+                                       </div>
+                                   </div>
+                                   <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <p>Starting AED 1,213,515*</p>
+                                       </div>
+                                   </div>
+                                 
+                               
+                               </div>
+                               </div>
+                           :
+                           <div className={project_landing_styles['similar_proprty_card_main']}>
+                                <div className="row">
+                            <Slider {...settings}>
+                                <div>
+                                <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <p>Starting AED 1,213,515*</p>
+                                </div>
+                               </div>
+                               </div>
+                               <div>
+                                <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <p>Starting AED 1,213,515*</p>
+                                </div>
+                               </div>
+                               </div>
+                               <div>
+                                <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <p>Starting AED 1,213,515*</p>
+                                </div>
+                               </div>
+                               </div>
+                               <div>
+                                <div className="col-md-3">
+                                       <div className={project_landing_styles['property_similar_card']}>
+                                           <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
+                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <p>Starting AED 1,213,515*</p>
+                                </div>
+                               </div>
+                               </div>
+                            </Slider>
+                            </div>                         
+                           </div>
+                             }
+                            </div>
+               </section>
             {/* <!-- About Dubai Section --> */}
             <section className={styles['about_dubai_main']}>
               <div className="container">
                 <div className="row">
                   <div className="col-md-6">
-                    <h1>Dubai: A Safe Haven and the Region’s Most Dynamic City</h1>
+                    <h2>Dubai: A Safe Haven and the Region’s Most Dynamic City</h2>
                   </div>
                 </div>
                 <div className="row">
@@ -320,37 +715,70 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 </div>
               </div>
             </section>
-            {/* <!-- Why Invest in Dubai --> */}
-            <section className={styles['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
-              <div className="container">
-                <div className={styles['why-invest-container']}>
-                <div className="row ">
-                  <div className="col-md-6">
-                    <div className={styles['invest-wrap']}>
-                      <h2>Why Invest in Dubai</h2>
-                    </div>  
-                  </div>          
-                </div> 
-                <div className="row">
-                  <div className="col-md-6">
-                       <div className={styles['invest-wrap']}>
-                         <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
-                       </div>
+            {
+            !deviceIsMobile ?
+            // {/* <!-- Why Invest in Dubai --> */}
+            <section className={styles['why-invest']} style={{'background':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+            <div className="container">
+              <div className={styles['why-invest-container']}>
+              <div className="row ">
+                <div className="col-md-6">
+                  <div className={styles['invest-wrap']}>
+                    <h2>Why Invest in Dubai</h2>
+                  </div>  
+                </div>          
+              </div> 
+              <div className="row">
+                <div className="col-md-6">
+                     <div className={styles['invest-wrap']}>
+                       <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
+                     </div>
+                </div>
+                <div className="col-md-6">
+                  <div className={styles['invest-wrap']}>
+                    <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
                   </div>
-                  <div className="col-md-6">
+                </div>
+              </div>
+              <div className="row">
+                       <div className="col-md-6">
+                         <a href="#" className="read-more" style={{'color':'#fff', 'text-decoration':'none'}}>Read more</a>
+                       </div>
+                     </div>   
+              </div>    
+            </div>     
+            </section> :
+           <section className={styles['why-invest']} style={{'background':'#111'}}>
+           <div className="container">
+             <div className={styles['why-invest-container']}>
+             <div className="row ">
+               <div className="col-md-6">
+                 <div className={styles['invest-wrap']}>
+                   <h2>Why Invest in Dubai</h2>
+                 </div>  
+               </div>          
+             </div> 
+             <div className="row">
+               <div className="col-md-6">
                     <div className={styles['invest-wrap']}>
                       <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
                     </div>
-                  </div>
-                </div>
-                <div className="row">
-                         <div className="col-md-6">
-                           <a href="#" className="read-more" style={{'color':'#fff', 'text-decoration':'none'}}>Read more</a>
-                         </div>
-                       </div>   
-                       </div>    
-              </div>     
-            </section>
+               </div>
+               <div className="col-md-6">
+                 <div className={styles['invest-wrap']}>
+                   <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
+                 </div>
+               </div>
+             </div>
+             <div className="row">
+                      <div className="col-md-6">
+                        <a href="#" className="read_more_btn_for_mob">Read more</a>
+                      </div>
+                    </div>   
+             </div>    
+           </div>     
+           </section>
+            }
           
 
             {/* <!-- faq section --> */}
@@ -364,18 +792,20 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                 <div className="col-md-12">
                                     <div className={style['faq-wrap']}>
                                     <div class="accordion" id="accordionExample">
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                    {entity1.fieldMultipleFaqsBw.map((item,k) => (
+                                        <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            {item.entity.fieldQuestion}
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                            {item.entity.fieldAnswer}
+                                            </div>
                                         </div>
-                                      </div>
-                                    </div>
+                                        </div>
+                                    ))}
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -405,7 +835,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                 </div>          
                                 </div>        
                             </div>      
-                        </section>
+            </section>
 
 
              </main>
@@ -414,13 +844,21 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
      )
  }
 
+ export default BrowseProperties;
+
  export async function getServerSideProps(context) {
     // Device React
     const deviceIsMobile = isMobile;
     const deviceType = deviceIsMobile;
+    const client = new ApolloClient({
+        uri: process.env.STRAPI_GRAPHQL_URL,
+        cache: new InMemoryCache()
+      });
+      const  data  = await client.query({ query: BROWSE_PROPERTIES });
+      let properties = data.data.nodeQuery.entities[0];
+    
     let entity = [];
     let token = '';
-    console.log(context);
     await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
         token = response.data.access_token
     })
@@ -429,25 +867,26 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             headers:{
                 'Authorization':'Zoho-oauthtoken '+token
             }
-        }).then(response => {
-            console.log('response',response.data.data);
-            // BrowseProperties({
-            //     mobileDevice: deviceType,
-            //     entity:entity
-            //  });
-            entity = response.data.data;
-        }).catch((e,status)=>{
-            console.log('response',e.response);
-            if(typeof e.response != 'undefined'){
-                if(e.response.status == 401){
-                    // console.log(refreshToken(e.response.status));
-                }
+    }).then(response => {
+        // console.log('response',response.data.data);
+        // BrowseProperties({
+        //     mobileDevice: deviceType,
+        //     entity:entity
+        //  });
+        entity = response.data.data;
+    }).catch((e,status)=>{
+        // console.log('response',e.response);
+        if(typeof e.response != 'undefined'){
+            if(e.response.status == 401){
+                // console.log(refreshToken(e.response.status));
             }
-        });
+        }
+    });
+    console.log('--------',entity);
     return {
         props: {
-           mobileDevice: deviceType,
-           entity:entity
+           entity:entity,
+           entity1:properties
         }, // will be passed to the page component as props
       }
  }

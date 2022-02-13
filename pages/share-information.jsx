@@ -6,7 +6,8 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { SHARE_INFO } from '../graphql/master/share_information';
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -18,9 +19,6 @@ import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
 
 // import styles from '../styles/pages/Quick.module.css'
-
-
-
 
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
@@ -42,7 +40,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function ShareInformation( { mobileDevice } ) {
+function ShareInformation( { mobileDevice, entity1, fieldTabs, iframe } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -69,11 +67,11 @@ function ShareInformation( { mobileDevice } ) {
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': '#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': '#',
+  //   'icon': 'arrow-down'
+  // }
 
   
 
@@ -94,48 +92,17 @@ function ShareInformation( { mobileDevice } ) {
 
         <Breadcrumbs crumbs={ crumbs }/>
 
-        <HeadingTitle 
-          title="Share Information" 
+        {/* <HeadingTitle 
+          title={entity1.fieldPageTitleS} 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className='container'>
-            <PageTabs tabLinks={ [
-                {
-                    url: '/share-information',
-                    label: 'Share Graph Monitor',
-                    active: true,
-                },
-
-                {
-                    url: '/share-overview',
-                    label: 'Share Overview',
-                    active: false,
-                },
-
-                {
-                    url: '/investment-calculator',
-                    label: 'Investment Calculator',
-                    active: false,
-                },
-
-
-                {
-                    url: '/share-price-lookup',
-                    label: 'Share Price Look Up',
-                    active: false,
-                },
-
-                {
-                    url: '/sharia-compliance',
-                    label: 'Sharia Compliance',
-                    active: false,
-                },
-            ] }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs }></PageTabs>
         </div>
 
         <section className='section'>
@@ -146,70 +113,7 @@ function ShareInformation( { mobileDevice } ) {
                <div className="date-time">
                  <p className=''><strong>Date & Time: 31 January 2021 11:31 (GTM +04:00)</strong></p>
                </div>
-               <div className="share-graph-table-wrap table-responsive">
-                 <table className="table table-striped dm-graph-table">
-                         <thead>
-                           <tr>
-                             <th>Share</th>
-                             <th>Last</th>
-                             <th>High</th>
-                             <th>Low</th>
-                             <th>(+/-)</th>
-                             <th>%</th>
-                             <th>Bid</th>
-                             <th>Ask</th>
-                             <th>Volume</th>
-                           </tr>
-                         </thead>
-                         <tbody>
-                           <tr>
-                             <td>10% shares dividend of 500 mn shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>
-                           <tr>
-                             <td>Issuing, subscribing and full payment of 5,500 shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>
-                           <tr>
-                             <td>10% shares dividend of 550 mn shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>
-                           <tr>
-                             <td>Issuing, subscribing and full payment of 6,050 mn shares</td>
-                             <td>1.34</td>
-                             <td>1.36</td>
-                             <td>1.33</td>
-                             <td>-0.03</td>
-                             <td>-2.19</td>
-                             <td>1.33</td>
-                             <td>1.34</td>
-                             <td>1,085,775</td>
-                           </tr>                       
-
-                         </tbody>
-                       </table>
-               </div>
+               <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
              </div>
 
 
@@ -217,7 +121,8 @@ function ShareInformation( { mobileDevice } ) {
                  <div className="row">
                    <div className="col-md-6">
                      <div className="graph-left-div">
-                       <img src="/images/content/share-information/graph-left.jpg" alt="graph" className="img-fluid" />
+                       {/* <img src="/images/content/share-information/graph-left.jpg" alt="graph" className="img-fluid" /> */}
+                       <iframe className="iframe_left_share_info" src={fieldTabs[0].iframeContent}></iframe>
                      </div>
                    </div>
                    <div className="col-md-6">
@@ -248,16 +153,83 @@ export default ShareInformation
 
 
 export async function getStaticProps(context) {
-
-
   // Device React
   const deviceIsMobile = isMobile;
   const deviceType = deviceIsMobile;
 
+   const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+
+  const  data  = await client.query({ query: SHARE_INFO });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log(entity1);
+  let data1 = {};
+  let fieldTabs = [];
+  entity1.fieldTabsS.map((v,i)=>{
+    if(v.entity.fieldTabHeading == 'Share Graph Monitor')
+    {
+      fieldTabs.push(
+        {
+          url: '/share-information',
+          label: 'Share Graph Monitor',
+          active: true,
+          iframeContent : v.entity.fieldIframeContent
+        }
+      )
+      data1 = v;
+    }
+    else if(v.entity.fieldTabHeading == 'Share Overview'){
+      fieldTabs.push(
+        {
+          url: '/share-overview',
+          label: 'Share Overview',
+          active: false,
+          iframeContent : v.entity.fieldIframeContent
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Investment Calculator'){
+      fieldTabs.push(
+        {
+          url: '/investment-calculator',
+          label: 'Investment Calculator',
+          active: false,
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Share Price Look Up'){
+      fieldTabs.push(
+        {
+          url: '/share-price-lookup',
+          label: 'Share Price Look Up',
+          active: false,
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Sharia Compliance'){
+      fieldTabs.push(
+        {
+          url: '/sharia-compliance',
+          label: 'Sharia Compliance',
+          active: false,
+      }
+      )
+    }
+     
+  });
+
+
+
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       entity1: entity1,
+       fieldTabs:fieldTabs,
+       iframe:data1
     }, // will be passed to the page component as props
   }
 }

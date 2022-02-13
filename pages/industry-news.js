@@ -36,7 +36,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 <section className={styles['press-hero']} style={{'background-image':'url(/damac-static/images/ind-bg.jpg)'}}>               
                 <div className={styles['press-hero-wrap']}>
                     <div className={styles['press-content']}>
-                    <h2>DAMAC Properties to Hold First Ever Ramadan Sports Festival at AKOYA</h2>
+                    <h1>DAMAC Properties to Hold First Ever Ramadan Sports Festival at AKOYA</h1>
                     <p>We reflected on DAMAC’s years of history and created an infographic summary.</p>
                     <span>Dec, 15 2021 By Financial Times</span>
                     </div> 

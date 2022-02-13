@@ -211,23 +211,38 @@ ul.more-link-ul li a i {
 	font-size: 16px;
 	font-weight: 400;
 	margin-top: 9px;	
+	margin-bottom: 2px;
 	line-height: 24px;
 	letter-spacing: 0.48px;
 	opacity: 60%;
 	color: #000;
 }
 .dm-card-head h2, .dm-card-head h2 a{
-	font-size: 20px;
-	line-height: 20px;
-	color: #000;
-	letter-spacing: 0.32px;
 	margin-bottom: 6px;	
 	text-decoration: none;
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 135.6%;
+letter-spacing: 0.02em;
+color: #000;
 }
 .dm-card-head h2 a:hover{
 	color: #000;
 }
+@media(max-width: 992px){
+	.dm-card-main{
+		margin-bottom: 35px;
+	}
+}
 @media (max-width: 767px){
+	.new-realease-head h1{
+		margin-bottom: 30px;
+	}
+	.dm-card-image img{
+		width: 100%;
+		aspect-ratio: 341/223;
+	}
 	.profile-inner-main{
 		background: #fff;
 	}
@@ -263,8 +278,5 @@ ul.more-link-ul li a i {
 	}
 	.dfm-right-txt{
 		padding-top: 10px;
-	}
-	.dm-card-main{
-		margin-bottom: 35px;
 	}
 }

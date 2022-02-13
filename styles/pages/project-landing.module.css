@@ -189,14 +189,14 @@ ul.bedroom-detail li a i {
     font-size: 44px;
     font-weight: 500;
     line-height: 52px;
-    margin-bottom: 49px;
+    margin-bottom: 20px;
 }
 .property_similar_card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
-.property_similar_card h1 {
+.property_similar_card h1, .property_similar_card h2 {
     font-size: 20px;
     font-weight: 500;
     line-height: 34px;
@@ -204,7 +204,7 @@ ul.bedroom-detail li a i {
     margin-top: 14px;
     margin-bottom: 1px;
 }
-.property_similar_card h1 a{
+.property_similar_card h1 a, .property_similar_card h2 a{
     color:#111;
     text-decoration: none;
     font-weight: 500;
@@ -215,6 +215,9 @@ ul.bedroom-detail li a i {
     line-height: 34px;
     opacity: 0.8;
 }
+
+
+
 @media (max-width: 1024px){
     /* .filter_option_wrap .form-field select:first-child{
         margin-right: 40px;
@@ -231,6 +234,23 @@ ul.bedroom-detail li a i {
 	}
 }
 @media (max-width: 767px){
+    .shape-contact{
+        width: 100%;
+    }
+    .shape-contact ul{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .shape-contact ul li {
+        margin-left: 0px;
+        width: 47%;
+    }
+    .shape-contact ul li a.border-icon, .shape-contact ul li .solid-icon{
+        width: 100%;
+        display: block;
+        text-align: center;
+        padding:15px 20px;
+    }
     .filter_option_wrap {
         margin-top: -20px;
     }
@@ -241,18 +261,19 @@ ul.bedroom-detail li a i {
         margin-right: 30px;
     } */
 	.similar_property{
-		padding: 50px 0;
+		padding: 120px 0 30px;
 	}
 	.property_similar_card{
 		margin-bottom: 30px;
 	}
 	.similar_property_head h1{
 		font-size: 32px;
+        max-width: 70%;
 	}
 	.filter_option_wrap .form-field select{
 		/* width: unset; */
 	}
     a.border-icon,.solid-icon{
-        padding:10px 20px;
+        padding:15px 35px;
     }
 }

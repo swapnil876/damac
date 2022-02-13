@@ -36,112 +36,11 @@ export default function CorporateGovernanceBoard({entity1}) {
                             <div className="col-md-3 col-6">
                                 <div className={styles['leadershipbox']}>
                                     <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
+                                        <img src={entity1.entity.fieldImage.url} />
                                     </div>
                                     <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-md-3 col-6">
-                                <div className={styles['leadershipbox']}>
-                                    <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
-                                    </div>
-                                    <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-md-3 col-6">
-                                <div className={styles['leadershipbox']}>
-                                    <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
-                                    </div>
-                                    <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3 col-6">
-                                <div className={styles['leadershipbox']}>
-                                    <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
-                                    </div>
-                                    <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3 col-6">
-                                <div className={styles['leadershipbox']}>
-                                    <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
-                                    </div>
-                                    <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3 col-6">
-                                <div className={styles['leadershipbox']}>
-                                    <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
-                                    </div>
-                                    <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3 col-6">
-                                <div className={styles['leadershipbox']}>
-                                    <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
-                                    </div>
-                                    <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3 col-6">
-                                <div className={styles['leadershipbox']}>
-                                    <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
-                                    </div>
-                                    <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3 col-6">
-                                <div className={styles['leadershipbox']}>
-                                    <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
-                                    </div>
-                                    <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3 col-6">
-                                <div className={styles['leadershipbox']}>
-                                    <div className={styles['leadershipimg']}>
-                                        <img src="/images/chairman-portrait.jpg" />
-                                    </div>
-                                    <div className={styles['leadership-details']}>
-                                        <h5>Kyoko Matsushita</h5>
-                                        <p>Global CEO</p>
+                                        <h5>{entity1.entity.fieldName}</h5>
+                                        <p>{entity1.entity.fieldTitleTeam}</p>
                                     </div>
                                 </div>
                             </div>

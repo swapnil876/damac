@@ -28,7 +28,7 @@ export default function InvestmentCalculator({ initialValues }) {
           <div className="row">
             <div className="col-md-6">
               <div className={ styles['heading'] }>
-                <h4>Share Information</h4>
+                <h4>Investment Calculator</h4>
                 <p>Estimate how much you could be paying for your mortgage.</p>
               </div>
 

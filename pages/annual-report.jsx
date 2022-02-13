@@ -18,7 +18,8 @@ import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
 
 import styles from '../styles/InvestorRelation.module.css'
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ANNUALREPORTS } from '../graphql/master/annual_reports';
 // import styles from '../styles/pages/Quick.module.css'
 
 
@@ -44,10 +45,13 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function AnnualReport( { mobileDevice } ) {
+function AnnualReport( { entity,unique,year_announcement } ) {
 
-
+  console.log('while rendering...',year_announcement);
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  const [yearData, setYearData] = useState(year_announcement)
+  const [uniqueYear, setUniqueYear] = useState(unique)
+  const [allYear, setAllYear] = useState(true)
   useEffect(() => {
       if ( isMobile ) {
         setDeviceIsMobile( true );
@@ -76,6 +80,69 @@ function AnnualReport( { mobileDevice } ) {
     'url': '#',
     'icon': 'arrow-down'
   }
+
+  let selectYear = (yr,arr,l,type)=>{
+    console.log(useEffect);
+    if(type==1){
+        let yearr = yearData;
+        let uniquee = uniqueYear;
+        setYearData( [] );
+        // setUniqueYear( [] );
+        setTimeout(function(){
+            uniquee.map((m,n)=>{
+                if(n==l){
+                    m.isActive = true;
+                }
+                else{
+                    m.isActive = false;
+                }
+                if((n+1) == uniquee.length){
+                    setUniqueYear( uniquee );
+                }
+            })
+            yearr.map((v,i)=>{
+                if(yr.year==v.year){
+                    // yearr[i] = {...yearr[i], isShow: true};
+                    // this.setState({ yearData });
+                    // setYearData( yearData );
+                    v.isShow = true;
+                }
+                else{
+                    // yearr[i] = {...yearr[i], isShow: false};
+                    // this.setState({ yearData });
+                    // setYearData( yearData );
+                    v.isShow = false;
+                }
+                if((i+1) == yearr.length){
+                    setYearData( yearr );
+                }
+            }); 
+            setAllYear(false)
+        },2000)
+    }
+    else{
+        let yearr = yearData;
+        let uniquee = uniqueYear;
+        setYearData( [] );
+        setTimeout(function(){
+            uniquee.map((m,n)=>{
+                m.isActive = false;
+                if((n+1) == uniquee.length){
+                    setUniqueYear( uniquee );
+                    setAllYear(true)
+                }
+            })
+            yearr.map((v,i)=>{
+                v.isShow = true;
+                if((i+1) == yearr.length){
+                    setYearData( yearr );
+                }
+            }); 
+        },2000)
+    }
+    
+    
+}
 
   
 
@@ -108,69 +175,59 @@ function AnnualReport( { mobileDevice } ) {
           
         </HeadingTitle>
 
-        <div className='container'>
+        {/* <div className='container'>
             <ul className={styles['pagetabs']}>
-              <li >
-                <a className={ `${styles['pagetabs-link']} ${styles['active']}` } href="#">2021</a>
-              </li>
-              <li>
-                <a className={ `${styles['pagetabs-link']} ` } href="#">2020</a>
-              </li>
-              <li>
-                <a className={ `${styles['pagetabs-link']} ` } href="#">2019</a>
-              </li>
-              <li>
-                <a className={ `${styles['pagetabs-link']} ` } href="#">2018</a>
-              </li>
-              <li>
-                <a className={ `${styles['pagetabs-link']} ` } href="#">2017</a>
-              </li>
-              <li>
-                <a className={ `${styles['pagetabs-link']} ` } href="#">2016</a>
-              </li>
-              <li>
-                <a className={ `${styles['pagetabs-link']} ` } href="#">2015</a>
-              </li>
-              <li>
-                <a className={ `${styles['pagetabs-link']} ` } href="#">2014</a>
-              </li>
+                {
+                  uniqueYear.map( (yr, i) => (
+                      
+                      <li className={`${yr.isActive ? styles['active'] : "pagetabs-link"}`} key={i} ><a style={{'cursor':'pointer'}} onClick={()=>{selectYear(yr,year_announcement,i,1 )}}>{yr.year}</a></li>
+                  ))
+                }
             </ul>
+        </div> */}
+
+        <div className='container'>
+          <ul className={styles['pagetabs']}>
+          {
+                  uniqueYear.map( (yr, i) => (
+              <li key={i}>
+                <a className={`${yr.isActive ? styles['active'] : ''}`} href="#" onClick={()=>{selectYear(yr,year_announcement,i,1 )}}>{yr.year}</a>
+              </li>
+              ))
+            }
+          </ul>
         </div>
 
         <section className='section'>
           <div className='container'>
             
             <div className={ styles['annual-reports-list'] }>
-              
-              <div className={ styles['annual-reports-item']}>
-                <h3 className={`annual-report-title`}>
-                  DAMAC Properties Dubai Co PJSC Annual Report 2020 Arabic
-                </h3>
+            {
+                        yearData.length>0?(
+                            yearData.map((report,index)=>(
+                              report.isShow?(
+                        <div className={ styles['annual-reports-item']} key={index}>
+                          <h3 className={`annual-report-title`}>
+                            {report.obj.fieldTitleAr.value}
+                          </h3>
 
-                <div className={`${styles['annual-report-meta']}`}>
-                  <div className={`${styles['datetime']}`}>April 29, 2021 4:00 PM EST</div>
-                  <div className={`${styles['downloadlink']}`}>
-                    <Link href="#">
-                      <a>Download</a>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+                          <div className={`${styles['annual-report-meta']}`}>
+                            <div className={`${styles['datetime']}`}>{report.obj.fieldDateAr.value}</div>
+                            <div className={`${styles['downloadlink']}`}>
+                              <Link href={report.obj.fieldFileAr.entity.url}>
+                                <a>Download</a>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                        ):
+                        ('')
+               
+                      ))
+                ):('')
+           
+       }
 
-              <div className={ styles['annual-reports-item']}>
-                <h3 className={`annual-report-title`}>
-                  DAMAC Properties Dubai Co PJSC Annual Report 2020 Arabic
-                </h3>
-
-                <div className={`${styles['annual-report-meta']}`}>
-                  <div className={`${styles['datetime']}`}>April 29, 2021 4:00 PM EST</div>
-                  <div className={`${styles['downloadlink']}`}>
-                    <Link href="#">
-                      <a>Download</a>
-                    </Link>
-                  </div>
-                </div>
-              </div>
 
             </div>
 
@@ -190,19 +247,43 @@ function AnnualReport( { mobileDevice } ) {
 
 export default AnnualReport
 
+function getDateTime(date){
+  console.log('date*****',date);
+ let split = date.split('T');
+ let y = split[0].split('-');
+ return y[0];
+}
 
-
-export async function getStaticProps(context) {
+export const getServerSideProps = async () => {
 
 
   // Device React
-  const deviceIsMobile = isMobile;
-  const deviceType = deviceIsMobile;
-
-
-  return {
-    props: {
-       mobileDevice: deviceType
-    }, // will be passed to the page component as props
-  }
+   const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+  let year_announcement = [];
+  let unique = [];
+  let checkUniqe = [];
+  const  data  = await client.query({ query: ANNUALREPORTS });
+  let entity1 = data.data.nodeQuery.entities;
+    console.log(entity1);
+    entity1.map((v,i)=>{
+        let year = getDateTime(v.fieldDateAr.value)
+        if(!checkUniqe.includes(year)){
+            unique.push({year:year,isActive:false});
+            checkUniqe.push(year);
+            year_announcement.push({obj:v,year:year,isShow:true});
+        }
+        else{
+            year_announcement.push({obj:v,year:year,isShow:true});
+        }
+    });
+    return {
+        props: {
+          entity1: entity1,
+          unique: unique,
+          year_announcement:year_announcement
+        }
+    } 
 }

@@ -37,7 +37,7 @@ export default function ProperySlideCard( {
           <BsBookmark color="#000" />
         </div>
 
-        <h3><Link href={ url }><a>{title}</a></Link></h3>
+        <h1><Link href={ url }><a>{title}</a></Link></h1>
         <div className={styles['location']}>{location}</div>
 
         <div className={styles['meta-items']}>

@@ -6,7 +6,8 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { QUICKFACTSHEET } from '../graphql/master/quick_factsheet';
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -39,7 +40,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function QuickFactsheet( { mobileDevice } ) {
+function QuickFactsheet( { quickfactsheet } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -66,11 +67,11 @@ function QuickFactsheet( { mobileDevice } ) {
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': 'https://somepdf.com/#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': 'https://somepdf.com/#',
+  //   'icon': 'arrow-down'
+  // }
 
   
 
@@ -80,7 +81,7 @@ function QuickFactsheet( { mobileDevice } ) {
       <Head>
         <title>Quick Factsheet - Damac</title>
 
-        <meta name="description" content="Quick Factsheet - Damac Properties" />
+        <meta name={quickfactsheet.fieldDescriptionHeadingQf.value} content="Quick Factsheet - Damac Properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -91,37 +92,36 @@ function QuickFactsheet( { mobileDevice } ) {
 
         <Breadcrumbs crumbs={ crumbs }/>
 
-        <HeadingTitle 
-          title="Quick Factsheet" 
+        {/* <HeadingTitle 
+          title={quickfactsheet.fieldPageTitle.value} 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
-        <section className='section' style={{'padding-bottom': '12px','padding-top': '40px'}}>
+        <section className='section' style={deviceIsMobile ? {'padding-bottom': '12px','padding-top': '36px'} :{'padding-bottom': '12px','padding-top': '68px'}}>
           <div className='container'>
-             <h3 className='section-title' style={ isMobile ? {'font-size':'24px', 'max-width': '100%'} : {'font-size':'32px', 'max-width': '420px'}}>Pioneering luxury real estate across the region</h3>
-
-             <div className='two-col-text'>
-               <div className='text'>
-                 <p>DAMAC Properties has been at the forefront of the Middle East’s luxury real estate market for more than 18 years – bringing luxury living experiences to residents from all over the world. Making its mark at the highest end of stylish living, DAMAC Properties has cemented its place as the leading luxury developer in the region, offering iconic design and the upmost quality.<br/><br/>
-                   The Company’s footprint now extends across the Middle East with projects in the UAE, Saudi Arabia, Qatar, Jordan, Lebanon and the United Kingdom.</p>
-               </div>
-
-               <div className='text'>
-                 <p>As of 30th June 2020, DAMAC Properties has delivered over 30,000+ homes and has a development portfolio of over 34,000 units at various stages of progress and planning.
-                <br/><br/>
-                With vision and momentum, DAMAC Properties is building the next generation of Middle East luxury living.</p>
-               </div>
-             </div>
-
-
+             <h3 className='section-title' style={ deviceIsMobile ? {'font-size':'22px', 'max-width': '100%'} : {'font-size':'32px', 'max-width': '420px'}}>Pioneering luxury real estate across the region</h3>
+             <div class="row">
+                        <div class="col-md-6">
+                      <div class="factsheet-main-content">
+                          <div dangerouslySetInnerHTML={{ __html: quickfactsheet.fieldCol1Text.value }}>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="factsheet-main-content second-p">
+                        <div dangerouslySetInnerHTML={{ __html: quickfactsheet.fieldCol2Text.value }}></div>
+                      </div>
+                  </div>
+              </div>
 
              <div className={'factsheet-content'}>
 
                <div className='factsheet-content-div'>
-                   <img alt=""className='img-responsive' src='/images/content/quick-factsheet/factsheet-graph.jpg'/>
+                   {/* <img alt=""className='img-responsive' src='/images/content/quick-factsheet/factsheet-graph.jpg'/> */}
+                   <iframe className="iframe_for_graph_quickfactsheet" src={quickfactsheet.fieldIframContent}></iframe>
                </div>
 
 
@@ -293,17 +293,22 @@ export default QuickFactsheet
 
 
 
-export async function getStaticProps(context) {
+export const getServerSideProps = async () => {
 
 
   // Device React
-  const deviceIsMobile = isMobile;
-  const deviceType = deviceIsMobile;
+   const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
 
-
+  const  data  = await client.query({ query: QUICKFACTSHEET });
+  let entitiy = data.data.nodeQuery.entities[0];
+  
+  console.log(entitiy);
   return {
     props: {
-       mobileDevice: deviceType
+       quickfactsheet: entitiy
     }, // will be passed to the page component as props
   }
 }

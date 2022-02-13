@@ -90,6 +90,7 @@ function FinancialInformation( { mobileDevice } ) {
         <HeadingTitle 
         title="Financial Information" 
         deviceIsMobile={ deviceIsMobile }
+        className = "financial_info_heading"
         > 
         </HeadingTitle>
         
@@ -132,7 +133,7 @@ function FinancialInformation( { mobileDevice } ) {
                       <ul className="list-unstyled">
                           <li>
                               <div className={styles['report_list']}>
-                                  <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                  <h2><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h2>
                                   <div className="d-flex ">
                                       <div className={styles['datetime-report']}>
                                           <p>January 29, 2021 4:00 PM EST</p>
@@ -143,7 +144,7 @@ function FinancialInformation( { mobileDevice } ) {
                           </li>
                           <li>
                               <div className={styles['report_list']}>
-                                  <h1><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h1>
+                                  <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h2>
                                   <div className="d-flex ">
                                       <div className={styles['datetime-report']}>
                                           <p>January 29, 2021 4:00 PM EST</p>
@@ -154,7 +155,7 @@ function FinancialInformation( { mobileDevice } ) {
                           </li>
                           <li>
                               <div className={styles['report_list']}>
-                                  <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                  <h2><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h2>
                                   <div className="d-flex ">
                                       <div className={styles['datetime-report']}>
                                           <p>January 29, 2021 4:00 PM EST</p>
@@ -165,7 +166,7 @@ function FinancialInformation( { mobileDevice } ) {
                           </li>
                           <li>
                               <div className={styles['report_list']}>
-                                  <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                  <h2><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h2>
                                   <div className="d-flex ">
                                       <div className={styles['datetime-report']}>
                                           <p>January 29, 2021 4:00 PM EST</p>
@@ -196,6 +197,7 @@ function FinancialInformation( { mobileDevice } ) {
  
                <div className="my-5 pb-5">
                  <img src="damac-static/img/financialinfoimg.png" width="758" style={{'max-width':'100%'}}/>
+                 {/* <iframe class="financial_info_key_fig_iframe"></iframe> */}
                </div>
                
                 </div>

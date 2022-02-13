@@ -8,7 +8,7 @@ import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
 
 
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { useMediaQuery } from 'react-responsive'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
@@ -19,6 +19,14 @@ import { isMobile } from 'react-device-detect'
 // import styles from '../styles/.module.css'
 
 function ChairmansMessage({entity1}) {
+
+  const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  useEffect(() => {
+      if ( isMobile ) {
+        setDeviceIsMobile( true );
+      }
+   }, [])
+
   return (
     <div className='aboutbody'>
 
@@ -42,12 +50,12 @@ function ChairmansMessage({entity1}) {
 
            <div className="page-title">
              <div className="container">
-               <h2>Chairman's Message</h2>
+               <h1>{entity1.fieldPageTitleCm}</h1>
              </div>
            </div>
 
-
-           <section className="chairmans-portrait-section">
+          <div className='chairmans-msg-cover'>
+          <section className="chairmans-portrait-section">
              <div className="container">
                
                <div className="row">
@@ -73,12 +81,13 @@ function ChairmansMessage({entity1}) {
 
                <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptiveText.value }}></div>
               
-               <h4 className="chairmans-name">Hussain Sajwani</h4>
+               <h4 className="chairmans-name">{entity1.fieldChairman}</h4>
                {
-               !isMobile ? "" : <Link href=""><a className="read_more_btn">Read More</a></Link>
+               !deviceIsMobile ? "" : <Link href=""><a className="read_more_btn">Read More</a></Link>
              }
              </div>
            </section> 
+          </div>
       </main>
       <Footer></Footer>  
     </div>

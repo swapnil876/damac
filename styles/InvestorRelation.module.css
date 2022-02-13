@@ -7,6 +7,15 @@
     overflow:auto
 }
 
+.pagetabs > li{
+    padding: 15px 0;
+    display: block;
+    margin-right: 33px;
+    font-size: 20px;
+    position: relative;
+    opacity: 0.5;
+}
+
 .pagetabs-link {
     padding: 15px 0;
     display: block;
@@ -17,10 +26,28 @@
 
 }
 
+.pagetabs > li:hover,
+.pagetabs > li.active{
+    color: #000;
+    opacity: 1;
+}
+
 .pagetabs-link:hover,
 .pagetabs-link.active {
     color: #000;
     opacity: 1;
+}
+
+.pagetabs > li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #000;
+    opacity: 0;
+    transition: 0.12s all ease-in-out;
 }
 
 .pagetabs-link::after {
@@ -35,8 +62,17 @@
     transition: 0.12s all ease-in-out;
 }
 
+.pagetabs > li:hover::after {
+    opacity: 0.8;
+}
+
 .pagetabs-link:hover::after {
     opacity: 0.8;
+}
+
+.pagetabs > li.active::after,
+.pagetabs > .li:hover::after {
+    opacity: 1;
 }
 
 .pagetabs-link.active::after,
@@ -46,6 +82,10 @@
 
 
 .pagetabs-link.active {
+    font-weight: 500;
+}
+
+.pagetabs > li > a.active {
     font-weight: 500;
 }
 
@@ -79,6 +119,13 @@
 }
 
 @media (max-width: 768px) {
+    .profile-inner-main {
+        background: #fff !important;
+    }
+    .profile-main-head h1, .profile-main-head p{
+        color:#111 !important;
+        text-align: left !important;
+    }
     .annual-reports-item h3 {
         font-size: 18px;
     }

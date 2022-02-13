@@ -18,7 +18,9 @@ export default function CorporateGovernance({entity1}) {
           <div className={ styles['gov_main_content'] }>
             <div className="audit_compliance">
               <h1>{entity1.__typename}</h1>
-              <p>{entity1.body.value}</p>
+              {/* <p>{entity1.body.value}</p> */}
+
+              <div className={styles['para']} dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
              <div className="audit_ol_list">
                 <h4>Audit Compliance &amp; Risk Committee members:</h4>
                 <ol>

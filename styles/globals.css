@@ -1728,7 +1728,7 @@ footer.damac-footer .footer-logo {
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
+    bottom: -1px;
     right: 0;
     background-color: #fff;
     max-width: 65%;
@@ -1762,6 +1762,25 @@ footer.damac-footer .footer-logo {
 @media(max-width: 992px) {}
 
 @media (max-width: 768px) {
+    .text-section-whhydubai-1 h3 {
+        margin: auto;
+        margin-bottom: 30px;
+        max-width: 60%;
+        text-align: center;
+    }
+
+    .banner-conent-style-1 .container {
+        position: relative;
+        width: 90%;
+        margin: unset;
+        background: #fff;
+        margin-top: -278px;
+    }
+
+    .banner-conent-style-1 .banner-text-body {
+        padding: 40px 0;
+    }
+
     .milestone-carousel-item .image-text .img {
         width: 60%;
         min-width: unset;
@@ -1781,7 +1800,7 @@ footer.damac-footer .footer-logo {
         position: absolute;
         left: 0;
         top: 0;
-        bottom: 0;
+        bottom: -1px;
         right: 0;
         background-color: #fff;
         max-width: 100%;
@@ -1887,12 +1906,33 @@ WHY DUBAI PAGE
 
 }
 
+.why-dubai-section-5 .container {
+    position: absolute;
+    left: 100px;
+    bottom: 140px;
+}
+
+.investors_fav_para {
+    font-size: 20px;
+    line-height: 169.6%;
+    letter-spacing: 0.02em;
+    color: #000000;
+    opacity: 0.75;
+}
+
+@media (max-width: 1200px) {
+    .why-dubai-section-5 .container {
+        position: absolute;
+        left: 50px;
+        bottom: 140px;
+    }
+}
+
 @media (min-width: 768px) {
     .why-dubai-section-5 .img-grid-text-1 {
         margin-top: 400px;
         font-size: 20px;
     }
-
 
     .why-dubai-section-5 {
         background-image: url('/images/why-dubai/img-grid-full-bg.jpg');
@@ -1902,7 +1942,7 @@ WHY DUBAI PAGE
         background-repeat: no-repeat;
         background-position: center;
         min-height: 100vh;
-
+        position: relative;
     }
 }
 
@@ -1990,6 +2030,7 @@ ul.district-items-nav-list li a {
     color: #fff;
     opacity: 0.5;
     font-size: 18px;
+    cursor: pointer;
 }
 
 ul.district-items-nav-list li a.active {
@@ -2405,8 +2446,115 @@ PAGE:  NEWS
     color: #000000;
     opacity: 0.6;
 }
-
+.iframe_for_graph_quickfactsheet{
+    width:100%;
+    aspect-ratio: 1224/496;
+    object-fit: cover;
+    border: 1px solid;
+    margin-bottom: 30px;
+}
+.iframe_left_share_info{
+    width: 100%;
+    aspect-ratio: 700/711;
+}
+.iframe_left_share_info .instrument.instrument_106542 .table1, .iframe_left_share_info .instrument.instrument_106542 .table2, .iframe_left_share_info .instrument.instrument_106542 .table3, .iframe_left_share_info .instrument.instrument_106542 .table4, .iframe_left_share_info .instrument.instrument_106542 .table5 {
+    width: auto;
+    margin: auto !important;
+}
+.investment_calc_iframe{
+    width:100%;
+    aspect-ratio: 1/.5;
+    margin-bottom:50px;
+}
+.investor_relations_iframe{
+    width: 100%;
+    aspect-ratio: 1/.45;
+    margin-top: 20px;
+}
+.financial_info_key_fig_iframe{
+    width:100%;
+    aspect-ratio: 1/.5;
+}
+.graph-left-div{
+    width:100%;
+    aspect-ratio: 700/709;
+}
+.graph-right-div{
+    width:100%;
+    aspect-ratio: 598/299;
+}
 @media(max-width: 768px) {
+    .investor_relations_iframe{
+        aspect-ratio: 1/.6;
+        margin-top: 20px;
+    }
+    .aboutChairmanbox p{
+        margin-bottom: 23px;
+    }
+    .press-release h2{
+        font-size: 22px;
+line-height: 131.6%;
+    }
+    .new-title h3{
+        font-size: 18px;
+line-height: 135.6%;
+    }
+    .press-rel .news h6 a{
+        font-size: 18px;
+line-height: 117.6%;
+    }
+    .primary-cta img{
+        height: unset;
+        width: 100%;
+        aspect-ratio: 343/177;
+    }
+    .border-btn{
+        font-size: 14px;
+    }
+    .industry-news .card-body .card-title{
+        margin-bottom: 8px;
+    }
+    .card-for-news-page{
+        width: 200px !important;
+        margin: auto;
+    }
+    .card .card-img-for-damac-in-news{
+ width: 100%;
+    aspect-ratio: 341/223;
+    object-fit: cover;
+    }
+    .card .card-img-for-news-page{
+    width: 200px;
+height: 211px;
+display: block;
+margin: auto;
+object-fit: cover;
+    }
+    .why-dubai-opportunity {
+        padding: 60px;
+        background-color: #111;
+        color: #fff;
+    }
+
+    .why-dubai-opportunity h4 {
+        margin-bottom: 30px;
+    }
+
+    .why-dubai-opportunity p {
+        font-size: 20px;
+    }
+
+    .why-dubai-section-5 {
+        padding: 80px 0;
+        background: #111;
+        color: #fff;
+    }
+
+    .why-dubai-section-6 {
+        padding: 80px;
+        background-color: #111;
+        color: #fff;
+    }
 
     .primary-cta h2,
     .primary-cta h1 {
@@ -2459,7 +2607,7 @@ PAGE:  NEWS
 
     .industry-news.bg-light .card {
         width: auto;
-        margin-bottom: 30px;
+        margin-bottom: 48px;
     }
 
     .news-wrap.dark-bg a {
@@ -2519,6 +2667,11 @@ PAGE:  NEWS
     }
 
     .industry-news .card-body {
-        padding: 30px 0px 0px 0px;
+        padding: 24px 0px 0px 0px;
+    }
+    .industry-news a.btn.btn-primary{
+        display: block;
+        width: fit-content;
+        margin: auto;
     }
 }

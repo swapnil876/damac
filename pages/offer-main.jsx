@@ -89,7 +89,7 @@ function OfferMain({entity1}) {
       <section className={styles['offermain-hero']} style={{'background-image':'url(' + entity1.fieldImageOffer.url + ')'}}>        
         <div className="container">
           <div className={styles['offerhero-container']}>
-          <div className="row align-items-end">
+          <div className="row align-items-end" style={{'max-width':'100%'}}>
             <div className="col-md-12">
               <div className={styles['offermain-banner-txt']}>
                 <h1>8% Guaranteed returns for 3 years</h1>
@@ -104,7 +104,7 @@ function OfferMain({entity1}) {
       <section className={styles['hospitality']}>
         <div className="container">
           <div className={styles['hospitality-main-head']}>
-            <h1>Hospitality Investment never looked this good.</h1>
+            <h2>Hospitality Investment never looked this good.</h2>
           </div>
           <div className={styles['hospitality-maintxt']}>
             {entity1.fieldDescriptionOffer}
@@ -121,7 +121,7 @@ function OfferMain({entity1}) {
                 <h6>DAMAC Towers by Paramount Hotels and Resorts Dubai</h6>
                 <p className={styles['callback-card-desc']}>An established and prestigious international golf callback in Dubailands</p>
                 <div className={styles['community-card-btn']}>
-                  <a href="#" className="btn btn-primary">Know more</a>
+                  <a href="#" className="btn btn-primary">Schdule a Call-back</a>
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@ function OfferMain({entity1}) {
                 <h6>DAMAC Paramount Tower Hotel and Residences Dubai</h6>
                 <p className={styles['callback-card-desc']}>An established and prestigious international golf callback in Dubailands</p>
                 <div className={styles['community-card-btn']}>
-                  <a href="#" className="btn btn-primary">Know more</a>
+                  <a href="#" className="btn btn-primary">Schdule a Call-back</a>
                 </div>
               </div>
             </div>
@@ -146,24 +146,27 @@ function OfferMain({entity1}) {
               <img src="damac-static/images/invoice-1.png"/>
               <h2>Get an estimate</h2>
               <p className={styles['estimate-tagline']}>Receive an upfront estimate on your new home.</p>
-              <div className={styles['estimate-inner']}>
+              {
+                deviceIsMobile ? 
+              <div>
+                 <div className={styles['estimate-inner']}>
                 <div className={`price ${styles["border-white"]}`}>
-                  <p><span>Property Price</span></p>
-                  <p><span>AED </span> 120,000 <span className={`text-right dark ${styles["side_icons"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                  <p className={styles['heading']}>Property Price</p>
+                  <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
                 </div>
-                <div className={`rate ${styles["border-white"]}`}>
-                  <p><span>Interest Rate</span> <span className="text-right">%</span> </p>
-                  <p>1.99 <span className={`text-right dark ${styles["side_icons"]}`}><FaPlus/><FaMinus/></span></p>
-                </div>
-              </div>
-              <div className={styles['estimate-inner']}>
                 <div className={`down-payment ${styles["border-white"]}`}>
-                  <p>Down Payment <span className="text-right">%</span></p>
+                  <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
                   <p>25 </p>
                   <input type="range" className={styles['range-slider']} />
                 </div>
+              </div>
+              <div className={styles['estimate-inner']}>
+                <div className={`rate ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                  <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                </div>
                 <div className={`loan ${styles["border-white"]}`}>
-                  <p><span>Loan Period</span> <span className="text-right">Y R S</span></p>
+                  <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                   <p> 5</p>
                   <input type="range" className={styles['range-slider']} />
                 </div>
@@ -171,6 +174,36 @@ function OfferMain({entity1}) {
               <div className={styles['estimate-inner']}>
                 <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
               </div>
+              </div>
+               :
+              <div>
+                 <div className={styles['estimate-inner']}>
+                <div className={`price ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Property Price</p>
+                  <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                </div>
+                <div className={`rate ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                  <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                </div>
+              </div>
+              <div className={styles['estimate-inner']}>
+                <div className={`down-payment ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
+                  <p>25 </p>
+                  <input type="range" className={styles['range-slider']} />
+                </div>
+                <div className={`loan ${styles["border-white"]}`}>
+                  <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
+                  <p> 5</p>
+                  <input type="range" className={styles['range-slider']} />
+                </div>
+              </div>
+              <div className={styles['estimate-inner']}>
+                <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
+              </div>
+              </div>
+              }
             </div>
             <div className="col-md-4">
               <div className={styles['estimate-cost']}>
@@ -181,6 +214,9 @@ function OfferMain({entity1}) {
                   <li><span className={styles['text-left']}>With Interest rate of</span> <span>%</span>120,000</li>
                   <li><span className={styles['text-left']}>For Years</span>5</li>
                 </ul>
+
+                 <hr className={styles['hr_tag']} />
+
                 <h4>Fees</h4>
                 <ul className={styles['fees']}>
                   <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>

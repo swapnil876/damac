@@ -9,13 +9,13 @@
     display: none;
     margin: 0;
     border-bottom: 1px solid #C4C4C4;
-    opacity: .6;
+    opacity: .2;
 }
 
 .blogcard-item .blogitem-title {
     font-size: 20px;
     line-height: 1.4;
-    min-height: 80px;
+    /* min-height: 80px; */
     margin-top: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -26,6 +26,10 @@
 
 .blogcard-item .blogitem-title a {
     font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .blogcard-item .blog_desc {
@@ -80,5 +84,8 @@
 @media(max-width: 767px) {
     .hr-tag {
         display: block;
+    }
+    .blogcard-item .blogitem-title{
+        margin-bottom:0
     }
 }

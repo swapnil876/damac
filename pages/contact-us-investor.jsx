@@ -62,11 +62,11 @@ function ContactUsInvestor( { mobileDevice } ) {
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': '#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': '#',
+  //   'icon': 'arrow-down'
+  // }
 
   
 
@@ -92,7 +92,7 @@ function ContactUsInvestor( { mobileDevice } ) {
           
         </HeadingTitle>
 
-        <section >
+        <section className="investor_contact_form">
         {/*className={ `section ${styles['contactus-investor']}` }*/}
           <div className='container'>
             <div className='row'>

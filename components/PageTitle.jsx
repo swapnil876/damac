@@ -25,7 +25,7 @@ export default function PageTitle( { title, subtitle, backgroundImage, isMobile 
   return (
 
     <>
-      <div className="page-title" style={backgroundImage ? {'background':'url("'  + backgroundImage + '") center/100% no-repeat'} :  {'background': 'linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%)'}}>
+      <div className="page-title" style={backgroundImage ? {'background':'url("'  + backgroundImage + '") top center/100% 100% no-repeat'} :  {'background': 'linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%)'}}>
         {/* {bgImage} */}
         <div className="container">
           {subtitle &&

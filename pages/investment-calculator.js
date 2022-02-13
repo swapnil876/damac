@@ -23,7 +23,8 @@ import ContactForm from '../components/ContactForm'
  import { Context as ResponsiveContext } from 'react-responsive'
  import { useMediaQuery } from 'react-responsive'
  import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
-
+ import { ApolloClient, InMemoryCache } from '@apollo/client';
+ import { SHARE_INFO } from '../graphql/master/share_information';
 
 
 
@@ -38,7 +39,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function ShareInformation( { mobileDevice } ) {
+function ShareInformation( { mobileDevice, entity1, fieldTabs, iframe } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -78,11 +79,11 @@ const isMobileWidth = useMediaQuery(
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': '#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': '#',
+  //   'icon': 'arrow-down'
+  // }
 
   
 
@@ -101,51 +102,29 @@ const isMobileWidth = useMediaQuery(
 
       <main className="main main-regular capital-history">
 
-        {isMobile ? '' : <Breadcrumbs crumbs={ crumbs }/>}
+        {deviceIsMobile ? '' : <Breadcrumbs crumbs={ crumbs }/>}
 
-        <HeadingTitle 
-          title="Investment Calculator" 
+        {/* <HeadingTitle 
+          title="Share Information" 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className='container'>
-            <PageTabs tabLinks={ [
-              {
-                url: '/share-information',
-                label: 'Share Graph Monitor',
-                active: false,
-            },
-                {
-                  url: '/share-overview',
-                  label: 'Share Overview',
-                  active: false,
-              },
-              {
-                url: '/investment-calculator',
-                label: 'Investment Calculator',
-                active: true,
-            },
-            {
-                url: '/share-price-lookup',
-                label: 'Share Price Look Up',
-                active: false,
-            },
-            {
-                url: '/sharia-compliance',
-                label: 'Sharia Compliance',
-                active: false,
-            },
-            ] }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs }></PageTabs>
         </div>
 
         <section className='section'>
 
-        <InvestmentCalculator initialValues={ {'type': 'Amount', 'amt_invested': '100,000', 'date': '03/02/2020', 'end_date': '03/02/2021'} }/>
+        
 
+        <div className="container">
+        <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+        </div>
+       
         </section>
 
         <FooterMoreLinks/>
@@ -164,16 +143,85 @@ export default ShareInformation
 
 
 export async function getStaticProps(context) {
-
-
   // Device React
   const deviceIsMobile = isMobile;
   const deviceType = deviceIsMobile;
 
+   const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+
+  const  data  = await client.query({ query: SHARE_INFO });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log(entity1);
+  let data1 = {entity:{}};
+  let fieldTabs = [];
+  entity1.fieldTabsS.map((v,i)=>{
+    if(v.entity.fieldTabHeading == 'Share Graph Monitor')
+    {
+      fieldTabs.push(
+        {
+          url: '/share-information',
+          label: 'Share Graph Monitor',
+          active: false,
+          iframeContent : v.entity.fieldIframeContent
+        }
+      )
+      
+    }
+    else if(v.entity.fieldTabHeading == 'Share Overview'){
+      fieldTabs.push(
+        {
+          url: '/share-overview',
+          label: 'Share Overview',
+          active: false,
+          iframeContent : v.entity.fieldIframeContent
+      }
+      )
+      
+    }
+    else if(v.entity.fieldTabHeading == 'Investment Calculator'){
+      fieldTabs.push(
+        {
+          url: '/investment-calculator',
+          label: 'Investment Calculator',
+          active: true,
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Share Price Look Up'){
+      fieldTabs.push(
+        {
+          url: '/share-price-lookup',
+          label: 'Share Price Look Up',
+          active: false,
+      }
+      )
+      data1 = v;
+    }
+    else if(v.entity.fieldTabHeading == 'Sharia Compliance'){
+      fieldTabs.push(
+        {
+          url: '/sharia-compliance',
+          label: 'Sharia Compliance',
+          active: false,
+      }
+      )
+    }
+     
+  });
+
+
+
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       entity1: entity1,
+       fieldTabs:fieldTabs,
+       iframe:data1
     }, // will be passed to the page component as props
   }
 }

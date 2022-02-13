@@ -74,6 +74,7 @@ section.hospitality {
     line-height: 52px;
     margin: 0;
 }
+
 .hospitality-maintxt,
 .hospitality-maintxt p,
 .hospitality-maintxt ul {
@@ -163,23 +164,40 @@ p.estimate-tagline {
     margin-bottom: 22px;
     border: 0.5px solid #FFFFFF;
 }
-.border-white .side_icons{
+
+.border-white .side_icons {
     position: relative;
-    left:50%;
+    /* left: 50%; */
     font-size: 22px;
     opacity: unset;
 }
-.border-white .side_icons svg{
-    margin:5px;
+
+.border-white .side_icons_calc {
+    font-size: 18px;
+}
+
+.border-white .side_icons svg {
+    margin: 5px;
     cursor: pointer;
 }
+
 .estimate-inner p {
     font-size: 20px;
+    line-height: 148%;
+    font-weight: 500;
+    margin: 0
+}
+
+.estimate-inner p.heading {
+    font-size: 16px;
+    line-height: 148%;
+    letter-spacing: 0.03em;
+    font-weight: 300;
 }
 
 .estimate-inner span {
-    font-weight: 300;
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 20px;
     line-height: 148%;
     letter-spacing: 0.03em;
     color: #FFFFFF;
@@ -200,6 +218,9 @@ span.text-right.dark i {
 
 .estimate-inner p {
     font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .estimate-cost {
@@ -248,9 +269,11 @@ span.text-right.dark i {
     display: flex;
     align-items: center;
 }
-.estimate-cost span.text-left svg{
-    margin-left:5px
+
+.estimate-cost span.text-left svg {
+    margin-left: 5px
 }
+
 .estimate-cost span {
     opacity: 0.7;
 }
@@ -263,10 +286,10 @@ span.text-right.dark i {
     font-size: 16px;
     line-height: 113.6%;
     letter-spacing: 0.02em;
-    padding:14px 73px;
+    padding: 14px 73px;
     font-family: "Roboto";
     font-weight: 400;
-    border:0;
+    border: 0;
     color: #c6b078;
 }
 
@@ -304,24 +327,43 @@ section.faq-section div.accordion button {
     color: rgba(255, 255, 255, 0.75);
     font-size: 20px;
 }
-@media (max-width: 1200px){
-    .border-white .side_icons{
-        left:30%;
-    }    
+
+.estimate-cost ul.fees li {
+    margin-bottom: 8px;
 }
-@media (max-width: 992px){
-    .border-white .side_icons{
-        left:15%;
-    }    
+
+.hr_tag {
+    background: #FFFFFF;
+    opacity: 0.4;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    margin: 24px 0 16px;
+}
+
+@media (max-width: 1200px) {
+    /* .border-white .side_icons {
+        left: 30%;
+    }
+    .border-white .side_icons_calc {
+        left: 60%;
+    } */
+}
+
+@media (max-width: 992px) {
+    /* .border-white .side_icons {
+        left: 15%;
+    } */
 }
 
 @media (max-width: 768px) {
+
     .border-white {
         width: 100%;
     }
-    .border-white .side_icons{
+
+    /* .border-white .side_icons {
         left: 100px;
-    }    
+    } */
 
     .estimate-inner {
         width: 100%;
@@ -331,12 +373,18 @@ section.faq-section div.accordion button {
 }
 
 @media(max-width: 767px) {
+    .callback-card img {
+        width: 100%;
+        height: unset;
+        aspect-ratio: 643/367;
+    }
+
     section.estimate .col-md-8 {
         padding-right: 12px;
     }
 
     .estimate-cost ul li {
-        margin-bottom: 0px;
+        margin-bottom: 12px;
     }
 
     .offermain-banner-txt h1 {
@@ -354,5 +402,12 @@ section.faq-section div.accordion button {
         font-size: 30px;
         line-height: 30px;
         margin: 0;
+    }
+}
+
+@media(max-width: 576px) {
+    .faq-icon h2 {
+        font-size: 22px;
+        margin-bottom: 44px;
     }
 }

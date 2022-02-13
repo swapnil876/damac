@@ -15,7 +15,8 @@ import Link from 'next/link'
 
 // import styles from '../styles/.module.css'
 
-
+// importing React Select
+import Select from "react-dropdown-select";
 
 
 // FA
@@ -26,6 +27,9 @@ import { faDownload} from '@fortawesome/free-regular-svg-icons'
 
 export default function HeadingTitle( { title, btnLink, mobileDevice, className } ) {
 
+  const options = [
+    { value: 'PJSC', label: 'DAMAC Properties Dubai Co PJSC' }
+  ];
 
   return (
 
@@ -35,6 +39,7 @@ export default function HeadingTitle( { title, btnLink, mobileDevice, className 
         <div className='container'>
          <div className='title-wrapper-box'>
             <h1>{ title }</h1>
+            {/* style={{'width':'100%'}} */}
 
             { btnLink && 
               <>
@@ -48,12 +53,16 @@ export default function HeadingTitle( { title, btnLink, mobileDevice, className 
             }
             { !btnLink && 
               <>
-              <div className="heading_dropdown">
-               <select>
-                 <option>DAMAC Properties Dubai Co PJSC</option>
-               </select>
-               <span className="arrow"></span>
-               </div>
+              {
+                className == "financial_info_heading" ?
+                <div className="heading_dropdown">
+                <Select className="financial_info_page_side_drop" name="countryCode"
+                   value={options.value}
+                   options={options}
+                   placeholder="DAMAC Properties Dubai Co PJSC"/>   
+                {/* <span className="arrow"></span> */}
+                </div> : ''
+              }
               </>
             }
          </div>

@@ -27,11 +27,13 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
  // React Responsive
- import { Context as ResponsiveContext } from 'react-responsive'
- import { useMediaQuery } from 'react-responsive'
+import { Context as ResponsiveContext } from 'react-responsive'
+import { useMediaQuery } from 'react-responsive'
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { BLOGSDETAILS } from '../graphql/master/blogdetails';
+import { BLOGS } from '../graphql/blogs';
 
-
- export default function BlogDetails(){
+ export default function BlogDetails({entity1,bloglist}){
      return(
          <div className="BlogDetails">
              <Navbar></Navbar>
@@ -40,7 +42,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 <div className="container" style={{'height':'100%'}}>
                 <div className={styles['press-hero-wrap']} style={{'padding-right':'0'}}>
                     <div className={styles['press-content']} style={{'padding':'0 !important'}}>
-                    <h2>10 Emerging Real Estate Trends That You Should Pay Attention To</h2>
+                    <h2>{entity1.title}</h2>
                     <p>We reflected on DAMAC’s years of history and created an infographic summary.</p>
                     <span>Dec, 15 2021 By Financial Times</span>
                     </div> 
@@ -58,14 +60,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         <li><a href="#"><img src="damac-static/images/share.png"/></a></li>
                     </ul>
                     <div className={styles['content-detail']}>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <h3>What Does Toggl Track’s Outlook Integration Do</h3>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <img src="damac-static/images/content-image.jpg" className="img-fluid"/>
-
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <h3>What Does Toggl Track’s Outlook Integration Do</h3>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
+                        <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
                         
                     </div>
 
@@ -81,53 +76,28 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     <h2>Related News</h2>          
                     </div>
                     <div className="row">
-                    <div className="col-md-4">
-                        <div className={styles['card']}>
-                        <img src="damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
+                    {
+                       bloglist.map( (blog, index) => (
+                        <div className="col-md-4">
+                            <div className={styles['card']}>
+                            <img src="damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
 
 
-                        <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
-                            <div className="d-flex justify-content-between">
-                            <label>Tag Label</label>
-                            <span> 21/12 2020 by The Guardian </span>
+                            <div className={styles['card-body']}>
+                                <a href="#"><h4>{blog.title}</h4></a>
+                                <div className="d-flex justify-content-between">
+                                <label>{blog.fieldCategory.entity.name}</label>
+                                <span> 21/12 2020 by The Guardian </span>
+                                </div>
+                                <div className={styles['card-text']} dangerouslySetInnerHTML={{ __html: blog.body.value }}></div>
+                                <a href={'blog/'+blog.nid} className={styles['read-more']}>Read More</a>
                             </div>
-                            <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
-                        </div>
-                        </div>
-                        
-                    </div>
-                    <div className="col-md-4">
-                        <div className={styles['card']}>
-                        <img src="damac-static/images/blog2.png" className={styles['card-img-top']} alt="..."/>
-                        <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
-                            <div className="d-flex justify-content-between">
-                            <label>Tag Label</label>
-                            <span> 21/12 2020 by The Guardian </span>
                             </div>
-                            <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
+                            
                         </div>
-                        </div>
-                        
-                    </div>
-                    <div className="col-md-4">
-                        <div className={styles['card']}>
-                        <img src="damac-static/images/blog3.png" className={styles['card-img-top']} alt="..."/>
-                        <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
-                            <div className="d-flex justify-content-between">
-                            <label>Tag Label</label>
-                            <span> 21/12 2020 by The Guardian </span>
-                            </div>
-                            <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
-                        </div>
-                        </div>
-                        
-                    </div>
+                        ))
+                   }
+                    
                     
                     </div>
 
@@ -143,3 +113,34 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
          </div>
      )
  }
+
+ export const getServerSideProps = async (cp) => {
+
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+  
+  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:'65'} });
+  const data1 = await client.query({ query: BLOGS });
+  if(data.data.nodeQuery.entities.length == 0){
+    console.log(cp);
+    // Router.push('/blog-list');
+    // window.location.href = "/blog-list";
+    // cp.push('/blog-list');
+  }
+  let entity1 = data.data.nodeQuery.entities[0];
+  let bloglist = data.data.nodeQuery.entities;
+  // let entity2 = data.data.nodeQuery.entities[1];
+  
+  console.log('entity2',entity1);
+  // console.log(data.data.nodeQuery.entities);
+   return {
+      props: {
+        entity1: entity1,
+        bloglist: bloglist
+        // entity2: entity2
+      }
+    }
+
+}

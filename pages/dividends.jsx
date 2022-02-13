@@ -6,7 +6,8 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { DIVIDENDS } from '../graphql/master/dividends';
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -34,7 +35,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function Dividends( { mobileDevice } ) {
+function Dividends( { mobileDevice , entity1,fieldTabs,iframe} ) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -59,12 +60,13 @@ function Dividends( { mobileDevice } ) {
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': 'https://somepdf.com/#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': 'https://somepdf.com/#',
+  //   'icon': 'arrow-down'
+  // }
 
+  console.log('-------------------------',iframe.entity.fieldIframeContent);
   
 
 
@@ -85,29 +87,17 @@ function Dividends( { mobileDevice } ) {
 
         <Breadcrumbs crumbs={ crumbs }/>
 
-        <HeadingTitle 
-          title="Dividends" 
+        {/* <HeadingTitle 
+          title={entity1.fieldPageTitleD.value} 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className='container'>
-            <PageTabs tabLinks={ [
-                {
-                    url: '/dividends',
-                    label: 'Dividends',
-                    active: true,
-                },
-
-                {
-                    url: '/capital-history',
-                    label: 'Capital History',
-                    active: false,
-                }
-            ] }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs}></PageTabs>
         </div>
 
         <section className='section'>
@@ -115,74 +105,8 @@ function Dividends( { mobileDevice } ) {
              
              <div className={`${styles["table-wrapper-dividend"]} my-4`}>
                <div className={`${styles["table-main-wrap"]} ${styles["table-responsive"]}`}>
-                 <table className={`${styles["table"]} table-striped ${styles["dm-table"]}`}>
-                   <thead>
-                     <tr>
-                       <th>Period</th>
-                       <th>Cash Dividend</th>
-                       <th>Cash Dividend Per Share (AED)</th>
-                       <th>Bonus Shared %</th>
-                       <th>Entitlement Date</th>
-                       <th>Ex-Dividend Date</th>
-                       <th>Settlement Date</th>
-                       <th>Cash Distribution D..</th>
-                     </tr>
-                   </thead>
-                   <tbody>
-                     <tr>
-                       <td>2014</td>
-                       <td>NIL</td>
-                       <td>6,132,675</td>
-                       <td>10.00%</td>
-                       <td>30 Mar 15</td>
-                       <td>31 Mar 15</td>
-                       <td>01 Apr 15</td>
-                       <td>NIL</td>
-                     </tr>
-                     <tr>
-                       <td>HI 2015 - Interim Dividend</td>
-                       <td>10.00%</td>
-                       <td>2,121,037</td>
-                       <td>10.00%</td>
-                       <td>21 Sep 15</td>
-                       <td>22 Sep 15</td>
-                       <td>29 Sep 15</td>
-                       <td>05 Oct 15</td>
-                     </tr>
-                     <tr>
-                       <td>H2 2015 - Final Dividend</td>
-                       <td>15.00%</td>
-                       <td>35%</td>
-                       <td>NIL</td>
-                       <td>27 Apr 16</td>
-                       <td>28 Apr 16</td>
-                       <td>01 May 16</td>
-                       <td>16 May 16</td>
-                     </tr>
-                     <tr>
-                       <td>2016</td>
-                       <td>25.00%</td>
-                       <td>1,235,024</td>
-                       <td>NIL</td>
-                       <td>25 Apr 17</td>
-                       <td>25 Apr 17</td>
-                       <td>26 Apr 17</td>
-                       <td>10 May 17</td>
-                     </tr>
-                     <tr>
-                       <td>2017</td>
-                       <td>15.00%</td>
-                       <td>1,151,894</td>
-                       <td>NIL</td>
-                       <td>1 May 18</td>
-                       <td>1 May 18</td>
-                       <td>2 May 18</td>
-                       <td>17 May 18</td>
-                     </tr>
-
-
-                   </tbody>
-                 </table>
+                 
+                 <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
                </div>
              </div>
 
@@ -218,6 +142,39 @@ export default Dividends
 
 
 export async function getStaticProps(context) {
+  // Device React
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+  const  data  = await client.query({ query: DIVIDENDS });
+  let entity1 = data.data.nodeQuery.entities[0];
+  let fieldTabs = [];
+  let data1 = {};
+  entity1.fieldTabs.map((v,i)=>{
+    if(v.entity.fieldTabHeading == 'Dividends')
+    {
+      fieldTabs.push(
+        {url: '/dividends',
+          label: 'Dividends',
+          active: true
+        }
+      )
+      data1 = v;
+    }
+    else if(v.entity.fieldTabHeading == 'Capital History'){
+      fieldTabs.push(
+        {url: '/capital-history',
+          label: 'Capital History',
+          active: false
+        }
+      )
+    }
+     
+  });
+  console.log(data1);
+
 
 
   // Device React
@@ -227,7 +184,10 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       entity1: entity1,
+       fieldTabs:fieldTabs,
+       iframe:data1
     }, // will be passed to the page component as props
   }
 }

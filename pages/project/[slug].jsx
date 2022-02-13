@@ -5,6 +5,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
+import { FaPlus, FaMinus, FaRegQuestionCircle } from 'react-icons/fa'
+
 // Navbar
 import Navbar from "../../components/navbar";
 import Footer from "../../components/Footer";
@@ -68,6 +70,7 @@ import 'react-multi-carousel/lib/styles.css';
 function ProjectPage({entity1}) {
   const router = useRouter()
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+
   useEffect(() => {
       if ( isMobile ) {
         setDeviceIsMobile( true );
@@ -359,7 +362,7 @@ function ProjectPage({entity1}) {
           {/* Floor Plan Custom popup modal */}
 
             <main className="main">
-                    <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldMainImageDesktopP.url + ')'}:{'background-image': 'url(' + entity1.fieldMainImageMobileP.url + ')'}}>
+                    <section className={style['inner-wrap-hero']} style={!deviceIsMobile?{'background-image': 'url(' + entity1.fieldMainImageDesktopP.url + ')'}:{'background-image': 'url(' + entity1.fieldMainImageMobileP.url + ')'}}>
                         <div className={style['project-hero-wrap']}>
                             <div className={`container ${style["hero-container"]}`}>
                             <div className="row align-items-end">
@@ -372,7 +375,7 @@ function ProjectPage({entity1}) {
                                 </div>
                                 <div className="col-md-5">
                                    {
-                                     !isMobile ?
+                                     !deviceIsMobile ?
                                      <div className={style['project-right']}>
                                         <ul className="d-flex align-items-center">
                                             <li><a onClick={()=>{
@@ -383,7 +386,7 @@ function ProjectPage({entity1}) {
                                             <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a></li>                
                                         </ul>              
                                     </div> :
-                                    <div className={`${styles["project-right"]} project-right-for-mobile`}>
+                                    <div className={`${style["project-right"]} project-right-for-mobile`}>
                                       <button type="button" className="schedule_a_callback_btn">Schedule a call-back</button>
                                       <div className="row">
                                       <div className="col-6">
@@ -438,7 +441,7 @@ function ProjectPage({entity1}) {
                         </div>
                       }
                       { deviceIsMobile && 
-                        <div className={`containerBottomImage`}>
+                        <div className={`containerBottomImage for_mobile_screen`}>
                           <img alt="" src={entity1.fieldCol1ImageMobileP3.entity.url} layout='fill' objectfit="cover" style={{'max-width':'100%'}}/>
                         </div>
                       }
@@ -446,7 +449,7 @@ function ProjectPage({entity1}) {
                     <div className={style['shape-detail']}>
                         <div className="container">
                           {
-                            !isMobile ? 
+                            !deviceIsMobile ? 
                             <div className="row">
                             <div className="col-md-6">
                                 <div className="d-flex justify-content-between">
@@ -469,8 +472,8 @@ function ProjectPage({entity1}) {
                                 <div className={style['shape-wrap-plan']}>              
                                     <div className={`${style["shape-contact"]} float-end`}>
                                         <ul className="d-flex align-items-center p-0">
-                                        <li><a href="#" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
-                                        <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
+                                        <li><a href={'mailto:'+entity1.fieldEmailP} className={style['solid-icon']} target="_blank"> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                        <li><a href={'https://wa.me/' + entity1.fieldWhatsapp} className={style['border-icon'] } target="_blank"><FontAwesomeIcon icon={faWhatsapp}/></a></li>
                                         </ul>                  
                                     </div>                
                                 </div>              
@@ -478,11 +481,9 @@ function ProjectPage({entity1}) {
                         </div>   :
                           <div className="row">
                           <div className="col-8">
-                              <div>
                               <div className={style['vs-range']}>
                                   <h5><a href="#">{entity1.fieldLocalityP2}</a></h5>
                                   <p>Locality</p>
-                              </div>
                               </div>
                           </div>
                           <div className="col-4">
@@ -502,7 +503,7 @@ function ProjectPage({entity1}) {
                     {/* <!-- Gallery Section --> */}
                     <section className={style['damac-gallery']}>
                         {
-                          !isMobile ? 
+                          !deviceIsMobile ? 
                           <div className={style['angry-grid']}>
                             <div className={style['gr-item-0']}>
                             <div className={style['right-side-gallery']}>
@@ -530,26 +531,26 @@ function ProjectPage({entity1}) {
                                 
                             </div>
                             </div>
-                        </div> :
+                          </div> :
 
-                        <div className="container-fluid sec_3_gallery_grid_for_mobile p-0">
-                          <div className="text_on_img_sec">
-                          <img src={isMobile?entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
-                            <div className="gal-content-2">
-                                <p>
-                                  {entity1.fieldCol1TextP3}
-                                </p>
-                            </div>     
-                          </div>
-                          <div className="row">
-                            <div classnName="col-6 p-0">
-                            <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} classnNameName="img-fluid"/>
+                          <div className="container-fluid sec_3_gallery_grid_for_mobile p-0">
+                            <div className="text_on_img_sec">
+                            <img src={deviceIsMobile?entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
+                              <div className="gal-content-2">
+                                  <p>
+                                    {entity1.fieldCol1TextP3}
+                                  </p>
+                              </div>     
                             </div>
-                            <div classnName="col-6 p-0">
-                            <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} className="img-fluid"/>
+                            <div className="row" style={{'maxWidth':'100%', 'margin':'auto'}}>
+                              <div className="col-6" style={{'paddingLeft':'0'}}>
+                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} Name="img-fluid"/>
+                              </div>
+                              <div className="col-6" style={{'paddingRight':'0'}}>
+                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} className="img-fluid"/>
+                              </div>
                             </div>
                           </div>
-                        </div>
                         }          
                     </section> 
                     {/* <!-- Township detail  --> */}
@@ -614,7 +615,7 @@ function ProjectPage({entity1}) {
                             </div>
                             </div>
                             {
-                              !isMobile ? 
+                              !deviceIsMobile ? 
                               <div className="col-md-6">
                               <div className={style['town-slider']}>
                                   <img src="/damac-static/images/listing-slider.png" className="img-fluid" />
@@ -830,7 +831,7 @@ function ProjectPage({entity1}) {
                         </div>       
                     </section>
 
-                      {/* <!-- Map section --> */}
+                    {/* <!-- Map section --> */}
                     <section className={style['map-section']}>
                         <div className={style['map-wrap']}>
                           {/* <img src="/damac-static/images/map.jpg" className="img-fluid" style={{'width':'100%'}}/> */}
@@ -848,66 +849,101 @@ function ProjectPage({entity1}) {
                         </div>
                     </section>
 
-                      {/* <!-- Estimate Section --> */}
-                    <section className={style['estimate']}>
-                        <div className="container">
-                          <div className="row">
-                            <div className="col-md-8">
-                              <img src="/damac-static/images/invoice-1.png" />
-                              <h2>Get an estimate</h2>
-                              <p className={style['estimate-tagline']}>Receive an upfront estimate on your new home.</p>
-                              <div className={style['estimate-inner']}>
-                                <div className={`${style["price"]} ${style["border-white"]}`}>
-                                  <p><span>Property Price</span></p>
-                                  <p><span>AED </span> 120,000 <span className={`${style["text-right"]} ${style["dark"]}`}><i className="fas fa-angle-left"></i> <i
-                                        className="fas fa-angle-right"></i></span></p>
+                        {/* <!-- Estimate Section --> */}
+                          <section className={styles['estimate']}>
+                            <div className="container">
+                              <div className="row">
+                                <div className="col-md-8">
+                                  <img src="/damac-static/images/invoice-1.png"/>
+                                  <h2>Get an estimate</h2>
+                                  <p className={styles['estimate-tagline']}>Receive an upfront estimate on your new home.</p>
+                                  {
+                                    deviceIsMobile ? 
+                                  <div>
+                                    <div className={styles['estimate-inner']}>
+                                    <div className={`price ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Property Price</p>
+                                      <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                                    </div>
+                                    <div className={`down-payment ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
+                                      <p>25 </p>
+                                      <input type="range" className={styles['range-slider']} />
+                                    </div>
+                                  </div>
+                                  <div className={styles['estimate-inner']}>
+                                    <div className={`rate ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                                      <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                    </div>
+                                    <div className={`loan ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
+                                      <p> 5</p>
+                                      <input type="range" className={styles['range-slider']} />
+                                    </div>
+                                  </div>
+                                  </div>
+                                  :
+                                  <div>
+                                    <div className={styles['estimate-inner']}>
+                                    <div className={`price ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Property Price</p>
+                                      <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                                    </div>
+                                    <div className={`rate ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                                      <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                    </div>
+                                  </div>
+                                  <div className={styles['estimate-inner']}>
+                                    <div className={`down-payment ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
+                                      <p>25 </p>
+                                      <input type="range" className={styles['range-slider']} />
+                                    </div>
+                                    <div className={`loan ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
+                                      <p> 5</p>
+                                      <input type="range" className={styles['range-slider']} />
+                                    </div>
+                                  </div>
+                                  <div className={styles['estimate-inner']}>
+                                    <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
+                                  </div>
+                                  </div>
+                                  }
                                 </div>
-                                <div className={`${style["rate"]} ${style["border-white"]}`}>
-                                  <p><span>Interest Rate</span> <span className="text-right">%</span> </p>
-                                  <p>1.99 <span className={`${style["text-right"]} ${style["dark"]}`}><i className="fas fa-minus"></i><i className="fas fa-plus"></i></span>
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="estimate-inner">
-                                <div className={`${style["down-payment"]} ${style["border-white"]}`}>
-                                  <p>Down Payment <span className={style['text-right']}>%</span></p>
-                                  <p>25 </p>
-                                </div>
+                                <div className="col-md-4">
+                                  <div className={styles['estimate-cost']}>
+                                    <h4>Cost Breakdown</h4>
+                                    <ul>
+                                      <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>120,000</i></li>
+                                      <li><span className={styles['text-left']}>For Years</span> <i>5</i></li>
+                                    </ul>
 
-                                <div className={`${style["loan"]} ${style["border-white"]}`}>
-                                  <p><span>Loan Period</span> <span className={style['text-right']}>Y R S</span></p>
-                                  <p> 5</p>
+                                    <hr className={styles['hr_tag']} />
+
+                                    <h4>Fees</h4>
+                                    <ul className={styles['fees']}>
+                                      <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><i><span>AED</span> 120,000</i></li>
+                                    </ul>
+                                  </div>
                                 </div>
-                              </div>
-                              
-                            </div>
-                            <div className="col-md-4">
-                              <div className={style['estimate-cost']}>
-                                <h4>Cost Breakdown</h4>
-                                <ul>
-                                  <li><span className={style['text-left']}>60 months of</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>Down Payment</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>With Interest rate of</span> <span>%</span>120,000</li>
-                                  <li><span className={style['text-left']}>For Years</span>5</li>
-                                </ul>
-                                <h4>Fees</h4>
-                                <ul>
-                                  <li><span className={style['text-left']}>Land Department Fee</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>Registration Fee</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>Mortgage Registration Fee</span> <span>AED</span> 120,000</li>
-                                  <li><span className={style['text-left']}>Valuation Fee</span><span>AED</span> 120,000</li>
-                                </ul>
+                               {
+                                 deviceIsMobile ?
+                                 <div className={styles['estimate-inner']}>
+                                 <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
+                               </div> : ''
+                               }
                               </div>
                             </div>
-                          </div>
-                          <div className="row">
-                          <div className="col-md-8">
-                          <button type="button" className={style['custom_white_btn']}>Enquire Now</button>
-                          </div>
-                          </div>
-                          
-                        </div>
-                    </section>
+                          </section>
+
 
 
                          {/* <!-- Similar Properties --> */}
@@ -925,7 +961,7 @@ function ProjectPage({entity1}) {
                             </div>
                               </div>
                             {
-                              !isMobile ?
+                              !deviceIsMobile ?
                               <div className="col-md-4">
                               <button type="button" className={`${style["solid-icon"]} ${style["ava_list_btn"]}`} style={{'border':'0', 'padding':'15px 35px', 'float':'right', 'margin-bottom':'20px'}}>View All </button>
                               </div> : ""
@@ -933,7 +969,7 @@ function ProjectPage({entity1}) {
                           </div>
                           
                             {
-                              !isMobile ? 
+                              !deviceIsMobile ? 
                               <div className="row">
                               <div className="col-md-6">
                                 <div className={style['property-slider-wrap']}>
@@ -1146,7 +1182,7 @@ function ProjectPage({entity1}) {
 
                               </div>
                               </div> : 
-                               <div className="row project_detail_mobile_sliders">
+                               <div className="row project_detail_mobile_sliders" id="similar_proprty_card_main_global">
                                <Slider {...settings}>
                                <div>
                                  <div className={style['property-slider-wrap']}>
@@ -1264,33 +1300,31 @@ function ProjectPage({entity1}) {
 
                     {/* <!-- Invest section --> */}
                    {
-                     !isMobile ?
-                     <section className={style['why-invest']} style={{'background-image':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+                     !deviceIsMobile ?
+                     <section className={style['why-invest']} style={{'background':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
                      <div className="container">
                        <div className="row justify-content-end align-items-end">
                          <div className="col-md-12">
                            <div className={style['invest-wrap']}>
-                             <h2>Why Invest in Dubai</h2>
-                             <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
-                               investors can achieve gross rental yields<br/> of between 5-9%</p>
+                             <h2>{entity1.fieldHeadingSec7}</h2>
+                             <p>{entity1.fieldTextSec7}</p>
                              <a href="#" className={style['read-more']}>Read more</a>
                            </div>
                          </div>
                        </div>
                      </div>
-                   </section> :
-
-                    <section className={style['why-invest']} style={{'background':'#111 !important'}}>
-                    <div className="container">
-                          <div className={style['invest-wrap']}>
-                            <h2>Why Invest in Dubai</h2>
-                            <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
-                              investors can achieve gross rental yields<br/> of between 5-9%</p>
-                            <a href="#" className={style['read-more']}>Read more</a>
-                          </div>
-                    </div>
-                    </section>
-                   }
+                     </section> 
+                   :
+                      <section className={style['why-invest']} style={{'background':'#111 !important'}}>
+                      <div className="container">
+                            <div className={style['invest-wrap']}>
+                              <h2>{entity1.fieldHeadingSec7}</h2>
+                              <p>{entity1.fieldTextSec7}</p>
+                              <a href="#" className={style['read-more']}>Read more</a>
+                            </div>
+                      </div>
+                      </section>
+                    }
 
                       {/* <!-- Experince section --> */}
                       {/*<section className={style['3d-tour']}>
@@ -1310,11 +1344,11 @@ function ProjectPage({entity1}) {
 
                          {/* <!-- Experince section --> */}
                         <section className={style['3d-tour']}>
-                        <div className={ !isMobile ? 'container' : 'container-fluid'} style={ !isMobile ? {} : {'padding':'0'}}>
+                        <div className={ !deviceIsMobile ? 'container' : 'container-fluid'} style={ !deviceIsMobile ? {} : {'padding':'0'}}>
                         <div className={style['3d-tour-inner']} style={{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>
-                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
+                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>{entity1.field3dTourLink}</a>
                           </div>
                         </div>
                         </div>
@@ -1325,16 +1359,61 @@ function ProjectPage({entity1}) {
                                 <div className="container">
                                   <div className="d-flex justify-content-between">
                                     <div className="light-title">
-                                      <h2>More projects to see</h2>
+                                      <h2 style={deviceIsMobile ? {} : {'maxWidth' : '70%'}}>More projects to see</h2>
                                       {/* <p>Discover how the best of the best use DAMAC to find a home</p> */}
                                     </div>
                                   
-                                  </div>       
-                                  
-                                  <div className="row">
+                                  </div>  
+                                  {
+                                    deviceIsMobile ? 
+                                    <div className="project_detail_mobile_sliders" id="similar_proprty_card_main_global">
+                                         <Slider {...settings}>
+                                    <div className="">
+                                    <div className={`card ${style["custom_project_card"]}`}>
+                                        <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top more_projects_image" />
+                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                          <p className="card-text">Starting AED 1,213,515*</p>
+                                        
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="">
+                                    <div className={`card ${style["custom_project_card"]}`}>
+                                        <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top more_projects_image"/>
+                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                          <p className="card-text">Starting AED 1,213,515*</p>  
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="">
+                                    <div className={`card ${style["custom_project_card"]}`}>
+                                        <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top more_projects_image" />
+                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                          <p className="card-text">Starting AED 1,213,515*</p>
+                                          
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="">
+                                    <div className={`card ${style["custom_project_card"]}`}>
+                                        <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top more_projects_image" />
+                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                          <p className="card-text">Starting AED 1,213,515*</p>
+                                        
+                                        </div>
+                                      </div>
+                                    </div>
+                                    </Slider>
+                                    </div>
+                                     : 
+                                    <div className="row">
                                     <div className="col-6 col-md-3">
                                     <div className={`card ${style["custom_project_card"]}`}>
-                                        <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top" />
+                                        <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top more_projects_image" />
                                         <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
                                           <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
@@ -1344,7 +1423,7 @@ function ProjectPage({entity1}) {
                                     </div>
                                     <div className="col-6 col-md-3">
                                     <div className={`card ${style["custom_project_card"]}`}>
-                                        <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top"/>
+                                        <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top more_projects_image"/>
                                         <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
                                           <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>  
@@ -1353,7 +1432,7 @@ function ProjectPage({entity1}) {
                                     </div>
                                     <div className="col-6 col-md-3">
                                     <div className={`card ${style["custom_project_card"]}`}>
-                                        <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top" />
+                                        <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top more_projects_image" />
                                         <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
                                           <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
@@ -1363,7 +1442,7 @@ function ProjectPage({entity1}) {
                                     </div>
                                     <div className="col-6 col-md-3">
                                     <div className={`card ${style["custom_project_card"]}`}>
-                                        <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top" />
+                                        <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top more_projects_image" />
                                         <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
                                           <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
@@ -1373,6 +1452,7 @@ function ProjectPage({entity1}) {
                                     </div>
                                     
                                   </div>
+                                  }
 
                                 </div>
                                 
@@ -1389,7 +1469,7 @@ function ProjectPage({entity1}) {
                                                     <div className="row align-items-center">        
                                                       <div className="col-md-7">
                                                         <div className={style['project-left']}>
-                                                          <h1>Golf Town </h1>
+                                                          <h2>Golf Town </h2>
                                                           <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
                                                         </div>
                                                       </div>
@@ -1402,7 +1482,7 @@ function ProjectPage({entity1}) {
                                                     <div className="row align-items-center">        
                                                       <div className="col-md-7">
                                                         <div className={style['project-left']}>
-                                                          <h1>Golf Town </h1>
+                                                          <h2>Golf Town </h2>
                                                           <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
                                                         </div>
                                                       </div>
@@ -1415,7 +1495,7 @@ function ProjectPage({entity1}) {
                                                     <div className="row align-items-center">        
                                                       <div className="col-md-7">
                                                         <div className={style['project-left']}>
-                                                          <h1>Golf Town </h1>
+                                                          <h2>Golf Town </h2>
                                                           <p><span>Golf-view hotel rooms from AED 481,000 with 8% guaranteed returns for 3 years</span></p>
                                                         </div>
                                                       </div>
@@ -1440,42 +1520,20 @@ function ProjectPage({entity1}) {
                               <div className="col-md-12">
                                   <div className={style['faq-wrap']}>
                                   <div class="accordion" id="accordionExample">
+                                  {entity1.fieldMutipleFaqs.map((item,k) => (
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is the lowest mortgage rate in UAE?
+                                        {item.entity.fieldQuestion}
                                         </button>
                                       </h2>
                                       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        {item.entity.fieldAnswer}
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
+                                  ))}
                                   </div>
                                   </div>            
                               </div>          
@@ -1498,7 +1556,7 @@ export const getServerSideProps = async (cp) => {
   const data = await client.query({ query: PROJECTDETAIL, variables:{id:cp.query.slug} });
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log(entity1.fieldAmenitiesP3);
+  console.log(entity1.fieldHeadingSec7);
   return {
     props: {
       entity1: entity1,

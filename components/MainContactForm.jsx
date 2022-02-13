@@ -17,7 +17,7 @@ import Select from "react-dropdown-select";
 import 'bootstrap/dist/css/bootstrap.css'
 import { isMobile } from "react-device-detect";
 
-export default function ContactForm({ initialValues }) {
+export default function ContactForm({ initialValues, address }) {
 
 
     const [values, setValues] = useState(initialValues);
@@ -119,7 +119,8 @@ export default function ContactForm({ initialValues }) {
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
                                                            value={options.value}
-                                                           options={options}/>   
+                                                           options={options}
+                                                           placeholder={options[0].value}/>   
                                                    </div>
                                                </label>
                                            </div>
@@ -329,7 +330,8 @@ export default function ContactForm({ initialValues }) {
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
                                                            value={options.value}
-                                                           options={options}/>   
+                                                           options={options}
+                                                           placeholder={options[0].value}/>   
                                                    </div>
                                                </label>
                                            </div>
@@ -410,76 +412,20 @@ export default function ContactForm({ initialValues }) {
                         </div>
 
                      <div className={`${styles["contact-detail-row"]} row`}>
-                            <div className="col-md-4">
-                                <div className={styles['contact-detail']}>
-                                    <h2>General Contact</h2>
-                                    <p>DAMAC Properties Dubai PJSC<br />PO Box 2195 <br /> Dubai, UAE</p>
-                                    <div className={styles['contact-number']}>
-                                       <FaPhoneAlt/>
-                                        <a href="#">+971 4 373 1000</a>
+                     {
+                        address.map( (add, index) => (
+                                    <div className="col-md-4">
+                                        <div className={styles['contact-detail']}>
+                                            <h2>{add.entity.fieldTitleC.value}</h2>
+                                            <p>DAMAC Properties Dubai PJSC<br />PO Box 2195 <br /> Dubai, UAE</p>
+                                            <div className={styles['contact-number']}>
+                                            <FaPhoneAlt/>
+                                                <a href="#">{add.entity.fieldNumberC.value}</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className={styles['contact-detail']}>
-                                    <h2>Park Towers</h2>
-                                    <p>Dubai International Financial Centre <br />Dubai, UAE</p>
-                                    <div className={styles['contact-number']}>
-                                       <FaPhoneAlt/>
-                                        <a href="#">+971 4 270 2700</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className={styles['contact-detail']}>
-                                    <h2>Saudi Arabia - Riyadh</h2>
-                                    <p>DAMAC Towers Riyadh South Tower Olaya District King Fahd Road <br />PO Box 102460 <br /> Riyadh, Saudi Arabia</p>
-                                    <div className={styles['contact-number']}>
-                                       <FaPhoneAlt/>
-                                        <a href="#">+971 4 270 2700</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className={styles['contact-detail']}>
-                                    <h2>General Contact</h2>
-                                    <p>DAMAC Properties Dubai PJSC<br />PO Box 2195 <br /> Dubai, UAE</p>
-                                    <div className={styles['contact-number']}>
-                                       <FaPhoneAlt/>
-                                        <a href="#">+971 4 373 1000</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className={styles['contact-detail']}>
-                                    <h2>Park Towers</h2>
-                                    <p>Dubai International Financial Centre <br />Dubai, UAE</p>
-                                    <div className={styles['contact-number']}>
-                                       <FaPhoneAlt/>
-                                        <a href="#">+971 4 270 2700</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className={styles['contact-detail']}>
-                                    <h2>Saudi Arabia - Riyadh</h2>
-                                    <p>DAMAC Towers Riyadh South Tower Olaya District King Fahd Road <br />PO Box 102460 <br /> Riyadh, Saudi Arabia</p>
-                                    <div className={styles['contact-number']}>
-                                       <FaPhoneAlt/>
-                                        <a href="#">+971 4 270 2700</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className={styles['contact-detail']}>
-                                    <h2>China - shanghai</h2>
-                                    <p>Room 803 8th Floor, Building 2 1266 West Nanjing Road Jing’an District, Shanghai <br /> PO Box 200040 <br /> China</p>
-                                    <div className={styles['contact-number']}>
-                                       <FaPhoneAlt/>
-                                        <a href="#">+86 21 6086 1266</a>
-                                    </div>
-                                </div>
-                            </div>
+                        ))
+                    }
                         </div>
 
 

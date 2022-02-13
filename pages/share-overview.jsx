@@ -26,6 +26,9 @@ import styles from '../styles/pages/ShareOverview.module.css'
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
  import { useMediaQuery } from 'react-responsive'
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { SHARE_INFO } from '../graphql/master/share_information';
+
 
 // import styles from '../styles/.module.css'
 
@@ -42,7 +45,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function ShareOverview( { mobileDevice } ) {
+function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -69,11 +72,11 @@ function ShareOverview( { mobileDevice } ) {
 
 
   // Heading title btn
-  const downloadBtn = {
-    'title': 'Download PDF',
-    'url': '#',
-    'icon': 'arrow-down'
-  }
+  // const downloadBtn = {
+  //   'title': 'Download PDF',
+  //   'url': '#',
+  //   'icon': 'arrow-down'
+  // }
 
   
 
@@ -94,145 +97,30 @@ function ShareOverview( { mobileDevice } ) {
 
         <Breadcrumbs crumbs={ crumbs }/>
 
-        <HeadingTitle 
+        {/* <HeadingTitle 
           title="Share Overview" 
           btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
         >
           
-        </HeadingTitle>
+        </HeadingTitle> */}
 
         <div className='container'>
-            <PageTabs tabLinks={ [
-                {
-                    url: '/share-information',
-                    label: 'Share Graph Monitor',
-                    active:false,
-                },
-
-                {
-                    url: '/share-overview',
-                    label: 'Share Overview',
-                    active: true,
-                },
-
-                {
-                    url: '/investment-calculator',
-                    label: 'Investment Calculator',
-                    active: false,
-                },
-
-
-                {
-                    url: '/share-price-lookup',
-                    label: 'Share Price Look Up',
-                    active: false,
-                },
-
-                {
-                    url: '/sharia-compliance',
-                    label: 'Sharia Compliance',
-                    active: false,
-                },
-            ] }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs }></PageTabs>
         </div>
 
         <section className='section'>
           <div className='container'>
 
-              <div class="dfm-main-text">
+              {/*<div class="dfm-main-text">
                 <p>DAMAC DFM</p>
                 <h2>1.37 AED</h2>
                 <p>January 29, 2021 4:00 PM EST</p>
-              </div>
+              </div>*/}
 
               <div class="dfm-row-table">
-                <div class="row">
-                  <div class="col-md-4 dfm-col-4">
-                    <div class="dfm-table-main table-responsive">
-                      <table class="table dfm-table">
-                        <tbody>
-                          <tr>
-                            <td className={styles['left_col']}>Volume</td>
-                            <td className={styles['right_col']}><strong>729,731</strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>No. of Shares</td>
-                            <td className={styles['right_col']}><strong>6,050,000,000</strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>Change</td>
-                            <td className={styles['right_col']}><strong><span class="dfm-success">+0.39 (+0.78%)</span></strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>Today’s High</td>
-                            <td className={styles['right_col']}><strong>1.35</strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>Ask</td>
-                            <td className={styles['right_col']}><strong>1.36</strong></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <div class="col-md-4 dfm-col-4">
-                    <div class="dfm-table-main table-responsive">
-                      <table class="table dfm-table">
-                        <tbody>
-                          <tr>
-                            <td className={styles['left_col']}>Open</td>
-                            <td className={styles['right_col']}><strong>1.38</strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>Last</td>
-                            <td className={styles['right_col']}><strong>1.35</strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>52 Week High</td>
-                            <td className={styles['right_col']}><strong>1.75</strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>52 Weeks Low</td>
-                            <td className={styles['right_col']}><strong>1.34</strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>52 Weeks %</td>
-                            <td className={styles['right_col']}><strong><span class="dfm-success">103.21</span></strong></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <div class="col-md-4 dfm-col-4">
-                    <div class="dfm-table-main table-responsive">
-                      <table class="table dfm-table">
-                        <tbody>
-                          <tr>
-                            <td className={styles['left_col']}>YTD</td>
-                            <td className={styles['right_col']}><strong><span class="dfm-success">6.92%</span></strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>Industry</td>
-                            <td className={styles['right_col']}><strong>Real Estate & Construction</strong></td>
-                          </tr>
-                          <tr>
-                            <td className={styles['left_col']}>Market Cap</td>
-                            <td className={styles['right_col']}><strong>8,167,500,000</strong></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="dfm-col-4 col-md-4">
-                    <div class="data-provided-main">
-                        <p>Data Provided by Euroland.com. Minimum 15 minutes delayed.</p>
-                      </div>
-                  </div>
-                </div>
+                <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
               </div>
             
           </div>
@@ -254,16 +142,84 @@ export default ShareOverview
 
 
 export async function getStaticProps(context) {
-
-
   // Device React
   const deviceIsMobile = isMobile;
   const deviceType = deviceIsMobile;
 
+   const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+
+  const  data  = await client.query({ query: SHARE_INFO });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log(entity1);
+  let data1 = {};
+  let fieldTabs = [];
+  entity1.fieldTabsS.map((v,i)=>{
+    if(v.entity.fieldTabHeading == 'Share Graph Monitor')
+    {
+      fieldTabs.push(
+        {
+          url: '/share-information',
+          label: 'Share Graph Monitor',
+          active: false,
+          iframeContent : v.entity.fieldIframeContent
+        }
+      )
+      
+    }
+    else if(v.entity.fieldTabHeading == 'Share Overview'){
+      fieldTabs.push(
+        {
+          url: '/share-overview',
+          label: 'Share Overview',
+          active: true,
+          iframeContent : v.entity.fieldIframeContent
+      }
+      )
+      data1 = v;
+    }
+    else if(v.entity.fieldTabHeading == 'Investment Calculator'){
+      fieldTabs.push(
+        {
+          url: '/investment-calculator',
+          label: 'Investment Calculator',
+          active: false,
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Share Price Look Up'){
+      fieldTabs.push(
+        {
+          url: '/share-price-lookup',
+          label: 'Share Price Look Up',
+          active: false,
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Sharia Compliance'){
+      fieldTabs.push(
+        {
+          url: '/sharia-compliance',
+          label: 'Sharia Compliance',
+          active: false,
+      }
+      )
+    }
+     
+  });
+
+
+
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       entity1: entity1,
+       fieldTabs:fieldTabs,
+       iframe:data1
     }, // will be passed to the page component as props
   }
 }
