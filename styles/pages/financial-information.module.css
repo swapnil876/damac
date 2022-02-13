@@ -5,7 +5,7 @@
     padding-top: 82px;
     padding-bottom: 142px;
 }
-.more-head h1 {
+.more-head h1, .more-head h2 {
     font-size: 32px;
     line-height: 38px;
     letter-spacing: 0.01em;
@@ -94,7 +94,7 @@ ul.more-link-ul li a i {
 .breadcrum-main ul li a:hover{
 	color: #000;
 }
-.share-main-head .share-head-text h1 {
+.share-main-head .share-head-text h1, .share-main-head .share-head-text h2 {
     font-size: 42px;
     line-height: 49px;
     margin-top: 14px;
@@ -187,7 +187,7 @@ ul.more-link-ul li a i {
     ul.capital-dm-ul{
         gap: 10px;
     }
-    .share-main-head .share-head-text h1{
+    .share-main-head .share-head-text h1, .share-main-head .share-head-text h2{
         font-size: 30px;
         line-height: 30px;
     }
@@ -202,7 +202,7 @@ ul.more-link-ul li a i {
 .report_tab {
     margin-bottom: 34px;
 }
-.report-main-head .head-text h1 {
+.report-main-head .head-text h1, .report-main-head .head-text h2 {
     font-size: 42px;
     line-height: 49px;
     margin-top: 14px;
@@ -232,7 +232,7 @@ ul.report_tab_ul li.active a {
     border-bottom: 1px solid #C4C4C4;
     margin-bottom: 20px;
 }
-.report_list h1, .report_list h1 a {
+.report_list h1, .report_list h1 a, .report_list h2, .report_list h2 a {
     font-size: 28px;
     line-height: 38px;
     letter-spacing: 0.60px;
@@ -263,18 +263,18 @@ ul.report_tab_ul li.active a {
     padding-bottom: 110px;
 }
 @media (max-width: 767px){
-    .report_list h1, .report_list h1 a {
+    .report_list h1, .report_list h1 a, .report_list h2, .report_list h2 a {
         font-size: 20px;
         line-height: 135.6%;
     }
-    .report-main-head .head-text h1{
+    .report-main-head .head-text h1, .report-main-head .head-text h2{
         font-size: 32px;
         margin-bottom: 30px;
     }
     ul.report_tab_ul li {
         margin-bottom: 12px;
     }
-    .report_list h1{
+    .report_list h1, .report_list h2{
         font-size: 20px;
     }
     ul.more-link-ul li {

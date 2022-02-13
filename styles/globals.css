@@ -2030,6 +2030,7 @@ ul.district-items-nav-list li a {
     color: #fff;
     opacity: 0.5;
     font-size: 18px;
+    cursor: pointer;
 }
 
 ul.district-items-nav-list li a.active {

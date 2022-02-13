@@ -10,7 +10,7 @@ a:hover{
     padding-top: 82px;
     padding-bottom: 142px;
 }
-.more-head h1 {
+.more-head h1, .more-head h2 {
     font-size: 32px;
     line-height: 38px;
     letter-spacing: 0.01em;
@@ -101,7 +101,7 @@ ul.more-link-ul li a i {
 .breadcrum-main ul {
     margin-bottom: 0px;
 }
-.announcements-main-head .head-text h1{	
+.announcements-main-head .head-text h1, .announcements-main-head .head-text h2{	
 	font-size: 42px;
     line-height: 49px;
     margin-top: 14px;
@@ -150,7 +150,7 @@ ul.announcement_tab_ul li.active a{
 	padding: 20px 0;
 	border-bottom: 1px solid #C4C4C4;
 }
-.announcement_list h1{
+.announcement_list h1, .announcement_list h2{
 	font-size: 28px;
 	line-height: 38px;
 	letter-spacing: 0.60px;
@@ -201,7 +201,7 @@ ul.announcement_tab_ul li.active a{
         width: 100%;
         padding-bottom: 15px;
     }
-    .announcements-main-head .head-text h1{
+    .announcements-main-head .head-text h1, .announcements-main-head .head-text h2{
         font-size: 32px;
         line-height: 38px;
     }
@@ -214,7 +214,7 @@ ul.announcement_tab_ul li.active a{
     ul.announcement_tab_ul li a{
         margin-right: 20px;
     }
-    .announcement_list h1 {
+    .announcement_list h1, .announcement_list h2 {
         font-size: 22px;
         line-height: 26px;
     }

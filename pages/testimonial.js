@@ -132,7 +132,7 @@ function Bookstep2({entity}) {
                       <div className="col-lg-6 order-md-1 order-2">
                           <div className={styles['client_says']}>
                             <div className={styles['client_says_txt']}>
-                              <h1>{testimonial.entity.fieldTestimonialHeading}</h1>
+                              <h2>{testimonial.entity.fieldTestimonialHeading}</h2>
                               <p>{testimonial.entity.fieldTestimonialText}</p>
                             </div>
                             <div className={styles['client_name']}>

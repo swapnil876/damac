@@ -24,7 +24,8 @@ import styles from "../styles/components/InvestmentCalculator.module.css";
  import { Context as ResponsiveContext } from 'react-responsive'
  import { useMediaQuery } from 'react-responsive'
  import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
-
+ import { ApolloClient, InMemoryCache } from '@apollo/client';
+ import { SHARE_INFO } from '../graphql/master/share_information';
 
 
 
@@ -39,7 +40,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function SharePriceLookUp( { mobileDevice } ) {
+function SharePriceLookUp( { mobileDevice, entity1, fieldTabs, iframe } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -113,33 +114,7 @@ const isMobileWidth = useMediaQuery(
         </HeadingTitle>
 
         <div className='container'>
-            <PageTabs tabLinks={ [
-              {
-                url: '/share-information',
-                label: 'Share Graph Monitor',
-                active: false,
-            },
-                {
-                  url: '/share-overview',
-                  label: 'Share Overview',
-                  active: false,
-              },
-              {
-                url: '/investment-calculator',
-                label: 'Investment Calculator',
-                active: false,
-            },
-            {
-                url: '/share-price-lookup',
-                label: 'Share Price Look Up',
-                active: true,
-            },
-            {
-                url: '/sharia-compliance',
-                label: 'Sharia Compliance',
-                active: false,
-            },
-            ] }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs }></PageTabs>
         </div>
 
         <section className='section'>
@@ -147,55 +122,7 @@ const isMobileWidth = useMediaQuery(
         <section className={styles['investor_relations_container']}>
 
             <div className="container">
-            <div className="row">
-                <div className="col-md-6">
-               <div className={styles['top_btns']}>
-                   <button type="button" className={styles['dark']}>Historical Share Price</button>
-                   <button type="button" className={styles['transparent']}>Share Price Download</button>
-               </div>
-
-                <div className={`form-row form-row-2`}>
-                    <div className={`form-item-col`}>
-                        <div className='custom-input-element'>
-                            <label className='input-element-wrapper'>
-                            <div className='input-element email-element'>
-                                <input type='text' name='select_date' id="select_date" />
-                                {/* value={values.select_date} */}
-                                <label className={`custom-floating-label`} htmlFor={'select_date'}>Select Date</label>
-                            </div>
-                            </label>
-                        </div>
-                    </div>
-                    <div className={`form-item-col`}>
-                    <div className='custom-input-element'>
-                        <label className='input-element-wrapper'>
-                        <div className='input-element select-element'>
-                            <select value={values.type} name='currency' id="currency">
-                            <option selected>Local Currency (AED)</option>
-                            <option>Amount</option>
-                            </select>
-
-                            <label className={`custom-floating-label ${values.type && 'filled'}`} htmlFor={'currency'}>Choose Currency</label>
-                        </div>
-                        </label>
-                    </div>
-                    </div>
-                </div>
-
-
-                <div className={`form-row form-row-2`}>
-                   <div className={`form-item-col`}></div>
-                    <div className={`form-item-col`}>
-                    <button className="custom-submit-btn">Show results</button>
-                    </div>
-                </div>
-                </div>
-                <div className="col-md-6">
-                <div className={ styles['side_chart'] } style={{'width':'100%'}}>
-                    <img src="../images/content/share-information/share price lookup.png" alt="Share Price Look Up" />
-                </div>
-                </div>
-            </div>
+              <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
             </div>
 
         </section>
@@ -218,16 +145,85 @@ export default SharePriceLookUp
 
 
 export async function getStaticProps(context) {
-
-
   // Device React
   const deviceIsMobile = isMobile;
   const deviceType = deviceIsMobile;
 
+   const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+
+  const  data  = await client.query({ query: SHARE_INFO });
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log(entity1);
+  let data1 = {entity:{}};
+  let fieldTabs = [];
+  entity1.fieldTabsS.map((v,i)=>{
+    if(v.entity.fieldTabHeading == 'Share Graph Monitor')
+    {
+      fieldTabs.push(
+        {
+          url: '/share-information',
+          label: 'Share Graph Monitor',
+          active: false,
+          iframeContent : v.entity.fieldIframeContent
+        }
+      )
+      
+    }
+    else if(v.entity.fieldTabHeading == 'Share Overview'){
+      fieldTabs.push(
+        {
+          url: '/share-overview',
+          label: 'Share Overview',
+          active: false,
+          iframeContent : v.entity.fieldIframeContent
+      }
+      )
+      
+    }
+    else if(v.entity.fieldTabHeading == 'Investment Calculator'){
+      fieldTabs.push(
+        {
+          url: '/investment-calculator',
+          label: 'Investment Calculator',
+          active: false,
+      }
+      )
+    }
+    else if(v.entity.fieldTabHeading == 'Share Price Look Up'){
+      fieldTabs.push(
+        {
+          url: '/share-price-lookup',
+          label: 'Share Price Look Up',
+          active: true,
+      }
+      )
+      data1 = v;
+    }
+    else if(v.entity.fieldTabHeading == 'Sharia Compliance'){
+      fieldTabs.push(
+        {
+          url: '/sharia-compliance',
+          label: 'Sharia Compliance',
+          active: false,
+      }
+      )
+    }
+     
+  });
+
+
+
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       entity1: entity1,
+       fieldTabs:fieldTabs,
+       iframe:data1
     }, // will be passed to the page component as props
   }
 }

@@ -68,9 +68,9 @@ function Blog({entity1}) {
                <div className="primary-cta">
                  <img alt=""src={isMobile?entity1.fieldFeatureImageMobile.url:entity1.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
                  <label>{entity1.fieldCategory.entity.name}</label>
-                 <h2>
+                 <h1>
                  <Link href="#"><a>{entity1.title}</a></Link>
-                 </h2>
+                 </h1>
                  <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
                </div>
              </div>

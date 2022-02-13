@@ -141,7 +141,7 @@ ul.bedroom-detail li a i {
 .similar_property {
     padding: 120px 0;
 }
-.similar_property_head h1 {
+.similar_property_head h1, .similar_property_head h2 {
     font-size: 44px;
     font-weight: 500;
     line-height: 52px;
@@ -152,7 +152,7 @@ ul.bedroom-detail li a i {
     height: 200px;
     object-fit: cover;
 }
-.property_similar_card h1 {
+.property_similar_card h1, .property_similar_card h2 {
     font-size: 20px;
     font-weight: 500;
     line-height: 34px;
@@ -185,7 +185,7 @@ ul.bedroom-detail li a i {
 	.property_similar_card{
 		margin-bottom: 30px;
 	}
-	.similar_property_head h1{
+	.similar_property_head h1, .similar_property_head h2{
 		font-size: 32px;
 	}
 	.filter_option_wrap .form-field select{

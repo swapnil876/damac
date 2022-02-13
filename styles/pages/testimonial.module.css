@@ -29,7 +29,7 @@
 	padding-top: 80px;
 }
 
-.client_says_txt h1 {
+.client_says_txt h1, .client_says_txt h2 {
 	font-size: 32px;
 	line-height: 37px;
 	padding-top: 47px;
@@ -99,7 +99,7 @@
 		left: -1px;
 	}
 
-	.client_says_txt h1 {
+	.client_says_txt h1, .client_says_txt h2 {
 		background: #fff;
 		width: 85%;
 		padding-right: 10px;
@@ -120,7 +120,7 @@
 		padding-top: 20px;
 	}
 
-	.client_says_txt h1 {
+	.client_says_txt h1, .client_says_txt h2 {
 		/* font-size: 32px; */
 		line-height: 114.6%;
 	}

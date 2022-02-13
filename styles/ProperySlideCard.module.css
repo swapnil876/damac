@@ -14,12 +14,12 @@
 	position: relative;
 }
 
-.details h3 {
+.details h3, .details h1 {
 	font-size: 24px;
 	margin-bottom: 0;
 	line-height: 1.8;
 }
-.details h3 a {
+.details h3 a, .details h1 a {
 	font-weight: 500;
 	color: rgba(0,0,0,0.8);
 	letter-spacing: 0.02em;
