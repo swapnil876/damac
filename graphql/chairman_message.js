@@ -8,6 +8,7 @@ query {
         fieldDescriptiveText{
             value
         }
+        fieldTextChairman
         fieldMetaKeywordsCm
         fieldMetaTitleCm
         fieldMetaDescriptionCm
@@ -23,3 +24,5 @@ query {
 }`;
 // fieldDescriptiveText
 export { CHAIRMANMESSAGE };
+
+

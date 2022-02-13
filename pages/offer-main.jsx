@@ -104,7 +104,7 @@ function OfferMain({entity1}) {
       <section className={styles['hospitality']}>
         <div className="container">
           <div className={styles['hospitality-main-head']}>
-            <h1>Hospitality Investment never looked this good.</h1>
+            <h2>Hospitality Investment never looked this good.</h2>
           </div>
           <div className={styles['hospitality-maintxt']}>
             {entity1.fieldDescriptionOffer}

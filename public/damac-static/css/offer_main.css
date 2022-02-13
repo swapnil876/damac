@@ -38,7 +38,7 @@ section.hospitality{
     text-align: center;
     padding: 15px 32px;
 }
-.hospitality-main-head h1{
+.hospitality-main-head h1, .hospitality-main-head h2{
 	font-size: 44px;
 	line-height: 52px;
 	margin:0;
@@ -219,7 +219,7 @@ section.faq-section div.accordion, section.faq-section .accordion-item, section.
     bottom: 100px;
     left: 0;
 }
-.hospitality-main-head h1 {
+.hospitality-main-head h1, .hospitality-main-head h2 {
     font-size: 30px;
     line-height: 30px;
     margin: 0;

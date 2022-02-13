@@ -157,7 +157,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
             <section className={styles['similar_property']}>
                 <div className="container">
                     <div className={styles['similar_property_head']}>
-                        <h1>Similar Properties</h1>
+                        <h2>Similar Properties</h2>
                     </div>
                     <div className={styles['similar_proprty_card_main']}>
                         <div className="row">
@@ -165,7 +165,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                             <div key={k} className="col-md-3">
                                 <div className={styles['property_similar_card']}>
                                     <img src={project.fieldMainImageDesktopP.url} alt="similar-property-img" className="img-fluid" />
-                                    <h1><a href="#">{project.title}</a></h1>
+                                    <h2><a href="#">{project.title}</a></h2>
                                     <p>Starting AED {project.fieldStartingFromPriceP2}*</p>
                                 </div>
                             </div>

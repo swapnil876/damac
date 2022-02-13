@@ -71,7 +71,7 @@ function InvestorRelations( { entity1 } ) {
           <div className={styles['profile-outer-white']}>
             <div className={`${styles["profile-inner-main"]}  d-flex justify-content-center`}>
               <div className={styles['profile-main-head']}>
-                <h1 className="text-center">{entity1.fieldDescriptionHeading.value}</h1>
+                <h2 className="text-center investor_relation_page_titles">{entity1.fieldDescriptionHeading.value}</h2>
                 <div className="text-center" dangerouslySetInnerHTML={{ __html: entity1.fieldTextHeading.value }}></div>
               </div>
             </div>
@@ -85,7 +85,7 @@ function InvestorRelations( { entity1 } ) {
           <div className="row">
             <div className={`col-md-4 ${styles["dm-stock-right"]}`}>
               <div className={styles['stock-head']}>
-                <h1>Stock Quote</h1>
+                <h2 className='investor_relation_page_titles'>Stock Quote</h2>
               </div>
               <div className={styles['dfm-4-content']}>
                 <p>DAMAC DFM</p>
@@ -169,7 +169,7 @@ function InvestorRelations( { entity1 } ) {
               <div className="row">
                 <div className="col-md-5">
                   <div className={style['enquiry-head']}>
-                    <h1>Send us an Enquiry</h1>
+                    <h2 className='investor_relation_page_titles'>Send us an Enquiry</h2>
                   </div>
                 </div>
                 <div className="col-md-7">
@@ -187,7 +187,7 @@ function InvestorRelations( { entity1 } ) {
       {/* <section className={style['more-wrap']}>
         <div className="container">
           <div className={style['more-head']}>
-            <h1>More Links</h1>
+            <h2>More Links</h2>
           </div>
           <div className={style['more-links-main']}>
             <ul className={style['more-link-ul']}>
@@ -208,7 +208,7 @@ function InvestorRelations( { entity1 } ) {
      <section className={style['new-realease-wrap']}>
        <div className="container">
          <div className={style['new-realease-head']}>
-           <h1>News Releases</h1>
+           <h2 className='investor_relation_page_titles'>News Releases</h2>
          </div>
          <div className="row">
            <div className="col-lg-3 col-md-4">
@@ -221,7 +221,7 @@ function InvestorRelations( { entity1 } ) {
                    <p>Customer’s Stories</p>
                  </div>
                  <div className={style['dm-card-head']}>
-                   <h2><a href="#">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
+                   <h2 className='investor_relation_page_titles'><a href="#">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
                  </div>
                   <div className={style['dm-card-txt']}>
                    <p className="m-0">7-minute read • Kim</p>

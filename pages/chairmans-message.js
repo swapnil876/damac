@@ -50,7 +50,7 @@ function ChairmansMessage({entity1}) {
 
            <div className="page-title">
              <div className="container">
-               <h2>{entity1.fieldPageTitleCm}</h2>
+               <h1>{entity1.fieldPageTitleCm}</h1>
              </div>
            </div>
 

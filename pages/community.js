@@ -423,7 +423,7 @@ function Community({entity1}) {
           <div className="col-md-6">
           <div class={`text-wrapper`}>
                 <div className="top-text">
-            <h2 style={{'color':'#ffffff'}}>Township Amenities</h2>
+            <h2 style={{'color':'#ffffff'}}>{entity1.fieldSection4Heading}</h2>
             <p>{entity1.fieldDescriptionc4}</p>
             </div>
             </div>
@@ -761,8 +761,8 @@ function Community({entity1}) {
         <div className="row justify-content-end align-items-end">
           <div className="col-md-12">
             <div className={styles['invest-wrap']}>
-              <h2>Why Invest in Dubai</h2>
-              <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/> investors can achieve gross rental yields<br/> of between 5-9%</p>
+              <h2>{entity1.fieldHeading}</h2>
+              <p>{entity1.fieldText}</p>
               <a href="#" className={styles['read-more']}>Read more</a>
             </div>  
           </div>          

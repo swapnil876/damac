@@ -198,7 +198,7 @@ return (
                                 v.isShow?(
                                     <li key={i}>
                                         <div className={styles['announcement_list']}>
-                                            <h1><a href="#">{v.obj.fieldTitleCa.value}</a></h1>
+                                            <h2><a href="#">{v.obj.fieldTitleCa.value}</a></h2>
                                             <div className="d-flex ">
                                                 <div className={styles['datetime-announcement']}>
                                                     <p>{v.obj.fieldDate.value}</p>
@@ -217,7 +217,7 @@ return (
                     
                     {/* <li>
                         <div className={styles['announcement_list']}>
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h1>
+                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h2>
                             <div className="d-flex ">
                                 <div className={styles['datetime-announcement']}>
                                     <p>January 29, 2021 4:00 PM EST</p>
@@ -228,7 +228,7 @@ return (
                     </li>
                     <li>
                         <div className={styles['announcement_list']}>
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - English</a></h1>
+                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - English</a></h2>
                             <div className="d-flex ">
                                 <div className={styles['datetime-announcement']}>
                                     <p>January 29, 2021 4:00 PM EST</p>
@@ -239,7 +239,7 @@ return (
                     </li>
                     <li>
                         <div className={styles['announcement_list']}>
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation H1 2020</a></h1>
+                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation H1 2020</a></h2>
                             <div className="d-flex ">
                                 <div className={styles['datetime-announcement']}>
                                     <p>January 29, 2021 4:00 PM EST</p>
@@ -250,7 +250,7 @@ return (
                     </li>
                     <li>
                         <div className={styles['announcement_list']}>
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h1>
+                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h2>
                             <div className="d-flex ">
                                 <div className={styles['datetime-announcement']}>
                                     <p>January 29, 2021 4:00 PM EST</p>
@@ -261,7 +261,7 @@ return (
                     </li>
                     <li>
                         <div className={styles['announcement_list']}>
-                            <h1><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h1>
+                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h2>
                             <div className="d-flex ">
                                 <div className={styles['datetime-announcement']}>
                                     <p>January 29, 2021 4:00 PM EST</p>

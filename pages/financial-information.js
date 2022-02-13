@@ -133,7 +133,7 @@ function FinancialInformation( { mobileDevice } ) {
                       <ul className="list-unstyled">
                           <li>
                               <div className={styles['report_list']}>
-                                  <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                  <h2><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h2>
                                   <div className="d-flex ">
                                       <div className={styles['datetime-report']}>
                                           <p>January 29, 2021 4:00 PM EST</p>
@@ -144,7 +144,7 @@ function FinancialInformation( { mobileDevice } ) {
                           </li>
                           <li>
                               <div className={styles['report_list']}>
-                                  <h1><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h1>
+                                  <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h2>
                                   <div className="d-flex ">
                                       <div className={styles['datetime-report']}>
                                           <p>January 29, 2021 4:00 PM EST</p>
@@ -155,7 +155,7 @@ function FinancialInformation( { mobileDevice } ) {
                           </li>
                           <li>
                               <div className={styles['report_list']}>
-                                  <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                  <h2><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h2>
                                   <div className="d-flex ">
                                       <div className={styles['datetime-report']}>
                                           <p>January 29, 2021 4:00 PM EST</p>
@@ -166,7 +166,7 @@ function FinancialInformation( { mobileDevice } ) {
                           </li>
                           <li>
                               <div className={styles['report_list']}>
-                                  <h1><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h1>
+                                  <h2><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation 9M 2020</a></h2>
                                   <div className="d-flex ">
                                       <div className={styles['datetime-report']}>
                                           <p>January 29, 2021 4:00 PM EST</p>
