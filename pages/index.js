@@ -33,7 +33,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
 
-function Home( {entity1, nav} ) {
+function Home( {entity1, nav, othernav} ) {
   // 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
@@ -69,7 +69,7 @@ function Home( {entity1, nav} ) {
       </Head>
 
 
-      <Navbar navigationBar={nav}></Navbar>
+      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
 
       <main className="main home-main">
@@ -123,58 +123,47 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: HOME });
+  // Use this for novigation
   const  data2  = await client.query({ query: NAVIGATION });
   const  data1  = await client.query({ query: PARENTMENUITEMS });
-    let nav = [];
-    if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
-      let submenu = data2.data.nodeQuery.entities[0];
-      let menu = data1.data.taxonomyTermQuery.entities;
-      // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data.data.nodeQuery.entities);
-      // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
-      menu.map((m,i)=>{
-        nav.push({name:m.name,tid:m.tid,submenu:[],link:m.description.value});
-        if((i+1)==menu.length){
-          console.log(m)
-        //   submenu.fieldMultipleMenuItems.map((k,l)=>{
-        //     // console.log(k.entity);
-        //     if(k.entity.fieldMenuType!=null){
-        //       menu.filter((o,h)=>{
-        //     //     // console.log(k.entity);
-        //     //     // console.log(o.tid);
-        //         if(k.entity.fieldMenuType.entity.tid == o.tid){
-        //     //       // console.log(menu[h]);
-        //           nav[h].submenu.push({label:k.fielMenuName,url:k.fieldLink});
-        //         }
-        //     //     // k.entity.fieldMenuType.entity.tid == o.id?h:null
-        //       });
-        //     //  
-        //     }
-        //     if(l+1 == submenu.fieldMultipleMenuItems.length){
-        //       // navigationMenu = nav;
-        //       // console.log('set',setNavigationMenu(nav))
-        //       console.log('leng',nav);
-        //     }
-        //   })
-        }
-      });
-      
-    }
-  // console.log('entity1',data);
+  let nav = [];
+  let othernav = [];
+  if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+    let submenu = data2.data.nodeQuery.entities[0];
+    let menu = data1.data.taxonomyTermQuery.entities;
+    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+    // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+    menu.map((m,i)=>{
+      othernav = [];
+      nav.push({name:m.name,tid:m.tid,submenu:[],link:m.description.value});
+      if((i+1)==menu.length){
+        submenu.fieldMultipleMenuItems.map((k,l)=>{
+          if(k.entity.fieldMenuType!=null){
+            nav.filter((o,h)=>{
+              if(k.entity.fieldMenuType.entity.tid == o.tid){
+                o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+              }
+            });
+          }
+          else{
+            othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+          }
+        })
+      }
+    });
+    
+  }
+    // end
   let entity1 = data.data.nodeQuery.entities[0];
-  // let entity2 = data.data.nodeQuery.entities[1];
-  // console.log('entity1',entity1);
   let url=entity1.fieldMainImageDesktopHome.url;
   let urlArr = entity1.fieldMainImageDesktopHome.url.split('/');
   urlArr[0] = "https://damac.techsperia.in";
   let updatedlink = urlArr.join('/');
-  // console.log(updatedlink);
-  // console.log('entity2',entity2);
-  // console.log(data.data.nodeQuery.entities);
    return {
       props: {
         entity1: entity1,
-        nav:nav
-        // entity2: entity2
+        nav:nav,
+        othernav:othernav
       }
     }
 

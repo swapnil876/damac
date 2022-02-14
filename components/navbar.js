@@ -26,63 +26,62 @@ import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
-export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn }) {
-
+export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn, navigationBar, otherNav }) {
+  var navigationMenu = []
   const [slideOutMenuVisible, setMenuActive] = useState(false);
-  const [navigationmenu, setNavigationmenu] = useState([]);
+  // const [navigationMenu, setNavigationMenu] = useState([]);
   const [taxonomy, setTaxonomy] = useState([]);
 
-  getNavs()
+  // getNavs()
   const handleMenuToggle = (e) => {
     e.preventDefault();
     setMenuActive(!slideOutMenuVisible);
   }
 
-  async function getNavs(){
-    const client = new ApolloClient({
-      uri: process.env.STRAPI_GRAPHQL_URL,
-      cache: new InMemoryCache()
-    });
+  // async function getNavs(){
+  //   const client = new ApolloClient({
+  //     uri: process.env.STRAPI_GRAPHQL_URL,
+  //     cache: new InMemoryCache()
+  //   });
 
-    const  data  = await client.query({ query: NAVIGATION });
-    const  data1  = await client.query({ query: PARENTMENUITEMS });
-    let nav = [];
-    if(typeof data != 'undefined' &&  typeof data1 != 'undefined'){
-      let submenu = data.data.nodeQuery.entities[0];
-      let menu = data1.data.taxonomyTermQuery.entities;
-      // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data.data.nodeQuery.entities);
-      // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
-      menu.map((m,i)=>{
-        nav.push({name:m.name,tid:m.tid,submenu:[]});
-        setNavigationmenu(nav)
-        if((i+1)==menu.length){
+  //   const  data  = await client.query({ query: NAVIGATION });
+  //   const  data1  = await client.query({ query: PARENTMENUITEMS });
+  //   let nav = [];
+  //   if(typeof data != 'undefined' &&  typeof data1 != 'undefined'){
+  //     let submenu = data.data.nodeQuery.entities[0];
+  //     let menu = data1.data.taxonomyTermQuery.entities;
+  //     // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data.data.nodeQuery.entities);
+  //     // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+  //     menu.map((m,i)=>{
+  //       nav.push({name:m.name,tid:m.tid,submenu:[]});
+  //       if((i+1)==menu.length){
 
-          submenu.fieldMultipleMenuItems.map((k,l)=>{
-            // console.log(k.entity);
-            if(k.entity.fieldMenuType!=null){
-              menu.filter((o,h)=>{
-            //     // console.log(k.entity);
-            //     // console.log(o.tid);
-                if(k.entity.fieldMenuType.entity.tid == o.tid){
-            //       // console.log(menu[h]);
-                  nav[h].submenu.push({label:k.fielMenuName,url:k.fieldLink});
-                }
-            //     // k.entity.fieldMenuType.entity.tid == o.id?h:null
-              });
-            //  
-            }
-            if(l+1 == submenu.fieldMultipleMenuItems.length){
-               
-              setNavigationmenu(nav)
-              console.log('leng',navigationmenu.length);
-            }
-          })
-        }
-      });
+  //         submenu.fieldMultipleMenuItems.map((k,l)=>{
+  //           // console.log(k.entity);
+  //           if(k.entity.fieldMenuType!=null){
+  //             menu.filter((o,h)=>{
+  //           //     // console.log(k.entity);
+  //           //     // console.log(o.tid);
+  //               if(k.entity.fieldMenuType.entity.tid == o.tid){
+  //           //       // console.log(menu[h]);
+  //                 nav[h].submenu.push({label:k.fielMenuName,url:k.fieldLink});
+  //               }
+  //           //     // k.entity.fieldMenuType.entity.tid == o.id?h:null
+  //             });
+  //           //  
+  //           }
+  //           if(l+1 == submenu.fieldMultipleMenuItems.length){
+  //             // navigationMenu = nav;
+  //             // console.log('set',setNavigationMenu(nav))
+  //             // console.log('lengthhhh',navigationMenu);
+  //           }
+  //         })
+  //       }
+  //     });
       
-    }
+  //   }
     
-  }
+  // }
   
 
 
@@ -166,8 +165,10 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
     });
 
 
-    console.log(  customDropdowns );
+    // console.log(  navigationBar );
   }
+
+  // console.log('navisiosii',  navigationBar );
 
   const dropdownItems = {
     'browse-properties': [
@@ -216,6 +217,8 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
         },
     ],
   };
+
+  console.log(otherNav);
 
 
 
@@ -320,7 +323,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                     <div className="header-item-wrapper header-dropdown-container not-on-mobile">
                       {
                         whiteEnquiryBtn ? 
-                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'} style={{'background':'#fff', 'color':'#111', 'font-weight':'400'}}>
+                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'} style={{'background':'#fff', 'color':'#111', 'fontWeight':'400'}}>
                         Enquire
                        </a>
                         :
@@ -397,11 +400,53 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
               
               <div className="main-menu-inner d-flex flex-column justify-content-between">
                 <div className="biglinks">
-
                 {
-                  navigationmenu.length>0?(
-                    navigationmenu.map((m,p)=>{
-                    console.log(m.submenu.length)
+                  navigationBar.map((m,p)=>(
+                    <div className={`biglink-container  ${ m.submenu.length>0? 'biglinks-dropdown' : '' }`} >
+                      <ActiveLink href="#" activeClassName="active"  >
+                      {
+                        m.submenu.length>0?(
+                          <a className="biglink" data-dropdownkey="browse-properties" onClick={ handleBrowsePropertiesBiglink }>
+                               <span>{m.name}</span>
+                               <span className="menuItemIcon">
+                                 {
+                                   _bigLinkBrowseProperties ? <FontAwesomeIcon icon={ faChevronUp } size="xs"/> : <FontAwesomeIcon icon={ faChevronDown } size="xs"/>
+                                 } 
+                               </span>
+                           </a>
+                        ):
+                        (
+                          <a className="biglink"><span>{m.name}</span></a>
+                        )
+                      }
+                           
+                      </ActiveLink>
+                      <div className={`slideout-biglinks-dropdown  ${ _bigLinkBrowseProperties ? 'active' : 'not-active' }`} >
+                        <ul>
+                          { 
+                            
+                            m.submenu.map( 
+                              (item, index) => <li key={index} className='navitem-dropdown'>
+                                <Link href={ item.url }>
+                                  {item.label}
+                                </Link>
+                              </li>
+                            ) 
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                  ))
+                }
+                
+                {/*<div className="biglink-container">
+                  <ActiveLink href="/about" activeClassName="active">
+                       <a className="biglink"><span>About</span></a>
+                  </ActiveLink>
+                </div>*/}
+                {/*{
+                  navigationBar.length>0?(
+                    navigationBar.map((m,p)=>{
                     m.submenu.length>0?(
                       <div className="biglink-container biglinks-dropdown">
                         <ActiveLink href="#" activeClassName="active"  >
@@ -431,16 +476,12 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                       </div>
                     ):
                     (
-                      <div className="biglink-container">
-                        <ActiveLink href="/about" activeClassName="active">
-                             <a className="biglink"><span>About</span></a>
-                        </ActiveLink>
-                      </div>
+                      
                     )
                   })
-                   ):(navigationmenu.length)
+                   ):(navigationMenu.length)
                   
-                }
+                }*/}
                   
                   
                   {/*<div className="biglink-container">
@@ -456,40 +497,19 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                     <div className="row">
                       <div className="col-md-4 menu-list-col">
                       <ul className="menu-list">
-                        <li>
-                          <Link href="/chairmans-message">
-                            <a>Chairman’s message</a>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/csr">
-                            <a>CSR</a>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/news">
-                            <a>News</a>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/">
-                            <a>Rent</a>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/blog">
-                            <a>Blog</a>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="#">
-                            <a>FAQs</a>
-                          </Link>
-                        </li>
+                      {
+                        otherNav.map((n,m)=>(
+                          <li>
+                            <Link href={n.url}>
+                              <a>{n.label}</a>
+                            </Link>
+                          </li>
+                        ))
+                       }
                       </ul>
                       </div>
 
-                      <div className="col-md-4 menu-list-col">
+                      {/*<div className="col-md-4 menu-list-col">
                         <ul className="menu-list">
                           <li>
                             <Link href="/career">
@@ -554,7 +574,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                             </Link> 
                           </li>
                         </ul>
-                      </div>
+                      </div>*/}
                     </div>
                   </div>
                 </div>

@@ -13,7 +13,7 @@ import { isMobile } from 'react-device-detect';
 // importing React Select
 import Select from "react-dropdown-select";
 
-export default function PageTabs( { tabLinks } ) {
+export default function PageTabs( { tabLinks, pageSelectPlaceholder } ) {
 
   const [deviceIsmobile, setDeviceIsmobile] = useState(false);
 
@@ -61,7 +61,7 @@ export default function PageTabs( { tabLinks } ) {
              <Select className="page_tabs_for_mobile" name=""
                    value={options.value}
                    options={options}
-                   placeholder="Meet Our Board Members" onClick={()=>{
+                   placeholder={pageSelectPlaceholder} onClick={()=>{
                     handleOptionClick(options.url)
                    }} /> 
           </div>

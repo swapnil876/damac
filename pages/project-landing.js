@@ -28,23 +28,28 @@ import styles from '../styles/pages/project-landing.module.css'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import {PROJECT} from '../graphql/project';
+import {PROJECTSEARCH} from '../graphql/project-search';
 import {COUNTRY} from '../graphql/master/country';
 import {CITY} from '../graphql/master/cityjs';
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 // importing React Select
 import Select from "react-dropdown-select";
+import { useRouter } from 'next/router';
 
 // Bootstrap Css
 // import 'bootstrap/dist/css/bootstrap.css'
 
-const ProjectLanding= ({projects,countries,cities})=> {
-
+const ProjectLanding= ({projects,countries,cities,nav, othernav})=> {
+    const router = useRouter();
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
+    const [searchFilter, setSearchFilter] = useState(false);
     const [projectList, setProjectList] = useState(projects);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
-
+    const { slug } = router;
+    console.log("slug", slug);
     useEffect(() => {
         if ( isMobile ) {
          setDeviceIsMobile( true );
@@ -52,9 +57,9 @@ const ProjectLanding= ({projects,countries,cities})=> {
     }, [])
     
 
-    const searchFilter = useCallback((event)=>{
-        console.log(event)
-    },[])
+    // const searchFilter = useCallback((event)=>{
+    //     console.log(event)
+    // },[])
 
     const options = [
         { value: 'Dubailand', label: 'Dubailand, Dubai, UAE' },
@@ -62,10 +67,18 @@ const ProjectLanding= ({projects,countries,cities})=> {
         { value: 'Marina', label: 'Marina, Dubai, UAE' },
       ];
 
+   async function getProjects(cp){
+    console.log(searchFilter);
+    router.push({
+        pathname: "/project-landing",
+        query: {search:searchFilter},
+    });
+}
+
       
     return (
       <div className="ProjectLanding">
-            <Navbar whiteEnquiryBtn="true"></Navbar>
+            <Navbar whiteEnquiryBtn="true" navigationBar={nav} otherNav={othernav}></Navbar>
              <main className="main">
              <PageTitle  
              title="Projects" 
@@ -82,7 +95,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                                 <div className="col-md-6">
                                     <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
                                         <i className="fas fa-search"></i>
-                                        <input type="text" placeholder="Search Project or Area" className="form-control"/>
+                                        <input type="text" placeholder="Search Project or Area" onKeyUp={($ev)=>{setSearchFilter($ev.target.value)}} className="form-control"/>
                                     </div>
                                 </div>
                                 <div className="col-md-6 d-flex flex-wrap justify-content-between">
@@ -117,7 +130,7 @@ const ProjectLanding= ({projects,countries,cities})=> {
                         <div className="row">
                             {projectList.map((project,k) => (
                                 <div key={k} className="col-md-6">
-                                    <div className={styles['property-slider-wrap']}>
+                                    <div key={k} className={styles['property-slider-wrap']}>
                                         <div className={styles['project-card']}>
                                             <img src={project.fieldMainImageDesktopP.url} className="img-fluid" />
                                             <h6>{project.title}</h6>
@@ -455,19 +468,9 @@ const ProjectLanding= ({projects,countries,cities})=> {
     )
 }
 
-async function getProjects(){
-    const client = new ApolloClient({
-      uri: process.env.STRAPI_GRAPHQL_URL,
-      cache: new InMemoryCache()
-    });
 
-    const data = await client.query({ query: PROJECT });
-    // if(data)
-    console.log('fds***---*--',data);
-        
-}
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (cp) => {
     // Device React
     // const deviceIsMobile = isMobile;
     // const deviceType = deviceIsMobile;
@@ -476,11 +479,49 @@ export const getServerSideProps = async () => {
       uri: process.env.STRAPI_GRAPHQL_URL,
       cache: new InMemoryCache()
     });
+    let field = '';
+    let value = '';
+    // let filter = {conditions: [{operator: EQUAL, field: "type", value: ['project']}]};
+    if(cp.query.search != null && cp.query.search != ''){
+        field = field+",title";
+        value = value+','+cp.query.search
+    }
 
-
-    const  data  = await client.query({ query: PROJECT });
+    // Use this for novigation
+      const  data3  = await client.query({ query: NAVIGATION });
+      const  data4  = await client.query({ query: PARENTMENUITEMS });
+      let nav = [];
+      let othernav = [];
+      if(typeof data3 != 'undefined' &&  typeof data4 != 'undefined'){
+        let submenu = data3.data.nodeQuery.entities[0];
+        let menu = data4.data.taxonomyTermQuery.entities;
+        // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data3.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+        // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+        menu.map((m,i)=>{
+          othernav = [];
+          nav.push({name:m.name,tid:m.tid,submenu:[],link:m.description.value});
+          if((i+1)==menu.length){
+            submenu.fieldMultipleMenuItems.map((k,l)=>{
+              if(k.entity.fieldMenuType!=null){
+                nav.filter((o,h)=>{
+                  if(k.entity.fieldMenuType.entity.tid == o.tid){
+                    o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+                  }
+                });
+              }
+              else{
+                othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+              }
+            })
+          }
+        });
+        
+      }
+    // end
+    const  data  = await client.query({ query: PROJECTSEARCH, variables:{field:field,value:value} });
     const  data1  = await client.query({ query: COUNTRY });
     const  data2  = await client.query({ query: CITY });
+
     console.log('projectdata',data);
     let projects = data.data.nodeQuery.entities;
     let country = data1.data.taxonomyTermQuery.entities;
@@ -492,7 +533,9 @@ export const getServerSideProps = async () => {
          // mobileDevice: deviceType,
          projects : projects,
          countries: country,
-         cities: city
+         cities: city,
+         nav:nav,
+         othernav:othernav
       }, // will be passed to the page component as props
     }
   }

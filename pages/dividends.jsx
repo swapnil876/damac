@@ -97,7 +97,7 @@ function Dividends( { mobileDevice , entity1,fieldTabs,iframe} ) {
         </HeadingTitle> */}
 
         <div className='container'>
-            <PageTabs tabLinks={ fieldTabs}></PageTabs>
+            <PageTabs tabLinks={ fieldTabs} pageSelectPlaceholder="Dividends"></PageTabs>
         </div>
 
         <section className='section'>

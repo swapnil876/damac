@@ -68,7 +68,8 @@ import 'react-multi-carousel/lib/styles.css';
 // FA
 
 function ProjectPage({entity1}) {
-  const router = useRouter()
+  const {router} = useRouter();
+  const { query } = useRouter();
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
 
   useEffect(() => {
@@ -94,8 +95,8 @@ function ProjectPage({entity1}) {
   const [galleryModal, openGalleryModal] = useState(false);
 
   // Use the postid prop for retrieving info
-  const { slug } = router.query;
-  console.log("slug", slug);
+  const { slug } = query;
+  console.log("slug", useRouter());
   // useEffect(() => {
   //     // setSlugId( slug );
   //     console.log('kfdfkdlk****',this);

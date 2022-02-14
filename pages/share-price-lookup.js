@@ -114,7 +114,7 @@ const isMobileWidth = useMediaQuery(
         </HeadingTitle> */}
 
         <div className='container'>
-            <PageTabs tabLinks={ fieldTabs }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs } pageSelectPlaceholder="Share Price Lookup"></PageTabs>
         </div>
 
         <section className='section'>

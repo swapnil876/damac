@@ -121,7 +121,7 @@ import { BLOGS } from '../../graphql/blogs';
     cache: new InMemoryCache()
   });
   
-  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:'65'} });
+  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.slug} });
   const data1 = await client.query({ query: BLOGS });
   if(data.data.nodeQuery.entities.length == 0){
     console.log(cp);

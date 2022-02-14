@@ -107,7 +107,7 @@ function CapitalHistory( { mobileDevice , entity1,fieldTabs,iframe} ) {
         </HeadingTitle> */}
 
         <div className='container'>
-            <PageTabs tabLinks={ fieldTabs }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs } pageSelectPlaceholder="Capital History"></PageTabs>
         </div>
 
         <section className='section'>

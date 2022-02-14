@@ -102,7 +102,7 @@ function ShareInformation( { mobileDevice, entity1, fieldTabs, iframe } ) {
         </HeadingTitle> */}
 
         <div className='container'>
-            <PageTabs tabLinks={ fieldTabs }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs } pageSelectPlaceholder="Share Information"></PageTabs>
         </div>
 
         <section className='section'>

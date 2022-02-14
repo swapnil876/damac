@@ -19,10 +19,12 @@ import React, { Component } from "react";
 import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { BLOGS } from '../graphql/blogs';
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 // import styles from '../styles/.module.css'
 
-function BlogList( { blogs } ) {
+function BlogList( { blogs,nav, othernav } ) {
 
 
   return (
@@ -36,7 +38,7 @@ function BlogList( { blogs } ) {
       </Head>
 
 
-      <Navbar></Navbar>
+      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
 
       <main className="main bloglist-main">
@@ -88,8 +90,38 @@ export const getServerSideProps = async () => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
-
-  const  data  = await client.query({ query: BLOGS });
+   // Use this for novigation
+      const  data3  = await client.query({ query: NAVIGATION });
+      const  data4  = await client.query({ query: PARENTMENUITEMS });
+      let nav = [];
+      let othernav = [];
+      if(typeof data3 != 'undefined' &&  typeof data4 != 'undefined'){
+        let submenu = data3.data.nodeQuery.entities[0];
+        let menu = data4.data.taxonomyTermQuery.entities;
+        // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data3.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+        // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+        menu.map((m,i)=>{
+          othernav = [];
+          nav.push({name:m.name,tid:m.tid,submenu:[],link:m.description.value});
+          if((i+1)==menu.length){
+            submenu.fieldMultipleMenuItems.map((k,l)=>{
+              if(k.entity.fieldMenuType!=null){
+                nav.filter((o,h)=>{
+                  if(k.entity.fieldMenuType.entity.tid == o.tid){
+                    o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+                  }
+                });
+              }
+              else{
+                othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+              }
+            })
+          }
+        });
+        
+      }
+    // end
+  const  data  = await client.query({ query: BLOGS  , variables:{type:'19'}});
   let entitiy = data.data.nodeQuery.entities;
   console.log(entitiy);
   let blogs = []
@@ -100,7 +132,9 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-       blogs: blogs
+       blogs: blogs,
+       nav:nav,
+       othernav:othernav
     }, // will be passed to the page component as props
   }
 }

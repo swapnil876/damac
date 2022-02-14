@@ -118,7 +118,9 @@ function CorporateGovBoard( { mobileDevice, entity1 } ) {
                   active: false,
               },
 
-            ] }></PageTabs>
+            ] }
+            pageSelectPlaceholder="Meet Our Board Members"
+            ></PageTabs>
         </div>
 
         <section className='section'>
