@@ -132,9 +132,9 @@ export const getStaticProps = async () => {
       // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data.data.nodeQuery.entities);
       // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
       menu.map((m,i)=>{
-        nav.push({name:m.name,tid:m.tid,submenu:[]});
-        // if((i+1)==menu.length){
-
+        nav.push({name:m.name,tid:m.tid,submenu:[],link:m.description.value});
+        if((i+1)==menu.length){
+          console.log(m)
         //   submenu.fieldMultipleMenuItems.map((k,l)=>{
         //     // console.log(k.entity);
         //     if(k.entity.fieldMenuType!=null){
@@ -155,7 +155,7 @@ export const getStaticProps = async () => {
         //       console.log('leng',nav);
         //     }
         //   })
-        // }
+        }
       });
       
     }

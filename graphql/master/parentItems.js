@@ -7,6 +7,9 @@ const PARENTMENUITEMS = gql`
       ... on TaxonomyTermParentMenuItems{
         tid
         name
+        description{
+          value
+        }
       }
     }
   }
