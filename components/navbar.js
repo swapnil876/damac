@@ -26,13 +26,13 @@ import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
-export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn }) {
-
+export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn, navigationBar }) {
+  var navigationMenu = []
   const [slideOutMenuVisible, setMenuActive] = useState(false);
-  const [navigation, setNavigation] = useState([]);
+  // const [navigationMenu, setNavigationMenu] = useState([]);
   const [taxonomy, setTaxonomy] = useState([]);
 
-
+  // getNavs()
   const handleMenuToggle = (e) => {
     e.preventDefault();
     setMenuActive(!slideOutMenuVisible);
@@ -55,6 +55,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
       menu.map((m,i)=>{
         nav.push({name:m.name,tid:m.tid,submenu:[]});
         if((i+1)==menu.length){
+
           submenu.fieldMultipleMenuItems.map((k,l)=>{
             // console.log(k.entity);
             if(k.entity.fieldMenuType!=null){
@@ -70,8 +71,9 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
             //  
             }
             if(l+1 == submenu.fieldMultipleMenuItems.length){
-               console.log(nav);
-              setNavigation(nav)
+              // navigationMenu = nav;
+              // console.log('set',setNavigationMenu(nav))
+              console.log('lengthhhh',navigationMenu);
             }
           })
         }
@@ -80,7 +82,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
     }
     
   }
-  getNavs()
+  
 
 
   // Device React
@@ -163,8 +165,10 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
     });
 
 
-    console.log(  customDropdowns );
+    console.log(  navigationBar );
   }
+
+  console.log('navisiosii',  navigationBar );
 
   const dropdownItems = {
     'browse-properties': [
@@ -394,42 +398,87 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
               
               <div className="main-menu-inner d-flex flex-column justify-content-between">
                 <div className="biglinks">
-                  <div className="biglink-container biglinks-dropdown">
-                    <ActiveLink href="#" activeClassName="active"  >
-                         <a className="biglink" data-dropdownkey="browse-properties" onClick={ handleBrowsePropertiesBiglink }>
-                             <span>Browse Properties</span>
-                             <span className="menuItemIcon">
-                               {
-                                 _bigLinkBrowseProperties ? <FontAwesomeIcon icon={ faChevronUp } size="xs"/> : <FontAwesomeIcon icon={ faChevronDown } size="xs"/>
-                               } 
-                             </span>
-                         </a>
-                    </ActiveLink>
-                    <div className={`slideout-biglinks-dropdown  ${ _bigLinkBrowseProperties ? 'active' : 'not-active' }`} >
-                      <ul>
-                        { 
-                          
-                          dropdownItems['browse-properties'].map( 
-                            (item, index) => <li key={index} className='navitem-dropdown'>
-                              <Link href={ item.url }>
-                                {item.label}
-                              </Link>
-                            </li>
-                          ) 
-                        }
-                      </ul>
+                {
+                  navigationBar.map((m,p)=>(
+                    <div className="biglink-container biglinks-dropdown">
+                      <ActiveLink href="#" activeClassName="active"  >
+                           <a className="biglink" data-dropdownkey="browse-properties" onClick={ handleBrowsePropertiesBiglink }>
+                               <span>{m.name}</span>
+                               <span className="menuItemIcon">
+                                 {
+                                   _bigLinkBrowseProperties ? <FontAwesomeIcon icon={ faChevronUp } size="xs"/> : <FontAwesomeIcon icon={ faChevronDown } size="xs"/>
+                                 } 
+                               </span>
+                           </a>
+                      </ActiveLink>
+                      <div className={`slideout-biglinks-dropdown  ${ _bigLinkBrowseProperties ? 'active' : 'not-active' }`} >
+                        <ul>
+                          { 
+                            
+                            m.submenu.map( 
+                              (item, index) => <li key={index} className='navitem-dropdown'>
+                                <Link href={ item.url }>
+                                  {item.label}
+                                </Link>
+                              </li>
+                            ) 
+                          }
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  <div className="biglink-container">
-                    <ActiveLink href="/about" activeClassName="active">
-                         <a className="biglink"><span>About</span></a>
-                    </ActiveLink>
-                  </div>
-                  <div className="biglink-container">
+                  ))
+                }
+                
+                {/*<div className="biglink-container">
+                  <ActiveLink href="/about" activeClassName="active">
+                       <a className="biglink"><span>About</span></a>
+                  </ActiveLink>
+                </div>*/}
+                {/*{
+                  navigationBar.length>0?(
+                    navigationBar.map((m,p)=>{
+                    m.submenu.length>0?(
+                      <div className="biglink-container biglinks-dropdown">
+                        <ActiveLink href="#" activeClassName="active"  >
+                             <a className="biglink" data-dropdownkey="browse-properties" onClick={ handleBrowsePropertiesBiglink }>
+                                 <span>Browse Properties</span>
+                                 <span className="menuItemIcon">
+                                   {
+                                     _bigLinkBrowseProperties ? <FontAwesomeIcon icon={ faChevronUp } size="xs"/> : <FontAwesomeIcon icon={ faChevronDown } size="xs"/>
+                                   } 
+                                 </span>
+                             </a>
+                        </ActiveLink>
+                        <div className={`slideout-biglinks-dropdown  ${ _bigLinkBrowseProperties ? 'active' : 'not-active' }`} >
+                          <ul>
+                            { 
+                              
+                              m.submenu.map( 
+                                (item, index) => <li key={index} className='navitem-dropdown'>
+                                  <Link href={ item.url }>
+                                    {item.label}
+                                  </Link>
+                                </li>
+                              ) 
+                            }
+                          </ul>
+                        </div>
+                      </div>
+                    ):
+                    (
+                      
+                    )
+                  })
+                   ):(navigationMenu.length)
+                  
+                }*/}
+                  
+                  
+                  {/*<div className="biglink-container">
                     <ActiveLink href="/contact" activeClassName="active">
                          <a className="biglink"><span>Contact Us</span></a>
                     </ActiveLink>
-                  </div>
+                  </div>*/}
                   
                 </div>
 

@@ -6,6 +6,8 @@ query {
       entities {
       ... on NodeContactUs{
             nid
+            fieldPageTitleC
+            fieldAddressesTitle
             fieldAddresses{
             entity{
                ... on ParagraphMultipleAddressesContactUs{

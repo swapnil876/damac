@@ -28,10 +28,12 @@ import bannerImage from '../public/images/hero-image-sm.png'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { HOME } from '../graphql/home';
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
 
-function Home( {entity1} ) {
+function Home( {entity1, nav} ) {
   // 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
@@ -67,7 +69,7 @@ function Home( {entity1} ) {
       </Head>
 
 
-      <Navbar></Navbar>
+      <Navbar navigationBar={nav}></Navbar>
 
 
       <main className="main home-main">
@@ -121,6 +123,42 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: HOME });
+  const  data2  = await client.query({ query: NAVIGATION });
+  const  data1  = await client.query({ query: PARENTMENUITEMS });
+    let nav = [];
+    if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+      let submenu = data2.data.nodeQuery.entities[0];
+      let menu = data1.data.taxonomyTermQuery.entities;
+      // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data.data.nodeQuery.entities);
+      // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+      menu.map((m,i)=>{
+        nav.push({name:m.name,tid:m.tid,submenu:[]});
+        // if((i+1)==menu.length){
+
+        //   submenu.fieldMultipleMenuItems.map((k,l)=>{
+        //     // console.log(k.entity);
+        //     if(k.entity.fieldMenuType!=null){
+        //       menu.filter((o,h)=>{
+        //     //     // console.log(k.entity);
+        //     //     // console.log(o.tid);
+        //         if(k.entity.fieldMenuType.entity.tid == o.tid){
+        //     //       // console.log(menu[h]);
+        //           nav[h].submenu.push({label:k.fielMenuName,url:k.fieldLink});
+        //         }
+        //     //     // k.entity.fieldMenuType.entity.tid == o.id?h:null
+        //       });
+        //     //  
+        //     }
+        //     if(l+1 == submenu.fieldMultipleMenuItems.length){
+        //       // navigationMenu = nav;
+        //       // console.log('set',setNavigationMenu(nav))
+        //       console.log('leng',nav);
+        //     }
+        //   })
+        // }
+      });
+      
+    }
   // console.log('entity1',data);
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
@@ -135,6 +173,7 @@ export const getStaticProps = async () => {
    return {
       props: {
         entity1: entity1,
+        nav:nav
         // entity2: entity2
       }
     }
