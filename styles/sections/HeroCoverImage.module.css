@@ -18,7 +18,10 @@
 	bottom: 0;
 
 }
-
+.coverImage{
+	max-width: 100%;
+	object-fit: cover;
+}
 .bgimage::before {
 	content: "";
 	position: absolute;

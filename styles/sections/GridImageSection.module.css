@@ -59,6 +59,13 @@ section.grid-image-section {
 
 
 @media (max-width:  768px) {
+    .maintext-box {
+        padding: 0 !important;
+    }
+    .maintext-box .bgimage img{
+        width:100%;
+        aspect-ratio: 395/247;
+    }
 	.desktopcontainer {
 		height: 50%;
 	}
