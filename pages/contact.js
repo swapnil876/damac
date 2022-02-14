@@ -36,12 +36,12 @@ function ContactUs({contactus}) {
 
           <div className="page-title" >
             <div className="container">
-              <h2>Contact</h2>
+              <h2>{contactus.fieldPageTitleC}</h2>
             </div>
           </div>
 
 
-          <MainContactForm address={contactus.fieldAddresses} initialValues={ {'gender': 'Mr'} }/>
+          <MainContactForm address={contactus.fieldAddresses} heading={contactus.fieldAddressesTitle} initialValues={ {'gender': 'Mr'} }/>
       </main>
 
       <Footer></Footer>

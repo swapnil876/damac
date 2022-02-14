@@ -17,7 +17,7 @@ import Select from "react-dropdown-select";
 import 'bootstrap/dist/css/bootstrap.css'
 import { isMobile } from "react-device-detect";
 
-export default function ContactForm({ initialValues, address }) {
+export default function ContactForm({ initialValues, address , heading}) {
 
 
     const [values, setValues] = useState(initialValues);
@@ -383,7 +383,7 @@ export default function ContactForm({ initialValues, address }) {
                 <section className={styles['office-wrap']}>
                     <div className="">
                         <div className={`${styles["office-main"]} d-flex justify-content-between`}>
-                            <h1>Office Address</h1>
+                            <h1>{heading}</h1>
                             {/* <div className={styles['dropdown']}>
                                 <button className={`${styles["btn-form-dropdown"]} ${styles["text-start"]}`} type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     All <span class="fas fa-chevron-down"></span>
