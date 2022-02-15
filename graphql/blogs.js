@@ -40,6 +40,8 @@ query {
         fieldMetaDescriptionBlog
         fieldMetaKeywordsBlog
         fieldCanonicalUrlBlog
+        fieldTag
+        fieldAuthor
       }
     }
   }
