@@ -94,17 +94,16 @@ function Community({entity1, nav, othernav}) {
        {/* Custom popup modal */}
        {
             customModal ? 
-            <div className="custom_modal_contain">
+            <div className="custom_modal_contain booking_step_2_modal">
               
                 <section className={ styles["book-step-main"]}>
                     <div className="close" onClick={()=>{
                       openCustomModal(false);
                       }}>
                       <span>
-                                  <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
-                      <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
-                      </svg>
+                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.5547 9.5L17.1875 3.92188L18.3359 2.77344C18.5 2.60938 18.5 2.33594 18.3359 2.11719L17.1328 0.914062C16.9141 0.75 16.6406 0.75 16.4766 0.914062L9.75 7.69531L2.96875 0.914062C2.80469 0.75 2.53125 0.75 2.3125 0.914062L1.10938 2.11719C0.945312 2.33594 0.945312 2.60938 1.10938 2.77344L7.89062 9.5L1.10938 16.2812C0.945312 16.4453 0.945312 16.7188 1.10938 16.9375L2.3125 18.1406C2.53125 18.3047 2.80469 18.3047 2.96875 18.1406L9.75 11.3594L15.3281 16.9922L16.4766 18.1406C16.6406 18.3047 16.9141 18.3047 17.1328 18.1406L18.3359 16.9375C18.5 16.7188 18.5 16.4453 18.3359 16.2812L11.5547 9.5Z" fill="white" fill-opacity="0.42"/>
+                          </svg>
                       </span>
                     </div>
                     <div className="container">
@@ -264,7 +263,7 @@ function Community({entity1, nav, othernav}) {
             </div> :
             ""
           }
-           {/* Custom popup modal */}
+        {/* Custom popup modal */}
 
       <Head>
         <title>Community - Damac</title>

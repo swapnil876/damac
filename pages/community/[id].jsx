@@ -44,6 +44,8 @@ import { icon } from "@fortawesome/fontawesome-svg-core";
 
 function Community({entity1, projectlist, otherProjects, nav, othernav}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  const [customModal, openCustomModal] = useState(false)
+
   useEffect(() => {
       if ( isMobile ) {
         setDeviceIsMobile( true );
@@ -90,6 +92,180 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
       <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
       <main className="main about-main">
+
+       {/* Custom popup modal */}
+       {
+            customModal ? 
+            <div className="custom_modal_contain booking_step_2_modal">
+              
+                <section className={ styles["book-step-main"]}>
+                    <div className="close" onClick={()=>{
+                      openCustomModal(false);
+                      }}>
+                      <span>
+                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.5547 9.5L17.1875 3.92188L18.3359 2.77344C18.5 2.60938 18.5 2.33594 18.3359 2.11719L17.1328 0.914062C16.9141 0.75 16.6406 0.75 16.4766 0.914062L9.75 7.69531L2.96875 0.914062C2.80469 0.75 2.53125 0.75 2.3125 0.914062L1.10938 2.11719C0.945312 2.33594 0.945312 2.60938 1.10938 2.77344L7.89062 9.5L1.10938 16.2812C0.945312 16.4453 0.945312 16.7188 1.10938 16.9375L2.3125 18.1406C2.53125 18.3047 2.80469 18.3047 2.96875 18.1406L9.75 11.3594L15.3281 16.9922L16.4766 18.1406C16.6406 18.3047 16.9141 18.3047 17.1328 18.1406L18.3359 16.9375C18.5 16.7188 18.5 16.4453 18.3359 16.2812L11.5547 9.5Z" fill="white" fill-opacity="0.42"/>
+                          </svg>
+                      </span>
+                    </div>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className={ styles["book-left-main"]}>
+                                    <h1>Golf Town at DAMAC Hills</h1>
+                                    <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+                                    <div className={ styles["selected-card-main"]}>
+                                        <div className={ styles['select-card-img-wrap'] }>
+                                            <img src="/images/book-step-card-img.jpg" alt="card-img" className="img-fluid" />
+                                            <div className={ styles["play-btn-card"]}>
+                                                <a href="#"><i className="fas fa-play"></i></a>
+                                            </div>
+                                        </div>
+                                        <ul className={`${styles["bookmark_main"]} ${styles["d-flex"]} ${styles["float-end"]} ${styles["list-unstyled"]}`}>
+                                            <li><a href="#"><img src="/images/icons/bookmark 4.png" /></a></li>
+                                        </ul>
+                                        <h6>Kiara 2 Bedroom Apartment</h6>
+                                        <p>DAMAC Hills, Dubailand, Dubai</p>
+                                        <ul className={`${styles["bedroom-detail"]} ${styles["list-unstyled"]}`}>
+                                            <div className="row">
+                                                <div className="col-md-7">
+                                                <li>
+                                                <a href="#"><img src="/images/price-tag 1.png" className={ styles["img-fluid"]} />From AED 1,213,515*</a>
+                                                </li>
+                                                </div>
+                                                <div className="col-md-5">
+                                                <li>
+                                                <a href="#"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />2,750 sqft</a>
+                                                </li>
+                                                </div>
+                                                <div className="col-md-7">
+                                                <li>
+                                                <a href="#"><img src="/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> 3 Bedrooms</a>
+                                                </li>
+                                                </div>
+                                                <div className="col-md-5">
+                                                <li>
+                                                <a href="#"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
+                                                 </li>
+                                                </div>
+                                            </div>   
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                {
+                                    deviceIsMobile ? '' :
+                                    <div className={ styles['book-form-main']}>
+                                    <h1>Make this Home Yours in 5 Steps </h1>
+                                    <p>Hassle-free booking experience. Only from DAMAC.</p>
+                                    <form action="">
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className={styles["form-field"]}>
+                                                    <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="First Name" />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className={styles["form-field"]}>
+                                                    <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Last Name" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className={styles["form-field"]}>
+                                                    <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Mobile number" />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className={styles["form-field"]}>
+                                                    <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Email" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row checkbox-row">
+                                            <div className="col-md-6">
+                                                <div className={styles["checkbox-form-field"]}>
+                                                    <input type="checkbox" className={styles["form-check"]} onChange={handleChange} id="token" />
+                                                    <label htmlFor="token">AED 15,120<br /><span>Token Amount</span></label>
+                                                </div>
+                                            </div> 
+                                            <div className="col-md-6">
+                                                <div className={styles["checkbox-form-field"]}>
+                                                    <input type="checkbox" className={styles["form-check"]} id="total" />
+                                                    <label htmlFor="total">AED 1,512,221<br /><span>Total Price</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={styles["book-form-btn"]}>
+                                            <button>Get Started</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                }
+                            </div>
+                            <div className={styles["close-btn"]}>
+                              <a href="#"><i className="fas fa-times"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                  {
+                        deviceIsMobile ? 
+                        <div className={ styles['book-form-main']}>
+                            <h1>Make this Home Yours in 5 Steps </h1>
+                            <p>Hassle-free booking experience. Only from DAMAC.</p>
+                            <form action="">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="First Name" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Last Name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Mobile number" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row checkbox-row" style={{'margin-top':'32px'}}>
+                                    <div className="col-md-6">
+                                        <div className={styles["checkbox-form-field"]}>
+                                            <input type="checkbox" className={styles["form-check"]} onChange={handleChange} id="token" />
+                                            <label htmlFor="token">AED 15,120<br /><span>Token Amount</span></label>
+                                        </div>
+                                    </div> 
+                                    <div className="col-md-6">
+                                        <div className={styles["checkbox-form-field"]}>
+                                            <input type="checkbox" className={styles["form-check"]} id="total" />
+                                            <label htmlFor="total">AED 1,512,221<br /><span>Total Price</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles["book-form-btn"]}>
+                                    <button>Get Started</button>
+                                </div>
+                            </form>
+                        </div>: ""
+                  }
+            </div> :
+            ""
+        }
+      {/* Custom popup modal */}
       
 {/* 
                      <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}:{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}}>
@@ -291,7 +467,8 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                     <div className='right-area'>
                       
                       <div className='booking-btns'>
-                        <a href={'mailto:'+entity1.fieldEmail} target="_blank" className='btn btn-primary btn-icon'>
+                        <a className='btn btn-primary btn-icon' onClick={()=>{openCustomModal(true)}}>
+                        {/* href={'mailto:'+entity1.fieldEmail} target="_blank" */}
                           <span className='fa-icon' style={{'margin': '0'}}>
                             <FontAwesomeIcon icon={faEnvelope} style={{'margin-right':'0'}}/>
                           </span>
@@ -679,8 +856,8 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                       <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {proj.fieldStartingFromPrice}*</a>
                     </li>
                      <li>
-                      <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />{}{
-                        proj.fieldPropertyTypeP2.map( (prop, i) => (<span key={i}>{prop.entity.name}{i!=proj.fieldPropertyTypeP2.length-1?'-':''}</span>))} {proj.fieldBedRoomsP2} Bedrooms</a>
+                      {/* <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />{}{
+                        proj.fieldPropertyType.map( (prop, i) => (<span key={i}>{prop.entity.name}{i!=proj.fieldPropertyType.length-1?'-':''}</span>))} {proj.fieldBedRoomsP2} Bedrooms</a> */}
                     </li>                  
                   </ul>                              
                               
@@ -747,6 +924,15 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
   )
 }
 
+
+function handleChange(e) {
+  const { name, value } = e.target;
+
+  setValues({
+      ...values,
+      [name]: value,
+  });
+}
 
 
 export const getServerSideProps = async () => {

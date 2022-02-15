@@ -54,7 +54,7 @@ query {
         fieldDescriptionP2{
           value
         }
-        fieldPropertyTypeP2{
+        fieldPropertyType{
           entity{
             tid
             name
