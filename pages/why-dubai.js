@@ -91,7 +91,7 @@ const WhyDubai= ({entity1, nav, othernav})=> {
        
 
        <HeroSection
-         bannerImage={ deviceIsMobile ? entity1.fieldImageMobile.url : entity1.fieldImageDesktop.url}
+         bannerImage={ deviceIsMobile ? entity1.fieldMainImageMobile.url : entity1.fieldMainImageDesktopd.url}
        >
 
            <div className="banner-conent-style-1">
