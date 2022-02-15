@@ -113,7 +113,9 @@
   padding-right: 30px;
   background: transparent;
 }
-
+.custom_black_color, .custom_black_color p{
+  color: #111 !important;
+}
 .heading_dropdown .arrow {
   background: url("../../public/images/icons/down-chevron-black.png") right/16px 16px no-repeat;
   position: absolute;

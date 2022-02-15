@@ -166,7 +166,7 @@ function CSR({entity1, nav, othernav}) {
          </div>
        </section>
 
-       <TextSection className="text-section-csr-2">         
+       <TextSection className="text-section-csr-2 custom_black_color">         
          <div className="textsectionpart1 mb-5">
            <h2 className={styles['csr_heading']}>{entity1.fieldFoundationHeader}</h2>
            <div className="row align-items-center">
@@ -191,16 +191,24 @@ function CSR({entity1, nav, othernav}) {
            
            </div>
          </div>
-
-         <div className="textsectionpart3 mb-5">
-           <h2 className={styles['csr_heading']}>Our Cause</h2>
+         {
+           entity1.fieldSectionHeading ? 
+           <div className="textsectionpart4 mb-5" style={{'color':'#111'}} dangerouslySetInnerHTML={{ __html: entity1.fieldSectionHeading.value }}></div> : ''
+         }
+         {
+           entity1.fieldSectionHeading ?
+           <div className="textsectionpart4 mb-5" style={{'color':'#111'}} dangerouslySetInnerHTML={{ __html: entity1.fieldSectionContent.value }}> </div>: ''
+         }
+         
+           {/* <h2 className={styles['csr_heading']}>Our Cause</h2>
            <div className="row align-items-center">
              <div className="col-md-12">
                <p style={{'color':'#111'}}>{entity1.fieldCause}</p>
              </div>
            
-           </div>
-         </div>
+           </div> */}
+           
+         
 
          <div className="textctacontainer mt-5">
            <div>
