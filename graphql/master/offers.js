@@ -6,6 +6,7 @@ const OFFERS = gql`
     entities {
       ... on NodeOffers{
          nid,
+        title
          fieldImageOffer {
            targetId
            title
