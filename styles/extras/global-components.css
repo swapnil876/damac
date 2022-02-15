@@ -511,6 +511,26 @@ button.accordion-button {
   color: #ffffff;
 }
 
+.floating_map_view_btn {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.floating_map_view_btn img {
+  width: 24px;
+  height: 24px;
+}
+
 .project-right-for-mobile .schedule_a_callback_btn {
   border: 0;
   display: block;
@@ -557,6 +577,50 @@ button.accordion-button {
 
 .sec_3_gallery_grid_for_mobile img {
   margin: 0 0 14px;
+}
+
+.get_floor_plan_area {
+  display: flex;
+  padding: 10px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.get_floor_plan_area .get_floor_plan_btn {
+  padding: 15px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 113.6%;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.get_floor_plan_area .get_floor_plan_btn img {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.get_floor_plan_area .bookmark_share_area {
+  display: flex;
+  align-items: center;
+}
+
+.get_floor_plan_area .bookmark_share_area a {
+  margin-right: 8px;
+  background: linear-gradient(90deg, rgba(192, 170, 113, 0) 0%, #C0AA71 0%, #C0AA71 0.01%, #F3E0AB 100%);
+  border-radius: 4px;
+  padding: 15px 14px;
+}
+
+.get_floor_plan_area .bookmark_share_area a img {
+  width: 24px;
+  height: 24px;
 }
 
 .read_more_btn {
@@ -716,6 +780,7 @@ button.accordion-button {
     -webkit-overflow-scrolling: touch;
   }
 }
+
 .investor_relation_page_titles {
   font-weight: 500;
   font-size: 32px;
@@ -723,7 +788,14 @@ button.accordion-button {
   letter-spacing: 0.01em;
   color: #000000;
 }
+
 @media (max-width: 767.98px) {
+  .sec_3_gallery_grid_for_mobile .text_on_img_sec .gal-content-2 p {
+    font-size: 18px;
+    line-height: 149.6%;
+
+  }
+
   .investor_relation_page_titles {
     font-size: 26px;
   }
@@ -1387,10 +1459,16 @@ List grid
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
+.investors_fav_para{
+  color: #111 !important;
+}
 .image-card-item h3 {
   font-size: 24px;
   margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .image-card-item h3 a {
@@ -1667,6 +1745,14 @@ List grid
 @media (max-width: 360px) {
   .icon-link .ui-icon {
     margin-right: -2px;
+  }
+}
+
+@media (max-width: 330px) {
+
+  .get_floor_plan_area .get_floor_plan_btn,
+  .get_floor_plan_area .bookmark_share_area a {
+    padding: 14px 10px;
   }
 }
 

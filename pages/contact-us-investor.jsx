@@ -78,8 +78,8 @@ function ContactUsInvestor( { mobileDevice, nav, othernav } ) {
     <div className='contactusinvestorbody'>
 
       <Head>
-        <title>Contact Us - Damac</title>
-        <meta name="description" content="Contact Us - Damac Properties" />
+        <title>Investor Contact - Damac</title>
+        <meta name="description" content="Contact Investor - Damac Properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

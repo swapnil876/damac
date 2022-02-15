@@ -146,7 +146,7 @@ function About({entity1, nav, othernav}) {
       <main className="main about-main">
        
 
-       <AboutBanner entity1={entity1} bannerImage={ isMobile ? entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop.url}></AboutBanner>
+       <AboutBanner entity1={entity1} responsiveHeights={ deviceIsMobile ? '100vh' : '' } bannerImage={ isMobile ? entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop.url}></AboutBanner>
 
 
        <div className="damac-text-section-container">

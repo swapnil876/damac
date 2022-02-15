@@ -223,7 +223,7 @@ function handleChange(e) {
     });
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const client = new ApolloClient({
         uri: process.env.STRAPI_GRAPHQL_URL,
         cache: new InMemoryCache()
