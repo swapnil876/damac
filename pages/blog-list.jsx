@@ -19,13 +19,13 @@ import React, { Component } from "react";
 import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { BLOGS } from '../graphql/blogs';
-
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+
 // import styles from '../styles/.module.css'
 
-function BlogList( { blogs, nav, othernav } ) {
+function BlogList( { blogs,nav, othernav } ) {
 
 
   return (

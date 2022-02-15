@@ -122,7 +122,7 @@ function CorporateGovCommittee( { mobileDevice, entity1, nav, othernav } ) {
                   active: true,
               },
 
-            ] }></PageTabs>
+            ] } pageSelectPlaceholder="Governance Committees"></PageTabs>
         </div>
 
         <section className='section'>

@@ -109,7 +109,7 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
         </HeadingTitle> */}
 
         <div className='container'>
-            <PageTabs tabLinks={ fieldTabs }></PageTabs>
+            <PageTabs tabLinks={ fieldTabs } pageSelectPlaceholder="Share Overview"></PageTabs>
         </div>
 
         <section className='section'>

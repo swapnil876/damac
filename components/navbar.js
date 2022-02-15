@@ -323,7 +323,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                     <div className="header-item-wrapper header-dropdown-container not-on-mobile">
                       {
                         whiteEnquiryBtn ? 
-                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'} style={{'background':'#fff', 'color':'#111', 'font-weight':'400'}}>
+                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'} style={{'background':'#fff', 'color':'#111', 'fontWeight':'400'}}>
                         Enquire
                        </a>
                         :

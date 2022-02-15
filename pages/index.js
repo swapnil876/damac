@@ -33,8 +33,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
 
-function Home( {entity1, nav, othernav} ) {
-  //
+function Home( {entity1, nav, othernav} ) { 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {

@@ -65,6 +65,11 @@ const _CSR = gql`
             fieldMetaKeywordsCsr
             fieldMetaDescriptionCsr
             fieldCanonicalUrlCsr
+            fieldWhyCsrHeading
+            fieldMilestoneHeader
+            fieldMilestoneDescription
+            fieldFoundationHeader
+            fieldMissionHeader
           }
       }
     }

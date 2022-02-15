@@ -82,7 +82,7 @@ function CSR({entity1, nav, othernav}) {
        <VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner>
 
        <TextSection className="text-section-csr-1">
-         <h1 className={styles['csr_heading']}>Why Corporate Social Responsibility (CSR)?</h1>
+         <h1 className={styles['csr_heading']}>{entity1.fieldWhyCsrHeading}</h1>
          <p style={{'color':'#111'}}>{entity1.fieldWhyCsr}</p>
        </TextSection>
 
@@ -99,8 +99,8 @@ function CSR({entity1, nav, othernav}) {
               ))} */}
 
                 <div className="text-box">
-                 <h4>{entity1.fieldMilestones[0].entity.fieldHeaderMile}</h4>
-                 <p>{entity1.fieldMilestones[0].entity.fieldTextMile}</p>
+                 <h4>{entity1.fieldMilestoneHeader}</h4>
+                 <p>{entity1.fieldMilestoneDescription}</p>
                 </div>
 
                {/* <div className="sliderArrows">
@@ -150,8 +150,8 @@ function CSR({entity1, nav, othernav}) {
                                <img alt="milestones"src={milestone.entity.fieldImageMile.url} className='img-responsive'/>
                              </div>
                              <div className='text'>
-                               <h3>Zayed Day for Humanitarian action</h3>
-                               <p>To mark the occassion of the International Humanitarian Day initiative under the slogan og 'Your families .. our people', there was an assembly held during which, the Director od the Red Crescent, Mr. Khalfan Sarhan Al-Rumaithi, received a cheque from Brigadier General Jamal Salem Al Ameri, Executive Director of the Saed Association, to help families affected by the novel coronavirus,COVID-19.</p>
+                               <h3>{milestone.entity.fieldHeaderMile}</h3>
+                               <p>{milestone.entity.fieldTextMile}</p>
                              </div>
                            </div>
                          </div>
@@ -168,7 +168,7 @@ function CSR({entity1, nav, othernav}) {
 
        <TextSection className="text-section-csr-2">         
          <div className="textsectionpart1 mb-5">
-           <h2 className={styles['csr_heading']}>Hussain Sajwani – DAMAC Foundation</h2>
+           <h2 className={styles['csr_heading']}>{entity1.fieldFoundationHeader}</h2>
            <div className="row align-items-center">
              <div className="col-md-8 order-md-1 order-2">
                <p style={{'color':'#111'}}>{entity1.fieldFoundationText}</p>
@@ -183,7 +183,7 @@ function CSR({entity1, nav, othernav}) {
 
 
          <div className="textsectionpart2 mb-5">
-           <h2 className={styles['csr_heading']}>Our Mission</h2>
+           <h2 className={styles['csr_heading']}>{entity1.fieldMissionHeader}</h2>
            <div className="row align-items-center">
              <div className="col-md-12">
                <p style={{'color':'#111'}}>{entity1.fieldMission}</p>
@@ -267,6 +267,9 @@ export const getServerSideProps = async () => {
   const  data  = await client.query({ query: _CSR });
   // console.log('data1', data.data.nodeQuery.entities[0].fieldMilestones);
   let entity1 = data.data.nodeQuery.entities[0];
+ 
+  
+
   console.log('entity1',entity1);
    return {
       props: {
