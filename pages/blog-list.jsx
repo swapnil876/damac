@@ -19,13 +19,14 @@ import React, { Component } from "react";
 import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { BLOGS } from '../graphql/blogs';
+import { BLOGSLISTING } from '../graphql/blog_listing';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
 // import styles from '../styles/.module.css'
 
-function BlogList( { blogs,nav, othernav } ) {
+function BlogList( { blogs,header,nav, othernav } ) {
 
 
   return (
@@ -44,7 +45,7 @@ function BlogList( { blogs,nav, othernav } ) {
 
       <main className="main bloglist-main">
 
-           <PageTitle title="Blogs" backgroundImage='/damac-static/images/investor-relation-hero.jpg' />
+           <PageTitle title={header.fieldPageTitleBlogs} backgroundImage='/damac-static/images/investor-relation-hero.jpg' />
 
 
            <section className="bloglist-list-page">
@@ -99,7 +100,7 @@ export const getServerSideProps = async () => {
        if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
          let submenu = data2.data.nodeQuery.entities[0];
          let menu = data1.data.taxonomyTermQuery.entities;
-         console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+         // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
          // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
          menu.map((m,i)=>{
            othernav = [];
@@ -127,17 +128,20 @@ export const getServerSideProps = async () => {
 
 
   const  data  = await client.query({ query: BLOGS });
+  const  headerdata  = await client.query({ query: BLOGSLISTING });
   let entitiy = data.data.nodeQuery.entities;
-  console.log(entitiy);
+  let header = headerdata.data.nodeQuery.entities[0];
+  console.log(header);
   let blogs = []
   entitiy.map((v,i)=>{
-    console.log(v);
+    // console.log(v);
     blogs.push({title:v.title,url:'/blog/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.fieldShortText})
   });
 
   return {
     props: {
        blogs: blogs,
+       header:header,
        nav:nav,
        othernav:othernav
     }, // will be passed to the page component as props

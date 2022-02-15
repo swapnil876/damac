@@ -54,7 +54,7 @@ const PROJECTSEARCH = gql`
           fieldDescriptionP2{
             value
           }
-          fieldPropertyTypeP2{
+          fieldPropertyType{
             entity{
               tid
               name
