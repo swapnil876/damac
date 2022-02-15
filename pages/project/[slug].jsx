@@ -410,7 +410,7 @@ function ProjectPage({entity1, nav, othernav}) {
                     </section>
                     <section className={`damac-section text-image-section`}> 
                       <div className={`container`}>
-                          <div className={`text-wrapper`}> 
+                          <div className={`text-wrapper`} style={deviceIsMobile ? {'padding':'50px 0'} : {'padding':'80px 0'}}> 
                             <div className="top-text">
                               <h2>{entity1.fieldTitleP2}</h2>
                               <div  dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionP2.value }}></div>
@@ -435,8 +435,18 @@ function ProjectPage({entity1, nav, othernav}) {
                                 <h2 className="heading-medium">{entity1.fieldBedRoomsP2}</h2>
                                 <p>Bedrooms</p>
                               </div>
-                             
-                            </div>  
+                              
+                            </div> 
+                            {
+                                deviceIsMobile ? 
+                                <div className="get_floor_plan_area">
+                                  <a className="get_floor_plan_btn"><img src="/images/icons/ArrowDown.png" />Get the Floor plan</a>
+                                  <div className="bookmark_share_area">
+                                    <a><img src="/images/icons/bookmark 4.png" /></a>
+                                    <a><img src="/images/icons/share.png" /></a>
+                                  </div>
+                                </div> : ''
+                              } 
                           </div>
                       </div>
                       { !deviceIsMobile && 
@@ -482,15 +492,15 @@ function ProjectPage({entity1, nav, othernav}) {
                                     </div>                
                                 </div>              
                             </div>            
-                        </div>   :
-                          <div className="row">
-                          <div className="col-8">
+                           </div>   :
+                          <div className="row" style={{'maxWidth':'100%'}}>
+                          <div className="col-7">
                               <div className={style['vs-range']}>
                                   <h5><a href="#">{entity1.fieldLocalityP2}</a></h5>
                                   <p>Locality</p>
                               </div>
                           </div>
-                          <div className="col-4">
+                          <div className="col-5">
                               <div className={style['shape-wrap-plan']}>              
                                   <div className={`${style["shape-contact"]} float-end`}>
                                       <ul className="d-flex align-items-center p-0">
@@ -613,7 +623,12 @@ function ProjectPage({entity1, nav, othernav}) {
                                  ))}
                                 <div className="col-6 col-md-6">
                                 <div className={style['town-card']}>
+                                  {
+                                    !deviceIsMobile ? 
                                     <button type="button"  onClick={()=>{openFloorPlan(true)}} className={style['custom_white_btn']}> <FaArrowDown/> Get the Floor plan</button>
+                                    : ''
+                                  }
+                                   
                                 </div>
                                 </div>
                             </div>
@@ -656,9 +671,17 @@ function ProjectPage({entity1, nav, othernav}) {
                           <div className={styles['brand-partners']}>
                             <h4>Brand Partners</h4>
                             <div className={styles['brand-icons']}>
-                              <img alt=""src="/images/brand-logo/image 26.png"/>
-                              <img alt=""src="/images/brand-logo/trumporg.png"/>
-                              <img alt=""src="/images/brand-logo/trumporg.png"/>
+                            <div className="row">
+                                <div className={`${styles["column"]} col-4`}>
+                                 <img alt=""src="/images/brand-logo/image 26.png"/>
+                                </div>
+                                <div className={`${styles["column"]} col-4`}>
+                                 <img alt=""src="/images/brand-logo/trumporg.png"/>
+                                </div>
+                                <div className={`${styles["column"]} col-4`}>
+                                 <img alt=""src="/images/brand-logo/trumporg.png"/>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1303,9 +1326,7 @@ function ProjectPage({entity1, nav, othernav}) {
                         </section>
 
                     {/* <!-- Invest section --> */}
-                   {
-                     !deviceIsMobile ?
-                     <section className={style['why-invest']} style={{'background':'url(/damac-static/images/invest-dubai-bg.jpg)'}}>
+                     <section className={style['why-invest']}>
                      <div className="container">
                        <div className="row justify-content-end align-items-end">
                          <div className="col-md-12">
@@ -1318,17 +1339,7 @@ function ProjectPage({entity1, nav, othernav}) {
                        </div>
                      </div>
                      </section> 
-                   :
-                      <section className={style['why-invest']} style={{'background':'#111 !important'}}>
-                      <div className="container">
-                            <div className={style['invest-wrap']}>
-                              <h2>{entity1.fieldHeadingSec7}</h2>
-                              <p>{entity1.fieldTextSec7}</p>
-                              <a href="#" className={style['read-more']}>Read more</a>
-                            </div>
-                      </div>
-                      </section>
-                    }
+                  
 
                       {/* <!-- Experince section --> */}
                       {/*<section className={style['3d-tour']}>
@@ -1349,7 +1360,7 @@ function ProjectPage({entity1, nav, othernav}) {
                          {/* <!-- Experince section --> */}
                         <section className={style['3d-tour']}>
                         <div className={ !deviceIsMobile ? 'container' : 'container-fluid'} style={ !deviceIsMobile ? {} : {'padding':'0'}}>
-                        <div className={style['3d-tour-inner']} style={{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
+                        <div className={style['3d-tour-inner']} style={deviceIsMobile? {'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '90px 2px', 'max-width':'100%'} :{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>
                             <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>{entity1.field3dTourLink}</a>
@@ -1363,7 +1374,7 @@ function ProjectPage({entity1, nav, othernav}) {
                                 <div className="container">
                                   <div className="d-flex justify-content-between">
                                     <div className="light-title">
-                                      <h2 style={deviceIsMobile ? {} : {'maxWidth' : '70%'}}>More projects to see</h2>
+                                      <h2 style={!deviceIsMobile ? {} : {'maxWidth' : '70%'}}>More projects to see</h2>
                                       {/* <p>Discover how the best of the best use DAMAC to find a home</p> */}
                                     </div>
                                   

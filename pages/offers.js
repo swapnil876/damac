@@ -150,7 +150,7 @@ export const getServerSideProps = async () => {
     entity1.map((v,i)=>{
       console.log(v);
       if(v.fieldImageOffer != null)
-      offer.push({imageUrl:v.fieldImageOffer.url,title:v.fieldImageOffer.title,description:v.fieldDescriptionOffer})
+      offer.push({imageUrl:v.fieldImageOffer.url,title:v.title,description:v.fieldDescriptionOffer})
       else
       offer.push({imageUrl:"",title:"",description:v.fieldDescriptionOffer})
       // v.imageUrl = v.fieldImageOffer.url;
@@ -165,7 +165,7 @@ export const getServerSideProps = async () => {
         props: {
           offers: offer,
           nav:nav,
-       othernav:othernav
+         othernav:othernav
           // entity2: entity2
         }
       }

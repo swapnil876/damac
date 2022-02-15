@@ -21,10 +21,15 @@ export default function ContactForm({ initialValues, address , heading}) {
 
 
     const [values, setValues] = useState(initialValues);
+    const [deviceIsMobile, setDeviceIsMobile] = useState(false);
 
     useEffect(() => {
          //   importing bootstrap js
          import("bootstrap/dist/js/bootstrap");
+
+         if ( isMobile ) {
+            setDeviceIsMobile( true );
+          }
      }, [])
 
     function handleChange(e) {
@@ -76,7 +81,7 @@ export default function ContactForm({ initialValues, address , heading}) {
         <>
             <div className="container">
                        {
-                           !isMobile ? 
+                           !deviceIsMobile ? 
                            <div className="row">
                            <div className="col-lg-7 col-md-9">
                            <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
@@ -234,7 +239,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                             :
                             <div className="row">
                             <div className="col-lg-7 col-md-9">
-                            <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
+                            <div className={'enquiry-form-wrapper'} style={{ 'padding': '0px 0' }}>
 
                             <h2 className={styles['example-class']}>Stay in touch with Us.</h2>
 

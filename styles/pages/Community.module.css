@@ -368,9 +368,13 @@ input.range-slider {
 }
 
 .about-location .brand-partners .brand-icons img {
-    width: 24%;
+    width: 100%;
 }
-
+.about-location .brand-partners .brand-icons .column{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
 .about-location p {
     font-family: "Roboto";
     font-style: normal;

@@ -93,7 +93,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                     </div>:
                       <div className={styles['mortage_calculator_left']}>
                       <h1>Mortgage Calculator</h1>
-                      <p>Estimate how much you could be paying for your mortgage.</p>
+                      <p className={styles['under_banner']}>Estimate how much you could be paying for your mortgage.</p>
                       <div className={styles['calculator-inner']}>   
                       <div className="row">
                         <div className="col-md-6">

@@ -19,10 +19,12 @@ import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
 // import styles from '../styles/pages/Quick.module.css'
 
-
+// importing React Select
+import Select from "react-dropdown-select";
 
 
 import styles from '../styles/pages/dividends.module.css'
+import style from '../styles/components/PageTabs.module.css';
 
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
@@ -39,12 +41,23 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 function Dividends( { mobileDevice , entity1,fieldTabs,iframe, nav, othernav} ) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  const [tabLinksArray , setTabLinksArray] = useState([]);
+  const [currentSection, showCurrentSection] = useState('Dividends');
+
+
   useEffect(() => {
       if ( isMobile ) {
         setDeviceIsMobile( true );
       }
    }, [])
- 
+
+  //  useEffect(() => {
+  //   setTabLinksArray([...fieldTabs]);
+  //   fieldTabs = tabLinksArray;
+  //  })
+
+   
+
 
   // Breadcrumbs links
   const crumbs = [
@@ -72,6 +85,17 @@ function Dividends( { mobileDevice , entity1,fieldTabs,iframe, nav, othernav} ) 
   
 
 
+  const optionsInHere = fieldTabs.map( (item) => {
+    return { 
+      value: item.label, 
+      label: item.label
+    }
+ })
+
+const options = [
+  ...optionsInHere
+];
+
   return (
     <div className='quickfactsheetbody'>
 
@@ -87,22 +111,44 @@ function Dividends( { mobileDevice , entity1,fieldTabs,iframe, nav, othernav} ) 
 
       <main className="main main-regular quick-factsheet">
 
-        <Breadcrumbs crumbs={ crumbs }/>
-
-        {/* <HeadingTitle 
-          title={entity1.fieldPageTitleD.value} 
-          btnLink={ downloadBtn } 
+      <HeadingTitle 
+          title="Dividends" 
+          btnLink=""
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
-        >
-          
-        </HeadingTitle> */}
+        />
+        <Breadcrumbs crumbs={ crumbs }/>
 
         <div className='container'>
-            <PageTabs tabLinks={ fieldTabs} pageSelectPlaceholder="Dividends"></PageTabs>
+            {/* <PageTabs tabLinks={ fieldTabs} pageSelectPlaceholder="Dividends"></PageTabs> */}
+        <div className={ style['pagetabs'] }>
+        {
+          !deviceIsMobile ?       
+          fieldTabs.map( ( link, index ) => (
+
+              <Link key={ index } href="">
+                <a className={ `${style['pagetabs-link']} ${ ((currentSection == "Dividends" && index == 0) || (currentSection == "Capital History" && index == 1) ) ? style['active'] : '' }` } onClick={()=>{showCurrentSection(link.label)}}>
+                  <span>{ link.label }</span>
+                </a>
+              </Link>
+
+            ) )         
+          :
+          <div>
+             <Select className="page_tabs_for_mobile" name=""
+                   value={options.value}
+                   options={options}
+                   placeholder={options[0].label} onChange={()=>{
+                     showCurrentSection(options.label)
+                     }} /> 
+          </div>
+        }
+        </div>
         </div>
 
-        <section className='section'>
+        {
+          currentSection == 'Dividends' ?
+          <section className='section'>
           <div className='container'>
              
              <div className={`${styles["table-wrapper-dividend"]} my-4`}>
@@ -126,8 +172,37 @@ function Dividends( { mobileDevice , entity1,fieldTabs,iframe, nav, othernav} ) 
             
 
           </div>
-        </section>
+          </section>
+        : ''
+        }
 
+        {
+          currentSection == 'Capital History' ?
+          <section className='section'>
+          <div className='container'>
+
+          {/* <!-- capital tab --> */}
+                {/* <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe> */}
+                kdsbuhhuhknvdhkvdkvvvdjkvdjkvdjkvdjkvjkvjkv jvcjk
+             
+
+             <div className='enquiry-form-section'>
+               <div className='row'>
+                 <div className='col-md-5'>
+                   <h2>Send us an enquiry</h2>
+                 </div>
+                 <div className='col-md-7'>
+                   <ContactForm initialValues={ {'gender': 'Mr'} }/>
+                 </div>
+               </div>
+             </div>
+
+            
+
+          </div>
+          </section> : ''
+        }
+       
         <FooterMoreLinks/>
 
       </main>
@@ -153,15 +228,15 @@ export async function getStaticProps(context) {
 
   
   // Use this for novigation
-  const  data2  = await client.query({ query: NAVIGATION });
-  const  data1  = await client.query({ query: PARENTMENUITEMS });
+  const  dataNav2  = await client.query({ query: NAVIGATION });
+  const  dataNav1  = await client.query({ query: PARENTMENUITEMS });
   let nav = [];
   let othernav = [];
-  if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
-    let submenu = data2.data.nodeQuery.entities[0];
-    let menu = data1.data.taxonomyTermQuery.entities;
-    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-    // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+  if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
+    let submenu = dataNav2.data.nodeQuery.entities[0];
+    let menu = dataNav1.data.taxonomyTermQuery.entities;
+    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+    // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
     menu.map((m,i)=>{
       othernav = [];
       let des = m.description==null?'': m.description.value
@@ -213,7 +288,7 @@ export async function getStaticProps(context) {
     }
      
   });
-  console.log(data1);
+  console.log("tablinks",fieldTabs);
 
 
 
