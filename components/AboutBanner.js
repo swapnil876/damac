@@ -6,7 +6,7 @@ import styles from '../styles/HomeBanner.module.css'
 import aboutBanner from '../public/images/about-bg.png'
 import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
-export default function AboutBanner( { bannerImage, children, entity1}  ) {
+export default function AboutBanner( { bannerImage, children, entity1, responsiveHeights}  ) {
 
 
   // const banner = (
@@ -35,7 +35,7 @@ export default function AboutBanner( { bannerImage, children, entity1}  ) {
     );
 
   return (
-    <div className={styles['homepage-hero-section']}>
+    <div className={styles['homepage-hero-section']} style={{'height': responsiveHeights}}>
       
       { banner }
       { children }

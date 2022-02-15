@@ -52,7 +52,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                 {
                     ! isMobile ? 
                     <div className={styles['filter_main_wrap']}>
-                    <div className="container">
+                    <div className="container" style={{'position':'relative'}}>
                         <div className={styles['filter_option_wrap']}>
                             <form action="">
                                 <div className="row">
@@ -109,7 +109,13 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     </div>
                                 </div>
                             </form>
-                        </div>                  
+                        </div> 
+                        <div className={styles['map_list_view']}>
+                               <ul className="list-unstyled d-flex">
+                                   <li><a href="#">List</a></li>
+                                   <li className={styles['active']}><a href="#">Map</a></li>
+                               </ul>
+                           </div>                 
                     </div>     
                     </div> :  ''
                 }
@@ -123,7 +129,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                         <h1>Search results “Dubai”</h1>
                                         <p>32 properties found</p>
                                     </div>
-                                    <div>
+                                    <div style={{'marginRight':'20px'}}>
                                         <select>
                                             <option value="all" selected>All</option>
                                         </select>

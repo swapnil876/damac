@@ -544,6 +544,7 @@ section.destance {
 }
 
 .why-invest {
+    background-image:url('/damac-static/images/invest-dubai-bg.jpg');
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1181,7 +1182,8 @@ ul.bedroom-detail {
     }
 
     .why-invest {
-        padding: 57px 0 48px
+        padding: 57px 0 48px;
+        background: #111;
     }
 
     .about-location-style-2 .solid-icon {
