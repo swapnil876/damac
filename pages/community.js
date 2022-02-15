@@ -33,6 +33,9 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { COMMUNITY } from '../graphql/community';
 
 
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+
 
 // FA
 import ReactDOM from 'react-dom'
@@ -45,7 +48,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 // Google Map Plugin
 import GoogleMapReact from 'google-map-react';
 
-function Community({entity1}) {
+function Community({entity1, nav, othernav}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -193,7 +196,7 @@ function Community({entity1}) {
         <link rel="canonical" href={entity1.fieldCanonicalUrlComm} />
       </Head>
 
-      <Navbar></Navbar>
+      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
       <main className="main about-main">
         <header className={styles['community-banner']}>
@@ -959,11 +962,50 @@ function Community({entity1}) {
 
 
 export const getStaticProps = async () => {
-
+  
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+
+  
+// Use this for novigation
+const  data2  = await client.query({ query: NAVIGATION });
+const  data1  = await client.query({ query: PARENTMENUITEMS });
+let nav = [];
+let othernav = [];
+if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+  let submenu = data2.data.nodeQuery.entities[0];
+  let menu = data1.data.taxonomyTermQuery.entities;
+  console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+  // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+  menu.map((m,i)=>{
+    othernav = [];
+    let des = m.description==null?'': m.description.value
+    nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+    if((i+1)==menu.length){
+      submenu.fieldMultipleMenuItems.map((k,l)=>{
+        if(k.entity.fieldMenuType!=null){
+          nav.filter((o,h)=>{
+            if(k.entity.fieldMenuType.entity.tid == o.tid){
+              o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+            }
+          });
+        }
+        else{
+          othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+        }
+      })
+    }
+  });
+ 
+}
+  // end
+
+
+
+
 
   const  data  = await client.query({ query: COMMUNITY });
   let entity1 = data.data.nodeQuery.entities[0];
@@ -971,6 +1013,8 @@ export const getStaticProps = async () => {
    return {
       props: {
         entity1: entity1,
+        nav:nav,
+       othernav:othernav
       }
     }
 

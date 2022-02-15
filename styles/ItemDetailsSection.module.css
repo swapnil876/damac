@@ -47,6 +47,9 @@
 
 
 @media ( max-width: 768px ) {
+	.detailBoxes {
+		padding: 50px 0;
+	}
 	.mobile-bg-image {
 		display: block;
 	}

@@ -33,10 +33,13 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
 import { BLOGS } from '../../graphql/blogs';
 
- export default function BlogDetails({entity1,bloglist}){
+import { NAVIGATION } from '../../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
+
+ export default function BlogDetails({entity1,bloglist, nav, othernav}){
      return(
          <div className="BlogDetails">
-             <Navbar></Navbar>
+             <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
              <main className="main">
                 <section className={styles['press-hero']} style={{'background-image': 'url(../damac-static/images/blog-bg.png)'}}>   
                 <div className="container" style={{'height':'100%'}}>
@@ -115,13 +118,46 @@ import { BLOGS } from '../../graphql/blogs';
  }
 
  export const getServerSideProps = async (cp) => {
-
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
   
-  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.slug} });
+// Use this for novigation
+const  dataNav2  = await client.query({ query: NAVIGATION });
+const  dataNav1  = await client.query({ query: PARENTMENUITEMS });
+let nav = [];
+let othernav = [];
+if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
+  let submenu = dataNav2.data.nodeQuery.entities[0];
+  let menu = dataNav1.data.taxonomyTermQuery.entities;
+  console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+  // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+  menu.map((m,i)=>{
+    othernav = [];
+    let des = m.description==null?'': m.description.value
+    nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+    if((i+1)==menu.length){
+      submenu.fieldMultipleMenuItems.map((k,l)=>{
+        if(k.entity.fieldMenuType!=null){
+          nav.filter((o,h)=>{
+            if(k.entity.fieldMenuType.entity.tid == o.tid){
+              o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+            }
+          });
+        }
+        else{
+          othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+        }
+      })
+    }
+  });
+ 
+}
+  // end
+
+  
+  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:'65'} });
   const data1 = await client.query({ query: BLOGS });
   if(data.data.nodeQuery.entities.length == 0){
     console.log(cp);
@@ -138,7 +174,9 @@ import { BLOGS } from '../../graphql/blogs';
    return {
       props: {
         entity1: entity1,
-        bloglist: bloglist
+        bloglist: bloglist,
+        nav:nav,
+        othernav:othernav
         // entity2: entity2
       }
     }

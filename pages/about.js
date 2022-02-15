@@ -27,7 +27,8 @@ import { HISTORY } from '../graphql/master/history';
 
 
 
-
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
  // React Responsive
@@ -49,7 +50,7 @@ import 'react-multi-carousel/lib/styles.css';
 import aboutBanner from '../public/images/about-bg.png'
 
 
-function About({entity1}) {
+function About({entity1, nav, othernav}) {
   var [fieldMultipleTeamOnly5, setFieldMultipleTeamOnly5] = useState('');
   var [fieldMultipleTeamAfter5, setFieldMultipleTeamAfter5] = useState('');
 
@@ -139,7 +140,7 @@ function About({entity1}) {
       </Head>
 
 
-      <Navbar></Navbar>
+      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
 
       <main className="main about-main">
@@ -497,6 +498,47 @@ export const getStaticProps = async () => {
     cache: new InMemoryCache()
   });
 
+
+
+  // Use this for novigation
+  const  data2  = await client.query({ query: NAVIGATION });
+  const  data1  = await client.query({ query: PARENTMENUITEMS });
+  let nav = [];
+  let othernav = [];
+  if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+    let submenu = data2.data.nodeQuery.entities[0];
+    let menu = data1.data.taxonomyTermQuery.entities;
+    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+    // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+    menu.map((m,i)=>{
+      othernav = [];
+      let des = m.description==null?'': m.description.value
+      nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+      if((i+1)==menu.length){
+        submenu.fieldMultipleMenuItems.map((k,l)=>{
+          if(k.entity.fieldMenuType!=null){
+            nav.filter((o,h)=>{
+              if(k.entity.fieldMenuType.entity.tid == o.tid){
+                o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+              }
+            });
+          }
+          else{
+            othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+          }
+        })
+      }
+    });
+   
+  }
+    // end
+
+
+
+
+
+
+
   const  data  = await client.query({ query: ABOUT_US });
   const history = await client.query({ query: HISTORY });
   // console.log('about',data);
@@ -510,7 +552,9 @@ export const getStaticProps = async () => {
    return {
       props: {
         entity1: entity1,
-        entity2: entity2
+        entity2: entity2,
+        nav:nav,
+        othernav:othernav
       }
     }
 

@@ -10,7 +10,7 @@ import VideoBanner from '../components/VideoBanner'
 import Footer from '../components/Footer'
 
 
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 
 import styles from '../styles/pages/career.module.css'
 
@@ -20,10 +20,22 @@ import TextSection from '../components/text-section'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { CAREERS } from '../graphql/career';
 
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+
 import {isMobile} from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive'
 
-function Career({entity1}) {
+function Career({entity1, nav, othernav}) {
+
+const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+
+useEffect(()=>{
+  if(isMobile){
+    setDeviceIsMobile(true);
+  }
+}, []);
+
   return (
     <div className='aboutbody'>
 
@@ -39,18 +51,14 @@ function Career({entity1}) {
       </Head>
 
 
-      <Navbar></Navbar>
-
-
-      
+      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
 
       <main className="main career-main">
        
-
        <VideoBanner bannerImage={isMobile?entity1.fieldHeaderImageVideoMobile.entity.url:entity1.fieldHeaderImageVideoDesktop.entity.url}> </VideoBanner>
 
-       <TextSection>         
+       <TextSection custom_padding={deviceIsMobile ? '50px 0 0' : '80px 0 0'} >         
          <div className="section-title text-center">
            <h1 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Welcome to our World</h1>
            <p className={styles['under_main_in_career_title']}>Make a career with DAMAC Properties and the DICO Group</p>
@@ -75,7 +83,7 @@ function Career({entity1}) {
        </TextSection>
 
 
-       <TextSection>
+       <TextSection custom_padding={deviceIsMobile ? '10px 0 50px' : '80px 0 0'}>
          
          <div className="section-title text-center">
            <h3 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Words from our Staff</h3>
@@ -118,11 +126,50 @@ function Career({entity1}) {
 }
 
 export const getStaticProps = async () => {
-
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+
+
+  
+       // Use this for novigation
+       const  data2  = await client.query({ query: NAVIGATION });
+       const  data1  = await client.query({ query: PARENTMENUITEMS });
+       let nav = [];
+       let othernav = [];
+       if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+         let submenu = data2.data.nodeQuery.entities[0];
+         let menu = data1.data.taxonomyTermQuery.entities;
+         console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+         // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+         menu.map((m,i)=>{
+           othernav = [];
+           let des = m.description==null?'': m.description.value
+           nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+           if((i+1)==menu.length){
+             submenu.fieldMultipleMenuItems.map((k,l)=>{
+               if(k.entity.fieldMenuType!=null){
+                 nav.filter((o,h)=>{
+                   if(k.entity.fieldMenuType.entity.tid == o.tid){
+                     o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+                   }
+                 });
+               }
+               else{
+                 othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+               }
+             })
+           }
+         });
+        
+       }
+         // end
+
+
+
+
 
   const  data  = await client.query({ query: CAREERS });
   let entity1 = data.data.nodeQuery.entities[0];
@@ -130,6 +177,8 @@ export const getStaticProps = async () => {
    return {
       props: {
         entity1: entity1,
+        nav:nav,
+        othernav:othernav
         // entity2: entity2
       }
     }

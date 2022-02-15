@@ -29,8 +29,10 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
-export default function CompanyAnnouncements({entity,unique,year_announcement}){
+export default function CompanyAnnouncements({entity,unique,year_announcement, nav, othernav}){
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     const [yearData, setYearData] = useState(year_announcement)
@@ -121,7 +123,7 @@ let selectYear = (yr,arr,l,type)=>{
 
 return (
 <div>
-<Navbar navbarStyle='dark' className='navbar-dark'></Navbar>
+<Navbar navbarStyle='dark' className='navbar-dark' navigationBar={nav} otherNav={othernav}></Navbar>
 
     <main className="main main-regular contactusinvestor">
 
@@ -326,10 +328,48 @@ function getDateTime(date){
 }
 
 export const getStaticProps = async () => {
+
     const client = new ApolloClient({
       uri: process.env.STRAPI_GRAPHQL_URL,
       cache: new InMemoryCache()
     });
+
+
+    
+ // Use this for novigation
+ const  data2  = await client.query({ query: NAVIGATION });
+ const  data1  = await client.query({ query: PARENTMENUITEMS });
+ let nav = [];
+ let othernav = [];
+ if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+   let submenu = data2.data.nodeQuery.entities[0];
+   let menu = data1.data.taxonomyTermQuery.entities;
+   console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+   // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+   menu.map((m,i)=>{
+     othernav = [];
+     let des = m.description==null?'': m.description.value
+     nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+     if((i+1)==menu.length){
+       submenu.fieldMultipleMenuItems.map((k,l)=>{
+         if(k.entity.fieldMenuType!=null){
+           nav.filter((o,h)=>{
+             if(k.entity.fieldMenuType.entity.tid == o.tid){
+               o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+             }
+           });
+         }
+         else{
+           othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+         }
+       })
+     }
+   });
+  
+ }
+   // end
+
+
     let year_announcement = [];
     let unique = [];
     let checkUniqe = [];
@@ -351,7 +391,9 @@ export const getStaticProps = async () => {
         props: {
           entity1: entity1,
           unique: unique,
-          year_announcement:year_announcement
+          year_announcement:year_announcement,
+          nav:nav,
+          othernav:othernav
         }
     }
   

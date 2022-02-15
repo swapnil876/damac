@@ -33,8 +33,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
 
-function Home( {entity1, nav, othernav} ) {
-  // 
+function Home( {entity1, nav, othernav} ) { 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -62,7 +61,7 @@ function Home( {entity1, nav, othernav} ) {
         <meta name="title" content={entity1.fieldMetaTitleHome} />
         <meta name="description" content={entity1.fieldMetaDescriptionHome} />
         <meta name="keywords" content={entity1.fieldMetaKeywordsHome} />
-        
+       
         <link rel="icon" href="/favicon.ico" />
 
         <link rel="canonical" href={entity1.fieldCanonicalUrlHome} />
@@ -84,7 +83,7 @@ function Home( {entity1, nav, othernav} ) {
             { (deviceIsMobile) &&
               <div className="homeMobileBanner" style={{'background-image': 'url(' + entity1.fieldMainImageMobileHome.url + ')'}}>
                 <div className="container">
-                  
+                 
                   <div className="homemobileBannerText">
                     <h1>{entity1.title}</h1>
                     <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
@@ -109,7 +108,7 @@ function Home( {entity1, nav, othernav} ) {
                  
       </main>
 
-      
+     
     </div>
   )
 }
@@ -135,7 +134,8 @@ export const getStaticProps = async () => {
     // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
     menu.map((m,i)=>{
       othernav = [];
-      nav.push({name:m.name,tid:m.tid,submenu:[],link:m.description.value});
+      let des = m.description==null?'': m.description.value
+      nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
       if((i+1)==menu.length){
         submenu.fieldMultipleMenuItems.map((k,l)=>{
           if(k.entity.fieldMenuType!=null){
@@ -151,7 +151,7 @@ export const getStaticProps = async () => {
         })
       }
     });
-    
+   
   }
     // end
   let entity1 = data.data.nodeQuery.entities[0];

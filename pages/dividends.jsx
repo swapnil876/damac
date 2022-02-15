@@ -34,8 +34,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
-function Dividends( { mobileDevice , entity1,fieldTabs,iframe} ) {
+function Dividends( { mobileDevice , entity1,fieldTabs,iframe, nav, othernav} ) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -81,7 +83,7 @@ function Dividends( { mobileDevice , entity1,fieldTabs,iframe} ) {
       </Head>
 
 
-      <Navbar navbarStyle='dark' className='navbar-dark'></Navbar>
+      <Navbar navbarStyle='dark' className='navbar-dark' navigationBar={nav} otherNav={othernav}></Navbar>
 
       <main className="main main-regular quick-factsheet">
 
@@ -142,11 +144,49 @@ export default Dividends
 
 
 export async function getStaticProps(context) {
+  
   // Device React
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  
+  // Use this for novigation
+  const  data2  = await client.query({ query: NAVIGATION });
+  const  data1  = await client.query({ query: PARENTMENUITEMS });
+  let nav = [];
+  let othernav = [];
+  if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+    let submenu = data2.data.nodeQuery.entities[0];
+    let menu = data1.data.taxonomyTermQuery.entities;
+    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+    // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+    menu.map((m,i)=>{
+      othernav = [];
+      let des = m.description==null?'': m.description.value
+      nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+      if((i+1)==menu.length){
+        submenu.fieldMultipleMenuItems.map((k,l)=>{
+          if(k.entity.fieldMenuType!=null){
+            nav.filter((o,h)=>{
+              if(k.entity.fieldMenuType.entity.tid == o.tid){
+                o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+              }
+            });
+          }
+          else{
+            othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+          }
+        })
+      }
+    });
+   
+  }
+    // end
+
+
+
 
   const  data  = await client.query({ query: DIVIDENDS });
   let entity1 = data.data.nodeQuery.entities[0];
@@ -187,7 +227,9 @@ export async function getStaticProps(context) {
        mobileDevice: deviceType,
        entity1: entity1,
        fieldTabs:fieldTabs,
-       iframe:data1
+       iframe:data1,
+       nav:nav,
+       othernav:othernav
     }, // will be passed to the page component as props
   }
 }
