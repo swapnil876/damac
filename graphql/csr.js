@@ -56,9 +56,7 @@ const _CSR = gql`
               url
             }
 
-            fieldMission
             fieldWhyCsr
-            fieldCause
             
             fieldCanonicalUrlCsr
             fieldMetaTitleCsr
@@ -69,7 +67,13 @@ const _CSR = gql`
             fieldMilestoneHeader
             fieldMilestoneDescription
             fieldFoundationHeader
-            fieldMissionHeader
+            fieldSectionContent{
+              value
+            }
+            fieldSectionHeading{
+              value
+            }
+          
           }
       }
     }

@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const PROJECTSEARCH = gql`
   query{
-    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["project"]}], "title":{contains:"SS"}}) {
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["project"]}], title:{contains:"SS"}}) {
       entities {
         ... on NodeProject{
             nid

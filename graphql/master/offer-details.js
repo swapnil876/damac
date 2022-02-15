@@ -1,12 +1,11 @@
 import { gql } from '@apollo/client';
 
-const OFFERS = gql`
-  query {
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["offers"]}]}) {
+const OFFERSDETAILS = gql`
+  query OFFERSDETAILS($id: String!) {
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "nid", value: [$id]}]}) {
     entities {
       ... on NodeOffers{
          nid,
-        title
          fieldImageOffer {
            targetId
            title
@@ -22,4 +21,4 @@ const OFFERS = gql`
   }
 }`;
 
-export { OFFERS };
+export { OFFERSDETAILS };

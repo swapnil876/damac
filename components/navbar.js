@@ -402,7 +402,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                 <div className="biglinks">
                 {
                   navigationBar.map((m,p)=>(
-                    <div className={`biglink-container  ${ m.submenu.length>0? 'biglinks-dropdown' : '' }`} >
+                    <div key={p} className={`biglink-container  ${ m.submenu.length>0? 'biglinks-dropdown' : '' }`} >
                       <ActiveLink href="#" activeClassName="active"  >
                       {
                         m.submenu.length>0?(
@@ -448,7 +448,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                   navigationBar.length>0?(
                     navigationBar.map((m,p)=>{
                     m.submenu.length>0?(
-                      <div className="biglink-container biglinks-dropdown">
+                      <div key={p} className="biglink-container biglinks-dropdown">
                         <ActiveLink href="#" activeClassName="active"  >
                              <a className="biglink" data-dropdownkey="browse-properties" onClick={ handleBrowsePropertiesBiglink }>
                                  <span>Browse Properties</span>
@@ -499,7 +499,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                       <ul className="menu-list">
                       {
                         otherNav.map((n,m)=>(
-                          <li>
+                          <li key={m}>
                             <Link href={n.url}>
                               <a>{n.label}</a>
                             </Link>

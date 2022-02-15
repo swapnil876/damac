@@ -208,9 +208,7 @@ function Bookstep2({entity1, nav, othernav}) {
                             </form>
                         </div>: ""
         }
-        <section>
         
-        </section>
        <Footer></Footer>
     </div>
   )

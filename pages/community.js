@@ -42,7 +42,9 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-
+import { BsBookmark } from 'react-icons/bs';
+import { FaBed } from 'react-icons/fa';
+import { FaBath } from 'react-icons/fa';
 
 
 // Google Map Plugin
@@ -93,93 +95,172 @@ function Community({entity1, nav, othernav}) {
        {
             customModal ? 
             <div className="custom_modal_contain">
-              <a onClick={()=>{openCustomModal(false)}}> </a>
-                <div className={`${styles["schedule_callback_modal"]} popup_modal`}>
-                   <div className="close" onClick={()=>{
+              
+                <section className={ styles["book-step-main"]}>
+                    <div className="close" onClick={()=>{
                       openCustomModal(false);
                       }}>
                       <span>
-                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
-          <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
-          </svg>
+                                  <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+                      <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                      </svg>
                       </span>
                     </div>
-                    <div className="row justify-content-center">
-                    <div className="col-lg-7 col-md-9">
-                        <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
-
-                            <div style={{'margin-bottom':'60px'}}>
-                            <h2 className={style['example-class']} style={{ 'margin': '0', 'textAlign':'center' }}>Schedule a Callback</h2>
-                            <p style={{ 'margin': '0', 'textAlign':'center' }}>Hassle-free booking experience. Only from DAMAC.</p>
-                            </div>
-
-                            <div className={`form-row form-row-2`}>
-
-                                <div className={`form-item-col`}>
-                                    <div className='custom-input-element'>
-                                        <label className='input-element-wrapper'>
-
-                                            <div className='input-element text-element'>
-                                                <input type='text' name='firstName' />
-                                                <label className={`custom-floating-label`} htmlFor={'firstName'}>First name</label>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className={ styles["book-left-main"]}>
+                                    <h1>Golf Town at DAMAC Hills</h1>
+                                    <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+                                    <div className={ styles["selected-card-main"]}>
+                                        <div className={ styles['select-card-img-wrap'] }>
+                                            <img src="images/book-step-card-img.jpg" alt="card-img" className="img-fluid" />
+                                            <div className={ styles["play-btn-card"]}>
+                                                <a href="#"><i className="fas fa-play"></i></a>
                                             </div>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div className={`form-item-col`}>
-
-                                    <div className='custom-input-element'>
-                                        <label className='input-element-wrapper'>
-
-                                            <div className='input-element text-element'>
-                                                <input type='text' name='lastName' />
-                                                <label className={`custom-floating-label`} htmlFor={'lastName'}>Last name</label>
-                                            </div>
-                                        </label>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            
-                            <div className={`form-row form-row-2`}>
-                                <div className={`form-item-col`}>
-                                            <div className='custom-input-element'>
-                                                <label className='input-element-wrapper'>
-
-                                                    <div className='input-element text-element phone-number-element'>
-                                                        <input type='text' name='phoneNumber' />
-                                                        <label className={`custom-floating-label`} htmlFor={'phoneNumber'}>Phone number</label>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                </div>
-                                <div className={`form-item-col`}>
-
-                                <div className='custom-input-element'>
-                                    <label className='input-element-wrapper'>
-
-                                        <div className='input-element email-element'>
-                                            <input type='email' name='email' />
-                                            <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
                                         </div>
-                                    </label>
-                                </div>
-
+                                        <ul className={`${styles["bookmark_main"]} ${styles["d-flex"]} ${styles["float-end"]} ${styles["list-unstyled"]}`}>
+                                            <li><a href="#"><BsBookmark /></a></li>
+                                        </ul>
+                                        <h6>Kiara 2 Bedroom Apartment</h6>
+                                        <p>DAMAC Hills, Dubailand, Dubai</p>
+                                        <ul className={`${styles["bedroom-detail"]} ${styles["list-unstyled"]}`}>
+                                            <div className="row">
+                                                <div className="col-md-7">
+                                                <li>
+                                                <a href="#"><img src="../public/images/price-tag 1.png" className={ styles["img-fluid"]} />From AED 1,213,515*</a>
+                                                </li>
+                                                </div>
+                                                <div className="col-md-5">
+                                                <li>
+                                                <a href="#"><img src="../public/images/house (2) 1.png" className={ styles["img-fluid"]} />2,750 sqft</a>
+                                                </li>
+                                                </div>
+                                                <div className="col-md-7">
+                                                <li>
+                                                <a href="#"><img src="../public/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> 3 Bedrooms</a>
+                                                </li>
+                                                </div>
+                                                <div className="col-md-5">
+                                                <li>
+                                                <a href="#"><img src="../public/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
+                                                 </li>
+                                                </div>
+                                            </div>   
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-
-
-                            <div className={`form-row`}>
-                                <div className={`form-item-col`}>
-                                    <button className="custom-submit-btn" style={isMobile ? {'width':'100%'}: {'width':'70%', 'margin':'auto'}}>Submit</button>
+                            <div className="col-md-6">
+                                {
+                                    deviceIsMobile ? '' :
+                                    <div className={ styles['book-form-main']}>
+                                    <h1>Make this Home Yours in 5 Steps </h1>
+                                    <p>Hassle-free booking experience. Only from DAMAC.</p>
+                                    <form action="">
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className={styles["form-field"]}>
+                                                    <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="First Name" />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className={styles["form-field"]}>
+                                                    <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Last Name" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className={styles["form-field"]}>
+                                                    <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Mobile number" />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className={styles["form-field"]}>
+                                                    <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Email" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row checkbox-row">
+                                            <div className="col-md-6">
+                                                <div className={styles["checkbox-form-field"]}>
+                                                    <input type="checkbox" className={styles["form-check"]} onChange={handleChange} id="token" />
+                                                    <label htmlFor="token">AED 15,120<br /><span>Token Amount</span></label>
+                                                </div>
+                                            </div> 
+                                            <div className="col-md-6">
+                                                <div className={styles["checkbox-form-field"]}>
+                                                    <input type="checkbox" className={styles["form-check"]} id="total" />
+                                                    <label htmlFor="total">AED 1,512,221<br /><span>Total Price</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={styles["book-form-btn"]}>
+                                            <button>Get Started</button>
+                                        </div>
+                                    </form>
                                 </div>
+                                }
+                            </div>
+                            <div className={styles["close-btn"]}>
+                              <a href="#"><i className="fas fa-times"></i></a>
                             </div>
                         </div>
                     </div>
-                </div>
-                </div>
+                </section>
+
+                  {
+                        deviceIsMobile ? 
+                        <div className={ styles['book-form-main']}>
+                            <h1>Make this Home Yours in 5 Steps </h1>
+                            <p>Hassle-free booking experience. Only from DAMAC.</p>
+                            <form action="">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="First Name" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Last Name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Mobile number" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className={styles["form-field"]}>
+                                            <input type="text" onChange={handleChange} className={styles["form-control"]} placeholder="Email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row checkbox-row" style={{'margin-top':'32px'}}>
+                                    <div className="col-md-6">
+                                        <div className={styles["checkbox-form-field"]}>
+                                            <input type="checkbox" className={styles["form-check"]} onChange={handleChange} id="token" />
+                                            <label htmlFor="token">AED 15,120<br /><span>Token Amount</span></label>
+                                        </div>
+                                    </div> 
+                                    <div className="col-md-6">
+                                        <div className={styles["checkbox-form-field"]}>
+                                            <input type="checkbox" className={styles["form-check"]} id="total" />
+                                            <label htmlFor="total">AED 1,512,221<br /><span>Total Price</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles["book-form-btn"]}>
+                                    <button>Get Started</button>
+                                </div>
+                            </form>
+                        </div>: ""
+                  }
             </div> :
             ""
           }
@@ -959,7 +1040,14 @@ function Community({entity1, nav, othernav}) {
   )
 }
 
+function handleChange(e) {
+    const { name, value } = e.target;
 
+    setValues({
+        ...values,
+        [name]: value,
+    });
+}
 
 export const getStaticProps = async () => {
   
