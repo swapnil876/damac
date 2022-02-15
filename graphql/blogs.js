@@ -40,8 +40,18 @@ query {
         fieldMetaDescriptionBlog
         fieldMetaKeywordsBlog
         fieldCanonicalUrlBlog
-        fieldTag
-        fieldAuthor
+        fieldTag {
+          targetId
+          entity{
+            name
+          }
+        }
+        fieldAuthor {
+          targetId
+          entity{
+            name
+          }
+        }
       }
     }
   }
