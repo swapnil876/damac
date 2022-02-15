@@ -158,7 +158,7 @@ export const getServerSideProps = async () => {
       // v.description = v.fieldDescriptionOffer;
     });
     // let entity2 = data.data.nodeQuery.entities[1];
-    console.log('entity2',offer);
+    console.log('entity2*****************',offer);
     // console.log('entity2',entity2);
     // console.log(data.data.nodeQuery.entities);
      return {

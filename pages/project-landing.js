@@ -28,7 +28,7 @@ import styles from '../styles/pages/project-landing.module.css'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import {PROJECTSEARCH} from '../graphql/project-search';
+import {PROJECT} from '../graphql/project';
 import {COUNTRY} from '../graphql/master/country';
 import {CITY} from '../graphql/master/cityjs';
 import { NAVIGATION } from '../graphql/master/navigation';
@@ -518,7 +518,7 @@ export const getServerSideProps = async (cp) => {
         
       }
     // end
-    const  data  = await client.query({ query: PROJECTSEARCH, variables:{field:field,value:value} });
+    const  data  = await client.query({ query: PROJECT, variables:{field:field,value:value} });
     const  data1  = await client.query({ query: COUNTRY });
     const  data2  = await client.query({ query: CITY });
 
