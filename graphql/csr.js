@@ -67,11 +67,13 @@ const _CSR = gql`
             fieldMilestoneHeader
             fieldMilestoneDescription
             fieldFoundationHeader
-            fieldWhyCsrHeading
-            fieldMilestoneHeader
-            fieldMilestoneDescription
-            fieldFoundationHeader
-            fieldMilestoneHeader
+            fieldSectionContent{
+              value
+            }
+            fieldSectionHeading{
+              value
+            }
+          
           }
       }
     }
