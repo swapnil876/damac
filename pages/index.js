@@ -28,11 +28,13 @@ import bannerImage from '../public/images/hero-image-sm.png'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { HOME } from '../graphql/home';
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
 
-function Home( {entity1} ) {
-  // 
+function Home( {entity1, nav, othernav} ) {
+  //
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -60,14 +62,14 @@ function Home( {entity1} ) {
         <meta name="title" content={entity1.fieldMetaTitleHome} />
         <meta name="description" content={entity1.fieldMetaDescriptionHome} />
         <meta name="keywords" content={entity1.fieldMetaKeywordsHome} />
-        
+       
         <link rel="icon" href="/favicon.ico" />
 
         <link rel="canonical" href={entity1.fieldCanonicalUrlHome} />
       </Head>
 
 
-      <Navbar></Navbar>
+      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
 
       <main className="main home-main">
@@ -82,7 +84,7 @@ function Home( {entity1} ) {
             { (deviceIsMobile) &&
               <div className="homeMobileBanner" style={{'background-image': 'url(' + entity1.fieldMainImageMobileHome.url + ')'}}>
                 <div className="container">
-                  
+                 
                   <div className="homemobileBannerText">
                     <h1>{entity1.title}</h1>
                     <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
@@ -107,7 +109,7 @@ function Home( {entity1} ) {
                  
       </main>
 
-      
+     
     </div>
   )
 }
@@ -121,21 +123,48 @@ export const getStaticProps = async () => {
   });
 
   const  data  = await client.query({ query: HOME });
-  // console.log('entity1',data);
+  // Use this for novigation
+  const  data2  = await client.query({ query: NAVIGATION });
+  const  data1  = await client.query({ query: PARENTMENUITEMS });
+  let nav = [];
+  let othernav = [];
+  if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+    let submenu = data2.data.nodeQuery.entities[0];
+    let menu = data1.data.taxonomyTermQuery.entities;
+    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+    // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+    menu.map((m,i)=>{
+      othernav = [];
+      let des = m.description==null?'': m.description.value
+      nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+      if((i+1)==menu.length){
+        submenu.fieldMultipleMenuItems.map((k,l)=>{
+          if(k.entity.fieldMenuType!=null){
+            nav.filter((o,h)=>{
+              if(k.entity.fieldMenuType.entity.tid == o.tid){
+                o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+              }
+            });
+          }
+          else{
+            othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+          }
+        })
+      }
+    });
+   
+  }
+    // end
   let entity1 = data.data.nodeQuery.entities[0];
-  // let entity2 = data.data.nodeQuery.entities[1];
-  // console.log('entity1',entity1);
   let url=entity1.fieldMainImageDesktopHome.url;
   let urlArr = entity1.fieldMainImageDesktopHome.url.split('/');
   urlArr[0] = "https://damac.techsperia.in";
   let updatedlink = urlArr.join('/');
-  // console.log(updatedlink);
-  // console.log('entity2',entity2);
-  // console.log(data.data.nodeQuery.entities);
    return {
       props: {
         entity1: entity1,
-        // entity2: entity2
+        nav:nav,
+        othernav:othernav
       }
     }
 

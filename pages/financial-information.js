@@ -33,7 +33,11 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 import styles from "../styles/pages/financial-information.module.css"
 
-function FinancialInformation( { mobileDevice } ) {
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+
+function FinancialInformation( { mobileDevice, nav, othernav } ) {
 
     // useEffect(() => {
     //     import("bootstrap/dist/js/bootstrap");
@@ -85,7 +89,7 @@ function FinancialInformation( { mobileDevice } ) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar navbarStyle='dark' className='navbar-dark'></Navbar>
+      <Navbar navbarStyle='dark' className='navbar-dark' navigationBar={nav} otherNav={othernav}></Navbar>
       <Breadcrumbs crumbs={ crumbs }/>
         <HeadingTitle 
         title="Financial Information" 
@@ -221,7 +225,46 @@ export default FinancialInformation
 
 
 export async function getStaticProps(context) {
+  
+  // Device React
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
 
+  
+// Use this for novigation
+const  data2  = await client.query({ query: NAVIGATION });
+const  data1  = await client.query({ query: PARENTMENUITEMS });
+let nav = [];
+let othernav = [];
+if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+  let submenu = data2.data.nodeQuery.entities[0];
+  let menu = data1.data.taxonomyTermQuery.entities;
+  console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+  // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+  menu.map((m,i)=>{
+    othernav = [];
+    let des = m.description==null?'': m.description.value
+    nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+    if((i+1)==menu.length){
+      submenu.fieldMultipleMenuItems.map((k,l)=>{
+        if(k.entity.fieldMenuType!=null){
+          nav.filter((o,h)=>{
+            if(k.entity.fieldMenuType.entity.tid == o.tid){
+              o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+            }
+          });
+        }
+        else{
+          othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+        }
+      })
+    }
+  });
+ 
+}
+  // end
 
   // Device React
   const deviceIsMobile = isMobile;
@@ -230,7 +273,9 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-       mobileDevice: deviceType
+       mobileDevice: deviceType,
+       nav:nav,
+       othernav:othernav
     }, // will be passed to the page component as props
   }
 }

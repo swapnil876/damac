@@ -64,10 +64,12 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 
+import { NAVIGATION } from '../../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
 // FA
 
-function ListingPage() {
+function ListingPage({nav, othernav}) {
   const router = useRouter()
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
 
@@ -168,7 +170,7 @@ function ListingPage() {
         <link rel="canonical" href="" />
       </Head>
 
-      <Navbar className="navbar-normal"></Navbar>
+      <Navbar className="navbar-normal" navigationBar={nav} otherNav={othernav}></Navbar>
 
       
           {/* Floor Plan Custom popup modal */}
@@ -1503,20 +1505,52 @@ function ListingPage() {
   );
 }
 
-// export const getServerSideProps = async (cp) => {
-//   const client = new ApolloClient({
-//     uri: process.env.STRAPI_GRAPHQL_URL,
-//     cache: new InMemoryCache(),
-//   });
+export const getServerSideProps = async (cp) => {
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
   
-//   const data = await client.query({ query: PROJECTDETAIL, variables:{id:cp.query.slug} });
-//   let entity1 = data.data.nodeQuery.entities[0];
-//   console.log(entity1.fieldHeadingSec7);
-//   return {
-//     props: {
-//       entity1: entity1,
-//     },
-//   };
-// };
+// Use this for novigation
+const  dataNav2  = await client.query({ query: NAVIGATION });
+const  dataNav1  = await client.query({ query: PARENTMENUITEMS });
+let nav = [];
+let othernav = [];
+if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
+  let submenu = dataNav2.data.nodeQuery.entities[0];
+  let menu = dataNav1.data.taxonomyTermQuery.entities;
+  console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+  // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+  menu.map((m,i)=>{
+    othernav = [];
+    let des = m.description==null?'': m.description.value
+    nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+    if((i+1)==menu.length){
+      submenu.fieldMultipleMenuItems.map((k,l)=>{
+        if(k.entity.fieldMenuType!=null){
+          nav.filter((o,h)=>{
+            if(k.entity.fieldMenuType.entity.tid == o.tid){
+              o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+            }
+          });
+        }
+        else{
+          othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+        }
+      })
+    }
+  });
+ 
+}
+  // end
+
+
+  return {
+    props: {
+      nav:nav,
+      othernav:othernav
+    },
+  };
+};
 
 export default ListingPage;

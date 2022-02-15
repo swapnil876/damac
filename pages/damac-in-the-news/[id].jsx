@@ -34,13 +34,17 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { NEWSDETAILS } from '../../graphql/newsdetails';
 
 
- export default function DamacInTheNews({entity1}){
+import { NAVIGATION } from '../../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
+
+
+ export default function DamacInTheNews({entity1, nav, othernav}){
     const router = useRouter()
     const { slug } = router.query;
     console.log("slug", slug);
      return(
          <div className="DamacInTheNews">
-             <Navbar></Navbar>
+             <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
              <main className="main">
                 <section className={styles['press-hero']} style={{'background-image':'url(/images/damac_in_news.png)'}}>               
                 <div className={styles['press-hero-wrap']}>
@@ -153,6 +157,42 @@ import { NEWSDETAILS } from '../../graphql/newsdetails';
     cache: new InMemoryCache(),
   });
   console.log(cp);
+
+
+ // Use this for novigation
+ const  dataNav2  = await client.query({ query: NAVIGATION });
+ const  dataNav1  = await client.query({ query: PARENTMENUITEMS });
+ let nav = [];
+ let othernav = [];
+ if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
+   let submenu = dataNav2.data.nodeQuery.entities[0];
+   let menu = dataNav1.data.taxonomyTermQuery.entities;
+   console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+   // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+   menu.map((m,i)=>{
+     othernav = [];
+     let des = m.description==null?'': m.description.value
+     nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+     if((i+1)==menu.length){
+       submenu.fieldMultipleMenuItems.map((k,l)=>{
+         if(k.entity.fieldMenuType!=null){
+           nav.filter((o,h)=>{
+             if(k.entity.fieldMenuType.entity.tid == o.tid){
+               o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+             }
+           });
+         }
+         else{
+           othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+         }
+       })
+     }
+   });
+  
+ }
+   // end
+
+
   const data = await client.query({ query: NEWSDETAILS, variables:{id:cp.query.slug} });
   let entity1 = data.data.nodeQuery.entities[0];
   console.log(entity1);
@@ -160,6 +200,8 @@ import { NEWSDETAILS } from '../../graphql/newsdetails';
   return {
     props: {
       entity1: entity1,
+      nav:nav,
+      othernav:othernav
       // entity2: entity2
     },
   };
