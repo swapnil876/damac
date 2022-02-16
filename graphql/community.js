@@ -123,7 +123,6 @@ query {
         fieldText
         fieldHeading
         fieldWhatsappNumber
-        fieldEmail
       }
     }
   }

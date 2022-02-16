@@ -49,7 +49,7 @@ export default function ImageCardItem( { className, cardDetails  } ) {
       <div className={`card-details-box`}>
         <h3>{cardDetails.title}</h3>
         <h5>{cardDetails.subtitle}</h5>
-        <p>{cardDetails.description}</p>
+        <div dangerouslySetInnerHTML={{ __html: cardDetails.description }}></div>
       </div>
       <div className={`cta-btn-wrapper`} style={{'textAlign':'right'}}>
         <Link href={cardDetails.link?cardDetails.link:'/'}><a className={`btn btn-primary`}>Know more</a></Link>

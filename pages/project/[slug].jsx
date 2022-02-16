@@ -486,7 +486,7 @@ function ProjectPage({entity1, nav, othernav}) {
                                 <div className={style['shape-wrap-plan']}>              
                                     <div className={`${style["shape-contact"]} float-end`}>
                                         <ul className="d-flex align-items-center p-0">
-                                        <li><a href={'mailto:'+entity1.fieldEmailP} className={style['solid-icon']} target="_blank"> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                        {/*<li><a href={'mailto:'+entity1.fieldEmailP} className={style['solid-icon']} target="_blank"> <FontAwesomeIcon icon={faEnvelope}/></a></li>*/}
                                         <li><a href={'https://wa.me/' + entity1.fieldWhatsapp} className={style['border-icon'] } target="_blank"><FontAwesomeIcon icon={faWhatsapp}/></a></li>
                                         </ul>                  
                                     </div>                

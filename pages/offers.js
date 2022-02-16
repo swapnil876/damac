@@ -149,10 +149,11 @@ export const getServerSideProps = async () => {
     // },
     entity1.map((v,i)=>{
       console.log(v);
+      let des = v.fieldOfferText!=null?v.fieldOfferText.value:''
       if(v.fieldImageOffer != null)
-      offer.push({imageUrl:v.fieldImageOffer.url,title:v.title,description:v.fieldDescriptionOffer})
+      offer.push({imageUrl:v.fieldImageOffer.url,title:v.title,description:des,link:'offer/'+v.nid})
       else
-      offer.push({imageUrl:"",title:"",description:v.fieldDescriptionOffer})
+      offer.push({imageUrl:"",title:"",description:des,link:'offer/'+v.nid})
       // v.imageUrl = v.fieldImageOffer.url;
       // v.title = v.fieldImageOffer.title;
       // v.description = v.fieldDescriptionOffer;

@@ -7,12 +7,24 @@ const OFFERS = gql`
       ... on NodeOffers{
          nid,
         title
+        fieldSubtitle
          fieldImageOffer {
            targetId
            title
            url
-        },
-        fieldDescriptionOffer
+        }
+        fieldProjects{
+          entity{
+            ... on NodeProject{
+              nid
+              title
+              fieldTaglingP
+            }
+          }
+        }
+        fieldOfferText{
+          value
+        }
         fieldMetaTitleOffers
         fieldMetaDescriptionOffers
         fieldMetaKeywordsOffers

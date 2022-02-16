@@ -94,7 +94,7 @@ function OfferMain({entity1, nav, othernav}) {
           <div className="row align-items-end" style={{'max-width':'100%'}}>
             <div className="col-md-12">
               <div className={styles['offermain-banner-txt']}>
-                <h1>8% Guaranteed returns for 3 years</h1>
+                <h1>{entity1.title}</h1>
                 <p><span>Invest in Luxury hotel rooms</span></p>
               </div>
             </div>
@@ -108,8 +108,8 @@ function OfferMain({entity1, nav, othernav}) {
           <div className={styles['hospitality-main-head']}>
             <h2>Hospitality Investment never looked this good.</h2>
           </div>
-          <div className={styles['hospitality-maintxt']}>
-            {entity1.fieldDescriptionOffer}
+          <div dangerouslySetInnerHTML={{ __html: entity1.fieldOfferText!=null?entity1.fieldOfferText.value:'' }} className={styles['hospitality-maintxt']}>
+            
             </div>
         </div>
       </section>
@@ -117,16 +117,22 @@ function OfferMain({entity1, nav, othernav}) {
       <section className={styles['callback-schedule']}>
         <div className="container">
           <div className="row">
-            <div className="col-md-6 dm-col-6">
-              <div className={styles['callback-card']}>
-                <img src="../damac-static/images/offer-main.jpg" className="img-fluid"/>
-                <h6>DAMAC Towers by Paramount Hotels and Resorts Dubai</h6>
-                <p className={styles['callback-card-desc']}>An established and prestigious international golf callback in Dubailands</p>
-                <div className={styles['community-card-btn']}>
-                  <a href="#" className="btn btn-primary">Schdule a Call-back</a>
+          {
+            entity1.fieldProjects.map((m,n)=>(
+
+              <div className="col-md-6 dm-col-6">
+                <div className={styles['callback-card']}>
+                  <img src="../damac-static/images/offer-main.jpg" className="img-fluid"/>
+                  <h6>{m.entity.title}</h6>
+                  <p className={styles['callback-card-desc']} dangerouslySetInnerHTML={{ __html: m.entity.fieldTagling }}></p>
+                  <div className={styles['community-card-btn']}>
+                    <a href="#" className="btn btn-primary">Schdule a Call-back</a>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))
+          }
+            
             <div className="col-md-6 dm-col-6">
               <div className={styles['callback-card']}>
                 <img src="../damac-static/images/offer-main.jpg" className="img-fluid"/>
