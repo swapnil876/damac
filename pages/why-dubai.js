@@ -313,33 +313,18 @@ const WhyDubai= ({entity1, nav, othernav})=> {
 
        <TextSection className="text-section-whhydubai-investorsfav">
          <div className="row justify-content-center">
+         {entity1.fieldMultipleIconsWithHeadin.map((counter,index) => (
            <div className="col-md-4">
              <div className="icon-box">
                <div className="text-center">
-                 <img alt=""src="/images/why-dubai/city.svg"/>
+                 <img alt=""src={counter.entity.fieldIconW.url}/>
                </div>
-               <h4>Premium Developers</h4>
-               <p>DAMAC develops quality investment properties in high-demand locations</p>
+               <h4>{counter.entity.fieldHeading}</h4>
+               <p>{counter.entity.fieldTextW}</p>
              </div>
            </div>
-           <div className="col-md-4">
-             <div className="icon-box">
-               <div className="text-center">
-                 <img alt=""src="/images/why-dubai/stars.svg"/>
-               </div>
-               <h4>Most Renowned Brands</h4>
-               <p>Our interior is designed by world’s most renowned brands</p>
-             </div>
-           </div>
-           <div className="col-md-4">
-             <div className="icon-box">
-               <div className="text-center">
-                 <img alt=""src="/images/why-dubai/file-invoice-dollar.svg"/>
-               </div>
-               <h4>USD returns</h4>
-               <p>Our property assets deliver great returns to our investors in a stable currency</p>
-             </div>
-           </div>
+           ))}
+          
          </div>
        </TextSection>
 
@@ -364,54 +349,49 @@ const WhyDubai= ({entity1, nav, othernav})=> {
 
 
        <section className="why-dubai-section-then-now">
+       
          <div className="container">
-           <div className="row justify-content-between mb-4">
-               {/* <div className="col-12">
-                 <div className={`sliderArrows sliderArrowsDark`}>
-                   <a href="#" className="sliderArrow">
-                     <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path  d="M8.75 15.875L1.875 9L8.75 2.125" stroke="white" strokelidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      </span>
-                   </a>
-                   <a href="#" className="sliderArrow">
-                     <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path  d="M2.25 2.125L9.125 9L2.25 15.875" stroke="white" strokelidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-
-                      </span>
-                   </a>
-                 </div>
-               </div> */}
-               <div className="col-md-5 col-7">
-                 <h3>Dubai, then and now</h3>
-               </div>
-           </div>
+           
 
            <Slider {...settings}>
+           {entity1.fieldMultipleStories.map((counter,index) => (
              <div>
-             <div className="row justify-content-between">
-               <div className="col-md-5">
-                 <p>The story of Dubai’s growth is one of sheer determination and unprecedented global ambition. A centre for fishing, pearling and sea trade since the early 1800s, Dubai was well established as one of the region’s top trading ports by the beginning of the 20th Century. The Deira souk, which stands to this day, was one of the largest in the region at this time. It attracted businessmen and visitors from around the world, creating a sizeable expatriate population, and in that respect, mirroring the Dubai we know today.</p>
-               </div>
-               <div className="col-md-5">
-                 <p>Striking oil in 1966, Dubai was transformed forever. Oil revenues were used to fund massive infrastructure projects such as Jebel Ali Port, which helped establish Dubai as the biggest trading hub in the MENA region, and the expansion of Dubai International Airport, which would eventually become the world’s biggest international aviation hub.</p>
-               </div>
-           </div>
-             </div>
-             <div>
-             <div className="row justify-content-between">
-               <div className="col-md-5">
-                 <p>The story of Dubai’s growth is one of sheer determination and unprecedented global ambition. A centre for fishing, pearling and sea trade since the early 1800s, Dubai was well established as one of the region’s top trading ports by the beginning of the 20th Century. The Deira souk, which stands to this day, was one of the largest in the region at this time. It attracted businessmen and visitors from around the world, creating a sizeable expatriate population, and in that respect, mirroring the Dubai we know today.</p>
-               </div>
-               <div className="col-md-5">
-                 <p>Striking oil in 1966, Dubai was transformed forever. Oil revenues were used to fund massive infrastructure projects such as Jebel Ali Port, which helped establish Dubai as the biggest trading hub in the MENA region, and the expansion of Dubai International Airport, which would eventually become the world’s biggest international aviation hub.</p>
-               </div>
-           </div>
-             </div>
-           </Slider>
+               <div className="row justify-content-between mb-4">
+           
+           {/* <div className="col-12">
+             <div className={`sliderArrows sliderArrowsDark`}>
+               <a href="#" className="sliderArrow">
+                 <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path  d="M8.75 15.875L1.875 9L8.75 2.125" stroke="white" strokelidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  </span>
+               </a>
+               <a href="#" className="sliderArrow">
+                 <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path  d="M2.25 2.125L9.125 9L2.25 15.875" stroke="white" strokelidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
 
+                  </span>
+               </a>
+             </div>
+           </div> */}
+           <div className="col-md-5 col-7">
+             <h3>{counter.entity.fieldHeadingS}</h3>
+           </div>
+       </div>
+              <div className="row justify-content-between">
+               <div className="col-md-5">
+                 <p>{counter.entity.fieldTextw4}</p>
+               </div>
+               <div className="col-md-5">
+                 <p>{counter.entity.fieldCol2Text}</p>
+               </div>
+              </div>
+             </div>
+             ))} 
+           </Slider>
          </div>
+       
        </section>
 
        {
