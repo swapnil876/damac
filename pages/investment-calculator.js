@@ -120,13 +120,9 @@ const isMobileWidth = useMediaQuery(
         </div>
 
         <section className='section'>
-
-        
-
         <div className="container">
         <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
         </div>
-       
         </section>
 
         <FooterMoreLinks/>
