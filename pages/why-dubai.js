@@ -116,7 +116,7 @@ const WhyDubai= ({entity1, nav, othernav})=> {
        <TextSection className="text-section-whhydubai-1">
          <div className="row">
            <div className="col-md-5">
-             <h3>Dubai's Success in Numbers</h3>
+             <h3>{entity1.fieldMultipleCounterHeading}</h3>
            </div>
            <div className="col-md-7">
              <div className="dubais-success-icons">
@@ -160,11 +160,11 @@ const WhyDubai= ({entity1, nav, othernav})=> {
 
 
        <section>
-         <img alt=""src='/images/why-dubai/dubaipalm.jpg' className="img-responsive full-width why-damac-map-img"/>
+         <img alt="Map Image" src={entity1.fieldMiddleSectionImage.url} className="img-responsive full-width why-damac-map-img"/>
        </section>
 
 
-       <section className="why-dubai-section-3">
+       <section className="why-dubai-section-3" style={{'background-image': 'url(' + entity1.fieldSection3Background.url + ')'}}>
          <div className="container">
            <div className="row">
                <div className="col-md-6 mb-4">
