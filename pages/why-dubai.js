@@ -349,7 +349,7 @@ const WhyDubai= ({entity1, nav, othernav})=> {
       <TextSection className="text-section-whhydubai-4">
          <div className="row justify-content-between">
            <div className="col-md-4">
-             <h3>An Investor’s Favourite</h3>
+             <h3>{entity1.fieldSection4HeadingW}</h3>
            </div>
            <div className="col-md-5">
              <p className='investors_fav_para'>{entity1.fieldInvestorText}</p>
