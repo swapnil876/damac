@@ -38,7 +38,6 @@ const WHY_DUBAI = gql`
       fieldSec2Col2Text
        fieldSec3Col1Text
       fieldHeaderw3
-      fieldCol1Text3
       fieldSec3Col2Text
       fieldMutlipleAreas {
         entity{
@@ -92,6 +91,35 @@ const WHY_DUBAI = gql`
         url
       }
       fieldCol1Text5
+      fieldMiddleSectionImage{
+        url
+      }
+      fieldMultipleCounterHeading
+      fieldSection3Background{
+        url
+      }
+      fieldSection4HeadingW
+      fieldMultipleStories{
+          entity{
+            ... on ParagraphMultipleStories{
+              fieldHeadingS
+              fieldTextw4
+              fieldCol2Text
+            }
+          }
+      }
+      fieldMultipleIconsWithHeadin{
+        entity{
+          ... on ParagraphMultipleIconsWithHeading{
+            fieldHeading
+            fieldTextW
+            fieldIconW{
+              url
+            }
+          }
+        }
+        
+      }
       }
     }
     }

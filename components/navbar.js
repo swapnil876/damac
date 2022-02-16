@@ -293,32 +293,38 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                 <div className="col-5 col-md-8 header-right-col">
                   
                   <div className="header-right-area d-flex justify-content-end">
-                    <div className="header-item-wrapper not-on-mobile header-dropdown-container dropdown-to-centered">
-                      <a 
-                      href="/damac-static/browse_properties.html" 
-                      className="browseProperties header-dropdown-btn"
-                      data-dropdownkey={'browse-properties'} 
-                      
+                  {
+                  navigationBar.map((m,p)=>(
+                    m.submenu.length>0?(
+                      <div key={p} className="header-item-wrapper not-on-mobile header-dropdown-container dropdown-to-centered">
+                          <a 
+                          href="#" 
+                          className="browseProperties header-dropdown-btn"
+                          data-dropdownkey={'browse-properties'} 
+                          
 
-                      >Browse Properties</a>
+                          >{m.name}</a>
 
-                      <div data-dropdownkey={'browse-properties'} className={ `custom-nav-dropdown ${ customDropdowns['browse-properties'] ? 'is-active': '' } ` }>
-                        
-                        <ul className='navDropdownUl'>
-                          { 
-                            dropdownItems['browse-properties'].map( 
-                              (item, index) => <li key={index} className='navitem-dropdown'>
-                                <Link href={ item.url }>
-                                  {item.label}
-                                </Link>
-                              </li>
-                            ) 
-                          }
-                        </ul>
+                          <div data-dropdownkey={'browse-properties'} className={ `custom-nav-dropdown ${ customDropdowns['browse-properties'] ? 'is-active': '' } ` }>
+                            
+                            <ul className='navDropdownUl'>
+                              { 
+                                m.submenu.map( 
+                                  (item, index) => <li key={index} className='navitem-dropdown'>
+                                    <Link href={ item.url }>
+                                      {item.label}
+                                    </Link>
+                                  </li>
+                                ) 
+                              }
+                            </ul>
 
-                      </div>
+                          </div>
 
-                    </div>
+                        </div>
+                    ):('')
+                    
+                    ))}
 
                     <div className="header-item-wrapper header-dropdown-container not-on-mobile">
                       {
