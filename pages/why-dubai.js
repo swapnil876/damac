@@ -184,123 +184,35 @@ const WhyDubai= ({entity1, nav, othernav})=> {
                    </div>
                </div>
 
-             
+               
                <div className="row justify-content-between">
                  <Slider {...settings} ref={sliderRef}>
-                 <div>
-                          <div className="col-md-6 col-8 mb-2">
-                            <h4>Dubai Marina</h4>
-                          </div>
-                          <div className="col-md-5 mb-2">
-                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
-                          </div>
-                          <div className="district-items-nav">
-                            <div className="row justify-content-between align-items-center">
-                              <div className="col-md-9">
-                                <ul className="district-items-nav-list">
-                                  <li><a onClick={()=>{handleOnClick(0)}} className="active">Dubai Marina</a></li>
-                                  <li><a onClick={()=>{handleOnClick(1)}}>Business Bay </a></li>
-                                  <li><a onClick={()=>{handleOnClick(2)}}>Jumeirah Village</a></li>
-                                  <li><a onClick={()=>{handleOnClick(3)}}>Barsha Heights</a></li>
-                                  <li><a onClick={()=>{handleOnClick(4)}}>Dubai Sports City</a></li>
-
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
+                 {
+                   entity1.fieldMutlipleAreas.map((item)=>(
+                    <div>
+                    <div className="col-md-6 col-8 mb-2">
+                      <h4>{item.entity.fieldTitle}</h4>
+                    </div>
+                    <div className="col-md-5 mb-2">
+                      <p>{item.entity.fieldTextw}</p>
+                    </div>
+                    <div className="district-items-nav">
+                      <div className="row justify-content-between align-items-center">
+                        <div className="col-md-9">
+                          <ul className="district-items-nav-list">
+                            {
+                               entity1.fieldMutlipleAreas.map((listItem, index)=>(
+                                <li><a onClick={()=>{handleOnClick(index)}} className={item.entity.fieldTitle == listItem.entity.fieldTitle && "active"}>{listItem.entity.fieldTitle}</a></li>
+                               ))
+                            }
+                          </ul>
+                        </div>
                       </div>
-
-                      <div>
-                          <div className="col-md col-8-6 mb-2">
-                            <h4>Business Bay</h4>
-                          </div>
-                          <div className="col-md-5 mb-2">
-                            <p>Introducing Business Bay, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
-                          </div>
-                          <div className="district-items-nav">
-                            <div className="row justify-content-between align-items-center">
-                              <div className="col-md-9">
-                                <ul className="district-items-nav-list">
-                                  <li><a onClick={()=>{handleOnClick(0)}}>Dubai Marina</a></li>
-                                  <li><a onClick={()=>{handleOnClick(1)}} className="active">Business Bay </a></li>
-                                  <li><a onClick={()=>{handleOnClick(2)}}>Jumeirah Village</a></li>
-                                  <li><a onClick={()=>{handleOnClick(3)}}>Barsha Heights</a></li>
-                                  <li><a onClick={()=>{handleOnClick(4)}}>Dubai Sports City</a></li>
-
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-
-                      <div>
-                          <div className="col-md col-8-6 mb-2">
-                            <h4>Jumeirah Village</h4>
-                          </div>
-                          <div className="col-md-5 mb-2">
-                            <p>Introducing Jumeirah Village, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
-                          </div>
-                          <div className="district-items-nav">
-                            <div className="row justify-content-between align-items-center">
-                              <div className="col-md-9">
-                                <ul className="district-items-nav-list">
-                                  <li><a onClick={()=>{handleOnClick(0)}}>Dubai Marina</a></li>
-                                  <li><a onClick={()=>{handleOnClick(1)}}>Business Bay </a></li>
-                                  <li><a onClick={()=>{handleOnClick(2)}} className="active">Jumeirah Village</a></li>
-                                  <li><a onClick={()=>{handleOnClick(3)}}>Barsha Heights</a></li>
-                                  <li><a onClick={()=>{handleOnClick(4)}}>Dubai Sports City</a></li>
-
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-
-                      <div>
-                          <div className="col-md col-8-6 mb-2">
-                            <h4>Barsha Heights</h4>
-                          </div>
-                          <div className="col-md-5 mb-2">
-                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
-                          </div>
-                          <div className="district-items-nav">
-                            <div className="row justify-content-between align-items-center">
-                              <div className="col-md-9">
-                                <ul className="district-items-nav-list">
-                                  <li><a onClick={()=>{handleOnClick(0)}}>Dubai Marina</a></li>
-                                  <li><a onClick={()=>{handleOnClick(1)}}>Business Bay </a></li>
-                                  <li><a onClick={()=>{handleOnClick(2)}}>Jumeirah Village</a></li>
-                                  <li><a onClick={()=>{handleOnClick(3)}} className="active">Barsha Heights</a></li>
-                                  <li><a onClick={()=>{handleOnClick(4)}}>Dubai Sports City</a></li>
-
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-
-                      <div>
-                          <div className="col-md col-8-6 mb-2">
-                            <h4>Dubai Sports City</h4>
-                          </div>
-                          <div className="col-md-5 mb-2">
-                            <p>Introducing Dubai Marina, the world's largest man-made marina, featuring a breathtaking combination of reflective waterways, al fresco dining, waterside promenades and glittering developments. Dubai Marina is home to four of our world-class developments – Wyndham Dubai Marina, which </p>
-                          </div>
-                          <div className="district-items-nav">
-                            <div className="row justify-content-between align-items-center">
-                              <div className="col-md-9">
-                                <ul className="district-items-nav-list">
-                                  <li><a onClick={()=>{handleOnClick(0)}}>Dubai Marina</a></li>
-                                  <li><a onClick={()=>{handleOnClick(1)}}>Business Bay </a></li>
-                                  <li><a onClick={()=>{handleOnClick(2)}}>Jumeirah Village</a></li>
-                                  <li><a onClick={()=>{handleOnClick(3)}}>Barsha Heights</a></li>
-                                  <li><a onClick={()=>{handleOnClick(4)}} className="active">Dubai Sports City</a></li>
-
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
+                    </div>
+                </div>
+                   ))
+                 }
+                    
                    </Slider>
                </div>
              </div>
@@ -416,7 +328,7 @@ const WhyDubai= ({entity1, nav, othernav})=> {
                 <div className="mb-4">
                   <img alt=""src="/images/why-dubai/ticket-1.png" width="46"/>
                 </div>
-                  <h4>The Opportunity</h4>
+                  <h4>{entity1.fieldOppoHeading}</h4>
                   <p>{entity1.fieldOpportunityText}</p>
                 </div>
             </div>

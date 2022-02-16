@@ -348,7 +348,7 @@
 /* Testimonials Slider Buttons */
 
 .why-dubai-section-then-now .slick-prev {
-  top: -155px;
+  top: -70px;
   left: 0;
   right: unset;
   z-index: 1;
@@ -356,7 +356,7 @@
 }
 
 .why-dubai-section-then-now .slick-next {
-  top: -155px;
+  top: -70px;
   left: 53px;
   right: unset;
   z-index: 1;
@@ -750,7 +750,7 @@ button.accordion-button {
 
   .why-dubai-section-then-now .slick-next,
   .why-dubai-section-then-now .slick-prev {
-    top: -190px;
+    /* top: -190px; */
   }
 
   .historyslidercontainer .slick-prev {
