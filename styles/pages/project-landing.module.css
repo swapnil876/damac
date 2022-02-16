@@ -234,6 +234,9 @@ ul.bedroom-detail li a i {
 	}
 }
 @media (max-width: 767px){
+    .project-card {
+        margin-bottom: 30px;
+    }
     .shape-contact{
         width: 100%;
     }

@@ -18,8 +18,8 @@ import PageTabs from '../components/PageTabs'
 import ContactForm from '../components/ContactForm'
 
 import styles from '../styles/pages/ShareOverview.module.css'
-
-
+import style from '../styles/components/PageTabs.module.css';
+import styles2 from "../styles/components/InvestmentCalculator.module.css";
 
 
  // React Responsive
@@ -47,15 +47,21 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+// importing React Select
+import Select from "react-dropdown-select";
+
+
 function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, othernav } ) {
 
+  const [sectionToShow, setSectionToShow] = useState("Share Graph Monitor");
+  const [tabLinksArray , setTabLinksArray] = useState(fieldTabs);
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
         setDeviceIsMobile( true );
       }
-   }, [])
+  }, [])
  
 
   // Breadcrumbs links
@@ -73,46 +79,110 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
   ];
 
 
-  // Heading title btn
-  // const downloadBtn = {
-  //   'title': 'Download PDF',
-  //   'url': '#',
-  //   'icon': 'arrow-down'
-  // }
+  const optionsInHere = tabLinksArray.map( (item) => {
+    return { 
+      value: item.url, 
+      label: item.label
+    }
+ })
 
-  
+  const options = [
+    ...optionsInHere
+  ];
+
+
+  function handleSelectChange(e){
+    console.log("This is the select result for mobile",e.target.placeholder);
+  }
 
   return (
     <div className='quickfactsheetbody'>
 
       <Head>
         <title>Share Overview - Damac</title>
-
         <meta name="description" content="Share Overview - Damac Properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <Navbar navbarStyle='dark' className='navbar-dark' navigationBar={nav} otherNav={othernav}></Navbar>
 
       <main className="main main-regular shareoverview">
-
         <Breadcrumbs crumbs={ crumbs }/>
 
-        {/* <HeadingTitle 
-          title="Share Overview" 
-          btnLink={ downloadBtn } 
+        <HeadingTitle 
+         title={sectionToShow}       
+          // btnLink={ downloadBtn } 
           deviceIsMobile={ deviceIsMobile }
           className='mb-0'
-        >
-          
-        </HeadingTitle> */}
+        > 
+        </HeadingTitle>
 
         <div className='container'>
-            <PageTabs tabLinks={ fieldTabs } pageSelectPlaceholder="Share Overview"></PageTabs>
-        </div>
+         <div className={ style['pagetabs'] }>
+        {
+          !deviceIsMobile ?
+          tabLinksArray.map( ( link, index ) => (
 
-        <section className='section'>
+              <Link href="" key={ index }>
+                <a className={ `${style['pagetabs-link']} ${ sectionToShow == link.label ? style['active'] : '' }` } onClick={()=>{
+                  setSectionToShow(link.label);
+                }}>
+                  <span>{ link.label }</span>
+                </a>
+              </Link>
+
+            ) ) 
+          :
+          <div>
+             <Select className="page_tabs_for_mobile" name=""
+                   value={options.value}
+                   options={options}
+                   placeholder={sectionToShow} onChange={()=>{ 
+                    handleSelectChange() 
+                   }} /> 
+          </div>
+        }
+        </div>
+        </div>
+        {
+          sectionToShow == "Share Graph Monitor" && 
+          <section className='section'>
+            Share Graph Monitor
+          <div className='container'>
+
+
+             <div className="share-graph-content">
+               <div className="date-time">
+                 <p className=''><strong>Date & Time: 31 January 2021 11:31 (GTM +04:00)</strong></p>
+               </div>
+               <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+             </div>
+
+
+             <section className="graph-dm-main py-5">
+                 <div className="row">
+                   <div className="col-md-6">
+                     <div className="graph-left-div">
+                       {/* <img src="/images/content/share-information/graph-left.jpg" alt="graph" className="img-fluid" /> */}
+                       <iframe className="iframe_left_share_info" src={fieldTabs[0].iframeContent}></iframe>
+                     </div>
+                   </div>
+                   <div className="col-md-6">
+                     <div className="graph-right-div">
+                       <img src="/images/content/share-information/graph-right.jpg" alt="graph" className="img-fluid" />
+                     </div>
+                   </div>
+                 </div>
+             </section>
+            
+
+          </div>
+          </section>
+        }
+        {
+          sectionToShow == "Share Overview" && 
+          <section className='section'>
+            Share Overview
           <div className='container'>
 
               {/*<div class="dfm-main-text">
@@ -126,15 +196,37 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
               </div>
             
           </div>
-        </section>
+          </section>
+        }
+        {
+          sectionToShow == "Investment Calculator" && 
+          <section className='section'>
+            Investment Calculator
+          <div className="container">
+          <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+          </div>
+          </section>
+        }
+        {
+          sectionToShow == "Share Price Look Up" && 
+          <section className='section'>
+            Share Price Look Up
+          <section className={styles2['investor_relations_container']}>
+              <div className="container">
+                <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+              </div>
+          </section>
+          </section>
+        }
+
+        {
+          sectionToShow == "Sharia Compliance" && "Sharia Compliance"
+        }
+       
 
         <FooterMoreLinks/>
-
       </main>
-
       <Footer></Footer>
-
-      
     </div>
   )
 }
@@ -202,7 +294,7 @@ export async function getStaticProps(context) {
         {
           url: '/share-information',
           label: 'Share Graph Monitor',
-          active: false,
+          active: true,
           iframeContent : v.entity.fieldIframeContent
         }
       )
@@ -213,7 +305,7 @@ export async function getStaticProps(context) {
         {
           url: '/share-overview',
           label: 'Share Overview',
-          active: true,
+          active: false,
           iframeContent : v.entity.fieldIframeContent
       }
       )
@@ -225,8 +317,10 @@ export async function getStaticProps(context) {
           url: '/investment-calculator',
           label: 'Investment Calculator',
           active: false,
+          iframeContent : v.entity.fieldIframeContent
       }
       )
+      data1 = v;
     }
     else if(v.entity.fieldTabHeading == 'Share Price Look Up'){
       fieldTabs.push(
@@ -234,8 +328,10 @@ export async function getStaticProps(context) {
           url: '/share-price-lookup',
           label: 'Share Price Look Up',
           active: false,
+          iframeContent : v.entity.fieldIframeContent
       }
       )
+      data1 = v;
     }
     else if(v.entity.fieldTabHeading == 'Sharia Compliance'){
       fieldTabs.push(
@@ -243,11 +339,16 @@ export async function getStaticProps(context) {
           url: '/sharia-compliance',
           label: 'Sharia Compliance',
           active: false,
+          iframeContent : v.entity.fieldIframeContent
       }
       )
+      data1 = v;
     }
      
   });
+
+
+  console.log("fieldTabs", fieldTabs);
 
 
 

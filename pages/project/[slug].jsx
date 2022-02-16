@@ -418,7 +418,7 @@ function ProjectPage({entity1, nav, othernav}) {
 
                             <div className="section-data-boxes">
                             <div className="data-box" style={{'width':'fit-content'}}>
-                                <h2 className="heading-medium">{entity1.fieldPropertyTypeP2[0].entity.name}</h2>
+                                <h2 className="heading-medium">{entity1.fieldPropertyType != null ? entity1.fieldPropertyType.entity.name:''}</h2>
                                 <p>Properties</p>
                               </div>
                               </div>

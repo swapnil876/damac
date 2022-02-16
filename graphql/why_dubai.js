@@ -57,6 +57,7 @@ const WHY_DUBAI = gql`
           }
         }
       }
+      fieldOppoHeading
       fieldOpportunityText
       fieldMainImageDesktopd {
         targetId

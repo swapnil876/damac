@@ -41,7 +41,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 function Dividends( { mobileDevice , entity1,fieldTabs,iframe, nav, othernav} ) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
-  const [tabLinksArray , setTabLinksArray] = useState([]);
+  const [tabLinksArray , setTabLinksArray] = useState(fieldTabs);
   const [currentSection, showCurrentSection] = useState('Dividends');
 
 
@@ -96,6 +96,10 @@ const options = [
   ...optionsInHere
 ];
 
+function handleSelectChange(ev){
+  showCurrentSection(ev[0].label)
+}
+
   return (
     <div className='quickfactsheetbody'>
 
@@ -124,7 +128,7 @@ const options = [
         <div className={ style['pagetabs'] }>
         {
           !deviceIsMobile ?       
-          fieldTabs.map( ( link, index ) => (
+          tabLinksArray.map( ( link, index ) => (
 
               <Link key={ index } href="">
                 <a className={ `${style['pagetabs-link']} ${ ((currentSection == "Dividends" && index == 0) || (currentSection == "Capital History" && index == 1) ) ? style['active'] : '' }` } onClick={()=>{showCurrentSection(link.label)}}>
@@ -138,9 +142,9 @@ const options = [
              <Select className="page_tabs_for_mobile" name=""
                    value={options.value}
                    options={options}
-                   placeholder={options[0].label} onChange={()=>{
-                     showCurrentSection(options.label)
-                     }} /> 
+                   placeholder={options[0].label} onChange={($ev)=>{
+                    handleSelectChange($ev)
+                  }} /> 
           </div>
         }
         </div>
@@ -182,9 +186,7 @@ const options = [
           <div className='container'>
 
           {/* <!-- capital tab --> */}
-                {/* <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe> */}
-                kdsbuhhuhknvdhkvdkvvvdjkvdjkvdjkvdjkvjkvjkv jvcjk
-             
+            <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>             
 
              <div className='enquiry-form-section'>
                <div className='row'>

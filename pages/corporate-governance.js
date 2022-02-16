@@ -6,8 +6,7 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-// importing React Select
-import Select from "react-dropdown-select";
+
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -38,7 +37,8 @@ import style from '../styles/components/PageTabs.module.css';
  import {BOARD_MEMBERS} from '../graphql/master/board_members';
  import {GOVERNANCE_COMMITTEE} from '../graphql/master/governance_committee'
  
-
+// importing React Select
+import Select from "react-dropdown-select";
 
 // FA
 import ReactDOM from 'react-dom'
@@ -108,7 +108,8 @@ function CorporateGovBoard( { mobileDevice, entity1, entity2, nav, othernav } ) 
     },
 
 ]
-  
+
+
 const options = [
   { 
     value: "Governance Board", 
@@ -178,7 +179,7 @@ function handleSelectChange(ev){
                        value={options.value}
                        options={options}
                        placeholder={sectionToShow} onChange={($ev)=>{ 
-                        handleSelectChange($ev)
+                        handleSelectChange($ev) 
                        }} /> 
               </div>
             }
