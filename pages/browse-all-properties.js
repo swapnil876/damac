@@ -67,12 +67,32 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
         }
     };
 
-    console.log('list======================================',entity1);
-    // console.log('storage',localStorage)
-    useEffect(() => {
-        //   importing bootstrap js
-        import("bootstrap/dist/js/bootstrap");
-        if(window.localStorage.getItem('access_token')==null){
+    function savedProperty(unit){
+      let savedProperty = [];
+      let pushed = false;
+      let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
+      if(storage!=null){
+        savedProperty = storage;
+        storage.map((m,n)=>{
+          if(unit.ID == m.ID){
+            pushed = true
+          }
+          if((n+1) == storage.length && !pushed){
+            savedProperty.push(unit);
+            window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
+            console.log(savedProperty);
+          }
+        })
+      }
+      else{
+        savedProperty.push(unit);
+         window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
+      }
+    }
+    
+    function getToken(){
+      if(typeof window != 'undefined'){
+          if(window.localStorage.getItem('access_token')==null){
             let data = {
                 refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
                 client_id:"1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL",
@@ -81,17 +101,24 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
             }
             axios.post('https://accounts.zoho.com/oauth/v2/token',{data:data},{
                 headers:{
-                    'Access-Control-Allow-Origin':'*'
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Headers':'Content-Type'
                 }
             }).then(response => {
+              console.log(response)
                 setLocalStorage(response.data.access_token);
             })
         }
         else{
             setLocalStorage(window.localStorage.getItem('access_token'));
         }
-
-
+      }
+      
+    }
+    getToken();
+    console.log('list======================================',entity1);
+    // console.log('storage',localStorage)
+    useEffect(() => {
         // Checking if device is mobile
 
         if ( isMobile ) {
@@ -135,7 +162,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
            {/* This is the filter menu, for mobile its in form of footer  */}
            {
                deviceIsMobile ? 
-               <section class="footer_filter_for_mobile">
+               <section className="footer_filter_for_mobile">
                    <div className='container'>
                        <div className='row'>
                            <div className='col-4'>
@@ -334,7 +361,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                         <div className='slider_range_area'>
                         <input type="range"/>
                         </div>
-                        <div class="slide_range_text">
+                        <div className="slide_range_text">
                             <span>AED 100,000</span>
                             <span>AED 2,000,000 {'>'}</span>
                         </div>
@@ -449,7 +476,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                         <div className='slider_range_area'>
                         <input type="range"/>
                         </div>
-                        <div class="slide_range_text">
+                        <div className="slide_range_text">
                             <span>AED 100,000</span>
                             <span>AED 2,000,000 {'>'}</span>
                         </div>
@@ -489,7 +516,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
             {/* Floating menu icon */}
             <div className='floating_map_view_btn'>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_294_8984)">
+                <g clipPath="url(#clip0_294_8984)">
                 <path d="M23.8417 1.44886C23.7276 1.36336 23.5912 1.33683 23.4545 1.377L15.8901 3.60357L8.32275 1.377C8.31478 1.37471 8.30794 1.3748 8.29997 1.37293C8.28272 1.36885 8.26627 1.36599 8.24869 1.36397C8.23144 1.36205 8.21475 1.36074 8.1975 1.36074C8.18025 1.36074 8.16347 1.36196 8.14622 1.36397C8.12855 1.36599 8.11139 1.36885 8.09405 1.37293C8.08608 1.3748 8.07792 1.37471 8.07005 1.377L0.348469 3.64116C0.155672 3.69797 0 3.87465 0 4.07565V22.1889C0 22.3314 0.0906562 22.4659 0.205172 22.5515C0.284344 22.6108 0.391125 22.6417 0.487969 22.6417C0.530859 22.6417 0.579609 22.6357 0.621656 22.6233L8.19497 20.3968L15.7667 22.6233C15.7792 22.627 15.7927 22.6291 15.8055 22.6316C15.8125 22.6331 15.8198 22.6351 15.827 22.6362C15.8498 22.6397 15.8729 22.6417 15.8958 22.6417C15.9187 22.6417 15.9418 22.6397 15.9645 22.6362C15.9717 22.6351 15.9787 22.6331 15.9858 22.6316C15.9984 22.6291 16.0112 22.627 16.0238 22.6233L23.6985 20.3592C23.8912 20.3024 24 20.1257 24 19.9247V1.81149C24 1.6689 23.9562 1.53446 23.8417 1.44886ZM7.69809 19.5859L0.905672 21.5836V4.41436L7.69814 2.41665V19.5859H7.69809ZM15.3962 21.5836L8.60377 19.5859V2.41665L15.3962 4.41436V21.5836ZM23.0943 19.5859L16.3019 21.5836V4.41436L23.0943 2.41665V19.5859Z" fill="black"/>
                 </g>
                 <defs>
@@ -510,7 +537,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                         <p>3102 properties found</p>
                     </div> */}
 
-                    <div className={styles['banner_under_filters']}>
+                    {/*<div className={styles['banner_under_filters']}>
                        <div className={styles['text_area']}>
                            <p>Kiara Downtown</p>
                           <h2> The prefect home with <br/> none of the planning</h2>
@@ -559,7 +586,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                 <button className={styles['more_about_btn']}>More about this project</button>
                             </div>
                         </div>
-                    </div>
+                    </div>*/}
                     <div className={styles['filtered_properties']}>
                         <div className="row">
                         {
@@ -572,7 +599,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                         </Carousel>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="damac-static/images/bookmark.png" alt=""/></a></li>
+                                          <li><a onClick={()=>{savedProperty(unit)}} styles={{pointer:'cursor'}}><img src="damac-static/images/bookmark.png" alt=""/></a></li>
                                         </ul>
                                         <h6>{unit.Project_Name}</h6>
                                         <p>{unit.Address},{unit.Country.display_value}</p>
@@ -589,7 +616,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                             <ul className="d-flex align-items-center p-0">
                                               <li><a href="#" className={styles['solid-icon']}>
                                                 <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
+                                                <path fillRule="evenodd" clipRule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
                                             </svg>
                                             </a></li>
                                               <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
@@ -611,7 +638,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                         }
 
                         </div>
-                        <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
+                        {/*<div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
                           <div className={`${styles["page_btn"]} prev_btn`}>
                             <a href="#"><FaAngleLeft/></a>
                           </div>
@@ -624,7 +651,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                           <div className={`${styles["page_btn"]} next_btn`}>
                             <a href="#"><FaAngleRight/></a>
                           </div>
-                        </div>  
+                        </div> */} 
                     </div>
                 </div>
             </section>
@@ -813,41 +840,41 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                 <div className="row">
                                 <div className="col-md-12">
                                     <div className={style['faq-wrap']}>
-                                    <div class="accordion" id="accordionExample">
+                                    <div className="accordion" id="accordionExample">
                                     {entity1.fieldMultipleFaqsBw.map((item,k) => (
-                                        <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <div className="accordion-item">
+                                        <h2 className="accordion-header" id="headingOne">
+                                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             {item.entity.fieldQuestion}
                                             </button>
                                         </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
+                                        <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div className="accordion-body">
                                             {item.entity.fieldAnswer}
                                             </div>
                                         </div>
                                         </div>
                                     ))}
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <div className="accordion-item">
+                                      <h2 className="accordion-header" id="headingTwo">
+                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         What is the lowest mortgage rate in UAE?
                                         </button>
                                       </h2>
-                                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
+                                      <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body">
                                         The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <div className="accordion-item">
+                                      <h2 className="accordion-header" id="headingThree">
+                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                         What is the lowest mortgage rate in UAE?
                                         </button>
                                       </h2>
-                                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
+                                      <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body">
                                         The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
                                         </div>
                                       </div>
@@ -927,11 +954,6 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                 'Authorization':'Zoho-oauthtoken '+token
             }
     }).then(response => {
-        // console.log('response',response.data.data);
-        // BrowseProperties({
-        //     mobileDevice: deviceType,
-        //     entity:entity
-        //  });
         entity = response.data.data;
     }).catch((e,status)=>{
         // console.log('response',e.response);
