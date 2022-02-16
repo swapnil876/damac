@@ -56,6 +56,8 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
   const [sectionToShow, setSectionToShow] = useState("Share Graph Monitor");
   const [tabLinksArray , setTabLinksArray] = useState(fieldTabs);
 
+  const [selectedValue, setSelectedValue] = useState(3);
+
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
       if ( isMobile ) {
@@ -90,9 +92,9 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
     ...optionsInHere
   ];
 
-
-  function handleSelectChange(sectionToShow){
-    console.log("This is the select result for mobile",sectionToShow);
+  function handleSelectChange(ev){
+    console.log("This is the select result for mobile", ev[0]);
+    setSectionToShow(ev[0].label)
   }
 
   return (
@@ -137,8 +139,8 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
              <Select className="page_tabs_for_mobile" name=""
                    value={options.value}
                    options={options}
-                   placeholder={sectionToShow} onChange={()=>{ 
-                    handleSelectChange(options[1])
+                   placeholder={sectionToShow} onChange={($ev)=>{
+                     handleSelectChange($ev)
                    }} /> 
           </div>
         }

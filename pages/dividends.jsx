@@ -96,6 +96,10 @@ const options = [
   ...optionsInHere
 ];
 
+function handleSelectChange(ev){
+  showCurrentSection(ev[0].label)
+}
+
   return (
     <div className='quickfactsheetbody'>
 
@@ -138,9 +142,9 @@ const options = [
              <Select className="page_tabs_for_mobile" name=""
                    value={options.value}
                    options={options}
-                   placeholder={options[0].label} onChange={()=>{
-                     showCurrentSection(options.label)
-                     }} /> 
+                   placeholder={options[0].label} onChange={($ev)=>{
+                    handleSelectChange($ev)
+                  }} /> 
           </div>
         }
         </div>

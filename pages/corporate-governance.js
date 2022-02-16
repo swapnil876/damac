@@ -37,7 +37,8 @@ import style from '../styles/components/PageTabs.module.css';
  import {BOARD_MEMBERS} from '../graphql/master/board_members';
  import {GOVERNANCE_COMMITTEE} from '../graphql/master/governance_committee'
  
-
+// importing React Select
+import Select from "react-dropdown-select";
 
 // FA
 import ReactDOM from 'react-dom'
@@ -107,7 +108,24 @@ function CorporateGovBoard( { mobileDevice, entity1, entity2, nav, othernav } ) 
     },
 
 ]
-  
+
+
+const options = [
+  { 
+    value: "Governance Board", 
+    label: "Governance Board"
+  },
+  {
+    value: "Governance Committee",
+    label: "Governance Committee"
+  }
+]
+
+
+function handleSelectChange(ev){
+  setSectionToShow(ev[0].label)
+}
+
   return (
     <div className='quickfactsheetbody'>
 
@@ -160,8 +178,8 @@ function CorporateGovBoard( { mobileDevice, entity1, entity2, nav, othernav } ) 
                  <Select className="page_tabs_for_mobile" name=""
                        value={options.value}
                        options={options}
-                       placeholder={sectionToShow} onChange={()=>{ 
-                        handleSelectChange() 
+                       placeholder={sectionToShow} onChange={($ev)=>{ 
+                        handleSelectChange($ev) 
                        }} /> 
               </div>
             }

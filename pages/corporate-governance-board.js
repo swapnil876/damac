@@ -6,7 +6,8 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-
+// importing React Select
+import Select from "react-dropdown-select";
 
 // Navbar
 import Navbar from '../components/navbar'
@@ -108,6 +109,22 @@ function CorporateGovBoard( { mobileDevice, entity1, entity2, nav, othernav } ) 
 
 ]
   
+const options = [
+  { 
+    value: "Governance Board", 
+    label: "Governance Board"
+  },
+  {
+    value: "Governance Committee",
+    label: "Governance Committee"
+  }
+]
+
+
+function handleSelectChange(ev){
+  setSectionToShow(ev[0].label)
+}
+
   return (
     <div className='quickfactsheetbody'>
 
@@ -160,8 +177,8 @@ function CorporateGovBoard( { mobileDevice, entity1, entity2, nav, othernav } ) 
                  <Select className="page_tabs_for_mobile" name=""
                        value={options.value}
                        options={options}
-                       placeholder={sectionToShow} onChange={()=>{ 
-                        handleSelectChange() 
+                       placeholder={sectionToShow} onChange={($ev)=>{ 
+                        handleSelectChange($ev)
                        }} /> 
               </div>
             }
