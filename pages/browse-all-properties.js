@@ -55,7 +55,8 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
-
+    var [savedProperties, setSavedProperties] = useState([]);
+    const [property, setProperty] = useState(entity);
     const [localStorage, setLocalStorage] = useState(false);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     // carousel setting
@@ -70,24 +71,82 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
     function savedProperty(unit){
       let savedProperty = [];
       let pushed = false;
-      let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
-      if(storage!=null){
-        savedProperty = storage;
-        storage.map((m,n)=>{
-          if(unit.ID == m.ID){
-            pushed = true
-          }
-          if((n+1) == storage.length && !pushed){
-            savedProperty.push(unit);
-            window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
-            console.log(savedProperty);
-          }
-        })
+      let ids = savedProperties;
+      setSavedProperties([]);
+      
+      if(!unit.isSaved){
+       unit.isSaved = !unit.isSaved;
+       let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
+        if(storage!=null){
+          savedProperty = storage;
+          savedProperty.push(unit);
+          window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
+        }
+        else{
+          savedProperty.push(unit);
+          window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
+        }
       }
       else{
-        savedProperty.push(unit);
-         window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
+        let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
+        unit.isSaved = !unit.isSaved;
+        savedProperty = storage;
+        savedProperty.map((m,n)=>{
+          if(m.entity.ID == unit.entity.ID){
+            savedProperty.splice(n,1);
+            window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
+          }
+        })
+        
       }
+      // let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
+      // if(storage!=null){
+      //   savedProperty = storage;
+      //   storage.map((m,n)=>{
+      //     if(unit.ID == m.ID){
+      //       pushed = true
+      //     }
+      //     if((n+1) == storage.length && !pushed){
+      //       savedProperty.push(unit);
+      //       ids.push(m.ID);
+      //       setSavedProperties(ids);
+      //       window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
+      //       console.log(savedProperty);
+      //     }
+      //   })
+      // else{
+      //   ids.push(unit.ID);
+      //   setSavedProperties(ids);
+      //   savedProperty.push(unit);
+      //    window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
+      // }
+    }
+
+    function getSavedProperties(){
+      let ids = [];
+      let properties_data = property;
+      if(typeof window != 'undefined'){
+        let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
+        console.log(storage);
+        if(storage != null){
+          storage.map((m,l)=>{
+            ids.push(m.entity.ID);
+            if((l+1) == storage.length){
+              properties_data.map((k,h)=>{
+                if(ids.includes(k.entity.ID)){
+                  k.isSaved = true;
+                }
+                if((h+1)==properties_data.length){
+                  setSavedProperties(properties_data);
+                }
+              })
+            }
+          });
+        }
+        
+        // storage.map((l,k)=>{ids.push(l.Id);(k+1)==storage.length?setSavedProperties(ids):''})
+      }
+      // console.log(savedProperties);
     }
     
     function getToken(){
@@ -115,12 +174,15 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
       }
       
     }
-    getToken();
-    console.log('list======================================',entity1);
+
+    
+
+    // getToken();
+    // console.log('list======================================',entity1);
     // console.log('storage',localStorage)
     useEffect(() => {
         // Checking if device is mobile
-
+        getSavedProperties();
         if ( isMobile ) {
             setDeviceIsMobile( true );
           }
@@ -590,7 +652,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                     <div className={styles['filtered_properties']}>
                         <div className="row">
                         {
-                            entity.map( (unit, index) => (
+                            property.map( (unit, index) => (
                             <div className="col-md-6" key={index}>
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
@@ -599,16 +661,16 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                         </Carousel>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a onClick={()=>{savedProperty(unit)}} styles={{pointer:'cursor'}}><img src="damac-static/images/bookmark.png" alt=""/></a></li>
+                                          <li><a onClick={()=>{savedProperty(unit)}} styles={{pointer:'cursor'}}><img src={unit.isSaved?"images/icons/save-filled.png":"damac-static/images/bookmark.png"} alt=""/></a></li>
                                         </ul>
-                                        <h6>{unit.Project_Name}</h6>
-                                        <p>{unit.Address},{unit.Country.display_value}</p>
+                                        <h6>{unit.entity.Project_Name}</h6>
+                                        <p>{unit.entity.Address},{unit.entity.Country.display_value}</p>
                                         <ul className={styles['bedroom-detail']}>
                                             <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED {unit.Unit_price_AED}*</a>
+                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED {unit.entity.Unit_price_AED}*</a>
                                             </li>
                                             <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>Villa {unit.Number_of_Bedrooms1} Bedrooms</a>
+                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>Villa {unit.entity.Number_of_Bedrooms1} Bedrooms</a>
                                             </li>
                                         </ul>
                                         <div className={styles['shape-wrap-plan']}>              
@@ -945,6 +1007,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
     
     let entity = [];
     let token = '';
+    let properties_data = [];
     await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
         token = response.data.access_token
     })
@@ -955,6 +1018,9 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
             }
     }).then(response => {
         entity = response.data.data;
+        entity.map((m,n)=>{
+          properties_data.push({entity:m,isSaved:false})
+        })
     }).catch((e,status)=>{
         // console.log('response',e.response);
         if(typeof e.response != 'undefined'){
@@ -963,10 +1029,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
             }
         }
     });
-    console.log('--------',entity);
+    console.log('--------',properties_data);
     return {
         props: {
-           entity:entity,
+           entity:properties_data,
            entity1:properties,
            nav:nav,
            othernav:othernav

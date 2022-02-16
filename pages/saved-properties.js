@@ -47,7 +47,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
   const [filterClicked, setFilterClicked] = useState(false);
   const [searchClicked, setSearchClicked] = useState(false);
-
+  var [savedProperties, setSavedProperties] = useState([]);
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
      //   importing bootstrap js
@@ -57,6 +57,43 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
       setDeviceIsMobile( true );
     }
  }, [])
+
+  function getSavedProperties(){
+      let ids = [];
+      // let properties_data = property;
+      if(typeof window != 'undefined'){
+        let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
+        console.log(storage);
+        setSavedProperties(storage);
+        // if(storage != null){
+        //   storage.map((m,l)=>{
+        //     ids.push(m.entity.ID);
+        //     if((l+1) == storage.length){
+        //       properties_data.map((k,h)=>{
+        //         if(ids.includes(k.entity.ID)){
+        //           k.isSaved = true;
+        //         }
+        //         if((h+1)==properties_data.length){
+        //           setSavedProperties(properties_data);
+        //         }
+        //       })
+        //     }
+        //   });
+        // }
+        
+        // storage.map((l,k)=>{ids.push(l.Id);(k+1)==storage.length?setSavedProperties(ids):''})
+      }
+      // console.log(savedProperties);
+    }
+
+    useEffect(() => {
+        // Checking if device is mobile
+        getSavedProperties();
+        // if ( isMobile ) {
+        //     setDeviceIsMobile( true );
+        //   }
+        
+    }, []);
 
 
  const options = [
@@ -81,7 +118,9 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                     
                     <div className={styles['filtered_properties']}>
                         <div className="row">
-                            <div className="col-md-6">
+                        {
+                            savedProperties.map( (unit, index) => (
+                            <div key={index} className="col-md-6">
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
                                         <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
@@ -89,14 +128,14 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                           <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
                                           <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
                                         </ul>
-                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
+                                        <h6>{unit.entity.Project_Name}</h6>
+                                        <p>{unit.entity.Address}, {unit.entity.Country.display_value}</p>
                                         <ul className={styles['bedroom-detail']}>
                                             <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
+                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED {unit.entity.Unit_price_AED}*</a>
                                             </li>
                                             <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
+                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>Villa {unit.entity.Number_of_Bedrooms1} Bedrooms</a>
                                             </li>
                                         </ul>
                                         <div className={styles['shape-wrap-plan']}>              
@@ -104,9 +143,9 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                             <ul className="d-flex align-items-center p-0">
                                               <li><a href="#" className={styles['solid-icon']}>
                                                 <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
+                                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
+                                                  </svg>
+                                                  </a></li>
                                               <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
                                             </ul>                  
                                           </div>                
@@ -122,211 +161,8 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles['property-slider-wrap']}>
-                                    <div className={styles['project-card']}>
-                                        <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
-                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a href="#"><img src="/images/icons/save-filled.png" alt=""/></a></li>
-                                        </ul>
-                                        <h6>Kiara 3 Bedroom Villa</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                        <ul className={styles['bedroom-detail']}>
-                                            <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>5 units left</a>
-                                            </li>
-                                        </ul>
-                                        <div className={styles['shape-wrap-plan']}>              
-                                          <div className={styles['shape-contact']}>
-                                            <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-</svg>
-</a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                            </ul>                  
-                                          </div>                
-                                        </div>
-                                    </div>
-                                    <div className={styles['project-detail-nav']}>
-                                        <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
-                                        </div>
-                                        <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            ))
+                         }
 
                         </div>
                         <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
