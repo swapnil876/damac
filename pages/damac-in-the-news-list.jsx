@@ -18,13 +18,13 @@ import style from '../styles/pages/damac-in-the-news.module.css'
 import React, { Component } from "react";
 import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import {NEWS} from '../graphql/news';
-
+import { BLOGS } from '../graphql/blogs';
+import { INTHENEWSLISTING } from '../graphql/inthenewslisting';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 // import styles from '../styles/.module.css'
 
-function DamacInTheNewsList( { blogs, nav, othernav } ) {
+function DamacInTheNewsList( { blogs, newslist, nav, othernav } ) {
 
 
   return (
@@ -51,7 +51,7 @@ function DamacInTheNewsList( { blogs, nav, othernav } ) {
                     <div className="row">
                         <div className="col-md-12">
                             <p>News</p>
-                            <h1 className={`${style["news-hero-text"]} text-white m-0`}>DAMAC in the News</h1>
+                            <h1 className={`${style["news-hero-text"]} text-white m-0`}>{newslist.fieldPageTitleIn}</h1>
                         </div>
                     </div>
                 </div>
@@ -137,13 +137,15 @@ export const getServerSideProps = async () => {
 
 
 
-  const data  = await client.query({ query: NEWS });
+  const data  = await client.query({ query: BLOGS });
+  const  newsheading  = await client.query({ query: INTHENEWSLISTING });
   let entitiy = data.data.nodeQuery.entities;
+  let newslist = newsheading.data.nodeQuery.entities[0];
   let blogs = [];
   entitiy.map((v,i)=>{
     console.log(v);
     console.log('---------------------')
-    blogs.push({title:v.title,url:'/damac-in-the-news',imageUrl: v.fieldFeatureImageDesktopNews.url,ctaText:'Read More',excerpt:v.body.value})
+    blogs.push({title:v.title,url:'/damac-in-the-news',imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body.value})
   });
   // const blogs = [
   //     {
@@ -223,6 +225,7 @@ export const getServerSideProps = async () => {
   return {
     props: {
        blogs: blogs,
+       newslist:newslist,
        nav:nav,
        othernav:othernav
     }, // will be passed to the page component as props

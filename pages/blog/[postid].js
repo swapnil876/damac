@@ -89,8 +89,8 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
                             <div className={styles['card-body']}>
                                 <a href="#"><h4>{blog.title}</h4></a>
                                 <div className="d-flex justify-content-between">
-                                <label>{blog.fieldCategory.entity.name}</label>
-                                <span> 21/12 2020 by The Guardian </span>
+                                <label>{blog.fieldTag.entity.name}</label>
+                                <span> 21/12 2020 by {blog.fieldAuthor.entity.name}</span>
                                 </div>
                                 <div className={styles['card-text']} dangerouslySetInnerHTML={{ __html: blog.body.value }}></div>
                                 <a href={'blog/'+blog.nid} className={styles['read-more']}>Read More</a>
@@ -131,8 +131,8 @@ let othernav = [];
 if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
   let submenu = dataNav2.data.nodeQuery.entities[0];
   let menu = dataNav1.data.taxonomyTermQuery.entities;
-  console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-  // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+  // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+  // console.log(cp.query.postid);
   menu.map((m,i)=>{
     othernav = [];
     let des = m.description==null?'': m.description.value
@@ -157,10 +157,10 @@ if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
   // end
 
   
-  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:'65'} });
+  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.postid} });
   const data1 = await client.query({ query: BLOGS });
   if(data.data.nodeQuery.entities.length == 0){
-    console.log(cp);
+    // console.log(cp);
     // Router.push('/blog-list');
     // window.location.href = "/blog-list";
     // cp.push('/blog-list');
@@ -169,7 +169,7 @@ if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
   let bloglist = data.data.nodeQuery.entities;
   // let entity2 = data.data.nodeQuery.entities[1];
   
-  console.log('entity2',entity1);
+  console.log('entity2',bloglist);
   // console.log(data.data.nodeQuery.entities);
    return {
       props: {

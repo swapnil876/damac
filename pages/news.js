@@ -21,12 +21,13 @@ import { useMediaQuery } from 'react-responsive'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { NEWS } from '../graphql/news';
+import { BLOGS } from '../graphql/blogs';
+import { NEWSLISTING } from '../graphql/news_listing';
 
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
-function News( {entity1, nav, othernav} ) {
+function News( {entity1,newslist, nav, othernav} ) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
@@ -59,8 +60,8 @@ function News( {entity1, nav, othernav} ) {
              <div className="row">
                <div className="col-md-8">
                <div className="primary-cta">
-                 <img alt="" src={isMobile?entity1.fieldFeatureImageMobileNews.url:entity1.fieldFeatureImageDesktopNews.url} className="img-responsive full-width"/>
-                 <label>{entity1.fieldCategoryn.entity.name}</label>
+                 <img alt="" src={isMobile?entity1.fieldFeatureImageMobile.url:entity1.fieldThumbnailDesktop.url} className="img-responsive full-width"/>
+                 <label>{entity1.fieldTag.entity.name}</label>
                  <h1>
                  <Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link>
                  </h1>
@@ -70,7 +71,7 @@ function News( {entity1, nav, othernav} ) {
              <div className="col-md-4">
                <div className="damac-latest-news">
                  <div className="sidebar-title">
-                   <h3>Latest</h3>
+                   <h3>{newslist.fieldHeading1N}</h3>
                               
                  </div>
                  <div className="news">
@@ -108,7 +109,7 @@ function News( {entity1, nav, othernav} ) {
           <div className="container">
             <div className="d-flex justify-content-between">
               <div className="dark-title">
-                <h2>DAMAC in the News</h2>
+                <h2>{newslist.fieldSec2Heading}</h2>
               </div>
               <div>
                 <a href="#" className="border-btn btn" style={deviceIsMobile ? {'border':'0', 'position':'relative', 'top':'5px'} : {}}>View all</a>
@@ -176,7 +177,7 @@ function News( {entity1, nav, othernav} ) {
         <div className="container">
           <div className="d-flex justify-content-between">
             <div className="light-title">
-              <h2 style={deviceIsMobile ? {'textAlign':'center'} : {}}>Industry News</h2>
+              <h2 style={deviceIsMobile ? {'textAlign':'center'} : {}}>{newslist.fieldHeading3}</h2>
               <p style={deviceIsMobile ? {'textAlign':'center'} : {}}>Discover how the best of the best use DAMAC to find a home</p>
             </div>
             {
@@ -246,7 +247,7 @@ function News( {entity1, nav, othernav} ) {
         <div className="container">
           <div className="d-flex justify-content-between">
             <div className="dark-title">
-              <h2>Press Releases</h2>            
+              <h2>{newslist.fieldHeading4}</h2>            
             </div>
             <div>
               <a href="#" className="border-btn btn">View all</a> 
@@ -305,7 +306,7 @@ function News( {entity1, nav, othernav} ) {
             <div className="container">
                 <div className="news-wrap">
                  <div className="new-title">
-                    <h3>Don’t miss the latest news on DAMAC. Subscribe to our newsletter!</h3>        
+                    <h3>{newslist.fieldNewsLetterText}</h3>        
                   </div>
                   <div className="news-form">
                     <form>
@@ -376,7 +377,9 @@ export const getServerSideProps = async () => {
      // end
 
 
-  const  data  = await client.query({ query: NEWS });
+  const  data  = await client.query({ query: BLOGS });
+  const  newsheading  = await client.query({ query: NEWSLISTING });
+  let newslist = newsheading.data.nodeQuery.entities[0];
   let entity1 = data.data.nodeQuery.entities[0];
   // let entity2 = data.data.nodeQuery.entities[1];
   console.log('entity1',entity1);
@@ -385,6 +388,7 @@ export const getServerSideProps = async () => {
    return {
       props: {
         entity1: entity1,
+        newslist:newslist,
         nav:nav,
        othernav:othernav
         // entity2: entity2

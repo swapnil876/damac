@@ -27,6 +27,18 @@ query BLOGSDETAILS($id: String!){
         body{
           value
         }
+        fieldTag {
+          targetId
+          entity{
+            name
+          }
+        }
+        fieldAuthor {
+          targetId
+          entity{
+            name
+          }
+        }
       }
     }
   }
