@@ -89,6 +89,7 @@ const WhyDubai= ({entity1, nav, othernav})=> {
 
       <main className="main about-main">
        
+       
 
        <HeroSection
          bannerImage={ deviceIsMobile ? entity1.fieldMainImageMobile.url : entity1.fieldMainImageDesktopd.url}
@@ -101,7 +102,7 @@ const WhyDubai= ({entity1, nav, othernav})=> {
                <div className="row">
                  <div className="col-md-7">
                    <div className="banner-text-body">
-                     <h1>{entity1.fieldHeaderw2}</h1>
+                     <h1>{entity1.title}</h1>
                      <p>{entity1.fieldDescription}</p>
                    </div>
                  </div>
@@ -125,7 +126,7 @@ const WhyDubai= ({entity1, nav, othernav})=> {
                      <div key={index} className="col-md-4 col-6">
                        <div className="icon-box">
                          <img alt={counter.entity.fieldText} src={counter.entity.fieldIcon.url}/>
-                         <h3>{counter.entity.value}</h3>
+                         <h3>{counter.entity.fieldValue}</h3>
                          <p style={{'color':'#111'}}>{counter.entity.fieldText}</p>
                        </div>
                      </div>
@@ -190,12 +191,15 @@ const WhyDubai= ({entity1, nav, othernav})=> {
                  {
                    entity1.fieldMutlipleAreas.map((item)=>(
                     <div>
-                    <div className="col-md-6 col-8 mb-2">
+                      <div className='row'>
+                      <div className="col-md-6 col-8 mb-2">
                       <h4>{item.entity.fieldTitle}</h4>
                     </div>
-                    <div className="col-md-5 mb-2">
+                    <div className="col-md-6 mb-2">
                       <p>{item.entity.fieldTextw}</p>
                     </div>
+                      </div>
+                   
                     <div className="district-items-nav">
                       <div className="row justify-content-between align-items-center">
                         <div className="col-md-9">
@@ -209,7 +213,7 @@ const WhyDubai= ({entity1, nav, othernav})=> {
                         </div>
                       </div>
                     </div>
-                </div>
+                    </div>
                    ))
                  }
                     
