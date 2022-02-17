@@ -168,7 +168,7 @@ async function getData(){
         console.log(token,'************')
         token = response.data.access_token
     }).catch((e,status)=>{
-      console.log(e);
+      console.log('err',e);
     })
     // await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=10',
     //     {
