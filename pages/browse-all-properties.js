@@ -812,16 +812,15 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
               <div className="container">
                 <div className="row">
                   <div className="col-md-6">
-                    <h2>Dubai: A Safe Haven and the Region’s Most Dynamic City</h2>
+                    <h2>{entity1.fieldStaticHeading}</h2>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
-                     <p>Dubai is considered one of the safest cities in the world, while the UAE is an economic and political safe haven and a beacon of stability in the Middle East. Dubai was ranked the best city for quality of living and public infrastructure across the Middle East and Africa (MEA) region in Mercer’s 2018 Quality of Living Survey.</p>
-                      <p>The city took 74th place in the global ranking, making it the MEA region’s top city for the fifth year running. Dubai is a magnet for foreign talent and multinational companies that view the city as the ideal location from which to serve to markets across the MEA region. </p>
+                     <div dangerouslySetInnerHTML={{ __html: entity1.fieldStaticCol1.value }}></div>
                   </div>
                   <div className="col-md-6">
-                    <p>The city took 74th place in the global ranking, making it the MEA region’s top city for the fifth year running. Dubai is a magnet for foreign talent and multinational companies that view the city as the ideal location from which to serve to markets across the MEA region.</p>
+                  <div dangerouslySetInnerHTML={{ __html: entity1.fieldStaticCol2.value }}></div>
                   </div>
                 </div>
               </div>
