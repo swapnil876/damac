@@ -35,7 +35,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { NAVIGATION } from '../graphql/master/navigation';
  import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
- export default function DamacInTheNews({nav, othernav}){
+ export default function DamacInTheNews({nav, othernav, footerData}){
      return(
          <div className="DamacInTheNews">
              <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
@@ -140,7 +140,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 </div>
                 </section>
              </main>
-             <Footer></Footer>
+             <Footer footerData={footerData}></Footer>
          </div>
      )
  }
@@ -152,6 +152,13 @@ export async function getServerSideProps(){
       uri: process.env.STRAPI_GRAPHQL_URL,
       cache: new InMemoryCache()
     });
+
+    // Use this for footer
+    const footer  = await client.query({ query: FOOTER_LINKS });
+    let footerData = footer.data.nodeQuery.entities[0];
+
+    console.log("Here is footerData", footerData);
+    // end
 
 
     
@@ -191,7 +198,8 @@ export async function getServerSideProps(){
    return {
      props: {
         nav:nav,
-        othernav:othernav
+        othernav:othernav,
+        footerData: footerData
      }, // will be passed to the page component as props
    }
  }

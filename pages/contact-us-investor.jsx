@@ -39,7 +39,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
-function ContactUsInvestor( { mobileDevice, nav, othernav } ) {
+function ContactUsInvestor( { mobileDevice, nav, othernav, footerData } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -125,7 +125,7 @@ function ContactUsInvestor( { mobileDevice, nav, othernav } ) {
 
       </main>
 
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
 
       
     </div>
@@ -142,6 +142,13 @@ export async function getStaticProps(context) {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
   
 // Use this for novigation
@@ -187,7 +194,8 @@ if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
     props: {
        mobileDevice: deviceType,
        nav:nav,
-       othernav:othernav
+       othernav:othernav,
+       footerData: footerData
     }, // will be passed to the page component as props
   }
 }

@@ -32,7 +32,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { NAVIGATION } from '../graphql/master/navigation';
  import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
- export default function IndustryNews({nav, othernav}){
+ export default function IndustryNews({nav, othernav, footerData}){
      return(
          <div className="IndustryNews">
              <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
@@ -137,7 +137,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 </div>
                 </section>
              </main>
-             <Footer></Footer>
+             <Footer footerData={footerData}></Footer>
          </div>
      )
  }
@@ -150,6 +150,13 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
   
   // Use this for novigation
@@ -188,7 +195,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
    return {
      props: {
         nav:nav,
-        othernav:othernav
+        othernav:othernav,
+        footerData: footerData
      }, // will be passed to the page component as props
    }
  }

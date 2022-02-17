@@ -51,7 +51,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 import Select from "react-dropdown-select";
 
 
-function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, othernav } ) {
+function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, othernav, footerData } ) {
 
   const [sectionToShow, setSectionToShow] = useState("Share Graph Monitor");
   const [tabLinksArray , setTabLinksArray] = useState(fieldTabs);
@@ -224,7 +224,7 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
 
         <FooterMoreLinks/>
       </main>
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
     </div>
   )
 }
@@ -243,6 +243,13 @@ export async function getStaticProps(context) {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
   
    // Use this for novigation
    const  dataNav2  = await client.query({ query: NAVIGATION });
@@ -358,7 +365,8 @@ export async function getStaticProps(context) {
        fieldTabs:fieldTabs,
        iframe:data1,
        nav:nav,
-       othernav:othernav
+       othernav:othernav,
+       footerData: footerData
     }, // will be passed to the page component as props
   }
 }

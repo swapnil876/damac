@@ -53,7 +53,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import GoogleMapReact from 'google-map-react';
 import { icon } from "@fortawesome/fontawesome-svg-core";
 
-function Community({entity1, projectlist, otherProjects, nav, othernav}) {
+function Community({entity1, projectlist, otherProjects, nav, othernav, footerData}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   const [customModal, openCustomModal] = useState(false)
 
@@ -1053,7 +1053,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                 </section>
 
       </main>
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
 
       
     </div>
@@ -1077,6 +1077,13 @@ export const getServerSideProps = async (cp) => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
 
    // Use this for novigation
@@ -1129,7 +1136,8 @@ export const getServerSideProps = async (cp) => {
         projectlist:projectlist,
         otherProjects:otherProjects,
         nav:nav,
-        othernav:othernav
+        othernav:othernav,
+        footerData: footerData
       }
     }
 

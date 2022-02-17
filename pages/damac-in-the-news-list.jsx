@@ -24,7 +24,7 @@ import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 // import styles from '../styles/.module.css'
 
-function DamacInTheNewsList( { blogs, newslist, nav, othernav } ) {
+function DamacInTheNewsList( { blogs, newslist, nav, othernav, footerData } ) {
 
 
   return (
@@ -81,8 +81,7 @@ function DamacInTheNewsList( { blogs, newslist, nav, othernav } ) {
         
       </main>
 
-      <Footer></Footer>
-
+      <Footer footerData={footerData}></Footer>
       
     </div>
   )
@@ -99,6 +98,13 @@ export const getServerSideProps = async () => {
       uri: process.env.STRAPI_GRAPHQL_URL,
       cache: new InMemoryCache()
     });
+
+    // Use this for footer
+    const footer  = await client.query({ query: FOOTER_LINKS });
+    let footerData = footer.data.nodeQuery.entities[0];
+
+    console.log("Here is footerData", footerData);
+    // end
 
 
     
@@ -227,7 +233,8 @@ export const getServerSideProps = async () => {
        blogs: blogs,
        newslist:newslist,
        nav:nav,
-       othernav:othernav
+       othernav:othernav,
+       footerData: footerData
     }, // will be passed to the page component as props
   }
 }

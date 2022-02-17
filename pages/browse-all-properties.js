@@ -51,7 +51,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
- function BrowseProperties({entity,entity1, nav, othernav}){
+ function BrowseProperties({entity,entity1, nav, othernav, footerData}){
 
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
@@ -929,7 +929,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
              </main>
-             <Footer></Footer>
+             <Footer footerData={footerData}></Footer>
          </div>
      )
  }
@@ -944,6 +944,13 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
         uri: process.env.STRAPI_GRAPHQL_URL,
         cache: new InMemoryCache()
       });
+
+      // Use this for footer
+    const footer  = await client.query({ query: FOOTER_LINKS });
+    let footerData = footer.data.nodeQuery.entities[0];
+
+    console.log("Here is footerData", footerData);
+    // end
       
        // Use this for novigation
        const  data2  = await client.query({ query: NAVIGATION });
@@ -1014,7 +1021,8 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
            entity:properties_data,
            entity1:properties,
            nav:nav,
-           othernav:othernav
+           othernav:othernav,
+           footerData: footerData
         }, // will be passed to the page component as props
       }
  }

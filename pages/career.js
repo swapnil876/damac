@@ -26,7 +26,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 import {isMobile} from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive'
 
-function Career({entity1, nav, othernav}) {
+function Career({entity1, nav, othernav, footerData}) {
 
 const [deviceIsMobile, setDeviceIsMobile] = useState(false);
 
@@ -118,7 +118,7 @@ useEffect(()=>{
         
       </main>
 
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
 
       
     </div>
@@ -130,6 +130,13 @@ export const getStaticProps = async () => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
 
 
@@ -178,7 +185,8 @@ export const getStaticProps = async () => {
       props: {
         entity1: entity1,
         nav:nav,
-        othernav:othernav
+        othernav:othernav,
+        footerData: footerData
         // entity2: entity2
       }
     }

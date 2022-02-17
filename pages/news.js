@@ -27,7 +27,7 @@ import { NEWSLISTING } from '../graphql/news_listing';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
-function News( {entity1,newslist, nav, othernav} ) {
+function News( {entity1,newslist, nav, othernav, footerData} ) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
@@ -327,7 +327,7 @@ function News( {entity1,newslist, nav, othernav} ) {
         
       </main>
 
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
 
       
     </div>
@@ -341,6 +341,13 @@ export const getServerSideProps = async () => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
   
    // Use this for novigation
@@ -390,7 +397,8 @@ export const getServerSideProps = async () => {
         entity1: entity1,
         newslist:newslist,
         nav:nav,
-       othernav:othernav
+       othernav:othernav, 
+       footerData: footerData
         // entity2: entity2
       }
     }
