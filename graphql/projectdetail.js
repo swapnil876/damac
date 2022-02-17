@@ -8,16 +8,12 @@ const PROJECTDETAIL = gql`
             nid
             title
              fieldTaglingP
-            fieldCityp {
+             fieldLocationP{
               entity{
-                tid
-                name
-              }
-            }
-            fieldCountryP {
-              entity{
-                tid
-                name
+                ... on TaxonomyTermLocation{
+                  tid
+                  name
+                }
               }
             }
           fieldMainImageDesktopP{

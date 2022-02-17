@@ -8,7 +8,14 @@ query {
           nid
           title
           fieldTagline
-          fieldLocation
+          fieldLocation{
+            entity{
+              ... on TaxonomyTermLocation{
+                tid
+                name
+              }
+            }
+          }
           fieldImageDesktop {alt,url}
           fieldImageMobile {alt,url}
           fieldGalleryDesktop {alt,url}

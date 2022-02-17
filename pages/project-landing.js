@@ -134,7 +134,7 @@ const ProjectLanding= ({projects,countries,cities,nav, othernav})=> {
                                         <div className={styles['project-card']}>
                                             <img src={project.fieldMainImageDesktopP.url} className="img-fluid" />
                                             <h6>{project.title}</h6>
-                                            <p>{project.fieldCityp.entity.name} &#8226; {project.fieldCountryP.entity.name}</p>
+                                            <p>{project.fieldLocationP!=null?project.fieldLocationP.entity.name:''} </p>
                                             <ul className={styles['bedroom-detail']}>
                                                 <li>
                                                     <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED {project.fieldStartingFromPriceP2}*</a>

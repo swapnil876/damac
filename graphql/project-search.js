@@ -8,7 +8,14 @@ const PROJECTSEARCH = gql`
             nid
             title
              fieldTaglingP
-            fieldLocationP
+             fieldLocationP{
+              entity{
+                ... on TaxonomyTermLocation{
+                  tid
+                  name
+                }
+              }
+            }
           fieldMainImageDesktopP{
             targetId
             title
