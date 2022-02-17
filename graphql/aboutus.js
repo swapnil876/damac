@@ -80,6 +80,11 @@ query {
         fieldMetaDescription
         fieldMetaTitle
         fieldMetaKeywords
+        fieldCol1Header
+        fieldCol1Text7
+        fieldCsrImage{
+          url
+        }
       }
     }
   }

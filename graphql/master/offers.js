@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const OFFERS = gql`
-  query {
+query {
   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["offers"]}]}) {
     entities {
       ... on NodeOffers{
@@ -29,6 +29,14 @@ const OFFERS = gql`
         fieldMetaDescriptionOffers
         fieldMetaKeywordsOffers
         fieldCanonicalUrlOffers
+        fieldMultipleFaqsO{
+          entity{
+            ... on ParagraphMultipleFaqs{
+              fieldQuestion
+              fieldAnswer
+            }
+          }
+        }
       }
     }
   }
