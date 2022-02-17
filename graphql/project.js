@@ -8,18 +8,7 @@ query {
           nid
           title
            fieldTaglingP
-          fieldCityp {
-            entity{
-              tid
-              name
-            }
-          }
-          fieldCountryP {
-            entity{
-              tid
-              name
-            }
-          }
+           fieldLocationP
         fieldMainImageDesktopP{
           targetId
           title

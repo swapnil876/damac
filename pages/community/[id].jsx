@@ -315,7 +315,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
                                         <span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
-                                        <a href="#"><img src="/damac-static/images/location.png"/>   {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}</a>
+                                        <a href="#"><img src="/damac-static/images/location.png"/> {entity1.fieldLocality}</a>
                                     </div>
                                 </div>
                                 <div className="col-md-5">
