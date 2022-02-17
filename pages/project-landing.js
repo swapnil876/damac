@@ -27,9 +27,10 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import styles from '../styles/pages/project-landing.module.css'
 
 
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache, split } from '@apollo/client';
 import {PROJECT} from '../graphql/project';
 import {COUNTRY} from '../graphql/master/country';
+import {LOCATIONS} from '../graphql/master/location';
 import {CITY} from '../graphql/master/cityjs';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
@@ -41,13 +42,15 @@ import { useRouter } from 'next/router';
 // Bootstrap Css
 // import 'bootstrap/dist/css/bootstrap.css'
 
-const ProjectLanding= ({projects,countries,cities,nav, othernav})=> {
+const ProjectLanding= ({projects,countries,cities,locations,nav, othernav})=> {
     const router = useRouter();
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
     const [searchFilter, setSearchFilter] = useState(false);
     const [projectList, setProjectList] = useState(projects);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+    var [country, setCountry] = useState([]);
+    var [city, setCity] = useState([]);
     const { slug } = router;
     console.log("slug", slug);
     useEffect(() => {
@@ -55,6 +58,8 @@ const ProjectLanding= ({projects,countries,cities,nav, othernav})=> {
          setDeviceIsMobile( true );
        }
     }, [])
+
+    console.log(locations);
     
 
     // const searchFilter = useCallback((event)=>{
@@ -73,7 +78,13 @@ const ProjectLanding= ({projects,countries,cities,nav, othernav})=> {
         pathname: "/project-landing",
         query: {search:searchFilter},
     });
-}
+    }
+
+    function getCity(ev){
+        let i = ev.target.value
+        console.log(locations[i]);
+        setCity(locations[i].cities);
+    } 
 
       
     return (
@@ -95,21 +106,21 @@ const ProjectLanding= ({projects,countries,cities,nav, othernav})=> {
                                 <div className="col-md-6">
                                     <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
                                         <i className="fas fa-search"></i>
-                                        <input type="text" placeholder="Search Project or Area" onKeyUp={($ev)=>{setSearchFilter($ev.target.value)}} className="form-control"/>
+                                        <input type="text" placeholder="Search Project or Area" onKeyUp={($ev)=>{setSearchFilter($ev)}} className="form-control"/>
                                     </div>
                                 </div>
                                 <div className="col-md-6 d-flex flex-wrap justify-content-between">
                                     <div className={`${styles["form-field-wrap"]} d-flex`}>
                                         <div className={styles['form-field']}>
-                                            <select name="all_country" className={styles['form-select']} id="" style={{'marginRight': '50px'}}>
+                                            <select name="all_country" className={styles['form-select']} id="" style={{'marginRight': '50px'}} onChange={($ev)=>{getCity($ev)}}>
                                                 <option value="">All Countries</option>
-                                                {countries.map((country,k) => (<option key={k} value={country.tid}>{country.name}</option>))}
+                                                {locations.map((country,k) => (<option key={k} value={k}>{country.country}</option>))}
                                             </select>
                                         </div>
                                         <div className={styles['form-field']}>
                                             <select name="all_city" className={styles['form-select']} id="">
                                                 <option value="">All Cities</option>
-                                                {cities.map((city,k) => (<option key={k} value={city.tid}>{city.name}</option>))}
+                                                {city.map((ci,k) => (<option key={k} value={ci.tid}>{ci.name}</option>))}
                                             </select>
                                         </div>
                                     </div>
@@ -468,6 +479,13 @@ const ProjectLanding= ({projects,countries,cities,nav, othernav})=> {
     )
 }
 
+function setCity(arr,split,isSet){
+    arr.map((l,k)=>{
+        if(split[1] == l.country){
+            l.cities.push({name:split[0]});
+        }    
+    });
+}
 
 
 export const getServerSideProps = async (cp) => {
@@ -492,6 +510,8 @@ export const getServerSideProps = async (cp) => {
       const  data4  = await client.query({ query: PARENTMENUITEMS });
       let nav = [];
       let othernav = [];
+      let c = [];
+      let unique = []
       if(typeof data3 != 'undefined' &&  typeof data4 != 'undefined'){
         let submenu = data3.data.nodeQuery.entities[0];
         let menu = data4.data.taxonomyTermQuery.entities;
@@ -521,19 +541,32 @@ export const getServerSideProps = async (cp) => {
     const  data  = await client.query({ query: PROJECT, variables:{field:field,value:value} });
     const  data1  = await client.query({ query: COUNTRY });
     const  data2  = await client.query({ query: CITY });
+    const data5 = await client.query({query:LOCATIONS})
 
     console.log('projectdata',data);
     let projects = data.data.nodeQuery.entities;
     let country = data1.data.taxonomyTermQuery.entities;
-    let city = data2.data.taxonomyTermQuery.entities
-    // console.log('entity1',projects);
-  
+    let city = data2.data.taxonomyTermQuery.entities;
+    let location = data5.data.taxonomyTermQuery.entities;
+    // console.log('locations******',location);
+    await location.map((m,n)=>{
+        let split = m.name.split(',');
+        if(!unique.includes(split[1])){
+            unique.push(split[1]);
+            c.push({country:split[1],cities:[]});
+        } 
+        if(location.length-1 != n)
+            setCity(c,split);
+        else
+            setCity(c,split);
+    })
     return {
       props: {
          // mobileDevice: deviceType,
          projects : projects,
          countries: country,
          cities: city,
+         locations:c,
          nav:nav,
          othernav:othernav
       }, // will be passed to the page component as props

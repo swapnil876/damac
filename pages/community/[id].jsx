@@ -39,6 +39,7 @@ import pageBanner from '../../public/images/community-bg.jpg'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { COMMUNITYDETAILS } from '../../graphql/community-details';
 import { PROJECT } from '../../graphql/project';
+import { COMMUNITY } from '../../graphql/community';
 
 import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
@@ -52,6 +53,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 // Google Map Plugin
 import GoogleMapReact from 'google-map-react';
 import { icon } from "@fortawesome/fontawesome-svg-core";
+import * as axios from 'axios';
 
 function Community({entity1, projectlist, otherProjects, nav, othernav}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -565,7 +567,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
           <div className="col-md-6">
           <div className={`text-wrapper`}>
                 <div className="top-text">
-            <h2 style={{'color':'#ffffff'}}>Township Amenities</h2>
+            <h2 style={{'color':'#ffffff'}}>{entity1.fieldSection4Heading}</h2>
             <p>{entity1.fieldDescriptionc4}</p>
             </div>
             </div>
@@ -979,7 +981,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
             <div className="col-md-6" key={index}>
               <div className={styles['property-slider-wrap']}>
                 <div className={styles['project-card']}>
-                  <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
+                  <img alt=""src={proj.fieldImageDesktop.url} className="img-fluid" />               
                   <h6>{proj.title}</h6>
                   <p>{proj.fieldLocationP!=null?proj.fieldLocationP.entity.name:''}</p>
                   <ul className={styles['bedroom-detail']}>
@@ -1109,7 +1111,7 @@ export const getServerSideProps = async (cp) => {
    console.log(cp.query.id);
   const  data  = await client.query({ query: COMMUNITYDETAILS, variables:{id:cp.query.id} });
   const  data1  = await client.query({ query: PROJECT });
-  const  data2  = await client.query({ query: PROJECT });
+  const  data2  = await client.query({ query: COMMUNITY });
   let entity1 = data.data.nodeQuery.entities[0];
   let projectlist = data1.data.nodeQuery.entities;
   let otherProjects = data2.data.nodeQuery.entities;

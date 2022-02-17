@@ -318,7 +318,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                <li><a href="#">Communities</a></li>
                                <li><a href="#">Projects</a></li>
                                <li><a href="#">Our Picks</a></li>
-                               <li><a href="#">Saved</a></li>
+                               <li><a href="/saved-properties">Saved</a></li>
                            </ul>
                        </div>
                        <div className={`${styles["map_filter_main"]} d-flex`}>
@@ -939,7 +939,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
     const client = new ApolloClient({
         uri: process.env.STRAPI_GRAPHQL_URL,
         cache: new InMemoryCache()
-      });
+    });
       
        // Use this for novigation
        const  data2  = await client.query({ query: NAVIGATION });
@@ -1004,6 +1004,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
             }
         }
     });
+
     console.log('--------',properties_data);
     return {
         props: {
