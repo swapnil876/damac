@@ -868,19 +868,19 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
              <div className="row ">
                <div className="col-md-6">
                  <div className={styles['invest-wrap']}>
-                   <h2>Why Invest in Dubai</h2>
+                   <h2>{entity1.fieldWhyInvestHeading}</h2>
                  </div>  
                </div>          
              </div> 
              <div className="row">
                <div className="col-md-6">
                     <div className={styles['invest-wrap']}>
-                      <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
+                      <p>{entity1.fieldWhyInvestCol1}</p>
                     </div>
                </div>
                <div className="col-md-6">
                  <div className={styles['invest-wrap']}>
-                   <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%</p>
+                   <p>{entity1.fieldWhyInvestCol2}</p>
                  </div>
                </div>
              </div>
