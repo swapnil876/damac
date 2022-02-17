@@ -6,6 +6,8 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 
 // importing form template
 import InvestorContactForm from '../components/InvestorContactForm';

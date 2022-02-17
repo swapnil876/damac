@@ -24,6 +24,8 @@ import { OFFERS } from '../graphql/master/offers';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 function OffersPage( { offers, nav, othernav, footerData } ) {
 
 

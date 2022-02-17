@@ -9,6 +9,8 @@ import Link from 'next/link'
 
 import styles from '../styles/pages/dividends.module.css'
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 // Navbar
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'

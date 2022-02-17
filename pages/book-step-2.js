@@ -32,6 +32,8 @@ import { useMediaQuery } from 'react-responsive'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 function Bookstep2({entity1, nav, othernav, footerData}) {
     
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);

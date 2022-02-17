@@ -32,6 +32,8 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 export default function CompanyAnnouncements({entity,unique,year_announcement, nav, othernav, footerData}){
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);

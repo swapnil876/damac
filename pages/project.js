@@ -19,6 +19,8 @@ import style from '../styles/pages/listing.module.css'
 
 import React, { Component, useState, useEffect } from "react";
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 // FA
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

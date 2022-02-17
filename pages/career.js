@@ -24,7 +24,9 @@ import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import {isMobile} from 'react-device-detect';
-import { useMediaQuery } from 'react-responsive'
+
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+import { useMediaQuery } from 'react-responsive';
 
 function Career({entity1, nav, othernav, footerData}) {
 

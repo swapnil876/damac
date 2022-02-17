@@ -43,6 +43,8 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
  export default function SavedProperties({nav, othernav, footerData}){
 
   const [filterClicked, setFilterClicked] = useState(false);

@@ -28,6 +28,8 @@ import { BLOGSDETAILS } from '../graphql/master/blogdetails';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 function Blog({entity1, nav, othernav, footerData}) {
  var img_url;
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);

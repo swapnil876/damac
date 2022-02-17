@@ -20,6 +20,8 @@ import { COMMUNITY } from '../graphql/community';
 
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
 // import styles from '../styles/.module.css'
 
 function Communities( { communities, nav, othernav, footerData } ) {

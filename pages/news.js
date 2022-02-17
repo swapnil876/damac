@@ -27,6 +27,8 @@ import { NEWSLISTING } from '../graphql/news_listing';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 function News( {entity1,newslist, nav, othernav, footerData} ) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);

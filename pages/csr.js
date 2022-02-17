@@ -38,6 +38,8 @@ import { isMobile } from 'react-device-detect'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 function CSR({entity1, nav, othernav, footerData}) {
 
     // Carousel

@@ -24,6 +24,8 @@ import {MORTGAGECALCULATOR} from '../graphql/master/mortgage-calculator';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
  function MortgageCalculator({entity1, nav, othernav, footerData}) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);

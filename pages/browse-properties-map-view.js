@@ -36,6 +36,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
  export default function BrowsePropertiesMapView({nav, othernav, footerData}){
      return(
          <div className="browse-properties">

@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
 // Navbar
 import Navbar from '../components/navbar'

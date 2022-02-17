@@ -36,6 +36,8 @@ import { BLOGS } from '../../graphql/blogs';
 import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
  export default function BlogDetails({entity1,bloglist, nav, othernav, footerData}){
      return(
          <div className="BlogDetails">

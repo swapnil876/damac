@@ -51,6 +51,8 @@ import GoogleMapReact from 'google-map-react';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
  export default function Listing({mobileDevice,listing, nav, othernav, footerData}){
 
     const [brochureModal, openBrochureModal] = useState(false);

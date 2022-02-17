@@ -21,6 +21,8 @@ import styles from '../../styles/pages/industry-news.module.css'
 
 import React, { Component } from "react";
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 // FA
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

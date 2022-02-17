@@ -38,6 +38,8 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 import Select from "react-dropdown-select";
 import { useRouter } from 'next/router';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 // Bootstrap Css
 // import 'bootstrap/dist/css/bootstrap.css'
 

@@ -24,6 +24,8 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 function PressReleaseList( { blogs, nav, othernav, footerData } ) {
   return (
     <div className='bloglistbody'>

@@ -17,7 +17,7 @@ import HeadingTitle from '../components/HeadingTitle'
 import FooterMoreLinks from '../components/FooterMoreLinks'
 // import styles from '../styles/pages/Quick.module.css'
 
-
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
 
  // React Responsive

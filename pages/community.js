@@ -46,6 +46,8 @@ import { BsBookmark } from 'react-icons/bs';
 import { FaBed } from 'react-icons/fa';
 import { FaBath } from 'react-icons/fa';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 
 // Google Map Plugin
 import GoogleMapReact from 'google-map-react';

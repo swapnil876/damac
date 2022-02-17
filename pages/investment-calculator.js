@@ -41,6 +41,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 function ShareInformation( { mobileDevice, entity1, fieldTabs, iframe, nav, othernav, footerData } ) {
 
 
