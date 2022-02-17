@@ -315,7 +315,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
                                         <span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
-                                        <a href="#"><img src="/damac-static/images/location.png"/> {entity1.fieldLocality}</a>
+                                        { entity1.fieldLocation != null ? 
+                                        <a href="#"><img src="/damac-static/images/location.png"/> entity1.fieldLocation.entity.name </a>
+                                        : '' }
                                     </div>
                                 </div>
                                 <div className="col-md-5">
@@ -981,7 +983,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                 <div className={styles['project-card']}>
                   <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
                   <h6>{proj.title}</h6>
-                  <p>{proj.fieldCityp.entity.name}, {proj.fieldCountryP.entity.name}</p>
+                  <p>{proj.fieldLocationP != null && proj.fieldLocationP.entity.name}</p>
                   <ul className={styles['bedroom-detail']}>
                     <li>
                       <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {proj.fieldStartingFromPrice}*</a>
