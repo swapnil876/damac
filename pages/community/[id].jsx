@@ -49,7 +49,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
-import { FOOTER_LINKS } from "../graphql/footer_links" ;
+import { FOOTER_LINKS } from "../../graphql/footer_links"
 
 // Google Map Plugin
 import GoogleMapReact from 'google-map-react';

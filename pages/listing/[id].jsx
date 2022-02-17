@@ -67,7 +67,7 @@ import 'react-multi-carousel/lib/styles.css';
 import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
-import { FOOTER_LINKS } from "../graphql/footer_links" ;
+import { FOOTER_LINKS } from "../../graphql/footer_links"
 
 // FA
 

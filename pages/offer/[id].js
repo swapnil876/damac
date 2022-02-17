@@ -51,7 +51,7 @@ import aboutBanner from '../../public/images/about-bg.png'
 import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
-import { FOOTER_LINKS } from "../graphql/footer_links" ;
+import { FOOTER_LINKS } from "../../graphql/footer_links"
 
 function OfferMain({entity1, nav, othernav, footerData}) {
 
