@@ -109,7 +109,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
             customModal ? 
             <div className="custom_modal_contain booking_step_2_modal">
               
-                <section className={ styles["book-step-main"]}>
+                <section className={ styles["book-step-main"]} style={{'minHeight':'100vh'}}>
                     <div className="close" onClick={()=>{
                       openCustomModal(false);
                       }}>
@@ -123,9 +123,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className={ styles["book-left-main"]}>
-                                    <h1>Golf Town at DAMAC Hills</h1>
-                                    <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
-                                    <div className={ styles["selected-card-main"]}>
+                                     <h1>Golf Town at DAMAC Hills</h1>
+                                     <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+                                     <div className={ styles["selected-card-main"]}>
                                         <div className={ styles['select-card-img-wrap'] }>
                                             <img src="/images/book-step-card-img.jpg" alt="card-img" className="img-fluid" />
                                             <div className={ styles["play-btn-card"]}>
@@ -135,28 +135,31 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                                         <ul className={`${styles["bookmark_main"]} ${styles["d-flex"]} ${styles["float-end"]} ${styles["list-unstyled"]}`}>
                                             <li><a href="#"><img src="/images/icons/bookmark 4.png" /></a></li>
                                         </ul>
-                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                        <p>DAMAC Hills, Dubailand, Dubai</p>
+                                        <h6>{entity1.fieldTitle2}</h6>
+                                          { entity1.fieldLocation != null ? 
+                                            <p>  {entity1.fieldLocation.entity.name} </p>
+                                            : '' }
+                                       
                                         <ul className={`${styles["bedroom-detail"]} ${styles["list-unstyled"]}`}>
                                             <div className="row">
                                                 <div className="col-md-7">
                                                 <li>
-                                                <a href="#"><img src="/images/price-tag 1.png" className={ styles["img-fluid"]} />From AED 1,213,515*</a>
+                                                <a href="#"><img src="/images/price-tag 1.png" className={ styles["img-fluid"]} />From {entity1.fieldStartingFromPrice}*</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />2,750 sqft</a>
+                                                <a href="#"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />{entity1.fieldArea} sqft</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-7">
                                                 <li>
-                                                <a href="#"><img src="/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> 3 Bedrooms</a>
+                                                <a href="#"><img src="/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> {entity1.fieldBedRooms} Bedrooms</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
+                                                {/* <a href="#"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a> */}
                                                  </li>
                                                 </div>
                                             </div>   
@@ -983,11 +986,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                 <div className={styles['project-card']}>
                   <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
                   <h6>{proj.title}</h6>
-<<<<<<< HEAD
-                  <p>{proj.fieldLocationP != null && proj.fieldLocationP.entity.name}</p>
-=======
-                  <p>{proj.fieldLocationP!=null?proj.fieldLocationP.entity.name:''}</p>
->>>>>>> 3af35e3d44d19dbd995f4c12222910d4981aa255
+                  <p>{proj.fieldLocationP != null ? proj.fieldLocationP.entity.name : ''}</p>
                   <ul className={styles['bedroom-detail']}>
                     <li>
                       <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {proj.fieldStartingFromPrice}*</a>

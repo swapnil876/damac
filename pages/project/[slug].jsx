@@ -373,7 +373,7 @@ function ProjectPage({entity1, nav, othernav}) {
             bookStep2Modal ? 
             <div className="custom_modal_contain booking_step_2_modal">
               
-                <section className={ styles["book-step-main"]}>
+                <section className={ styles["book-step-main"]} style={{'minHeight':'100vh'}}>
                     <div className="close" onClick={()=>{
                       openBookStep2Modal(false);
                       }}>
@@ -401,7 +401,7 @@ function ProjectPage({entity1, nav, othernav}) {
                                         </ul>
                                         <h6>{entity1.title}</h6>
                                         { entity1.fieldLocationP != null ?
-                                        <p> entity1.fieldLocationP.entity.name</p>
+                                        <p> {entity1.fieldLocationP.entity.name}</p>
                                         : '' }
                                         <ul className={`${styles["bedroom-detail"]} ${styles["list-unstyled"]}`}>
                                             <div className="row">
@@ -412,7 +412,7 @@ function ProjectPage({entity1, nav, othernav}) {
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />{entity1.fieldAreaP2} sq.ft</a>
+                                                <a href="#"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />{entity1.fieldAreaP2} sqft</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-7">
@@ -422,7 +422,7 @@ function ProjectPage({entity1, nav, othernav}) {
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
+                                                {/* <a href="#"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a> */}
                                                  </li>
                                                 </div>
                                             </div>   
