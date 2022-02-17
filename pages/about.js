@@ -30,6 +30,8 @@ import { HISTORY } from '../graphql/master/history';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 
  // React Responsive
  import { Context as ResponsiveContext } from 'react-responsive'
@@ -50,7 +52,7 @@ import 'react-multi-carousel/lib/styles.css';
 import aboutBanner from '../public/images/about-bg.png'
 
 
-function About({entity1, nav, othernav}) {
+function About({entity1, nav, othernav, footerData}) {
   var [fieldMultipleTeamOnly5, setFieldMultipleTeamOnly5] = useState('');
   var [fieldMultipleTeamAfter5, setFieldMultipleTeamAfter5] = useState('');
 
@@ -484,7 +486,7 @@ Having now received over 100 global awards and commendations, for everything fro
         
       </main>
 
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
 
       
     </div>
@@ -535,7 +537,12 @@ export const getStaticProps = async () => {
 
 
 
+    // Use this for footer
+    const footer  = await client.query({ query: FOOTER_LINKS });
+    let footerData = footer.data.nodeQuery.entities[0];
 
+    console.log("Here is footerData", footerData);
+    // end
 
 
 
@@ -554,7 +561,8 @@ export const getStaticProps = async () => {
         entity1: entity1,
         entity2: entity2,
         nav:nav,
-        othernav:othernav
+        othernav:othernav,
+        footerData: footerData
       }
     }
 

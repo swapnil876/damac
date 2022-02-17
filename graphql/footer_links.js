@@ -1,23 +1,55 @@
 import { gql } from '@apollo/client';
 
-const Footer_Links = gql`
+const FOOTER_LINKS = gql`
 query {
   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["footer"]}]}) {
     entities {
       ... on NodeFooter{
          nid,
-         fieldAddress
+         fieldAddress {
+           value
+           format
+           processed
+           summary
+           summaryProcessed
+         }
          fieldAddressHeader
-         body
-         fieldCopyrightNavigation
+         body {
+           value
+           format
+           processed
+           summary
+           summaryProcessed
+         }
+         fieldCopyrightNavigation {
+           targetId
+           targetRevisionId
+         }
          fieldCopyrightText
-         fieldLogo
-         fieldNavigationLinks
+         fieldLogo {
+           width
+           url
+           height
+           targetId
+           alt
+           title
+         }
+         fieldNavigationLinks {
+          entity {
+            id
+           entityLabel 
+          }
+           targetId
+           targetRevisionId
+         } 
          fieldNewsletterText
-         fieldSocialMediaLinks
+         fieldSocialMediaLinks {
+           targetId
+           targetRevisionId
+         }
     }
   }
 }
 }`;
 
-export { Footer_Links };
+export { FOOTER_LINKS };
