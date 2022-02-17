@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,10 +10,7 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-
-
-export default function Footer( { children} ) {
+export default function Footer( { children, footerData} ) {
   
  
   return (
@@ -23,7 +19,7 @@ export default function Footer( { children} ) {
       <div className='container'>
 
         <div className="footer-logo">
-          <img className="footer-logo-damac" src="/images/damac-logo.png"/>
+          <img className="footer-logo-damac" alt={footerData.fieldLogo.alt} src={footerData.fieldLogo.url}/>
         </div>
 
         
@@ -31,7 +27,7 @@ export default function Footer( { children} ) {
           <div className="col-md-8">
              
              <div className="footerMailList">
-               <p>Join our Mailing List for the latest offers</p>
+               <p>{footerData.fieldNewsletterText}</p>
 
                <div className="footerMailListForm">
                  <input type='email' placeholder="enter your email address"/>
@@ -43,12 +39,8 @@ export default function Footer( { children} ) {
 
           <div className="col-md-4">
             <div className="footer-text-block">
-              <h4>Head Office Address</h4>
-              <div>
-                DAMAC Properties Dubai PJSC<br/>
-                PO Box 2195<br/>
-                Dubai, UAE<br/><br/>
-                +971 4 373 1000
+              <h4>{footerData.fieldAddressHeader}</h4>
+              <div dangerouslySetInnerHTML={{ __html: footerData.fieldAddress.value }}>
               </div>
             </div>
           </div>
@@ -60,7 +52,16 @@ export default function Footer( { children} ) {
              
              <div className="footer-link-list footer-main-link-list">
                <ul>
-                   <li>
+                 {
+                   footerData.fieldNavigationLinks.map((link, index)=>{
+                    <li>
+                    <Link href="/blog">
+                      <a>{link.entity.entityLabel}</a>
+                    </Link>
+                  </li>
+                   })
+                 }
+                   {/* <li>
                      <Link href="/blog">
                        <a>Blog</a>
                      </Link>
@@ -96,7 +97,7 @@ export default function Footer( { children} ) {
                      <Link href="/damac-static/contact.html">
                        <a>Contact Us</a>
                      </Link>
-                   </li>
+                   </li> */}
                    
                </ul>
              </div>
@@ -149,7 +150,7 @@ export default function Footer( { children} ) {
           <div className="col-md-8">
              
              <div className="footer-copyright">
-               <div className="copyright-text">2021 DAMAC. All rights reserved.</div>
+               <div className="copyright-text">{footerData.fieldCopyrightText}</div>
              </div>
 
           </div>
@@ -159,10 +160,4 @@ export default function Footer( { children} ) {
     </footer>
   )
 }
-
-
-
-
-
-
 
