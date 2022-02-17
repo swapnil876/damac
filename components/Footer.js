@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,7 +12,7 @@ import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/
 import * as axios from 'axios';
 
 function Footer( { children, footerData} ) { 
- 
+  console.log(useEffect)
   return (
     <footer className={ 'damac-footer' }>
 
