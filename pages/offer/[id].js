@@ -132,17 +132,6 @@ function OfferMain({entity1, nav, othernav}) {
               </div>
             ))
           }
-            
-            <div className="col-md-6 dm-col-6">
-              <div className={styles['callback-card']}>
-                <img src="../damac-static/images/offer-main.jpg" className="img-fluid"/>
-                <h6>DAMAC Paramount Tower Hotel and Residences Dubai</h6>
-                <p className={styles['callback-card-desc']}>An established and prestigious international golf callback in Dubailands</p>
-                <div className={styles['community-card-btn']}>
-                  <a href="#" className="btn btn-primary">Schdule a Call-back</a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
