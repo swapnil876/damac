@@ -161,31 +161,31 @@ function Footer( { children, footerData} ) {
   )
 }
 
-async function getData(){
-    let token = '';
-    let properties_data = [];
-    await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
-        console.log(token,'************')
-        token = response.data.access_token
-    }).catch((e,status)=>{
-      console.log('err',e);
-    })
-    // await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=10',
-    //     {
-    //         headers:{
-    //             'Authorization':'Zoho-oauthtoken '+token
-    //         }
-    // }).then(response => {
-    //     console.log(response);
-    //     // entity = response.data.data;
-    // }).catch((e,status)=>{
-    //     // console.log('response',e.response);
-    //     if(typeof e.response != 'undefined'){
-    //         if(e.response.status == 401){
-    //             // console.log(refreshToken(e.response.status));
-    //         }
-    //     }
-    // });
-  }
+// async function getData(){
+//     let token = '';
+//     let properties_data = [];
+//     await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
+//         console.log(token,'************')
+//         token = response.data.access_token
+//     }).catch((e,status)=>{
+//       console.log('err',e);
+//     })
+//     // await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=10',
+//     //     {
+//     //         headers:{
+//     //             'Authorization':'Zoho-oauthtoken '+token
+//     //         }
+//     // }).then(response => {
+//     //     console.log(response);
+//     //     // entity = response.data.data;
+//     // }).catch((e,status)=>{
+//     //     // console.log('response',e.response);
+//     //     if(typeof e.response != 'undefined'){
+//     //         if(e.response.status == 401){
+//     //             // console.log(refreshToken(e.response.status));
+//     //         }
+//     //     }
+//     // });
+//   }
 
 export default Footer;
