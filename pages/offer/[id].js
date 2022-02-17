@@ -132,17 +132,6 @@ function OfferMain({entity1, nav, othernav}) {
               </div>
             ))
           }
-            
-            <div className="col-md-6 dm-col-6">
-              <div className={styles['callback-card']}>
-                <img src="../damac-static/images/offer-main.jpg" className="img-fluid"/>
-                <h6>DAMAC Paramount Tower Hotel and Residences Dubai</h6>
-                <p className={styles['callback-card-desc']}>An established and prestigious international golf callback in Dubailands</p>
-                <div className={styles['community-card-btn']}>
-                  <a href="#" className="btn btn-primary">Schdule a Call-back</a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -249,44 +238,26 @@ function OfferMain({entity1, nav, othernav}) {
                               <div className="row">
                               <div className="col-md-12">
                                   <div className={styles['faq-wrap']}>
+
+                                 { entity1.fieldMultipleFaqsO.map( (f, index) => (
                                   <div className="accordion" id="accordionExample">
                                     <div className="accordion-item">
                                       <h2 className="accordion-header" id="headingOne">
                                         <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is the lowest mortgage rate in UAE?
+                                        {f.entity.fieldQuestion}
                                         </button>
                                       </h2>
                                       <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
+                                        {f.entity.fieldAnswer}
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="accordion-item">
-                                      <h2 className="accordion-header" id="headingTwo">
-                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div className="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                      <h2 className="accordion-header" id="headingThree">
-                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div className="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>                           
+
+                                  
+                                    
+                                  </div> 
+                                  ))}                          
                                   </div>            
                               </div>          
                               </div>        

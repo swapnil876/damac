@@ -812,16 +812,15 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
               <div className="container">
                 <div className="row">
                   <div className="col-md-6">
-                    <h2>Dubai: A Safe Haven and the Region’s Most Dynamic City</h2>
+                    <h2>{entity1.fieldStaticHeading}</h2>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
-                     <p>Dubai is considered one of the safest cities in the world, while the UAE is an economic and political safe haven and a beacon of stability in the Middle East. Dubai was ranked the best city for quality of living and public infrastructure across the Middle East and Africa (MEA) region in Mercer’s 2018 Quality of Living Survey.</p>
-                      <p>The city took 74th place in the global ranking, making it the MEA region’s top city for the fifth year running. Dubai is a magnet for foreign talent and multinational companies that view the city as the ideal location from which to serve to markets across the MEA region. </p>
+                     <div dangerouslySetInnerHTML={{ __html: entity1.fieldStaticCol1.value }}></div>
                   </div>
                   <div className="col-md-6">
-                    <p>The city took 74th place in the global ranking, making it the MEA region’s top city for the fifth year running. Dubai is a magnet for foreign talent and multinational companies that view the city as the ideal location from which to serve to markets across the MEA region.</p>
+                  <div dangerouslySetInnerHTML={{ __html: entity1.fieldStaticCol2.value }}></div>
                   </div>
                 </div>
               </div>
@@ -917,30 +916,6 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                         </div>
                                         </div>
                                     ))}
-                                    <div className="accordion-item">
-                                      <h2 className="accordion-header" id="headingTwo">
-                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div className="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                      <h2 className="accordion-header" id="headingThree">
-                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        What is the lowest mortgage rate in UAE?
-                                        </button>
-                                      </h2>
-                                      <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div className="accordion-body">
-                                        The lower rate is 1.99 which is an exclusive rate for DAMAC Properties
-                                        </div>
-                                      </div>
-                                    </div>
                                   </div>                         
                                     </div>            
                                 </div>          
