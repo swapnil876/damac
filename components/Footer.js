@@ -11,6 +11,7 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 
 export default function Footer( { children} ) {
@@ -157,4 +158,29 @@ export default function Footer( { children} ) {
       </div>
     </footer>
   )
+}
+
+
+
+
+
+
+
+export const getServerSideProps = async (cp) => {
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_URL,
+    cache: new InMemoryCache()
+  });
+
+    const  data  = await client.query({ query: FOOTERLINKS  });
+    let entity1 = data.data.nodeQuery.entities[0];
+
+    console.log('footer links here *************',entity1);
+
+     return {
+        props: {
+          entity1: entity1
+        }
+      }
+
 }

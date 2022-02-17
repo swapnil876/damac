@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const Footer_Links = gql`
+const FOOTERLINKS = gql`
 query {
   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["footer"]}]}) {
     entities {
@@ -20,4 +20,4 @@ query {
 }
 }`;
 
-export { Footer_Links };
+export { FOOTERLINKS };
