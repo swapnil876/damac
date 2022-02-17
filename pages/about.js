@@ -193,8 +193,8 @@ function About({entity1, nav, othernav}) {
                    </div>
 
                    <div className="numberdata">
-                     <h4>30900+</h4>
-                     <p>In planning and progress</p>
+                     <h4>{entity1.fieldCounter3[1].entity.fieldCountValue}</h4>
+                     <p>{entity1.fieldCounter3[1].entity.fieldCountText}</p>
                    </div>
                  </div>
                </div>
