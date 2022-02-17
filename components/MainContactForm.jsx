@@ -422,7 +422,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                                     <div className="col-md-4">
                                         <div className={styles['contact-detail']}>
                                             <h2>{add.entity.fieldTitleC.value}</h2>
-                                            <p>DAMAC Properties Dubai PJSC<br />PO Box 2195 <br /> Dubai, UAE</p>
+                                            <div dangerouslySetInnerHTML={{ __html: add.entity.fieldAddress.value }}></div>
                                             <div className={styles['contact-number']}>
                                             <FaPhoneAlt/>
                                                 <a href="#">{add.entity.fieldNumberC.value}</a>
