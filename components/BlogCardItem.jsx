@@ -49,13 +49,14 @@ export default function BlogCardItem( { className, cardDetails  } ) {
         <h3 className={`${styles['blogitem-title']}`}><Link href={cardDetails.url}><a>{cardDetails.title}</a></Link></h3>
 
         <div className={` ${ styles['blogitem-meta'] }`} >
-          {/* <div className={`${styles['metatags']}`}>
+          <div className={`${styles['metatags']}`}>
+          <span className={`taglabel`}>{cardDetails.tag}</span>
             {
-              cardDetails.tags.map( (tag, idx) => 
-                <span key={idx} className={`taglabel taglabel-${tag}`}>{tag}</span>
-              )
+              // cardDetails.tags.map( (tag, idx) => 
+              //   <span key={idx} className={`taglabel taglabel-${tag}`}>{tag}</span>
+              // )
             }
-          </div> */}
+          </div>
 
           <div className={`${styles['dateandauthor']}`}>
             <span className='posted-date'>{cardDetails.date}</span>
