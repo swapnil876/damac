@@ -37,7 +37,7 @@ import pageBanner from '../../public/images/community-bg.jpg'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { COMMUNITY } from '../../graphql/community';
+import { COMMUNITYDETAILS } from '../../graphql/community-details';
 import { PROJECT } from '../../graphql/project';
 
 import { NAVIGATION } from '../../graphql/master/navigation';
@@ -981,7 +981,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                 <div className={styles['project-card']}>
                   <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
                   <h6>{proj.title}</h6>
-                  <p>{proj.fieldCityp.entity.name}, {proj.fieldCountryP.entity.name}</p>
+                  <p>{proj.fieldLocationP!=null?proj.fieldLocationP.entity.name:''}</p>
                   <ul className={styles['bedroom-detail']}>
                     <li>
                       <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {proj.fieldStartingFromPrice}*</a>
@@ -1066,7 +1066,7 @@ function handleChange(e) {
 }
 
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (cp) => {
 
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
@@ -1106,14 +1106,14 @@ export const getServerSideProps = async () => {
     
    }
      // end
-
-  const  data  = await client.query({ query: COMMUNITY });
+   console.log(cp.query.id);
+  const  data  = await client.query({ query: COMMUNITYDETAILS, variables:{id:cp.query.id} });
   const  data1  = await client.query({ query: PROJECT });
   const  data2  = await client.query({ query: PROJECT });
   let entity1 = data.data.nodeQuery.entities[0];
   let projectlist = data1.data.nodeQuery.entities;
   let otherProjects = data2.data.nodeQuery.entities;
-  console.log('***data****comm',entity1);
+  console.log('***data****comm',data.data.nodeQuery.entities);
   
 
   

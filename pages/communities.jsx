@@ -164,7 +164,7 @@ if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
   communities_data.map((v,i)=>{
     console.log('************'+i);
     if(v.fieldImageDesktop != null){
-      communities.push({title:v.title,imageUrl:v.fieldImageDesktop.url,subtitle:v.fieldCity.entity.name+','+v.fieldCountry.entity.name,description:v.fieldTagline,link:'/community/1'})
+      communities.push({title:v.title,imageUrl:v.fieldImageDesktop.url,subtitle:v.fieldLocation!=null?v.fieldLocation.entity.name:'',description:v.fieldTagline,link:'/community/'+v.nid})
     }
      
   });
