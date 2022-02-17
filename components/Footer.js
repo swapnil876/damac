@@ -11,8 +11,6 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 
-
-
 export default function Footer( { children, footerData} ) {
   
  
@@ -163,3 +161,4 @@ export default function Footer( { children, footerData} ) {
     </footer>
   )
 }
+
