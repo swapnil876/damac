@@ -193,8 +193,8 @@ function About({entity1, nav, othernav}) {
                    </div>
 
                    <div className="numberdata">
-                     <h4>30900+</h4>
-                     <p>In planning and progress</p>
+                     <h4>{entity1.fieldCounter3[1].entity.fieldCountValue}</h4>
+                     <p>{entity1.fieldCounter3[1].entity.fieldCountText}</p>
                    </div>
                  </div>
                </div>
@@ -428,8 +428,8 @@ function About({entity1, nav, othernav}) {
                
                <div className="col-md-6">
                  <div className="awardsbox1 text-center">
-                   <h2>Most<br/>Socially Responsible<br/>Real Estate Company</h2>
-                   <p className="subtext">UAE 2020</p>
+                   <h2>{entity1.fieldCol1Header}</h2>
+                   <p className="subtext">{entity1.fieldCol1Text7}</p>
                  </div>
                </div>
 
@@ -475,7 +475,7 @@ Having now received over 100 global awards and commendations, for everything fro
            </div>
 
            <div className="graphic-img">
-             <img alt=""src="/images/corporate-responsibility.png"/>
+             <img alt={entity1.fieldCsrHeading} src={entity1.fieldCsrImage.url}/>
            </div>
 
          </div>

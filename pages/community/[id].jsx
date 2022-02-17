@@ -15,6 +15,17 @@ import style from '../../styles/pages/listing.module.css';
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
 
+import {
+  FaPlay,
+  FaAngleLeft,
+  FaAngleRight,
+  FaArrowDown,
+  FaCross,
+  FaPlus,
+  FaMinus,
+  FaRegQuestionCircle 
+} from "react-icons/fa";
+
 
  // React Responsive
  import { Context as ResponsiveContext } from 'react-responsive'
@@ -72,8 +83,8 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
 
    const defaultProps = {
      center: {
-       lat: 59.95,
-       lng: 30.33
+       lat: entity1.fieldLatitude,
+       lng: entity1.fieldLongitude
      },
      zoom: 11
    };
@@ -304,7 +315,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
                                         <span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
-                                        <a href="#"><img src="/damac-static/images/location.png"/>   {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}</a>
+                                        <a href="#"><img src="/damac-static/images/location.png"/> {entity1.fieldLocality}</a>
                                     </div>
                                 </div>
                                 <div className="col-md-5">
@@ -492,35 +503,61 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
             }
         </>
 
-     {/* section 3 */}
-      <section className={styles['damac-gallery']}>
-      <div className={styles['angry-grid']}>
-        <div className={styles['gr-item-0']}>
-           <div className={styles['right-side-gallery']}>
-           <img alt=""src={deviceIsMobile?entity1.fieldCol1ImageMobileC.url:entity1.fieldCol1ImageDesktopc.url}/>
-           <div className={styles['gal-content']}>
-            <p>{entity1.fieldCol1Textc}</p>
-          </div>         
-        </div>
-        </div>
-        <div className={styles['gr-item-1']}>
-            <div className={styles['sm-gal-right']}>
-              <img alt=""src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobic.url:entity1.fieldCol2Row1Col1ImageDeskc.url} className="img-fluid"/>
-            </div>
-        </div>
-        <div className={styles['gr-item-2']}>
-           <div className={styles['sm-gal-left']}>
-              <img alt=""src={deviceIsMobile?entity1.fieldCol2Row1Col2ImageMobic.url:entity1.fieldCol2Row1Col2ImageDeskc.url} className="img-fluid"/>
-            </div>
-        </div>
-        <div className={styles['gr-item-3']}>
-           <div className={styles['gal-gr']}>
-            <img alt=""src={deviceIsMobile?entity1.fieldCol2Row2ImageMobilec.url:entity1.fieldCol2Row2ImageDesktopc.url} className="img-fluid"/> 
-            
-          </div>
-        </div>
-      </div>           
-     </section>  
+                      {/* section 3 */}
+                      {/* <!-- Gallery Section --> */}
+                      <section className={style['damac-gallery']}>
+                        {
+                          !deviceIsMobile ? 
+                          <div className={style['angry-grid']}>
+                            <div className={style['gr-item-0']}>
+                            <div className={style['right-side-gallery']}>
+                            <img src={deviceIsMobile?entity1.fieldCol1ImageMobileC.url:entity1.fieldCol1ImageDesktopc.url} className="img-fluid"/>
+                            <div className={style['gal-content']}>
+                                <p>
+                                  {entity1.fieldCol1Textc}
+                                </p>
+                            </div>         
+                            </div>
+                            </div>
+                            <div className={style['gr-item-1']}>
+                                <div className={style['sm-gal-right']}>
+                                <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobic.url:entity1.fieldCol2Row1Col1ImageDeskc.url} className="img-fluid"/>
+                                </div>
+                            </div>
+                            <div className={style['gr-item-2']}>
+                            <div className={style['sm-gal-left']}>
+                                <img src={deviceIsMobile?entity1.fieldCol2Row1Col2ImageMobic.url:entity1.fieldCol2Row1Col2ImageDeskc.url} className="img-fluid"/>
+                                </div>
+                            </div>
+                            <div className={style['gr-item-3']}>
+                            <div className={style['gal-gr']}>
+                                <img src={deviceIsMobile?entity1.fieldCol2Row2ImageMobilec.url:entity1.fieldCol2Row2ImageDesktopc.url} className="img-fluid"/> 
+                                
+                            </div>
+                            </div>
+                          </div> :
+
+                          <div className="container-fluid sec_3_gallery_grid_for_mobile p-0">
+                            <div className="text_on_img_sec">
+                            <img src={deviceIsMobile?entity1.fieldCol1ImageMobileC.url:entity1.fieldCol1ImageDesktopc.url} className="img-fluid"/>
+                              <div className="gal-content-2">
+                                  <p>
+                                    {entity1.fieldCol1Textc}
+                                  </p>
+                              </div>     
+                            </div>
+                            <div className="row" style={{'maxWidth':'100%', 'margin':'auto'}}>
+                              <div className="col-6" style={{'paddingLeft':'0'}}>
+                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobic.url:entity1.fieldCol2Row1Col1ImageDeskc.url} Name="img-fluid"/>
+                              </div>
+                              <div className="col-6" style={{'paddingRight':'0'}}>
+                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col2ImageMobic.url:entity1.fieldCol2Row1Col2ImageDeskc.url} className="img-fluid"/>
+                              </div>
+                            </div>
+                          </div> 
+                          }
+                    </section>
+ 
 
       <section className={styles['township-amenities']}>
         <div className="container">
@@ -630,8 +667,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
         
         </div>
       </section>
+
    
-      <section className={styles['damac-gallery']}>
+      {/* <section className={styles['damac-gallery']}>
       <div className={styles['angry-grid']}>
         <div className={styles['gr-item-0']}>
            <div className={styles['right-side-gallery']}>
@@ -658,7 +696,60 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
           </div>
         </div>
       </div>           
-     </section>   
+     </section>    */}
+                      {/* <!-- Gallery Section --> */}
+                      <section className={style['damac-gallery']}>
+                        {
+                          !deviceIsMobile ? 
+                          <div className={style['angry-grid']}>
+                            <div className={style['gr-item-0']}>
+                            <div className={style['right-side-gallery']}>
+                            <img src={deviceIsMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url} className="img-fluid"/>
+                            <div className={style['gal-content']}>
+                                <p>
+                                  {entity1.fieldCol1Textc5}
+                                </p>
+                            </div>         
+                            </div>
+                            </div>
+                            <div className={style['gr-item-1']}>
+                                <div className={style['sm-gal-right']}>
+                                <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} className="img-fluid"/>
+                                </div>
+                            </div>
+                            <div className={style['gr-item-2']}>
+                            <div className={style['sm-gal-left']}>
+                                <img src={deviceIsMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/>
+                                </div>
+                            </div>
+                            <div className={style['gr-item-3']}>
+                            <div className={style['gal-gr']}>
+                                <img src={deviceIsMobile?entity1.fieldCol2Row2ImageMobileC5.url:entity1.fieldCol2Row2ImageDesktopC5.url} className="img-fluid"/> 
+                                
+                            </div>
+                            </div>
+                          </div> :
+
+                          <div className="container-fluid sec_3_gallery_grid_for_mobile p-0">
+                            <div className="text_on_img_sec">
+                            <img src={deviceIsMobile?entity1.fieldCol1ImageMobileC5.url:entity1.fieldCol1ImageDesktopC5.url} className="img-fluid"/>
+                              <div className="gal-content-2">
+                                  <p>
+                                   {entity1.fieldCol1Textc5}
+                                  </p>
+                              </div>     
+                            </div>
+                            <div className="row" style={{'maxWidth':'100%', 'margin':'auto'}}>
+                              <div className="col-6" style={{'paddingLeft':'0'}}>
+                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobc5.url:entity1.fieldCol2Row1Col1ImageDesc5.url} Name="img-fluid"/>
+                              </div>
+                              <div className="col-6" style={{'paddingRight':'0'}}>
+                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col2ImageMobc5.url:entity1.fieldCol2Row1Col2ImageMobc5.url} className="img-fluid"/>
+                              </div>
+                            </div>
+                          </div> 
+                          }
+                    </section> 
 
       <section className={styles['about-location']}>
         <div className="container">
@@ -671,14 +762,17 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
             </div>
             <div className={styles['brand-partners']}>
               <h4>Brand Partners</h4>
-              
               <div className={styles['brand-icons']}>
-                  {
-                    entity1.fieldBrandIcons.map( (icon, index) => (
-                      <img alt=""src={icon.entity.fieldIconImage.url}/>
-                    ))
-                  }
-              </div>
+                            <div className="row">
+                            {
+                              entity1.fieldBrandIcons.map( (icon, index) => (
+                                <div className={`${styles["column"]} col-4`}>
+                                <img alt="" src={icon.entity.fieldIconImage.url}/>
+                               </div>
+                              ))
+                            }  
+                              </div>
+                            </div>
             </div>
           </div>
           <div className="col-md-6">
@@ -756,63 +850,100 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
    </section>
 
 
-   {/* <!-- Estimate Section --> */}
-     <section className={styles['estimate']}>      
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8">
-            <img alt=""src="/damac-static/images/invoice-1.png"/>
-            <div className={`text-wrapper`}>
-            <div className="top-text">
-            <h2>Get an estimate</h2>
-            </div>
-          </div> 
-           <p className={styles['estimate-tagline']} >Receive an upfront estimate on your new home.</p>
-           <div className={styles['estimate-inner']}>             
-             <div className={`price ${styles["border-white"]}`}>
-               <p><span>Property Price</span></p>
-              <p><span>AED          </span> 120,000 <span className={`${styles["text-right"]} ${styles["dark"]}`}>
-                <i className="fas fa-angle-left"></i> <i className="fas fa-angle-right"></i></span></p> 
-             </div>
-             <div className={`rate ${styles["border-white"]}`}>
-               <p><span>Interest Rate</span> <span className={styles['text-right']} >%</span>  </p>
-              <p>1.99 <span className={`${styles["text-right"]} ${styles["dark"]}`} ><i className="fas fa-minus"></i><i className="fas fa-plus"></i></span></p> 
-             </div> 
-           </div>
-          <div className={styles['estimate-inner']}>
-           <div className={`down-payment ${styles["border-white"]}`}>
-               <p>Down Payment <span className={styles['text-right']} >%</span></p> 
-              <p>25  </p> 
-             </div>
+                            {/* <!-- Estimate Section --> */}
+                            <section className={styles['estimate']}>
+                            <div className="container">
+                              <div className="row">
+                                <div className="col-md-8">
+                                  <img src="/damac-static/images/invoice-1.png"/>
+                                  <h2>Get an estimate</h2>
+                                  <p className={styles['estimate-tagline']}>Receive an upfront estimate on your new home.</p>
+                                  {
+                                    deviceIsMobile ? 
+                                  <div>
+                                    <div className={styles['estimate-inner']}>
+                                    <div className={`price ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Property Price</p>
+                                      <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                                    </div>
+                                    <div className={`down-payment ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
+                                      <p>25 </p>
+                                      <input type="range" className={styles['range-slider']} />
+                                    </div>
+                                  </div>
+                                  <div className={styles['estimate-inner']}>
+                                    <div className={`rate ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                                      <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                    </div>
+                                    <div className={`loan ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
+                                      <p> 5</p>
+                                      <input type="range" className={styles['range-slider']} />
+                                    </div>
+                                  </div>
+                                  </div>
+                                  :
+                                  <div>
+                                    <div className={styles['estimate-inner']}>
+                                    <div className={`price ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Property Price</p>
+                                      <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                                    </div>
+                                    <div className={`rate ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                                      <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                    </div>
+                                  </div>
+                                  <div className={styles['estimate-inner']}>
+                                    <div className={`down-payment ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
+                                      <p>25 </p>
+                                      <input type="range" className={styles['range-slider']} />
+                                    </div>
+                                    <div className={`loan ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
+                                      <p> 5</p>
+                                      <input type="range" className={styles['range-slider']} />
+                                    </div>
+                                  </div>
+                                  <div className={styles['estimate-inner']}>
+                                    <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
+                                  </div>
+                                  </div>
+                                  }
+                                </div>
+                                <div className="col-md-4">
+                                  <div className={styles['estimate-cost']}>
+                                    <h4>Cost Breakdown</h4>
+                                    <ul>
+                                      <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>120,000</i></li>
+                                      <li><span className={styles['text-left']}>For Years</span> <i>5</i></li>
+                                    </ul>
 
-             <div className={`loan ${styles["border-white"]}`}>
-               <p><span>Loan Period</span> <span className={styles['text-right']} >Y R S</span></p>
-              <p> 5</p> 
-             </div>
-          </div>
-          <a href="#" className={`${styles["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71'}}>Enquire Now</a>
-          </div>
-          <div className="col-md-4">
-            <div className={styles['estimate-cost']}>
-              <h4>Cost Breakdown</h4>
-              <ul>
-                <li><span className={styles['text-left']}>60 months of</span> <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>Down Payment</span>  <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>With Interest rate of</span>  <span>%</span>120,000</li>
-                <li><span className={styles['text-left']}>For Years</span>5</li>
-              </ul>
-              <h4>Fees</h4>
-              <ul>
-                <li><span className={styles['text-left']}>Land Department Fee</span> <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>Registration Fee</span>  <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>Mortgage Registration Fee</span>  <span>AED</span> 120,000</li>
-                <li><span className={styles['text-left']}>Valuation Fee</span><span>AED</span> 120,000</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-       </div>
-     </section>
+                                    <hr className={styles['hr_tag']} />
+
+                                    <h4>Fees</h4>
+                                    <ul className={styles['fees']}>
+                                      <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
+                                      <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><i><span>AED</span> 120,000</i></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                               {
+                                 deviceIsMobile ?
+                                 <div className={styles['estimate-inner']}>
+                                 <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
+                               </div> : ''
+                               }
+                              </div>
+                            </div>
+                            </section>
 
 
 
@@ -822,8 +953,8 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
         <div className="row justify-content-end align-items-end">
           <div className="col-md-12">
             <div className={styles['invest-wrap']}>
-              <h2>Why Invest in Dubai</h2>
-              <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/> investors can achieve gross rental yields<br/> of between 5-9%</p>
+              <h2>{entity1.fieldHeading}</h2>
+              <p>{entity1.fieldText}</p>
               <a href="#" className={styles['read-more']}>Read more</a>
             </div>  
           </div>          
@@ -894,7 +1025,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                             <div className={style['faq-wrap']}>
                             <div class="accordion" id="accordionExample">
                             {
-                   entity1.fieldMultipleFaqs.map( (f, index) => (
+                                 entity1.fieldMultipleFaqs.map( (f, index) => (
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -907,7 +1038,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav}) {
                                         </div>
                                       </div>
                                     </div>
-                   ))}
+                              ))}
  
                                   </div>                        
                             </div>            

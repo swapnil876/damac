@@ -8,12 +8,7 @@ query {
           nid
           title
           fieldTagline
-          fieldCity {
-            entity{tid,name}
-          }
-          fieldCountry {
-            entity{tid,name}
-          }
+          fieldLocation
           fieldImageDesktop {alt,url}
           fieldImageMobile {alt,url}
           fieldGalleryDesktop {alt,url}

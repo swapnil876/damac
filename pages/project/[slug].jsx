@@ -374,7 +374,7 @@ function ProjectPage({entity1, nav, othernav}) {
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
                                         <p><span>{entity1.fieldTaglingP}</span></p>
-                                        <a href="#"><img src="/damac-static/images/location.png"/>  {entity1.fieldCityp.entity.name}, {entity1.fieldCountryP.entity.name}</a>
+                                        <a href="#"><img src="/damac-static/images/location.png"/>  {entity1.fieldLocationP}</a>
                                     </div>
                                 </div>
                                 <div className="col-md-5">
