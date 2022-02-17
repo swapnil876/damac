@@ -32,7 +32,7 @@
     overflow: hidden;
 }
 
-.blogcard-item .blog_desc {
+.blogcard-item .blog_desc, .blogcard-item .blog_desc p {
     font-weight: 300;
     font-size: 18px;
     line-height: 148%;

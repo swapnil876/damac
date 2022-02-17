@@ -88,7 +88,7 @@ useEffect(()=>{
        <TextSection custom_padding={deviceIsMobile ? '10px 0 50px' : '80px 0 0'}>
          
          <div className="section-title text-center">
-           <h3 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Words from our Staff</h3>
+           <h3 className={`section-title-gradient ${styles["main_in_career_title"]}`}>{entity1.fieldVideoUrl.title}</h3>
            <p className={styles['under_main_in_career_title']}>See what some of our people have to say.</p>
          </div>
 

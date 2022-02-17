@@ -207,7 +207,7 @@ return (
                                                 <div className={styles['datetime-announcement']}>
                                                     <p>{v.obj.fieldDate.value}</p>
                                                 </div>
-                                                <div className={styles['download_announcement']}><a href="#">Download</a></div>
+                                                <div className={styles['download_announcement']}><a href={v.obj.fieldAnnouncement.entity.url} download target="_blank">Download</a></div>
                                             </div>
                                         </div>
                                     </li>
