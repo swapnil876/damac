@@ -66,7 +66,8 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
       if(typeof window != 'undefined'){
         let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
         console.log(storage);
-        setSavedProperties(storage);
+        if(storage != null)
+          setSavedProperties(storage);
         // if(storage != null){
         //   storage.map((m,l)=>{
         //     ids.push(m.entity.ID);
@@ -167,7 +168,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                          }
 
                         </div>
-                        <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
+                        {/*<div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
                           <div className={`${styles["page_btn"]} prev_btn`}>
                             <a href="#"><FaAngleLeft/></a>
                           </div>
@@ -180,7 +181,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                           <div className={`${styles["page_btn"]} next_btn`}>
                             <a href="#"><FaAngleRight/></a>
                           </div>
-                        </div>  
+                        </div> */} 
                     </div>
                 </div>
             </section>
