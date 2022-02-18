@@ -70,11 +70,17 @@ query {
           targetId
           display
           description
+          entity{
+            url
+          }
         }
         fieldMainImageVideoMobile {
           targetId
           display
           description
+          entity{
+            url
+          }
         }
         fieldCanonicalUrl
         fieldMetaDescription
