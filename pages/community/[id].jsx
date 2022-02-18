@@ -783,9 +783,8 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
             </div>
           </div>
           <div className="col-md-6">
-            <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
-            <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
-            <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+            <div dangerouslySetInnerHTML={{ __html: entity1.fieldAboutText.value }}></div>
+            
           </div>
           </div> 
         </div>

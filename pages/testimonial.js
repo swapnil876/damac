@@ -66,7 +66,9 @@ function Bookstep2({entity, nav, othernav, footerData}) {
       <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
         <main className="main-body main">
 
-        <VideoBanner bannerImage="damac-static/images/play-testimonial.png"> </VideoBanner>
+
+        <iframe src={entity.fieldMainVideo.url.path} width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        
 
 
         {/* <!-- testimonial header section --> */}
