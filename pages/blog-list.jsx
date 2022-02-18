@@ -23,10 +23,12 @@ import { BLOGSLISTING } from '../graphql/blog_listing';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 
 // import styles from '../styles/.module.css'
 
-function BlogList( { blogs,header,nav, othernav } ) {
+function BlogList( { blogs,header,nav, othernav, footerData } ) {
 
 
   return (
@@ -72,7 +74,7 @@ function BlogList( { blogs,header,nav, othernav } ) {
         
       </main>
 
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
 
       
     </div>
@@ -91,6 +93,12 @@ export const getServerSideProps = async () => {
       cache: new InMemoryCache()
     });
 
+    // Use this for footer
+    const footer  = await client.query({ query: FOOTER_LINKS });
+    let footerData = footer.data.nodeQuery.entities[0];
+
+    console.log("Here is footerData", footerData);
+    // end
     
        // Use this for novigation
        const  data2  = await client.query({ query: NAVIGATION });
@@ -143,7 +151,8 @@ export const getServerSideProps = async () => {
        blogs: blogs,
        header:header,
        nav:nav,
-       othernav:othernav
+       othernav:othernav,
+       footerData: footerData
     }, // will be passed to the page component as props
   }
 }

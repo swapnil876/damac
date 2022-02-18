@@ -36,7 +36,9 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
- export default function BrowsePropertiesMapView({nav, othernav}){
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
+ export default function BrowsePropertiesMapView({nav, othernav, footerData}){
      return(
          <div className="browse-properties">
              <Navbar navbarStyle='dark' navigationBar={nav} otherNav={othernav}></Navbar>
@@ -565,7 +567,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
            
            
                </main>
-             {/* <Footer></Footer> */}
+               <Footer footerData={footerData}></Footer>
          </div>
      )
  }
@@ -576,6 +578,13 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
         uri: process.env.STRAPI_GRAPHQL_URL,
         cache: new InMemoryCache()
       });
+
+      // Use this for footer
+    const footer  = await client.query({ query: FOOTER_LINKS });
+    let footerData = footer.data.nodeQuery.entities[0];
+
+    console.log("Here is footerData", footerData);
+    // end
       
          // Use this for novigation
          const  data2  = await client.query({ query: NAVIGATION });
@@ -614,7 +623,8 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
      return {
         props: {
           nav:nav,
-          othernav:othernav
+          othernav:othernav,
+          footerData: footerData
           // entity2: entity2
         }
       }

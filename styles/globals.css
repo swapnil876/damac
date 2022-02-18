@@ -201,7 +201,7 @@ h1,
 .custom_modal_contain.booking_step_2_modal .close{
     position: absolute;
     top:15px;
-    right:15px;
+    right:30px;
     cursor: pointer;
 }
 .custom_modal_contain.booking_step_2_modal{
@@ -215,6 +215,9 @@ h1,
 }
 
 @media (max-width:768px) {
+    .custom_modal_contain.booking_step_2_modal .close{
+        right:15px;
+    }
     .form-submit {
         margin-top: 78px
     }

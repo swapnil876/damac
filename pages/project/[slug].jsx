@@ -67,10 +67,12 @@ import 'react-multi-carousel/lib/styles.css';
 import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../../graphql/footer_links" ;
+
 
 // FA
 
-function ProjectPage({entity1, nav, othernav}) {
+function ProjectPage({entity1, nav, othernav, footerData}) {
   const router = useRouter();
   const { query } = useRouter();
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -373,7 +375,7 @@ function ProjectPage({entity1, nav, othernav}) {
             bookStep2Modal ? 
             <div className="custom_modal_contain booking_step_2_modal">
               
-                <section className={ styles["book-step-main"]}>
+                <section className={ styles["book-step-main"]} style={{'minHeight':'100vh'}}>
                     <div className="close" onClick={()=>{
                       openBookStep2Modal(false);
                       }}>
@@ -401,7 +403,7 @@ function ProjectPage({entity1, nav, othernav}) {
                                         </ul>
                                         <h6>{entity1.title}</h6>
                                         { entity1.fieldLocationP != null ?
-                                        <p> entity1.fieldLocationP.entity.name</p>
+                                        <p> {entity1.fieldLocationP.entity.name}</p>
                                         : '' }
                                         <ul className={`${styles["bedroom-detail"]} ${styles["list-unstyled"]}`}>
                                             <div className="row">
@@ -412,7 +414,7 @@ function ProjectPage({entity1, nav, othernav}) {
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />{entity1.fieldAreaP2} sq.ft</a>
+                                                <a href="#"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />{entity1.fieldAreaP2} sqft</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-7">
@@ -422,7 +424,7 @@ function ProjectPage({entity1, nav, othernav}) {
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
+                                                {/* <a href="#"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a> */}
                                                  </li>
                                                 </div>
                                             </div>   
@@ -1740,7 +1742,7 @@ function ProjectPage({entity1, nav, othernav}) {
                       </section>
             </main>
 
-      <Footer></Footer>
+            <Footer footerData={footerData}></Footer>
     </div>
   );
 }
@@ -1760,6 +1762,13 @@ export const getServerSideProps = async (cp) => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache(),
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
 
   // Use this for novigation
@@ -1803,7 +1812,8 @@ export const getServerSideProps = async (cp) => {
     props: {
       entity1: entity1,
       nav:nav,
-      othernav:othernav
+      othernav:othernav,
+      footerData: footerData
       // entity2: entity2
     },
   };

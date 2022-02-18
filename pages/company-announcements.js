@@ -32,7 +32,9 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
-export default function CompanyAnnouncements({entity,unique,year_announcement, nav, othernav}){
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
+export default function CompanyAnnouncements({entity,unique,year_announcement, nav, othernav, footerData}){
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     const [yearData, setYearData] = useState(year_announcement)
@@ -205,7 +207,7 @@ return (
                                                 <div className={styles['datetime-announcement']}>
                                                     <p>{v.obj.fieldDate.value}</p>
                                                 </div>
-                                                <div className={styles['download_announcement']}><a href="#">Download</a></div>
+                                                <div className={styles['download_announcement']}><a href={v.obj.fieldAnnouncement.entity.url} download target="_blank">Download</a></div>
                                             </div>
                                         </div>
                                     </li>
@@ -301,7 +303,7 @@ return (
 
 </main>
 
-<Footer></Footer>
+<Footer footerData={footerData}></Footer>
 </div>
 )
 
@@ -333,6 +335,13 @@ export const getStaticProps = async () => {
       uri: process.env.STRAPI_GRAPHQL_URL,
       cache: new InMemoryCache()
     });
+
+    // Use this for footer
+    const footer  = await client.query({ query: FOOTER_LINKS });
+    let footerData = footer.data.nodeQuery.entities[0];
+
+    console.log("Here is footerData", footerData);
+    // end
 
 
     
@@ -393,7 +402,8 @@ export const getStaticProps = async () => {
           unique: unique,
           year_announcement:year_announcement,
           nav:nav,
-          othernav:othernav
+          othernav:othernav,
+          footerData: footerData
         }
     }
   
