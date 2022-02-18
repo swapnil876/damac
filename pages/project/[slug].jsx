@@ -78,6 +78,14 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   var [token, setToken] = useState(null)
 
+
+  const [userEmail, setUserEmail] = useState('');
+  function handleFormSubmit(){
+    if(!userEmail){
+      setUserEmail("null");
+    }
+  }
+
   useEffect(() => {
       if ( isMobile ) {
         setDeviceIsMobile( true );
@@ -352,17 +360,19 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <label className='input-element-wrapper'>
 
                                         <div className='input-element email-element'>
-                                            <input type='email' name='email' />
+                                            <input type='email' name='email' onChange={()=>{setUserEmail(event.target.value)}} />
                                             <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
                                         </div>
                                     </label>
                                 </div>
 
                                 </div>
+                                <p className='form_err_msg'>{userEmail=="null" && "Enter Email ID"}</p>
+
                             </div>
                             <div className={`form-row`}>
                                 <div className={`form-item-col`}>
-                                    <button className="custom-submit-btn">Submit</button>
+                                    <button className="custom-submit-btn" onClick={()=>{handleFormSubmit()}} >Submit</button>
                                 </div>
                             </div>
                         </div>
