@@ -320,7 +320,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                                <li><a href="#">Communities</a></li>
                                <li><a href="#">Projects</a></li>
                                <li><a href="#">Our Picks</a></li>
-                               <li><a href="#">Saved</a></li>
+                               <li><a href="/saved-properties">Saved</a></li>
                            </ul>
                        </div>
                        <div className={`${styles["map_filter_main"]} d-flex`}>
@@ -1017,6 +1017,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
             }
         }
     });
+
     console.log('--------',properties_data);
     return {
         props: {
