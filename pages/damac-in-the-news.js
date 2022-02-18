@@ -34,10 +34,11 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  
  import { NAVIGATION } from '../graphql/master/navigation';
  import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+ import {BLOGS} from '../graphql/blogs';
 
  import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
- export default function DamacInTheNews({nav, othernav, footerData}){
+ export default function DamacInTheNews({nav, othernav, entity, footerData}){
      return(
          <div className="DamacInTheNews">
              <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
@@ -45,8 +46,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 <section className={styles['press-hero']} style={{'background-image':'url(/images/damac_in_news.png)'}}>               
                 <div className={styles['press-hero-wrap']}>
                     <div className={styles['press-content']}>
-                    <h1>DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh</h1>
-                    <p>We reflected on DAMAC’s years of history and created an infographic summary.</p>
+                    <h1>{entity.title}</h1>
+                    <p>{entity.fieldShortText}</p>
                     <span>Dec, 15 2021 By Financial Times</span>
                     </div> 
                 </div>                   
@@ -63,15 +64,15 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         <li><a href="#"><img src="damac-static/images/share.png"/></a></li>
                     </ul>
                     <div className={styles['content-detail']}>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <h3>Dubai, UAE — 11 April 2021</h3>
+                        <div dangerouslySetInnerHTML={{ __html: entity.body.value }}></div>
+                        {/* <h3>Dubai, UAE — 11 April 2021</h3>
                         <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
                         <img src="damac-static/images/content-image.jpg" className="img-fluid"/>
 
                         <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
                         <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
                         <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        
+                         */}
                     </div>
 
                     </div>
@@ -167,6 +168,7 @@ export async function getServerSideProps(){
   // Use this for novigation
   const  data2  = await client.query({ query: NAVIGATION });
   const  data1  = await client.query({ query: PARENTMENUITEMS });
+  const  data3  = await client.query({ query: BLOGS });
   let nav = [];
   let othernav = [];
   if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
@@ -195,12 +197,17 @@ export async function getServerSideProps(){
     });
    
   }
+  let entity =data3.data.nodeQuery.entities[0];
     // end
+
+
+    console.log("This is the entitutht",entity);
  
    return {
      props: {
         nav:nav,
         othernav:othernav,
+        entity:entity,
         footerData: footerData
      }, // will be passed to the page component as props
    }

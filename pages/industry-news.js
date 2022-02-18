@@ -30,6 +30,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { useMediaQuery } from 'react-responsive'
 
 
+ import { BLOGS } from '../graphql/blogs';
  import { ApolloClient, InMemoryCache } from '@apollo/client';
  import { NAVIGATION } from '../graphql/master/navigation';
  import { PARENTMENUITEMS } from '../graphql/master/parentItems';

@@ -8,12 +8,14 @@ import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
 
 
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
+
 
 import MainContactForm from '../components/MainContactForm'
 import { useMediaQuery } from 'react-responsive'
 import { CONTACTUS } from '../graphql/contactus';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { isMobile } from "react-device-detect";
 
 
 import { NAVIGATION } from '../graphql/master/navigation';
@@ -21,9 +23,9 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
-// import styles from '../styles/.module.css'
 
 function ContactUs({contactus, nav, othernav, footerData}) {
+
   return (
     <div className='contactusbody'>
 
@@ -48,6 +50,7 @@ function ContactUs({contactus, nav, othernav, footerData}) {
 
 
           <MainContactForm address={contactus.fieldAddresses} heading={contactus.fieldAddressesTitle} initialValues={ {'gender': 'Mr'} }/>
+         
       </main>
 
       <Footer footerData={footerData}></Footer>

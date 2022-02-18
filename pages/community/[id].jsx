@@ -39,6 +39,7 @@ import pageBanner from '../../public/images/community-bg.jpg'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { COMMUNITYDETAILS } from '../../graphql/community-details';
 import { PROJECT } from '../../graphql/project';
+import { COMMUNITY } from '../../graphql/community';
 
 import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
@@ -54,6 +55,7 @@ import { FOOTER_LINKS } from "../../graphql/footer_links"
 // Google Map Plugin
 import GoogleMapReact from 'google-map-react';
 import { icon } from "@fortawesome/fontawesome-svg-core";
+import * as axios from 'axios';
 
 function Community({entity1, projectlist, otherProjects, nav, othernav, footerData}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -319,9 +321,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                 <div className="col-md-7">
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
-                                        <span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
+                                        <span style={{'display':'block', 'marginBottom':'20px'}} dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
                                         { entity1.fieldLocation != null ? 
-                                        <a href="#"><img src="/damac-static/images/location.png"/> entity1.fieldLocation.entity.name </a>
+                                        <a href="#" style={{'display':'block'}}><img src="/damac-static/images/location.png"/> entity1.fieldLocation.entity.name </a>
                                         : '' }
                                     </div>
                                 </div>
@@ -332,7 +334,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                     <ul className="d-flex align-items-center">
                                         <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
                                         <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
-                                        <li><a href={entity1.fieldBrochure.entity.url} target="_blank">Download Brochure</a></li>
+                                        <li><a href={"/download/" + entity1.fieldBrochure.entity.url} target="_blank" download>Download Brochure</a></li>
                                         <li><a href="#">View Gallery (19)</a></li>              
                                     </ul>              
                                    </div>
@@ -572,7 +574,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
           <div className="col-md-6">
           <div className={`text-wrapper`}>
                 <div className="top-text">
-            <h2 style={{'color':'#ffffff'}}>Township Amenities</h2>
+            <h2 style={{'color':'#ffffff'}}>{entity1.fieldSection4Heading}</h2>
             <p>{entity1.fieldDescriptionc4}</p>
             </div>
             </div>
@@ -783,9 +785,8 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
             </div>
           </div>
           <div className="col-md-6">
-            <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
-            <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
-            <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+            <div dangerouslySetInnerHTML={{ __html: entity1.fieldAboutText.value }}></div>
+            
           </div>
           </div> 
         </div>
@@ -986,7 +987,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
             <div className="col-md-6" key={index}>
               <div className={styles['property-slider-wrap']}>
                 <div className={styles['project-card']}>
-                  <img alt=""src="/images/project-gal4.jpg" className="img-fluid" />               
+                  <img alt=""src={proj.fieldImageDesktop.url} className="img-fluid" />               
                   <h6>{proj.title}</h6>
                   <p>{proj.fieldLocationP != null ? proj.fieldLocationP.entity.name : ''}</p>
                   <ul className={styles['bedroom-detail']}>
@@ -1123,7 +1124,7 @@ export const getServerSideProps = async (cp) => {
    console.log(cp.query.id);
   const  data  = await client.query({ query: COMMUNITYDETAILS, variables:{id:cp.query.id} });
   const  data1  = await client.query({ query: PROJECT });
-  const  data2  = await client.query({ query: PROJECT });
+  const  data2  = await client.query({ query: COMMUNITY });
   let entity1 = data.data.nodeQuery.entities[0];
   let projectlist = data1.data.nodeQuery.entities;
   let otherProjects = data2.data.nodeQuery.entities;

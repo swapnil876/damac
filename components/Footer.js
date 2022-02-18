@@ -10,21 +10,22 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import * as axios from 'axios';
+
   
 
 function Footer( { children, footerData} ) { 
 
-  const onSubmit = async (e) => {
-  	e.preventDefault();
-  	let header = {
-	  grant_type:'password',
-	  client_id:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
-	  client_secret:'9EDC37C442FEC253D2C4F989F8476DAEE4C211B470339677CB4035615529E7B9',
-	  username:'intergration.inquires@damacgroup.com',
-	  password:'DAMAC123SFQRR3Y9ehtsBDT1Ld5efMttYn',
-	}
-	fetch('https://damacholding.my.salesforce.com/services/oauth2/token', {
-      mode:'no-cors',
+  const [newsLetter, setNewsLetter] = useState('');
+
+  async function subscribe(){
+    let header = {
+      grant_type:'password',
+      client_id:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
+      client_secret:'9EDC37C442FEC253D2C4F989F8476DAEE4C211B470339677CB4035615529E7B9',
+      username:'intergration.inquires@damacgroup.com',
+      password:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
+    }
+    fetch('https://damacholding.my.salesforce.com/services/oauth2/token', {
       method: 'POST',
       cors:false,
       headers: {
@@ -37,7 +38,15 @@ function Footer( { children, footerData} ) {
     	console.log(er);
     })
   }
-  
+  function handleFormSubmit(){
+    if(!newsLetter){
+      setNewsLetter("null");
+    }else{
+      subscribe()
+    }
+  }
+
+
   return (
     <footer className={ 'damac-footer' }>
 
@@ -55,10 +64,10 @@ function Footer( { children, footerData} ) {
                <p>{footerData.fieldNewsletterText}</p>
 
                <div className="footerMailListForm">
-               <form onSubmit={onSubmit}>
-                 <input type='email' placeholder="enter your email address"/>
-                 <button type="submit">Subscribe</button>
-                </form>
+                 <input type='email' placeholder="enter your email address" onChange={()=>{setNewsLetter(event.target.value)}} />
+                 <p className='form_err_msg'>{newsLetter=="null" && "Enter Email ID"}</p>
+                 <button type="submit" onClick={()=>{handleFormSubmit()}}>Subscribe</button>
+
                </div>
              </div>
 

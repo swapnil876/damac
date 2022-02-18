@@ -103,7 +103,7 @@ function BuildingDocumentation({entity1, nav, othernav, footerData}) {
                entity1.map((item, index)=>(
                  <li key={ index }>
                    <div className="doc-name">{item.entityLabel}</div>
-                   <div className="doc-link"><Link href={item.fieldFile.entity.url}><a  target="_blank">Download</a></Link></div>
+                   <div className="doc-link"><Link href={item.fieldFile.entity.url} download><a  target="_blank">Download</a></Link></div>
                  </li>
                 ))
               }

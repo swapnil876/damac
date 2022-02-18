@@ -148,7 +148,9 @@ function About({entity1, nav, othernav, footerData}) {
       <main className="main about-main">
        
 
-       <AboutBanner entity1={entity1} responsiveHeights={ deviceIsMobile ? '100vh' : '' } bannerImage={ isMobile ? entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop.url}></AboutBanner>
+      <iframe src={entity1.fieldMainImageVideoDesktop.entity.url} class="aboutus-iframe-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+       {/* <AboutBanner entity1={entity1} responsiveHeights={ deviceIsMobile ? '100vh' : '' } bannerImage={ isMobile ? entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop.url}></AboutBanner> */}
 
 
        <div className="damac-text-section-container">
