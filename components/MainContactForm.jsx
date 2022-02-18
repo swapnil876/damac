@@ -31,8 +31,8 @@ export default function ContactForm({ initialValues, address , heading}) {
   const [title, setTitle] = useState('');
   const [type, setType] = useState('');
 
-  const [checkBox1, setcheckBox1] = useState('');
-  const [checkBox2, setcheckBox2] = useState('');
+  const [checkBox1, setCheckBox1] = useState('');
+  const [checkBox2, setCheckBox2] = useState('');
 
     function handleFormSubmit(){
         console.log("submit clicked");
@@ -259,7 +259,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                            <div className={`form-row form-row-2`}>
                                <div className={`form-item-col`}>
                                    <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                       <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked" onChecked={()=>{setCheckbox1(true)}} />
+                                       <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChecked={()=>{setCheckbox1(event.target.value)}} />
                                        <label className={styles['form-check-label']} for="flexCheckChecked">
                                            I’d like to hear about news and offers
                                        </label>
@@ -268,13 +268,13 @@ export default function ContactForm({ initialValues, address , heading}) {
                                </div>
                                <div className={`form-item-col`}>
                                    <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                       <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked" onChecked={()=>{setCheckbox2(true)}} />
+                                       <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChecked={()=>{setCheckbox2(event.target.value)}} />
                                        <label className={styles['form-check-label']} for="flexCheckChecked">
                                            I’ve read and Agree to <span style={styling_here.privacy_pg_txt}>Privacy Policy</span>
                                        </label>
                                    </div>
+                               <p className='form_err_msg'>{checkBox2=="null" && "Please check this"}</p>
                                </div>
-                               <p className='form_err_msg'>{checkBox=="null" && "Please check this"}</p>
                            </div>
 
                            <div className={`form-row form-row-2`}>
@@ -414,7 +414,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                             <div className={`form-row form-row-2`} style={{'margin': '30px 0'}}>
                             <div className={`form-item-col`}>
                                 <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                    <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked" onChecked={()=>{setCheckbox1(true)}}/>
+                                    <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChecked={()=>{setCheckbox1(event.target.value)}}/>
                                     <label className={styles['form-check-label']} for="flexCheckChecked">
                                         I’d like to hear about news and offers
                                     </label>
@@ -423,7 +423,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                             </div>
                             <div className={`form-item-col`}>
                                 <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                    <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked" onChecked={()=>{setCheckbox2(true)}} />
+                                    <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChecked={()=>{setCheckbox2(event.target.value)}} />
                                     <label className={styles['form-check-label']} for="flexCheckChecked">
                                         I’ve read and Agree to <span style={styling_here.privacy_pg_txt}>Privacy Policy</span>
                                     </label>
@@ -434,7 +434,7 @@ export default function ContactForm({ initialValues, address , heading}) {
 
                             <div className={`form-row form-row-2`}>
                                 <div className={`form-item-col`}>
-                                    <button className="custom-submit-btn">Enquire</button>
+                                    <button className="custom-submit-btn" onClick={()=>{handleFormSubmit()}}>Enquire</button>
                                 </div>
                             </div>
                             </div>
