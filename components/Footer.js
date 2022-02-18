@@ -13,6 +13,7 @@ import * as axios from 'axios';
   
 
 function Footer( { children, footerData} ) { 
+  
   async function subscribe(){
     let header = {
       grant_type:'password',
