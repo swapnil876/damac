@@ -27,8 +27,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import styles from '../styles/pages/project-landing.module.css'
 
 
-import { ApolloClient, InMemoryCache, split } from '@apollo/client';
-import {PROJECT} from '../graphql/project';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {PROJECTSEARCH} from '../graphql/project-search';
 import {COUNTRY} from '../graphql/master/country';
 import {LOCATIONS} from '../graphql/master/location';
 import {CITY} from '../graphql/master/cityjs';
@@ -75,7 +75,7 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
       ];
 
    async function getProjects(cp){
-    console.log(searchFilter);
+    console.log('*************',searchFilter);
     router.push({
         pathname: "/project-landing",
         query: {search:searchFilter},
@@ -108,7 +108,7 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
                                 <div className="col-md-6">
                                     <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
                                         <i className="fas fa-search"></i>
-                                        <input type="text" placeholder="Search Project or Area" onKeyUp={($ev)=>{setSearchFilter($ev)}} className="form-control"/>
+                                        <input type="text" placeholder="Search Project or Area" onKeyUp={($ev)=>{console.log($ev);setSearchFilter($ev.target.value)}} className="form-control"/>
                                     </div>
                                 </div>
                                 <div className="col-md-6 d-flex flex-wrap justify-content-between">
@@ -504,14 +504,12 @@ export const getServerSideProps = async (cp) => {
     // let filter = {conditions: [{operator: EQUAL, field: "type", value: ['project']}]};
     if(cp.query.search != null && cp.query.search != ''){
         field = field+",title";
-        value = value+','+cp.query.search
+        value = '%'+value+'%'
     }
-
     // Use this for footer
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
-    console.log("Here is footerData", footerData);
     // end
 
     // Use this for novigation
@@ -547,7 +545,8 @@ export const getServerSideProps = async (cp) => {
         
       }
     // end
-    const  data  = await client.query({ query: PROJECT, variables:{field:field,value:value} });
+    let proj = [];
+    const  data  = await client.query({ query: PROJECTSEARCH, variables:{value:value} });
     const  data1  = await client.query({ query: COUNTRY });
     const  data2  = await client.query({ query: CITY });
     const data5 = await client.query({query:LOCATIONS})
@@ -569,6 +568,11 @@ export const getServerSideProps = async (cp) => {
         else
             setCity(c,split);
     })
+    projects.map((l,k)=>{
+        if(typeof l.title=='undefined'){
+            proj.push(l);
+        }
+    });
     return {
       props: {
          // mobileDevice: deviceType,

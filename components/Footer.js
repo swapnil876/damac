@@ -10,10 +10,13 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import * as axios from 'axios';
+
   
 
 function Footer( { children, footerData} ) { 
-  
+
+  const [newsLetter, setNewsLetter] = useState('');
+
   async function subscribe(){
     let header = {
       grant_type:'password',
@@ -24,12 +27,26 @@ function Footer( { children, footerData} ) {
     }
     fetch('https://damacholding.my.salesforce.com/services/oauth2/token', {
       method: 'POST',
+      cors:false,
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'applicationjson',
+        "Access-Control-Allow-Origin": "*"
       },
-      body: JSON.stringify(header),
+      body:JSON.stringify(header)
+    }).catch((er)=>{
+    	console.log(er);
     })
   }
+  function handleFormSubmit(){
+    if(!newsLetter){
+      setNewsLetter("null");
+    }else{
+      subscribe()
+    }
+  }
+
+
   return (
     <footer className={ 'damac-footer' }>
 
@@ -47,8 +64,9 @@ function Footer( { children, footerData} ) {
                <p>{footerData.fieldNewsletterText}</p>
 
                <div className="footerMailListForm">
-                 <input type='email' placeholder="enter your email address"/>
-                 <button type="submit" onClick={()=>{subscribe()}}>Subscribe</button>
+                 <input type='email' placeholder="enter your email address" onChange={()=>{setNewsLetter(event.target.value)}} />
+                 <p className='form_err_msg'>{newsLetter=="null" && "Enter Email ID"}</p>
+                 <button type="submit" onClick={()=>{handleFormSubmit()}}>Subscribe</button>
 
                </div>
              </div>
@@ -177,6 +195,11 @@ function Footer( { children, footerData} ) {
       </div>
     </footer>
   )
+}
+
+async function subscribe(){
+	
+	// .then(response => console.log(response.json()))
 }
 
 // async function getData(){
