@@ -67,7 +67,7 @@ function Bookstep2({entity, nav, othernav, footerData}) {
         <main className="main-body main">
 
 
-        <iframe src={entity.fieldMainVideo.url.path} width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe className='fullpage_banner_video_iframe' src={entity.fieldMainVideo.url.path} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         
 
 

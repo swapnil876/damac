@@ -1718,18 +1718,28 @@ List grid
   letter-spacing: 0.04em;
   color: #000000;
 }
-
-.aboutus-iframe-banner {
+.video-box-wrapper{
   width: 100%;
-  height: 100vh;
+  aspect-ratio: 1231.5/681;
 }
-
 .project-video{
-  width: 100%;
+  display: block;
+  width:100%;
+  aspect-ratio: 1232/649;
+}
+.fullpage_banner_video_iframe, .csr-video-banner, .career-video-banner, .aboutus-iframe-banner{
+  display: block;
+  width:100%;
   height: 100vh;
 }
 
-.csr-video-banner{
+.custom-callback-modal-submit{
+  max-width: 496px;
+  width: 100%;
+  margin: auto;
+  display: block;
+}
+.project-video{
   width: 100%;
   height: 100vh;
 }
@@ -1747,6 +1757,20 @@ List grid
   overflow: hidden;
 }
 @media (max-width: 768px) {
+  .project-video{
+    aspect-ratio: 390/548;
+  }
+  .video-box-wrapper{
+  width: 100%;
+  aspect-ratio: 342/230;
+}
+  .csr-video-banner{
+    height: unset;
+    aspect-ratio: 390/349;
+  }
+  .custom-callback-modal-submit{
+    max-width: 100%;
+  }
   .heading_dropdown {
     height: unset;
   }

@@ -112,8 +112,8 @@ useEffect(()=>{
          </div>
 
          <div className="text-center cta-container pt-4">
-           <Link href="#">
-             <a className="btn btn-primary cta-btn">See All Videos</a>
+           <Link href="" style={{'marginBottom':'50px'}}>
+             <a className="btn btn-primary cta-btn" >See All Videos</a>
            </Link>
          </div>
 

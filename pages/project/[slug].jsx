@@ -31,6 +31,8 @@ import * as axios from 'axios';
 
 import Slider from "react-slick";
 
+import Select from "react-dropdown-select";
+
 // slick-carousel css
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -75,6 +77,7 @@ import { FOOTER_LINKS } from "../../graphql/footer_links" ;
 function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
   const router = useRouter();
   const { query } = useRouter();
+  const [callBackModal, setCallBackModal] = useState(false);
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   var [token, setToken] = useState(null)
 
@@ -174,6 +177,44 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
     slidesToScroll: 1,
     initialSlide: 0,
   };
+
+
+      
+  const iconIndia = '/images/icons/country_flags/india.png'
+  const iconDubai = '/images/icons/country_flags/uae.png'
+  const iconUsa = '/images/icons/country_flags/usa.png'
+  const options = [
+      { value: 'India', label: <div><img src={iconIndia} className="country_code_glag_image"/>(+91) </div> },
+      { value: 'UAE', label: <div><img src={iconDubai} className="country_code_glag_image"/>(+971) </div> },
+      { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
+    ];
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [countryCode, setCountryCode] = useState('');
+
+  const [email, setEmail] = useState('');
+
+    function handleScheduleFormSubmit(){
+        if(!firstName){
+            setFirstName("null");
+        }
+        if(!lastName){
+            setLastName("null");
+        }
+
+        if(!email){
+            setEmail("null");
+        }
+        if(!phoneNumber){
+            setPhoneNumber("null");
+        }
+        if(!countryCode){
+            setCountryCode("null");
+        }   
+    }
 
 
   return (
@@ -564,6 +605,120 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
 
 
 
+
+
+      {
+            callBackModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{setCallBackModal(false)}}> </a>
+                <div className={`${styles["schedule_callback_modal"]} popup_modal`}>
+                   <div className="close" onClick={()=>{
+                      setCallBackModal(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+          <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                      </svg>
+                      </span>
+                    </div>
+                    <div className="row justify-content-center">
+                    <div className="col-xl-9 col-md-11 col-12">
+                        <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
+                            <div style={{'margin-bottom':'60px'}}>
+                            <h2 className={style['example-class']} style={{ 'margin': '0', 'textAlign':'center' }}>Schedule a Callback</h2>
+                            <p style={{ 'margin': '0', 'textAlign':'center' }}>Hassle-free booking experience. Only from DAMAC.</p>
+                            </div>                           
+                            <div className={`form-row form-row-2`}>
+
+                               <div className={`form-item-col`}>
+                                   <div className='custom-input-element'>
+                                       <label className='input-element-wrapper'>
+
+                                           <div className='input-element text-element'>
+                                               <input type='text' name='firstName'  onChange={()=>{setFirstName(event.target.value)}} />
+                                               <label className={`custom-floating-label`} htmlFor={'firstName'}>First name</label>
+                                           </div>
+                                       </label>
+                                   </div>
+                                   <p className='form_err_msg'>{firstName=="null" && "Enter First Name"}</p>
+                               </div>
+                               <div className={`form-item-col`}>
+
+                                   <div className='custom-input-element'>
+                                       <label className='input-element-wrapper'>
+
+                                           <div className='input-element text-element'>
+                                               <input type='text' name='lastName' onChange={()=>{setLastName(event.target.value)}} />
+                                               <label className={`custom-floating-label`} htmlFor={'lastName'}>Last name</label>
+                                           </div>
+                                       </label>
+                                   </div>
+                                   <p className='form_err_msg'>{lastName=="null" && "Enter Last Name"}</p>
+                               </div>
+
+                           </div>
+
+                            <div className={`form-row form-row-2`}>
+                                <div className={`form-item-col`}>
+                                <div className="row">
+                                       <div className='col-sm-5 pe-0'>
+                                           <div className='custom-input-element'>
+                                               <label className='input-element-wrapper'>
+
+                                                   <div className='input-element country-code-element text-element'>
+                                                       <Select name="countryCode"
+                                                           value={options.value}
+                                                           options={options}
+                                                           placeholder={options[0].value} onChange={()=>{setCountryCode(event.target.value)}}/>   
+                                                   </div>
+                                               </label>
+                                           </div>
+                                           <p className='form_err_msg'>{countryCode=="null" && "Select Country Code"}</p>
+                                       </div>
+                                       <div className='col-sm-7'>
+                                           <div className='custom-input-element'>
+                                               <label className='input-element-wrapper'>
+
+                                                   <div className='input-element text-element phone-number-element'>
+                                                       <input type='text' name='phoneNumber' onChange={()=>{setPhoneNumber(event.target.value)}} />
+                                                       <label className={`custom-floating-label`} htmlFor={'phoneNumber'}>Phone number</label>
+                                                   </div>
+                                               </label>
+                                           </div>
+                                           <p className='form_err_msg'>{phoneNumber=="null" && "Enter Phone Number"}</p>
+                                       </div>
+                                   </div>
+                                </div>
+                                <div className={`form-item-col`}>
+                                <div className='custom-input-element'>
+                                    <label className='input-element-wrapper'>
+
+                                        <div className='input-element email-element'>
+                                            <input type='email' name='email' onChange={()=>{setEmail(event.target.value)}} />
+                                            <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
+                                        </div>
+                                    </label>
+                                </div>
+                                <p className='form_err_msg'>{email=="null" && "Enter Email ID"}</p>
+                                </div>
+                            </div>
+
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+                                    <button className="custom-submit-btn custom-callback-modal-submit" onClick={()=>{handleScheduleFormSubmit()}} >Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div> :
+            ""
+          }
+
+
+
             <main className="main">
                     <section className={style['inner-wrap-hero']} style={!deviceIsMobile?{'background-image': 'url(' + entity1.fieldMainImageDesktopP.url + ')'}:{'background-image': 'url(' + entity1.fieldMainImageMobileP.url + ')'}}>
                         <div className={style['project-hero-wrap']}>
@@ -595,7 +750,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                       <button type="button" className="schedule_a_callback_btn">Schedule a call-back</button>
                                       <div className="row">
                                       <div className="col-6">
-                                      <a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a>             
+                                      <a onClick={()=>{openBrochureModal(true)}} style={{'cursor':'pointer'}}>Download Brochure</a>             
                                       </div>
                                       <div className="col-6">
                                       <a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a>              
@@ -687,7 +842,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                 <div className={style['shape-wrap-plan']}>              
                                     <div className={`${style["shape-contact"]} float-end`}>
                                         <ul className="d-flex align-items-center p-0">
-                                        <li><a className={style['solid-icon']} onClick={()=>{openBookStep2Modal(true)}}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                        <li><a className={style['solid-icon']} onClick={()=>{setCallBackModal(true)}}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
                                         <li><a href={'https://wa.me/' + entity1.fieldWhatsapp} className={style['border-icon'] } target="_blank"><FontAwesomeIcon icon={faWhatsapp}/></a></li>
                                         </ul>                  
                                     </div>                
@@ -705,7 +860,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                               <div className={style['shape-wrap-plan']}>              
                                   <div className={`${style["shape-contact"]} float-end`}>
                                       <ul className="d-flex align-items-center p-0">
-                                      <li><a href="#" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                      <li><a href="#" className={style['solid-icon']} onClick={()=>{setCallBackModal(true)}}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
                                       <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
                                       </ul>                  
                                   </div>                
@@ -1010,7 +1165,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                               <iframe src={entity1.fieldVideop4.url.path} class="project-video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> 
                                 {/*<img src={entity1.fieldVideop4.url} className="img-fluid"/>*/}
                               </div>
-                              <a href="#" className={style['play-button']}><FaPlay /></a>
+                              {/* <a className={style['play-button']}><FaPlay /></a> */}
                             </div>
                           </div>
                         </div>
