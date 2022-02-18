@@ -67,9 +67,11 @@ import 'react-multi-carousel/lib/styles.css';
 import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../../graphql/footer_links"
+
 // FA
 
-function ListingPage({nav, othernav}) {
+function ListingPage({nav, othernav, footerData}) {
   const router = useRouter()
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
 
@@ -1500,7 +1502,7 @@ function ListingPage({nav, othernav}) {
                       </section>
             </main>
 
-      <Footer></Footer>
+            <Footer footerData={footerData}></Footer>
     </div>
   );
 }
@@ -1510,6 +1512,13 @@ export const getServerSideProps = async (cp) => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
   
 // Use this for novigation
 const  dataNav2  = await client.query({ query: NAVIGATION });
@@ -1548,7 +1557,8 @@ if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
   return {
     props: {
       nav:nav,
-      othernav:othernav
+      othernav:othernav,
+      footerData: footerData
     },
   };
 };

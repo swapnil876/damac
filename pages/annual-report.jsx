@@ -26,6 +26,8 @@ import { ANNUALREPORTS } from '../graphql/master/annual_reports';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
 
@@ -46,7 +48,7 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 
-function AnnualReport( { entity,unique,year_announcement, nav, othernav } ) {
+function AnnualReport( { entity,unique,year_announcement, nav, othernav, footerData } ) {
 
   console.log('while rendering...',year_announcement);
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -239,7 +241,7 @@ function AnnualReport( { entity,unique,year_announcement, nav, othernav } ) {
 
       </main>
 
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
 
       
     </div>
@@ -262,6 +264,13 @@ export const getServerSideProps = async () => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
   
   // Use this for novigation
   const  data2  = await client.query({ query: NAVIGATION });
@@ -321,7 +330,8 @@ export const getServerSideProps = async () => {
           unique: unique,
           year_announcement:year_announcement,
           nav:nav,
-          othernav:othernav
+          othernav:othernav,
+          footerData: footerData
         }
     } 
 }

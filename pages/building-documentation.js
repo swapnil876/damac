@@ -20,9 +20,11 @@ import {BUILDING_DOCUMENTATION} from '../graphql/master/building_documentation';
 
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
 // import styles from '../styles/.module.css'
 
-function BuildingDocumentation({entity1, nav, othernav}) {
+function BuildingDocumentation({entity1, nav, othernav, footerData}) {
 
   return (
     <div className='buildingdocumentationbody'>
@@ -105,7 +107,7 @@ function BuildingDocumentation({entity1, nav, othernav}) {
         
       </main>
 
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
 
       
     </div>
@@ -119,6 +121,14 @@ export async function getServerSideProps(context){
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
   
            // Use this for novigation
@@ -166,7 +176,8 @@ export async function getServerSideProps(context){
     props: {
        entity1 : entity1,
        nav:nav,
-       othernav:othernav
+       othernav:othernav,
+       footerData: footerData
     }, // will be passed to the page component as props
   }
 }

@@ -17,7 +17,7 @@ import HeadingTitle from '../components/HeadingTitle'
 import FooterMoreLinks from '../components/FooterMoreLinks'
 // import styles from '../styles/pages/Quick.module.css'
 
-
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
 
  // React Responsive
@@ -43,7 +43,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
-function QuickFactsheet( { quickfactsheet, nav, othernav } ) {
+function QuickFactsheet( { quickfactsheet, nav, othernav, footerData } ) {
 
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -285,7 +285,7 @@ function QuickFactsheet( { quickfactsheet, nav, othernav } ) {
 
       </main>
 
-      <Footer></Footer>
+      <Footer footerData={footerData}></Footer>
 
       
     </div>
@@ -303,6 +303,13 @@ export const getServerSideProps = async () => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
   
    // Use this for novigation
@@ -349,7 +356,8 @@ export const getServerSideProps = async () => {
     props: {
        quickfactsheet: entitiy,
        nav:nav,
-       othernav:othernav
+       othernav:othernav,
+       footerData: footerData
     }, // will be passed to the page component as props
   }
 }

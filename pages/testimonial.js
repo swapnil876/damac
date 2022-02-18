@@ -39,8 +39,10 @@ import { TESTIMONIAL } from '../graphql/testimonial';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
-function Bookstep2({entity, nav, othernav}) {
+
+function Bookstep2({entity, nav, othernav, footerData}) {
 
   // Slick slider 
   const settings = {
@@ -161,7 +163,7 @@ function Bookstep2({entity, nav, othernav}) {
         </div>
       </section>
         </main>
-       <Footer></Footer>
+        <Footer footerData={footerData}></Footer>
     </div>
   )
 }
@@ -180,6 +182,13 @@ export const getStaticProps = async () => {
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
   
    // Use this for novigation
@@ -225,7 +234,8 @@ export const getStaticProps = async () => {
       props: {
         entity: entity,
         nav:nav,
-        othernav:othernav
+        othernav:othernav, 
+        footerData: footerData
         // entity2: entity2
       }
    }

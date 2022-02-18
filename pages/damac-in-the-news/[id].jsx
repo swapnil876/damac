@@ -21,6 +21,8 @@ import styles from '../../styles/pages/industry-news.module.css'
 
 import React, { Component } from "react";
 
+import { FOOTER_LINKS } from "../../graphql/footer_links"
+
 // FA
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -38,7 +40,8 @@ import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
 
- export default function DamacInTheNews({entity1, nav, othernav}){
+      <Footer footerData={footerData}></Footer>
+      export default function DamacInTheNews({entity1, nav, othernav, footerData}){
     const router = useRouter()
     const { slug } = router.query;
     console.log("slug", slug);
@@ -146,7 +149,7 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
                 </div>
                 </section>
              </main>
-             <Footer></Footer>
+             <Footer footerData={footerData}></Footer>
          </div>
      )
  }
@@ -157,6 +160,13 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
     cache: new InMemoryCache(),
   });
   console.log(cp);
+
+  // Use this for footer
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
+
+  console.log("Here is footerData", footerData);
+  // end
 
 
  // Use this for novigation
@@ -201,7 +211,8 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
     props: {
       entity1: entity1,
       nav:nav,
-      othernav:othernav
+      othernav:othernav,
+      footerData: footerData
       // entity2: entity2
     },
   };

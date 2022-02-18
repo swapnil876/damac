@@ -39,10 +39,12 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 import Select from "react-dropdown-select";
 import { useRouter } from 'next/router';
 
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
+
 // Bootstrap Css
 // import 'bootstrap/dist/css/bootstrap.css'
 
-const ProjectLanding= ({projects,countries,cities,locations,nav, othernav})=> {
+const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, footerData})=> {
     const router = useRouter();
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
@@ -474,7 +476,7 @@ const ProjectLanding= ({projects,countries,cities,locations,nav, othernav})=> {
             }
             
              </main>
-             <Footer></Footer>
+             <Footer footerData={footerData}></Footer>
       </div>
     )
 }
@@ -504,6 +506,13 @@ export const getServerSideProps = async (cp) => {
         field = field+",title";
         value = value+','+cp.query.search
     }
+
+    // Use this for footer
+    const footer  = await client.query({ query: FOOTER_LINKS });
+    let footerData = footer.data.nodeQuery.entities[0];
+
+    console.log("Here is footerData", footerData);
+    // end
 
     // Use this for novigation
       const  data3  = await client.query({ query: NAVIGATION });
@@ -568,7 +577,8 @@ export const getServerSideProps = async (cp) => {
          cities: city,
          locations:c,
          nav:nav,
-         othernav:othernav
+         othernav:othernav,
+         footerData: footerData
       }, // will be passed to the page component as props
     }
   }

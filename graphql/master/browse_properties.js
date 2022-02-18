@@ -14,6 +14,9 @@ query {
          fieldStaticCol2{
            value
          }
+         fieldWhyInvestHeading
+         fieldWhyInvestCol1
+         fieldWhyInvestCol2
          fieldMultipleFaqsBw{
            entity{
              ... on ParagraphMultipleFaqs{
