@@ -1719,7 +1719,22 @@ List grid
   color: #000000;
 }
 
-.aboutus-iframe-banner{
+.aboutus-iframe-banner {
+  width: 100%;
+  height: 100vh;
+}
+
+.project-video{
+  width: 100%;
+  height: 100vh;
+}
+
+.csr-video-banner{
+  width: 100%;
+  height: 100vh;
+}
+
+.career-video-banner{
   width: 100%;
   height: 100vh;
 }
