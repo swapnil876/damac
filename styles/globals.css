@@ -192,7 +192,11 @@ h1,
     color: #fff;
     /* transform: rotate(45deg); */
 }
-
+.form_err_msg{
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+}
 .custom_modal_contain .popup_modal .close span svg,
 .custom_modal_contain .popup_modal .close span img {
     max-width: 100%;
@@ -215,6 +219,9 @@ h1,
 }
 
 @media (max-width:768px) {
+    .form_err_msg{
+        font-size: 12px;
+    }
     .custom_modal_contain.booking_step_2_modal .close{
         right:15px;
     }
