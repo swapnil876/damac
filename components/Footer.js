@@ -10,9 +10,26 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import * as axios from 'axios';
+  
 
 function Footer( { children, footerData} ) { 
-  console.log(useEffect)
+  
+  async function subscribe(){
+    let header = {
+      grant_type:'password',
+      client_id:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
+      client_secret:'9EDC37C442FEC253D2C4F989F8476DAEE4C211B470339677CB4035615529E7B9',
+      username:'intergration.inquires@damacgroup.com',
+      password:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
+    }
+    fetch('https://damacholding.my.salesforce.com/services/oauth2/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(header),
+    })
+  }
   return (
     <footer className={ 'damac-footer' }>
 
@@ -31,7 +48,8 @@ function Footer( { children, footerData} ) {
 
                <div className="footerMailListForm">
                  <input type='email' placeholder="enter your email address"/>
-                 <button type="submit" onClick={()=>{getData()}}>Subscribe</button>
+                 <button type="submit" onClick={()=>{subscribe()}}>Subscribe</button>
+
                </div>
              </div>
 

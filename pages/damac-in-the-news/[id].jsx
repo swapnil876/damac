@@ -40,8 +40,7 @@ import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
 
-      <Footer footerData={footerData}></Footer>
-      export default function DamacInTheNews({entity1, nav, othernav, footerData}){
+  export default function DamacInTheNews({entity1, nav, othernav, footerData}){
     const router = useRouter()
     const { slug } = router.query;
     console.log("slug", slug);
