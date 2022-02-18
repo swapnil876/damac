@@ -298,7 +298,7 @@ export async function getStaticProps(context) {
     }
      
   });
-  console.log("tablinks",fieldTabs);
+  console.log("entity1",entity1);
 
 
 

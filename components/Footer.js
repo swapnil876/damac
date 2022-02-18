@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -9,10 +9,27 @@ import styles from '../styles/Footer.module.css'
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
-
-export default function Footer( { children, footerData} ) {
+import * as axios from 'axios';
   
- 
+
+function Footer( { children, footerData} ) { 
+  
+  async function subscribe(){
+    let header = {
+      grant_type:'password',
+      client_id:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
+      client_secret:'9EDC37C442FEC253D2C4F989F8476DAEE4C211B470339677CB4035615529E7B9',
+      username:'intergration.inquires@damacgroup.com',
+      password:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
+    }
+    fetch('https://damacholding.my.salesforce.com/services/oauth2/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(header),
+    })
+  }
   return (
     <footer className={ 'damac-footer' }>
 
@@ -31,7 +48,8 @@ export default function Footer( { children, footerData} ) {
 
                <div className="footerMailListForm">
                  <input type='email' placeholder="enter your email address"/>
-                 <button type="submit">Subscribe</button>
+                 <button type="submit" onClick={()=>{subscribe()}}>Subscribe</button>
+
                </div>
              </div>
 
@@ -161,3 +179,31 @@ export default function Footer( { children, footerData} ) {
   )
 }
 
+// async function getData(){
+//     let token = '';
+//     let properties_data = [];
+//     await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
+//         console.log(token,'************')
+//         token = response.data.access_token
+//     }).catch((e,status)=>{
+//       console.log('err',e);
+//     })
+//     // await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=10',
+//     //     {
+//     //         headers:{
+//     //             'Authorization':'Zoho-oauthtoken '+token
+//     //         }
+//     // }).then(response => {
+//     //     console.log(response);
+//     //     // entity = response.data.data;
+//     // }).catch((e,status)=>{
+//     //     // console.log('response',e.response);
+//     //     if(typeof e.response != 'undefined'){
+//     //         if(e.response.status == 401){
+//     //             // console.log(refreshToken(e.response.status));
+//     //         }
+//     //     }
+//     // });
+//   }
+
+export default Footer;
