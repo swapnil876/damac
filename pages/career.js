@@ -57,8 +57,10 @@ useEffect(()=>{
 
 
       <main className="main career-main">
+
+      <iframe src={entity1.fieldHeaderImageVideoDesktop.entity.url} class="career-video-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
        
-       <VideoBanner bannerImage={isMobile?entity1.fieldHeaderImageVideoMobile.entity.url:entity1.fieldHeaderImageVideoDesktop.entity.url}> </VideoBanner>
+       {/* <VideoBanner bannerImage={isMobile?entity1.fieldHeaderImageVideoMobile.entity.url:entity1.fieldHeaderImageVideoDesktop.entity.url}> </VideoBanner> */}
 
        <TextSection custom_padding={deviceIsMobile ? '50px 0 0' : '80px 0 0'} >         
          <div className="section-title text-center">
