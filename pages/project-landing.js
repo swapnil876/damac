@@ -28,7 +28,7 @@ import styles from '../styles/pages/project-landing.module.css'
 
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import {PROJECT} from '../graphql/project';
+import {PROJECTSEARCH} from '../graphql/project-search';
 import {COUNTRY} from '../graphql/master/country';
 import {CITY} from '../graphql/master/cityjs';
 import { NAVIGATION } from '../graphql/master/navigation';
@@ -70,7 +70,7 @@ const ProjectLanding= ({projects,countries,cities,nav, othernav, footerData})=> 
       ];
 
    async function getProjects(cp){
-    console.log(searchFilter);
+    console.log('*************',searchFilter);
     router.push({
         pathname: "/project-landing",
         query: {search:searchFilter},
@@ -97,7 +97,7 @@ const ProjectLanding= ({projects,countries,cities,nav, othernav, footerData})=> 
                                 <div className="col-md-6">
                                     <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
                                         <i className="fas fa-search"></i>
-                                        <input type="text" placeholder="Search Project or Area" onKeyUp={($ev)=>{setSearchFilter($ev.target.value)}} className="form-control"/>
+                                        <input type="text" placeholder="Search Project or Area" onKeyUp={($ev)=>{console.log($ev);setSearchFilter($ev.target.value)}} className="form-control"/>
                                     </div>
                                 </div>
                                 <div className="col-md-6 d-flex flex-wrap justify-content-between">
@@ -486,14 +486,12 @@ export const getServerSideProps = async (cp) => {
     // let filter = {conditions: [{operator: EQUAL, field: "type", value: ['project']}]};
     if(cp.query.search != null && cp.query.search != ''){
         field = field+",title";
-        value = value+','+cp.query.search
+        value = '%'+value+'%'
     }
-
     // Use this for footer
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
-    console.log("Here is footerData", footerData);
     // end
 
     // Use this for novigation
@@ -527,20 +525,23 @@ export const getServerSideProps = async (cp) => {
         
       }
     // end
-    const  data  = await client.query({ query: PROJECT, variables:{field:field,value:value} });
+    const  data  = await client.query({ query: PROJECTSEARCH, variables:{value:value} });
     const  data1  = await client.query({ query: COUNTRY });
     const  data2  = await client.query({ query: CITY });
-
-    console.log('projectdata',data);
     let projects = data.data.nodeQuery.entities;
     let country = data1.data.taxonomyTermQuery.entities;
     let city = data2.data.taxonomyTermQuery.entities
     // console.log('entity1',projects);
-  
+    let pro = [];
+    projects.map((l,m)=>{
+        console.log('**d*sfg*d*g**ds',l);
+        if(typeof l.title != 'undefined')
+            pro.push(l)
+    });
     return {
       props: {
          // mobileDevice: deviceType,
-         projects : projects,
+         projects : pro,
          countries: country,
          cities: city,
          nav:nav,

@@ -13,23 +13,31 @@ import * as axios from 'axios';
   
 
 function Footer( { children, footerData} ) { 
-  
-  async function subscribe(){
-    let header = {
-      grant_type:'password',
-      client_id:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
-      client_secret:'9EDC37C442FEC253D2C4F989F8476DAEE4C211B470339677CB4035615529E7B9',
-      username:'intergration.inquires@damacgroup.com',
-      password:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
-    }
-    fetch('https://damacholding.my.salesforce.com/services/oauth2/token', {
+
+  const onSubmit = async (e) => {
+  	e.preventDefault();
+  	let header = {
+	  grant_type:'password',
+	  client_id:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
+	  client_secret:'9EDC37C442FEC253D2C4F989F8476DAEE4C211B470339677CB4035615529E7B9',
+	  username:'intergration.inquires@damacgroup.com',
+	  password:'DAMAC123SFQRR3Y9ehtsBDT1Ld5efMttYn',
+	}
+	fetch('https://damacholding.my.salesforce.com/services/oauth2/token', {
+      mode:'no-cors',
       method: 'POST',
+      cors:false,
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'applicationjson',
+        "Access-Control-Allow-Origin": "*"
       },
-      body: JSON.stringify(header),
+      body:JSON.stringify(header)
+    }).catch((er)=>{
+    	console.log(er);
     })
   }
+  
   return (
     <footer className={ 'damac-footer' }>
 
@@ -47,9 +55,10 @@ function Footer( { children, footerData} ) {
                <p>{footerData.fieldNewsletterText}</p>
 
                <div className="footerMailListForm">
+               <form onSubmit={onSubmit}>
                  <input type='email' placeholder="enter your email address"/>
-                 <button type="submit" onClick={()=>{subscribe()}}>Subscribe</button>
-
+                 <button type="submit">Subscribe</button>
+                </form>
                </div>
              </div>
 
@@ -177,6 +186,11 @@ function Footer( { children, footerData} ) {
       </div>
     </footer>
   )
+}
+
+async function subscribe(){
+	
+	// .then(response => console.log(response.json()))
 }
 
 // async function getData(){
