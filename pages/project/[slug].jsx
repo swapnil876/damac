@@ -1007,9 +1007,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                           <div className="col-md-12">
                             <div className={style['plan-video']}>
                               <div className={style['video']}>
-                              <video className="img-fluid">
-                                  <source src={entity1.fieldVideop4.url.path} type="video/mp4" />
-                              </video>
+                              <iframe src={entity1.fieldVideop4.url.path} class="project-video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> 
                                 {/*<img src={entity1.fieldVideop4.url} className="img-fluid"/>*/}
                               </div>
                               <a href="#" className={style['play-button']}><FaPlay /></a>

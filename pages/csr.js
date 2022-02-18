@@ -80,8 +80,10 @@ function CSR({entity1, nav, othernav, footerData}) {
       <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
       <main className="main about-main">
+
+      <iframe src={entity1.fieldHeaderImageVideoDeskCs.entity.url} class="csr-video-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
        
-       <VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner>
+       {/* <VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner> */}
 
        <TextSection className="text-section-csr-1">
          <h1 className={styles['csr_heading']}>{entity1.fieldWhyCsrHeading}</h1>

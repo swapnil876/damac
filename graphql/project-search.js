@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 const PROJECTSEARCH = gql`
-  query{
-    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["project"]}], title:{contains:"SS"}}) {
+  query PROJECTSEARCH ($value: String!){
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: LIKE, field: "title", value: [$value]}]}) {
       entities {
         ... on NodeProject{
             nid
@@ -166,7 +166,6 @@ const PROJECTSEARCH = gql`
               }
             }
           }
-          
           fieldMultipleLocatorsp4{
             entity{
               ... on ParagraphMultipleLocators{
@@ -180,6 +179,7 @@ const PROJECTSEARCH = gql`
           
           fieldLongitudeP4
           fieldLatitudeP4
+
           fieldMetaTitleProj
           fieldMetaDescriptionProj
           fieldMetaKeywordsProj

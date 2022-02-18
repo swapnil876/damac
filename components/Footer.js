@@ -27,10 +27,15 @@ function Footer( { children, footerData} ) {
     }
     fetch('https://damacholding.my.salesforce.com/services/oauth2/token', {
       method: 'POST',
+      cors:false,
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'applicationjson',
+        "Access-Control-Allow-Origin": "*"
       },
-      body: JSON.stringify(header),
+      body:JSON.stringify(header)
+    }).catch((er)=>{
+    	console.log(er);
     })
   }
   function handleFormSubmit(){
@@ -190,6 +195,11 @@ function Footer( { children, footerData} ) {
       </div>
     </footer>
   )
+}
+
+async function subscribe(){
+	
+	// .then(response => console.log(response.json()))
 }
 
 // async function getData(){
