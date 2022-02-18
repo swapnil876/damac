@@ -18,6 +18,10 @@ function Footer( { children, footerData} ) {
   const [newsLetter, setNewsLetter] = useState('');
 
   async function subscribe(){
+  	let token = "";
+  	let data = {
+  		email:newsLetter
+  	}
     let header = {
       grant_type:'password',
       client_id:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
@@ -25,20 +29,27 @@ function Footer( { children, footerData} ) {
       username:'intergration.inquires@damacgroup.com',
       password:'3MVG9HxRZv05HarSTlwxZUq9L7hif9y8bykpws5zwi53gZVsxJMWShpHvmFsAKOkuyFhO.WuvQaetIy.NVzSK',
     }
-    fetch('https://damacholding.my.salesforce.com/services/oauth2/token', {
-      method: 'POST',
-      cors:false,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'applicationjson',
-        "Access-Control-Allow-Origin": "*"
-      },
-      body:JSON.stringify(header)
-    }).catch((er)=>{
+    await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'applicationjson',
+            "Access-Control-Allow-Origin": "*"
+          }
+      })
+    .then((res)=>{
+    	token = res.data.access_token;
+    })
+    .catch((er)=>{
     	console.log(er);
     })
+    await axios.post('https://damacholding.my.salesforce.com/services/apexrest/subscribenewsletter/',{
+            headers:{
+                'Authorization':'Bearer '+token
+            }},data).then(function(res){
+            	console.log(res);
+            })
   }
-  function handleFormSubmit(){
+  function handleFormSubmit(e){
+  	e.preventDefault()
     if(!newsLetter){
       setNewsLetter("null");
     }else{
@@ -66,7 +77,7 @@ function Footer( { children, footerData} ) {
                <div className="footerMailListForm">
                  <input type='email' placeholder="enter your email address" onChange={()=>{setNewsLetter(event.target.value)}} />
                  <p className='form_err_msg'>{newsLetter=="null" && "Enter Email ID"}</p>
-                 <button type="submit" onClick={()=>{handleFormSubmit()}}>Subscribe</button>
+                 <button type="submit" onClick={($ev)=>{handleFormSubmit($ev)}}>Subscribe</button>
 
                </div>
              </div>

@@ -34,8 +34,9 @@ export default function ContactForm({ initialValues, address , heading}) {
   const [checkBox1, setCheckBox1] = useState('');
   const [checkBox2, setCheckBox2] = useState('');
 
-    function handleFormSubmit(){
+    async function handleFormSubmit(){
         console.log("submit clicked");
+        let token = '';
         if(!firstName){
             setFirstName("null");
         }
@@ -63,7 +64,76 @@ export default function ContactForm({ initialValues, address , heading}) {
         }  
         if(!checkBox2){
             setCheckBox2("null");
-        }      
+        }  
+        let data = {
+          title:title,
+          firstName:firstName,
+          lastName:lastName,
+          email:email,
+          phoneNumber:phoneNumber,
+          countryCode:countryCode,
+          country:"",
+          acceptPrivacyP:acceptPrivacyP,
+          newsAndOffers:newsAndOffers,
+          campaignId:"a120Y000000uLMj",
+          utmSource:"",
+          utmMedium:"",
+          utmCampaign:"",
+          webSource:"",
+          adGroup:"",
+          campaignNameHOD:"",
+          goal:"",
+          digitalSource:"",
+          channelCluster:"",
+          bannerSize:"",
+          keyword:"",
+          placement:"",
+          adPosition:"",
+          matchType:"",
+          network:"",
+          bidType:"",
+          GCLID:"",
+          fbclid:"",
+          adid:"",
+          refid:"",
+          leadSource:"Digital",
+          lastMileConversion:"Contact Us",
+          device:"",
+          projectName:"",
+          os:"",
+          resolution:"",
+          browser:"",
+          ga_client_id:"",
+          fbid:"",
+          timeSpentbeforeFormSubmit:"",
+          ipAddress:"",
+          landingPageURL:"",
+          fullLandingPageUrl:"",
+          websiteLanguage:"",
+          countryNameSync:"",
+          citySync:"",
+          city:"",
+          countryCodeSync:"",
+          user_agent:""
+        }    
+        await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'applicationjson',
+              "Access-Control-Allow-Origin": "*"
+            }
+        })
+      .then((res)=>{
+        token = res.data.access_token;
+      })
+      .catch((er)=>{
+        console.log(er);
+      })
+      await axios.post('https://stg- lqsapp.damacgroup.com',{
+      headers:{
+          'Authorization':token
+      }},data).then(function(res){
+        console.log(res);
+      })
     }
 
     useEffect(() => {
@@ -166,7 +236,6 @@ export default function ContactForm({ initialValues, address , heading}) {
 
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
-                                                           value={options.value}
                                                            options={options}
                                                            placeholder={options[0].value} onChange={()=>{setCountryCode(event.target.value)}}/>   
                                                    </div>
@@ -199,9 +268,9 @@ export default function ContactForm({ initialValues, address , heading}) {
 
                                            <div className='input-element select-element'>
 
-                                               <select value={values.gender} name='gender' onChange={()=>{setTitle(event.target.value)}} className={ styles['select'] }>
-                                                   <option className={`${styles["option"]} ${styles["selected"]}`} selected>Mr</option>
-                                                   <option className={`${styles["option"]}`}>Miss</option>
+                                               <select name='gender' onChange={()=>{setTitle(event.target.value)}} className={ styles['select'] }>
+                                                   <option className={`${styles["option"]} ${styles["selected"]}`}>Mr</option>
+                                                   <option className={`${styles["option"]} ${styles["selected"]}`}>Miss</option>
                                                </select>
 
                                                <label className={`custom-floating-label ${values.gender && 'filled'}`} htmlFor={'gender'}>Select title</label>
