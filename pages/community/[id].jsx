@@ -319,9 +319,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                 <div className="col-md-7">
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
-                                        <span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
+                                        <span style={{'display':'block', 'marginBottom':'20px'}} dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
                                         { entity1.fieldLocation != null ? 
-                                        <a href="#"><img src="/damac-static/images/location.png"/> entity1.fieldLocation.entity.name </a>
+                                        <a href="#" style={{'display':'block'}}><img src="/damac-static/images/location.png"/> entity1.fieldLocation.entity.name </a>
                                         : '' }
                                     </div>
                                 </div>
@@ -332,7 +332,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                     <ul className="d-flex align-items-center">
                                         <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
                                         <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
-                                        <li><a href={entity1.fieldBrochure.entity.url} target="_blank">Download Brochure</a></li>
+                                        <li><a href={"/download/" + entity1.fieldBrochure.entity.url} target="_blank" download>Download Brochure</a></li>
                                         <li><a href="#">View Gallery (19)</a></li>              
                                     </ul>              
                                    </div>

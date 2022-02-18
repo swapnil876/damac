@@ -18,10 +18,34 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { isMobile } from "react-device-detect";
 
 export default function ContactForm({ initialValues, address , heading}) {
-
-
     const [values, setValues] = useState(initialValues);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+
+    const [firstName, setFirstName] = useState({'value' : 'null', 'message': ''});
+    const [lastName, setLastName] = useState({'value' : 'null', 'message': ''});
+
+    const [phoneNumber, setPhoneNumber] = useState({'value' : 'null', 'message': 'Please enter Phone Nuber'});
+    const [countryCode, setCountryCode] = useState({'value' : 'null', 'message': 'Please select Country Code'});
+
+    const [email, setEmail] = useState({'value' : 'null', 'message': ' '});
+    const [title, setTitle] = useState({'value' : 'null', 'message': 'Please select Title'});
+    const [type, setType] = useState({'value' : 'null', 'message': 'Please select Type'});
+
+    function handleFormSubmit(){
+        console.log("submit clicked");
+        if(firstName.value == "null"){
+            setFirstName((prev)=>{prev.message="Please enter First Name"});
+            console.log(firstName.message);
+        }
+        if(lastName.value == "null"){
+            setLastName((prev)=>{prev.message="Please enter Last Name"});
+            console.log(lastName.message);
+        }
+        if(email.value == "null"){
+            setEmail((prev)=>{prev.message="Please enter Email"});
+            console.log(email.message);
+        }      
+    }
 
     useEffect(() => {
          //   importing bootstrap js
@@ -101,7 +125,7 @@ export default function ContactForm({ initialValues, address , heading}) {
 
                                            <div className='input-element select-element'>
 
-                                               <select className={ styles['select'] }>
+                                               <select className={ styles['select'] } onChange={()=>{setType(event.target.value)}}>
                                                    <option className={`${styles["option"]} ${styles["selected"]}`} selected>Sales</option>
                                                    <option className={`${styles["option"]}`}>Customer care</option>
                                                    <option className={`${styles["option"]}`}>Press and media</option>
@@ -110,7 +134,6 @@ export default function ContactForm({ initialValues, address , heading}) {
                                                    <option className={`${styles["option"]}`}>Career</option>
                                                </select>
 
-                                               {/* <label className={`custom-floating-label ${values.gender && 'filled'}`} htmlFor={'gender'}>Select title</label> */}
                                            </div>
                                        </label>
                                    </div>
@@ -125,7 +148,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                                                        <Select name="countryCode"
                                                            value={options.value}
                                                            options={options}
-                                                           placeholder={options[0].value}/>   
+                                                           placeholder={options[0].value} onChange={()=>{setCountryCode(event.target.value)}}/>   
                                                    </div>
                                                </label>
                                            </div>
@@ -135,7 +158,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                                                <label className='input-element-wrapper'>
 
                                                    <div className='input-element text-element phone-number-element'>
-                                                       <input type='text' name='phoneNumber' onChange={handleChange} />
+                                                       <input type='text' name='phoneNumber' onChange={()=>{setPhoneNumber(event.target.value)}} />
                                                        <label className={`custom-floating-label ${values.phoneNumber && 'filled'}`} htmlFor={'phoneNumber'}>Phone number</label>
                                                    </div>
                                                </label>
@@ -154,7 +177,7 @@ export default function ContactForm({ initialValues, address , heading}) {
 
                                            <div className='input-element select-element'>
 
-                                               <select value={values.gender} name='gender' onChange={handleChange} className={ styles['select'] }>
+                                               <select value={values.gender} name='gender' onChange={()=>{setTitle(event.target.value)}} className={ styles['select'] }>
                                                    <option className={`${styles["option"]} ${styles["selected"]}`} selected>Mr</option>
                                                    <option className={`${styles["option"]}`}>Miss</option>
                                                </select>
@@ -170,7 +193,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                                        <label className='input-element-wrapper'>
 
                                            <div className='input-element email-element'>
-                                               <input type='email' name='email' onChange={handleChange} />
+                                               <input type='email' name='email' onChange={()=>{setEmail(event.target.value)}} />
                                                <label className={`custom-floating-label ${values.email && 'filled'}`} htmlFor={'email'}>Email</label>
                                            </div>
                                        </label>
@@ -187,9 +210,10 @@ export default function ContactForm({ initialValues, address , heading}) {
                                        <label className='input-element-wrapper'>
 
                                            <div className='input-element text-element'>
-                                               <input type='text' name='firstName' onChange={handleChange} />
+                                               <input type='text' name='firstName' onChange={()=>{setFirstName((prev)=>{prev.value=event.target.value})}} />
                                                <label className={`custom-floating-label ${values.firstName && 'filled'}`} htmlFor={'firstName'}>First name</label>
                                            </div>
+                                           {/* <p style={{'color':'red'}}>{firstName.message && firstName.message}</p> */}
                                        </label>
                                    </div>
                                </div>
@@ -199,7 +223,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                                        <label className='input-element-wrapper'>
 
                                            <div className='input-element text-element'>
-                                               <input type='text' name='lastName' onChange={handleChange} />
+                                               <input type='text' name='lastName' onChange={()=>{setLastName(event.target.value)}} />
                                                <label className={`custom-floating-label ${values.lastName && 'filled'}`} htmlFor={'lastName'}>Last name</label>
                                            </div>
                                        </label>
@@ -230,7 +254,7 @@ export default function ContactForm({ initialValues, address , heading}) {
 
                            <div className={`form-row form-row-2`}>
                                <div className={`form-item-col`}>
-                                   <button className="custom-submit-btn">Enquire</button>
+                                   <button className="custom-submit-btn" onClick={()=>{handleFormSubmit()}}>Enquire</button>
                                </div>
                            </div>
                            </div>

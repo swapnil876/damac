@@ -80,8 +80,6 @@ export const getServerSideProps = async () => {
   // Use this for footer
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
-
-  console.log("Here is footerData", footerData);
   // end
 
   
@@ -182,7 +180,8 @@ if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
     props: {
        communities: communities,
        nav:nav,
-       othernav:othernav
+       othernav:othernav,
+       footerData: footerData
     }, // will be passed to the page component as props
   }
 }
