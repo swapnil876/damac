@@ -29,6 +29,7 @@ import styles from '../styles/pages/project-landing.module.css'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import {PROJECTSEARCH} from '../graphql/project-search';
+import {PROJECT} from '../graphql/project';
 import {COUNTRY} from '../graphql/master/country';
 import {LOCATIONS} from '../graphql/master/location';
 import {CITY} from '../graphql/master/cityjs';
@@ -76,10 +77,12 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
 
    async function getProjects(cp){
     console.log('*************',searchFilter);
-    router.push({
-        pathname: "/project-landing",
-        query: {search:searchFilter},
-    });
+    // router.push({
+    //     pathname: "/project-landing",
+    //     query: {search:searchFilter},
+    // });
+    if(typeof window != 'undefined')
+        window.location.href = '/project-landing?search='+searchFilter;
     }
 
     function getCity(ev){
@@ -504,7 +507,7 @@ export const getServerSideProps = async (cp) => {
     // let filter = {conditions: [{operator: EQUAL, field: "type", value: ['project']}]};
     if(cp.query.search != null && cp.query.search != ''){
         field = field+",title";
-        value = '%'+value+'%'
+        value = '%'+cp.query.search+'%'
     }
     // Use this for footer
     const footer  = await client.query({ query: FOOTER_LINKS });
@@ -546,17 +549,20 @@ export const getServerSideProps = async (cp) => {
       }
     // end
     let proj = [];
-    const  data  = await client.query({ query: PROJECTSEARCH, variables:{value:value} });
+    var  data  = await client.query({ query: PROJECTSEARCH, variables:{value:value} });
+    if(cp.query.search == ''){
+        var  data  = await client.query({ query: PROJECT});
+    }
     const  data1  = await client.query({ query: COUNTRY });
     const  data2  = await client.query({ query: CITY });
     const data5 = await client.query({query:LOCATIONS})
 
-    console.log('projectdata',data);
+    
     let projects = data.data.nodeQuery.entities;
     let country = data1.data.taxonomyTermQuery.entities;
     let city = data2.data.taxonomyTermQuery.entities;
     let location = data5.data.taxonomyTermQuery.entities;
-    // console.log('locations******',location);
+    // console.log('locations******',data);
     await location.map((m,n)=>{
         let split = m.name.split(',');
         if(!unique.includes(split[1])){
@@ -568,15 +574,16 @@ export const getServerSideProps = async (cp) => {
         else
             setCity(c,split);
     })
-    projects.map((l,k)=>{
-        if(typeof l.title=='undefined'){
-            proj.push(l);
-        }
+    await projects.map((l,k)=>{
+        console.log('llll',l);
+       if(typeof l.title !='undefined')
+           proj.push(l)
     });
+    console.log('*******************Proj',proj);
     return {
       props: {
          // mobileDevice: deviceType,
-         projects : projects,
+         projects : proj,
          countries: country,
          cities: city,
          locations:c,
@@ -587,4 +594,4 @@ export const getServerSideProps = async (cp) => {
     }
   }
 
-export default ProjectLanding
+export default ProjectLanding;

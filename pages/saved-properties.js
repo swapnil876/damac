@@ -66,7 +66,8 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
       if(typeof window != 'undefined'){
         let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
         console.log(storage);
-        setSavedProperties(storage);
+        if(storage != null)
+          setSavedProperties(storage);
         // if(storage != null){
         //   storage.map((m,l)=>{
         //     ids.push(m.entity.ID);
