@@ -1545,7 +1545,85 @@ List grid
   font-size: 20px;
   margin-bottom: 0;
 }
+.property_slider_overlay{
+  position: fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.property_slider_overlay .slider_card{
+  width:90%;
+  aspect-ratio: 342/287;
+  background: #FFFFFF;
+box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+border-radius: 12px;
+padding:16px
+}
+.property_slider_overlay .slider_card .carousel_card{
+  width: 100%;
+  height: 100%;
+}
+.property_slider_overlay .slider_card .carousel_card .property-slider-wrap{
+  background-color: #fff;
 
+}
+.property_slider_overlay .slider_card .carousel_card .property-slider-wrap img{
+  width: 100%;
+  aspect-ratio: 310/150;
+  margin-bottom: 4px;
+  object-fit: cover;
+}
+.property_slider_overlay .slider_card .carousel_card .property-slider-wrap h6{
+  font-weight: 500;
+font-size: 18px;
+line-height: 169.6%;
+margin: 0;
+letter-spacing: 0.02em;
+color: #000000;
+/* opacity: 0.8; */
+}
+.property_slider_overlay .slider_card .carousel_card .property-slider-wrap p{
+  margin-bottom: 8px;
+  font-weight: 300;
+font-size: 14px;
+line-height: 169.6%;
+letter-spacing: 0.04em;
+color: #000000;
+}
+.property_slider_overlay .slider_card .carousel_card .property-slider-wrap .bookmark_main li a img{
+  width: 20px;
+height: 20px;
+margin-top: 20px;
+margin-right: 5px;
+object-fit: contain;
+}
+.property_slider_overlay .slider_card .carousel_card .property-slider-wrap .bedroom-detail{
+  padding-inline-start: 0;
+  padding-bottom: 10px;
+}
+.property_slider_overlay .slider_card .carousel_card .property-slider-wrap .bedroom-detail li{
+  list-style-type: none;
+}
+.property_slider_overlay .slider_card .carousel_card .property-slider-wrap .bedroom-detail li a img{
+  margin-right: 10px;
+  width: 14px;
+height: 14px;
+}
+.property_slider_overlay .slider_card .carousel_card .property-slider-wrap .bedroom-detail li a{
+  font-weight: 300;
+font-size: 14px;
+line-height: 99.6%;
+letter-spacing: 0.02em;
+color: #000000;
+}
+/* .property_slider_overlay .slider_card .carousel_card */
 .footer_filter_for_mobile {
   background: #ffffff;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
@@ -1732,7 +1810,10 @@ List grid
   width:100%;
   height: 100vh;
 }
-
+.csr-video-banner video:-webkit-full-page-media {
+  width: 100%;
+  height: 100%;
+}
 .custom-callback-modal-submit{
   max-width: 496px;
   width: 100%;

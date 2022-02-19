@@ -328,7 +328,8 @@ export default function ContactForm({ initialValues, address , heading}) {
                            <div className={`form-row form-row-2`}>
                                <div className={`form-item-col`}>
                                    <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                       <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChecked={()=>{setCheckbox1(event.target.value)}} />
+                                       <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChange={()=>{setCheckBox1("news"), 
+                                    console.log("ufuvjhvjhvfjhvcjvcjhvcjhvcjccvjsvch")}} />
                                        <label className={styles['form-check-label']} for="flexCheckChecked">
                                            I’d like to hear about news and offers
                                        </label>
@@ -337,7 +338,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                                </div>
                                <div className={`form-item-col`}>
                                    <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                       <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChecked={()=>{setCheckbox2(event.target.value)}} />
+                                       <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChange={()=>{setCheckBox2("agree")}} />
                                        <label className={styles['form-check-label']} for="flexCheckChecked">
                                            I’ve read and Agree to <span style={styling_here.privacy_pg_txt}>Privacy Policy</span>
                                        </label>
@@ -483,7 +484,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                             <div className={`form-row form-row-2`} style={{'margin': '30px 0'}}>
                             <div className={`form-item-col`}>
                                 <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                    <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChecked={()=>{setCheckbox1(event.target.value)}}/>
+                                    <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChange={()=>{setCheckBox1("news")}}/>
                                     <label className={styles['form-check-label']} for="flexCheckChecked">
                                         I’d like to hear about news and offers
                                     </label>
@@ -492,7 +493,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                             </div>
                             <div className={`form-item-col`}>
                                 <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                    <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChecked={()=>{setCheckbox2(event.target.value)}} />
+                                    <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChange={()=>{setCheckBox2("agree")}} />
                                     <label className={styles['form-check-label']} for="flexCheckChecked">
                                         I’ve read and Agree to <span style={styling_here.privacy_pg_txt}>Privacy Policy</span>
                                     </label>
