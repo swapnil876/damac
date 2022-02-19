@@ -1111,7 +1111,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                           </div>
                         </div>
                         <div className="col-md-6 order-md-2 order-1">
-                          <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
+                        <div  dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionP2.value }}></div>
                           <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
                           <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
                           <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px', 'margin-top':'40px'}}>Learn more</button>
