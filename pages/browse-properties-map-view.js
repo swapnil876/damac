@@ -112,26 +112,31 @@ import Select from "react-dropdown-select";
                         <div className="property_slider_overlay">
                             <div className='slider_card'>
                             <Carousel className='carousel_card' responsive={responsive}>
-                            <div className='property-slider-wrap'>
-                                                    <div className="project-card">
-                                                        <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
-                                                        <ul className="bookmark_main d-flex float-end list-unstyled">
-                                                        <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
-                                                        </ul>
-                                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                                        <ul className="bedroom-detail">
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
-                                                            </li>
-                                                        </ul>
-                                                       
-                                                    </div>
-                                                   
-                            </div>
+                                {
+                                     properties.map((item, index)=>(
+                                        <div className='property-slider-wrap'>
+                                        <div className="project-card">
+                                            <img src={item.fieldMainImageDesktopP.url} className="img-fluid"/>
+                                            <ul className="bookmark_main d-flex float-end list-unstyled">
+                                            <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
+                                            </ul>
+                                            <h6>{item.title}</h6>
+                                            <p>{(item.fieldLocationP && item.fieldLocationP!=null) ? item.fieldLocationP.entity.name : ''}</p>
+                                            <ul className="bedroom-detail">
+                                                <li>
+                                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED {item.fieldStartingFromPriceP2}*</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa {item.fieldBedRoomsP2} Bedrooms</a>
+                                                </li>
+                                            </ul>
+                                           
+                                        </div>
+                                       
+                                       </div>
+                                     ))
+                                }
+                          
                             <div className='property-slider-wrap'>
                                                     <div className="project-card">
                                                         <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
