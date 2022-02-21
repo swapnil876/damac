@@ -45,7 +45,7 @@ function Footer( { children, footerData} ) {
             headers:{
                 'Authorization':'Bearer '+token
             }},data).then(function(res){
-            	console.log(res);
+            	console.log("Newsletter api response in footer", res);
             })
   }
   function handleFormSubmit(e){
