@@ -18,7 +18,7 @@ import React, { Component } from "react";
 
 import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { BLOGS } from '../graphql/blogs';
+import { BLOGTYPEDETAIL } from '../graphql/master/blogtypedetail';
 import { BLOGSLISTING } from '../graphql/blog_listing';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
@@ -134,7 +134,7 @@ export const getServerSideProps = async () => {
 
 
 
-  const  data  = await client.query({ query: BLOGS });
+  const  data  = await client.query({ query: BLOGTYPEDETAIL,variables:{type:'9'} });
   const  headerdata  = await client.query({ query: BLOGSLISTING });
   let entitiy = data.data.nodeQuery.entities;
   let header = headerdata.data.nodeQuery.entities[0];

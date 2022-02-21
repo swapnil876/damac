@@ -33,7 +33,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Context as ResponsiveContext } from 'react-responsive'
 import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { NEWSDETAILS } from '../../graphql/newsdetails';
+import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
 
 
 import { NAVIGATION } from '../../graphql/master/navigation';
@@ -201,7 +201,7 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
    // end
 
 
-  const data = await client.query({ query: NEWSDETAILS, variables:{id:cp.query.slug} });
+  const data = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.id} });
   let entity1 = data.data.nodeQuery.entities[0];
   
   // let entity2 = data.data.nodeQuery.entities[1];

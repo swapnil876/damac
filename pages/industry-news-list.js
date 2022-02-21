@@ -32,10 +32,11 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { ApolloClient, InMemoryCache } from '@apollo/client';
  import { NAVIGATION } from '../graphql/master/navigation';
  import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+ import { BLOGTYPEDETAIL } from '../graphql/master/blogtypedetail';
 
  import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
- export default function IndustryNewsList({nav, othernav, footerData}){
+ export default function IndustryNewsList({blogs,nav, othernav, footerData}){
      return(
          <div className="IndustryNewsList">
              <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
@@ -54,156 +55,33 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
             <section className={styles['blog-list']}>
                 <div className="container">
                     <div className="row">
+                    {
+                     blogs.map( (blog, index) => (
                         <div className="col-md-4 bl-col-4">
                             <div className={styles['blog-card']}>
-                                <img src="images/blog-list-1.jpg" className="img-fluid"/>
-                                <a href="#"><h6>DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh</h6></a>
+                                <img src={blog.imageUrl} className="img-fluid"/>
+                                <a href={blog.url}><h6>{blog.title}</h6></a>
                                 <div className={styles['category_tag']}>
                                   <div className="row">
                                     <div className="col-md-4">
                                       <div className={`${styles["category_tag_txt"]} text-nowrap`}>
-                                        <p>Tourism</p>
+                                        <p>{blog.tag}</p>
                                       </div>
                                     </div>
                                     <div className={`col-md-8 ${styles["date_main_div"]}`}>
                                       <div className={styles['date_div']}>
-                                        <p> 21/12 2020 by The Guardian </p>
+                                        <p> {blog.date} by {blog.author} </p>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                                <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
+                                <div dangerouslySetInnerHTML={{ __html: blog.excerpt }} className={styles['blog-desc']}></div>
                                 <div className={`${styles["blog-card-btn"]} text-start`}>
-                                    <a href="#" className="btn btn-primary">Read more</a>
+                                    <a href={blog.url} className="btn btn-primary">{blog.ctaText}</a>
                                 </div>
                             </div>
                         </div>
-                        <hr className={styles['hr-tag']}/>
-                        <div className="col-md-4 bl-col-4">
-                            <div className={styles['blog-card']}>
-                                <img src="images/blog-list-2.jpg" className="img-fluid"/>
-                                <a href="#"><h6>Five top tips for entrepreneurs to get real and start-up</h6></a>
-                                <div className={styles['category_tag']}>
-                                  <div className="row">
-                                    <div className="col-md-4">
-                                      <div className={`${styles["category_tag_txt"]} text-nowrap`}>
-                                        <p>Business</p>
-                                      </div>
-                                    </div>
-                                    <div className={`col-md-8 ${styles["date_main_div"]}`}>
-                                      <div className={styles['date_div']}>
-                                        <p> 21/12 2020 by The Guardian </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-start`}>
-                                    <a href="#" className="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr className={styles['hr-tag']}/>
-                        <div className="col-md-4 bl-col-4">
-                            <div className={styles['blog-card']}>
-                                <img src="images/blog-list-3.jpg" className="img-fluid"/>
-                                <a href="#"><h6>10 Emerging Real Estate Trends That You Should Pay Attention To</h6></a>
-                                <div className={styles['category_tag']}>
-                                  <div className="row">
-                                    <div className="col-md-4">
-                                      <div className={`${styles["category_tag_txt"]} text-nowrap`}>
-                                        <p>Tag Label</p>
-                                      </div>
-                                    </div>
-                                    <div className={`col-md-8 ${styles["date_main_div"]}`}>
-                                      <div className={styles['date_div']}>
-                                        <p> 21/12 2020 by The Guardian </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-start`}>
-                                    <a href="#" className="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr className={styles['hr-tag']}/>
-                        <div className="col-md-4 bl-col-4">
-                            <div className={styles['blog-card']}>
-                                <img src="images/blog-list-1.jpg" className="img-fluid"/>
-                                <a href="#"><h6>DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh</h6></a>
-                                <div className={styles['category_tag']}>
-                                  <div className="row">
-                                    <div className="col-md-4">
-                                      <div className={`${styles["category_tag_txt"]} text-nowrap`}>
-                                        <p>Tourism</p>
-                                      </div>
-                                    </div>
-                                    <div className={`col-md-8 ${styles["date_main_div"]}`}>
-                                      <div className={styles['date_div']}>
-                                        <p> 21/12 2020 by The Guardian </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-start`}>
-                                    <a href="#" className="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr className={styles['hr-tag']}/>
-                        <div className="col-md-4 bl-col-4">
-                            <div className={styles['blog-card']}>
-                                <img src="images/blog-list-2.jpg" className="img-fluid"/>
-                                <a href="#"><h6>Five top tips for entrepreneurs to get real and start-up</h6></a>
-                                <div className={styles['category_tag']}>
-                                  <div className="row">
-                                    <div className="col-md-4">
-                                      <div className={`${styles["category_tag_txt"]} text-nowrap`}>
-                                        <p>Business</p>
-                                      </div>
-                                    </div>
-                                    <div className={`col-md-8 ${styles["date_main_div"]}`}>
-                                      <div className={styles['date_div']}>
-                                        <p> 21/12 2020 by The Guardian </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-start`}>
-                                    <a href="#" className="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr className={styles['hr-tag']}/>
-                        <div className="col-md-4 bl-col-4">
-                            <div className={styles['blog-card']}>
-                                <img src="images/blog-list-3.jpg" className="img-fluid"/>
-                                <a href="#"><h6>10 Emerging Real Estate Trends That You Should Pay Attention To</h6></a>
-                                <div className={styles['category_tag']}>
-                                  <div className="row">
-                                    <div className="col-md-4">
-                                      <div className={`${styles["category_tag_txt"]} text-nowrap`}>
-                                        <p>Tag Label</p>
-                                      </div>
-                                    </div>
-                                    <div className={`col-md-8 ${styles["date_main_div"]}`}>
-                                      <div className={styles['date_div']}>
-                                        <p> 21/12 2020 by The Guardian </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <p className={styles['blog-desc']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                                <div className={`${styles["blog-card-btn"]} text-start`}>
-                                    <a href="#" className="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr className={styles['hr-tag']}/>
+                    ))}  
                     </div>
                     <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
                       <div className={`${styles["page_btn"]} prev_btn`}>
@@ -240,6 +118,13 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
     cache: new InMemoryCache()
   });
 
+  const data  = await client.query({ query: BLOGTYPEDETAIL,variables:{type:'18'} });
+  let entitiy = data.data.nodeQuery.entities;
+  let blogs = [];
+  entitiy.map((v,i)=>{
+   
+    blogs.push({title:v.title,url:'/damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body.value,  author: v.fieldAuthor.entity.name, tag: v.fieldTag.entity.name})
+  });
   // Use this for footer
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
@@ -283,6 +168,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
  return {
    props: {
+      blogs: blogs,
       nav:nav,
       othernav:othernav,
       footerData: footerData
