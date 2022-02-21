@@ -17,6 +17,8 @@ import Select from "react-dropdown-select";
 import 'bootstrap/dist/css/bootstrap.css'
 import { isMobile } from "react-device-detect";
 
+import * as axios from 'axios';
+
 export default function ContactForm({ initialValues, address , heading}) {
     const [values, setValues] = useState(initialValues);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -73,8 +75,8 @@ export default function ContactForm({ initialValues, address , heading}) {
           phoneNumber:phoneNumber,
           countryCode:optionCodeVal[0].value,
           country:"",
-          acceptPrivacyP:acceptPrivacyP,
-          newsAndOffers:newsAndOffers,
+          acceptPrivacyP:checkBox1,
+          newsAndOffers:checkBox2,
           campaignId:"a120Y000000uLMj",
           utmSource:"",
           utmMedium:"",
@@ -116,6 +118,7 @@ export default function ContactForm({ initialValues, address , heading}) {
           countryCodeSync:"",
           user_agent:""
         }    
+        const header = ''
         await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
               'Content-Type': 'application/json',
               'Accept': 'applicationjson',
@@ -195,7 +198,6 @@ export default function ContactForm({ initialValues, address , heading}) {
 
       const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
 
-    //   console.log(optionCodeVal[0].value);
 
     return (
 
