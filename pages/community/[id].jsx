@@ -109,6 +109,10 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
      { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
    ];
 
+   const optionValues = options.map((item)=>{
+    return item.value;
+   });
+
  const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
 
  const [firstName, setFirstName] = useState('');

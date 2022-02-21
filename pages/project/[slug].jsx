@@ -189,6 +189,10 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
       { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
     ];
 
+    const optionValues = options.map((item)=>{
+      return item.value;
+  });
+
   const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
 
   const [firstName, setFirstName] = useState('');
@@ -199,7 +203,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
 
   const [email, setEmail] = useState('');
 
-    function handleScheduleFormSubmit(){
+  async function handleScheduleFormSubmit(){
         if(!firstName){
             setFirstName("null");
         }
@@ -216,75 +220,75 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
         if(!countryCode){
             setCountryCode("null");
         }  
-      //   let data = {
-      //     title:title,
-      //     firstName:firstName,
-      //     lastName:lastName,
-      //     email:email,
-      //     phoneNumber:phoneNumber,
-      //     countryCode:countryCode,
-      //     country:"",
-      //     acceptPrivacyP:acceptPrivacyP,
-      //     newsAndOffers:newsAndOffers,
-      //     campaignId:"a120Y000000uLMj",
-      //     utmSource:"",
-      //     utmMedium:"",
-      //     utmCampaign:"",
-      //     webSource:"",
-      //     adGroup:"",
-      //     campaignNameHOD:"",
-      //     goal:"",
-      //     digitalSource:"",
-      //     channelCluster:"",
-      //     bannerSize:"",
-      //     keyword:"",
-      //     placement:"",
-      //     adPosition:"",
-      //     matchType:"",
-      //     network:"",
-      //     bidType:"",
-      //     GCLID:"",
-      //     fbclid:"",
-      //     adid:"",
-      //     refid:"",
-      //     leadSource:"Digital",
-      //     lastMileConversion:"Contact Us",
-      //     device:"",
-      //     projectName:"",
-      //     os:"",
-      //     resolution:"",
-      //     browser:"",
-      //     ga_client_id:"",
-      //     fbid:"",
-      //     timeSpentbeforeFormSubmit:"",
-      //     ipAddress:"",
-      //     landingPageURL:"",
-      //     fullLandingPageUrl:"",
-      //     websiteLanguage:"",
-      //     countryNameSync:"",
-      //     citySync:"",
-      //     city:"",
-      //     countryCodeSync:"",
-      //     user_agent:""
-      //   }    
-      //   await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
-      //         'Content-Type': 'application/json',
-      //         'Accept': 'applicationjson',
-      //         "Access-Control-Allow-Origin": "*"
-      //       }
-      //   })
-      // .then((res)=>{
-      //   token = res.data.access_token;
-      // })
-      // .catch((er)=>{
-      //   console.log(er);
-      // })
-      // await axios.post('https://stg- lqsapp.damacgroup.com',{
-      // headers:{
-      //     'Authorization':token
-      // }},data).then(function(res){
-      //   console.log(res);
-      // })
+        let data = {
+          title:title,
+          firstName:firstName,
+          lastName:lastName,
+          email:email,
+          phoneNumber:phoneNumber,
+          countryCode:countryCode,
+          country:"",
+          acceptPrivacyP:"",
+          newsAndOffers:"",
+          campaignId:"a120Y000000uLMj",
+          utmSource:"",
+          utmMedium:"",
+          utmCampaign:"",
+          webSource:"",
+          adGroup:"",
+          campaignNameHOD:"",
+          goal:"",
+          digitalSource:"",
+          channelCluster:"",
+          bannerSize:"",
+          keyword:"",
+          placement:"",
+          adPosition:"",
+          matchType:"",
+          network:"",
+          bidType:"",
+          GCLID:"",
+          fbclid:"",
+          adid:"",
+          refid:"",
+          leadSource:"Digital",
+          lastMileConversion:"Contact Us",
+          device:"",
+          projectName:"",
+          os:"",
+          resolution:"",
+          browser:"",
+          ga_client_id:"",
+          fbid:"",
+          timeSpentbeforeFormSubmit:"",
+          ipAddress:"",
+          landingPageURL:"",
+          fullLandingPageUrl:"",
+          websiteLanguage:"",
+          countryNameSync:"",
+          citySync:"",
+          city:"",
+          countryCodeSync:"",
+          user_agent:""
+        }    
+        await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'applicationjson',
+              "Access-Control-Allow-Origin": "*"
+            }
+        })
+      .then((res)=>{
+        token = res.data.access_token;
+      })
+      .catch((er)=>{
+        console.log(er);
+      })
+      await axios.post('https://stg- lqsapp.damacgroup.com',{
+      headers:{
+          'Authorization':token
+      }},data).then(function(res){
+        console.log(res);
+      })
     }
 
 
