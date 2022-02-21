@@ -221,7 +221,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
             setCountryCode("null");
         }  
         let data = {
-          title:title,
+          title:"",
           firstName:firstName,
           lastName:lastName,
           email:email,
@@ -271,6 +271,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
           countryCodeSync:"",
           user_agent:""
         }    
+        const header = ''
         await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
               'Content-Type': 'application/json',
               'Accept': 'applicationjson',
