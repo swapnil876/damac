@@ -129,7 +129,7 @@ import { FOOTER_LINKS } from "../../graphql/footer_links"
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
-    console.log("Here is footerData", footerData);
+   
     // end
   
 // Use this for novigation
@@ -178,8 +178,7 @@ if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
   let bloglist = data.data.nodeQuery.entities;
   // let entity2 = data.data.nodeQuery.entities[1];
   
-  console.log('entity2',bloglist);
-  // console.log(data.data.nodeQuery.entities);
+ 
    return {
       props: {
         entity1: entity1,

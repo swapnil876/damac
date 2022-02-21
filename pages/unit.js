@@ -61,7 +61,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     const [localStorage, setLocalStorage] = useState(false);
 
-    console.log('entity',entity);
+  
 
     useEffect(() => {
         if ( isMobile ) {
@@ -900,7 +900,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
 function useStickyState(defaultValue, key) {
 
-  console.log('jjhfdjskjf')
+  
   const [value, setValue] = React.useState(defaultValue);
 
   React.useEffect(() => {
@@ -919,7 +919,7 @@ function useStickyState(defaultValue, key) {
 }
 
  function refreshToken(stats=null){
-   console.log(stats);
+ 
        if(stats == 401){
         let data = {
             refresh_token:"1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017",
@@ -929,16 +929,16 @@ function useStickyState(defaultValue, key) {
         }
         axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
             // if(typeof window !== 'undefined'){
-            //    console.log('lol',window); 
+            
             // }
             useStickyState("Zoho-oauthtoken "+response.data.access_token,'access_token');
-            // console.log('response',response.data);
+           
             // localStorage.setItem("access_token", "Zoho-oauthtoken "+response.data.access_token)
             // let entity = response.data.data[0]
         }).catch((e,status)=>{
             if(typeof e.response != "undefined"){
                 if(e.response.status == 401){
-                    console.log(refreshToken(e.response.status));
+                    
                 }
             }
         });
@@ -962,7 +962,7 @@ function useStickyState(defaultValue, key) {
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
-    console.log("Here is footerData", footerData);
+    
     // end
 
     
@@ -974,8 +974,7 @@ function useStickyState(defaultValue, key) {
   if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
     let submenu = data2.data.nodeQuery.entities[0];
     let menu = data1.data.taxonomyTermQuery.entities;
-    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-    // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+  
     menu.map((m,i)=>{
       othernav = [];
       let des = m.description==null?'': m.description.value
@@ -1002,11 +1001,11 @@ function useStickyState(defaultValue, key) {
 
 
     const  data  = await client.query({ query: LISTING });
-    // console.log('listing',data);
+    
     let listingdata = data.data.nodeQuery.entities[0];
     // let token = window.localStorage.getItem('access_token')
     // let entity2 = data.data.nodeQuery.entities[1];
-    // console.log('about',entity1.fieldLocatorsL);
+    
     let token = '';
     await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
         token = response.data.access_token
@@ -1017,12 +1016,12 @@ function useStickyState(defaultValue, key) {
             'Authorization':'Zoho-oauthtoken '+token
         }
     }).then(response => {
-        console.log('response',response);
+       
         entity = response.data.data[0]
     }).catch((e,status)=>{
-        console.log('response',e.response);
+        
         if(e.response.status == 401){
-            console.log(refreshToken(e.response.status));
+           
         }
     });
   
