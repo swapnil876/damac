@@ -1254,7 +1254,7 @@ export const getServerSideProps = async (cp) => {
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
-  console.log("Here is footerData", footerData);
+  
   // end
 
 
@@ -1266,8 +1266,7 @@ export const getServerSideProps = async (cp) => {
    if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
      let submenu = dataNav2.data.nodeQuery.entities[0];
      let menu = dataNav1.data.taxonomyTermQuery.entities;
-     console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-     // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+     
      menu.map((m,i)=>{
        othernav = [];
        let des = m.description==null?'': m.description.value
@@ -1290,18 +1289,18 @@ export const getServerSideProps = async (cp) => {
     
    }
      // end
-   console.log(cp.query.id);
+   
   const  data  = await client.query({ query: COMMUNITYDETAILS, variables:{id:cp.query.id} });
   const  data1  = await client.query({ query: PROJECT });
   const  data2  = await client.query({ query: COMMUNITY });
   let entity1 = data.data.nodeQuery.entities[0];
   let projectlist = data1.data.nodeQuery.entities;
   let otherProjects = data2.data.nodeQuery.entities;
-  console.log('***data****comm',data.data.nodeQuery.entities);
+  
   
 
   
-  // console.log('entity1',data1.data);
+  
    return {
       props: {
         entity1: entity1,

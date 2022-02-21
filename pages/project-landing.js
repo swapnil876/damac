@@ -55,19 +55,14 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
     var [country, setCountry] = useState([]);
     var [city, setCity] = useState([]);
     const { slug } = router;
-    console.log("slug", slug);
+ 
     useEffect(() => {
         if ( isMobile ) {
          setDeviceIsMobile( true );
        }
     }, [])
 
-    console.log(locations);
-    
-
-    // const searchFilter = useCallback((event)=>{
-    //     console.log(event)
-    // },[])
+   
 
     const options = [
         { value: 'Dubailand', label: 'Dubailand, Dubai, UAE' },
@@ -76,7 +71,7 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
       ];
 
    async function getProjects(cp){
-    console.log('*************',searchFilter);
+   
     // router.push({
     //     pathname: "/project-landing",
     //     query: {search:searchFilter},
@@ -87,7 +82,7 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
 
     function getCity(ev){
         let i = ev.target.value
-        console.log(locations[i]);
+        
         setCity(locations[i].cities);
     } 
 
@@ -111,7 +106,7 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
                                 <div className="col-md-6">
                                     <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
                                         <i className="fas fa-search"></i>
-                                        <input type="text" placeholder="Search Project or Area" onKeyUp={($ev)=>{console.log($ev);setSearchFilter($ev.target.value)}} className="form-control"/>
+                                        <input type="text" placeholder="Search Project or Area" onKeyUp={($ev)=>{setSearchFilter($ev.target.value)}} className="form-control"/>
                                     </div>
                                 </div>
                                 <div className="col-md-6 d-flex flex-wrap justify-content-between">
@@ -525,8 +520,7 @@ export const getServerSideProps = async (cp) => {
       if(typeof data3 != 'undefined' &&  typeof data4 != 'undefined'){
         let submenu = data3.data.nodeQuery.entities[0];
         let menu = data4.data.taxonomyTermQuery.entities;
-        // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data3.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-        // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+       
         menu.map((m,i)=>{
           othernav = [];
           nav.push({name:m.name,tid:m.tid,submenu:[],link:m.description.value});
@@ -562,7 +556,7 @@ export const getServerSideProps = async (cp) => {
     let country = data1.data.taxonomyTermQuery.entities;
     let city = data2.data.taxonomyTermQuery.entities;
     let location = data5.data.taxonomyTermQuery.entities;
-    // console.log('locations******',data);
+    
     await location.map((m,n)=>{
         let split = m.name.split(',');
         if(!unique.includes(split[1])){
@@ -575,11 +569,11 @@ export const getServerSideProps = async (cp) => {
             setCity(c,split);
     })
     await projects.map((l,k)=>{
-        console.log('llll',l);
+        
        if(typeof l.title !='undefined')
            proj.push(l)
     });
-    console.log('*******************Proj',proj);
+    
     return {
       props: {
          // mobileDevice: deviceType,

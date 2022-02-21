@@ -1833,12 +1833,12 @@ export const getServerSideProps = async (cp) => {
               'Authorization':'Zoho-oauthtoken '+token
           }
   }).then(response => {
-      console.log(response)
+      
       unit_data = response.data.data;
   }).catch((e,status)=>{
       if(typeof e.response != 'undefined'){
           if(e.response.status == 401){
-              // console.log(refreshToken(e.response.status));
+              
           }
       }
   });
@@ -1848,7 +1848,7 @@ export const getServerSideProps = async (cp) => {
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
-  console.log("Here is footerData", footerData);
+ 
   // end
 
 
