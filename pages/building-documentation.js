@@ -176,7 +176,7 @@ export async function getServerSideProps(context){
   const  data  = await client.query({ query: BUILDING_DOCUMENTATION,variables:{id:""}});
 
   let entity1 = data.data.nodeQuery.entities;
- 
+  
 
   return {
     props: {
