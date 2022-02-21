@@ -21,6 +21,7 @@ export default function ContactForm({ initialValues, address , heading}) {
     const [values, setValues] = useState(initialValues);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
 
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
@@ -35,7 +36,6 @@ export default function ContactForm({ initialValues, address , heading}) {
   const [checkBox2, setCheckBox2] = useState('');
 
     async function handleFormSubmit(){
-        console.log("submit clicked");
         let token = '';
         if(!firstName){
             setFirstName("null");
@@ -71,7 +71,7 @@ export default function ContactForm({ initialValues, address , heading}) {
           lastName:lastName,
           email:email,
           phoneNumber:phoneNumber,
-          countryCode:countryCode,
+          countryCode:optionCodeVal[0].value,
           country:"",
           acceptPrivacyP:acceptPrivacyP,
           newsAndOffers:newsAndOffers,
@@ -184,10 +184,18 @@ export default function ContactForm({ initialValues, address , heading}) {
     const iconDubai = '/images/icons/country_flags/uae.png'
     const iconUsa = '/images/icons/country_flags/usa.png'
     const options = [
-        { value: 'India', label: <div><img src={iconIndia} className="country_code_glag_image"/>(+91) </div> },
-        { value: 'UAE', label: <div><img src={iconDubai} className="country_code_glag_image"/>(+971) </div> },
-        { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
+        { 'value': "India", 'label': <div><img src={iconIndia} className="country_code_glag_image"/>(+91) </div> },
+        { 'value': "UAE", 'label': <div><img src={iconDubai} className="country_code_glag_image"/>(+971) </div> },
+        { 'value': "USA", 'label': <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
       ];
+
+      const optionValues = options.map((item)=>{
+          return item.value;
+      });
+
+      const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
+
+    //   console.log(optionCodeVal[0].value);
 
     return (
 
@@ -237,7 +245,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
                                                            options={options}
-                                                           placeholder={options[0].value} onChange={()=>{setCountryCode(event.target.value)}}/>   
+                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal)}}/>   
                                                    </div>
                                                </label>
                                            </div>

@@ -112,46 +112,31 @@ import Select from "react-dropdown-select";
                         <div className="property_slider_overlay">
                             <div className='slider_card'>
                             <Carousel className='carousel_card' responsive={responsive}>
-                            <div className='property-slider-wrap'>
-                                                    <div className="project-card">
-                                                        <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
-                                                        <ul className="bookmark_main d-flex float-end list-unstyled">
-                                                        <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
-                                                        </ul>
-                                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                                        <ul className="bedroom-detail">
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
-                                                            </li>
-                                                        </ul>
-                                                       
-                                                    </div>
-                                                   
-                            </div>
-                            <div className='property-slider-wrap'>
-                                                    <div className="project-card">
-                                                        <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
-                                                        <ul className="bookmark_main d-flex float-end list-unstyled">
-                                                        <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
-                                                        </ul>
-                                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                                        <ul className="bedroom-detail">
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
-                                                            </li>
-                                                        </ul>
-                                                       
-                                                    </div>
-                                                   
-                            </div>
+                                {
+                                     properties.map((item)=>(
+                                        <div className='property-slider-wrap'>
+                                                            <div className="project-card">
+                                                                <img src={item.fieldMainImageDesktopP.url} className="img-fluid"/>
+                                                                <ul className="bookmark_main d-flex float-end list-unstyled">
+                                                                <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
+                                                                </ul>
+                                                                <h6>{item.title}</h6>
+                                                                <p>{(item.fieldLocationP != null && item.fieldLocationP) ? item.fieldLocationP.entity.name : ''}</p>
+                                                                <ul className="bedroom-detail">
+                                                                    <li>
+                                                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED {item.fieldStartingFromPriceP2}*</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa {item.fieldBedRoomsP2} Bedrooms</a>
+                                                                    </li>
+                                                                </ul>
+                                                               
+                                                            </div>
+                                                           
+                                    </div>
+                                    ))
+                                }
+                             
                             </Carousel>
                             </div>
                         </div>
@@ -504,209 +489,42 @@ import Select from "react-dropdown-select";
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div className={styles['property-slider-wrap']}>
-                                                    <div className={styles['project-card']}>
-                                                        <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
-                                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                                        {/* <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li> */}
-                                                        <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
-                                                        </ul>
-                                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                                        <ul className={styles['bedroom-detail']}>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div className={styles['shape-wrap-plan']}>              
-                                                        <div className={styles['shape-contact']}>
-                                                            <ul className="d-flex align-items-center p-0">
-                                                            <li><a href="#" className={styles['solid-icon']}>
-                                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-                </svg>
-                </a></li>
-                                                            <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                                            </ul>                  
-                                                        </div>                
+                                                {
+                                                    properties.map((item)=>(
+                                                        <div className={styles['property-slider-wrap']}>
+                                                        <div className={styles['project-card']}>
+                                                            <img src={item.fieldMainImageDesktopP.url} className="img-fluid"/>
+                                                            <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
+                                                            {/* <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li> */}
+                                                            <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
+                                                            </ul>
+                                                            <h6>{item.title}</h6>
+                                                            <p>{(item.fieldLocationP != null && item.fieldLocationP) ? item.fieldLocationP.entity.name : ''}</p>
+                                                            <ul className={styles['bedroom-detail']}>
+                                                                <li>
+                                                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED {item.fieldStartingFromPriceP2}*</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa {item.fieldBedRoomsP2} Bedrooms</a>
+                                                                </li>
+                                                            </ul>
+                                                            <div className={styles['shape-wrap-plan']}>              
+                                                            <div className={styles['shape-contact']}>
+                                                                <ul className="d-flex align-items-center p-0">
+                                                                <li><a href="#" className={styles['solid-icon']}>
+                                                                    <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
+                                                                </svg>
+                                                                </a></li>
+                                                                <li><a href={(item.fieldWhatsapp && item.fieldWhatsapp != null) ? item.fieldWhatsapp : ''} target="_blank" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
+                                                                </ul>                  
+                                                            </div>                
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div className={styles['project-detail-nav']}>
-                                                        <div className={styles['left-nav']}>
-                                                            <a href="#"><FaAngleLeft/></a>
-                                                        </div>
-                                                        <div className={styles['right-nav']}>
-                                                            <a href="#"><FaAngleRight/></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className={styles['property-slider-wrap']}>
-                                                    <div className={styles['project-card']}>
-                                                        <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
-                                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                                        {/* <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li> */}
-                                                        <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
-                                                        </ul>
-                                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                                        <ul className={styles['bedroom-detail']}>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div className={styles['shape-wrap-plan']}>              
-                                                        <div className={styles['shape-contact']}>
-                                                            <ul className="d-flex align-items-center p-0">
-                                                            <li><a href="#" className={styles['solid-icon']}>
-                                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-                </svg>
-                </a></li>
-                                                            <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                                            </ul>                  
-                                                        </div>                
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles['project-detail-nav']}>
-                                                        <div className={styles['left-nav']}>
-                                                            <a href="#"><FaAngleLeft/></a>
-                                                        </div>
-                                                        <div className={styles['right-nav']}>
-                                                            <a href="#"><FaAngleRight/></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div className={styles['property-slider-wrap']}>
-                                                    <div className={styles['project-card']}>
-                                                        <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
-                                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                                        {/* <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li> */}
-                                                        <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
-                                                        </ul>
-                                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                                        <ul className={styles['bedroom-detail']}>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div className={styles['shape-wrap-plan']}>              
-                                                        <div className={styles['shape-contact']}>
-                                                            <ul className="d-flex align-items-center p-0">
-                                                            <li><a href="#" className={styles['solid-icon']}>
-                                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-                </svg>
-                </a></li>
-                                                            <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                                            </ul>                  
-                                                        </div>                
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles['project-detail-nav']}>
-                                                        <div className={styles['left-nav']}>
-                                                            <a href="#"><FaAngleLeft/></a>
-                                                        </div>
-                                                        <div className={styles['right-nav']}>
-                                                            <a href="#"><FaAngleRight/></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div className={styles['property-slider-wrap']}>
-                                                    <div className={styles['project-card']}>
-                                                        <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
-                                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                                        {/* <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li> */}
-                                                        <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
-                                                        </ul>
-                                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                                        <ul className={styles['bedroom-detail']}>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div className={styles['shape-wrap-plan']}>              
-                                                        <div className={styles['shape-contact']}>
-                                                            <ul className="d-flex align-items-center p-0">
-                                                            <li><a href="#" className={styles['solid-icon']}>
-                                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-                </svg>
-                </a></li>
-                                                            <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                                            </ul>                  
-                                                        </div>                
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles['project-detail-nav']}>
-                                                        <div className={styles['left-nav']}>
-                                                            <a href="#"><FaAngleLeft/></a>
-                                                        </div>
-                                                        <div className={styles['right-nav']}>
-                                                            <a href="#"><FaAngleRight/></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div className={styles['property-slider-wrap']}>
-                                                    <div className={styles['project-card']}>
-                                                        <img src="/damac-static/images/property-1.jpg" className="img-fluid"/>
-                                                        <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                                        {/* <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li> */}
-                                                        <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
-                                                        </ul>
-                                                        <h6>Kiara 2 Bedroom Apartment</h6>
-                                                        <p>DAMAC Hills, Dubailand, Dubai</p>
-                                                        <ul className={styles['bedroom-detail']}>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED 1,213,515*</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa 3 Bedrooms</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div className={styles['shape-wrap-plan']}>              
-                                                        <div className={styles['shape-contact']}>
-                                                            <ul className="d-flex align-items-center p-0">
-                                                            <li><a href="#" className={styles['solid-icon']}>
-                                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
-                </svg>
-                </a></li>
-                                                            <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
-                                                            </ul>                  
-                                                        </div>                
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles['project-detail-nav']}>
-                                                        <div className={styles['left-nav']}>
-                                                            <a href="#"><FaAngleLeft/></a>
-                                                        </div>
-                                                        <div className={styles['right-nav']}>
-                                                            <a href="#"><FaAngleRight/></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
+                                                    ))
+                                                }
+                                               
                                             </div>
                                         </div>
 

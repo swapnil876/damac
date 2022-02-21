@@ -189,6 +189,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
       { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
     ];
 
+  const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
@@ -737,9 +739,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
 
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
-                                                           value={options.value}
                                                            options={options}
-                                                           placeholder={options[0].value} onChange={()=>{setCountryCode(event.target.value)}}/>   
+                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal)}}/>   
                                                    </div>
                                                </label>
                                            </div>
