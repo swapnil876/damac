@@ -87,7 +87,6 @@ import Select from "react-dropdown-select";
       ];
 
     async function getProjects(cp){
-        console.log('*************',searchFilter);
         // router.push({
         //     pathname: "/project-landing",
         //     query: {search:searchFilter},
@@ -95,8 +94,6 @@ import Select from "react-dropdown-select";
         if(typeof window != 'undefined')
             window.location.href = '/browse-properties-map-view?search='+searchFilter;
     }
-
-    console.log('***********property',property)
 
      return(
          <div className="browse-properties">
@@ -431,7 +428,7 @@ import Select from "react-dropdown-select";
                                                     <div className="col-md-3">
                                                         <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
                                                             <FaSearch className={styles['search_icon']}/>
-                                                            <input type="text" onKeyUp={($ev)=>{console.log($ev);setSearchFilter($ev.target.value)}} placeholder="Search Project or Area" className="form-control"/>
+                                                            <input type="text" onKeyUp={($ev)=>{setSearchFilter($ev.target.value)}} placeholder="Search Project or Area" className="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 d-flex flex-wrap">
@@ -484,7 +481,7 @@ import Select from "react-dropdown-select";
                                         </div> 
                                         <div className={styles['map_list_view']}>
                                             <ul className="list-unstyled d-flex">
-                                                <li><a href="#">List</a></li>
+                                                <li><a href="/browse-all-properties">List</a></li>
                                                 <li className={styles['active']}><a href="#">Map</a></li>
                                             </ul>
                                         </div>                 
@@ -590,7 +587,6 @@ import Select from "react-dropdown-select";
         value = '&Project_Name='+cp.query.search
     }
     await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
-        // console.log('token*****',response)
         token = response.data.access_token
     })
     await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=10&CMS_Project_id=547'+value,
@@ -600,16 +596,13 @@ import Select from "react-dropdown-select";
             }
     }).then(response => {
         entity = response.data.data;
-        console.log('entity**////****///',response);
         entity.map((m,n)=>{
          marker.push({lat:59.955413,lng:30.337844})
           properties_data.push({entity:m,isSaved:false})
         })
     }).catch((e,status)=>{
-        // console.log('response',e.response);
         if(typeof e.response != 'undefined'){
             if(e.response.status == 401){
-                // console.log(refreshToken(e.response.status));
             }
         }
     });
@@ -627,8 +620,6 @@ import Select from "react-dropdown-select";
      if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
        let submenu = data2.data.nodeQuery.entities[0];
        let menu = data1.data.taxonomyTermQuery.entities;
-       // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-       // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
        menu.map((m,i)=>{
          othernav = [];
          let des = m.description==null?'': m.description.value
@@ -655,7 +646,6 @@ import Select from "react-dropdown-select";
 
     // var  data  = await client.query({ query: PROJECT });
     // let properties = data.data.nodeQuery.entities;
-    //    console.log("propertiesproperties", properties);
     
   
      return {

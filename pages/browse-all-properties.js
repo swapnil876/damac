@@ -333,8 +333,8 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                            </form>
                            <div className={styles['map_list_view']}>
                                <ul className="list-unstyled d-flex">
-                                   <li className="active"><a href="#">List</a></li>
-                                   <li><a href="#">Map</a></li>
+                                   <li className={styles['active']}><a href="#">List</a></li>
+                                   <li><a href="/browse-properties-map-view">Map</a></li>
                                </ul>
                            </div>
                        </div>
