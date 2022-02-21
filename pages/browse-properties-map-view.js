@@ -33,7 +33,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { useMediaQuery } from 'react-responsive'
 
  import { ApolloClient, InMemoryCache } from '@apollo/client';
-
+ import * as axios from 'axios';
   // Google Map Plugin
 import GoogleMapReact from 'google-map-react';
 
@@ -48,11 +48,12 @@ import "react-multi-carousel/lib/styles.css";
 // importing React Select
 import Select from "react-dropdown-select";
 
- export default function BrowsePropertiesMapView({nav, othernav, footerData, properties}){
+ export default function BrowsePropertiesMapView({nav, othernav, footerData, properties,marker}){
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
-
+    var [property, setProperty] = useState(properties);
+    var [searchFilter, setSearchFilter] = useState(false);
     const [mapCoordinates, setMapCoordinates] = useState({longitude: '59.955413', latitude: '30.337844'});
 
     const responsive = {
@@ -85,6 +86,15 @@ import Select from "react-dropdown-select";
         { value: 'Marina', label: 'Marina, Dubai, UAE' },
       ];
 
+    async function getProjects(cp){
+        // router.push({
+        //     pathname: "/project-landing",
+        //     query: {search:searchFilter},
+        // });
+        if(typeof window != 'undefined')
+            window.location.href = '/browse-properties-map-view?search='+searchFilter;
+    }
+
      return(
          <div className="browse-properties">
              <Navbar navbarStyle='dark' navigationBar={nav} otherNav={othernav}></Navbar>
@@ -99,16 +109,21 @@ import Select from "react-dropdown-select";
                     <section className='map_view_page_mobile'>
                         <div className='map_in_mobile_view'>
                         <GoogleMapReact
-                                                        bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
-                                                        defaultCenter={defaultProps.center}
-                                                        defaultZoom={defaultProps.zoom}
-                                                        >
-                                                        <AnyReactComponent
-                                                        lat={59.955413}
-                                                        lng={30.337844}
-                                                        text="Damac"
-                                                        />
-                                                    </GoogleMapReact> 
+                            bootstrapURLKeys={{ key: process.env.MAP_API_KEY }}
+                            defaultCenter={defaultProps.center}
+                            defaultZoom={defaultProps.zoom}
+                            >{
+                                marker.map((m,n)=>(
+                                    <AnyReactComponent
+                                    lat={59.955413}
+                                    lng={30.337844}
+                                    text="Damac"
+                                    />
+                                ))
+                                
+                            }
+                            
+                        </GoogleMapReact> 
                         <div className="property_slider_overlay">
                             <div className='slider_card'>
                             <Carousel className='carousel_card' responsive={responsive}>
@@ -413,7 +428,7 @@ import Select from "react-dropdown-select";
                                                     <div className="col-md-3">
                                                         <div className={`${styles["form-field"]} ${styles["search_filter"]}`}>
                                                             <FaSearch className={styles['search_icon']}/>
-                                                            <input type="text" placeholder="Search Project or Area" className="form-control"/>
+                                                            <input type="text" onKeyUp={($ev)=>{setSearchFilter($ev.target.value)}} placeholder="Search Project or Area" className="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 d-flex flex-wrap">
@@ -457,7 +472,7 @@ import Select from "react-dropdown-select";
                                                         </div>
                                                     </div>
                                                     <div className="col-md-3">
-                                                        <div className={styles['search_btn_filter']}>
+                                                        <div className={styles['search_btn_filter']} onClick={()=>{getProjects()}}>
                                                             <a href="#" className="btn btn-primary">Search</a>
                                                         </div>
                                                     </div>
@@ -466,7 +481,7 @@ import Select from "react-dropdown-select";
                                         </div> 
                                         <div className={styles['map_list_view']}>
                                             <ul className="list-unstyled d-flex">
-                                                <li><a href="#">List</a></li>
+                                                <li><a href="/browse-all-properties">List</a></li>
                                                 <li className={styles['active']}><a href="#">Map</a></li>
                                             </ul>
                                         </div>                 
@@ -480,8 +495,8 @@ import Select from "react-dropdown-select";
                                             <div className={styles['properties-sidebar-wrap']}>
                                                 <div className={styles['search_results_text']}>
                                                     <div style={{'max-width':'60%'}}>
-                                                        <h1>Search results “Dubai”</h1>
-                                                        <p>32 properties found</p>
+                                                        {/*<h1>Search results “Dubai”</h1>*/}
+                                                        <p>{property.length} properties found</p>
                                                     </div>
                                                     <div style={{'marginRight':'20px'}}>
                                                         <select>
@@ -490,22 +505,22 @@ import Select from "react-dropdown-select";
                                                     </div>
                                                 </div>
                                                 {
-                                                    properties.map((item)=>(
+                                                    property.map((unit)=>(
                                                         <div className={styles['property-slider-wrap']}>
                                                         <div className={styles['project-card']}>
-                                                            <img src={item.fieldMainImageDesktopP.url} className="img-fluid"/>
+                                                            <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
                                                             <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                                             {/* <li><a href="#"><img src="/damac-static/images/man.png" alt=""/></a></li> */}
                                                             <li><a href="#"><img src="/damac-static/images/bookmark.png" alt=""/></a></li>
                                                             </ul>
-                                                            <h6>{item.title}</h6>
-                                                            <p>{(item.fieldLocationP != null && item.fieldLocationP) ? item.fieldLocationP.entity.name : ''}</p>
+                                                            <h6>{unit.entity.Project_Name}</h6>
+                                                            <p>{unit.entity.Address},{unit.entity.Country.display_value}</p>
                                                             <ul className={styles['bedroom-detail']}>
                                                                 <li>
-                                                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED {item.fieldStartingFromPriceP2}*</a>
+                                                                    <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid"/>From AED {unit.entity.Unit_price_AED}*</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa {item.fieldBedRoomsP2} Bedrooms</a>
+                                                                    <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid"/>Villa {unit.entity.Number_of_Bedrooms1} Bedrooms</a>
                                                                 </li>
                                                             </ul>
                                                             <div className={styles['shape-wrap-plan']}>              
@@ -516,7 +531,7 @@ import Select from "react-dropdown-select";
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
                                                                 </svg>
                                                                 </a></li>
-                                                                <li><a href={(item.fieldWhatsapp && item.fieldWhatsapp != null) ? item.fieldWhatsapp : ''} target="_blank" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
+                                                                <li><a href={(unit.fieldWhatsapp && unit.fieldWhatsapp != null) ? unit.fieldWhatsapp : ''} target="_blank" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
                                                                 </ul>                  
                                                             </div>                
                                                             </div>
@@ -558,60 +573,88 @@ import Select from "react-dropdown-select";
  
 
 
- export const getServerSideProps = async () => {
+ export const getServerSideProps = async (cp) => {
     const client = new ApolloClient({
         uri: process.env.STRAPI_GRAPHQL_URL,
         cache: new InMemoryCache()
-      });
+    });
+    let entity = [];
+    let token = '';
+    let properties_data = [];
+    let value = '';
+    let marker = [];
+    if(cp.query.search != null && cp.query.search != ''){
+        value = '&Project_Name='+cp.query.search
+    }
+    await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
+        token = response.data.access_token
+    })
+    await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=10&CMS_Project_id=547'+value,
+        {
+            headers:{
+                'Authorization':'Zoho-oauthtoken '+token
+            }
+    }).then(response => {
+        entity = response.data.data;
+        entity.map((m,n)=>{
+         marker.push({lat:59.955413,lng:30.337844})
+          properties_data.push({entity:m,isSaved:false})
+        })
+    }).catch((e,status)=>{
+        if(typeof e.response != 'undefined'){
+            if(e.response.status == 401){
+            }
+        }
+    });
 
       // Use this for footer
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
     // end
       
-         // Use this for novigation
-         const  data2  = await client.query({ query: NAVIGATION });
-         const  data1  = await client.query({ query: PARENTMENUITEMS });
-         let nav = [];
-         let othernav = [];
-         if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
-           let submenu = data2.data.nodeQuery.entities[0];
-           let menu = data1.data.taxonomyTermQuery.entities;
-          
-           menu.map((m,i)=>{
-             othernav = [];
-             let des = m.description==null?'': m.description.value
-             nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
-             if((i+1)==menu.length){
-               submenu.fieldMultipleMenuItems.map((k,l)=>{
-                 if(k.entity.fieldMenuType!=null){
-                   nav.filter((o,h)=>{
-                     if(k.entity.fieldMenuType.entity.tid == o.tid){
-                       o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
-                     }
-                   });
+     // Use this for novigation
+     const  data2  = await client.query({ query: NAVIGATION });
+     const  data1  = await client.query({ query: PARENTMENUITEMS });
+     let nav = [];
+     let othernav = [];
+     if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+       let submenu = data2.data.nodeQuery.entities[0];
+       let menu = data1.data.taxonomyTermQuery.entities;
+       menu.map((m,i)=>{
+         othernav = [];
+         let des = m.description==null?'': m.description.value
+         nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+         if((i+1)==menu.length){
+           submenu.fieldMultipleMenuItems.map((k,l)=>{
+             if(k.entity.fieldMenuType!=null){
+               nav.filter((o,h)=>{
+                 if(k.entity.fieldMenuType.entity.tid == o.tid){
+                   o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
                  }
-                 else{
-                   othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
-                 }
-               })
+               });
              }
-           });
-          
+             else{
+               othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+             }
+           })
          }
-           // end
+       });
+      
+     }
+       // end
 
 
-           var  data  = await client.query({ query: PROJECT });
-           let properties = data.data.nodeQuery.entities;
-       
+    // var  data  = await client.query({ query: PROJECT });
+    // let properties = data.data.nodeQuery.entities;
+    
   
      return {
         props: {
           nav:nav,
           othernav:othernav,
           footerData: footerData,
-          properties: properties
+          properties: properties_data,
+          marker:marker
           // entity2: entity2
         }
       }
