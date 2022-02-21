@@ -169,7 +169,7 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
                                                 <div className={styles['shape-contact']}>
                                                     <ul className="d-flex align-items-center p-0">
                                                         <li><a href={'/project/'+project.nid} className={styles['border-icon']}>Know more</a></li>
-                                                        <li><a href="#" className={styles['solid-icon']}>View units</a></li>
+                                                        <li><a href="/browse-all-properties?CMS_Project_id=547" className={styles['solid-icon']}>View units</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

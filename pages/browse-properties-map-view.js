@@ -493,7 +493,7 @@ import Select from "react-dropdown-select";
                                 }
                             
 
-                            <div className="container" style={{'display':'flex'}}>
+                               <div className="container" style={{'display':'flex'}}>
                                         <div className="col-md-5 px-0 sider-bar-overflow">
                                             <div className={styles['properties-sidebar-wrap']}>
                                                 <div className={styles['search_results_text']}>

@@ -740,7 +740,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
                                                            options={options}
-                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal)}}/>   
+                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal), setCountryCode(optionCodeVal[0].value)}}/>   
                                                    </div>
                                                </label>
                                            </div>

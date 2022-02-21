@@ -391,7 +391,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
                                                            options={options}
-                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal)}}/>   
+                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal), setCountryCode(optionCodeVal[0].value)}}/>   
                                                    </div>
                                                </label>
                                            </div>
