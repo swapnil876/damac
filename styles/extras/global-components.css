@@ -1723,7 +1723,10 @@ List grid
   width: 100%;
   height: 100vh;
 }
-
+.aboutus-iframe-banner img{
+  width: 100%;
+  height: 100vh;
+}
 .project-video{
   width: 100%;
   height: 100vh;

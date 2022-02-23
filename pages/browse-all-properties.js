@@ -24,8 +24,11 @@ import project_landing_styles from '../styles/pages/project-landing.module.css'
 import React, { Component, useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+
+
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
+
 
 // importing React Select
 import Select from "react-dropdown-select";
@@ -183,12 +186,14 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
     // console.log('list======================================',entity1);
     // console.log('storage',localStorage)
     useEffect(() => {
+        import("bootstrap/dist/js/bootstrap");
+
+        
         // Checking if device is mobile
         getSavedProperties();
         if ( isMobile ) {
             setDeviceIsMobile( true );
           }
-        
     }, [localStorage, setLocalStorage]);
 
     const options = [
@@ -206,6 +211,12 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
         slidesToShow: 1,
         slidesToScroll: 1,
       };
+
+
+      var firstFaq = entity1.fieldMultipleFaqsBw[0];
+      var otherFaqs = entity1.fieldMultipleFaqsBw.filter((item, index)=>{
+          return index != 0
+      });
 
      return(
          <div className="browse-properties">
@@ -908,20 +919,36 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                                 <div className="col-md-12">
                                     <div className={style['faq-wrap']}>
                                     <div className="accordion" id="accordionExample">
-                                    {entity1.fieldMultipleFaqsBw.map((item,k) => (
+                                    {
                                         <div className="accordion-item">
                                         <h2 className="accordion-header" id="headingOne">
                                             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            {item.entity.fieldQuestion}
+                                            {firstFaq.entity.fieldQuestion}
                                             </button>
                                         </h2>
                                         <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div className="accordion-body">
+                                            {firstFaq.entity.fieldAnswer}
+                                            </div>
+                                        </div>
+                                        </div>
+                                    }
+                                    {
+                                    otherFaqs.map((item,k) => (
+                                        <div className="accordion-item">
+                                        <h2 className="accordion-header" id={'heading'+k}>
+                                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={'#collapse'+k} aria-expanded="true" aria-controls={'collapse'+k}>
+                                            {item.entity.fieldQuestion}
+                                            </button>
+                                        </h2>
+                                        <div id={'collapse'+k} className="accordion-collapse collapse" aria-labelledby={'heading'+k} data-bs-parent="#accordionExample">
                                             <div className="accordion-body">
                                             {item.entity.fieldAnswer}
                                             </div>
                                         </div>
                                         </div>
-                                    ))}
+                                    ))
+                                    }
                                   </div>                         
                                     </div>            
                                 </div>          

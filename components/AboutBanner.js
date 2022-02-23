@@ -23,15 +23,15 @@ export default function AboutBanner( { bannerImage, children, entity1, responsiv
 
   //   );
   const banner = (
-    <video 
-    className={styles['bg-image']}
-    controls
-    loop
-    muted
-    >
-       <source {...{bannerImage}}/>
-    </video>
-
+    // <video 
+    // className={styles['bg-image']}
+    // controls
+    // loop
+    // muted
+    // >
+    //    <source {...{bannerImage}}/>
+    // </video>
+    <iframe className={styles['bg-image']} src={bannerImage}></iframe>
     );
 
   return (

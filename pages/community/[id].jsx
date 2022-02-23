@@ -1067,10 +1067,10 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
 function handleChange(e) {
   const { name, value } = e.target;
 
-  setValues({
-      ...values,
-      [name]: value,
-  });
+  // setValues({
+  //     ...values,
+  //     [name]: value,
+  // });
 }
 
 
