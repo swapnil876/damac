@@ -917,7 +917,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
-    console.log("Here is footerData", footerData);
+  
     // end
 
        
@@ -929,8 +929,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
   if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
     let submenu = data2.data.nodeQuery.entities[0];
     let menu = data1.data.taxonomyTermQuery.entities;
-    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-    // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+   
     menu.map((m,i)=>{
       othernav = [];
       let des = m.description==null?'': m.description.value
@@ -957,10 +956,10 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
 
     const  data  = await client.query({ query: LISTING });
-    // console.log('listing',data);
+    
     let entity1 = data.data.nodeQuery.entities[0];
     // let entity2 = data.data.nodeQuery.entities[1];
-    console.log('about',entity1);
+   
   
     return {
       props: {

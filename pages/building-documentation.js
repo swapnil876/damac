@@ -134,7 +134,7 @@ export async function getServerSideProps(context){
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
-  console.log("Here is footerData", footerData);
+  
   // end
 
   
@@ -146,8 +146,7 @@ export async function getServerSideProps(context){
            if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
              let submenu = data2.data.nodeQuery.entities[0];
              let menu = data1.data.taxonomyTermQuery.entities;
-             console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-             // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+             
              menu.map((m,i)=>{
                othernav = [];
                let des = m.description==null?'': m.description.value
@@ -177,7 +176,7 @@ export async function getServerSideProps(context){
   const  data  = await client.query({ query: BUILDING_DOCUMENTATION,variables:{id:""}});
 
   let entity1 = data.data.nodeQuery.entities;
-  console.log('entity1*****////',entity1);
+  
 
   return {
     props: {

@@ -156,7 +156,7 @@ export async function getStaticProps(context) {
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
-    console.log("Here is footerData", footerData);
+    
     // end
 
     
@@ -169,8 +169,7 @@ export async function getStaticProps(context) {
  if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
    let submenu = dataNav2.data.nodeQuery.entities[0];
    let menu = dataNav1.data.taxonomyTermQuery.entities;
-   console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-   // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+
    menu.map((m,i)=>{
      othernav = [];
      let des = m.description==null?'': m.description.value
@@ -201,7 +200,7 @@ export async function getStaticProps(context) {
 
   const  data  = await client.query({ query: SHARE_INFO });
   let entity1 = data.data.nodeQuery.entities[0];
-  console.log(entity1);
+ 
   let data1 = {entity:{}};
   let fieldTabs = [];
   entity1.fieldTabsS.map((v,i)=>{

@@ -60,7 +60,7 @@ export default function CompanyAnnouncements({entity,unique,year_announcement, n
     }
 ];
 let selectYear = (yr,arr,l,type)=>{
-    console.log(useEffect);
+    
     if(type==1){
         let yearr = yearData;
         let uniquee = uniqueYear;
@@ -310,7 +310,7 @@ return (
 }
 
 // function selectYear(yr,arr){
-//     console.log(yr,arr,this);
+//   
 //     arr.map((v,i)=>{
 //         if(yr==v.year){
 //             v.isShow = true;
@@ -323,7 +323,7 @@ return (
 // }
 
 function getDateTime(date){
-    console.log('date*****',date);
+    
    let split = date.split('T');
    let y = split[0].split('-');
    return y[0];
@@ -340,7 +340,7 @@ export const getStaticProps = async () => {
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
-    console.log("Here is footerData", footerData);
+    
     // end
 
 
@@ -353,8 +353,7 @@ export const getStaticProps = async () => {
  if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
    let submenu = data2.data.nodeQuery.entities[0];
    let menu = data1.data.taxonomyTermQuery.entities;
-   console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-   // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+  
    menu.map((m,i)=>{
      othernav = [];
      let des = m.description==null?'': m.description.value
@@ -384,7 +383,7 @@ export const getStaticProps = async () => {
     let checkUniqe = [];
     const  data  = await client.query({ query: COMPANY_ANNOUNCEMENTS });
     let entity1 = data.data.nodeQuery.entities;
-    console.log(entity1);
+    
     entity1.map((v,i)=>{
         let year = getDateTime(v.fieldDate.value)
         if(!checkUniqe.includes(year)){

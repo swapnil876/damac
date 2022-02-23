@@ -109,6 +109,12 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
      { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
    ];
 
+   const optionValues = options.map((item)=>{
+    return item.value;
+   });
+
+ const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
+
  const [firstName, setFirstName] = useState('');
  const [lastName, setLastName] = useState('');
 
@@ -117,7 +123,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
 
  const [email, setEmail] = useState('');
 
-   function handleScheduleFormSubmit(){
+   async function handleScheduleFormSubmit(){
        if(!firstName){
            setFirstName("null");
        }
@@ -133,7 +139,77 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
        }
        if(!countryCode){
            setCountryCode("null");
-       }   
+       } 
+       let data = {
+        title:"",
+        firstName:firstName,
+        lastName:lastName,
+        email:email,
+        phoneNumber:phoneNumber,
+        countryCode:countryCode,
+        country:"",
+        acceptPrivacyP:"",
+        newsAndOffers:"",
+        campaignId:"a120Y000000uLMj",
+        utmSource:"",
+        utmMedium:"",
+        utmCampaign:"",
+        webSource:"",
+        adGroup:"",
+        campaignNameHOD:"",
+        goal:"",
+        digitalSource:"",
+        channelCluster:"",
+        bannerSize:"",
+        keyword:"",
+        placement:"",
+        adPosition:"",
+        matchType:"",
+        network:"",
+        bidType:"",
+        GCLID:"",
+        fbclid:"",
+        adid:"",
+        refid:"",
+        leadSource:"Digital",
+        lastMileConversion:"Contact Us",
+        device:"",
+        projectName:"",
+        os:"",
+        resolution:"",
+        browser:"",
+        ga_client_id:"",
+        fbid:"",
+        timeSpentbeforeFormSubmit:"",
+        ipAddress:"",
+        landingPageURL:"",
+        fullLandingPageUrl:"",
+        websiteLanguage:"",
+        countryNameSync:"",
+        citySync:"",
+        city:"",
+        countryCodeSync:"",
+        user_agent:""
+      }    
+      const header = ''
+      await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'applicationjson',
+            "Access-Control-Allow-Origin": "*"
+          }
+      })
+    .then((res)=>{
+      token = res.data.access_token;
+    })
+    .catch((er)=>{
+      console.log(er);
+    })
+    await axios.post('https://stg- lqsapp.damacgroup.com',{
+    headers:{
+        'Authorization':token
+    }},data).then(function(res){
+      console.log(res);
+    })  
    }
 
   return (
@@ -388,9 +464,8 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
 
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
-                                                           value={options.value}
                                                            options={options}
-                                                           placeholder={options[0].value} onChange={()=>{setCountryCode(event.target.value)}}/>   
+                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal), setCountryCode(optionCodeVal[0].value)}}/>   
                                                    </div>
                                                </label>
                                            </div>
@@ -1253,7 +1328,7 @@ export const getServerSideProps = async (cp) => {
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
-  console.log("Here is footerData", footerData);
+  
   // end
 
 
@@ -1265,8 +1340,7 @@ export const getServerSideProps = async (cp) => {
    if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
      let submenu = dataNav2.data.nodeQuery.entities[0];
      let menu = dataNav1.data.taxonomyTermQuery.entities;
-     console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-     // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+     
      menu.map((m,i)=>{
        othernav = [];
        let des = m.description==null?'': m.description.value
@@ -1289,18 +1363,18 @@ export const getServerSideProps = async (cp) => {
     
    }
      // end
-   console.log(cp.query.id);
+   
   const  data  = await client.query({ query: COMMUNITYDETAILS, variables:{id:cp.query.id} });
   const  data1  = await client.query({ query: PROJECT });
   const  data2  = await client.query({ query: COMMUNITY });
   let entity1 = data.data.nodeQuery.entities[0];
   let projectlist = data1.data.nodeQuery.entities;
   let otherProjects = data2.data.nodeQuery.entities;
-  console.log('***data****comm',data.data.nodeQuery.entities);
+  
   
 
   
-  // console.log('entity1',data1.data);
+  
    return {
       props: {
         entity1: entity1,

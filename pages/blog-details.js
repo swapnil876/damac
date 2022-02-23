@@ -130,7 +130,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
-  console.log("Here is footerData", footerData);
+  
   // end
   
        // Use this for novigation
@@ -141,8 +141,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
   if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
     let submenu = data2.data.nodeQuery.entities[0];
     let menu = data1.data.taxonomyTermQuery.entities;
-    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-    // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+   
     menu.map((m,i)=>{
       othernav = [];
       let des = m.description==null?'': m.description.value
@@ -171,7 +170,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
   const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:'65'} });
   const data3 = await client.query({ query: BLOGS });
   if(data.data.nodeQuery.entities.length == 0){
-    console.log(cp);
+   
     // Router.push('/blog-list');
     // window.location.href = "/blog-list";
     // cp.push('/blog-list');
@@ -180,8 +179,8 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
   let bloglist = data.data.nodeQuery.entities;
   // let entity2 = data.data.nodeQuery.entities[1];
   
-  console.log('entity2',entity1);
-  // console.log(data.data.nodeQuery.entities);
+ 
+  
    return {
       props: {
         entity1: entity1,
