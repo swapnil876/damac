@@ -55,6 +55,12 @@ import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
+import { COMMUNITYDATA } from '../json/community';
+import { PROJECTDATA } from '../json/project';
+import { LOCATIONDATA } from '../json/location';
+import { BEDROOMDATA } from '../json/bedroom';
+import { BATHROOMDATA } from '../json/bathroom';
+
 
  function BrowseProperties({entity,entity1, nav, othernav, footerData}){
     const [callBackModal, setCallBackModal] = useState(false);
@@ -72,6 +78,8 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
             items: 1
         }
     };
+
+    console.log(PROJECTDATA)
 
     function savedProperty(unit){
       let savedProperty = [];
