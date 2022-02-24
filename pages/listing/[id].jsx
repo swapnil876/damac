@@ -1517,7 +1517,7 @@ export const getServerSideProps = async (cp) => {
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
-  console.log("Here is footerData", footerData);
+  
   // end
   
 // Use this for novigation
@@ -1528,8 +1528,7 @@ let othernav = [];
 if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
   let submenu = dataNav2.data.nodeQuery.entities[0];
   let menu = dataNav1.data.taxonomyTermQuery.entities;
-  console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-  // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+  
   menu.map((m,i)=>{
     othernav = [];
     let des = m.description==null?'': m.description.value

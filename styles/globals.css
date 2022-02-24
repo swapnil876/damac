@@ -212,6 +212,16 @@ h1,
     max-height: 100vh;
     overflow-y: auto;
 }
+.map_view_page_mobile{
+    width:100%;
+    height: 100vh;
+    overflow: auto;
+    position: relative;
+}
+.map_in_mobile_view, .map_in_mobile_view GoogleMapReact{
+    width:100%;
+    height: 100%;
+}
 @media (max-width:1280px) {
     .custom_modal_contain .popup_modal {
         width: 80%

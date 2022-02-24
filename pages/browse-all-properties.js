@@ -116,7 +116,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
       //       ids.push(m.ID);
       //       setSavedProperties(ids);
       //       window.localStorage.setItem('savedProperty',JSON.stringify(savedProperty));
-      //       console.log(savedProperty);
+      //       
       //     }
       //   })
       // else{
@@ -132,7 +132,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
       let properties_data = property;
       if(typeof window != 'undefined'){
         let storage = JSON.parse(window.localStorage.getItem('savedProperty'));
-        console.log(storage);
+        
         if(storage != null){
           storage.map((m,l)=>{
             ids.push(m.entity.ID);
@@ -151,7 +151,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
         
         // storage.map((l,k)=>{ids.push(l.Id);(k+1)==storage.length?setSavedProperties(ids):''})
       }
-      // console.log(savedProperties);
+      
     }
     
     function getToken(){
@@ -169,7 +169,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                     'Access-Control-Allow-Headers':'Content-Type'
                 }
             }).then(response => {
-              console.log(response)
+              
                 setLocalStorage(response.data.access_token);
             })
         }
@@ -183,8 +183,8 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
     
 
     // getToken();
-    // console.log('list======================================',entity1);
-    // console.log('storage',localStorage)
+    
+    
     useEffect(() => {
         import("bootstrap/dist/js/bootstrap");
 
@@ -344,8 +344,8 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                            </form>
                            <div className={styles['map_list_view']}>
                                <ul className="list-unstyled d-flex">
-                                   <li className="active"><a href="#">List</a></li>
-                                   <li><a href="#">Map</a></li>
+                                   <li className={styles['active']}><a href="#">List</a></li>
+                                   <li><a href="/browse-properties-map-view">Map</a></li>
                                </ul>
                            </div>
                        </div>
@@ -978,7 +978,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
-    console.log("Here is footerData", footerData);
+    
     // end
       
        // Use this for novigation
@@ -989,8 +989,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
        if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
          let submenu = data2.data.nodeQuery.entities[0];
          let menu = data1.data.taxonomyTermQuery.entities;
-         console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-         // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+        
          menu.map((m,i)=>{
            othernav = [];
            let des = m.description==null?'': m.description.value
@@ -1037,15 +1036,15 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
           properties_data.push({entity:m,isSaved:false})
         })
     }).catch((e,status)=>{
-        // console.log('response',e.response);
+        
         if(typeof e.response != 'undefined'){
             if(e.response.status == 401){
-                // console.log(refreshToken(e.response.status));
+                
             }
         }
     });
 
-    console.log('--------',properties_data);
+    
     return {
         props: {
            entity:properties_data,

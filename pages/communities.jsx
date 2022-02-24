@@ -91,8 +91,7 @@ let othernav = [];
 if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
   let submenu = data2.data.nodeQuery.entities[0];
   let menu = data1.data.taxonomyTermQuery.entities;
-  console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-  // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+  
   menu.map((m,i)=>{
     othernav = [];
     let des = m.description==null?'': m.description.value
@@ -167,15 +166,15 @@ if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
 
   const  data  = await client.query({ query: COMMUNITY });
   var communities_data = data.data.nodeQuery.entities;
-  // console.log('*****data*****',data.data.nodeQuery.entities);
+  
   communities_data.map((v,i)=>{
-    console.log('************'+i);
+    
     if(v.fieldImageDesktop != null){
       communities.push({title:v.title,imageUrl:v.fieldImageDesktop.url,subtitle:v.fieldLocation!=null?v.fieldLocation.entity.name:'',description:v.fieldTagline,link:'/community/'+v.nid})
     }
      
   });
-  // console.log('*****',communities);
+  
   return {
     props: {
        communities: communities,

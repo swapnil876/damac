@@ -36,6 +36,8 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { ApolloClient, InMemoryCache } from '@apollo/client';
  import { NAVIGATION } from '../graphql/master/navigation';
  import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+//  import { BLOGS } from '../../graphql/blogs';
+import {BLOGS} from '../../../../techsperia/git/damac/graphql/blogs';
 
  export default function PressRelease({nav, othernav, footerData}){
      return(
@@ -161,7 +163,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
-  console.log("Here is footerData", footerData);
+ 
   // end
 
   
@@ -173,8 +175,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
    if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
      let submenu = data2.data.nodeQuery.entities[0];
      let menu = data1.data.taxonomyTermQuery.entities;
-     console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-     // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+   
      menu.map((m,i)=>{
        othernav = [];
        let des = m.description==null?'': m.description.value

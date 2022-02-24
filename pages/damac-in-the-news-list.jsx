@@ -18,7 +18,7 @@ import style from '../styles/pages/damac-in-the-news.module.css'
 import React, { Component } from "react";
 import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { BLOGS } from '../graphql/blogs';
+import { BLOGTYPEDETAIL } from '../graphql/master/blogtypedetail';
 import { INTHENEWSLISTING } from '../graphql/inthenewslisting';
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
@@ -74,7 +74,7 @@ function DamacInTheNewsList( { blogs, newslist, nav, othernav, footerData } ) {
 
 
                <div className={ styles['pagination-container'] }>
-                 <PagePagination/>
+                 {/*<PagePagination/>*/}
                </div>
 
              </div>
@@ -105,7 +105,7 @@ export const getServerSideProps = async () => {
     const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
-    console.log("Here is footerData", footerData);
+    
     // end
 
 
@@ -118,8 +118,7 @@ export const getServerSideProps = async () => {
   if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
     let submenu = data2.data.nodeQuery.entities[0];
     let menu = data1.data.taxonomyTermQuery.entities;
-    console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',data2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-    // console.log('----*-*-*-*-*-*--*',data1.data.taxonomyTermQuery.entities);
+    
     menu.map((m,i)=>{
       othernav = [];
       let des = m.description==null?'': m.description.value
@@ -145,15 +144,14 @@ export const getServerSideProps = async () => {
 
 
 
-  const data  = await client.query({ query: BLOGS });
+  const data  = await client.query({ query: BLOGTYPEDETAIL,variables:{type:'17'} });
   const  newsheading  = await client.query({ query: INTHENEWSLISTING });
   let entitiy = data.data.nodeQuery.entities;
   let newslist = newsheading.data.nodeQuery.entities[0];
   let blogs = [];
   entitiy.map((v,i)=>{
-    console.log(v);
-    console.log('---------------------')
-    blogs.push({title:v.title,url:'/damac-in-the-news',imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body.value,  author: v.fieldAuthor.entity.name, tag: v.fieldTag.entity.name})
+   
+    blogs.push({title:v.title,url:'/damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body.value,  author: v.fieldAuthor.entity.name, tag: v.fieldTag.entity.name})
   });
   // const blogs = [
   //     {

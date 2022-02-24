@@ -17,9 +17,12 @@ import Select from "react-dropdown-select";
 import 'bootstrap/dist/css/bootstrap.css'
 import { isMobile } from "react-device-detect";
 
+import * as axios from 'axios';
+
 export default function ContactForm({ initialValues, address , heading}) {
     const [values, setValues] = useState(initialValues);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -35,7 +38,6 @@ export default function ContactForm({ initialValues, address , heading}) {
   const [checkBox2, setCheckBox2] = useState('');
 
     async function handleFormSubmit(){
-        console.log("submit clicked");
         let token = '';
         if(!firstName){
             setFirstName("null");
@@ -71,10 +73,10 @@ export default function ContactForm({ initialValues, address , heading}) {
           lastName:lastName,
           email:email,
           phoneNumber:phoneNumber,
-          countryCode:countryCode,
+          countryCode:optionCodeVal[0].value,
           country:"",
-          acceptPrivacyP:acceptPrivacyP,
-          newsAndOffers:newsAndOffers,
+          acceptPrivacyP:checkBox1,
+          newsAndOffers:checkBox2,
           campaignId:"a120Y000000uLMj",
           utmSource:"",
           utmMedium:"",
@@ -116,6 +118,7 @@ export default function ContactForm({ initialValues, address , heading}) {
           countryCodeSync:"",
           user_agent:""
         }    
+        const header = ''
         await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
               'Content-Type': 'application/json',
               'Accept': 'applicationjson',
@@ -184,10 +187,17 @@ export default function ContactForm({ initialValues, address , heading}) {
     const iconDubai = '/images/icons/country_flags/uae.png'
     const iconUsa = '/images/icons/country_flags/usa.png'
     const options = [
-        { value: 'India', label: <div><img src={iconIndia} className="country_code_glag_image"/>(+91) </div> },
-        { value: 'UAE', label: <div><img src={iconDubai} className="country_code_glag_image"/>(+971) </div> },
-        { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
+        { 'value': "India", 'label': <div><img src={iconIndia} className="country_code_glag_image"/>(+91) </div> },
+        { 'value': "UAE", 'label': <div><img src={iconDubai} className="country_code_glag_image"/>(+971) </div> },
+        { 'value': "USA", 'label': <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
       ];
+
+      const optionValues = options.map((item)=>{
+          return item.value;
+      });
+
+      const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
+
 
     return (
 
@@ -237,7 +247,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
                                                            options={options}
-                                                           placeholder={options[0].value} onChange={()=>{setCountryCode(event.target.value)}}/>   
+                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal), setCountryCode(optionCodeVal[0].value)}}/>   
                                                    </div>
                                                </label>
                                            </div>
@@ -328,7 +338,8 @@ export default function ContactForm({ initialValues, address , heading}) {
                            <div className={`form-row form-row-2`}>
                                <div className={`form-item-col`}>
                                    <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                       <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChecked={()=>{setCheckbox1(event.target.value)}} />
+                                       <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChange={()=>{setCheckBox1("news"), 
+                                    console.log("ufuvjhvjhvfjhvcjvcjhvcjhvcjccvjsvch")}} />
                                        <label className={styles['form-check-label']} for="flexCheckChecked">
                                            I’d like to hear about news and offers
                                        </label>
@@ -337,7 +348,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                                </div>
                                <div className={`form-item-col`}>
                                    <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                       <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChecked={()=>{setCheckbox2(event.target.value)}} />
+                                       <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChange={()=>{setCheckBox2("agree")}} />
                                        <label className={styles['form-check-label']} for="flexCheckChecked">
                                            I’ve read and Agree to <span style={styling_here.privacy_pg_txt}>Privacy Policy</span>
                                        </label>
@@ -483,7 +494,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                             <div className={`form-row form-row-2`} style={{'margin': '30px 0'}}>
                             <div className={`form-item-col`}>
                                 <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                    <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChecked={()=>{setCheckbox1(event.target.value)}}/>
+                                    <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChange={()=>{setCheckBox1("news")}}/>
                                     <label className={styles['form-check-label']} for="flexCheckChecked">
                                         I’d like to hear about news and offers
                                     </label>
@@ -492,7 +503,7 @@ export default function ContactForm({ initialValues, address , heading}) {
                             </div>
                             <div className={`form-item-col`}>
                                 <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                    <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChecked={()=>{setCheckbox2(event.target.value)}} />
+                                    <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked" onChange={()=>{setCheckBox2("agree")}} />
                                     <label className={styles['form-check-label']} for="flexCheckChecked">
                                         I’ve read and Agree to <span style={styling_here.privacy_pg_txt}>Privacy Policy</span>
                                     </label>

@@ -12,6 +12,9 @@ import Footer from '../../components/Footer'
 import styles from '../../styles/pages/Community.module.css'
 import style from '../../styles/pages/listing.module.css';
 
+
+import Select from "react-dropdown-select";
+
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -59,7 +62,8 @@ import * as axios from 'axios';
 
 function Community({entity1, projectlist, otherProjects, nav, othernav, footerData}) {
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
-  const [customModal, openCustomModal] = useState(false)
+  const [customModal, openCustomModal] = useState(false);
+  const [callBackModal, setCallBackModal] = useState(false);
 
   useEffect(() => {
       if ( isMobile ) {
@@ -93,6 +97,120 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
      zoom: 11
    };
  // Google Map Items
+
+ 
+      
+ const iconIndia = '/images/icons/country_flags/india.png'
+ const iconDubai = '/images/icons/country_flags/uae.png'
+ const iconUsa = '/images/icons/country_flags/usa.png'
+ const options = [
+     { value: 'India', label: <div><img src={iconIndia} className="country_code_glag_image"/>(+91) </div> },
+     { value: 'UAE', label: <div><img src={iconDubai} className="country_code_glag_image"/>(+971) </div> },
+     { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
+   ];
+
+   const optionValues = options.map((item)=>{
+    return item.value;
+   });
+
+ const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
+
+ const [firstName, setFirstName] = useState('');
+ const [lastName, setLastName] = useState('');
+
+ const [phoneNumber, setPhoneNumber] = useState('');
+ const [countryCode, setCountryCode] = useState('');
+
+ const [email, setEmail] = useState('');
+
+   async function handleScheduleFormSubmit(){
+       if(!firstName){
+           setFirstName("null");
+       }
+       if(!lastName){
+           setLastName("null");
+       }
+
+       if(!email){
+           setEmail("null");
+       }
+       if(!phoneNumber){
+           setPhoneNumber("null");
+       }
+       if(!countryCode){
+           setCountryCode("null");
+       } 
+       let data = {
+        title:"",
+        firstName:firstName,
+        lastName:lastName,
+        email:email,
+        phoneNumber:phoneNumber,
+        countryCode:countryCode,
+        country:"",
+        acceptPrivacyP:"",
+        newsAndOffers:"",
+        campaignId:"a120Y000000uLMj",
+        utmSource:"",
+        utmMedium:"",
+        utmCampaign:"",
+        webSource:"",
+        adGroup:"",
+        campaignNameHOD:"",
+        goal:"",
+        digitalSource:"",
+        channelCluster:"",
+        bannerSize:"",
+        keyword:"",
+        placement:"",
+        adPosition:"",
+        matchType:"",
+        network:"",
+        bidType:"",
+        GCLID:"",
+        fbclid:"",
+        adid:"",
+        refid:"",
+        leadSource:"Digital",
+        lastMileConversion:"Contact Us",
+        device:"",
+        projectName:"",
+        os:"",
+        resolution:"",
+        browser:"",
+        ga_client_id:"",
+        fbid:"",
+        timeSpentbeforeFormSubmit:"",
+        ipAddress:"",
+        landingPageURL:"",
+        fullLandingPageUrl:"",
+        websiteLanguage:"",
+        countryNameSync:"",
+        citySync:"",
+        city:"",
+        countryCodeSync:"",
+        user_agent:""
+      }    
+      const header = ''
+      await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'applicationjson',
+            "Access-Control-Allow-Origin": "*"
+          }
+      })
+    .then((res)=>{
+      token = res.data.access_token;
+    })
+    .catch((er)=>{
+      console.log(er);
+    })
+    await axios.post('https://stg- lqsapp.damacgroup.com',{
+    headers:{
+        'Authorization':token
+    }},data).then(function(res){
+      console.log(res);
+    })  
+   }
 
   return (
     <div className='communitybody'>
@@ -284,6 +402,115 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
             ""
         }
       {/* Custom popup modal */}
+
+      {
+            callBackModal ? 
+            <div className="custom_modal_contain">
+              <a onClick={()=>{setCallBackModal(false)}}> </a>
+                <div className={`${styles["schedule_callback_modal"]} popup_modal`}>
+                   <div className="close" onClick={()=>{
+                      setCallBackModal(false);
+                      }}>
+                      <span>
+                      <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+          <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                      </svg>
+                      </span>
+                    </div>
+                    <div className="row justify-content-center">
+                    <div className="col-xl-9 col-md-11 col-12">
+                        <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
+                            <div style={{'margin-bottom':'60px'}}>
+                            <h2 className={style['example-class']} style={{ 'margin': '0', 'textAlign':'center' }}>Schedule a Callback</h2>
+                            <p style={{ 'margin': '0', 'textAlign':'center' }}>Hassle-free booking experience. Only from DAMAC.</p>
+                            </div>                           
+                            <div className={`form-row form-row-2`}>
+
+                               <div className={`form-item-col`}>
+                                   <div className='custom-input-element'>
+                                       <label className='input-element-wrapper'>
+
+                                           <div className='input-element text-element'>
+                                               <input type='text' name='firstName'  onChange={()=>{setFirstName(event.target.value)}} />
+                                               <label className={`custom-floating-label`} htmlFor={'firstName'}>First name</label>
+                                           </div>
+                                       </label>
+                                   </div>
+                                   <p className='form_err_msg'>{firstName=="null" && "Enter First Name"}</p>
+                               </div>
+                               <div className={`form-item-col`}>
+
+                                   <div className='custom-input-element'>
+                                       <label className='input-element-wrapper'>
+
+                                           <div className='input-element text-element'>
+                                               <input type='text' name='lastName' onChange={()=>{setLastName(event.target.value)}} />
+                                               <label className={`custom-floating-label`} htmlFor={'lastName'}>Last name</label>
+                                           </div>
+                                       </label>
+                                   </div>
+                                   <p className='form_err_msg'>{lastName=="null" && "Enter Last Name"}</p>
+                               </div>
+
+                           </div>
+
+                            <div className={`form-row form-row-2`}>
+                                <div className={`form-item-col`}>
+                                <div className="row">
+                                       <div className='col-sm-5 pe-0'>
+                                           <div className='custom-input-element'>
+                                               <label className='input-element-wrapper'>
+
+                                                   <div className='input-element country-code-element text-element'>
+                                                       <Select name="countryCode"
+                                                           options={options}
+                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal), setCountryCode(optionCodeVal[0].value)}}/>   
+                                                   </div>
+                                               </label>
+                                           </div>
+                                           <p className='form_err_msg'>{countryCode=="null" && "Select Country Code"}</p>
+                                       </div>
+                                       <div className='col-sm-7'>
+                                           <div className='custom-input-element'>
+                                               <label className='input-element-wrapper'>
+
+                                                   <div className='input-element text-element phone-number-element'>
+                                                       <input type='text' name='phoneNumber' onChange={()=>{setPhoneNumber(event.target.value)}} />
+                                                       <label className={`custom-floating-label`} htmlFor={'phoneNumber'}>Phone number</label>
+                                                   </div>
+                                               </label>
+                                           </div>
+                                           <p className='form_err_msg'>{phoneNumber=="null" && "Enter Phone Number"}</p>
+                                       </div>
+                                   </div>
+                                </div>
+                                <div className={`form-item-col`}>
+                                <div className='custom-input-element'>
+                                    <label className='input-element-wrapper'>
+
+                                        <div className='input-element email-element'>
+                                            <input type='email' name='email' onChange={()=>{setEmail(event.target.value)}} />
+                                            <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
+                                        </div>
+                                    </label>
+                                </div>
+                                <p className='form_err_msg'>{email=="null" && "Enter Email ID"}</p>
+                                </div>
+                            </div>
+
+                            <div className={`form-row`}>
+                                <div className={`form-item-col`}>
+                                    <button className="custom-submit-btn custom-callback-modal-submit" onClick={()=>{handleScheduleFormSubmit()}} >Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div> :
+            ""
+          }
       
 {/* 
                      <section className={style['inner-wrap-hero']} style={!isMobile?{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}:{'background-image': 'url(' + entity1.fieldImageDesktop.url + ')'}}>
@@ -487,7 +714,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                     <div className='right-area'>
                       
                       <div className='booking-btns'>
-                        <a className='btn btn-primary btn-icon' onClick={()=>{openCustomModal(true)}}>
+                        <a className='btn btn-primary btn-icon' onClick={()=>{setCallBackModal(true)}}>
                         {/* href={'mailto:'+entity1.fieldEmail} target="_blank" */}
                           <span className='fa-icon' style={{'margin': '0'}}>
                             <FontAwesomeIcon icon={faEnvelope} style={{'margin-right':'0'}}/>
@@ -792,6 +1019,22 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
         </div>
       </section>
 
+
+                 <section className={style['master-plan']}>
+                      <div className="container">
+                        <div className="row">
+                          <div className="col-md-12">
+                            <div className={style['plan-video']}>
+                              <div className={style['video']}>
+                              <iframe src={entity1.fieldVideo.url.path} class="project-video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> 
+                              </div>
+                              {/* <a className={style['play-button']}><FaPlay /></a> */}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
       <section className={styles['master-plan']}>
         <div className="container">  
           <div className={`text-wrapper`}>
@@ -1085,7 +1328,7 @@ export const getServerSideProps = async (cp) => {
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
-  console.log("Here is footerData", footerData);
+  
   // end
 
 
@@ -1097,8 +1340,7 @@ export const getServerSideProps = async (cp) => {
    if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
      let submenu = dataNav2.data.nodeQuery.entities[0];
      let menu = dataNav1.data.taxonomyTermQuery.entities;
-     console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-     // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+     
      menu.map((m,i)=>{
        othernav = [];
        let des = m.description==null?'': m.description.value
@@ -1121,18 +1363,18 @@ export const getServerSideProps = async (cp) => {
     
    }
      // end
-   console.log(cp.query.id);
+   
   const  data  = await client.query({ query: COMMUNITYDETAILS, variables:{id:cp.query.id} });
   const  data1  = await client.query({ query: PROJECT });
   const  data2  = await client.query({ query: COMMUNITY });
   let entity1 = data.data.nodeQuery.entities[0];
   let projectlist = data1.data.nodeQuery.entities;
   let otherProjects = data2.data.nodeQuery.entities;
-  console.log('***data****comm',data.data.nodeQuery.entities);
+  
   
 
   
-  // console.log('entity1',data1.data);
+  
    return {
       props: {
         entity1: entity1,

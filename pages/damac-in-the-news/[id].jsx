@@ -33,7 +33,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Context as ResponsiveContext } from 'react-responsive'
 import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { NEWSDETAILS } from '../../graphql/newsdetails';
+import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
 
 
 import { NAVIGATION } from '../../graphql/master/navigation';
@@ -164,7 +164,7 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
   const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
-  console.log("Here is footerData", footerData);
+  
   // end
 
 
@@ -176,8 +176,7 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
  if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
    let submenu = dataNav2.data.nodeQuery.entities[0];
    let menu = dataNav1.data.taxonomyTermQuery.entities;
-   console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-   // console.log('----*-*-*-*-*-*--*',dataNav1.data.taxonomyTermQuery.entities);
+  
    menu.map((m,i)=>{
      othernav = [];
      let des = m.description==null?'': m.description.value
@@ -202,9 +201,9 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
    // end
 
 
-  const data = await client.query({ query: NEWSDETAILS, variables:{id:cp.query.slug} });
+  const data = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.id} });
   let entity1 = data.data.nodeQuery.entities[0];
-  console.log(entity1);
+  
   // let entity2 = data.data.nodeQuery.entities[1];
   return {
     props: {
