@@ -317,18 +317,18 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
               "Access-Control-Allow-Origin": "*"
             }
         })
-      .then((res)=>{
-        token = res.data.access_token;
-      })
-      .catch((er)=>{
-        console.log(er);
-      })
-      await axios.post('https://stg- lqsapp.damacgroup.com',{
-      headers:{
-          'Authorization':token
-      }},data).then(function(res){
-        console.log(res);
-      })
+        .then((res)=>{
+          token = res.data.access_token;
+        })
+        .catch((er)=>{
+          console.log(er);
+        })
+        await axios.post('https://stg- lqsapp.damacgroup.com',{
+        headers:{
+            'Authorization':'Bearer '+token
+        }},data).then(function(res){
+          console.log(res);
+        })
     }
 
 
