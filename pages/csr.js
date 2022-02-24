@@ -81,8 +81,8 @@ function CSR({entity1, nav, othernav, footerData}) {
 
       <main className="main about-main">
 
-      <iframe src={entity1.fieldHeaderImageVideoDeskCs.entity.url} class="csr-video-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-       
+      <iframe src="https://www.youtube.com/embed/kpCGfnMSes0" class="csr-video-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      {/* {entity1.fieldHeaderImageVideoDeskCs.entity.url} */}
        {/* <VideoBanner bannerImage={!isMobile?entity1.fieldHeaderImageVideoDeskCs.entity.url:entity1.fieldHeaderImageVideoMobCs.entity.url}> </VideoBanner> */}
 
        <TextSection className="text-section-csr-1">

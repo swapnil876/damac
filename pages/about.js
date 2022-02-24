@@ -150,7 +150,7 @@ function About({entity1, nav, othernav, footerData}) {
 
       {/* <iframe src={entity1.fieldMainImageVideoDesktop.entity.url} class="aboutus-iframe-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> */}
 
-       <AboutBanner entity1={entity1} responsiveHeights={ deviceIsMobile ? '100vh' : '' } bannerImage={ isMobile ? entity1.fieldMainImageVideoDesktop.entity.url : entity1.fieldMainImageVideoDesktop.entity.url}></AboutBanner>
+       <AboutBanner entity1={entity1} responsiveHeights={ deviceIsMobile ? '100vh' : '' } bannerImage={ deviceIsMobile ? entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop.url}></AboutBanner>
 
 
        <div className="damac-text-section-container">
@@ -164,8 +164,8 @@ function About({entity1, nav, othernav, footerData}) {
                  <p>{entity1.fieldDescription2}</p>
 
                  <div className="cta-box text-center mt-5">
-                   <Link href={entity1.fieldButtonUrl}>
-                     <a className="btn btn-primary cta-btn"><span>{entity1.fieldButtonText}</span></a>
+                   <Link href="#">
+                     <a className="btn btn-primary cta-btn"><span>Explore</span></a>
                    </Link>
                  </div>
                </div>
@@ -226,9 +226,9 @@ function About({entity1, nav, othernav, footerData}) {
 
                    <div className="ctabtn-container">
                     <div className="cta-container">
-                      <Link href={entity1.fieldButton3}>
+                      <Link href="#">
                         <a className="btn btn-primary cta-btn">
-                          <span>{entity1.fieldButton4Text}</span>
+                          <span>Read the Chairman’s message</span>
                         </a>
                       </Link>
                     </div>
@@ -468,7 +468,7 @@ Having now received over 100 global awards and commendations, for everything fro
                  <p>{entity1.fieldCsrDescription5}</p>
 
                  <div className="cta-container">
-                   <Link href={entity1.fieldCsrImage.url}>
+                   <Link href="#">
                      <a className="btn btn-primary cta-btn"><span>Know More</span></a>
                    </Link>
                  </div>
