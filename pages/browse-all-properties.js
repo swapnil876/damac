@@ -24,8 +24,11 @@ import project_landing_styles from '../styles/pages/project-landing.module.css'
 import React, { Component, useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+
+
 // Bootstrap Css
 import 'bootstrap/dist/css/bootstrap.css'
+
 
 // importing React Select
 import Select from "react-dropdown-select";
@@ -54,7 +57,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
  function BrowseProperties({entity,entity1, nav, othernav, footerData}){
-
+    const [callBackModal, setCallBackModal] = useState(false);
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
     var [savedProperties, setSavedProperties] = useState([]);
@@ -183,12 +186,14 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
     
     
     useEffect(() => {
+        import("bootstrap/dist/js/bootstrap");
+
+        
         // Checking if device is mobile
         getSavedProperties();
         if ( isMobile ) {
             setDeviceIsMobile( true );
           }
-        
     }, [localStorage, setLocalStorage]);
 
     const options = [
@@ -206,6 +211,126 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
         slidesToShow: 1,
         slidesToScroll: 1,
       };
+
+
+      var firstFaq = entity1.fieldMultipleFaqsBw[0];
+      var otherFaqs = entity1.fieldMultipleFaqsBw.filter((item, index)=>{
+          return index != 0
+      });
+
+
+      const iconIndia = '/images/icons/country_flags/india.png'
+  const iconDubai = '/images/icons/country_flags/uae.png'
+  const iconUsa = '/images/icons/country_flags/usa.png'
+  const countrycodeOptions = [
+      { value: 'India', label: <div><img src={iconIndia} className="country_code_glag_image"/>(+91) </div> },
+      { value: 'UAE', label: <div><img src={iconDubai} className="country_code_glag_image"/>(+971) </div> },
+      { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
+    ];
+
+    const optionValues = countrycodeOptions.map((item)=>{
+      return item.value;
+  });
+
+  const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [countryCode, setCountryCode] = useState('');
+
+  const [email, setEmail] = useState('');
+
+  async function handleScheduleFormSubmit(){
+        if(!firstName){
+            setFirstName("null");
+        }
+        if(!lastName){
+            setLastName("null");
+        }
+
+        if(!email){
+            setEmail("null");
+        }
+        if(!phoneNumber){
+            setPhoneNumber("null");
+        }
+        if(!countryCode){
+            setCountryCode("null");
+        }  
+        let data = {
+          title:"",
+          firstName:firstName,
+          lastName:lastName,
+          email:email,
+          phoneNumber:phoneNumber,
+          countryCode:countryCode,
+          country:"",
+          acceptPrivacyP:"",
+          newsAndOffers:"",
+          campaignId:"a120Y000000uLMj",
+          utmSource:"",
+          utmMedium:"",
+          utmCampaign:"",
+          webSource:"",
+          adGroup:"",
+          campaignNameHOD:"",
+          goal:"",
+          digitalSource:"",
+          channelCluster:"",
+          bannerSize:"",
+          keyword:"",
+          placement:"",
+          adPosition:"",
+          matchType:"",
+          network:"",
+          bidType:"",
+          GCLID:"",
+          fbclid:"",
+          adid:"",
+          refid:"",
+          leadSource:"Digital",
+          lastMileConversion:"Contact Us",
+          device:"",
+          projectName:"",
+          os:"",
+          resolution:"",
+          browser:"",
+          ga_client_id:"",
+          fbid:"",
+          timeSpentbeforeFormSubmit:"",
+          ipAddress:"",
+          landingPageURL:"",
+          fullLandingPageUrl:"",
+          websiteLanguage:"",
+          countryNameSync:"",
+          citySync:"",
+          city:"",
+          countryCodeSync:"",
+          user_agent:""
+        }    
+        const header = ''
+        await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'applicationjson',
+              "Access-Control-Allow-Origin": "*"
+            }
+        })
+      .then((res)=>{
+        token = res.data.access_token;
+      })
+      .catch((er)=>{
+        console.log(er);
+      })
+      await axios.post('https://stg- lqsapp.damacgroup.com',{
+      headers:{
+          'Authorization':token
+      }},data).then(function(res){
+        console.log(res);
+      })
+    }
+
 
      return(
          <div className="browse-properties">
@@ -594,8 +719,114 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                     : ''
                 }
 
-           
+{
+        callBackModal ? 
+        <div className="custom_modal_contain">
+          <a onClick={()=>{setCallBackModal(false)}}> </a>
+            <div className={`${styles["schedule_callback_modal"]} popup_modal`}>
+               <div className="close" onClick={()=>{
+                  setCallBackModal(false);
+                  }}>
+                  <span>
+                  <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6.36719" y="8.17578" width="3" height="20" rx="1.5" transform="rotate(-45 6.36719 8.17578)" fill="white"/>
+      <rect x="8.48828" y="22.3203" width="3" height="20" rx="1.5" transform="rotate(-135 8.48828 22.3203)" fill="white"/>
+                  </svg>
+                  </span>
+                </div>
+                <div className="row justify-content-center">
+                <div className="col-xl-9 col-md-11 col-12">
+                    <div className={'enquiry-form-wrapper'} style={{ 'padding': '44px 0' }}>
+                        <div style={{'margin-bottom':'60px'}}>
+                        <h2 style={{ 'margin': '0', 'textAlign':'center' }}>Schedule a Callback</h2>
+                        <p style={{ 'margin': '0', 'textAlign':'center' }}>Hassle-free booking experience. Only from DAMAC.</p>
+                        </div>                           
+                        <div className={`form-row form-row-2`}>
 
+                           <div className={`form-item-col`}>
+                               <div className='custom-input-element'>
+                                   <label className='input-element-wrapper'>
+
+                                       <div className='input-element text-element'>
+                                           <input type='text' name='firstName'  onChange={()=>{setFirstName(event.target.value)}} />
+                                           <label className={`custom-floating-label`} htmlFor={'firstName'}>First name</label>
+                                       </div>
+                                   </label>
+                               </div>
+                               <p className='form_err_msg'>{firstName=="null" && "Enter First Name"}</p>
+                           </div>
+                           <div className={`form-item-col`}>
+
+                               <div className='custom-input-element'>
+                                   <label className='input-element-wrapper'>
+
+                                       <div className='input-element text-element'>
+                                           <input type='text' name='lastName' onChange={()=>{setLastName(event.target.value)}} />
+                                           <label className={`custom-floating-label`} htmlFor={'lastName'}>Last name</label>
+                                       </div>
+                                   </label>
+                               </div>
+                               <p className='form_err_msg'>{lastName=="null" && "Enter Last Name"}</p>
+                           </div>
+
+                       </div>
+
+                        <div className={`form-row form-row-2`}>
+                            <div className={`form-item-col`}>
+                            <div className="row">
+                                   <div className='col-sm-5 pe-0'>
+                                       <div className='custom-input-element'>
+                                           <label className='input-element-wrapper'>
+
+                                               <div className='input-element country-code-element text-element'>
+                                                   <Select name="countryCode"
+                                                       options={countrycodeOptions}
+                                                       placeholder={countrycodeOptions[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal), setCountryCode(optionCodeVal[0].value)}}/>   
+                                               </div>
+                                           </label>
+                                       </div>
+                                       <p className='form_err_msg'>{countryCode=="null" && "Select Country Code"}</p>
+                                   </div>
+                                   <div className='col-sm-7'>
+                                       <div className='custom-input-element'>
+                                           <label className='input-element-wrapper'>
+
+                                               <div className='input-element text-element phone-number-element'>
+                                                   <input type='text' name='phoneNumber' onChange={()=>{setPhoneNumber(event.target.value)}} />
+                                                   <label className={`custom-floating-label`} htmlFor={'phoneNumber'}>Phone number</label>
+                                               </div>
+                                           </label>
+                                       </div>
+                                       <p className='form_err_msg'>{phoneNumber=="null" && "Enter Phone Number"}</p>
+                                   </div>
+                               </div>
+                            </div>
+                            <div className={`form-item-col`}>
+                            <div className='custom-input-element'>
+                                <label className='input-element-wrapper'>
+
+                                    <div className='input-element email-element'>
+                                        <input type='email' name='email' onChange={()=>{setEmail(event.target.value)}} />
+                                        <label className={`custom-floating-label`} htmlFor={'email'}>Email</label>
+                                    </div>
+                                </label>
+                            </div>
+                            <p className='form_err_msg'>{email=="null" && "Enter Email ID"}</p>
+                            </div>
+                        </div>
+
+                        <div className={`form-row`}>
+                            <div className={`form-item-col`}>
+                                <button className="custom-submit-btn custom-callback-modal-submit" onClick={()=>{handleScheduleFormSubmit()}} >Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div> :
+        ""
+      }
 
 
             <section className={styles['show_property_main']}>
@@ -663,7 +894,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
                                         <Carousel className={styles['slider']} responsive={responsive}>
-                                            <img src="images/aboutsectionbg-2.jpg" className="img-fluid"/>
+                                            <img src={"images/aboutsectionbg-2.jpg"} className="img-fluid"/>
                                         </Carousel>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
                                           <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
@@ -682,7 +913,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                                         <div className={styles['shape-wrap-plan']}>              
                                           <div className={styles['shape-contact']}>
                                             <ul className="d-flex align-items-center p-0">
-                                              <li><a href="#" className={styles['solid-icon']}>
+                                              <li><a className={styles['solid-icon']} onClick={()=>{setCallBackModal(true)}}>
                                                 <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path fillRule="evenodd" clipRule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
                                             </svg>
@@ -704,28 +935,13 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                             </div>
                             ))
                         }
-
                         </div>
-                        {/*<div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
-                          <div className={`${styles["page_btn"]} prev_btn`}>
-                            <a href="#"><FaAngleLeft/></a>
-                          </div>
-                          <div className={styles['pagination_no']}>
-                            <ul className="list-unstyled d-flex">
-                              <li><a href="#">1</a></li>
-                              <li><a href="#">2</a></li>
-                            </ul>
-                          </div>
-                          <div className={`${styles["page_btn"]} next_btn`}>
-                            <a href="#"><FaAngleRight/></a>
-                          </div>
-                        </div> */} 
                     </div>
                 </div>
             </section>
 
                {/* <!-- Similar properties section --> */}
-               <section className={project_landing_styles['similar_property']} id="similar_proprty_card_main_global">
+               {/* <section className={project_landing_styles['similar_property']} id="similar_proprty_card_main_global">
                             <div className="container">
                                 <div className={project_landing_styles['similar_property_head']}>
                                     <h2>Similar Properties</h2>
@@ -812,7 +1028,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                            </div>
                              }
                             </div>
-               </section>
+               </section> */}
             {/* <!-- About Dubai Section --> */}
             <section className={styles['about_dubai_main']}>
               <div className="container">
@@ -908,20 +1124,36 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                                 <div className="col-md-12">
                                     <div className={style['faq-wrap']}>
                                     <div className="accordion" id="accordionExample">
-                                    {entity1.fieldMultipleFaqsBw.map((item,k) => (
+                                    {
                                         <div className="accordion-item">
                                         <h2 className="accordion-header" id="headingOne">
                                             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            {item.entity.fieldQuestion}
+                                            {firstFaq.entity.fieldQuestion}
                                             </button>
                                         </h2>
                                         <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div className="accordion-body">
+                                            {firstFaq.entity.fieldAnswer}
+                                            </div>
+                                        </div>
+                                        </div>
+                                    }
+                                    {
+                                    otherFaqs.map((item,k) => (
+                                        <div className="accordion-item">
+                                        <h2 className="accordion-header" id={'heading'+k}>
+                                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={'#collapse'+k} aria-expanded="true" aria-controls={'collapse'+k}>
+                                            {item.entity.fieldQuestion}
+                                            </button>
+                                        </h2>
+                                        <div id={'collapse'+k} className="accordion-collapse collapse" aria-labelledby={'heading'+k} data-bs-parent="#accordionExample">
                                             <div className="accordion-body">
                                             {item.entity.fieldAnswer}
                                             </div>
                                         </div>
                                         </div>
-                                    ))}
+                                    ))
+                                    }
                                   </div>                         
                                     </div>            
                                 </div>          

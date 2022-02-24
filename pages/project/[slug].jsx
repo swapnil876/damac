@@ -1815,10 +1815,10 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
 function handleChange(e) {
   const { name, value } = e.target;
 
-  setValues({
-      ...values,
-      [name]: value,
-  });
+  // setValues({
+  //     ...values,
+  //     [name]: value,
+  // });
 }
 
 export const getServerSideProps = async (cp) => {
