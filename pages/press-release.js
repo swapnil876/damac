@@ -37,7 +37,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
  import { NAVIGATION } from '../graphql/master/navigation';
  import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 //  import { BLOGS } from '../../graphql/blogs';
-import {BLOGS} from '../../../../techsperia/git/damac/graphql/blogs';
+import {BLOGS} from '../graphql/blogs';
 
  export default function PressRelease({nav, othernav, footerData}){
      return(
