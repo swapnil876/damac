@@ -1,8 +1,10 @@
 import { gql } from '@apollo/client';
 
 const PROJECTSEARCH = gql`
-  query PROJECTSEARCH ($value: String!){
-    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: LIKE, field: "title", value: [$value]}]}) {
+  query PROJECTSEARCH ($search: String!,$city: String!,$country: String!){
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: LIKE, field: "title", value: [$search]}, 
+      {operator: EQUAL, field: "field_location_p.entity.tid", value: [$city]},
+      {operator: LIKE, field: "field_location_p.entity.name", value: [$country]}]}) {
       entities {
         ... on NodeProject{
             nid

@@ -54,6 +54,8 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
     var [country, setCountry] = useState([]);
     var [city, setCity] = useState([]);
+    var [singleCountry, setSingleCountry] = useState([]);
+    var [singleCity, setSingleCity] = useState([]);
     const { slug } = router;
  
     useEffect(() => {
@@ -76,15 +78,38 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
     //     pathname: "/project-landing",
     //     query: {search:searchFilter},
     // });
+    let data = {};
+    if(singleCity.tid != '' && typeof singleCity.tid != 'undefined')
+        data['city'] = singleCity.tid;
+    if(singleCountry.country != '' && typeof singleCountry.country != 'undefined')
+        data['country'] = singleCountry.country;
+    if(searchFilter != '' && typeof searchFilter != 'undefined')
+        data['search'] = searchFilter;
+    let q = serialize(data);
     if(typeof window != 'undefined')
-        window.location.href = '/project-landing?search='+searchFilter;
+        window.location.href = '/project-landing'+q;
+    }
+
+    function serialize( obj ) {
+        let str = '?' + Object.keys(obj).reduce(function(a, k){
+            a.push(k + '=' + encodeURIComponent(obj[k]));
+            return a;
+        }, []).join('&');
+        return str;
     }
 
     function getCity(ev){
         let i = ev.target.value
-        
         setCity(locations[i].cities);
+        console.log(locations[i])
+        setSingleCountry(locations[i]);
     } 
+
+    function cityValue(ev){
+        let i = ev.target.value;
+        console.log(city[i]);
+        setSingleCity(city[i]);
+    }
 
       
     return (
@@ -118,9 +143,9 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
                                             </select>
                                         </div>
                                         <div className={styles['form-field']}>
-                                            <select name="all_city" className={styles['form-select']} id="">
+                                            <select name="all_city" className={styles['form-select']} id="" onChange={($ev)=>{cityValue($ev)}}>
                                                 <option value="">All Cities</option>
-                                                {city.map((ci,k) => (<option key={k} value={ci.tid}>{ci.name}</option>))}
+                                                {city.map((ci,k) => (<option key={k} value={k}>{ci.name}</option>))}
                                             </select>
                                         </div>
                                     </div>
@@ -479,10 +504,10 @@ const ProjectLanding= ({projects,countries,cities,locations, nav, othernav, foot
     )
 }
 
-function setCity(arr,split,isSet){
+function setCity(arr,split,m){
     arr.map((l,k)=>{
         if(split[1] == l.country){
-            l.cities.push({name:split[0]});
+            l.cities.push({name:split[0],tid:m.tid});
         }    
     });
 }
@@ -498,11 +523,21 @@ export const getServerSideProps = async (cp) => {
       cache: new InMemoryCache()
     });
     let field = '';
-    let value = '';
+    
+    let query = {
+        search:'',
+        city:'',
+        country:'',
+    }
     // let filter = {conditions: [{operator: EQUAL, field: "type", value: ['project']}]};
     if(cp.query.search != null && cp.query.search != ''){
-        field = field+",title";
-        value = '%'+cp.query.search+'%'
+        query.search = '%'+cp.query.search+'%'
+    }
+    if(cp.query.city != null && cp.query.city != ''){
+        query.city = cp.query.city
+    }
+    if(cp.query.country != null && cp.query.country != ''){
+        query.country = '%'+cp.query.country.trim()+'%'
     }
     // Use this for footer
     const footer  = await client.query({ query: FOOTER_LINKS });
@@ -543,9 +578,11 @@ export const getServerSideProps = async (cp) => {
       }
     // end
     let proj = [];
-    var  data  = await client.query({ query: PROJECTSEARCH, variables:{value:value} });
-    if(cp.query.search == ''){
-        var  data  = await client.query({ query: PROJECT});
+    let data  = await client.query({ query: PROJECT});
+    console.log(query);
+    if(query.search != ''){
+
+        data  = await client.query({ query: PROJECTSEARCH, variables:query });
     }
     const  data1  = await client.query({ query: COUNTRY });
     const  data2  = await client.query({ query: CITY });
@@ -556,7 +593,7 @@ export const getServerSideProps = async (cp) => {
     let country = data1.data.taxonomyTermQuery.entities;
     let city = data2.data.taxonomyTermQuery.entities;
     let location = data5.data.taxonomyTermQuery.entities;
-    
+    console.log(projects);
     await location.map((m,n)=>{
         let split = m.name.split(',');
         if(!unique.includes(split[1])){
@@ -564,9 +601,9 @@ export const getServerSideProps = async (cp) => {
             c.push({country:split[1],cities:[]});
         } 
         if(location.length-1 != n)
-            setCity(c,split);
+            setCity(c,split,m);
         else
-            setCity(c,split);
+            setCity(c,split,m);
     })
     await projects.map((l,k)=>{
         

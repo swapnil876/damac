@@ -45,6 +45,10 @@ const CAREERS = gql`
           fieldMetaTitleCareer
           fieldMetaDescriptionCareer
           fieldCanonicalUrlCareer
+          fieldTitle1
+          fieldTitle2
+          fieldSubTitle1
+          fieldSubTitle2
         }
       }
     }
