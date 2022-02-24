@@ -2,31 +2,29 @@ import { gql } from '@apollo/client';
 
 const TESTIMONIAL = gql
 `query {
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["building_documentation"]}]}) {
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["testimonial_main"]}]}) {
     entities {
-      ... on NodeBuildingDocumentation{
-         nid
-         fieldIntroduction,
-         fieldPageTitleBd,
-         fieldMultipleFiles{
-          entity{
-            ... on ParagraphMultipleFilesWithTitle{
-              fieldDate{
-                value
-              },
-              fieldFileTitle,
-              fieldFile{
-                entity{
-                  url
-                }
+      ... on NodeTestimonialMain{
+        nid
+        title,
+        fieldMainVideo{
+            title
+          	url {
+          	  path
+          	}
+        },
+      	fieldMultipleTestimonails{
+        	entity{
+            ... on ParagraphTestimonials{
+              fieldTestimonialText,
+              fieldTestimonialName,
+              fieldTestimonialHeading,
+              fieldTestimonialImage{
+                url
               }
             }
           }
-         },
-         fieldMetaDescriptionBd,
-         fieldMetaKeywordsBd,
-         fieldMetaTitleBd,
-         fieldCanonicalUrlBd
+        }
       }
     }
   }
