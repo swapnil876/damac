@@ -64,8 +64,8 @@ useEffect(()=>{
 
        <TextSection custom_padding={deviceIsMobile ? '50px 0 0' : '80px 0 0'} >         
          <div className="section-title text-center">
-           <h1 className={`section-title-gradient ${styles["main_in_career_title"]}`}>Welcome to our World</h1>
-           <p className={styles['under_main_in_career_title']}>Make a career with DAMAC Properties and the DICO Group</p>
+           <h1 className={`section-title-gradient ${styles["main_in_career_title"]}`}>{entity1.fieldTitle1}</h1>
+           <p className={styles['under_main_in_career_title']}>{entity1.fieldSubTitle1}</p>
          </div>
 
          <div className="py-4">
@@ -90,8 +90,8 @@ useEffect(()=>{
        <TextSection custom_padding={deviceIsMobile ? '10px 0 50px' : '80px 0 0'}>
          
          <div className="section-title text-center">
-           <h3 className={`section-title-gradient ${styles["main_in_career_title"]}`}>{entity1.fieldVideoUrl.title}</h3>
-           <p className={styles['under_main_in_career_title']}>See what some of our people have to say.</p>
+           <h3 className={`section-title-gradient ${styles["main_in_career_title"]}`}>{entity1.fieldTitle2}</h3>
+           <p className={styles['under_main_in_career_title']}>{entity1.fieldSubTitle2}</p>
          </div>
 
          <div className="py-4">
