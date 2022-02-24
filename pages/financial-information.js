@@ -111,14 +111,15 @@ function FinancialInformation( { mobileDevice, nav, othernav, footerData, entity
        <div className="container">
         <div className="tab-btn-group mb-4">
           <div className={`nav nav-tabs btn-group ${styles["damac-tab-btns"]} justify-content-start d-inline-flex`}>
-              <a className={`${styles["nav-pills"]} btn btn-outine ${styles["active"]}`} aria-current="page" 
-              onClick={function(){
-                setShowSection("financialstatements");
-              }}>Financial Statements</a>
-              <a className={`${styles["nav-pills"]} btn btn-outine ${styles["inactive"]}`} style={{'border-left': 'none','margin-left': '-4px'}} 
-              onClick={function(){
-                setShowSection("keyfigures");
-              }}>Key Figures</a>
+            {
+              entity1.fieldMultipleTabs.map((item, index)=>(
+                <a className={`${styles["nav-pills"]} btn btn-outine ${styles[(index == 0) ? "active" : "inactive"]}`} aria-current="page" 
+                onClick={function(){
+                  const selectedSecion = (index == 0) ? "financialstatements" : "keyfigures";
+                  setShowSection(selectedSecion);
+                }}>{item.entity.fieldTabHeading}</a>
+              ))
+            }
           </div>
         </div>
         
