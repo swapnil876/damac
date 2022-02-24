@@ -40,6 +40,9 @@ export default function CompanyAnnouncements({entity,unique,year_announcement, n
     const [yearData, setYearData] = useState(year_announcement)
     const [uniqueYear, setUniqueYear] = useState(unique)
     const [allYear, setAllYear] = useState(true)
+    var [searchParam, setSearchParam] = useState("")
+    var [fromDate, setFromDate] = useState("")
+    var [toDate, setToDate] = useState("")
     useEffect(() => {
         if ( isMobile ) {
           setDeviceIsMobile( true );
@@ -122,6 +125,12 @@ let selectYear = (yr,arr,l,type)=>{
     
 }
 
+function getResult(){
+    console.log(searchParam);
+    console.log(fromDate);
+    console.log(toDate);
+}
+
 
 return (
 <div>
@@ -149,21 +158,21 @@ return (
                                     <div className="row">
                                         <div className="col-md-3">
                                             <div className={styles['form-field']}>
-                                                <input type="date" className="form-control"/>
+                                                <input type="date" max={toDate} className="form-control" onChange={($ev)=>{setFromDate($ev.target.value)}}/>
                                             </div>
                                         </div>
                                         <div className="col-md-3">
                                             <div className={styles['form-field']}>
-                                                <input type="date" className="form-control"/>
+                                                <input type="date" min={fromDate} className="form-control" onChange={($ev)=>{setToDate($ev.target.value)}}/>
                                             </div>
                                         </div>
                                         <div className="col-md-4">
                                             <div className={styles['form-field']}>
-                                                <input type="text" placeholder="Search keywords" className="form-control"/>
+                                                <input type="text" placeholder="Search keywords" className="form-control" onKeyUp={($ev)=>{setSearchParam($ev.target.value)}}/>
                                             </div>
                                         </div>
                                         <div className="col-md-2">
-                                            <div className="form_btn_announcement">
+                                            <div className="form_btn_announcement" onClick={()=>{getResult()}}>
                                                 <a href="#" className="btn btn-primary w-100">Search</a>
                                             </div>
                                         </div>
@@ -385,7 +394,7 @@ export const getStaticProps = async () => {
     let entity1 = data.data.nodeQuery.entities;
     
     entity1.map((v,i)=>{
-        let year = getDateTime(v.fieldDate.value)
+        let year = getDateTime(v.fieldDate.value);
         if(!checkUniqe.includes(year)){
             unique.push({year:year,isActive:false});
             checkUniqe.push(year);
