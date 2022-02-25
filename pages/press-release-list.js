@@ -23,7 +23,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
-
+import { BLOGTYPEDETAIL } from '../graphql/master/blogtypedetail';
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
 function PressReleaseList( { blogs, nav, othernav, footerData } ) {
@@ -67,9 +67,9 @@ function PressReleaseList( { blogs, nav, othernav, footerData } ) {
                </div>
 
 
-               <div className={ styles['pagination-container'] }>
-                 <PagePagination/>
-               </div>
+               {/*<div className={ styles['pagination-container'] }>
+                                <PagePagination/>
+                              </div>*/}
 
              </div>
            </section>
@@ -105,6 +105,8 @@ export async function getStaticProps(context) {
    // Use this for novigation
    const  data2  = await client.query({ query: NAVIGATION });
    const  data1  = await client.query({ query: PARENTMENUITEMS });
+   const  press_item  = await client.query({ query: BLOGTYPEDETAIL,variables:{type:'8'}  });
+   var press_item_list = press_item.data.nodeQuery.entities;
    let nav = [];
    let othernav = [];
    if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
@@ -136,80 +138,10 @@ export async function getStaticProps(context) {
 
   // Device React
 
-  const blogs = [
-      {
-        title: 'DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: 'damac-static/images/news-list-1.jpg',
-        ctaText: 'Read More',
-        tags: ['Tourism'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
-
-      {
-        title: 'Five top tips for entrepreneurs to get real and start-up',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: 'damac-static/images/blog-list-2.jpg',
-        ctaText: 'Read More',
-        tags: ['Business'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
-
-      {
-        title: '10 Emerging Real Estate Trends That You Should Pay Attention To',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: 'damac-static/images/blog-list-3.jpg',
-        ctaText: 'Read More',
-        tags: ['Tag Label'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
-
-      {
-        title: 'DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: 'damac-static/images/blog-list-1.jpg',
-        ctaText: 'Read More',
-        tags: ['Tourism'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
-
-      {
-        title: 'Five top tips for entrepreneurs to get real and start-up',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: 'damac-static/images/blog-list-2.jpg',
-        ctaText: 'Read More',
-        tags: ['Business'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
-
-      {
-        title: '10 Emerging Real Estate Trends That You Should Pay Attention To',
-        url: '/blog/19292938',
-        excerpt: 'To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik...',
-        imageUrl: 'damac-static/images/news-list-1.jpg',
-        ctaText: 'Read More',
-        tags: ['Tag Label'],
-        date: '21/02/2021',
-        author: 'The Gaurdian',
-        id: '1929392',
-      },
-      
-  ];
+  let blogs = []
+  press_item_list.map((v,i)=>{
+    blogs.push({title:v.title,url:'/blog/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.fieldShortText, author: v.fieldAuthor.entity.name, tag: v.fieldTag.entity.name })
+  });
 
   return {
     props: {

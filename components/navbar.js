@@ -311,7 +311,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                               { 
                                 m.submenu.map( 
                                   (item, index) => <li key={index} className='navitem-dropdown'>
-                                    <Link href={ item.url }>
+                                    <Link href={ item.url!=null?item.url:'/' }>
                                       {item.label}
                                     </Link>
                                   </li>
@@ -345,7 +345,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                           { 
                             dropdownItems['enquire'].map( 
                               (item, index) => <li key={index} className='navitem-dropdown'>
-                                <Link href={ item.url }>
+                                <Link href={ item.url!=null?item.url:'/' }>
                                   {item.label}
                                 </Link>
                               </li>
@@ -433,7 +433,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                             
                             m.submenu.map( 
                               (item, index) => <li key={index} className='navitem-dropdown'>
-                                <Link href={ item.url }>
+                                <Link href={ item.url!=null?item.url:'/' }>
                                   {item.label}
                                 </Link>
                               </li>
@@ -471,7 +471,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                               
                               m.submenu.map( 
                                 (item, index) => <li key={index} className='navitem-dropdown'>
-                                  <Link href={ item.url }>
+                                  <Link href={ item.url!=null?item.url:'/' }>
                                     {item.label}
                                   </Link>
                                 </li>
@@ -506,7 +506,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                       {
                         otherNav.map((n,m)=>(
                           <li key={m}>
-                            <Link href={n.url}>
+                            <Link href={n.url!=null?n.url:'/'}>
                               <a>{n.label}</a>
                             </Link>
                           </li>
