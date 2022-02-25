@@ -468,7 +468,7 @@ Having now received over 100 global awards and commendations, for everything fro
                  <p>{entity1.fieldCsrDescription5}</p>
 
                  <div className="cta-container">
-                   <Link href={entity1.fieldCsrImage.url}>
+                   <Link href="#">
                      <a className="btn btn-primary cta-btn"><span>Know More</span></a>
                    </Link>
                  </div>

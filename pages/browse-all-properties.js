@@ -227,7 +227,7 @@ import { BATHROOMDATA } from '../json/bathroom';
       });
 
 
-      const iconIndia = '/images/icons/country_flags/india.png'
+  const iconIndia = '/images/icons/country_flags/india.png'
   const iconDubai = '/images/icons/country_flags/uae.png'
   const iconUsa = '/images/icons/country_flags/usa.png'
   const countrycodeOptions = [
@@ -249,6 +249,12 @@ import { BATHROOMDATA } from '../json/bathroom';
   const [countryCode, setCountryCode] = useState('');
 
   const [email, setEmail] = useState('');
+  const [project,setProject] = useState('');
+  const [propertyType,setPropertyType] = useState('');
+  const [community,setCommunity] = useState('');
+  const [location,setLocation] = useState('');
+  const [bedroom,setBedroom] = useState('');
+  const [bathroom,setBathroom] = useState('');
 
   async function handleScheduleFormSubmit(){
         if(!firstName){
@@ -339,6 +345,39 @@ import { BATHROOMDATA } from '../json/bathroom';
         })
     }
 
+    function serialize( obj ) {
+        let str = '?' + Object.keys(obj).reduce(function(a, k){
+            a.push(k + '=' + encodeURIComponent(obj[k]));
+            return a;
+        }, []).join('&');
+        return str;
+    }
+
+    function searchFilter(){
+        let q = {project:'',propertyType:'',community:'',location:'',bedroom:'',bathroom:''};
+        if(project != '' && project != null){
+            q.project = project;
+        }
+        if(propertyType != '' && propertyType != null){
+            q.propertyType = propertyType;
+        }
+        if(community != '' && community != null){
+            q.community = community;
+        }
+        if(location != '' && location != null){
+            q.location = location;
+        }
+        if(bedroom != '' && bedroom != null){
+            q.bedroom = bedroom;
+        }
+        if(bedroom != '' && bedroom != null){
+            q.bedroom = bedroom;
+        }
+        let query = serialize(q);
+        if(typeof window != 'undefined')
+            window.location.href = '/browse-all-properties'+query;
+    }
+
 
      return(
          <div className="browse-properties">
@@ -397,49 +436,71 @@ import { BATHROOMDATA } from '../json/bathroom';
                            <div className="row">
                                <div className="col-md-9 d-flex flex-wrap" style={{'justifyContent':'space-between'}}>
                                <div className={styles['form-field']}>
-                                       <select name="property_type" className="form-select" id="">
-                                           <option value="">Buy</option>
-                                           <option value="">Rent</option>
+                                       <select name="property_type" className="form-select" id="" onChange={(ev)=>{setProject(ev.target.value)}}>
+                                           <option value="">Select Project</option>
+                                           {
+                                               PROJECTDATA.map((m,n)=>(
+                                                   <option key={n} value={m}>{m}</option>
+                                               ))
+                                           }
                                        </select>
                                    </div>
                                    <div className={styles['form-field']}>
-                                       <select name="property_type" className="form-select" id="">
-                                           <option value="">Any Property Type</option>
-                                           <option value="">Apartment</option>
-                                           <option value="">Hotel</option>
-                                           <option value="">Office</option>
-                                           <option value="">Plot</option>
-                                           <option value="">Townhouse</option>
-                                           <option value="">Villa</option>
+                                       <select name="property_type" className="form-select" id="" onChange={(ev)=>{setPropertyType(ev.target.value)}}>
+                                            <option value="">Select Property Type</option>
+                                            <option value="Apartment">Apartment</option>
+                                            <option value="Villa">Villa</option>
                                        </select>
                                    </div>
                                    <div className={styles['form-field']}>
-                                       <select name="bedrooms" className="form-select" id="">
-                                           <option value="">Bedrooms</option>
-                                           <option value="">Single</option>
+                                       <select name="property_type" className="form-select" id="" onChange={(ev)=>{setCommunity(ev.target.value)}}>
+                                       <option value="">Select Community</option>
+                                            {
+                                               COMMUNITYDATA.map((m,n)=>(
+                                                   <option key={n} value={m}>{m}</option>
+                                               ))
+                                           }
                                        </select>
                                    </div>
                                    <div className={styles['form-field']}>
-                                       <select name="locality" className="form-select" id="">
-                                           <option value="">Any Locality</option>
-                                           <option value="">local</option>
+                                       <select name="bedrooms" className="form-select" id="" onChange={(ev)=>{setLocation(ev.target.value)}}>
+                                       <option value="">Select Location</option>
+                                           {
+                                               LOCATIONDATA.map((m,n)=>(
+                                                   <option key={n} value={m}>{m}</option>
+                                               ))
+                                           }
                                        </select>
                                    </div>
                                    <div className={styles['form-field']}>
-                                       <select name="locality" className="form-select" id="">
-                                           <option value="">Price Range</option>
-                                           <option value="">local</option>
-                                       </select>
+                                        <select name="locality" className="form-select" id="" onChange={(ev)=>{setBedroom(ev.target.value)}}>
+                                            <option value="">Select Bedroom</option>
+                                           {
+                                               BEDROOMDATA.map((m,n)=>(
+                                                   <option key={n} value={m}>{m}</option>
+                                               ))
+                                           }
+                                        </select>
                                    </div>
                                    <div className={styles['form-field']}>
+                                       <select name="locality" className="form-select" id="" onChange={(ev)=>{setBathroom(ev.target.value)}}>
+                                            <option value="">Select Bathroom</option>
+                                       {
+                                               BATHROOMDATA.map((m,n)=>(
+                                                   <option key={n} value={m}>{m}</option>
+                                               ))
+                                           }
+                                       </select>
+                                   </div>
+                                   {/* <div className={styles['form-field']}>
                                        <select name="locality" className="form-select" id="">
                                            <option value="">Project Status</option>
                                            <option value="">local</option>
                                        </select>
-                                   </div>
+                                   </div> */}
                                </div>
                                <div className="col-md-3">
-                                   <div className={styles['search_btn_filter']}>
+                                   <div className={styles['search_btn_filter']} onClick={()=>{searchFilter()}}>
                                        <a href="#" className="btn btn-primary">Search</a>
                                    </div>
                                </div>
