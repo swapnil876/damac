@@ -1246,7 +1246,29 @@ import { BATHROOMDATA } from '../json/bathroom';
     const client = new ApolloClient({
         uri: process.env.STRAPI_GRAPHQL_URL,
         cache: new InMemoryCache()
-      });
+    });
+
+    let query = {};
+    let q = '';
+    if(cp.query.project != null && cp.query.project != ''){
+        query.project = cp.query.project;
+    }
+    if(cp.query.propertyType != null && cp.query.propertyType != ''){
+        query.propertyType = cp.query.propertyType;
+    }
+    if(cp.query.community != null && cp.query.community != ''){
+        query.community = cp.query.community;
+    }
+    if(cp.query.location != null && cp.query.location != ''){
+        query.location = cp.query.location;
+    }
+    if(cp.query.bedroom != null && cp.query.bedroom != ''){
+        query.bedroom = cp.query.bedroom;
+    }
+    if(cp.query.bathroom != null && cp.query.bathroom != ''){
+        query.bathroom = cp.query.bathroom;
+    }
+    
 
       // Use this for footer
     const footer  = await client.query({ query: FOOTER_LINKS });

@@ -52,6 +52,7 @@ query {
             name
           }
         }
+        entityCreated
       }
     }
   }

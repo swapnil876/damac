@@ -24,15 +24,18 @@ import { useMediaQuery } from 'react-responsive'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { BLOGSDETAILS } from '../graphql/master/blogdetails';
+import { BLOGS } from '../graphql/blogs';
+import { BLOGTYPEDETAIL } from '../graphql/master/blogtypedetail';
 
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
-function Blog({entity1, nav, othernav, footerData}) {
+function Blog({entity1, firstSelect, section1Data, section2Data, nav, othernav, footerData}) {
  var img_url;
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  var [selectedBlog, setSelectedBlog] = useState(firstSelect);
   useEffect(() => {
       if ( isMobile ) {
         img_url = entity1.fieldFeatureImageMobile;
@@ -41,6 +44,10 @@ function Blog({entity1, nav, othernav, footerData}) {
       }
    }, [])
 
+   function saveBlogItem(m){
+    console.log(m);
+    setSelectedBlog(m);
+   }
 
   return (
     <div className='blogbody'>
@@ -71,12 +78,12 @@ function Blog({entity1, nav, othernav, footerData}) {
              <div className="row">
                <div className="col-md-9">
                <div className="primary-cta">
-                 <img alt=""src={isMobile?entity1.fieldFeatureImageMobile.url:entity1.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
-                 <label>{entity1.fieldCategory.entity.name}</label>
+                 <img alt=""src={isMobile?selectedBlog.fieldFeatureImageMobile.url:selectedBlog.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
+                 <label>{selectedBlog.fieldCategory.entity.name}</label>
                  <h1>
-                 <Link href="#"><a>{entity1.title}</a></Link>
+                 <Link href="#"><a>{selectedBlog.title}</a></Link>
                  </h1>
-                 <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
+                 <div dangerouslySetInnerHTML={{ __html: selectedBlog.body.value }}></div>
                </div>
              </div>
              <div className="col-md-3">
@@ -85,26 +92,15 @@ function Blog({entity1, nav, othernav, footerData}) {
                    <h3>Latest</h3>
                   
                  </div>
-                 <div className="news">
-                   <label>Curated</label>
-                   <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                   <p> 21/12 2020 by The Guardian </p>              
-                 </div>
-                 <div className="news">
-                   <label>Trending</label>
-                   <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                   <p> 21/12 2020 by The Guardian </p>              
-                 </div>
-                 <div className="news">
-                   <label>In The News</label>
-                   <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                   <p> 21/12 2020 by The Guardian </p>              
-                 </div>
-                 <div className="news">
-                   <label>Press Release</label>
-                   <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                   <p> 21/12 2020 by The Guardian </p>              
-                 </div>
+                 {
+                   section1Data.map((m,n)=>(
+                    <div className="news" key={n}>
+                      <label>{m.fieldTag!=null?m.fieldTag.entity.name:''}</label>
+                      <h6><Link href="#"><a href="#" onClick={()=>{saveBlogItem(m)}}>{m.title}</a></Link></h6>
+                      <p> {m.entityCreated} by {m.fieldAuthor!=null?m.fieldAuthor.entity.name:''} </p>              
+                    </div>
+                   ))
+                 }
                </div>          
              </div>
              </div>      
@@ -120,7 +116,7 @@ function Blog({entity1, nav, othernav, footerData}) {
           <div className="container">
             <div className="d-flex justify-content-between">
               <div className="dark-title">
-                <h2>News Articles</h2>
+                <h2>Blog</h2>
               </div>
               <div>
                 <Link href={`/blog-list`}>
@@ -200,16 +196,21 @@ function Blog({entity1, nav, othernav, footerData}) {
           </div>       
           
           <div className="row">
-             <div className="col-6 col-md-3">
-             <div className="card">
-                <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top" />
-                <div className="card-body">
-                  <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
-                  <p className="card-text">7-minute read • Kim</p>
-                 
+            {
+              section2Data.map((m,v)=>(
+                <div className="col-6 col-md-3">
+                    <div className="card">
+                        <img alt="" src={isMobile?m.fieldFeatureImageMobile.url:m.fieldFeatureImageDesktop.url} className="card-img-top" />
+                        <div className="card-body">
+                          <h5 className="card-title"><Link href="#"><a href="#">{m.title}</a></Link></h5>
+                          <p className="card-text">{m.entityCreated} by {m.fieldAuthor!=null?m.fieldAuthor.entity.name:''}</p>
+                        
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
+              ))
+            }
+             
              <div className="col-6 col-md-3">
              <div className="card">
                 <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top" />
@@ -311,17 +312,25 @@ export const getServerSideProps = async () => {
 
 
   const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:"65"} });
+  const section1 = await client.query({ query: BLOGS });
+  const section2 = await client.query({ query: BLOGTYPEDETAIL, variables:{type:'18'} });
  
   let entity1 = data.data.nodeQuery.entities[0];
+  let section1Data = section1.data.nodeQuery.entities;
+  let section2Data = section2.data.nodeQuery.entities;
   // let entity2 = data.data.nodeQuery.entities[1];
+  console.log(section1Data);
   
   
    return {
       props: {
         entity1: entity1,
+        firstSelect:section1Data[0],
+        section1Data:section1Data,
+        section2Data:section2Data,
         nav:nav,
         othernav:othernav,
-        footerData: footerData
+        footerData: footerData,
         // entity2: entity2
       }
     }
