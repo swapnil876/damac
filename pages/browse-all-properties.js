@@ -434,7 +434,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                    <div className={styles['filter_option_wrap']}>
                        <form action="">
                            <div className="row">
-                               <div className="col-md-9 d-flex flex-wrap" style={{'justifyContent':'space-between'}}>
+                               <div className="col-md-9 d-flex" style={{'justifyContent':'space-between'}}>
                                <div className={styles['form-field']}>
                                        <select name="property_type" className="form-select" id="" onChange={(ev)=>{setProject(ev.target.value)}}>
                                            <option value="">Select Project</option>

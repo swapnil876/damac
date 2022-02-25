@@ -23,13 +23,14 @@ import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { BLOGS } from '../graphql/blogs';
 import { NEWSLISTING } from '../graphql/news_listing';
+import { BLOGTYPEDETAIL } from '../graphql/master/blogtypedetail';
 
 import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
-function News( {entity1,newslist, nav, othernav, footerData} ) {
+function News( {entity1,newslist, nav, othernav, secTwoNewsList, secThreeNewsList, secFourNewsList, footerData} ) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   useEffect(() => {
@@ -120,54 +121,22 @@ function News( {entity1,newslist, nav, othernav, footerData} ) {
            
 
             <div className="row">
-              <div className="col-md-3">
-               <div className="card">
-                  <img alt=""src="/images/news/1.png" className="card-img-top card-img-for-damac-in-news" />
-                  <div className="card-body">
-                    <span>Customer’s Stories</span>
-                    <h5 className="card-title">
-                    <Link href="#"><a>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
-                    <p className="card-text">7-minute read • Kim</p>
-                    
-                  </div>
-                </div>
-              </div>
-               <div className="col-md-3">
-               <div className="card ">
-                  <img alt=""src="/images/news/3.png" className="card-img-top  card-img-for-damac-in-news" />
-                  <div className="card-body">
-                    <span>Customer’s Stories</span>
-                    <h5 className="card-title">
-                    <Link href="#"><a>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
-                    <p className="card-text">7-minute read • Kim</p>
-                    
-                  </div>
-                </div>
-              </div>
-               <div className="col-md-3">
-               <div className="card ">
-                  <img alt=""src="/images/news/2.png" className="card-img-top  card-img-for-damac-in-news" />
-                  <div className="card-body">
-                    <span>Customer’s Stories</span>
-                    <h5 className="card-title">
-                    <Link href="#"><a>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
-                    <p className="card-text">7-minute read • Kim</p>
-                    
-                  </div>
-                </div>
-              </div>
-               <div className="col-md-3">
-               <div className="card ">
-                  <img alt=""src="/images/news/2.png" className="card-img-top  card-img-for-damac-in-news" />
-                  <div className="card-body">
-                    <span>Customer’s Stories</span>
-                    <h5 className="card-title">
-                    <Link href="#"><a>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
-                    <p className="card-text">7-minute read • Kim</p>
-                   
-                  </div>
-                </div>
-              </div>          
+              {
+                secTwoNewsList && 
+                secTwoNewsList.map((item, index)=>(
+                  <div className="col-md-3">
+                  <div className="card ">
+                     <img alt={item.title} src={deviceIsMobile ? item.fieldFeatureImageMobile.url : item.fieldThumbnailDesktop.url } className="card-img-top  card-img-for-damac-in-news" />
+                     <div className="card-body">
+                       <span>Customer’s Stories</span>
+                       <h5 className="card-title">
+                       <Link href="#"><a>{item.title}</a></Link></h5>
+                       <p className="card-text">{item.fieldShortText}</p>
+                     </div>
+                   </div>
+                 </div>  
+                ))
+              }       
             </div>        
           </div>      
       </section>
@@ -179,64 +148,36 @@ function News( {entity1,newslist, nav, othernav, footerData} ) {
         <div className="container">
           <div className="d-flex justify-content-between">
             <div className="light-title">
-              <h2 style={deviceIsMobile ? {'textAlign':'center'} : {}}>{newslist.fieldHeading3}</h2>
-              <p style={deviceIsMobile ? {'textAlign':'center'} : {}}>Discover how the best of the best use DAMAC to find a home</p>
+              <h2>{newslist.fieldHeading3}</h2>
+              <p>Discover how the best of the best use DAMAC to find a home</p>
             </div>
             {
               deviceIsMobile ? '' :
               <div>
-              <Link href="#"><a className="btn btn-primary">View all</a></Link>
+              <Link href="/industry-news-list"><a className="btn btn-primary">View all</a></Link>
             </div>
             }
            
           </div>       
-          
           <div className="row">
-             <div className="col-md-3">
-             <div className="card card-for-news-page">
-                <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top card-img-for-news-page " />
-                <div className="card-body">
-                  <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
-                  <p className="card-text">7-minute read • Kim</p>
-                 
-                </div>
-              </div>
-            </div>
-             <div className="col-md-3">
-             <div className="card card-for-news-page">
-                <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top card-img-for-news-page"/>
-                <div className="card-body">
-                  <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
-                  <p className="card-text">7-minute read • Kim</p>  
-                </div>
-              </div>
-            </div>
-             <div className="col-md-3">
-             <div className="card card-for-news-page">
-                <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top card-img-for-news-page" />
-                <div className="card-body">
-                  <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
-                  <p className="card-text">7-minute read • Kim</p>
-                  
-                </div>
-              </div>
-            </div>
-             <div className="col-md-3">
-             <div className="card card-for-news-page">
-                <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top card-img-for-news-page" />
-                <div className="card-body">
-                  <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
-                  <p className="card-text">7-minute read • Kim</p>
-                 
-                </div>
-              </div>
-            </div>
-            
+            {
+              secThreeNewsList.map((item, index)=>(
+                <div className="col-md-3">
+                <div className="card card-for-news-page">
+                   <img alt={item.title} src={deviceIsMobile ? item.fieldFeatureImageMobile.url : item.fieldThumbnailDesktop.url } className="card-img-top card-img-for-news-page " />
+                   <div className="card-body">
+                     <h5 className="card-title"><Link href={"damac-in-the-news" + "/" + item.nid}><a>{item.title}</a></Link></h5>
+                     <p className="card-text">{item.fieldShortText}</p>
+                   </div>
+                 </div>
+               </div>
+              ))
+            }
           </div>
           {
               deviceIsMobile ? 
               <div>
-              <Link href="#"><a className="btn btn-primary">View all</a></Link>
+              <Link href="/industry-news-list"><a className="btn btn-primary">View all</a></Link>
             </div> : ""
             }
         </div>
@@ -385,18 +326,30 @@ export const getServerSideProps = async () => {
      // end
 
 
+  const  newsData  = await client.query({ query: BLOGTYPEDETAIL,variables:{type:'17'} });
+  const industryNews  = await client.query({ query: BLOGTYPEDETAIL,variables:{type:'18'} });
+  const pressRelease  = await client.query({ query: BLOGTYPEDETAIL,variables:{type:'8'} });
+
   const  data  = await client.query({ query: BLOGS });
   const  newsheading  = await client.query({ query: NEWSLISTING });
   let newslist = newsheading.data.nodeQuery.entities[0];
   let entity1 = data.data.nodeQuery.entities[0];
-  // let entity2 = data.data.nodeQuery.entities[1];
+
+
+
+  let secTwoNewsList = newsData.data.nodeQuery.entities;
+  let secThreeNewsList = industryNews.data.nodeQuery.entities;
+  let secFourNewsList = pressRelease.data.nodeQuery.entities;
  
    return {
       props: {
         entity1: entity1,
         newslist:newslist,
         nav:nav,
-       othernav:othernav, 
+       othernav:othernav,
+       secTwoNewsList: secTwoNewsList, 
+       secFourNewsList: secFourNewsList,
+       secThreeNewsList: secThreeNewsList,
        footerData: footerData
         // entity2: entity2
       }

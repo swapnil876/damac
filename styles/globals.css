@@ -58,9 +58,18 @@ a:hover {
 
 
 
+.card-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
 
-
-
+.card-img-for-news-page{
+    width:100%;
+    aspect-ratio: 1/1;
+}
 
 .img-responsive {
     max-width: 100%;
@@ -2238,6 +2247,11 @@ PAGE:  NEWS
 
 .industry-news .card-body .card-title a {
     font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }
 
 .industry-news.bg-light .card {
