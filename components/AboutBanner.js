@@ -31,7 +31,7 @@ export default function AboutBanner( { bannerImage, children, entity1, responsiv
     // >
     //    <source {...{bannerImage}}/>
     // </video>
-    <iframe className={styles['bg-image']} src={bannerImage}></iframe>
+    <iframe className={styles['bg-image']} src="https://www.youtube.com/embed/kpCGfnMSes0"></iframe>
     );
 
   return (
