@@ -164,8 +164,8 @@ function About({entity1, nav, othernav, footerData}) {
                  <p>{entity1.fieldDescription2}</p>
 
                  <div className="cta-box text-center mt-5">
-                   <Link href="#">
-                     <a className="btn btn-primary cta-btn"><span>Explore</span></a>
+                   <Link href={entity1.fieldButtonUrl}>
+                     <a className="btn btn-primary cta-btn"><span>{entity1.fieldButtonText}</span></a>
                    </Link>
                  </div>
                </div>
@@ -226,9 +226,9 @@ function About({entity1, nav, othernav, footerData}) {
 
                    <div className="ctabtn-container">
                     <div className="cta-container">
-                      <Link href="#">
+                      <Link href={entity1.fieldButton3}>
                         <a className="btn btn-primary cta-btn">
-                          <span>Read the Chairman’s message</span>
+                          <span>{entity1.fieldButton4Text}</span>
                         </a>
                       </Link>
                     </div>
@@ -468,7 +468,7 @@ Having now received over 100 global awards and commendations, for everything fro
                  <p>{entity1.fieldCsrDescription5}</p>
 
                  <div className="cta-container">
-                   <Link href="#">
+                   <Link href={entity1.fieldCsrImage.url}>
                      <a className="btn btn-primary cta-btn"><span>Know More</span></a>
                    </Link>
                  </div>
