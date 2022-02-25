@@ -142,7 +142,7 @@ function About({entity1, nav, othernav, footerData}) {
       </Head>
 
 
-      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
+      {/* <Navbar navigationBar={nav} otherNav={othernav}></Navbar> */}
 
 
       <main className="main about-main">
@@ -468,8 +468,8 @@ Having now received over 100 global awards and commendations, for everything fro
                  <p>{entity1.fieldCsrDescription5}</p>
 
                  <div className="cta-container">
-                   <Link href="#">
-                     <a className="btn btn-primary cta-btn"><span>Know More</span></a>
+                   <Link href={entity1.fieldCsrButtonUrl!=''?entity1.fieldCsrButtonUrl:'#'}>
+                     <a className="btn btn-primary cta-btn"><span>{entity1.fieldCsrButtonLabel}</span></a>
                    </Link>
                  </div>
 

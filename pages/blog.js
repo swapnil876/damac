@@ -32,7 +32,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
-function Blog({entity1, firstSelect, section1Data, section2Data, nav, othernav, footerData}) {
+function Blog({entity1,firstSelect,section1Data,section2Data, nav, othernav, footerData}) {
  var img_url;
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   var [selectedBlog, setSelectedBlog] = useState(firstSelect);
@@ -78,7 +78,7 @@ function Blog({entity1, firstSelect, section1Data, section2Data, nav, othernav, 
              <div className="row">
                <div className="col-md-9">
                <div className="primary-cta">
-                 <img alt=""src={isMobile?selectedBlog.fieldFeatureImageMobile.url:selectedBlog.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
+                 <img alt="" src={isMobile?selectedBlog.fieldFeatureImageMobile.url:selectedBlog.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
                  <label>{selectedBlog.fieldCategory.entity.name}</label>
                  <h1>
                  <Link href="#"><a>{selectedBlog.title}</a></Link>
@@ -127,55 +127,41 @@ function Blog({entity1, firstSelect, section1Data, section2Data, nav, othernav, 
            
 
             <div className="row">
-              <div className="col-6 col-md-3">
-               <div className="card">
-                  <img alt=""src="/images/news/1.png" className="card-img-top"/>
-                  <div className="card-body">
-                    <span>Customer’s Stories</span>
-                    <h5 className="card-title">
-                    <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link>
-                    </h5>
-                    <p className="card-text">7-minute read • Kim</p>
-                    
-                  </div>
-                </div>
-              </div>
-               <div className="col-6 col-md-3">
-               <div className="card">
-                  <img alt=""src="/images/news/3.png" className="card-img-top" />
-                  <div className="card-body">
-                    <span>Customer’s Stories</span>
-                    <h5 className="card-title">
-                    <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
-                    <p className="card-text">7-minute read • Kim</p>
-                    
-                  </div>
-                </div>
-              </div>
-               <div className="col-6 col-md-3">
-               <div className="card">
-                  <img alt=""src="/images/news/2.png" className="card-img-top" />
-                  <div className="card-body">
-                    <span>Customer’s Stories</span>
-                    <h5 className="card-title">
-                    <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
-                    <p className="card-text">7-minute read • Kim</p>
-                    
-                  </div>
-                </div>
-              </div>
-               <div className="col-6 col-md-3">
-               <div className="card">
-                  <img alt=""src="/images/news/2.png" className="card-img-top" />
-                  <div className="card-body">
-                    <span>Customer’s Stories</span>
-                    <h5 className="card-title">
-                    <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></Link></h5>
-                    <p className="card-text">7-minute read • Kim</p>
-                   
-                  </div>
-                </div>
-              </div>          
+              {
+                section1Data.map((m,n)=>
+                  
+                    n<4?
+                  (
+                    <div className="col-6 col-md-3">
+                      <div className="card">
+                        <img alt="" src={isMobile?m.fieldFeatureImageMobile.url:m.fieldFeatureImageDesktop.url} className="card-img-top"/>
+                        <div className="card-body">
+                          {/* <span>Customer’s Stories</span> */}
+                          <h5 className="card-title">
+                          <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>{m.title}</a></Link>
+                          </h5>
+                          <p className="card-text">{m.entityCreated} by {m.fieldAuthor!=null?m.fieldAuthor.entity.name:''}</p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  ):
+                  ('')
+                  // <div className="col-6 col-md-3">
+                  //   <div className="card">
+                  //     <img alt="" src={isMobile?m.fieldFeatureImageMobile.url:m.fieldFeatureImageDesktop.url} className="card-img-top"/>
+                  //     <div className="card-body">
+                  //       {/* <span>Customer’s Stories</span> */}
+                  //       <h5 className="card-title">
+                  //       <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>{m.title}</a></Link>
+                  //       </h5>
+                  //       <p className="card-text">{m.entityCreated} by {m.fieldAuthor!=null?m.fieldAuthor.entity.name:''}</p>
+                        
+                  //     </div>
+                  //   </div>
+                  // </div>
+                )
+              }        
             </div>        
           </div>      
       </section>
@@ -196,51 +182,18 @@ function Blog({entity1, firstSelect, section1Data, section2Data, nav, othernav, 
           </div>       
           
           <div className="row">
-            {
-              section2Data.map((m,v)=>(
-                <div className="col-6 col-md-3">
-                    <div className="card">
-                        <img alt="" src={isMobile?m.fieldFeatureImageMobile.url:m.fieldFeatureImageDesktop.url} className="card-img-top" />
-                        <div className="card-body">
-                          <h5 className="card-title"><Link href="#"><a href="#">{m.title}</a></Link></h5>
-                          <p className="card-text">{m.entityCreated} by {m.fieldAuthor!=null?m.fieldAuthor.entity.name:''}</p>
-                        
-                        </div>
-                    </div>
-                </div>
-              ))
-            }
-             
-             <div className="col-6 col-md-3">
-             <div className="card">
-                <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top" />
-                <div className="card-body">
-                  <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
-                  <p className="card-text">7-minute read • Kim</p>  
-                </div>
-              </div>
-            </div>
-             <div className="col-6 col-md-3">
-             <div className="card">
-                <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top" />
-                <div className="card-body">
-                  <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
-                  <p className="card-text">7-minute read • Kim</p>
+            {section2Data.map((m,h)=>(
+              <div className="col-6 col-md-3">
+                <div className="card">
+                  <img alt="" src={isMobile?m.fieldFeatureImageMobile.url:m.fieldFeatureImageDesktop.url} className="card-img-top" />
+                  <div className="card-body">
+                    <h5 className="card-title"><Link href="#"><a>{m.title}</a></Link></h5>
+                    <p className="card-text">{m.entityCreated} by {m.author!=null?m.author.entity.name:''}</p>
                   
+                  </div>
                 </div>
               </div>
-            </div>
-             <div className="col-6 col-md-3">
-             <div className="card">
-                <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top" />
-                <div className="card-body">
-                  <h5 className="card-title"><Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link></h5>
-                  <p className="card-text">7-minute read • Kim</p>
-                 
-                </div>
-              </div>
-            </div>
-            
+            ))}
           </div>
 
         </div>

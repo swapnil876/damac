@@ -30,12 +30,18 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
-function News( {entity1,newslist, nav, othernav, secTwoNewsList, secThreeNewsList, secFourNewsList, footerData} ) {
+function News( {entity1,firstSelect,section1Data,newslist, nav, othernav, secTwoNewsList, secThreeNewsList, secFourNewsList, footerData} ) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  var [selectedBlog, setSelectedBlog] = useState(firstSelect);
   useEffect(() => {
     setDeviceIsMobile( true );
    }, [])
+
+  function saveBlogItem(m){
+    console.log(m);
+    setSelectedBlog(m);
+  }
 
   return (
     <div className='whydubaibody'>
@@ -63,12 +69,12 @@ function News( {entity1,newslist, nav, othernav, secTwoNewsList, secThreeNewsLis
              <div className="row">
                <div className="col-md-8">
                <div className="primary-cta">
-                 <img alt="" src={isMobile?entity1.fieldFeatureImageMobile.url:entity1.fieldThumbnailDesktop.url} className="img-responsive full-width"/>
-                 <label>{entity1.fieldTag.entity.name}</label>
+                 <img alt="" src={isMobile?selectedBlog.fieldFeatureImageMobile.url:selectedBlog.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
+                 <label>{selectedBlog.fieldTag.entity.name}</label>
                  <h1>
-                 <Link href="#"><a>2020 in Review: DAMAC Apps in Facts and Numbers</a></Link>
+                 <Link href="#"><a>{selectedBlog.title}</a></Link>
                  </h1>
-                 <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
+                 <div dangerouslySetInnerHTML={{ __html: selectedBlog.body.value }}></div>
                </div>
              </div>
              <div className="col-md-4">
@@ -77,26 +83,15 @@ function News( {entity1,newslist, nav, othernav, secTwoNewsList, secThreeNewsLis
                    <h3>{newslist.fieldHeading1N}</h3>
                               
                  </div>
-                 <div className="news">
-                   <label>Curated</label>
-                   <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                   <p> 21/12 2020 by The Guardian </p>              
-                 </div>
-                 <div className="news">
-                   <label>Trending</label>
-                   <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                   <p> 21/12 2020 by The Guardian </p>              
-                 </div>
-                 <div className="news">
-                   <label>In The News</label>
-                   <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                   <p> 21/12 2020 by The Guardian </p>              
-                 </div>
-                 <div className="news">
-                   <label>Press Release</label>
-                   <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                   <p> 21/12 2020 by The Guardian </p>              
-                 </div>
+                 {
+                   section1Data.map((m,n)=>(
+                    <div className="news" key={n}>
+                      <label>{m.fieldTag!=null?m.fieldTag.entity.name:''}</label>
+                      <h6><Link href="#"><a onClick={()=>{saveBlogItem(m)}}>{m.title}</a></Link></h6>
+                      <p> {m.entityCreated} by {m.fieldAuthor!=null?m.fieldAuthor.entity.name:''}  </p>              
+                    </div>
+                    ))
+                }
                </div>          
              </div>
              </div>      
@@ -332,6 +327,7 @@ export const getServerSideProps = async () => {
 
   const  data  = await client.query({ query: BLOGS });
   const  newsheading  = await client.query({ query: NEWSLISTING });
+  const section1 = await client.query({ query: BLOGS });
   let newslist = newsheading.data.nodeQuery.entities[0];
   let entity1 = data.data.nodeQuery.entities[0];
 
@@ -340,10 +336,13 @@ export const getServerSideProps = async () => {
   let secTwoNewsList = newsData.data.nodeQuery.entities;
   let secThreeNewsList = industryNews.data.nodeQuery.entities;
   let secFourNewsList = pressRelease.data.nodeQuery.entities;
+  let section1Data = section1.data.nodeQuery.entities;
  
    return {
       props: {
         entity1: entity1,
+        firstSelect:section1Data[0],
+        section1Data:section1Data,
         newslist:newslist,
         nav:nav,
        othernav:othernav,

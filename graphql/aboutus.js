@@ -95,6 +95,8 @@ query {
         fieldCsrImage{
           url
         }
+        fieldCsrButtonLabel
+        fieldCsrButtonUrl
       }
     }
   }
