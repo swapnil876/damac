@@ -165,7 +165,7 @@ function About({entity1, nav, othernav, footerData}) {
 
                  <div className="cta-box text-center mt-5">
                    <Link href={entity1.fieldButtonUrl}>
-                     <a className="btn btn-primary cta-btn"><span>{entity1.fieldButtonText}</span></a>
+                     <a className="btn btn-primary cta-btn" target="_blank"><span>{entity1.fieldButtonText}</span></a>
                    </Link>
                  </div>
                </div>
@@ -227,7 +227,7 @@ function About({entity1, nav, othernav, footerData}) {
                    <div className="ctabtn-container">
                     <div className="cta-container">
                       <Link href={entity1.fieldButton3}>
-                        <a className="btn btn-primary cta-btn">
+                        <a className="btn btn-primary cta-btn" target="_blank">
                           <span>{entity1.fieldButton4Text}</span>
                         </a>
                       </Link>
