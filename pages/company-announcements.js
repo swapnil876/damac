@@ -40,6 +40,9 @@ export default function CompanyAnnouncements({entity,unique,year_announcement, n
     const [yearData, setYearData] = useState(year_announcement)
     const [uniqueYear, setUniqueYear] = useState(unique)
     const [allYear, setAllYear] = useState(true)
+    var [searchParam, setSearchParam] = useState("")
+    var [fromDate, setFromDate] = useState("")
+    var [toDate, setToDate] = useState("")
     useEffect(() => {
         if ( isMobile ) {
           setDeviceIsMobile( true );
@@ -122,6 +125,35 @@ let selectYear = (yr,arr,l,type)=>{
     
 }
 
+function getResult(){
+    let query = {
+        search:'',
+        fromDate:'',
+        toDate:''
+    }
+    if(searchParam != ''){
+        query.search = searchParam;
+    }
+    if(fromDate != ''){
+        query.fromDate = fromDate;
+    }
+    if(toDate != ''){
+        query.toDate = toDate;
+    }
+    console.log(query)
+    let q = serialize(query);
+    if(typeof window != 'undefined')
+        window.location.href = '/company-announcements'+q;
+}
+
+function serialize( obj ) {
+    let str = '?' + Object.keys(obj).reduce(function(a, k){
+        a.push(k + '=' + encodeURIComponent(obj[k]));
+        return a;
+    }, []).join('&');
+    return str;
+}
+
 
 return (
 <div>
@@ -149,21 +181,21 @@ return (
                                     <div className="row">
                                         <div className="col-md-3">
                                             <div className={styles['form-field']}>
-                                                <input type="date" className="form-control"/>
+                                                <input type="date" max={toDate} className="form-control" onChange={($ev)=>{setFromDate($ev.target.value)}}/>
                                             </div>
                                         </div>
                                         <div className="col-md-3">
                                             <div className={styles['form-field']}>
-                                                <input type="date" className="form-control"/>
+                                                <input type="date" min={fromDate} className="form-control" onChange={($ev)=>{setToDate($ev.target.value)}}/>
                                             </div>
                                         </div>
                                         <div className="col-md-4">
                                             <div className={styles['form-field']}>
-                                                <input type="text" placeholder="Search keywords" className="form-control"/>
+                                                <input type="text" placeholder="Search keywords" className="form-control" onKeyUp={($ev)=>{setSearchParam($ev.target.value)}}/>
                                             </div>
                                         </div>
                                         <div className="col-md-2">
-                                            <div className="form_btn_announcement">
+                                            <div className="form_btn_announcement" onClick={()=>{getResult()}}>
                                                 <a href="#" className="btn btn-primary w-100">Search</a>
                                             </div>
                                         </div>
@@ -329,12 +361,27 @@ function getDateTime(date){
    return y[0];
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (cp) => {
 
     const client = new ApolloClient({
       uri: process.env.STRAPI_GRAPHQL_URL,
       cache: new InMemoryCache()
     });
+    console.log(cp);
+    let query = {
+        search:'',
+        fromDate:'',
+        toDate:''
+    }
+    // if(cp.query.search != null && cp.query.search != ''){
+    //     query.search = '%'+cp.query.search+'%'
+    // }
+    // if(cp.query.toDate != null && cp.query.toDate != ''){
+    //     query.toDate = '%'+cp.query.toDate+'%'
+    // }
+    // if(cp.query.fromDate != null && cp.query.fromDate != ''){
+    //     query.fromDate = '%'+cp.query.fromDate+'%'
+    // }
 
     // Use this for footer
     const footer  = await client.query({ query: FOOTER_LINKS });
@@ -381,11 +428,12 @@ export const getStaticProps = async () => {
     let year_announcement = [];
     let unique = [];
     let checkUniqe = [];
-    const  data  = await client.query({ query: COMPANY_ANNOUNCEMENTS });
+    var  data  = await client.query({ query: COMPANY_ANNOUNCEMENTS });
+
     let entity1 = data.data.nodeQuery.entities;
     
     entity1.map((v,i)=>{
-        let year = getDateTime(v.fieldDate.value)
+        let year = getDateTime(v.fieldDate.value);
         if(!checkUniqe.includes(year)){
             unique.push({year:year,isActive:false});
             checkUniqe.push(year);

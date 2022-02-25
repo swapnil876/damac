@@ -94,16 +94,16 @@ function BuildingDocumentation({entity1, nav, othernav, footerData}) {
 
               {    
               deviceIsMobile ? 
-              entity1.map((item, index)=>(
+              entity1.fieldMultipleFiles.map((item, index)=>(
                 <li key={ index }>
-                  <div className="doc-name"><Link href={item.fieldFile.entity.url}><a  target="_blank">{item.entityLabel}</a></Link></div>
+                  <div className="doc-name"><Link href={item.entity.fieldFile==null?'':item.entity.fieldFile.entity.url}><a  target="_blank">{item.entity.fieldFileTitle}</a></Link></div>
                 </li>
                ))
               :
-               entity1.map((item, index)=>(
+               entity1.fieldMultipleFiles.map((item, index)=>(
                  <li key={ index }>
-                   <div className="doc-name">{item.entityLabel}</div>
-                   <div className="doc-link"><Link href={item.fieldFile.entity.url} download><a  target="_blank">Download</a></Link></div>
+                   <div className="doc-name">{item.entity.fieldFileTitle}</div>
+                   <div className="doc-link"><Link href={item.entity.fieldFile==null?'':item.entity.fieldFile.entity.url} download><a  target="_blank">Download</a></Link></div>
                  </li>
                 ))
               }
@@ -173,11 +173,10 @@ export async function getServerSideProps(context){
 
 
 
-  const  data  = await client.query({ query: BUILDING_DOCUMENTATION,variables:{id:""}});
+  const  data  = await client.query({ query: BUILDING_DOCUMENTATION});
 
-  let entity1 = data.data.nodeQuery.entities;
-  
-
+  let entity1 = data.data.nodeQuery.entities[0];
+  console.log(entity1.fieldMultipleFiles[0].entity);
   return {
     props: {
        entity1 : entity1,

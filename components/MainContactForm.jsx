@@ -118,7 +118,6 @@ export default function ContactForm({ initialValues, address , heading}) {
           countryCodeSync:"",
           user_agent:""
         }    
-        const header = ''
         await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
               'Content-Type': 'application/json',
               'Accept': 'applicationjson',

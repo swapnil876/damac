@@ -1,0 +1,16 @@
+const BEDROOMDATA = [
+'2',
+'4',
+'5',
+'6',
+'STORAGE',
+'1',
+'3',
+'OFFICE',
+'STUDIO',
+'SEVEN BEDROOM',
+'NINE BEDROOM',
+'EIGHT BEDROOM',
+]
+
+export {BEDROOMDATA};

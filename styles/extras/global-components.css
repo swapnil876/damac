@@ -1728,7 +1728,14 @@ color: #000000;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
+.offer-card-desc{
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 80px;
+  overflow: hidden;
+}
 .filter_side_slide_for_mobile .filter_type .options-box {
   padding: 16px 15px;
 }
