@@ -162,7 +162,7 @@ function About({entity1, nav, othernav, footerData}) {
                  <p>{entity1.fieldDescription2}</p>
 
                  <div className="cta-box text-center mt-5">
-                   <Link href={entity1.fieldButtonUrl}>
+                   <Link href={(entity1.fieldButtonUrl!='' && entity1.fieldButtonUrl!=null) ?entity1.fieldButtonUrl:''}>
                      <a className="btn btn-primary cta-btn" target="_blank"><span>{entity1.fieldButtonText}</span></a>
                    </Link>
                  </div>
@@ -224,7 +224,7 @@ function About({entity1, nav, othernav, footerData}) {
 
                    <div className="ctabtn-container">
                     <div className="cta-container">
-                      <Link href={entity1.fieldButton3}>
+                      <Link href={(entity1.fieldButton3!='' && entity1.fieldButton3!=null)?entity1.fieldButton3:''}>
                         <a className="btn btn-primary cta-btn" target="_blank">
                           <span>{entity1.fieldButton4Text}</span>
                         </a>
@@ -466,7 +466,7 @@ Having now received over 100 global awards and commendations, for everything fro
                  <p>{entity1.fieldCsrDescription5}</p>
 
                  <div className="cta-container">
-                   <Link href={entity1.fieldCsrButtonUrl!=''?entity1.fieldCsrButtonUrl:'#'}>
+                   <Link href={(entity1.fieldCsrButtonUrl!='' && entity1.fieldCsrButtonUrl!=null)?entity1.fieldCsrButtonUrl:'#'}>
                      <a className="btn btn-primary cta-btn"><span>{entity1.fieldCsrButtonLabel}</span></a>
                    </Link>
                  </div>

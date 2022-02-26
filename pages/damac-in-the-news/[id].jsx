@@ -34,13 +34,13 @@ import { Context as ResponsiveContext } from 'react-responsive'
 import { useMediaQuery } from 'react-responsive'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
-
+import { BLOGS } from '../../graphql/blogs';
 
 import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
 
-  export default function DamacInTheNews({entity1, nav, othernav, footerData}){
+  export default function DamacInTheNews({entity1, bloglist, nav, othernav, footerData}){
     const router = useRouter()
     const { slug } = router.query;
     console.log("slug", slug);
@@ -51,9 +51,9 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
                 <section className={styles['press-hero']} style={{'background-image':'url(/images/damac_in_news.png)'}}>               
                 <div className={styles['press-hero-wrap']}>
                     <div className={styles['press-content']}>
-                    <h1>DAMAC Chairman Hussain Sajwani participates in Tourism Recovery Summit in Riyadh</h1>
-                    <p>We reflected on DAMAC’s years of history and created an infographic summary.</p>
-                    <span>Dec, 15 2021 By Financial Times</span>
+                    <h1>{entity1.title}</h1>
+                    <p>{entity1.fieldShortText}</p>
+                    <span>{entity1.entityCreated} By {entity1.fieldAuthor.entity.name}</span>
                     </div> 
                 </div>                   
                 </section>  
@@ -69,14 +69,7 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
                         <li><a href="#"><img src="/damac-static/images/share.png"/></a></li>
                     </ul>
                     <div className={styles['content-detail']}>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <h3>Dubai, UAE — 11 April 2021</h3>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <img src="/damac-static/images/content-image.jpg" className="img-fluid"/>
-
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
+                    <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
                         
                     </div>
 
@@ -92,51 +85,26 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
                     <h2>Related Posts</h2>          
                     </div>
                     <div className="row">
-                    <div className="col-md-4">
-                        <div className={styles['card']}>
-                        <img src="/damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
-                        <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
-                            <div className="d-flex justify-content-between">
-                            <label>Tag Label</label>
-                            <span> 21/12 2020 by The Guardian </span>
+                    {
+                      
+                       bloglist.map((blog, index) => (
+                          <div className="col-md-4">
+                            <div className={styles['card']}>
+                            <img src="/damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
+                            <div className={styles['card-body']}>
+                                <a href="#"><h4>{blog.title}</h4></a>
+                                <div className="d-flex justify-content-between">
+                                <label>{blog.fieldTag!=null?blog.fieldTag.entity.name:''}</label>
+                                <span> {blog.entityCreated} by {blog.fieldAuthor!=null?blog.fieldAuthor.entity.name:''} </span>
+                                </div>
+                                <p className={styles['card-text']} dangerouslySetInnerHTML={{ __html: blog.body.value }}></p>
+                                <a href={'press-release/'+blog.nid} className={styles['read-more']}>Read More</a>
                             </div>
-                            <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
-                        </div>
-                        </div>
-                        
-                    </div>
-                    <div className="col-md-4">
-                        <div className={styles['card']}>
-                        <img src="/damac-static/images/blog2.png" className={styles['card-img-top']} alt="..."/>
-                        <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
-                            <div className="d-flex justify-content-between">
-                            <label>Tag Label</label>
-                            <span> 21/12 2020 by The Guardian </span>
                             </div>
-                            <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
-                        </div>
-                        </div>
-                        
-                    </div>
-                    <div className="col-md-4">
-                        <div className={styles['card']}>
-                        <img src="/damac-static/images/blog3.png" className={styles['card-img-top']} alt="..."/>
-                        <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
-                            <div className="d-flex justify-content-between">
-                            <label>Tag Label</label>
-                            <span> 21/12 2020 by The Guardian </span>
-                            </div>
-                            <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
-                        </div>
-                        </div>
-                        
-                    </div>
+                            
+                          </div>
+                      ))
+                    }
                     
                     </div>
 
@@ -202,12 +170,15 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
 
   const data = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.id} });
+  const data3 = await client.query({ query: BLOGS });
+  let bloglist = data3.data.nodeQuery.entities;
   let entity1 = data.data.nodeQuery.entities[0];
   
   // let entity2 = data.data.nodeQuery.entities[1];
   return {
     props: {
       entity1: entity1,
+      bloglist: bloglist,
       nav:nav,
       othernav:othernav,
       footerData: footerData

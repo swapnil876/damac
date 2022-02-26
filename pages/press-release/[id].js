@@ -3,6 +3,8 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
+import { FOOTER_LINKS } from "../../graphql/footer_links" ;
+
 // Navbar
 import Navbar from '../../components/navbar'
 import Footer from '../../components/Footer'
@@ -27,27 +29,27 @@ import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
  // React Responsive
-import { Context as ResponsiveContext } from 'react-responsive'
-import { useMediaQuery } from 'react-responsive'
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+ import { Context as ResponsiveContext } from 'react-responsive'
+ import { useMediaQuery } from 'react-responsive'
+
+
+ import { ApolloClient, InMemoryCache } from '@apollo/client';
+ import { NAVIGATION } from '../../graphql/master/navigation';
+ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
+//  import { BLOGS } from '../../graphql/blogs';
+import {BLOGS} from '../../graphql/blogs';
 import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
-import { BLOGS } from '../../graphql/blogs';
 
-import { NAVIGATION } from '../../graphql/master/navigation';
-import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
-
-import { FOOTER_LINKS } from "../../graphql/footer_links"
-
- export default function BlogDetails({entity1,bloglist, nav, othernav, footerData}){
+ export default function PressRelease({entity1,bloglist,nav, othernav, footerData}){
      return(
-         <div className="BlogDetails">
+         <div className="PressRelease">
              <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
              <main className="main">
-                <section className={styles['press-hero']} style={{'background-image': 'url(../damac-static/images/blog-bg.png)'}}>   
+                <section className={styles['press-hero']} style={{'background-image': 'url(damac-static/images/press-realease-banner.jpg)'}}>   
                 <div className="container" style={{'height':'100%'}}>
                 <div className={styles['press-hero-wrap']} style={{'padding-right':'0'}}>
                     <div className={styles['press-content']} style={{'padding':'0 !important'}}>
-                    <h2>{entity1.title}</h2>
+                    <h1>{entity1.title}</h1>
                     <p>{entity1.fieldShortText}</p>
                     <span>{entity1.entityCreated} By {entity1.fieldAuthor.entity.name}</span>
                     </div> 
@@ -58,11 +60,11 @@ import { FOOTER_LINKS } from "../../graphql/footer_links"
                 <div className="container">
                     <div className={styles['content-wrap-news']}>
                     <ul className={styles['social-media']}>
-                        <li><a href="#"><img src="../damac-static/images/twiter.png"/></a></li>
-                        <li><a href="#"><img src="../damac-static/images/facebook.png"/></a></li>
-                        <li><a href="#"><img src="../damac-static/images/linkedin.png"/></a></li>
-                        <li><a href="#"><img src="../damac-static/images/whatsapp.png"/></a></li>
-                        <li><a href="#"><img src="../damac-static/images/share.png"/></a></li>
+                        <li><a href="#"><img src="../../damac-static/images/twiter.png"/></a></li>
+                        <li><a href="#"><img src="../../damac-static/images/facebook.png"/></a></li>
+                        <li><a href="#"><img src="../../damac-static/images/linkedin.png"/></a></li>
+                        <li><a href="#"><img src="../../damac-static/images/whatsapp.png"/></a></li>
+                        <li><a href="#"><img src="../../damac-static/images/share.png"/></a></li>
                     </ul>
                     <div className={styles['content-detail']}>
                         <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
@@ -85,29 +87,27 @@ import { FOOTER_LINKS } from "../../graphql/footer_links"
                        bloglist.map( (blog, index) => (
                         <div className="col-md-4">
                             <div className={styles['card']}>
-                            <img src="../damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
+                            <img src={} className={styles['card-img-top']} alt="..."/>
 
 
                             <div className={styles['card-body']}>
                                 <a href="#"><h4>{blog.title}</h4></a>
                                 <div className="d-flex justify-content-between">
                                 <label>{blog.fieldTag.entity.name}</label>
-                                <span> {blog.entityCreated} by {blog.fieldAuthor.entity.name}</span>
+                                <span> {blog.entityCreated} by {blog.fieldAuthor.entity.name} </span>
                                 </div>
-                                <div className={styles['card-text']} dangerouslySetInnerHTML={{ __html: blog.body.value }}></div>
-                                <a href={'blog/'+blog.nid} className={styles['read-more']}>Read More</a>
+                                <div className={styles['card-text']}> dangerouslySetInnerHTML={{ __html: blog.body.value }}</div>
+                                <a href={'press-release/'+blog.nid} className={styles['read-more']}>Read More</a>
                             </div>
                             </div>
                             
                         </div>
-                        ))
-                   }
-                    
+                    ))}
                     
                     </div>
 
                     <div className={`${styles["post-button"]} text-center`}>
-                    <a href="/blog-list" className="btn btn-primary">View all posts</a>
+                    <a href="/press-release-list" className="btn btn-primary">View all posts</a>
                     </div>
 
                     
@@ -119,75 +119,65 @@ import { FOOTER_LINKS } from "../../graphql/footer_links"
      )
  }
 
- export const getServerSideProps = async (cp) => {
+
+ export async function getServerSideProps(cp){
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
 
   // Use this for footer
-    const footer  = await client.query({ query: FOOTER_LINKS });
-    let footerData = footer.data.nodeQuery.entities[0];
+  const footer  = await client.query({ query: FOOTER_LINKS });
+  let footerData = footer.data.nodeQuery.entities[0];
 
-   
-    // end
-  
-// Use this for novigation
-const  dataNav2  = await client.query({ query: NAVIGATION });
-const  dataNav1  = await client.query({ query: PARENTMENUITEMS });
-let nav = [];
-let othernav = [];
-if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
-  let submenu = dataNav2.data.nodeQuery.entities[0];
-  let menu = dataNav1.data.taxonomyTermQuery.entities;
-  // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-  // console.log(cp.query.postid);
-  menu.map((m,i)=>{
-    othernav = [];
-    let des = m.description==null?'': m.description.value
-    nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
-    if((i+1)==menu.length){
-      submenu.fieldMultipleMenuItems.map((k,l)=>{
-        if(k.entity.fieldMenuType!=null){
-          nav.filter((o,h)=>{
-            if(k.entity.fieldMenuType.entity.tid == o.tid){
-              o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
-            }
-          });
-        }
-        else{
-          othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
-        }
-      })
-    }
-  });
  
-}
   // end
 
   
-  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.postid} });
-  const data1 = await client.query({ query: BLOGS });
-  if(data.data.nodeQuery.entities.length == 0){
-    // console.log(cp);
-    // Router.push('/blog-list');
-    // window.location.href = "/blog-list";
-    // cp.push('/blog-list');
-  }
-  let entity1 = data.data.nodeQuery.entities[0];
-  let bloglist = data.data.nodeQuery.entities;
-  // let entity2 = data.data.nodeQuery.entities[1];
-  
+   // Use this for novigation
+   const  data2  = await client.query({ query: NAVIGATION });
+   const  data1  = await client.query({ query: PARENTMENUITEMS });
+   const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.id} });
+   const data3 = await client.query({ query: BLOGS });
+   let nav = [];
+   let othernav = [];
+   if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
+     let submenu = data2.data.nodeQuery.entities[0];
+     let menu = data1.data.taxonomyTermQuery.entities;
+   
+     menu.map((m,i)=>{
+       othernav = [];
+       let des = m.description==null?'': m.description.value
+       nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+       if((i+1)==menu.length){
+         submenu.fieldMultipleMenuItems.map((k,l)=>{
+           if(k.entity.fieldMenuType!=null){
+             nav.filter((o,h)=>{
+               if(k.entity.fieldMenuType.entity.tid == o.tid){
+                 o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+               }
+             });
+           }
+           else{
+             othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+           }
+         })
+       }
+     });
+    
+   }
+
+   let entity1 = data.data.nodeQuery.entities[0];
+   let bloglist = data3.data.nodeQuery.entities;
+     // end
  
    return {
-      props: {
+     props: {
         entity1: entity1,
         bloglist: bloglist,
         nav:nav,
         othernav:othernav,
         footerData: footerData
-        // entity2: entity2
-      }
-    }
-
-}
+     }, // will be passed to the page component as props
+   }
+ }
