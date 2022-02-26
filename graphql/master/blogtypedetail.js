@@ -7,6 +7,7 @@ query BLOGTYPEDETAIL($type: String!){
       ... on NodeBlog{
          nid,
         title,
+        fieldShortText
         fieldCategory {
           targetId
           entity{
@@ -52,6 +53,7 @@ query BLOGTYPEDETAIL($type: String!){
             name
           }
         }
+        entityCreated
       }
     }
   }

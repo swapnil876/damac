@@ -142,7 +142,7 @@ function About({entity1, nav, othernav, footerData}) {
       </Head>
 
 
-      {/* <Navbar navigationBar={nav} otherNav={othernav}></Navbar> */}
+      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
 
       <main className="main about-main">
@@ -164,7 +164,7 @@ function About({entity1, nav, othernav, footerData}) {
                  <p>{entity1.fieldDescription2}</p>
 
                  <div className="cta-box text-center mt-5">
-                   <Link href={entity1.fieldButtonUrl}>
+                   <Link href={entity1.fieldButtonUrl!=''?entity1.fieldButtonUrl:''}>
                      <a className="btn btn-primary cta-btn" target="_blank"><span>{entity1.fieldButtonText}</span></a>
                    </Link>
                  </div>
@@ -226,7 +226,7 @@ function About({entity1, nav, othernav, footerData}) {
 
                    <div className="ctabtn-container">
                     <div className="cta-container">
-                      <Link href={entity1.fieldButton3}>
+                      <Link href={entity1.fieldButton3!=''?entity1.fieldButton3:''}>
                         <a className="btn btn-primary cta-btn" target="_blank">
                           <span>{entity1.fieldButton4Text}</span>
                         </a>
