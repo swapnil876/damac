@@ -193,27 +193,27 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
     'enquire': [
         {
           label: 'Sales',
-          url: '/sales-enquire'
+          url: '/contact/sales-enquire'
         },
         {
           label: 'Customer Care',
-          url: '/customer-care'
+          url: '/contact/customer-care'
         },
         {
           label: 'Press and media',
-          url: '#'
+          url: '/contact/press-media'
         },
         {
           label: 'Investor Relations',
-          url: '/investor-relations'
+          url: '/contact/investor-relations'
         },
         {
           label: 'Agent Relations',
-          url: '/agent-relations'
+          url: '/contact/agent-relations'
         },
         {
           label: 'Careers',
-          url: '/careers'
+          url: '/contact/careers'
         },
     ],
   };

@@ -32,7 +32,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
-function Blog({entity1,firstSelect,section1Data,section2Data, nav, othernav, footerData}) {
+function Blog({entity1,firstSelect,section1Data,section2Data, secThreeNewsList, nav, othernav, footerData}) {
  var img_url;
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   var [selectedBlog, setSelectedBlog] = useState(firstSelect);
@@ -134,11 +134,11 @@ function Blog({entity1,firstSelect,section1Data,section2Data, nav, othernav, foo
                   (
                     <div className="col-6 col-md-3">
                       <div className="card">
-                        <img alt="" src={isMobile?m.fieldFeatureImageMobile.url:m.fieldFeatureImageDesktop.url} className="card-img-top"/>
+                        <img alt="" src={isMobile?m.fieldFeatureImageMobile.url:m.fieldFeatureImageDesktop.url} className="squae-img card-img-top"/>
                         <div className="card-body">
                           {/* <span>Customer’s Stories</span> */}
                           <h5 className="card-title">
-                          <Link href="#"><a className="head_link" style={{'fontWeight':'500'}}>{m.title}</a></Link>
+                          <Link href={"/blog" + "/" + m.nid}><a className="head_link" style={{'fontWeight':'500'}}>{m.title}</a></Link>
                           </h5>
                           <p className="card-text">{m.entityCreated} by {m.fieldAuthor!=null?m.fieldAuthor.entity.name:''}</p>
                           
@@ -171,31 +171,40 @@ function Blog({entity1,firstSelect,section1Data,section2Data, nav, othernav, foo
 
       <section className="industry-news bg-light">
         <div className="container">
-          
-
-          <div className="d-flex justify-content-center">
-            <div className="light-title text-center">
-              <h2>Family stories from across the world</h2>
+          <div className="d-flex justify-content-between">
+            <div className="light-title">
+              <h2>{section1Data.fieldHeading3}</h2>
               <p>Discover how the best of the best use DAMAC to find a home</p>
             </div>
-          
+            {
+              deviceIsMobile ? '' :
+              <div>
+              <Link href="/industry-news-list"><a className="btn btn-primary">View all</a></Link>
+            </div>
+            }
+           
           </div>       
-          
           <div className="row">
-            {section2Data.map((m,h)=>(
-              <div className="col-6 col-md-3">
-                <div className="card">
-                  <img alt="" src={isMobile?m.fieldFeatureImageMobile.url:m.fieldFeatureImageDesktop.url} className="card-img-top" />
-                  <div className="card-body">
-                    <h5 className="card-title"><Link href="#"><a>{m.title}</a></Link></h5>
-                    <p className="card-text">{m.entityCreated} by {m.author!=null?m.author.entity.name:''}</p>
-                  
-                  </div>
-                </div>
-              </div>
-            ))}
+            {
+              secThreeNewsList.map((item, index)=>(
+                <div className="col-md-3">
+                <div className="card card-for-news-page">
+                   <img alt={item.title} src={deviceIsMobile ? item.fieldFeatureImageMobile.url : item.fieldThumbnailDesktop.url } className="card-img-top card-img-for-news-page " />
+                   <div className="card-body">
+                     <h5 className="card-title"><Link href={"damac-in-the-news" + "/" + item.nid}><a>{item.title}</a></Link></h5>
+                     <p className="card-text">{item.fieldAuthor.entity.name}</p>
+                   </div>
+                 </div>
+               </div>
+              ))
+            }
           </div>
-
+          {
+              deviceIsMobile ? 
+              <div>
+              <Link href="/industry-news-list"><a className="btn btn-primary">View all</a></Link>
+            </div> : ""
+            }
         </div>
         
       </section>
@@ -263,7 +272,7 @@ export const getServerSideProps = async () => {
 
 
 
-
+  const industryNews  = await client.query({ query: BLOGTYPEDETAIL,variables:{type:'18'} });
   const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:"65"} });
   const section1 = await client.query({ query: BLOGS });
   const section2 = await client.query({ query: BLOGTYPEDETAIL, variables:{type:'18'} });
@@ -272,7 +281,9 @@ export const getServerSideProps = async () => {
   let section1Data = section1.data.nodeQuery.entities;
   let section2Data = section2.data.nodeQuery.entities;
   // let entity2 = data.data.nodeQuery.entities[1];
-  console.log(section1Data);
+  
+
+  let secThreeNewsList = industryNews.data.nodeQuery.entities;
   
   
    return {
@@ -281,6 +292,7 @@ export const getServerSideProps = async () => {
         firstSelect:section1Data[0],
         section1Data:section1Data,
         section2Data:section2Data,
+        secThreeNewsList: secThreeNewsList,
         nav:nav,
         othernav:othernav,
         footerData: footerData,

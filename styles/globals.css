@@ -69,6 +69,7 @@ a:hover {
 .card-img-for-news-page{
     width:100%;
     aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 .img-responsive {
@@ -2265,6 +2266,11 @@ PAGE:  NEWS
 .news-wrap .card img {
     margin-bottom: 9px;
     max-width: 100%;
+}
+.news-wrap .card img.squae-img{
+    width: 100%;
+    aspect-ratio: 268/262;
+    object-fit: cover;
 }
 
 .news-wrap .card-body span,

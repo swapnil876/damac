@@ -19,9 +19,30 @@ import { isMobile } from "react-device-detect";
 
 import * as axios from 'axios';
 
-export default function ContactForm({ initialValues, address , heading}) {
+export default function ContactForm({ selectedOption, initialValues, address , heading}) {
     const [values, setValues] = useState(initialValues);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+
+
+    var typeSelectVar;
+    if(selectedOption == "sales-enquire"){
+       typeSelectVar = "sales-enquire";
+    }
+    if(selectedOption == "customer-care"){
+       typeSelectVar = "customer-care";
+    }
+    if(selectedOption == "press-media"){
+       typeSelectVar = "press-media";
+    }
+    if(selectedOption == "investor-relations"){
+       typeSelectVar = "investor-relations";
+    }
+    if(selectedOption == "agent-relations"){
+       typeSelectVar = "agent-relations";
+    }
+    if(selectedOption == "careers"){
+       typeSelectVar = "careers";
+    }
 
 
   const [firstName, setFirstName] = useState('');
@@ -32,7 +53,7 @@ export default function ContactForm({ initialValues, address , heading}) {
 
   const [email, setEmail] = useState('');
   const [title, setTitle] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState(typeSelectVar);
 
   const [checkBox1, setCheckBox1] = useState('');
   const [checkBox2, setCheckBox2] = useState('');
@@ -224,12 +245,12 @@ export default function ContactForm({ initialValues, address , heading}) {
                                            <div className='input-element select-element'>
 
                                                <select className={ styles['select'] } onChange={()=>{setType(event.target.value)}}>
-                                                   <option className={`${styles["option"]} ${styles["selected"]}`} selected>Sales</option>
-                                                   <option className={`${styles["option"]}`}>Customer care</option>
-                                                   <option className={`${styles["option"]}`}>Press and media</option>
-                                                   <option className={`${styles["option"]}`}>Investor relations</option>
-                                                   <option className={`${styles["option"]}`}>Agent relations</option>
-                                                   <option className={`${styles["option"]}`}>Career</option>
+                                                   <option className={`${styles["option"]} ${styles["selected"]}`} value="sales" selected={selectedOption == "sales-enquire" ? 'selected' : ''}>Sales</option>
+                                                   <option className={`${styles["option"]}`} value="customer care" selected={selectedOption == "customer-care" ? 'selected' : ''}>Customer care</option>
+                                                   <option className={`${styles["option"]}`} value="press media" selected={selectedOption == "press-media" ? 'selected' : ''}>Press and media</option>
+                                                   <option className={`${styles["option"]}`} value="investor relations" selected={selectedOption == "investor-relations" ? 'selected' : ''}>Investor relations</option>
+                                                   <option className={`${styles["option"]}`} value="agent relations" selected={selectedOption == "agent-relation" ? 'selected' : ''}>Agent relations</option>
+                                                   <option className={`${styles["option"]}`} value="career" selected={selectedOption == "vareers" ? 'selected' : ''}>Career</option>
                                                </select>
 
                                            </div>

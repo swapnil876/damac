@@ -110,7 +110,7 @@ function News( {entity1,firstSelect,section1Data,newslist, nav, othernav, secTwo
                 <h2>{newslist.fieldSec2Heading}</h2>
               </div>
               <div>
-                <a href="#" className="border-btn btn" style={deviceIsMobile ? {'border':'0', 'position':'relative', 'top':'5px'} : {}}>View all</a>
+                <a href={`/damac-in-the-news-list`} className="border-btn btn" style={deviceIsMobile ? {'border':'0', 'position':'relative', 'top':'5px'} : {}}>View all</a>
               </div>
             </div>
            
@@ -121,12 +121,12 @@ function News( {entity1,firstSelect,section1Data,newslist, nav, othernav, secTwo
                 secTwoNewsList.map((item, index)=>(
                   <div className="col-md-3">
                   <div className="card ">
-                     <img alt={item.title} src={deviceIsMobile ? item.fieldFeatureImageMobile.url : item.fieldThumbnailDesktop.url } className="card-img-top  card-img-for-damac-in-news" />
+                     <img alt={item.title} src={deviceIsMobile ? item.fieldFeatureImageMobile.url : item.fieldThumbnailDesktop.url } className="squae-img card-img-top card-img-for-damac-in-news" />
                      <div className="card-body">
                        <span>Customer’s Stories</span>
                        <h5 className="card-title">
-                       <Link href="#"><a>{item.title}</a></Link></h5>
-                       <p className="card-text">{item.fieldShortText}</p>
+                       <Link href={"/blog" + "/" + item.nid}><a>{item.title}</a></Link></h5>
+                       <p className="card-text">{item.entityCreated} by {item.fieldAuthor!=null?item.fieldAuthor.entity.name:''}</p>
                      </div>
                    </div>
                  </div>  
@@ -162,7 +162,7 @@ function News( {entity1,firstSelect,section1Data,newslist, nav, othernav, secTwo
                    <img alt={item.title} src={deviceIsMobile ? item.fieldFeatureImageMobile.url : item.fieldThumbnailDesktop.url } className="card-img-top card-img-for-news-page " />
                    <div className="card-body">
                      <h5 className="card-title"><Link href={"damac-in-the-news" + "/" + item.nid}><a>{item.title}</a></Link></h5>
-                     <p className="card-text">{item.fieldShortText}</p>
+                     <p className="card-text">{item.entityCreated} by {item.fieldAuthor!=null?item.fieldAuthor.entity.name:''}</p>
                    </div>
                  </div>
                </div>
@@ -188,7 +188,7 @@ function News( {entity1,firstSelect,section1Data,newslist, nav, othernav, secTwo
               <h2>{newslist.fieldHeading4}</h2>            
             </div>
             <div>
-              <a href="#" className="border-btn btn">View all</a> 
+              <a href="/press-release-list" className="border-btn btn">View all</a> 
             </div>
           </div>
 
@@ -338,6 +338,7 @@ export const getServerSideProps = async () => {
   let secFourNewsList = pressRelease.data.nodeQuery.entities;
   let section1Data = section1.data.nodeQuery.entities;
  
+
    return {
       props: {
         entity1: entity1,
