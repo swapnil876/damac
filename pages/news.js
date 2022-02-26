@@ -30,17 +30,21 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
-function News( {entity1,firstSelect,section1Data,newslist, nav, othernav, secTwoNewsList, secThreeNewsList, secFourNewsList, footerData} ) {
+function News( {entity1,firstSelect, firstPressRelease,section1Data,newslist, nav, othernav, secTwoNewsList, secThreeNewsList, secFourNewsList, footerData, sectionPressRelease} ) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   var [selectedBlog, setSelectedBlog] = useState(firstSelect);
+  var [selectedPress, setSelectedPress] = useState(firstPressRelease);
   useEffect(() => {
     setDeviceIsMobile( true );
    }, [])
 
   function saveBlogItem(m){
-    console.log(m);
     setSelectedBlog(m);
+  }
+
+  function savePressRelease(m){
+    setSelectedPress(m);
   }
 
   return (
@@ -69,11 +73,11 @@ function News( {entity1,firstSelect,section1Data,newslist, nav, othernav, secTwo
              <div className="row">
                <div className="col-md-8">
                <div className="primary-cta">
-                 <img alt="" src={isMobile?selectedBlog.fieldFeatureImageMobile.url:selectedBlog.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
+                 <img alt="" src={deviceIsMobile?selectedBlog.fieldFeatureImageMobile.url:selectedBlog.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
                  <label>{selectedBlog.fieldTag.entity.name}</label>
-                 <h1>
-                 <Link href="#"><a>{selectedBlog.title}</a></Link>
-                 </h1>
+                 <h2 className="txt_black">
+                 <Link href={"blog" + "/" + selectedBlog.nid }><a>{selectedBlog.title}</a></Link>
+                 </h2>
                  <div dangerouslySetInnerHTML={{ __html: selectedBlog.body.value }}></div>
                </div>
              </div>
@@ -125,7 +129,7 @@ function News( {entity1,firstSelect,section1Data,newslist, nav, othernav, secTwo
                      <div className="card-body">
                        <span>Customer’s Stories</span>
                        <h5 className="card-title">
-                       <Link href={"/blog" + "/" + item.nid}><a>{item.title}</a></Link></h5>
+                       <Link href={"/damac-in-the-news" + "/" + item.nid}><a>{item.title}</a></Link></h5>
                        <p className="card-text">{item.entityCreated} by {item.fieldAuthor!=null?item.fieldAuthor.entity.name:''}</p>
                      </div>
                    </div>
@@ -193,41 +197,33 @@ function News( {entity1,firstSelect,section1Data,newslist, nav, othernav, secTwo
           </div>
 
           <div className="row">
-            <div className="col-md-8">            
-              <div className="press-release">
-                <img alt=""src="/images/news/Rectangle 146.png" className="img-fluid full-width" />
-                <span className="tag-label">Tag Label</span>
-                <h2>2020 in Review: DAMAC Apps in Facts and Numbers</h2>
-                <p>December 30 • Lin Manuel</p>
-              </div>
-            </div>
+          <div className="col-md-8">
+               <div className="primary-cta">
+                 <img alt="" src={deviceIsMobile?selectedPress.fieldFeatureImageMobile.url:selectedPress.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
+                 {selectedPress.fieldTag &&
+                  <label>{selectedPress.fieldTag.entity.name}</label>
+                  }
+                 <h1 className="txt_white" style={selectedPress.fieldTag ? {} : {'marginTop' : '15px'}}>
+                 <a href={ 'blog' + '/' + selectedPress.nid}>{selectedPress.title}</a>
+                 </h1>
+                 <div dangerouslySetInnerHTML={{ __html: selectedPress.body.value }}></div>
+               </div>
+             </div>
             <div className="col-md-4">
-              
               <div className="damac-latest-news">
                 <div className="sidebar-title">
-                <h3>Most read</h3>
-                          
+                <h3>Most read</h3>    
               </div>
-              <div className="news">
-                <span className='tag-label'>Tag</span>
-                <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                <p> 21/12 2020 by The Guardian </p>              
-              </div>
-              <div className="news">
-                <span>Tag</span>
-                <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                <p> 21/12 2020 by The Guardian </p>              
-              </div>
-              <div className="news">
-                <span>Tag</span>
-                <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                <p> 21/12 2020 by The Guardian </p>              
-              </div>
-              <div className="news">
-                <span>Tag</span>
-                <h6><Link href="#"><a>How We Determine Variable Property Rates</a></Link></h6>
-                <p> 21/12 2020 by The Guardian </p>              
-              </div>
+
+              {
+                   sectionPressRelease.map((m,n)=>(
+                    <div className="news" key={n}>
+                    <span className='tag-label'>{m.fieldTag!=null?m.fieldTag.entity.name:''}</span>
+                    <h6><a onClick={()=>{savePressRelease(m)}}>{m.title}</a></h6>
+                    <p> {m.entityCreated} by {m.fieldAuthor!=null?m.fieldAuthor.entity.name:''} </p>              
+                    </div>
+                   ))
+                 }
             </div>       
 
             </div>
@@ -336,14 +332,17 @@ export const getServerSideProps = async () => {
   let secTwoNewsList = newsData.data.nodeQuery.entities;
   let secThreeNewsList = industryNews.data.nodeQuery.entities;
   let secFourNewsList = pressRelease.data.nodeQuery.entities;
-  let section1Data = section1.data.nodeQuery.entities;
+  let section1Data = section1.data.nodeQuery.entities;  
+  const sectionPressRelease = pressRelease.data.nodeQuery.entities;
  
 
    return {
       props: {
         entity1: entity1,
         firstSelect:section1Data[0],
+        firstPressRelease: sectionPressRelease[0],
         section1Data:section1Data,
+        sectionPressRelease: sectionPressRelease,
         newslist:newslist,
         nav:nav,
        othernav:othernav,

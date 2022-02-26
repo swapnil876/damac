@@ -81,7 +81,7 @@ function Blog({entity1,firstSelect,section1Data,section2Data, secThreeNewsList, 
                  <img alt="" src={isMobile?selectedBlog.fieldFeatureImageMobile.url:selectedBlog.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
                  <label>{selectedBlog.fieldCategory.entity.name}</label>
                  <h1>
-                 <Link href="#"><a>{selectedBlog.title}</a></Link>
+                 <Link href={"blog" + "/" + selectedBlog.nid }><a>{selectedBlog.title}</a></Link>
                  </h1>
                  <div dangerouslySetInnerHTML={{ __html: selectedBlog.body.value }}></div>
                </div>
@@ -284,7 +284,6 @@ export const getServerSideProps = async () => {
   
 
   let secThreeNewsList = industryNews.data.nodeQuery.entities;
-  
   
    return {
       props: {

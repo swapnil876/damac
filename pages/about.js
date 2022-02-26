@@ -142,12 +142,10 @@ function About({entity1, nav, othernav, footerData}) {
       </Head>
 
 
-      {/* <Navbar navigationBar={nav} otherNav={othernav}></Navbar> */}
-
+      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
 
       <main className="main about-main">
-       
-
+      
       {/* <iframe src={entity1.fieldMainImageVideoDesktop.entity.url} class="aboutus-iframe-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> */}
 
        <AboutBanner entity1={entity1} responsiveHeights={ deviceIsMobile ? '100vh' : '' } bannerImage={ deviceIsMobile ? entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop.url}></AboutBanner>

@@ -151,7 +151,7 @@ export const getServerSideProps = async () => {
   let blogs = [];
   entitiy.map((v,i)=>{
    
-    blogs.push({title:v.title,url:'/damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body.value,  author: v.fieldAuthor.entity.name, tag: v.fieldTag.entity.name})
+    blogs.push({title:v.title,url:'/damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body.value,  author: v.fieldAuthor.entity.name, tag: v.fieldTag && v.fieldTag.entity.name})
   });
   // const blogs = [
   //     {

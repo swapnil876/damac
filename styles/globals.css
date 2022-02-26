@@ -2113,10 +2113,16 @@ PAGE:  NEWS
     letter-spacing: 0em;
     margin-bottom: 8px !important;
 }
-
+.txt_black{
+    color: #111
+}
+.txt_white{
+    color:#fff
+}
 .primary-cta h2 a,
 .primary-cta h1 a {
     font-weight: 500;
+    cursor: pointer;
 }
 
 .primary-cta label {
@@ -2145,6 +2151,7 @@ PAGE:  NEWS
 
 .news h6 a {
     font-weight: 500;
+    cursor: pointer;
 }
 
 .news p {

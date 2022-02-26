@@ -24,7 +24,8 @@ export default function ContactForm({ selectedOption, initialValues, address , h
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
 
 
-    var typeSelectVar;
+    var titleSelectVar = "Mr"
+    var typeSelectVar = "sales-enquire";
     if(selectedOption == "sales-enquire"){
        typeSelectVar = "sales-enquire";
     }
@@ -52,7 +53,7 @@ export default function ContactForm({ selectedOption, initialValues, address , h
   const [countryCode, setCountryCode] = useState('');
 
   const [email, setEmail] = useState('');
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState(titleSelectVar);
   const [type, setType] = useState(typeSelectVar);
 
   const [checkBox1, setCheckBox1] = useState('');
@@ -299,8 +300,8 @@ export default function ContactForm({ selectedOption, initialValues, address , h
                                            <div className='input-element select-element'>
 
                                                <select name='gender' onChange={()=>{setTitle(event.target.value)}} className={ styles['select'] }>
-                                                   <option className={`${styles["option"]} ${styles["selected"]}`}>Mr</option>
-                                                   <option className={`${styles["option"]} ${styles["selected"]}`}>Miss</option>
+                                                   <option className={`${styles["option"]} ${styles["selected"]}`} value="Mr" selected>Mr</option>
+                                                   <option className={`${styles["option"]} ${styles["selected"]}`} value="Miss">Miss</option>
                                                </select>
 
                                                <label className={`custom-floating-label ${values.gender && 'filled'}`} htmlFor={'gender'}>Select title</label>
