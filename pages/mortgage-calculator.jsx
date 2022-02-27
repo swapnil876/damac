@@ -29,6 +29,21 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
  function MortgageCalculator({entity1, nav, othernav, footerData}) {
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  const [loanSlider, setLoanSlider] = useState(25);
+  const [rangeSlider, setRangeSlider] = useState(25);
+  const mortageItemObject = {
+    propertyPrice : 800000,
+    interestRate : 2.49,
+    downPayment : 25,
+    loanPeriod : 25
+  }
+ 
+  const [departmentFee, setDepartmentFee ] = useState(null);
+  const [registrationFee, setRegistrationFee ] = useState(null);
+  const [mortgageRegistrationFee, setMortgageRegistrationFee ] = useState(null);
+  const [valuationFee, setValuationFee ] = useState(null);
+
+  const [mortgageCalItems, setMortgageCalItems] = useState(mortageItemObject);
 
     useEffect(() => {
         import("bootstrap/dist/js/bootstrap");
@@ -37,6 +52,13 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
           setDeviceIsMobile( true );
         }
       }, []);
+
+      function mortgageCalculator(){
+        var loanAmt, deptFee, regFee, mortRegFee, valFee;
+
+        // loanAmt = (propertyPrice - ((propertyPrice * 100) / 5));
+        // deptFee = ((propertyPrice * 100) / 5) + 580);
+      }
 
   return (
     <div className='MortgageCalculatorbody'>
@@ -65,29 +87,31 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                         <div className="row">
                           <div className="col-md-6">
                           <div className={`${styles["price"]} ${styles["border-white"]}`}>
-                            <p><span>Property Price</span></p>
-                            <p><span className="currency">AED </span> 120,000 <span className="text-right dark get_estimate_box_arrows left_right"><FaAngleLeft style={{'margin': '0 10px 0 0'}}/><FaAngleRight/></span></p> 
+                            <p><span>Property Price</span> <span className="float-end">AED</span></p>
+                            <p><input type="text" class="mortgage_invidible_input currency" value={mortgageCalItems.propertyPrice} onChange={()=>{ mortgageCalculator(), setMortgageCalItems((prev)=>{return prev.propertyPrice = parseInt(event.target.value)})}} /> <span className="text-right dark get_estimate_box_arrows left_right"><FaAngleLeft style={{'margin': '0 10px 0 0'}}/><FaAngleRight/></span></p> 
                         </div>
                           </div>
                           <div className="col-md-6">
                           <div className={`${styles["rate"]} ${styles["border-white"]}`}>
                             <p><span>Interest Rate</span> <span className="float-end">%</span>  </p>
-                            <p>1.99 <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}}/><FaMinus/></span></p> 
+                            <p><input type="text" class="mortgage_invidible_input" value={mortgageCalItems.interestRate} onChange={()=>{ mortgageCalculator(), setMortgageCalItems((prev)=>{return prev.interestRate = parseInt(event.target.value)})}} /> <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}}/><FaMinus/></span></p> 
                         </div>
                           </div>
                           <div className="col-md-6">
                           <div className={`${styles["down-payment"]} ${styles["border-white"]}`}>
                             <p><span>Down Payment</span> <span className="float-end">%</span></p> 
-                            <p>25  </p> 
-                            <input type="range" className={styles['range-slider']} />
+                            <p>{rangeSlider} </p> 
+                            <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ mortgageCalculator(), setRangeSlider(event.target.value), 
+                              setMortgageCalItems((prev)=>{return prev.downPayment=event.target.value})}}/>
                             </div>
                           </div>
                          
                           <div className="col-md-6">
                           <div className={`${styles["loan"]} ${styles["border-white"]}`}>
                             <p><span>Loan Period</span> <span className="float-end">Y R S</span></p>
-                            <p> 5</p> 
-                            <input type="range" className={styles['range-slider']} />
+                            <p> {loanSlider}</p> 
+                            <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{mortgageCalculator(), setLoanSlider(event.target.value), 
+                            setMortgageCalItems((prev)=>{return prev.loanPeriod=event.target.value})}} />
                             </div>
                           </div>
                           </div>          
@@ -288,7 +312,7 @@ export const getServerSideProps = async () => {
      menu.map((m,i)=>{
        othernav = [];
        let des = m.description==null?'': m.description.value
-       nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+       nav.push({name:m.name,tid:m.tid,submenu:[],link:des,isOpen:false});
        if((i+1)==menu.length){
          submenu.fieldMultipleMenuItems.map((k,l)=>{
            if(k.entity.fieldMenuType!=null){

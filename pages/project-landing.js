@@ -558,7 +558,7 @@ export const getServerSideProps = async (cp) => {
        
         menu.map((m,i)=>{
           othernav = [];
-          nav.push({name:m.name,tid:m.tid,submenu:[],link:m.description.value});
+          nav.push({name:m.name,tid:m.tid,submenu:[],link:m.description.value,isOpen:false});
           if((i+1)==menu.length){
             submenu.fieldMultipleMenuItems.map((k,l)=>{
               if(k.entity.fieldMenuType!=null){

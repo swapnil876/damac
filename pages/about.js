@@ -514,7 +514,7 @@ export const getStaticProps = async () => {
     menu.map((m,i)=>{
       othernav = [];
       let des = m.description==null?'': m.description.value
-      nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+      nav.push({name:m.name,tid:m.tid,submenu:[],link:des,isOpen:false});
       if((i+1)==menu.length){
         submenu.fieldMultipleMenuItems.map((k,l)=>{
           if(k.entity.fieldMenuType!=null){

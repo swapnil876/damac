@@ -61,7 +61,7 @@ export default function BlogCardItem( { className, cardDetails  } ) {
           <div className={`${styles['dateandauthor']}`}>
             <span className='posted-date'>{cardDetails.date}</span>
             <span className='by-text'>by</span>
-            <span className='posted-by-author'>{cardDetails.author}</span>
+            <span className='posted-by-author'>{(cardDetails.author && cardDetails.author != null) && cardDetails.author}</span>
           </div>
         </div>
 
