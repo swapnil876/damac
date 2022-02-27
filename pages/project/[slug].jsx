@@ -1180,8 +1180,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                               <div className={style['payment-wrap']}>
                                 <img src="/damac-static/images/wallet 1.png" className="img-fluid"/>
-                                <h2>Payment Plan</h2>
-                                <p>Get simple and transparent Financial plan</p>
+                                <h2>{entity1.fieldPaymentPlanHeading}</h2>
+                                <p>{entity1.fieldPaymentPlanSubheading}</p>
                               </div>
                             </button>
                           </h2>
@@ -1196,72 +1196,15 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                       </tr>
                                     </thead>
                                     <tbody className={style['t_body']}>
-                                        <tr>
-                                          <td>Deposit</td>
-                                          <td></td>
-                                          <td className='payment_col'>14</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-
-                                          <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-                                          <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>   <tr>
-                                          <td>1st Installment</td>
-                                          <td>Within 90 days of sale date</td>
-                                          <td className='payment_col'>12.5</td>
-                                        </tr>
-
+                                        {
+                                          entity1.fieldMultipleInstallmentsP.map((item, index)=>(
+                                            <tr>
+                                            <td>{item.entity.fieldInstallment}</td>
+                                            <td>{item.entity.fieldMilestone}</td>
+                                            <td className='payment_col'>{item.entity.fieldPayment}</td>
+                                            </tr>
+                                          ))
+                                        }
                                     </tbody>                         
                               </table>
                             </div>
@@ -1935,6 +1878,10 @@ export const getServerSideProps = async (cp) => {
     // end
   const data = await client.query({ query: PROJECTDETAIL, variables:{id:cp.query.slug} });
   let entity1 = data.data.nodeQuery.entities[0];
+
+
+console.log("entity1.fieldMultipleInstallmentsP",  entity1.fieldMultipleInstallmentsP);
+
   return {
     props: {
       entity1: entity1,
