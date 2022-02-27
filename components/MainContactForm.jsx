@@ -359,8 +359,7 @@ export default function ContactForm({ selectedOption, initialValues, address , h
                            <div className={`form-row form-row-2`}>
                                <div className={`form-item-col`}>
                                    <div className={`${styles["form-feild"]} ${styles["form-check-cust"]} form-check`} style={{'display':'flex'}}>
-                                       <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChange={()=>{setCheckBox1("news"), 
-                                    console.log("ufuvjhvjhvfjhvcjvcjhvcjhvcjccvjsvch")}} />
+                                       <input className={styles['form-check-input']} type="checkbox" value="news-and-offers" id="flexCheckChecked" onChange={()=>{setCheckBox1("news")}} />
                                        <label className={styles['form-check-label']} for="flexCheckChecked">
                                            I’d like to hear about news and offers
                                        </label>

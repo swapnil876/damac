@@ -28,36 +28,92 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
  function MortgageCalculator({entity1, nav, othernav, footerData}) {
 
+  useEffect(() => {
+    import("bootstrap/dist/js/bootstrap");
+
+    if ( isMobile ) {
+      setDeviceIsMobile( true );
+    }
+
+    mortgageCalculator();
+    callDownPaymentPrice();
+  }, []);
+
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   const [loanSlider, setLoanSlider] = useState(25);
   const [rangeSlider, setRangeSlider] = useState(25);
-  const mortageItemObject = {
-    propertyPrice : 800000,
-    interestRate : 2.49,
-    downPayment : 25,
-    loanPeriod : 25
-  }
+
+  const [downPaymentPrice, setDownPaymentPrice] = useState(0);
+  // const mortageItemObject = {
+  //   propertyPrice : 800000,
+  //   interestRate : 2.49,
+  //   downPayment : 25,
+  //   loanPeriod : 25
+  // }
  
+  // Fees section fields here
   const [departmentFee, setDepartmentFee ] = useState(null);
   const [registrationFee, setRegistrationFee ] = useState(null);
   const [mortgageRegistrationFee, setMortgageRegistrationFee ] = useState(null);
   const [valuationFee, setValuationFee ] = useState(null);
 
-  const [mortgageCalItems, setMortgageCalItems] = useState(mortageItemObject);
+  // const [mortgageCalItems, setMortgageCalItems] = useState(mortageItemObject);
 
-    useEffect(() => {
-        import("bootstrap/dist/js/bootstrap");
 
-        if ( isMobile ) {
-          setDeviceIsMobile( true );
-        }
-      }, []);
+  // Main values here
+  const [propertyPrice, setPropertyPrice] = useState(800000);
+  const [interestRate, setInterestRate] = useState(2.49);
+  const [downPayment, setDownPayment] = useState(25);
+  const [loanPeriod, setLoanPeriod] = useState(25);
 
+
+  // Form binding
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [checkBox1, setCheckBox1] = useState('');
+  const [checkBox2, setCheckBox2] = useState('');
+
+      function callDownPaymentPrice(){
+        var totPrice = (propertyPrice * downPayment) / 100 ;
+        setDownPaymentPrice(totPrice);
+      }
       function mortgageCalculator(){
         var loanAmt, deptFee, regFee, mortRegFee, valFee;
 
-        // loanAmt = (propertyPrice - ((propertyPrice * 100) / 5));
-        // deptFee = ((propertyPrice * 100) / 5) + 580);
+        loanAmt = (propertyPrice - ((propertyPrice * 5) / 100));
+        deptFee = ((propertyPrice * 5) / 100) + 580;
+        regFee = (propertyPrice > 500000) ? (4000 + ((propertyPrice * 5) / 100)) : (2000 + ((propertyPrice * 5) / 100)); 
+        mortRegFee = ((loanAmt * 0.5) / 100) + 10;
+        valFee = ((propertyPrice * 5) / 100) + 3000;
+
+        setDepartmentFee(deptFee);
+        setRegistrationFee(regFee);
+        setMortgageRegistrationFee(mortRegFee);
+        setValuationFee(valFee);
+      }
+
+      function handleFormSubmit(){
+        if(!firstName){
+            setFirstName("null");
+        }
+        if(!lastName){
+            setLastName("null");
+        }
+
+        if(!email){
+            setEmail("null");
+        }
+        if(!phoneNumber){
+            setPhoneNumber("null");
+        } 
+        if(!checkBox1){
+            setCheckBox1("null");
+        }  
+        if(!checkBox2){
+            setCheckBox2("null");
+        }
       }
 
   return (
@@ -88,21 +144,21 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                           <div className="col-md-6">
                           <div className={`${styles["price"]} ${styles["border-white"]}`}>
                             <p><span>Property Price</span> <span className="float-end">AED</span></p>
-                            <p><input type="text" class="mortgage_invidible_input currency" value={mortgageCalItems.propertyPrice} onChange={()=>{ mortgageCalculator(), setMortgageCalItems((prev)=>{return prev.propertyPrice = parseInt(event.target.value)})}} /> <span className="text-right dark get_estimate_box_arrows left_right"><FaAngleLeft style={{'margin': '0 10px 0 0'}}/><FaAngleRight/></span></p> 
+                            <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className="text-right dark get_estimate_box_arrows left_right"><FaAngleLeft style={{'margin': '0 10px 0 0'}}/><FaAngleRight/></span></p> 
                         </div>
                           </div>
                           <div className="col-md-6">
                           <div className={`${styles["rate"]} ${styles["border-white"]}`}>
                             <p><span>Interest Rate</span> <span className="float-end">%</span>  </p>
-                            <p><input type="text" class="mortgage_invidible_input" value={mortgageCalItems.interestRate} onChange={()=>{ mortgageCalculator(), setMortgageCalItems((prev)=>{return prev.interestRate = parseInt(event.target.value)})}} /> <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}}/><FaMinus/></span></p> 
+                            <p><input type="text" class="mortgage_invidible_input" value={interestRate} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}}/><FaMinus/></span></p> 
                         </div>
                           </div>
                           <div className="col-md-6">
                           <div className={`${styles["down-payment"]} ${styles["border-white"]}`}>
                             <p><span>Down Payment</span> <span className="float-end">%</span></p> 
                             <p>{rangeSlider} </p> 
-                            <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ mortgageCalculator(), setRangeSlider(event.target.value), 
-                              setMortgageCalItems((prev)=>{return prev.downPayment=event.target.value})}}/>
+                            <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value), 
+                              setDownPayment(event.target.value)}}/>
                             </div>
                           </div>
                          
@@ -110,8 +166,8 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                           <div className={`${styles["loan"]} ${styles["border-white"]}`}>
                             <p><span>Loan Period</span> <span className="float-end">Y R S</span></p>
                             <p> {loanSlider}</p> 
-                            <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{mortgageCalculator(), setLoanSlider(event.target.value), 
-                            setMortgageCalItems((prev)=>{return prev.loanPeriod=event.target.value})}} />
+                            <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                            setLoanPeriod(event.target.value)}} />
                             </div>
                           </div>
                           </div>          
@@ -125,20 +181,21 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                         <div className="col-md-6">
                         <div className={`${styles["price"]} ${styles["border-white"]}`}>
                           <p><span>Property Price</span></p>
-                          <p><span className="currency">AED </span> 120,000 <span className="text-right dark get_estimate_box_arrows left_right"><FaAngleLeft style={{'margin': '0 10px 0 0'}}/><FaAngleRight/></span></p> 
+                          <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className="text-right dark get_estimate_box_arrows left_right"><FaAngleLeft style={{'margin': '0 10px 0 0'}}/><FaAngleRight/></span></p> 
                       </div>
                         </div>
                         <div className="col-md-6">
                         <div className={`${styles["down-payment"]} ${styles["border-white"]}`}>
                           <p><span>Down Payment</span> <span className="float-end">%</span></p> 
-                          <p>25  </p> 
-                          <input type="range" className={styles['range-slider']} />
+                          <p>{rangeSlider}  </p> 
+                          <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value), 
+                           setDownPayment(event.target.value)}}/>
                           </div>
                         </div>
                         <div className="col-md-6">
                         <div className={`${styles["rate"]} ${styles["border-white"]}`}>
                           <p><span>Interest Rate</span> <span className="float-end">%</span>  </p>
-                          <p>1.99 <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}}/><FaMinus/></span></p> 
+                          <p><input type="text" class="mortgage_invidible_input" value={interestRate} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}}/> <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}}/><FaMinus/></span></p> 
                       </div>
                         </div>
                      
@@ -146,8 +203,9 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                         <div className="col-md-6">
                         <div className={`${styles["loan"]} ${styles["border-white"]}`}>
                           <p><span>Loan Period</span> <span className="float-end">Y R S</span></p>
-                          <p> 5</p> 
-                          <input type="range" className={styles['range-slider']} />
+                          <p> {loanSlider}</p> 
+                          <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                          setLoanPeriod(event.target.value)}}/>
                           </div>
                         </div>
                         </div>          
@@ -159,22 +217,22 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                     <div className={styles['calculator-cost']}>
                         <h4>Cost Breakdown</h4>
                         <ul className={`list-unstyled p-0 ${styles["cost_breakdown"]}`}>
-                        <li><span className={styles['text-left']}>60 months of</span> <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>AED</span> 120,000</span></li>
-                        <li><span className={styles['text-left']}>Down Payment</span>  <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>AED</span> 30,000</span></li>
-                        <li><span className={styles['text-left']}>With Interest rate of</span>  <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>%</span>2.56</span></li>
-                        <li><span className={styles['text-left']}>For Years</span> <span className={styles['right_side_txt']}>5</span></li>
+                        <li><span className={styles['text-left']}>60 months of</span> <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>AED</span> {propertyPrice}</span></li>
+                        <li><span className={styles['text-left']}>Down Payment</span>  <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>AED</span> {downPaymentPrice}</span></li>
+                        <li><span className={styles['text-left']}>With Interest rate of</span>  <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>%</span>{interestRate}</span></li>
+                        <li><span className={styles['text-left']}>For Years</span> <span className={styles['right_side_txt']}>{loanPeriod}</span></li>
                         </ul>
                         <div className={`${styles["fees_main"]} ${styles["fees_main_for_mortgage_cal_page"]}`}>
                         <h4>Fees</h4>
                         <ul className="list-unstyled p-0">
-                          <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> 120,000</li>
-                          <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> 120,000</li>
-                          <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> 120,000</li>
-                          <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><span className={styles['opaque_txt']}>AED</span> 120,000</li>
+                          <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> {departmentFee}</li>
+                          <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> {registrationFee}</li>
+                          <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> {mortgageRegistrationFee}</li>
+                          <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><span className={styles['opaque_txt']}>AED</span> {valuationFee}</li>
                         </ul>
                         </div>
                         <div className={styles['enquir_btn']}>
-                        <a href="#">Enquire Now</a>
+                        <a onClick={()=>{handleFormSubmit()}} style={{'color':'#111'}}>Enquire Now</a>
                         </div>
                     </div>
                     </div>
@@ -194,36 +252,42 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                         <div className="row">
                             <div className="col-md-5">
                             <div className={styles['form-field']}>
-                                <input type="text" placeholder="First Name" value="John" className="form-control" />
+                                <input type="text" placeholder="First Name" value="" className="form-control" onChange={()=>{setFirstName(event.target.value)}}/>
+                                <p className='form_err_msg'>{firstName=="null" && "Enter First Name"}</p>
                             </div>
                             </div>
                             <div className="col-md-5">
                             <div className={styles['form-field']}>
-                                <input type="text" placeholder="First Name" value="Krasinki" className="form-control" />
+                                <input type="text" placeholder="Last Name" value="" className="form-control" onChange={()=>{setLastName(event.target.value)}}/>
+                                <p className='form_err_msg'>{lastName=="null" && "Enter Last Name"}</p>
                             </div>
                             </div>
                             <div className="col-md-5">
                             <div className={styles['form-field']}>
-                                <input type="text" placeholder="Mobile number" className="form-control" />
+                                <input type="text" placeholder="Mobile number" className="form-control" onChange={()=>{setPhoneNumber(event.target.value)}}/>
+                                <p className='form_err_msg'>{phoneNumber=="null" && "Enter Phone Number"}</p>
                             </div>
                             </div>
                             <div className="col-md-5">
                             <div className={styles['form-field']}>
-                                <input type="text" placeholder="Email" className="form-control" />
+                                <input type="text" placeholder="Email" className="form-control" onChange={()=>{setEmail(event.target.value)}} />
+                                <p className='form_err_msg'>{email=="null" && "Enter Email ID"}</p>
                             </div>
                             </div>
                             <div className="col-md-12 checkbox_main">
                             <div className={`${styles["form-field"]} form-check`} style={{'padding-left':'0'}}>                    
-                                <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked" />
+                                <input className={styles['form-check-input']} type="checkbox" value="news-offers" id="flexCheckChecked" onChange={()=>{setCheckBox2(event.target.value)}} />
                                 <label className={styles['form-check-label']} for="flexCheckChecked">
                                 I’d like to hear about news and offers
-                                </label>                    
+                                </label> 
+                                <p className='form_err_msg'>{checkBox1=="null" && "Please check this"}</p>                   
                             </div>
                             <div className={`${styles["form-field"]} form-check`} style={{'padding-left':'0'}}>                    
-                                <input className={styles['form-check-input']} type="checkbox" value="" id="flexCheckChecked2" />
+                                <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked2" onChange={()=>{setCheckBox2(event.target.value)}} />
                                 <label className={styles['form-check-label']} for="flexCheckChecked2">
                                 I’ve read and agree to the Privacy Policy
-                                </label>                    
+                                </label> 
+                                <p className='form_err_msg'>{checkBox2=="null" && "Please check this"}</p>                   
                             </div>
 
                            { 
@@ -231,7 +295,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                              : 
                              <div className="col-md-5">
                              <div className={styles['form-field']}>
-                                 <input type="submit" value="Enquire Now" className="form-submit" />
+                                 <input type="submit" value="Enquire Now" className="form-submit" onClick={()=>{handleFormSubmit()}}/>
                              </div>
                              </div> 
                            }
