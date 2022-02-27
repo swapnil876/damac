@@ -143,6 +143,7 @@ export const getServerSideProps = async () => {
   entitiy.map((v,i)=>{
     
     blogs.push({title:v.title,url:'/blog/'+v.nid,imageUrl: v.fieldThumbnailDesktop && v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.fieldShortText, author: (v.fieldAuthor && v.fieldAuthor!=null) ? v.fieldAuthor.entity.name : '', tag: (v.fieldTag && v.fieldTag != null) ? v.fieldTag.entity.name : ''})
+  });
 
   return {
     props: {
@@ -153,5 +154,4 @@ export const getServerSideProps = async () => {
        footerData: footerData
     }, // will be passed to the page component as props
   }
-}
 }
