@@ -26,6 +26,8 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
+import * as axios from 'axios';
+
  function MortgageCalculator({entity1, nav, othernav, footerData}) {
 
   useEffect(() => {
@@ -94,7 +96,8 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
         setValuationFee(valFee);
       }
 
-      function handleFormSubmit(){
+      async function handleFormSubmit(){
+        let token = '';
         if(!firstName){
             setFirstName("null");
         }
@@ -114,6 +117,76 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
         if(!checkBox2){
             setCheckBox2("null");
         }
+
+        let data = {
+          title:'',
+          firstName:firstName,
+          lastName:lastName,
+          email:email,
+          phoneNumber:phoneNumber,
+          countryCode:'',
+          country:"",
+          acceptPrivacyP:checkBox1,
+          newsAndOffers:checkBox2,
+          campaignId:"a120Y000000uLMj",
+          utmSource:"",
+          utmMedium:"",
+          utmCampaign:"",
+          webSource:"",
+          adGroup:"",
+          campaignNameHOD:"",
+          goal:"",
+          digitalSource:"",
+          channelCluster:"",
+          bannerSize:"",
+          keyword:"",
+          placement:"",
+          adPosition:"",
+          matchType:"",
+          network:"",
+          bidType:"",
+          GCLID:"",
+          fbclid:"",
+          adid:"",
+          refid:"",
+          leadSource:"Digital",
+          lastMileConversion:"Contact Us",
+          device:"",
+          projectName:"",
+          os:"",
+          resolution:"",
+          browser:"",
+          ga_client_id:"",
+          fbid:"",
+          timeSpentbeforeFormSubmit:"",
+          ipAddress:"",
+          landingPageURL:"",
+          fullLandingPageUrl:"",
+          websiteLanguage:"",
+          countryNameSync:"",
+          citySync:"",
+          city:"",
+          countryCodeSync:"",
+          user_agent:""
+        }    
+        await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'applicationjson',
+              "Access-Control-Allow-Origin": "*"
+            }
+        })
+      .then((res)=>{
+        token = res.data.access_token;
+      })
+      .catch((er)=>{
+        console.log(er);
+      })
+      await axios.post('https://stg- lqsapp.damacgroup.com',{
+      headers:{
+          'Authorization':token
+      }},data).then(function(res){
+        console.log(res);
+      })
       }
 
   return (
@@ -252,42 +325,48 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                         <div className="row">
                             <div className="col-md-5">
                             <div className={styles['form-field']}>
-                                <input type="text" placeholder="First Name" value="" className="form-control" onChange={()=>{setFirstName(event.target.value)}}/>
-                                <p className='form_err_msg'>{firstName=="null" && "Enter First Name"}</p>
+                                <input type="text" placeholder="First Name" className="form-control" onChange={()=>{setFirstName(event.target.value)}}/>
+                                <p className='form_err_msg mortgage_form_err_msg'>{firstName=="null" && "Enter First Name"}</p>
                             </div>
                             </div>
                             <div className="col-md-5">
                             <div className={styles['form-field']}>
-                                <input type="text" placeholder="Last Name" value="" className="form-control" onChange={()=>{setLastName(event.target.value)}}/>
-                                <p className='form_err_msg'>{lastName=="null" && "Enter Last Name"}</p>
+                                <input type="text" placeholder="Last Name" className="form-control" onChange={()=>{setLastName(event.target.value)}}/>
+                                <p className='form_err_msg mortgage_form_err_msg'>{lastName=="null" && "Enter Last Name"}</p>
                             </div>
                             </div>
                             <div className="col-md-5">
                             <div className={styles['form-field']}>
                                 <input type="text" placeholder="Mobile number" className="form-control" onChange={()=>{setPhoneNumber(event.target.value)}}/>
-                                <p className='form_err_msg'>{phoneNumber=="null" && "Enter Phone Number"}</p>
+                                <p className='form_err_msg mortgage_form_err_msg'>{phoneNumber=="null" && "Enter Phone Number"}</p>
                             </div>
                             </div>
                             <div className="col-md-5">
                             <div className={styles['form-field']}>
                                 <input type="text" placeholder="Email" className="form-control" onChange={()=>{setEmail(event.target.value)}} />
-                                <p className='form_err_msg'>{email=="null" && "Enter Email ID"}</p>
+                                <p className='form_err_msg mortgage_form_err_msg'>{email=="null" && "Enter Email ID"}</p>
                             </div>
                             </div>
                             <div className="col-md-12 checkbox_main">
                             <div className={`${styles["form-field"]} form-check`} style={{'padding-left':'0'}}>                    
-                                <input className={styles['form-check-input']} type="checkbox" value="news-offers" id="flexCheckChecked" onChange={()=>{setCheckBox2(event.target.value)}} />
+                                <input className={styles['form-check-input']} type="checkbox" value="news-offers" id="flexCheckChecked" onChange={()=>{setCheckBox1(event.target.value)}} />
                                 <label className={styles['form-check-label']} for="flexCheckChecked">
                                 I’d like to hear about news and offers
                                 </label> 
-                                <p className='form_err_msg'>{checkBox1=="null" && "Please check this"}</p>                   
+                                {
+                                checkBox1=="null" && 
+                                <p className='form_err_msg mortgage_form_err_msg'>{checkBox1=="null" && "Please check this"}</p>                   
+                                }
                             </div>
                             <div className={`${styles["form-field"]} form-check`} style={{'padding-left':'0'}}>                    
                                 <input className={styles['form-check-input']} type="checkbox" value="agree" id="flexCheckChecked2" onChange={()=>{setCheckBox2(event.target.value)}} />
                                 <label className={styles['form-check-label']} for="flexCheckChecked2">
                                 I’ve read and agree to the Privacy Policy
                                 </label> 
-                                <p className='form_err_msg'>{checkBox2=="null" && "Please check this"}</p>                   
+                                {
+                                checkBox2=="null" && 
+                                <p className='form_err_msg mortgage_form_err_msg'>{checkBox2=="null" && "Please check this"}</p>                   
+                                }
                             </div>
 
                            { 

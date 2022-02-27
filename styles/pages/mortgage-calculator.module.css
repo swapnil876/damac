@@ -255,8 +255,8 @@ input.range-slider {
 .mortage_main .form-field input {
     height: 48px;
     background: #f5f5f5;
-    /* margin-bottom: 16px; */
-    margin-bottom: 0px;
+    margin-bottom: 16px;
+    /* margin-bottom: 0px; */
     border-radius: 4px;
     border: none;
 }

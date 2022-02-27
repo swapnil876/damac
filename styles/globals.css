@@ -218,6 +218,12 @@ h1,
     color: red !important;
     font-size: 14px !important;
     font-weight: 400 !important;
+    /* margin-bottom: 20px !important; */
+}
+.mortgage_form_err_msg{
+    position: relative;
+    top:-18px;
+    left: 10px;
 }
 .custom_modal_contain .popup_modal .close span svg,
 .custom_modal_contain .popup_modal .close span img {
