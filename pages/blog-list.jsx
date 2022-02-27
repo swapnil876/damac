@@ -142,7 +142,8 @@ export const getServerSideProps = async () => {
   let blogs = []
   entitiy.map((v,i)=>{
     
-    blogs.push({title:v.title,url:'/blog/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.fieldShortText, author: v.fieldAuthor.entity.name, tag: v.fieldTag.entity.name })
+    blogs.push({title:v.title,url:'/blog/'+v.nid,imageUrl: v.fieldThumbnailDesktop!=null?v.fieldThumbnailDesktop.url:'',ctaText:'Read More',excerpt:v.fieldShortText, author: v.fieldAuthor!=null?v.fieldAuthor.entity.name:'', tag: v.fieldTag!=null?v.fieldTag.entity.name:
+    '' })
   });
 
   return {

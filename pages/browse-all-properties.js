@@ -1239,7 +1239,7 @@ import { BATHROOMDATA } from '../json/bathroom';
 
  export default BrowseProperties;
 
- export async function getServerSideProps(context) {
+ export async function getServerSideProps(cp) {
     // Device React
     const deviceIsMobile = isMobile;
     const deviceType = deviceIsMobile;

@@ -87,7 +87,7 @@ import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
                        bloglist.map( (blog, index) => (
                         <div className="col-md-4">
                             <div className={styles['card']}>
-                            <img src={} className={styles['card-img-top']} alt="..."/>
+                            <img src='../damac-static/images/blog1.png' className={styles['card-img-top']} alt="..."/>
 
 
                             <div className={styles['card-body']}>
