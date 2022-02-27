@@ -188,6 +188,17 @@ query {
         fieldTextSec7
         fieldWhatsapp
         fieldHeadingSec7
+        fieldPaymentPlanHeading
+        fieldPaymentPlanSubheading
+        fieldMultipleInstallmentsP{
+          entity{
+            ... on ParagraphMutlipleInstallments{
+              fieldInstallment
+              fieldMilestone
+              fieldPayment
+            }
+          }
+        }
       }
     }
   }
