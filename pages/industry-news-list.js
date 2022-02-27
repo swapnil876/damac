@@ -83,23 +83,23 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         </div>
                     ))}  
                     </div>
-                    <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
-                      <div className={`${styles["page_btn"]} prev_btn`}>
-                        <a href="#" className={styles['disabled']}>< FaAngleLeft /></a>
-                      </div>
-                      <div className={styles['pagination_no']}>
-                        <ul className="list-unstyled d-flex">
-                          <li><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><span>....</span></li>
-                          <li><a href="#">12</a></li>
-                        </ul>
-                      </div>
-                      <div className={`${styles["page_btn"]} next_btn`}>
-                        <a href="#"><FaAngleRight/></a>
-                      </div>
-                    </div>  
+                    {/*<div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
+                                           <div className={`${styles["page_btn"]} prev_btn`}>
+                                             <a href="#" className={styles['disabled']}>< FaAngleLeft /></a>
+                                           </div>
+                                           <div className={styles['pagination_no']}>
+                                             <ul className="list-unstyled d-flex">
+                                               <li><a href="#">1</a></li>
+                                               <li><a href="#">2</a></li>
+                                               <li><a href="#">3</a></li>
+                                               <li><span>....</span></li>
+                                               <li><a href="#">12</a></li>
+                                             </ul>
+                                           </div>
+                                           <div className={`${styles["page_btn"]} next_btn`}>
+                                             <a href="#"><FaAngleRight/></a>
+                                           </div>
+                                         </div> */} 
 
                 </div>
             </section>
@@ -146,7 +146,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
     menu.map((m,i)=>{
       othernav = [];
       let des = m.description==null?'': m.description.value
-      nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+      nav.push({name:m.name,tid:m.tid,submenu:[],link:des,isOpen:false});
       if((i+1)==menu.length){
         submenu.fieldMultipleMenuItems.map((k,l)=>{
           if(k.entity.fieldMenuType!=null){

@@ -87,7 +87,7 @@ import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
                        bloglist.map( (blog, index) => (
                         <div className="col-md-4">
                             <div className={styles['card']}>
-                            <img src={} className={styles['card-img-top']} alt="..."/>
+                            <img src='../damac-static/images/blog1.png' className={styles['card-img-top']} alt="..."/>
 
 
                             <div className={styles['card-body']}>
@@ -148,7 +148,7 @@ import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
      menu.map((m,i)=>{
        othernav = [];
        let des = m.description==null?'': m.description.value
-       nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
+       nav.push({name:m.name,tid:m.tid,submenu:[],link:des,isOpen:false});
        if((i+1)==menu.length){
          submenu.fieldMultipleMenuItems.map((k,l)=>{
            if(k.entity.fieldMenuType!=null){
