@@ -65,8 +65,49 @@ function OfferMain({entity1, nav, othernav, footerData}) {
     //   importing bootstrap js
       import("bootstrap/dist/js/bootstrap");
 
+      mortgageCalculator();
+      callDownPaymentPrice();
    }, [])
 
+
+   //  Mortgage calculation area
+  const [loanSlider, setLoanSlider] = useState(25);
+  const [rangeSlider, setRangeSlider] = useState(25);
+
+  const [downPaymentPrice, setDownPaymentPrice] = useState(0);
+ 
+  // Fees section fields here
+  const [departmentFee, setDepartmentFee ] = useState(null);
+  const [registrationFee, setRegistrationFee ] = useState(null);
+  const [mortgageRegistrationFee, setMortgageRegistrationFee ] = useState(null);
+  const [valuationFee, setValuationFee ] = useState(null);
+
+  // Main values here
+  const [propertyPrice, setPropertyPrice] = useState(800000);
+  const [interestRate, setInterestRate] = useState(2.49);
+  const [downPayment, setDownPayment] = useState(25);
+  const [loanPeriod, setLoanPeriod] = useState(25);
+
+      function callDownPaymentPrice(){
+        var totPrice = (propertyPrice * downPayment) / 100 ;
+        setDownPaymentPrice(totPrice);
+      }
+      function mortgageCalculator(){
+        var loanAmt, deptFee, regFee, mortRegFee, valFee;
+
+        loanAmt = (propertyPrice - ((propertyPrice * 5) / 100));
+        deptFee = ((propertyPrice * 5) / 100) + 580;
+        regFee = (propertyPrice > 500000) ? (4000 + ((propertyPrice * 5) / 100)) : (2000 + ((propertyPrice * 5) / 100)); 
+        mortRegFee = ((loanAmt * 0.5) / 100) + 10;
+        valFee = ((propertyPrice * 5) / 100) + 3000;
+
+        setDepartmentFee(deptFee);
+        setRegistrationFee(regFee);
+        setMortgageRegistrationFee(mortRegFee);
+        setValuationFee(valFee);
+      }
+
+  //  Mortgage calculation area
 
   const isDesktopOrLaptop = useMediaQuery(
        { minDeviceWidth: 768 },
@@ -137,97 +178,104 @@ function OfferMain({entity1, nav, othernav, footerData}) {
           </div>
         </div>
       </section>
-      {/* <!-- Estimate Section --> */}
-      <section className={styles['estimate']}>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8">
-              <img src="../damac-static/images/invoice-1.png"/>
-              <h2>Get an estimate</h2>
-              <p className={styles['estimate-tagline']}>Receive an upfront estimate on your new home.</p>
-              {
-                deviceIsMobile ? 
-              <div>
-                 <div className={styles['estimate-inner']}>
-                <div className={`price ${styles["border-white"]}`}>
-                  <p className={styles['heading']}>Property Price</p>
-                  <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
-                </div>
-                <div className={`down-payment ${styles["border-white"]}`}>
-                  <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
-                  <p>25 </p>
-                  <input type="range" className={styles['range-slider']} />
-                </div>
-              </div>
-              <div className={styles['estimate-inner']}>
-                <div className={`rate ${styles["border-white"]}`}>
-                  <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                  <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
-                </div>
-                <div className={`loan ${styles["border-white"]}`}>
-                  <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
-                  <p> 5</p>
-                  <input type="range" className={styles['range-slider']} />
-                </div>
-              </div>
-              <div className={styles['estimate-inner']}>
-                <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
-              </div>
-              </div>
-               :
-              <div>
-                 <div className={styles['estimate-inner']}>
-                <div className={`price ${styles["border-white"]}`}>
-                  <p className={styles['heading']}>Property Price</p>
-                  <p><div><span>AED </span> 120,000</div> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
-                </div>
-                <div className={`rate ${styles["border-white"]}`}>
-                  <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                  <p>1.99 <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
-                </div>
-              </div>
-              <div className={styles['estimate-inner']}>
-                <div className={`down-payment ${styles["border-white"]}`}>
-                  <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
-                  <p>25 </p>
-                  <input type="range" className={styles['range-slider']} />
-                </div>
-                <div className={`loan ${styles["border-white"]}`}>
-                  <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
-                  <p> 5</p>
-                  <input type="range" className={styles['range-slider']} />
-                </div>
-              </div>
-              <div className={styles['estimate-inner']}>
-                <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
-              </div>
-              </div>
-              }
-            </div>
-            <div className="col-md-4">
-              <div className={styles['estimate-cost']}>
-                <h4>Cost Breakdown</h4>
-                <ul>
-                  <li><span className={styles['text-left']}>60 months of</span> <span>AED</span> 120,000</li>
-                  <li><span className={styles['text-left']}>Down Payment</span> <span>AED</span> 120,000</li>
-                  <li><span className={styles['text-left']}>With Interest rate of</span> <span>%</span>120,000</li>
-                  <li><span className={styles['text-left']}>For Years</span>5</li>
-                </ul>
+       {/* <!-- Estimate Section --> */}
+       <section className={styles['estimate']}>
+                            <div className="container">
+                              <div className="row">
+                                <div className="col-md-8">
+                                  <img src="/damac-static/images/invoice-1.png"/>
+                                  <h2>Get an estimate</h2>
+                                  <p className={styles['estimate-tagline']}>Receive an upfront estimate on your new home.</p>
+                                  {
+                                    deviceIsMobile ? 
+                                  <div>
+                                    <div className={styles['estimate-inner']}>
+                                    <div className={`price ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Property Price</p>
+                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                                    </div>
+                                    <div className={`down-payment ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
+                                      <p>25 </p>
+                                      <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value), 
+                              setDownPayment(event.target.value)}}/>
+                                    </div>
+                                  </div>
+                                  <div className={styles['estimate-inner']}>
+                                    <div className={`rate ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                    </div>
+                                    <div className={`loan ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
+                                      <p> 5</p>
+                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                            setLoanPeriod(event.target.value)}}/>
+                                    </div>
+                                  </div>
+                                  </div>
+                                  :
+                                  <div>
+                                    <div className={styles['estimate-inner']}>
+                                    <div className={`price ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Property Price</p>
+                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                                    </div>
+                                    <div className={`rate ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
+                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                    </div>
+                                  </div>
+                                  <div className={styles['estimate-inner']}>
+                                    <div className={`down-payment ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
+                                      <p>25 </p>
+                                      <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value), 
+                              setDownPayment(event.target.value)}}/>
+                                    </div>
+                                    <div className={`loan ${styles["border-white"]}`}>
+                                      <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
+                                      <p> 5</p>
+                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                            setLoanPeriod(event.target.value)}}/>
+                                    </div>
+                                  </div>
+                                  <div className={styles['estimate-inner']}>
+                                    <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
+                                  </div>
+                                  </div>
+                                  }
+                                </div>
+                                <div className="col-md-4">
+                                  <div className={styles['estimate-cost']}>
+                                    <h4>Cost Breakdown</h4>
+                                    <ul>
+                                      <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> {propertyPrice}</i></li>
+                                      <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> {downPaymentPrice}</i></li>
+                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>{interestRate}</i></li>
+                                      <li><span className={styles['text-left']}>For Years</span> <i>{loanPeriod}</i></li>
+                                    </ul>
 
-                 <hr className={styles['hr_tag']} />
+                                    <hr className={styles['hr_tag']} />
 
-                <h4>Fees</h4>
-                <ul className={styles['fees']}>
-                  <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
-                  <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
-                  <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> 120,000</i></li>
-                  <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><i><span>AED</span> 120,000</i></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                                    <h4>Fees</h4>
+                                    <ul className={styles['fees']}>
+                                      <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> {departmentFee}</i></li>
+                                      <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> {registrationFee}</i></li>
+                                      <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> {mortgageRegistrationFee}</i></li>
+                                      <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><i><span>AED</span> {valuationFee}</i></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                               {
+                                 deviceIsMobile ?
+                                 <div className={styles['estimate-inner']}>
+                                 <button type="button" className={styles['enquire_btn_white']}>Enquire Now</button>
+                               </div> : ''
+                               }
+                              </div>
+                            </div>
+                          </section>
 
 
                   {/* <!-- faq section --> */}
