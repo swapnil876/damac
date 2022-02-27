@@ -65,7 +65,19 @@ a:hover {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
 }
-
+.mortgage_invidible_input{
+    border:0;
+    background-color: transparent;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.07em;
+    margin: 0;
+    font-weight: 500;
+    color:#fff
+}
+.mortgage_invidible_input:focus{
+    border: 0;
+}
 .card-img-for-news-page{
     width:100%;
     aspect-ratio: 1/1;
@@ -239,6 +251,10 @@ h1,
 }
 
 @media (max-width:768px) {
+    .mortgage_invidible_input{
+        font-size: 16px;
+        
+    }
     .form_err_msg{
         font-size: 12px;
     }
