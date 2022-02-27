@@ -140,7 +140,7 @@ export async function getStaticProps(context) {
 
   let blogs = []
   press_item_list.map((v,i)=>{
-    blogs.push({title:v.title,url:'/press-release/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.fieldShortText, author: v.fieldAuthor.entity.name, tag: v.fieldTag && v.fieldTag.entity.name })
+    blogs.push({title:v.title,url:'/press-release/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.fieldShortText, author: (v.fieldAuthor && v.fieldAuthor!=null) ? v.fieldAuthor.entity.name : '', tag: v.fieldTag && v.fieldTag.entity.name })
   });
 
   return {

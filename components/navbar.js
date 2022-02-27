@@ -490,97 +490,28 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                 }*/}
                   
                   
-                  {/*<div className="biglink-container">
-                    <ActiveLink href="/contact" activeClassName="active">
-                         <a className="biglink"><span>Contact Us</span></a>
-                    </ActiveLink>
-                  </div>*/}
-                  
                 </div>
 
                 <div className="menulinks-cols">
                   <div className="container-fluid">
                     <div className="row">
-                      <div className="col-md-4 menu-list-col">
-                      <ul className="menu-list">
+                     
                       {
                         otherNav.map((n,m)=>(
+                          <div className="col-md-4 menu-list-col">
+                          <ul className="menu-list">
                           <li key={m}>
                             <Link href={n.url!=null?n.url:'/'}>
                               <a>{n.label}</a>
                             </Link>
                           </li>
+                          </ul>
+                          </div>
                         ))
                        }
-                      </ul>
-                      </div>
+                     
 
-                      {/*<div className="col-md-4 menu-list-col">
-                        <ul className="menu-list">
-                          <li>
-                            <Link href="/career">
-                              <a>Career</a>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="#">
-                              <a>Hotels and Resorts</a>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="#">
-                              <a>Sitemap</a>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="#">
-                              <a>Terms and Conditions</a>
-                            </Link> 
-                          </li>
-                          <li>
-                            <Link href="#">
-                              <a>Privacy Policy</a>
-                            </Link> 
-                          </li>
-                          <li>
-                            <Link href="#">
-                              <a>Agent Loginn</a>
-                            </Link> 
-                          </li>
-                        
-                         </ul>
-                      </div>
-
-                      <div className="col-md-4 menu-list-col">
-                        <ul className="menu-list">
-                            <li>
-                                <Link href="#">
-                                  <a>Mortgage Assist</a>
-                                </Link> 
-                              </li>
-                              <li>
-                                <Link href="/mortgage-calculator">
-                                  <a>Mortgage Calculator</a>
-                                </Link> 
-                              </li>
-                            
-                          <li>
-                            <Link href="#">
-                              <a>Customer Login</a>
-                            </Link> 
-                          </li>
-                          <li>
-                            <Link href="#">
-                              <a>Cookie Policy</a>
-                            </Link> 
-                          </li>
-                          <li>
-                            <Link href="/building-documentation">
-                              <a>Building Documentation</a>
-                            </Link> 
-                          </li>
-                        </ul>
-                      </div>*/}
+                      
                     </div>
                   </div>
                 </div>
@@ -592,7 +523,6 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
           </div>
 
     </header>
-
 
   )
 }
