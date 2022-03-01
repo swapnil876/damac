@@ -149,7 +149,9 @@ input.range-slider {
     color: #fff;
 }
 
-
+.banner-text-left {
+    position: relative;
+}
 .banner-text-left h1 {
     font-size: 72px;
 }
@@ -656,10 +658,12 @@ span.text-right {
     font-weight: 300;
     float: left;
     width: 50%;
+    position: relative;
 }
 
 .estimate-cost span {
-    opacity: 0.7;
+    /* opacity: 0.7; */
+    color:#fbfbfb
 }
 
 .why-invest {

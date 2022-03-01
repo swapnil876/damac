@@ -82,16 +82,28 @@ function ListingPage({nav, othernav, footerData}) {
 
         //   importing bootstrap js
         import("bootstrap/dist/js/bootstrap");
-
-        mortgageCalculator();
-        callDownPaymentPrice();
    }, [])
 
+   useEffect(() => {
+    mortgageCalculator();
+    callDownPaymentPrice();
+ })
+
+   // tooltip
+   const [landFee, setLandFee] = useState(false);
+   const [regFee, setRegFee] = useState(false);
+   const [mortRegFee, setMortRegFee] = useState(false);
+   const [valueFee, setValueFee] = useState(false);
+
 //  Mortgage calculation area
-const [loanSlider, setLoanSlider] = useState(25);
+const [loanSlider, setLoanSlider] = useState(1);
 const [rangeSlider, setRangeSlider] = useState(25);
 
 const [downPaymentPrice, setDownPaymentPrice] = useState(0);
+
+
+        //calculation of no.of years based on loan period
+        const [noOfMonths, setNoOfMonths] = useState();
 
 // Fees section fields here
 const [departmentFee, setDepartmentFee ] = useState(null);
@@ -103,25 +115,29 @@ const [valuationFee, setValuationFee ] = useState(null);
 const [propertyPrice, setPropertyPrice] = useState(800000);
 const [interestRate, setInterestRate] = useState(2.49);
 const [downPayment, setDownPayment] = useState(25);
-const [loanPeriod, setLoanPeriod] = useState(25);
+const [loanPeriod, setLoanPeriod] = useState(1);
 
-    function callDownPaymentPrice(){
-      var totPrice = (propertyPrice * downPayment) / 100 ;
-      setDownPaymentPrice(totPrice);
-    }
+function callDownPaymentPrice(){
+  var totPrice = propertyPrice * (downPayment / 100) ;
+  setDownPaymentPrice(Math.ceil(totPrice));
+}
     function mortgageCalculator(){
-      var loanAmt, deptFee, regFee, mortRegFee, valFee;
+      var loanAmt, deptFee, regFee, mortRegFee, valFee, months;
 
-      loanAmt = (propertyPrice - ((propertyPrice * 5) / 100));
-      deptFee = ((propertyPrice * 5) / 100) + 580;
-      regFee = (propertyPrice > 500000) ? (4000 + ((propertyPrice * 5) / 100)) : (2000 + ((propertyPrice * 5) / 100)); 
-      mortRegFee = ((loanAmt * 0.5) / 100) + 10;
-      valFee = ((propertyPrice * 5) / 100) + 3000;
+      months = loanPeriod*12;
+
+      loanAmt = (propertyPrice - downPaymentPrice);
+      deptFee = ((propertyPrice * (4 / 100)) + 580);
+      regFee = (propertyPrice > 500000) ? (4000 + (propertyPrice * (5 / 100))) : (2000 + (propertyPrice * (5 / 100))); 
+      mortRegFee = ((loanAmt *  (0.5/ 100)) + 10);
+      valFee = ((propertyPrice * (5 / 100)) + 3000);
+
 
       setDepartmentFee(deptFee);
       setRegistrationFee(regFee);
       setMortgageRegistrationFee(mortRegFee);
       setValuationFee(valFee);
+      setNoOfMonths(months);
     }
 
 //  Mortgage calculation area
@@ -1024,7 +1040,7 @@ const [loanPeriod, setLoanPeriod] = useState(25);
                                     </div>
                                     <div className={`down-payment ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
-                                      <p>25 </p>
+                                      <p>{rangeSlider} </p>
                                       <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value), 
                               setDownPayment(event.target.value)}}/>
                                     </div>
@@ -1032,11 +1048,11 @@ const [loanPeriod, setLoanPeriod] = useState(25);
                                   <div className={styles['estimate-inner']}>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
                                     </div>
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
-                                      <p> 5</p>
+                                      <p> {loanSlider}</p>
                                       <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
@@ -1051,19 +1067,19 @@ const [loanPeriod, setLoanPeriod] = useState(25);
                                     </div>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
                                     </div>
                                   </div>
                                   <div className={styles['estimate-inner']}>
                                     <div className={`down-payment ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
-                                      <p>25 </p>
+                                      <p>{rangeSlider} </p>
                                       <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value), 
                               setDownPayment(event.target.value)}}/>
                                     </div>
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
-                                      <p> 5</p>
+                                      <p> {loanSlider}</p>
                                       <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
@@ -1080,7 +1096,7 @@ const [loanPeriod, setLoanPeriod] = useState(25);
                                     <ul>
                                       <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> {propertyPrice}</i></li>
                                       <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> {downPaymentPrice}</i></li>
-                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>{interestRate}</i></li>
+                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>{interestRate.toFixed(2)}</i></li>
                                       <li><span className={styles['text-left']}>For Years</span> <i>{loanPeriod}</i></li>
                                     </ul>
 
@@ -1088,10 +1104,29 @@ const [loanPeriod, setLoanPeriod] = useState(25);
 
                                     <h4>Fees</h4>
                                     <ul className={styles['fees']}>
-                                      <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <i><span>AED</span> {departmentFee}</i></li>
-                                      <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> {registrationFee}</i></li>
-                                      <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <i><span>AED</span> {mortgageRegistrationFee}</i></li>
-                                      <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><i><span>AED</span> {valuationFee}</i></li>
+                                      <li><span className={styles['text-left']}>Land Department Fee <span><FaRegQuestionCircle onMouseOver={()=>{setLandFee(true)}} onMouseOut={()=>{setLandFee(false)}}/></span>
+                                      {
+                                        landFee && <span class="tooltip_pop tooltip_pop_dark_bg">4% of the property value + 580 AED admin fee</span>
+                                      }
+                                     </span> <i><span>AED</span> {departmentFee}</i></li>
+
+                                      <li><span className={styles['text-left']}>Registration Fee <span><FaRegQuestionCircle onMouseOver={()=>{setRegFee(true)}} onMouseOut={()=>{setRegFee(false)}}/></span>
+                                      {
+                                        regFee && <span class="tooltip_pop tooltip_pop_dark_bg">4000 for properties above AED 500,000 + 5% VAT</span>
+                                      }
+                                      </span> <i><span>AED</span> {registrationFee}</i></li>
+
+                                      <li><span className={styles['text-left']}>Mortgage Registration Fee <span><FaRegQuestionCircle onMouseOver={()=>{setMortRegFee(true)}} onMouseOut={()=>{setMortRegFee(false)}}/></span>
+                                      {
+                                        mortRegFee && <span class="tooltip_pop tooltip_pop_dark_bg">0.5% of the loan amount + AED 10 admin fee</span>
+                                      }
+                                      </span> <i><span>AED</span> {mortgageRegistrationFee}</i></li>
+
+                                      <li><span className={styles['text-left']}>Valuation Fee <span><FaRegQuestionCircle onMouseOver={()=>{setValueFee(true)}} onMouseOut={()=>{setValueFee(false)}}/></span>
+                                      {
+                                        valueFee && <span class="tooltip_pop tooltip_pop_dark_bg">3000 AED + 5% VAT</span>
+                                      }
+                                      </span><i><span>AED</span> {valuationFee}</i></li>
                                     </ul>
                                   </div>
                                 </div>

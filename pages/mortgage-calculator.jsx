@@ -36,13 +36,16 @@ import * as axios from 'axios';
     if ( isMobile ) {
       setDeviceIsMobile( true );
     }
-
-    mortgageCalculator();
-    callDownPaymentPrice();
+    
   }, []);
 
+  useEffect(() => {
+    callDownPaymentPrice();
+    mortgageCalculator();
+  });
+
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
-  const [loanSlider, setLoanSlider] = useState(25);
+  const [loanSlider, setLoanSlider] = useState(1);
   const [rangeSlider, setRangeSlider] = useState(25);
 
   const [downPaymentPrice, setDownPaymentPrice] = useState(0);
@@ -52,7 +55,15 @@ import * as axios from 'axios';
   //   downPayment : 25,
   //   loanPeriod : 25
   // }
- 
+
+
+  // Toottip
+  const [landFee, setLandFee] = useState(false);
+  const [regFee, setRegFee] = useState(false);
+  const [mortRegFee, setMortRegFee] = useState(false);
+  const [valueFee, setValueFee] = useState(false);
+
+
   // Fees section fields here
   const [departmentFee, setDepartmentFee ] = useState(null);
   const [registrationFee, setRegistrationFee ] = useState(null);
@@ -62,11 +73,15 @@ import * as axios from 'axios';
   // const [mortgageCalItems, setMortgageCalItems] = useState(mortageItemObject);
 
 
+  //calculation of no.of years based on loan period
+  const [noOfMonths, setNoOfMonths] = useState();
+
+
   // Main values here
   const [propertyPrice, setPropertyPrice] = useState(800000);
   const [interestRate, setInterestRate] = useState(2.49);
   const [downPayment, setDownPayment] = useState(25);
-  const [loanPeriod, setLoanPeriod] = useState(25);
+  const [loanPeriod, setLoanPeriod] = useState(1);
 
 
   // Form binding
@@ -77,23 +92,28 @@ import * as axios from 'axios';
   const [checkBox1, setCheckBox1] = useState('');
   const [checkBox2, setCheckBox2] = useState('');
 
+
       function callDownPaymentPrice(){
-        var totPrice = (propertyPrice * downPayment) / 100 ;
-        setDownPaymentPrice(totPrice);
+        var totPrice = propertyPrice * (downPayment / 100) ;
+        setDownPaymentPrice(Math.ceil(totPrice));
       }
       function mortgageCalculator(){
-        var loanAmt, deptFee, regFee, mortRegFee, valFee;
+        var loanAmt, deptFee, regFee, mortRegFee, valFee, months;
 
-        loanAmt = (propertyPrice - ((propertyPrice * 5) / 100));
-        deptFee = ((propertyPrice * 5) / 100) + 580;
-        regFee = (propertyPrice > 500000) ? (4000 + ((propertyPrice * 5) / 100)) : (2000 + ((propertyPrice * 5) / 100)); 
-        mortRegFee = ((loanAmt * 0.5) / 100) + 10;
-        valFee = ((propertyPrice * 5) / 100) + 3000;
+        months = loanPeriod*12;
+
+        loanAmt = (propertyPrice - downPaymentPrice);
+        deptFee = ((propertyPrice * (4 / 100)) + 580);
+        regFee = (propertyPrice > 500000) ? (4000 + (propertyPrice * (5 / 100))) : (2000 + (propertyPrice * (5 / 100))); 
+        mortRegFee = ((loanAmt *  (0.5/ 100)) + 10);
+        valFee = ((propertyPrice * (5 / 100)) + 3000);
+
 
         setDepartmentFee(deptFee);
         setRegistrationFee(regFee);
         setMortgageRegistrationFee(mortRegFee);
         setValuationFee(valFee);
+        setNoOfMonths(months);
       }
 
       async function handleFormSubmit(){
@@ -223,15 +243,14 @@ import * as axios from 'axios';
                           <div className="col-md-6">
                           <div className={`${styles["rate"]} ${styles["border-white"]}`}>
                             <p><span>Interest Rate</span> <span className="float-end">%</span>  </p>
-                            <p><input type="text" class="mortgage_invidible_input" value={interestRate} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}}/><FaMinus/></span></p> 
+                            <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}} onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}} /><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}} /></span></p> 
                         </div>
                           </div>
                           <div className="col-md-6">
                           <div className={`${styles["down-payment"]} ${styles["border-white"]}`}>
                             <p><span>Down Payment</span> <span className="float-end">%</span></p> 
                             <p>{rangeSlider} </p> 
-                            <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value), 
-                              setDownPayment(event.target.value)}}/>
+                            <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ setDownPayment(event.target.value), callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value)}}/>
                             </div>
                           </div>
                          
@@ -261,14 +280,13 @@ import * as axios from 'axios';
                         <div className={`${styles["down-payment"]} ${styles["border-white"]}`}>
                           <p><span>Down Payment</span> <span className="float-end">%</span></p> 
                           <p>{rangeSlider}  </p> 
-                          <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value), 
-                           setDownPayment(event.target.value)}}/>
+                          <input type="range" className={styles['range-slider']} value={rangeSlider} onChange={()=>{ setDownPayment(event.target.value), callDownPaymentPrice(), mortgageCalculator(), setRangeSlider(event.target.value) }}/>
                           </div>
                         </div>
                         <div className="col-md-6">
                         <div className={`${styles["rate"]} ${styles["border-white"]}`}>
                           <p><span>Interest Rate</span> <span className="float-end">%</span>  </p>
-                          <p><input type="text" class="mortgage_invidible_input" value={interestRate} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}}/> <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus style={{'margin': '0 10px 0 0'}}/><FaMinus/></span></p> 
+                          <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}}/> <span className="text-right dark get_estimate_box_arrows plus_minus"><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}} style={{'margin': '0 10px 0 0'}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}} /></span></p> 
                       </div>
                         </div>
                      
@@ -290,18 +308,39 @@ import * as axios from 'axios';
                     <div className={styles['calculator-cost']}>
                         <h4>Cost Breakdown</h4>
                         <ul className={`list-unstyled p-0 ${styles["cost_breakdown"]}`}>
-                        <li><span className={styles['text-left']}>60 months of</span> <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>AED</span> {propertyPrice}</span></li>
+                        <li><span className={styles['text-left']}>{noOfMonths} months of</span> <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>AED</span> {propertyPrice}</span></li>
                         <li><span className={styles['text-left']}>Down Payment</span>  <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>AED</span> {downPaymentPrice}</span></li>
-                        <li><span className={styles['text-left']}>With Interest rate of</span>  <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>%</span>{interestRate}</span></li>
+                        <li><span className={styles['text-left']}>With Interest rate of</span>  <span className={styles['right_side_txt']}><span className={styles['opaque_txt']}>%</span>{interestRate.toFixed(2)}</span></li>
                         <li><span className={styles['text-left']}>For Years</span> <span className={styles['right_side_txt']}>{loanPeriod}</span></li>
                         </ul>
                         <div className={`${styles["fees_main"]} ${styles["fees_main_for_mortgage_cal_page"]}`}>
                         <h4>Fees</h4>
                         <ul className="list-unstyled p-0">
-                          <li><span className={styles['text-left']}>Land Department Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> {departmentFee}</li>
-                          <li><span className={styles['text-left']}>Registration Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> {registrationFee}</li>
-                          <li><span className={styles['text-left']}>Mortgage Registration Fee <FaRegQuestionCircle/></span> <span className={styles['opaque_txt']}>AED</span> {mortgageRegistrationFee}</li>
-                          <li><span className={styles['text-left']}>Valuation Fee <FaRegQuestionCircle/></span><span className={styles['opaque_txt']}>AED</span> {valuationFee}</li>
+                          <li>
+                            <span className={styles['text-left']}>Land Department Fee <span><FaRegQuestionCircle onMouseOver={()=>{setLandFee(true)}} onMouseOut={()=>{setLandFee(false)}}/></span>
+                            {
+                              landFee && <span class="tooltip_pop">4% of the property value + 580 AED admin fee</span>
+                            }
+                            </span> <span className={styles['opaque_txt']}>AED</span> {departmentFee}
+                          </li>
+
+                          <li><span className={styles['text-left']}>Registration Fee <span><FaRegQuestionCircle onMouseOver={()=>{setRegFee(true)}} onMouseOut={()=>{setRegFee(false)}}/></span>
+                          {
+                            regFee && <span class="tooltip_pop">4000 for properties above AED 500,000 + 5% VAT</span>
+                          }
+                          </span> <span className={styles['opaque_txt']}>AED</span> {registrationFee}</li>
+
+                          <li><span className={styles['text-left']}>Mortgage Registration Fee <span><FaRegQuestionCircle onMouseOver={()=>{setMortRegFee(true)}} onMouseOut={()=>{setMortRegFee(false)}}/></span>
+                          {
+                            mortRegFee && <span class="tooltip_pop">0.5% of the loan amount + AED 10 admin fee</span>
+                          }
+                          </span> <span className={styles['opaque_txt']}>AED</span> {mortgageRegistrationFee}</li>
+
+                          <li><span className={styles['text-left']}>Valuation Fee <span><FaRegQuestionCircle onMouseOver={()=>{setValueFee(true)}} onMouseOut={()=>{setValueFee(false)}}/></span>
+                          {
+                            valueFee && <span class="tooltip_pop">3000 AED + 5% VAT</span>
+                          }
+                          </span><span className={styles['opaque_txt']}>AED</span> {valuationFee}</li>
                         </ul>
                         </div>
                         <div className={styles['enquir_btn']}>

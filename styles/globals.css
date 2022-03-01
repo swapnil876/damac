@@ -152,7 +152,21 @@ h1,
 .h1 {
     font-size: calc(1.375rem + 1.5vw);
 }
-
+.tooltip_pop{
+    position: absolute;
+    background-color: #fff;
+    box-shadow: -1px -1px 21px 0px #2c2c2c;
+    padding:3px 5px;
+    font-size: 10px;
+    font-weight: 400;
+    color:#111;
+    right: -100px;
+    top: -28px;
+}
+.tooltip_pop_dark_bg{
+    background-color: #111;
+    color: #fff;
+}
 .dropdown-toggle::after {
     border: none
 }
