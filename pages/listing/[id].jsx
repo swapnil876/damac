@@ -1036,7 +1036,7 @@ function callDownPaymentPrice(){
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`down-payment ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
@@ -1063,7 +1063,7 @@ function callDownPaymentPrice(){
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}><FaAngleLeft/><FaAngleRight/></span></p>
+                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>

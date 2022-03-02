@@ -237,7 +237,7 @@ import * as axios from 'axios';
                           <div className="col-md-6">
                           <div className={`${styles["price"]} ${styles["border-white"]}`}>
                             <p><span>Property Price</span> <span className="float-end">AED</span></p>
-                            <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className="text-right dark get_estimate_box_arrows left_right"><FaAngleLeft style={{'margin': '0 10px 0 0'}}/><FaAngleRight/></span></p> 
+                            <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className="text-right dark get_estimate_box_arrows left_right"></span></p> 
                         </div>
                           </div>
                           <div className="col-md-6">
@@ -273,7 +273,7 @@ import * as axios from 'axios';
                         <div className="col-md-6">
                         <div className={`${styles["price"]} ${styles["border-white"]}`}>
                           <p><span>Property Price</span></p>
-                          <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className="text-right dark get_estimate_box_arrows left_right"><FaAngleLeft style={{'margin': '0 10px 0 0'}}/><FaAngleRight/></span></p> 
+                          <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className="text-right dark get_estimate_box_arrows left_right"></span></p> 
                       </div>
                         </div>
                         <div className="col-md-6">
