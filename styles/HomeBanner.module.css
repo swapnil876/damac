@@ -30,6 +30,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    background: rgba(0,0,0,.8);
 }
 .homepage-hero-section .homepage-hero-content .hero-content-text {
     
@@ -99,7 +100,7 @@
 .about-banner-text .bannerPlayBtn {
     width: 120px;
     height: 120px;
-    margin: 45px auto;
+    margin: 25px auto;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(38px);
@@ -115,6 +116,10 @@
     font-family: "Roboto";
     font-weight: 300;
     line-height: 2;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 
@@ -124,7 +129,7 @@
 
 @media ( min-width: 768px ) {
     .about-banner-container {
-      padding-top: 180px;
+      padding-top: 100px;
     }
 }
 @media ( max-width: 768px ) {
