@@ -8,10 +8,13 @@ import styles from '../styles/components/ContactForm.module.css';
 
 import Select from "react-dropdown-select";
 
+import * as axios from 'axios';
+
 export default function InvestorContactForm({ initialValues }){
   
-    
-    const [values, setValues] = useState(initialValues);
+  var titleSelectVar = "Mr"
+
+  const [values, setValues] = useState(initialValues);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -20,40 +23,118 @@ export default function InvestorContactForm({ initialValues }){
   const [countryCode, setCountryCode] = useState('');
 
   const [email, setEmail] = useState('');
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState(titleSelectVar);
 
   const [checkBox1, setCheckBox1] = useState('');
   const [checkBox2, setCheckBox2] = useState('');
 
-    function handleFormSubmit(){
-        console.log("submit clicked");
+
+    async function handleFormSubmit(){
+        let token = '';
         if(!firstName){
             setFirstName("null");
+            return false;
         }
         if(!lastName){
             setLastName("null");
+            return false;
         }
 
         if(!email){
             setEmail("null");
+            return false;
         }
         if(!phoneNumber){
             setPhoneNumber("null");
+            return false;
         }
         if(!countryCode){
             setCountryCode("null");
+            return false;
         }
 
         if(!title){
             setTitle("null");
+            return false;
         }  
         if(!checkBox1){
             setCheckBox1("null");
+            return false;
         }  
         if(!checkBox2){
             setCheckBox2("null");
-        }      
-    }
+            return false;
+        }   
+        let data = {
+            title:title,
+            firstName:firstName,
+            lastName:lastName,
+            email:email,
+            phoneNumber:phoneNumber,
+            countryCode:optionCodeVal[0].value,
+            country:"",
+            acceptPrivacyP:checkBox1,
+            newsAndOffers:checkBox2,
+            campaignId:"a120Y000000uLMj",
+            utmSource:"",
+            utmMedium:"",
+            utmCampaign:"",
+            webSource:"",
+            adGroup:"",
+            campaignNameHOD:"",
+            goal:"",
+            digitalSource:"",
+            channelCluster:"",
+            bannerSize:"",
+            keyword:"",
+            placement:"",
+            adPosition:"",
+            matchType:"",
+            network:"",
+            bidType:"",
+            GCLID:"",
+            fbclid:"",
+            adid:"",
+            refid:"",
+            leadSource:"Digital",
+            lastMileConversion:"Contact Us",
+            device:"",
+            projectName:"",
+            os:"",
+            resolution:"",
+            browser:"",
+            ga_client_id:"",
+            fbid:"",
+            timeSpentbeforeFormSubmit:"",
+            ipAddress:"",
+            landingPageURL:"",
+            fullLandingPageUrl:"",
+            websiteLanguage:"",
+            countryNameSync:"",
+            citySync:"",
+            city:"",
+            countryCodeSync:"",
+            user_agent:""   
+         }
+         await axios.post('https://damacholding.my.salesforce.com/services/oauth2/token',header,{headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'applicationjson',
+            "Access-Control-Allow-Origin": "*"
+          }
+      })
+    .then((res)=>{
+      token = res.data.access_token;
+    })
+    .catch((er)=>{
+      console.log(er);
+    })
+    await axios.post('https://stg- lqsapp.damacgroup.com',{
+    headers:{
+        'Authorization':token
+    }},data).then(function(res){
+      console.log(res);
+    })
+        }
 
 
     function handleChange(e) {
@@ -100,6 +181,12 @@ export default function InvestorContactForm({ initialValues }){
         { value: 'UAE', label: <div><img src={iconDubai} className="country_code_glag_image"/>(+971) </div> },
         { value: 'USA', label: <div><img src={iconUsa} className="country_code_glag_image"/>(+1) </div> },
       ];
+
+      const optionValues = options.map((item)=>{
+        return item.value;
+    });
+
+    const [optionCodeVal, setOptionCodeVal] = useState(optionValues);
 
     return (
 
@@ -178,9 +265,8 @@ export default function InvestorContactForm({ initialValues }){
 
                                                    <div className='input-element country-code-element text-element'>
                                                        <Select name="countryCode"
-                                                           value={options.value}
                                                            options={options}
-                                                           placeholder={options[0].value} onChange={()=>{setCountryCode(event.target.value)}}/>   
+                                                           placeholder={options[0].value} onChange={(optionCodeVal)=>{setOptionCodeVal(optionCodeVal), setCountryCode(optionCodeVal[0].value)}}/>   
                                                    </div>
                                                </label>
                                            </div>

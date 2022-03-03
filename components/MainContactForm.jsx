@@ -66,28 +66,36 @@ export default function ContactForm({ selectedOption, initialValues, address , h
         }
         if(!lastName){
             setLastName("null");
+            return false;
         }
 
         if(!email){
             setEmail("null");
+            return false;
         }
         if(!phoneNumber){
             setPhoneNumber("null");
+            return false;
         }
         if(!countryCode){
             setCountryCode("null");
+            return false;
         }
         if(!type){
             setType("null");
+            return false;
         }
         if(!title){
             setTitle("null");
+            return false;
         }  
         if(!checkBox1){
             setCheckBox1("null");
+            return false;
         }  
         if(!checkBox2){
             setCheckBox2("null");
+            return false;
         }  
         let data = {
           title:title,

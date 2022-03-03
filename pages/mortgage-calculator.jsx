@@ -120,22 +120,28 @@ import * as axios from 'axios';
         let token = '';
         if(!firstName){
             setFirstName("null");
+            return false;
         }
         if(!lastName){
             setLastName("null");
+            return false;
         }
 
         if(!email){
             setEmail("null");
+            return false;
         }
         if(!phoneNumber){
             setPhoneNumber("null");
+            return false;
         } 
         if(!checkBox1){
             setCheckBox1("null");
+            return false;
         }  
         if(!checkBox2){
             setCheckBox2("null");
+            return false;
         }
 
         let data = {
