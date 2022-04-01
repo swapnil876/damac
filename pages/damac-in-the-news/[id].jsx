@@ -121,15 +121,30 @@ export default function DamacInTheNews({entity1, bloglist, nav, othernav, footer
    )
 }
 
- export const getServerSideProps = async (cp) => {
+ export const getServerSideProps = async (cp, e) => {
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache(),
   });
   console.log(cp);
 
+  var footer, dataNav2, dataNav1, data, data3;
+  if(e.locale == 'en'){
+   footer  = await client.query({ query: FOOTER_LINKS });
+   dataNav2  = await client.query({ query: NAVIGATION });
+   dataNav1  = await client.query({ query: PARENTMENUITEMS });
+   data = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.id} });
+   data3 = await client.query({ query: BLOGS });
+  }else{
+    footer  = await client.query({ query: ARFOOTER_LINKS });
+    dataNav2  = await client.query({ query: ARNAVIGATION });
+    dataNav1  = await client.query({ query: ARPARENTMENUITEMS });
+    data = await client.query({ query: ARBLOGSDETAILS, variables:{id:cp.query.id} });
+    data3 = await client.query({ query: ARBLOGS });
+  }
+
   // Use this for footer
-  const footer  = await client.query({ query: FOOTER_LINKS });
+
   let footerData = footer.data.nodeQuery.entities[0];
 
   
@@ -137,8 +152,7 @@ export default function DamacInTheNews({entity1, bloglist, nav, othernav, footer
 
 
  // Use this for novigation
- const  dataNav2  = await client.query({ query: NAVIGATION });
- const  dataNav1  = await client.query({ query: PARENTMENUITEMS });
+
  let nav = [];
  let othernav = [];
  if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
@@ -169,8 +183,7 @@ export default function DamacInTheNews({entity1, bloglist, nav, othernav, footer
    // end
 
 
-  const data = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.id} });
-  const data3 = await client.query({ query: BLOGS });
+
   let bloglist = data3.data.nodeQuery.entities;
   let entity1 = data.data.nodeQuery.entities[0];
   

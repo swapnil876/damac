@@ -23,9 +23,9 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../../graphql/footer_links" ;
 
-
+import { useRouter } from 'next/router';
 function ContactUs({selectedOption, contactus, nav, othernav, footerData}) {
-
+  const { locale, locales } = useRouter();
   return (
     <div className='contactusbody'>
 
@@ -64,15 +64,27 @@ export default ContactUs
 
 
 
-export const getServerSideProps = async (cp) => {
+export const getServerSideProps = async (cp, e) => {
     // Device React
     const client = new ApolloClient({
       uri: process.env.STRAPI_GRAPHQL_URL,
       cache: new InMemoryCache()
     });
 
+    var footer, data2, data1, data ;
+    if(e.locale == 'en'){
+      footer  = await client.query({ query: FOOTER_LINKS });
+      data2  = await client.query({ query: NAVIGATION });
+      data1  = await client.query({ query: PARENTMENUITEMS });
+      data  = await client.query({ query: CONTACTUS });
+    }
+    else{
+      footer  = await client.query({ query: ARFOOTER_LINKS });
+      data2  = await client.query({ query: ARNAVIGATION });
+      data1  = await client.query({ query: ARPARENTMENUITEMS });
+      data  = await client.query({ query: ARCONTACTUS });
+    }
     // Use this for footer
-    const footer  = await client.query({ query: FOOTER_LINKS });
     let footerData = footer.data.nodeQuery.entities[0];
 
   
@@ -81,8 +93,6 @@ export const getServerSideProps = async (cp) => {
 
     
  // Use this for novigation
- const  data2  = await client.query({ query: NAVIGATION });
- const  data1  = await client.query({ query: PARENTMENUITEMS });
  let nav = [];
  let othernav = [];
  if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
@@ -116,7 +126,6 @@ export const getServerSideProps = async (cp) => {
 
 
 
-  const  data  = await client.query({ query: CONTACTUS });
   let entitiy = data.data.nodeQuery.entities[0];
 
   const selectedOption = cp.query.slug;

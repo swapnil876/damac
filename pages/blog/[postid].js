@@ -37,6 +37,96 @@ import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../../graphql/footer_links"
+<<<<<<< HEAD
+import { useRouter } from 'next/router';
+ export default function BlogDetails({entity1,bloglist, nav, othernav, footerData}){
+  const { locale, locales } = useRouter();
+     return(
+         <div className="BlogDetails">
+             <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
+             <main className="main">
+                <section className={styles['press-hero']} style={{'background-image': 'url(../damac-static/images/blog-bg.png)'}}>   
+                <div className="container" style={{'height':'100%'}}>
+                <div className={styles['press-hero-wrap']} style={{'padding-right':'0'}}>
+                    <div className={styles['press-content']} style={{'padding':'0 !important'}}>
+                    <h2>{entity1.title}</h2>
+                    <p>{entity1.fieldShortText}</p>
+                    <span>{entity1.entityCreated} By {entity1.fieldAuthor!=null?entity1.fieldAuthor.entity.name:''}</span>
+                    </div> 
+                </div> </div>                              
+                </section>  
+
+                <section className={styles['newsdetail-content']}>
+                <div className="container">
+                    <div className={styles['content-wrap-news']}>
+                    <ul className={styles['social-media']}>
+                        <li><a href="javascript:void(0)"><img src="../damac-static/images/twiter.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="../damac-static/images/facebook.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="../damac-static/images/linkedin.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="../damac-static/images/whatsapp.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="../damac-static/images/share.png"/></a></li>
+                    </ul>
+                    <div className={styles['content-detail']}>
+                    {
+                    	entity1.body!=null?
+                    	(<div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>)
+                    	:
+                    	('')
+                        
+                    }
+                        
+                    </div>
+
+                    </div>
+                    
+                </div>
+                
+                </section>
+
+                <section className={styles['related-post']}>
+                <div className="container">
+                    <div className={styles['related-title']}>
+                    <h2>Related News</h2>          
+                    </div>
+                    <div className="row">
+                    {
+                       bloglist.map( (blog, index) => (
+                        <div className="col-md-4">
+                            <div className={styles['card']}>
+                            <img src="../damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
+
+
+                            <div className={styles['card-body']}>
+                                <a href="javascript:void(0)"><h4>{blog.title}</h4></a>
+                                <div className="d-flex justify-content-between">
+                                <label>{blog.fieldTag && blog.fieldTag.entity.name}</label>
+                                <span> {blog.entityCreated} by {blog.fieldAuthor && blog.fieldAuthor.entity.name}</span>
+                                </div>
+                                <div className={styles['card-text']} dangerouslySetInnerHTML={{ __html: blog.body&&blog.body.value }}></div>
+                                <a href={'blog/'+blog.nid} className={styles['read-more']}>Read More</a>
+                            </div>
+                            </div>
+                            
+                        </div>
+                        ))
+                   }
+                    
+                    
+                    </div>
+
+                    <div className={`${styles["post-button"]} text-center`}>
+                    <a href="/blog-list" className="btn btn-primary">View all posts</a>
+                    </div>
+
+                    
+                </div>
+                </section>
+             </main>
+             <Footer footerData={footerData}></Footer>
+         </div>
+     )
+ }
+=======
 
 export default function BlogDetails({entity1,bloglist, nav, othernav, footerData}){
   return(
@@ -124,56 +214,66 @@ export default function BlogDetails({entity1,bloglist, nav, othernav, footerData
       </div>
   )
 }
+>>>>>>> 72d957cc7d1ecc492cf8d680fe3add86d6b1c396
 
- export const getServerSideProps = async (cp) => {
+ export const getServerSideProps = async (cp, e) => {
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
 
-  // Use this for footer
-    const footer  = await client.query({ query: FOOTER_LINKS });
-    let footerData = footer.data.nodeQuery.entities[0];
 
-   
+  var data, data1, dataNav2, dataNav1, footer ;
+  if(e.locale == 'en'){
+      footer  = await client.query({ query: FOOTER_LINKS });
+      data  = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.postid} });
+      data1 = await client.query({ query: BLOGS });
+      dataNav2  = await client.query({ query: NAVIGATION });
+      dataNav1  = await client.query({ query: PARENTMENUITEMS });
+  }
+  else{
+      footer  = await client.query({ query: ARFOOTER_LINKS });
+      data  = await client.query({ query: ARBLOGSDETAILS, variables:{id:cp.query.postid} });
+      data1 = await client.query({ query: ARBLOGS });
+      dataNav2  = await client.query({ query: ARNAVIGATION });
+      dataNav1  = await client.query({ query: ARPARENTMENUITEMS });
+  }
+
+   // Use this for footer
+    let footerData = footer.data.nodeQuery.entities[0];
     // end
   
-// Use this for novigation
-const  dataNav2  = await client.query({ query: NAVIGATION });
-const  dataNav1  = await client.query({ query: PARENTMENUITEMS });
-let nav = [];
-let othernav = [];
-if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
-  let submenu = dataNav2.data.nodeQuery.entities[0];
-  let menu = dataNav1.data.taxonomyTermQuery.entities;
-  // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
-  // console.log(cp.query.postid);
-  menu.map((m,i)=>{
-    othernav = [];
-    let des = m.description==null?'': m.description.value
-    nav.push({name:m.name,tid:m.tid,submenu:[],link:des,isOpen:false});
-    if((i+1)==menu.length){
-      submenu.fieldMultipleMenuItems.map((k,l)=>{
-        if(k.entity.fieldMenuType!=null){
-          nav.filter((o,h)=>{
-            if(k.entity.fieldMenuType.entity.tid == o.tid){
-              o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+    // Use this for novigation
+    let nav = [];
+    let othernav = [];
+    if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
+      let submenu = dataNav2.data.nodeQuery.entities[0];
+      let menu = dataNav1.data.taxonomyTermQuery.entities;
+      // console.log('----*-*-*-*-*-*--**------------*-*-*-*-*-*-',dataNav2.data.nodeQuery.entities[0].fieldMultipleMenuItems);
+      // console.log(cp.query.postid);
+      menu.map((m,i)=>{
+        othernav = [];
+        let des = m.description==null?'': m.description.value
+        nav.push({name:m.name,tid:m.tid,submenu:[],link:des,isOpen:false});
+        if((i+1)==menu.length){
+          submenu.fieldMultipleMenuItems.map((k,l)=>{
+            if(k.entity.fieldMenuType!=null){
+              nav.filter((o,h)=>{
+                if(k.entity.fieldMenuType.entity.tid == o.tid){
+                  o.submenu.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink});
+                }
+              });
             }
-          });
+            else{
+              othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
+            }
+          })
         }
-        else{
-          othernav.push({label:k.entity.fieldMenuNam,url:k.entity.fieldLink})
-        }
-      })
+      });
+    
     }
-  });
- 
-}
-  // end
+      // end
 
-  
-  const  data  = await client.query({ query: BLOGSDETAILS, variables:{id:cp.query.postid} });
-  const data1 = await client.query({ query: BLOGS });
   if(data.data.nodeQuery.entities.length == 0){
     // console.log(cp);
     // Router.push('/blog-list');

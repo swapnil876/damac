@@ -60,7 +60,12 @@ import GoogleMapReact from 'google-map-react';
 import { icon } from "@fortawesome/fontawesome-svg-core";
 import * as axios from 'axios';
 
+
+import { useRouter } from 'next/router';
+
 function Community({entity1, projectlist, otherProjects, nav, othernav, footerData}) {
+  const { locale, locales } = useRouter();
+
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
   const [customModal, openCustomModal] = useState(false);
   const [callBackModal, setCallBackModal] = useState(false);
@@ -1420,8 +1425,26 @@ export const getServerSideProps = async (cp) => {
     cache: new InMemoryCache()
   });
 
+
+  var footer, dataNav2, dataNav1, data, data1, data2;
+  if(e.locale == 'en'){
+    footer  = await client.query({ query: FOOTER_LINKS });
+    dataNav2  = await client.query({ query: NAVIGATION });
+    dataNav1  = await client.query({ query: PARENTMENUITEMS });
+    data  = await client.query({ query: COMMUNITYDETAILS, variables:{id:cp.query.id} });
+    data1  = await client.query({ query: PROJECT });
+    data2  = await client.query({ query: COMMUNITY });
+  }
+  else{
+    footer  = await client.query({ query: ARFOOTER_LINKS });
+    dataNav2  = await client.query({ query: ARNAVIGATION });
+    dataNav1  = await client.query({ query: ARPARENTMENUITEMS });
+    data  = await client.query({ query: ARCOMMUNITYDETAILS, variables:{id:cp.query.id} });
+    data1  = await client.query({ query: ARPROJECT });
+    data2  = await client.query({ query: ARCOMMUNITY });
+  }
+
   // Use this for footer
-  const footer  = await client.query({ query: FOOTER_LINKS });
   let footerData = footer.data.nodeQuery.entities[0];
 
   
@@ -1429,8 +1452,7 @@ export const getServerSideProps = async (cp) => {
 
 
    // Use this for novigation
-   const  dataNav2  = await client.query({ query: NAVIGATION });
-   const  dataNav1  = await client.query({ query: PARENTMENUITEMS });
+ 
    let nav = [];
    let othernav = [];
    if(typeof dataNav2 != 'undefined' &&  typeof dataNav1 != 'undefined'){
@@ -1460,9 +1482,7 @@ export const getServerSideProps = async (cp) => {
    }
      // end
    
-  const  data  = await client.query({ query: COMMUNITYDETAILS, variables:{id:cp.query.id} });
-  const  data1  = await client.query({ query: PROJECT });
-  const  data2  = await client.query({ query: COMMUNITY });
+
   let entity1 = data.data.nodeQuery.entities[0];
   let projectlist = data1.data.nodeQuery.entities;
   let otherProjects = data2.data.nodeQuery.entities;
