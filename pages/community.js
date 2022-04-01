@@ -17,7 +17,7 @@ import styles from '../styles/pages/Community.module.css'
 import style from '../styles/components/ContactForm.module.css';
 
 // Bootstrap Css
-import 'bootstrap/dist/css/bootstrap.css'
+
 
 
  // React Responsive
@@ -60,7 +60,7 @@ function Community({entity1, nav, othernav, footerData}) {
       }
 
        //   importing bootstrap js
-       import("bootstrap/dist/js/bootstrap");
+       
    }, [])
 
   // 
@@ -118,11 +118,11 @@ function Community({entity1, nav, othernav, footerData}) {
                                         <div className={ styles['select-card-img-wrap'] }>
                                             <img src="images/book-step-card-img.jpg" alt="card-img" className="img-fluid" />
                                             <div className={ styles["play-btn-card"]}>
-                                                <a href="#"><i className="fas fa-play"></i></a>
+                                                <a href="javascript:void(0)"><i className="fas fa-play"></i></a>
                                             </div>
                                         </div>
                                         <ul className={`${styles["bookmark_main"]} ${styles["d-flex"]} ${styles["float-end"]} ${styles["list-unstyled"]}`}>
-                                            <li><a href="#"><BsBookmark /></a></li>
+                                            <li><a href="javascript:void(0)"><BsBookmark /></a></li>
                                         </ul>
                                         <h6>Kiara 2 Bedroom Apartment</h6>
                                         <p>DAMAC Hills, Dubailand, Dubai</p>
@@ -130,22 +130,22 @@ function Community({entity1, nav, othernav, footerData}) {
                                             <div className="row">
                                                 <div className="col-md-7">
                                                 <li>
-                                                <a href="#"><img src="../public/images/price-tag 1.png" className={ styles["img-fluid"]} />From AED 1,213,515*</a>
+                                                <a href="javascript:void(0)"><img src="../public/images/price-tag 1.png" className={ styles["img-fluid"]} />From AED 1,213,515*</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="../public/images/house (2) 1.png" className={ styles["img-fluid"]} />2,750 sqft</a>
+                                                <a href="javascript:void(0)"><img src="../public/images/house (2) 1.png" className={ styles["img-fluid"]} />2,750 sqft</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-7">
                                                 <li>
-                                                <a href="#"><img src="../public/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> 3 Bedrooms</a>
+                                                <a href="javascript:void(0)"><img src="../public/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> 3 Bedrooms</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="../public/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
+                                                <a href="javascript:void(0)"><img src="../public/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
                                                  </li>
                                                 </div>
                                             </div>   
@@ -206,7 +206,7 @@ function Community({entity1, nav, othernav, footerData}) {
                                 }
                             </div>
                             <div className={styles["close-btn"]}>
-                              <a href="#"><i className="fas fa-times"></i></a>
+                              <a href="javascript:void(0)"><i className="fas fa-times"></i></a>
                             </div>
                         </div>
                     </div>
@@ -305,7 +305,7 @@ function Community({entity1, nav, othernav, footerData}) {
                 </div>
 
                 <div className={ styles['location-community'] }>
-                  <a href="#">
+                  <a href="javascript:void(0)">
                      <span className={styles['text-icon']}>
                        <Image alt="" src="/images/icons/location.png" width={16} height={16}/> 
                      </span>
@@ -325,7 +325,7 @@ function Community({entity1, nav, othernav, footerData}) {
                     </a>
                   </Link>
 
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <a className={`${styles["cust_banner_btn"]} btn btn-dark-blur`}>
                       <span>View Gallery (19)</span>
                     </a>
@@ -814,7 +814,7 @@ function Community({entity1, nav, othernav, footerData}) {
                <input type="range" className={styles['range-slider']} />
              </div>
           </div>
-          <a href="#" className={`${styles["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71', 'padding': '14px 73px'}}>Enquire Now</a>
+          <a href="javascript:void(0)" className={`${styles["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71', 'padding': '14px 73px'}}>Enquire Now</a>
           </div>
                 <div className="col-md-4">
                       <div className={styles['estimate-cost']}>
@@ -822,7 +822,7 @@ function Community({entity1, nav, othernav, footerData}) {
                         <ul>
                           <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> 120,000</i></li>
                           <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> 120,000</i></li>
-                          <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>120,000</i></li>
+                          <li><span className={styles['text-left']}>With Interest rate of</span> <i>120,000 <span>%</span></i></li>
                           <li><span className={styles['text-left']}>For Years</span>5</li>
                         </ul>
                         <h4>Fees</h4>
@@ -848,7 +848,7 @@ function Community({entity1, nav, othernav, footerData}) {
             <div className={styles['invest-wrap']}>
               <h2>{entity1.fieldHeading}</h2>
               <p>{entity1.fieldText}</p>
-              <a href="#" className={styles['read-more']}>Read more</a>
+              <a href="javascript:void(0)" className={styles['read-more']}>Read more</a>
             </div>  
           </div>          
         </div>        
@@ -875,20 +875,20 @@ function Community({entity1, nav, othernav, footerData}) {
                 <p>DAMAC Hills, Dubailand, Dubai</p>
                 <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="javascript:void(0)"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="javascript:void(0)"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>                              
                             
               </div>
                <div className="project-detail-nav">
                   <div className="left-nav">
-                    <a href="#"><i className="fas fa-chevron-left"></i></a>
+                    <a href="javascript:void(0)"><i className="fas fa-chevron-left"></i></a>
                   </div>
                    <div className="right-nav">
-                    <a href="#"><i className="fas fa-chevron-right"></i></a>
+                    <a href="javascript:void(0)"><i className="fas fa-chevron-right"></i></a>
                   </div>   
               </div>
             </div>
@@ -903,19 +903,19 @@ function Community({entity1, nav, othernav, footerData}) {
                 <p>Starting AED 1,213,515*</p>  
                   <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="javascript:void(0)"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="javascript:void(0)"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>               
               </div>
               <div className="project-detail-nav">
                   <div className="left-nav">
-                    <a href="#"><i className="fas fa-chevron-left"></i></a>
+                    <a href="javascript:void(0)"><i className="fas fa-chevron-left"></i></a>
                   </div>
                    <div className="right-nav">
-                    <a href="#"><i className="fas fa-chevron-right"></i></a>
+                    <a href="javascript:void(0)"><i className="fas fa-chevron-right"></i></a>
                   </div>   
               </div>
             </div>            
@@ -928,19 +928,19 @@ function Community({entity1, nav, othernav, footerData}) {
               <p><span>Starting AED 1,213,515*</span></p>
                 <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="javascript:void(0)"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="javascript:void(0)"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>             
             </div>
             <div className="project-detail-nav">
                 <div className="left-nav">
-                  <a href="#"><i className="fas fa-chevron-left"></i></a>
+                  <a href="javascript:void(0)"><i className="fas fa-chevron-left"></i></a>
                 </div>
                  <div className="right-nav">
-                  <a href="#"><i className="fas fa-chevron-right"></i></a>
+                  <a href="javascript:void(0)"><i className="fas fa-chevron-right"></i></a>
                 </div>   
             </div>
             </div>
@@ -954,19 +954,19 @@ function Community({entity1, nav, othernav, footerData}) {
               <p><span>Starting AED 1,213,515*</span></p> 
                <ul className={styles['bedroom-detail']}>
                   <li>
-                    <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                    <a href="javascript:void(0)"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                   </li>
                    <li>
-                    <a href="#"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                    <a href="javascript:void(0)"><img alt=""src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                   </li>                  
                 </ul>             
             </div>
             <div className="project-detail-nav">
                 <div className="left-nav">
-                  <a href="#"><i className="fas fa-chevron-left"></i></a>
+                  <a href="javascript:void(0)"><i className="fas fa-chevron-left"></i></a>
                 </div>
                  <div className="right-nav">
-                  <a href="#"><i className="fas fa-chevron-right"></i></a>
+                  <a href="javascript:void(0)"><i className="fas fa-chevron-right"></i></a>
                 </div>   
             </div>
             </div>

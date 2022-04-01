@@ -39,6 +39,11 @@
 .filter_option_wrap .form-field select{
 	width: 170px;
     width: 130px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 113.6%;
+    letter-spacing: 0.04em;
+    color: #000000;
 }
 
 /* .form-select{

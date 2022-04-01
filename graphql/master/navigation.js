@@ -2,11 +2,12 @@ import { gql } from '@apollo/client';
 
 const NAVIGATION = gql`
 query {
-   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["navigation_menu"]}]}) {
+   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["navigation_menu"]}]}) {
      entities {
-       ... on NodeNavigationMenu{
+      entityTranslation(language: EN) {
+        ... on NodeNavigationMenu{
           nid
-        	fieldMultipleMenuItems{
+            fieldMultipleMenuItems{
             entity{
               ... on ParagraphMenuItems{
                 id
@@ -24,6 +25,7 @@ query {
             }
           }
        }
+        }
      }
    }
  }`;

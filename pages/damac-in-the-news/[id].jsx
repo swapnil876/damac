@@ -40,86 +40,86 @@ import { NAVIGATION } from '../../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
 
-  export default function DamacInTheNews({entity1, bloglist, nav, othernav, footerData}){
-    const router = useRouter()
-    const { slug } = router.query;
-    console.log("slug", slug);
-     return(
-         <div className="DamacInTheNews">
-             <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
-             <main className="main">
-                <section className={styles['press-hero']} style={{'background-image':'url(/images/damac_in_news.png)'}}>               
-                <div className={styles['press-hero-wrap']}>
-                    <div className={styles['press-content']}>
-                    <h1>{entity1.title}</h1>
-                    <p>{entity1.fieldShortText}</p>
-                    <span>{entity1.entityCreated} By {entity1.fieldAuthor.entity.name}</span>
-                    </div> 
-                </div>                   
-                </section>  
+export default function DamacInTheNews({entity1, bloglist, nav, othernav, footerData}){
+  const router = useRouter()
+  const { slug } = router.query;
+  console.log("slug", slug);
+   return(
+       <div className="DamacInTheNews">
+           <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
+           <main className="main">
+              <section className={styles['press-hero']} style={{'background-image':'url(/images/damac_in_news.png)'}}>               
+              <div className={styles['press-hero-wrap']}>
+                  <div className={styles['press-content']}>
+                  <h1>{entity1.title}</h1>
+                  <p>{entity1.fieldShortText}</p>
+                  <span>{entity1.entityCreated} By {entity1.fieldAuthor!=null && entity1.fieldAuthor.entity.name}</span>
+                  </div> 
+              </div>                   
+              </section>  
 
-                <section className={styles['newsdetail-content']}>
-                <div className="container">
-                    <div className={styles['content-wrap-news']}>
-                    <ul className={styles['social-media']}>
-                        <li><a href="#"><img src="/damac-static/images/twiter.png"/></a></li>
-                        <li><a href="#"><img src="/damac-static/images/facebook.png"/></a></li>
-                        <li><a href="#"><img src="/damac-static/images/linkedin.png"/></a></li>
-                        <li><a href="#"><img src="/damac-static/images/whatsapp.png"/></a></li>
-                        <li><a href="#"><img src="/damac-static/images/share.png"/></a></li>
-                    </ul>
-                    <div className={styles['content-detail']}>
-                    <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
-                        
-                    </div>
-
-                    </div>
-                    
-                </div>
-                
-                </section>
-
-                <section className={styles['related-post']}>
-                <div className="container">
-                    <div className={styles['related-title']}>
-                    <h2>Related Posts</h2>          
-                    </div>
-                    <div className="row">
-                    {
+              <section className={styles['newsdetail-content']}>
+              <div className="container">
+                  <div className={styles['content-wrap-news']}>
+                  <ul className={styles['social-media']}>
+                      <li><a href="javascript:void(0)"><img src="/damac-static/images/twiter.png"/></a></li>
+                      <li><a href="javascript:void(0)"><img src="/damac-static/images/facebook.png"/></a></li>
+                      <li><a href="javascript:void(0)"><img src="/damac-static/images/linkedin.png"/></a></li>
+                      <li><a href="javascript:void(0)"><img src="/damac-static/images/whatsapp.png"/></a></li>
+                      <li><a href="javascript:void(0)"><img src="/damac-static/images/share.png"/></a></li>
+                  </ul>
+                  <div className={styles['content-detail']}>
+                  <div dangerouslySetInnerHTML={{ __html: entity1.body!=null && entity1.body.value }}></div>
                       
-                       bloglist.map((blog, index) => (
-                          <div className="col-md-4">
-                            <div className={styles['card']}>
-                            <img src="/damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
-                            <div className={styles['card-body']}>
-                                <a href="#"><h4>{blog.title}</h4></a>
-                                <div className="d-flex justify-content-between">
-                                <label>{blog.fieldTag!=null?blog.fieldTag.entity.name:''}</label>
-                                <span> {blog.entityCreated} by {blog.fieldAuthor!=null?blog.fieldAuthor.entity.name:''} </span>
-                                </div>
-                                <p className={styles['card-text']} dangerouslySetInnerHTML={{ __html: blog.body.value }}></p>
-                                <a href={'press-release/'+blog.nid} className={styles['read-more']}>Read More</a>
-                            </div>
-                            </div>
-                            
+                  </div>
+
+                  </div>
+                  
+              </div>
+              
+              </section>
+
+              <section className={styles['related-post']}>
+              <div className="container">
+                  <div className={styles['related-title']}>
+                  <h2>Related Posts</h2>          
+                  </div>
+                  <div className="row">
+                  {
+                    
+                     bloglist.map((blog, index) => (
+                        <div className="col-md-4">
+                          <div className={styles['card']}>
+                          <img src="/damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
+                          <div className={styles['card-body']}>
+                              <a href="javascript:void(0)"><h4>{blog.title}</h4></a>
+                              <div className="d-flex justify-content-between">
+                              <label>{blog.fieldTag!=null?blog.fieldTag.entity.name:''}</label>
+                              <span> {blog.entityCreated} by {blog.fieldAuthor!=null?blog.fieldAuthor.entity.name:''} </span>
+                              </div>
+                              <p className={styles['card-text']} dangerouslySetInnerHTML={{ __html: blog.body!=null && blog.body.value }}></p>
+                              <a href={'press-release/'+blog.nid} className={styles['read-more']}>Read More</a>
                           </div>
-                      ))
-                    }
-                    
-                    </div>
+                          </div>
+                          
+                        </div>
+                    ))
+                  }
+                  
+                  </div>
 
-                    <div className={`${styles["post-button"]} text-center`}>
-                    <a href="#" className="btn btn-primary">View all posts</a>
-                    </div>
+                  <div className={`${styles["post-button"]} text-center`}>
+                  <a href="javascript:void(0)" className="btn btn-primary">View all posts</a>
+                  </div>
 
-                    
-                </div>
-                </section>
-             </main>
-             <Footer footerData={footerData}></Footer>
-         </div>
-     )
- }
+                  
+              </div>
+              </section>
+           </main>
+           <Footer footerData={footerData}></Footer>
+       </div>
+   )
+}
 
  export const getServerSideProps = async (cp) => {
   const client = new ApolloClient({

@@ -38,86 +38,92 @@ import { PARENTMENUITEMS } from '../../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../../graphql/footer_links"
 
- export default function BlogDetails({entity1,bloglist, nav, othernav, footerData}){
-     return(
-         <div className="BlogDetails">
-             <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
-             <main className="main">
-                <section className={styles['press-hero']} style={{'background-image': 'url(../damac-static/images/blog-bg.png)'}}>   
-                <div className="container" style={{'height':'100%'}}>
-                <div className={styles['press-hero-wrap']} style={{'padding-right':'0'}}>
-                    <div className={styles['press-content']} style={{'padding':'0 !important'}}>
-                    <h2>{entity1.title}</h2>
-                    <p>{entity1.fieldShortText}</p>
-                    <span>{entity1.entityCreated} By {entity1.fieldAuthor.entity.name}</span>
-                    </div> 
-                </div> </div>                              
-                </section>  
+export default function BlogDetails({entity1,bloglist, nav, othernav, footerData}){
+  return(
+      <div className="BlogDetails">
+          <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
+          <main className="main">
+             <section className={styles['press-hero']} style={{'background-image': 'url(../damac-static/images/blog-bg.png)'}}>   
+             <div className="container" style={{'height':'100%'}}>
+             <div className={styles['press-hero-wrap']} style={{'padding-right':'0'}}>
+                 <div className={styles['press-content']} style={{'padding':'0 !important'}}>
+                 <h2>{entity1.title}</h2>
+                 <p>{entity1.fieldShortText}</p>
+                 <span>{entity1.entityCreated} By {(entity1.fieldAuthor!=null && entity1.fieldAuthor!='')?entity1.fieldAuthor.entity.name:''}</span>
+                 </div> 
+             </div> </div>                              
+             </section>  
 
-                <section className={styles['newsdetail-content']}>
-                <div className="container">
-                    <div className={styles['content-wrap-news']}>
-                    <ul className={styles['social-media']}>
-                        <li><a href="#"><img src="../damac-static/images/twiter.png"/></a></li>
-                        <li><a href="#"><img src="../damac-static/images/facebook.png"/></a></li>
-                        <li><a href="#"><img src="../damac-static/images/linkedin.png"/></a></li>
-                        <li><a href="#"><img src="../damac-static/images/whatsapp.png"/></a></li>
-                        <li><a href="#"><img src="../damac-static/images/share.png"/></a></li>
-                    </ul>
-                    <div className={styles['content-detail']}>
-                        <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
-                        
-                    </div>
+             <section className={styles['newsdetail-content']}>
+             <div className="container">
+                 <div className={styles['content-wrap-news']}>
+                 <ul className={styles['social-media']}>
+                     <li><a href="javascript:void(0)"><img src="../../damac-static/images/twiter.png"/></a></li>
+                     <li><a href="javascript:void(0)"><img src="../../damac-static/images/facebook.png"/></a></li>
+                     <li><a href="javascript:void(0)"><img src="../../damac-static/images/linkedin.png"/></a></li>
+                     <li><a href="javascript:void(0)"><img src="../../damac-static/images/whatsapp.png"/></a></li>
+                     <li><a href="javascript:void(0)"><img src="../../damac-static/images/share.png"/></a></li>
+                 </ul>
+                 <div className={styles['content-detail']}>
+                 {
+                   entity1.body!=null?
+                   (<div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>)
+                   :
+                   ('')
+                     
+                 }
+                     
+                 </div>
 
-                    </div>
-                    
-                </div>
-                
-                </section>
+                 </div>
+                 
+             </div>
+             
+             </section>
 
-                <section className={styles['related-post']}>
-                <div className="container">
-                    <div className={styles['related-title']}>
-                    <h2>Related News</h2>          
-                    </div>
-                    <div className="row">
-                    {
-                       bloglist.map( (blog, index) => (
-                        <div className="col-md-4">
-                            <div className={styles['card']}>
-                            <img src="../damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
+             <section className={styles['related-post']}>
+             <div className="container">
+                 <div className={styles['related-title']}>
+                 <h2>Related News</h2>          
+                 </div>
+                 <div className="row">
+                 {
+                    bloglist.map( (blog, index) => (
+                     <div className="col-md-4">
+                         <div className={styles['card']}>
+                         <img src="../../damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
 
 
-                            <div className={styles['card-body']}>
-                                <a href="#"><h4>{blog.title}</h4></a>
-                                <div className="d-flex justify-content-between">
-                                <label>{blog.fieldTag.entity.name}</label>
-                                <span> {blog.entityCreated} by {blog.fieldAuthor.entity.name}</span>
-                                </div>
-                                <div className={styles['card-text']} dangerouslySetInnerHTML={{ __html: blog.body.value }}></div>
-                                <a href={'blog/'+blog.nid} className={styles['read-more']}>Read More</a>
-                            </div>
-                            </div>
-                            
-                        </div>
-                        ))
-                   }
-                    
-                    
-                    </div>
+                         <div className={styles['card-body']}>
+                             <a href="javascript:void(0)"><h4>{blog.title}</h4></a>
+                             <div className="d-flex justify-content-between">
+                             <label>{(blog.fieldTag && blog.fieldTag!=null) && blog.fieldTag.entity.name}</label>
+                             <span> {blog.entityCreated} by {(blog.fieldAuthor!=null && blog.fieldAuthor) && blog.fieldAuthor.entity.name}</span>
+                             </div>
+                             <div className={styles['card-text']} dangerouslySetInnerHTML={{ __html: (blog.body!=null && blog.body) && blog.body.value }}></div>
+                             <a href={'blog/'+blog.nid} className={styles['read-more']}>Read More</a>
+                         </div>
+                         </div>
+                         
+                     </div>
+                     ))
+                }
+                 
+                 
+                 </div>
 
-                    <div className={`${styles["post-button"]} text-center`}>
-                    <a href="/blog-list" className="btn btn-primary">View all posts</a>
-                    </div>
+                 <div className={`${styles["post-button"]} text-center`}>
+                 <a href="/blog-list" className="btn btn-primary">View all posts</a>
+                 </div>
 
-                    
-                </div>
-                </section>
-             </main>
-             <Footer footerData={footerData}></Footer>
-         </div>
-     )
- }
+                 
+             </div>
+             </section>
+          </main>
+          <Footer footerData={footerData}></Footer>
+      </div>
+  )
+}
 
  export const getServerSideProps = async (cp) => {
   const client = new ApolloClient({

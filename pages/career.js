@@ -58,7 +58,10 @@ useEffect(()=>{
 
       <main className="main career-main">
 
-      <iframe src={entity1.fieldHeaderImageVideoDesktop.entity.url} class="career-video-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        {
+          entity1.fieldHeaderImageVideoDesktop!=null &&
+          <iframe src={entity1.fieldHeaderImageVideoDesktop.entity.url} class="career-video-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        }
        
        {/* <VideoBanner bannerImage={isMobile?entity1.fieldHeaderImageVideoMobile.entity.url:entity1.fieldHeaderImageVideoDesktop.entity.url}> </VideoBanner> */}
 
@@ -71,6 +74,7 @@ useEffect(()=>{
          <div className="py-4">
            <div className="row justify-content-center">
              {entity1.fieldMutlipleIcons.map((item) => (
+               (item!=null && item.entity!=null) &&
                <div className="col-md-3 col-sm-4 col-6">
                  <div className="icon-box">
                    <div className="icon-box-svg">
@@ -97,7 +101,10 @@ useEffect(()=>{
          <div className="py-4">
            <div className="video-box-wrapper">
              {/* <img alt=""src="/images/videobg-career.png"/> */}
-             <iframe src={entity1.fieldVideoUrl.url.path}></iframe>
+             {
+               entity1.fieldVideoUrl &&
+               <iframe src={entity1.fieldVideoUrl.url.path}></iframe>
+             }
              <div className="playbtn-wrapper">
                <div className={'bannerPlayBtn'}>
                  <span>
@@ -111,7 +118,7 @@ useEffect(()=>{
            </div>
          </div>
 
-         <div className="text-center cta-container pt-4">
+         <div className="text-center cta-container py-4">
            <Link href="" style={{'marginBottom':'50px'}}>
              <a className="btn btn-primary cta-btn" >See All Videos</a>
            </Link>

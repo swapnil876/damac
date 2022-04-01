@@ -85,7 +85,7 @@ export default function HeroCoverImage({
                 <div className={ styles['covertext-buttons-mobile'] }>
 
                   <div className={styles['schedule-bottom-btns']}>
-                    <Link href="#">
+                    <Link href="javascript:void(0)">
                       <a className={ `btn btn-primary btn-block cta-btn cta-btn-primary ${styles['schedule-bottom-btn']} ` }>
                         <span>Schedule a call-back</span>
                       </a>
@@ -93,11 +93,11 @@ export default function HeroCoverImage({
                   </div>
 
                   <div className={styles['bottom-btns']}>
-                    <a href="#" className={ `btn btn-blur` }>
+                    <a href="javascript:void(0)" className={ `btn btn-blur` }>
                       <span>Download Brochure</span>
                     </a>
 
-                    <a href="#" className={ `btn btn-blur` }>
+                    <a href="javascript:void(0)" className={ `btn btn-blur` }>
                       <span>View Gallery (19)</span>
                     </a>
                   </div>
@@ -129,7 +129,7 @@ export default function HeroCoverImage({
                 
                 <div className={ styles['covertext-buttons'] }>
 
-                  <a href="#" className={ `btn btn-blur btn-icon ${styles['cover-action-btn']} ${styles['cover-action-icon-btn']}` }>
+                  <a href="javascript:void(0)" className={ `btn btn-blur btn-icon ${styles['cover-action-btn']} ${styles['cover-action-icon-btn']}` }>
                     <span className='react-icon'>
                      
                           <IoBookmarkOutline color={ 'white' } />
@@ -139,18 +139,18 @@ export default function HeroCoverImage({
                   
                   
 
-                  <a href="#" className={ `btn btn-blur btn-icon ${styles['cover-action-btn']} ${styles['cover-action-icon-btn']}` }>
+                  <a href="javascript:void(0)" className={ `btn btn-blur btn-icon ${styles['cover-action-btn']} ${styles['cover-action-icon-btn']}` }>
                     <span className='react-icon'>
                       <IoShareSocialOutline  color={ 'white' } />
                     </span>
                   </a>
 
 
-                  <a href="#" className={ `btn btn-blur ${styles['cover-action-btn']}` }>
+                  <a href="javascript:void(0)" className={ `btn btn-blur ${styles['cover-action-btn']}` }>
                     <span>Download Brochure</span>
                   </a>
 
-                  <a href="#" className={ `btn btn-blur ${styles['cover-action-btn']}` }>
+                  <a href="javascript:void(0)" className={ `btn btn-blur ${styles['cover-action-btn']}` }>
                     <span>View Gallery (19)</span>
                   </a>
 

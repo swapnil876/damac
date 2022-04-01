@@ -2,9 +2,10 @@ import { gql } from '@apollo/client';
 
 const PROJECT = gql`
 query {
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["project"]}]}) {
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["project"]}]}) {
     entities {
-      ... on NodeProject{
+      entityTranslation(language: EN) {
+        ... on NodeProject{
           nid
           title
            fieldTaglingP
@@ -179,7 +180,7 @@ query {
         
         fieldLongitudeP4
         fieldLatitudeP4
-
+      
         fieldMetaTitleProj
         fieldMetaDescriptionProj
         fieldMetaKeywordsProj
@@ -200,6 +201,7 @@ query {
           }
         }
       }
+        }
     }
   }
 }`;

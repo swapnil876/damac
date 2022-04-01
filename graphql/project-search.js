@@ -3,10 +3,11 @@ import { gql } from '@apollo/client';
 const PROJECTSEARCH = gql`
   query PROJECTSEARCH ($search: String!,$city: String!,$country: String!){
     nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: LIKE, field: "title", value: [$search]}, 
-      {operator: EQUAL, field: "field_location_p.entity.tid", value: [$city]},
+      {operator: EQUAL, field: "field_location_p.entity.tid", language:EN, value: [$city]},
       {operator: LIKE, field: "field_location_p.entity.name", value: [$country]}]}) {
       entities {
-        ... on NodeProject{
+        entityTranslation(language: EN) {
+          ... on NodeProject{
             nid
             title
              fieldTaglingP
@@ -181,7 +182,7 @@ const PROJECTSEARCH = gql`
           
           fieldLongitudeP4
           fieldLatitudeP4
-
+        
           fieldMetaTitleProj
           fieldMetaDescriptionProj
           fieldMetaKeywordsProj
@@ -191,6 +192,7 @@ const PROJECTSEARCH = gql`
           fieldWhatsapp
           fieldHeadingSec7
         }
+          }
       }
     }
   }`;

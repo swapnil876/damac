@@ -109,13 +109,13 @@ function QuickFactsheet( { quickfactsheet, nav, othernav, footerData } ) {
              <div class="row">
                         <div class="col-md-6">
                       <div class="factsheet-main-content">
-                          <div dangerouslySetInnerHTML={{ __html: quickfactsheet.fieldCol1Text.value }}>
+                          <div dangerouslySetInnerHTML={{ __html:quickfactsheet.fieldCol1Text!=null && quickfactsheet.fieldCol1Text.value }}>
                           </div>
                       </div>
                   </div>
                   <div class="col-md-6">
                       <div class="factsheet-main-content second-p">
-                        <div dangerouslySetInnerHTML={{ __html: quickfactsheet.fieldCol2Text.value }}></div>
+                        <div dangerouslySetInnerHTML={{ __html:quickfactsheet.fieldCol2Text!=null && quickfactsheet.fieldCol2Text.value }}></div>
                       </div>
                   </div>
               </div>

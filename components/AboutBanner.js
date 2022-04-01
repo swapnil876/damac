@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,14 +10,9 @@ import { BrowserView, MobileView, isBrowser, isMobile, getUA, getSelectorsByUser
 
 export default function AboutBanner( { bannerImage, children, entity1, responsiveHeights}  ) {
 
-  // useEffect(()=>{
-  //   handlePlayBtnClick();
-  // }, [])
-
   const sliderRef = useRef();
 
   const [videoIsPlaying, setVideoIsPlaying] = useState(false);
-  const [vidURL, setVidURL] = useState("https://www.youtube.com/embed/kpCGfnMSes0");
 
   // const banner = (
   //   <Image 
@@ -41,12 +36,12 @@ export default function AboutBanner( { bannerImage, children, entity1, responsiv
     // >
     //    <source {...{bannerImage}}/>
     // </video>
-    <iframe className={styles['bg-image']} src={vidURL} ref={sliderRef}></iframe>
+    <iframe className={styles['bg-image']} src="https://www.youtube.com/embed/kpCGfnMSes0" ref={sliderRef}></iframe>
     );
 
     function handlePlayBtnClick(){
-      // console.log(sliderRef.current.src);
-      setVidURL((prev)=>{return prev + '?autoplay=1&controls&modestbranding=1&autohide=1'});
+      console.log(sliderRef.current.src);
+      sliderRef.current.src = sliderRef.current.src + '?autoplay=1&controls&modestbranding=1&autohide=1';
     }
 
   return (

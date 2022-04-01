@@ -2,19 +2,21 @@ import { gql } from '@apollo/client';
 
 const TEAM = gql`
   query {
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["team"]}]}) {
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["team"]}]}) {
     entities {
-      ... on NodeTeam{
-         nid,
-        fieldName,
-        fieldTimage {
-          targetId
-          url
-        },
-         body{
-          value
+      entityTranslation(language: EN) {
+        ... on NodeTeam{
+          nid,
+         fieldName,
+         fieldTimage {
+           targetId
+           url
+         },
+          body{
+           value
+         }
+       }
         }
-      }
     }
   }
 }`;

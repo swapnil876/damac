@@ -62,7 +62,7 @@ import { BEDROOMDATA } from '../json/bedroom';
 import { BATHROOMDATA } from '../json/bathroom';
 
 
- function BrowseProperties({entity,entity1, nav, othernav, footerData}){
+function BrowseProperties({entity,entity1, nav, othernav, footerData}){
     const [callBackModal, setCallBackModal] = useState(false);
     const [filterClicked, setFilterClicked] = useState(false);
     const [searchClicked, setSearchClicked] = useState(false);
@@ -70,6 +70,7 @@ import { BATHROOMDATA } from '../json/bathroom';
     const [property, setProperty] = useState(entity);
     const [localStorage, setLocalStorage] = useState(false);
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+    var imageSize = [1,2,3,4,5];
     // carousel setting
     const responsive = {
         superLargeDesktop: {
@@ -79,7 +80,7 @@ import { BATHROOMDATA } from '../json/bathroom';
         }
     };
 
-    console.log(PROJECTDATA)
+    console.log('property',property)
 
     function savedProperty(unit){
       let savedProperty = [];
@@ -187,6 +188,65 @@ import { BATHROOMDATA } from '../json/bathroom';
       }
       
     }
+
+
+
+    // useEffect(()=>{
+    //     pagination()
+    //   },[]);
+    
+    //   function pagination(){
+    //     var indexsPerSet = [
+    //       {
+    //         start:0,
+    //         end:10
+    //       },
+    //       {
+    //         start:11,
+    //         end:20
+    //       },
+    //       {
+    //         start:21,
+    //         end:30
+    //       },
+    //       {
+    //         start:31,
+    //         end:40
+    //       },
+    //       {
+    //         start:41,
+    //         end:50
+    //       },
+    //       {
+    //         start:51,
+    //         end:60
+    //       },
+    //       {
+    //         start:61,
+    //         end:70
+    //       },
+    //     ]; 
+    //     var noOfSets = Math.ceil(property.length/10);
+    
+    //     var finalArr=[];
+    
+    //     for(var i=0; i<noOfSets; i++){
+    //       let innerArr=[];
+    //       for(var j=indexsPerSet[i].start; j<=indexsPerSet[i].end; j++){
+    //         if(j){
+    //           if(j!=indexsPerSet[i].end){
+    //             innerArr.push(property[j]);
+    //           }else{
+    //             innerArr.push(property[j]);
+    //             finalArr.push(innerArr);
+    //             console.log("Here is our inner array",innerArr);
+    //             innerArr=[];
+    //           }
+    //         }
+    //       }
+    //     }
+    //     console.log("Here is our array",finalArr);
+    //   }
 
     
 
@@ -434,7 +494,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                    <div className={styles['filter_option_wrap']}>
                        <form action="">
                            <div className="row">
-                               <div className="col-md-9 d-flex" style={{'justifyContent':'space-between'}}>
+                               <div className="col-md-10 d-flex" style={{'justifyContent':'space-between'}}>
                                <div className={styles['form-field']}>
                                        <select name="property_type" className="form-select" id="" onChange={(ev)=>{setProject(ev.target.value)}}>
                                            <option value="">Select Project</option>
@@ -457,6 +517,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                                        <option value="">Select Community</option>
                                             {
                                                COMMUNITYDATA.map((m,n)=>(
+                                                   m!=null &&
                                                    <option key={n} value={m}>{m}</option>
                                                ))
                                            }
@@ -467,6 +528,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                                        <option value="">Select Location</option>
                                            {
                                                LOCATIONDATA.map((m,n)=>(
+                                                   m!=null &&
                                                    <option key={n} value={m}>{m}</option>
                                                ))
                                            }
@@ -477,6 +539,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                                             <option value="">Select Bedroom</option>
                                            {
                                                BEDROOMDATA.map((m,n)=>(
+                                                m!=null &&
                                                    <option key={n} value={m}>{m}</option>
                                                ))
                                            }
@@ -487,6 +550,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                                             <option value="">Select Bathroom</option>
                                        {
                                                BATHROOMDATA.map((m,n)=>(
+                                                m!=null &&
                                                    <option key={n} value={m}>{m}</option>
                                                ))
                                            }
@@ -499,9 +563,9 @@ import { BATHROOMDATA } from '../json/bathroom';
                                        </select>
                                    </div> */}
                                </div>
-                               <div className="col-md-3">
+                               <div className="col-md-2">
                                    <div className={styles['search_btn_filter']} onClick={()=>{searchFilter()}}>
-                                       <a href="#" className="btn btn-primary">Search</a>
+                                       <a href="javascript:void(0)" className="btn btn-primary">Search</a>
                                    </div>
                                </div>
                            </div>
@@ -510,10 +574,10 @@ import { BATHROOMDATA } from '../json/bathroom';
                    <div className={`${styles["filter_tag_main"]} d-flex justify-content-between align-items-center`}>
                        <div className={styles['tag_list']}>
                            <ul className="list-unstyled d-flex m-0">
-                               <li className="active"><a href="#">All</a></li>
-                               <li><a href="#">Communities</a></li>
-                               <li><a href="#">Projects</a></li>
-                               <li><a href="#">Our Picks</a></li>
+                               <li className="active"><a href="javascript:void(0)">All</a></li>
+                               <li><a href="javascript:void(0)">Communities</a></li>
+                               <li><a href="javascript:void(0)">Projects</a></li>
+                               <li><a href="javascript:void(0)">Our Picks</a></li>
                                <li><a href="/saved-properties">Saved</a></li>
                            </ul>
                        </div>
@@ -527,7 +591,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                            </form>
                            <div className={styles['map_list_view']}>
                                <ul className="list-unstyled d-flex">
-                                   <li className={styles['active']}><a href="#">List</a></li>
+                                   <li className={styles['active']}><a href="javascript:void(0)">List</a></li>
                                    <li><a href="/browse-properties-map-view">Map</a></li>
                                </ul>
                            </div>
@@ -543,7 +607,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                 filterClicked ? 
                 <div className='filter_side_slide_for_mobile'>
                 <div className='back_btn' onClick={()=>{setFilterClicked(false)}}>
-                    <img src="images/icons/angle-down.png" />
+                    <img src="/images/icons/angle-down.png" />
                 </div>
                 <div className='top_area'>
                     <h3>Add a filter</h3>
@@ -614,7 +678,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                     Price Range
                     </div>
                     <div className='options-box'>
-                    <img src="images/menu-graph.png" className='range_graph_img' />
+                    <img src="/images/menu-graph.png" className='range_graph_img' />
                     <div className='price_range_area'>
                         <div className='slider_range_area'>
                         <input type="range"/>
@@ -658,7 +722,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                 searchClicked ? 
                 <div className='filter_side_slide_for_mobile'>
                 <div className='back_btn' onClick={()=>{setSearchClicked(false)}}>
-                    <img src="images/icons/angle-down.png" />
+                    <img src="/images/icons/angle-down.png" />
                 </div>
                 <div className='top_area'>
                     <h3>Search</h3>
@@ -729,7 +793,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                     Price Range
                     </div>
                     <div className='options-box'>
-                    <img src="images/menu-graph.png" className='range_graph_img' />
+                    <img src="/images/menu-graph.png" className='range_graph_img' />
                     <div className='price_range_area'>
                         <div className='slider_range_area'>
                         <input type="range"/>
@@ -959,24 +1023,31 @@ import { BATHROOMDATA } from '../json/bathroom';
                         <div className="row">
                         {
                             property.map( (unit, index) => (
+                                (unit!=null && unit.entity!=null) &&
                             <div className="col-md-6" key={index}>
                                 <div className={styles['property-slider-wrap']}>
                                     <div className={styles['project-card']}>
                                         <Carousel className={styles['slider']} responsive={responsive}>
-                                            <img src={"images/aboutsectionbg-2.jpg"} className="img-fluid"/>
+                                          {
+                                            imageSize.map((k,l)=>(
+                                                k!=null&&
+                                              <img key={l} src={unit.entity['Image_1_Size_'+k]} className="img-fluid"/>
+                                            ))
+                                          } 
                                         </Carousel>
                                         <ul className={`${styles["bookmark_main"]} d-flex float-end list-unstyled`}>
-                                          <li><a href="#"><img src="damac-static/images/man.png" alt=""/></a></li>
-                                          <li><a onClick={()=>{savedProperty(unit)}} styles={{pointer:'cursor'}}><img src={unit.isSaved?"images/icons/save-filled.png":"damac-static/images/bookmark.png"} alt=""/></a></li>
+                                          <li><a href="javascript:void(0)"><img src="damac-static/images/man.png" alt=""/></a></li>
+                                          <li><a onClick={()=>{savedProperty(unit)}} styles={{pointer:'cursor'}}><img src={unit.isSaved?"/images/icons/save-filled.png":"damac-static/images/bookmark.png"} alt=""/></a></li>
                                         </ul>
+
                                         <h6>{unit.entity.Project_Name}</h6>
                                         <p>{unit.entity.Address},{unit.entity.Country.display_value}</p>
                                         <ul className={styles['bedroom-detail']}>
                                             <li>
-                                                <a href="#"><img src="images/price-tag 1.png" className="img-fluid"/>From AED {unit.entity.Unit_price_AED}*</a>
+                                                <a href="javascript:void(0)"><img src="/images/price-tag 1.png" className="img-fluid"/>From AED {unit.entity.Unit_price_AED}*</a>
                                             </li>
                                             <li>
-                                                <a href="#"><img src="images/house (2) 1.png" className="img-fluid"/>Villa {unit.entity.Number_of_Bedrooms1} Bedrooms</a>
+                                                <a href="javascript:void(0)"><img src="/images/house (2) 1.png" className="img-fluid"/>Villa {unit.entity.Number_of_Bedrooms1} Bedrooms</a>
                                             </li>
                                         </ul>
                                         <div className={styles['shape-wrap-plan']}>              
@@ -987,19 +1058,19 @@ import { BATHROOMDATA } from '../json/bathroom';
                                                 <path fillRule="evenodd" clipRule="evenodd" d="M1.00006 0.671875C0.56996 0.671875 0.188034 0.946894 0.0516614 1.35481C-0.0415124 1.6335 -0.00579962 1.93158 0.135769 2.17495V16.9382C0.135769 17.3408 0.462207 17.6673 0.86489 17.6673H21.1583C21.561 17.6673 21.8874 17.3408 21.8874 16.9382V1.72044C21.889 1.68809 21.889 1.65557 21.8874 1.623V1.47843C21.8874 1.12795 21.6401 0.835228 21.3105 0.765225C21.1812 0.704965 21.0377 0.671875 20.8886 0.671875H1.00006ZM4.09409 2.74931H17.8279L11.0073 7.9534L4.09409 2.74931ZM2.13577 3.77847L10.41 10.0071C10.768 10.2766 11.2617 10.275 11.618 10.0031L19.8874 3.69357V15.6673H2.13577V3.77847Z" fill="white"/>
                                             </svg>
                                             </a></li>
-                                              <li><a href="#" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="images/icons/whatsapp-gold.png" /></a></li>
+                                              <li><a href="javascript:void(0)" className={styles['border-icon']}><img className={styles['whatsapp-ico']} src="/images/icons/whatsapp-gold.png" /></a></li>
                                             </ul>                  
                                           </div>                
                                         </div>
                                     </div>
-                                    <div className={styles['project-detail-nav']}>
+                                    {/*<div className={styles['project-detail-nav']}>
                                         <div className={styles['left-nav']}>
-                                            <a href="#"><FaAngleLeft/></a>
+                                            <a href="javascript:void(0)"><FaAngleLeft/></a>
                                         </div>
                                         <div className={styles['right-nav']}>
-                                            <a href="#"><FaAngleRight/></a>
+                                            <a href="javascript:void(0)"><FaAngleRight/></a>
                                         </div>
-                                    </div>
+                                    </div>*/}
                                 </div>
                             </div>
                             ))
@@ -1023,28 +1094,28 @@ import { BATHROOMDATA } from '../json/bathroom';
                                    <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <h2><a href="javascript:void(0)">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                        </div>
                                    </div>
                                    <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <h2><a href="javascript:void(0)">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                        </div>
                                    </div>
                                    <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <h2><a href="javascript:void(0)">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                        </div>
                                    </div>
                                    <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <h2><a href="javascript:void(0)">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                        </div>
                                    </div>
@@ -1060,7 +1131,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                                 <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <h2><a href="javascript:void(0)">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                 </div>
                                </div>
@@ -1069,7 +1140,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                                 <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <h2><a href="javascript:void(0)">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                 </div>
                                </div>
@@ -1078,7 +1149,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                                 <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <h2><a href="javascript:void(0)">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                 </div>
                                </div>
@@ -1087,7 +1158,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                                 <div className="col-md-3">
                                        <div className={project_landing_styles['property_similar_card']}>
                                            <img src="/images/project-3.jpg" alt="similar-property-img" className="img-fluid" />
-                                           <h2><a href="#">DAMAC Villas</a></h2>
+                                           <h2><a href="javascript:void(0)">DAMAC Villas</a></h2>
                                            <p>Starting AED 1,213,515*</p>
                                 </div>
                                </div>
@@ -1108,10 +1179,10 @@ import { BATHROOMDATA } from '../json/bathroom';
                 </div>
                 <div className="row">
                   <div className="col-md-6">
-                     <div dangerouslySetInnerHTML={{ __html: entity1.fieldStaticCol1.value }}></div>
+                     <div dangerouslySetInnerHTML={{ __html: entity1.fieldStaticCol1!=null && entity1.fieldStaticCol1.value }}></div>
                   </div>
                   <div className="col-md-6">
-                  <div dangerouslySetInnerHTML={{ __html: entity1.fieldStaticCol2.value }}></div>
+                  <div dangerouslySetInnerHTML={{ __html: entity1.fieldStaticCol2!=null && entity1.fieldStaticCol2.value }}></div>
                   </div>
                 </div>
               </div>
@@ -1143,7 +1214,7 @@ import { BATHROOMDATA } from '../json/bathroom';
               </div>
               <div className="row">
                        <div className="col-md-6">
-                         <a href="#" className="read-more" style={{'color':'#fff', 'text-decoration':'none'}}>Read more</a>
+                         <a href="javascript:void(0)" className="read-more" style={{'color':'#fff', 'text-decoration':'none'}}>Read more</a>
                        </div>
                      </div>   
               </div>    
@@ -1173,7 +1244,7 @@ import { BATHROOMDATA } from '../json/bathroom';
              </div>
              <div className="row">
                       <div className="col-md-6">
-                        <a href="#" className="read_more_btn_for_mob">Read more</a>
+                        <a href="javascript:void(0)" className="read_more_btn_for_mob">Read more</a>
                       </div>
                     </div>   
              </div>    
@@ -1186,7 +1257,7 @@ import { BATHROOMDATA } from '../json/bathroom';
             <section className={style['faq-section']}>
                             <div className="container">
                                 <div className={style['faq-icon']}>
-                                <img src="damac-static/images/speech-bubble 1.png"/>
+                                <img src="/damac-static/images/speech-bubble 1.png"/>
                                 <h2>Frequently Asked Questions</h2>          
                                 </div>
                                 <div className="row">
@@ -1194,6 +1265,7 @@ import { BATHROOMDATA } from '../json/bathroom';
                                     <div className={style['faq-wrap']}>
                                     <div className="accordion" id="accordionExample">
                                     {
+                                        firstFaq.entity!=null &&
                                         <div className="accordion-item">
                                         <h2 className="accordion-header" id="headingOne">
                                             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -1209,7 +1281,8 @@ import { BATHROOMDATA } from '../json/bathroom';
                                     }
                                     {
                                     otherFaqs.map((item,k) => (
-                                        <div className="accordion-item">
+                                        (item!=null&&item.entity!=null) &&
+                                        <div className="accordion-item" key={k}>
                                         <h2 className="accordion-header" id={'heading'+k}>
                                             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={'#collapse'+k} aria-expanded="true" aria-controls={'collapse'+k}>
                                             {item.entity.fieldQuestion}
@@ -1321,7 +1394,7 @@ import { BATHROOMDATA } from '../json/bathroom';
     await axios.post('https://accounts.zoho.com/oauth/v2/token?refresh_token=1000.e844476fe11a47a0fed14e7fa3c0724a.3a401a1251b578d2def71bfa9b1e3017&client_id=1000.2H1MXLME0WG5TUYJ3MU6E2OPLTDKNL&client_secret=fbb31a11fcaee62b9e53e98dfee5c6da952747ff09&grant_type=refresh_token').then(response => {
         token = response.data.access_token
     })
-    await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=0&limit=10',
+    await axios.get('https://creator.zoho.com/api/v2/shaily.verma_damacgroup/pim-property-inventory-management/report/Add_Property_Report?from=50&limit=60',
         {
             headers:{
                 'Authorization':'Zoho-oauthtoken '+token

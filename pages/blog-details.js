@@ -59,11 +59,11 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                 <div className="container">
                     <div className={styles['content-wrap-news']}>
                     <ul className={styles['social-media']}>
-                        <li><a href="#"><img src="damac-static/images/twiter.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/facebook.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/linkedin.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/whatsapp.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/share.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/twiter.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/facebook.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/linkedin.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/whatsapp.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/share.png"/></a></li>
                     </ul>
                     <div className={styles['content-detail']}>
                         <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
@@ -90,7 +90,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
 
                             <div className={styles['card-body']}>
-                                <a href="#"><h4>{blog.title}</h4></a>
+                                <a href="javascript:void(0)"><h4>{blog.title}</h4></a>
                                 <div className="d-flex justify-content-between">
                                 <label>{blog.fieldCategory.entity.name}</label>
                                 <span> 21/12 2020 by The Guardian </span>
@@ -108,7 +108,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
                     </div>
 
                     <div className={`${styles["post-button"]} text-center`}>
-                    <a href="#" className="btn btn-primary">View all posts</a>
+                    <a href="javascript:void(0)" className="btn btn-primary">View all posts</a>
                     </div>
 
                     

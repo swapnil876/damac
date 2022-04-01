@@ -14,7 +14,7 @@
     padding: 0;
     max-width: 100%;
     overflow: auto;
-    margin-top: 52px;
+    margin-top: 25px;
 }
 
 .payment-plan .custom_accordion_body table {
@@ -1216,7 +1216,7 @@ ul.bedroom-detail {
     }
 
     .payment-plan .custom_accordion_body {
-        margin-top: 30px;
+        margin-top: 0px;
     }
 
     .payment-plan .custom_accordion_body table .t_head th {

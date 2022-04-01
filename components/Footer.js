@@ -16,7 +16,6 @@ import * as axios from 'axios';
 function Footer( { children, footerData} ) { 
 
   const [newsLetter, setNewsLetter] = useState('');
-
   async function subscribe(){
   	let token = "";
   	let data = {
@@ -64,7 +63,7 @@ function Footer( { children, footerData} ) {
       <div className='container'>
 
         <div className="footer-logo">
-          <img className="footer-logo-damac" alt={footerData.fieldLogo.alt} src={footerData.fieldLogo.url}/>
+          <img className="footer-logo-damac" alt={footerData!=null && footerData.fieldLogo.alt} src={footerData!=null && footerData.fieldLogo.url}/>
         </div>
 
         
@@ -72,7 +71,7 @@ function Footer( { children, footerData} ) {
           <div className="col-md-8">
              
              <div className="footerMailList">
-               <p>{footerData.fieldNewsletterText}</p>
+               <p>{footerData!=null && footerData.fieldNewsletterText}</p>
 
                <div className="footerMailListForm">
                  <input type='email' placeholder="enter your email address" onChange={()=>{setNewsLetter(event.target.value)}} />
@@ -86,8 +85,8 @@ function Footer( { children, footerData} ) {
 
           <div className="col-md-4">
             <div className="footer-text-block">
-              <h4>{footerData.fieldAddressHeader}</h4>
-              <div dangerouslySetInnerHTML={{ __html: footerData.fieldAddress.value }}>
+              <h4>{footerData!=null && footerData.fieldAddressHeader}</h4>
+              <div dangerouslySetInnerHTML={{ __html: footerData!=null && footerData.fieldAddress.value }}>
               </div>
             </div>
           </div>
@@ -97,16 +96,16 @@ function Footer( { children, footerData} ) {
         <div className="row footer-row-2 flex-md-row flex-column-reverse footer2ndrow">
           <div className="col-md-8">
              
-             <div className="footer-link-list footer-main-link-list">
+             <div className="footer-link-list footer-main-link-list"> 
                <ul>
-                 {
-                   footerData.fieldNavigationLinks.map((link, index)=>{
+                 {footerData!=null &&
+                   footerData.fieldNavigationLinks.map((link, index)=>(
                     <li>
-                    <Link href="/blog">
-                      <a>{link.entity.entityLabel}</a>
+                    <Link href={link.entity.fieldLink!=null?link.entity.fieldLink:'#'}>
+                      <a>{link.entity.fieldMenuNam}</a>
                     </Link>
                   </li>
-                   })
+                   ))
                  }
                    {/* <li>
                      <Link href="/blog">
@@ -114,7 +113,7 @@ function Footer( { children, footerData} ) {
                      </Link>
                    </li>
                    <li>
-                     <Link href="#">
+                     <Link href="javascript:void(0)">
                        <a>Media Center</a>
                      </Link>
                    </li>
@@ -153,18 +152,16 @@ function Footer( { children, footerData} ) {
 
           <div className="col-md-4 pt-4 pt-md-0">
             <div className={ styles.footersocialmedia }>
-              <a className="footerSocial-icon footericon-fb" href="#" target="_blank">
-                <span><FontAwesomeIcon icon={ faFacebookF }/></span>
-              </a>
-              <a className="footerSocial-icon footericon-tw" href="#" target="_blank">
-                <span><FontAwesomeIcon icon={ faTwitter }/></span>
-              </a>
-              <a className="footerSocial-icon footericon-ig" href="#" target="_blank">
-                <span><FontAwesomeIcon icon={ faInstagram }/></span>
-              </a>
-              <a className="footerSocial-icon footericon-in" href="#" target="_blank">
-                <span><FontAwesomeIcon icon={ faLinkedinIn }/></span>
-              </a>
+            {footerData!=null &&
+              footerData.fieldSocialMediaLinks!=null &&
+              footerData.fieldSocialMediaLinks.map((link, index)=>(
+                 link.entity!=null &&
+                 ( <a className="footerSocial-icon footericon-fb" href={ link.entity.fieldLinkL!=null? link.entity.fieldLinkL:'javascript:void(0)' } target="_blank">
+                    <span><img src={ link.entity.fieldIconL.url }/></span>
+                  </a>
+                  )
+              ))
+            }
             </div>
           </div>
         </div>
@@ -176,28 +173,22 @@ function Footer( { children, footerData} ) {
 
           <div className="col-md-4">
             <ul className="footerimportantlinks">
-              <li>
-                <Link href="#">
-                  <a>Terms of service</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="#">
-                  <a>Privacy policy</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="#">
-                  <a>Privacy policy</a>
-                </Link>
-              </li>
+              {footerData!=null &&
+                footerData.fieldCopyrightNavigation.map((link, index)=>(
+                  <li>
+                    <Link href={link.entity.fieldLink}>
+                      <a>{link.entity.fieldMenuNam}</a>
+                    </Link>
+                  </li>
+                ))
+              }
             </ul>
           </div>
 
           <div className="col-md-8">
              
              <div className="footer-copyright">
-               <div className="copyright-text">{footerData.fieldCopyrightText}</div>
+               <div className="copyright-text">{footerData!=null && footerData.fieldCopyrightText}</div>
              </div>
 
           </div>

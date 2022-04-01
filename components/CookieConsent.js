@@ -40,7 +40,7 @@ export default function CookieConsent() {
                 <p>We are using cookies to give you the best experience on our website. You can find out more about which cookies we are using by reading our Cookie policy - Privacy Policy</p>
               </div>
               <div className="col-4 col-md-4 text-end">
-                <a href="#" className="btn btn-primary" onClick={ (e) => handleCookieAcceptance(e) }>Accept</a>
+                <a href="javascript:void(0)" className="btn btn-primary" onClick={ (e) => handleCookieAcceptance(e) }>Accept</a>
               </div>
             </div>
           </div>

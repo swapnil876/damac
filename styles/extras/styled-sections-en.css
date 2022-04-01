@@ -1,0 +1,155 @@
+/*
+Various sections and its styles
+*/
+
+
+
+section.damac-section {
+	position: relative;
+	padding: 80px 0;
+
+}
+
+section.damac-section-dark {
+	color: #fff;
+}
+
+
+/* Text image section  */
+section.text-image-section {
+	padding: 0 0;
+}
+section.text-image-section .text-wrapper {
+	max-width: 580px;
+	padding: 80px 0;
+}
+section.text-image-section .text-wrapper .top-text {
+	margin-bottom: 80px;
+}
+section.text-image-section .text-wrapper .top-text h2 {
+	font-size: 32px;
+	max-width: 264px;
+	margin-bottom: 16px;
+}
+section.text-image-section .text-wrapper .top-text p {
+	font-size: 18px;
+	line-height: 2;
+}
+
+section.text-image-section .containerBottomImage {
+	position: relative;
+	height: 220px;
+	width: 100%;
+}
+
+section.text-image-section .containerRightImage {
+	position: relative;
+	height: 220px;
+	width: 100%;
+}
+section.text-image-section .containerRightImage img{
+	object-fit: cover;
+	max-width:100%;
+	height:100%;
+}
+@media(max-width: 1280px){
+    section.text-image-section .text-wrapper {
+        max-width: 55%;
+    }
+}
+@media ( min-width: 768px ) {
+	section.text-image-section .text-wrapper .top-text h2 {
+		font-size: 44px;
+		max-width: 370px;
+		margin-bottom: 20px;
+	}
+
+	section.text-image-section .containerRightImage {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 495px;
+		width: 35%;
+		max-width: 45vw;
+		height: auto; 
+	}
+}
+
+
+
+
+
+/*
+* Normal post sections
+*/
+
+
+h3.section-title {
+  max-width: 420px; 
+}
+
+.two-col-text {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 120px;
+}
+
+@media ( max-width: 768px ) {
+	section.text-image-section .text-wrapper{
+        max-width: 100%;
+    }
+    .two-col-text {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+   }
+}
+
+
+
+/*   */
+
+.brand-logo-section {
+	padding: 84px 0;
+}
+
+h3.section-title {
+    max-width: 369px;
+    font-size: 44px;
+}
+
+.brand-logo-row {
+	margin-top: 80px;
+}
+
+
+.brand-logos-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+.brand-logos-grid .brand-logo-item {
+    max-width: 300px;
+    height: auto;
+    width: 90px;
+    margin-right: 30px;
+    align-items: center;
+    margin-bottom: 15px;
+	display: flex;
+    flex-wrap: wrap;
+}
+.brand-logos-grid .brand-logo-item img{
+	height: auto;
+}
+@media ( max-width: 768px ) {
+	.brand-logo-section {
+		padding: 50px 0;
+	}
+    h3.section-title {
+	    max-width: 369px;
+	    font-size: 32px;
+    }
+    .brand-logo-row {
+    	margin-top: 50px;
+    }
+}

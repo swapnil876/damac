@@ -2,37 +2,39 @@ import { gql } from '@apollo/client';
 
 const NEWS = gql`
 query {
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["news"]}]}) {
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["news"]}]}) {
     entities {
-      ... on NodeNews{
-         nid,
-         title
-        fieldCategoryn {
-           entity{
-            ... on TaxonomyTermNewsCategory{
-              tid
-              name
-            }
-          }
-        },
-        fieldFeatureImageMobileNews {
-          targetId
+      entityTranslation(language: EN) {
+        ... on NodeNews{
+          nid,
           title
-          url
-        },
-        fieldFeatureImageDesktopNews {
-          targetId
-          title
-          url
-        },
-        body{
-          value
+         fieldCategoryn {
+            entity{
+             ... on TaxonomyTermNewsCategory{
+               tid
+               name
+             }
+           }
+         },
+         fieldFeatureImageMobileNews {
+           targetId
+           title
+           url
+         },
+         fieldFeatureImageDesktopNews {
+           targetId
+           title
+           url
+         },
+         body{
+           value
+         }
+         fieldMetaTitleNews
+         fieldMetaDescriptionNews
+         fieldMetaKeywordsNews
+         fieldCanonicalUrlNews
+       }
         }
-        fieldMetaTitleNews
-        fieldMetaDescriptionNews
-        fieldMetaKeywordsNews
-        fieldCanonicalUrlNews
-      }
     }
   }
 }`;

@@ -34,10 +34,10 @@ export default function HomeBanner( { bannerImage, children, entity1} ) {
               <div className={styles["subtext"]} dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
 
               <div className={styles['hero-cta-btns']}>
-                <Link href="#">
+                <Link href="/en/project/144">
                     <a className={`${styles['hero-cta']} ${styles['hero-cta-dark']}`}>Discover more</a>
                 </Link>
-                <Link href="#">
+                <Link href="/en/contact/sales-enquire">
                     <a className={`${styles['hero-cta']} ${styles['hero-cta-blurr']}`}>Enquire now</a>
                 </Link>
               </div>

@@ -39,7 +39,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 
 // Bootstrap Css
-import 'bootstrap/dist/css/bootstrap.css'
+
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import {PROJECT} from '../graphql/project';
@@ -70,7 +70,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
      }, [])
 
      useEffect(() => {
-        import("bootstrap/dist/js/bootstrap");
+        
       }, []);
 
       
@@ -103,14 +103,14 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                 </div>
                             </div>
                             <div className="row align-items-center" style={{'justifyContent':'space-between'}}>
-                             <a href="#" style={{'width':'fit-content', 'color':'#fff', 'text-decoration':'none'}}><img src="damac-static/images/location.png"/>  {entity1.fieldCityp.entity.name}, {entity1.fieldCountryP.entity.name}</a>
+                             <a href="javascript:void(0)" style={{'width':'fit-content', 'color':'#fff', 'text-decoration':'none'}}><img src="damac-static/images/location.png"/>  {entity1.fieldCityp!=null?entity1.fieldCityp.entity.name:''}, {entity1.fieldCountryP!=null?entity1.fieldCountryP.entity.name:''}</a>
                                 <div className="" style={{'width':'fit-content'}}>
                                     <div className={style['project-right']}>
                                         <ul className="d-flex align-items-center">
-                                            <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
-                                            <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
+                                            <li><a href="javascript:void(0)"><img src="/damac-static/images/save.png"/></a></li>
+                                            <li><a href="javascript:void(0)"><img src="/damac-static/images/Vector.png"/></a></li>
                                             <li><a href={entity1.fieldBrochureP} target="_blank">Download Brochure</a></li>
-                                            <li><a href="#">View Gallery (19)</a></li>                
+                                            <li><a href="javascript:void(0)">View Gallery (19)</a></li>                
                                         </ul>              
                                     </div>
                                 </div>    
@@ -128,7 +128,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
                             <div className="section-data-boxes" style={{'justify-content':'space-between'}}>
                             <div className="data-box" style={{'width':'fit-content'}}>
-                                <h2 className="heading-medium">{entity1.fieldPropertyTypeP2[0].entity.name}</h2>
+                                <h2 className="heading-medium">{entity1.fieldPropertyTypeP2!=null?entity1.fieldPropertyTypeP2.entity.name:''}</h2>
                                 <p>Properties</p>
                               </div>
                               <div className="data-box" style={{'width':'fit-content'}}>
@@ -170,15 +170,15 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                 <div className="col-md-6">
                                     <div className="d-flex justify-content-between">
                                     <div className={style['vs-range']}>
-                                        <h5><a href="#">{entity1.fieldStartingFromPriceP2}</a></h5>
+                                        <h5><a href="javascript:void(0)">{entity1.fieldStartingFromPriceP2}</a></h5>
                                         <p>Starting from</p>
                                     </div>
                                     <div className={style['vs-range']}>
-                                        <h5><a href="#">{entity1.fieldLocalityP2}</a></h5>
+                                        <h5><a href="javascript:void(0)">{entity1.fieldLocalityP2}</a></h5>
                                         <p>Locality</p>
                                     </div>
                                     <div className={style['vs-range']}>
-                                        <h5><a href="#">{entity1.fieldStatusP2}</a></h5>
+                                        <h5><a href="javascript:void(0)">{entity1.fieldStatusP2}</a></h5>
                                         <p>Status</p>
                                     </div>
 
@@ -188,8 +188,8 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <div className={style['shape-wrap-plan']}>              
                                         <div className={`${style["shape-contact"]} float-end`}>
                                             <ul className="d-flex align-items-center p-0">
-                                            <li><a href="#" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
-                                            <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
+                                            <li><a href="javascript:void(0)" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                            <li><a href="javascript:void(0)" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
                                             </ul>                  
                                         </div>                
                                     </div>              
@@ -406,7 +406,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                           </div>
                           <div className="col-1 col-md-1">
                             <div className={style['down-arrow']}>
-                              <a href="#"><i className="fas fa-angle-down"></i></a>
+                              <a href="javascript:void(0)"><i className="fas fa-angle-down"></i></a>
                             </div>
 
                           </div>
@@ -428,7 +428,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                               </video>
                                 {/*<img src={entity1.fieldVideop4.url} className="img-fluid"/>*/}
                               </div>
-                              <a href="#" className={style['play-button']}><FaPlay /></a>
+                              <a href="javascript:void(0)" className={style['play-button']}><FaPlay /></a>
                             </div>
                           </div>
                         </div>
@@ -529,7 +529,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                               <input type="range" className={styles['range-slider']} />
                             </div>
                           </div>
-                          <a href="#" className={`${styles["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71', 'padding': '14px 73px'}}>Enquire Now</a>
+                          <a href="javascript:void(0)" className={`${styles["white-btn"]} btn`} style={{'background':'#fff', 'color':'#C0AA71', 'padding': '14px 73px'}}>Enquire Now</a>
                           </div>
                                 <div className="col-md-4">
                                       <div className={styles['estimate-cost']}>
@@ -537,7 +537,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                         <ul>
                                           <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> 120,000</i></li>
                                           <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> 120,000</i></li>
-                                          <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>120,000</i></li>
+                                          <li><span className={styles['text-left']}>With Interest rate of</span> <i>120,000 <span>%</span></i></li>
                                           <li><span className={styles['text-left']}>For Years</span>5</li>
                                         </ul>
                                         <h4>Fees</h4>
@@ -588,10 +588,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -599,10 +599,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                   </div>
                                   {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                     </div>
                                   </div> */}
                                 </div>
@@ -620,10 +620,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -631,10 +631,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                   </div>
                                   {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                     </div>
                                   </div> */}
                                 </div>
@@ -651,10 +651,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -662,10 +662,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                   </div>
                                   {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                     </div>
                                   </div> */}
                                 </div>
@@ -682,10 +682,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -693,10 +693,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                   </div>
                                   {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                     </div>
                                   </div> */}
                                 </div>
@@ -713,10 +713,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -724,10 +724,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                   </div>
                                   {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                     </div>
                                   </div> */}
                                 </div>
@@ -744,10 +744,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -755,10 +755,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                   </div>
                                   {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                     </div>
                                   </div> */}
                                 </div>
@@ -775,10 +775,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -786,10 +786,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                   </div>
                                   {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                     </div>
                                   </div> */}
                                 </div>
@@ -806,10 +806,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -817,10 +817,10 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                   </div>
                                   {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                     </div>
                                   </div> */}
                                 </div>
@@ -838,20 +838,20 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <p><span>Starting AED 1,213,515*</span></p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
                                   </div>
                                   {/* <div className={style['project-detail-nav']}>
                                     <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                     </div>
                                     <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                     </div>
                                   </div> */}
                                 </div>
@@ -872,7 +872,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                   <h2>Why Invest in Dubai</h2>
                                   <p>The city offers higher rental yields than many<br/> other mature real estate markets. On average,<br/>
                                     investors can achieve gross rental yields<br/> of between 5-9%</p>
-                                  <a href="#" className={style['read-more']}>Read more</a>
+                                  <a href="javascript:void(0)" className={style['read-more']}>Read more</a>
                                 </div>
                               </div>
                             </div>
@@ -885,7 +885,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                         <div className={style['3d-tour-inner']} style={{'background-image':'url(images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>
-                            <a href="#" className="btn btn-primary"><img src="damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
+                            <a href="javascript:void(0)" className="btn btn-primary"><img src="damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
                           </div>
                         </div>
                         </div>
@@ -907,7 +907,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top" />
                                         <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
                                         
                                         </div>
@@ -917,7 +917,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top"/>
                                         <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>  
                                         </div>
                                       </div>
@@ -926,7 +926,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top" />
                                         <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
                                           
                                         </div>
@@ -936,7 +936,7 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top" />
                                         <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
                                         
                                         </div>

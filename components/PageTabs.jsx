@@ -48,6 +48,7 @@ export default function PageTabs( { tabLinks, pageSelectPlaceholder } ) {
          
             tabLinks.map( ( link, index ) => (
 
+              link!=null &&
               <Link href={ link.url } key={ index }>
                 <a className={ `${styles['pagetabs-link']} ${ link.active ? styles['active'] : '' }` }>
                   <span>{ link.label }</span>

@@ -65,11 +65,11 @@ function Bookstep2({entity1, nav, othernav, footerData}) {
                                 <div className={ styles['select-card-img-wrap'] }>
                                     <img src="images/book-step-card-img.jpg" alt="card-img" className="img-fluid" />
                                     <div className={ styles["play-btn-card"]}>
-                                        <a href="#"><i className="fas fa-play"></i></a>
+                                        <a href="javascript:void(0)"><i className="fas fa-play"></i></a>
                                     </div>
                                 </div>
                                 <ul className={`${styles["bookmark_main"]} ${styles["d-flex"]} ${styles["float-end"]} ${styles["list-unstyled"]}`}>
-                                    <li><a href="#"><BsBookmark /></a></li>
+                                    <li><a href="javascript:void(0)"><BsBookmark /></a></li>
                                 </ul>
                                 <h6>Kiara 2 Bedroom Apartment</h6>
                                 <p>DAMAC Hills, Dubailand, Dubai</p>
@@ -77,22 +77,22 @@ function Bookstep2({entity1, nav, othernav, footerData}) {
                                     <div className="row">
                                         <div className="col-md-7">
                                         <li>
-                                        <a href="#"><img src="images/price-tag 1.png" className={ styles["img-fluid"]} />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="images/price-tag 1.png" className={ styles["img-fluid"]} />From AED 1,213,515*</a>
                                         </li>
                                         </div>
                                         <div className="col-md-5">
                                         <li>
-                                        <a href="#"><img src="images/house (2) 1.png" className={ styles["img-fluid"]} />2,750 sqft</a>
+                                        <a href="javascript:void(0)"><img src="images/house (2) 1.png" className={ styles["img-fluid"]} />2,750 sqft</a>
                                         </li>
                                         </div>
                                         <div className="col-md-7">
                                         <li>
-                                        <a href="#"><img src="images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> 3 Bedrooms</a>
                                         </li>
                                         </div>
                                         <div className="col-md-5">
                                         <li>
-                                        <a href="#"><img src="images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
+                                        <a href="javascript:void(0)"><img src="images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a>
                                          </li>
                                         </div>
                                     </div>   
@@ -154,7 +154,7 @@ function Bookstep2({entity1, nav, othernav, footerData}) {
                        
                     </div>
                     <div className={styles["close-btn"]}>
-                      <a href="#"><i className="fas fa-times"></i></a>
+                      <a href="javascript:void(0)"><i className="fas fa-times"></i></a>
                     </div>
                 </div>
             </div>

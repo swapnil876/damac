@@ -37,10 +37,6 @@
     color: #fff;
     opacity: 75%;
     margin-bottom: 13px;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 .press-content span {
     font-size: 16px;
@@ -151,7 +147,9 @@ a.read-more {
     border: none;
     background: transparent;  
 }
-
+.related-post .card-body a{
+    text-decoration: none;
+}
 .related-post .card-body {
     padding-top: 12px;
     padding-left: 0;

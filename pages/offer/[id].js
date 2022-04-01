@@ -41,7 +41,7 @@ const sliderSettings = {
 import styles from '../../styles/pages/offer-main.module.css'
 
 // Bootstrap Css
-import 'bootstrap/dist/css/bootstrap.css'
+
 
 // Banner image
 
@@ -63,7 +63,7 @@ function OfferMain({entity1, nav, othernav, footerData}) {
       }
 
     //   importing bootstrap js
-      import("bootstrap/dist/js/bootstrap");
+      
    }, [])
 
    useEffect(() => {
@@ -76,6 +76,9 @@ function OfferMain({entity1, nav, othernav, footerData}) {
   const [regFee, setRegFee] = useState(false);
   const [mortRegFee, setMortRegFee] = useState(false);
   const [valueFee, setValueFee] = useState(false);
+
+       // Loan month per month calculation
+       const [perMonthAmount, setPerMonthAmount] = useState();
 
    //  Mortgage calculation area
   const [loanSlider, setLoanSlider] = useState(1);
@@ -99,28 +102,42 @@ function OfferMain({entity1, nav, othernav, footerData}) {
   const [downPayment, setDownPayment] = useState(25);
   const [loanPeriod, setLoanPeriod] = useState(1);
 
+  function pmtFunction(ir,np, pv, fv = 0){ 
+    // ir: interest rate
+    // np: number of payment
+    // pv: present value or loan amount
+    // fv: future value. default is 0
+   
+    var presentValueInterstFector = Math.pow((1 + ir), np);
+    var pmt = ir * pv  * (presentValueInterstFector + fv)/(presentValueInterstFector-1); 
+    return pmt;
+   }
+
+
   function callDownPaymentPrice(){
     var totPrice = propertyPrice * (downPayment / 100) ;
     setDownPaymentPrice(Math.ceil(totPrice));
   }
-      function mortgageCalculator(){
-        var loanAmt, deptFee, regFee, mortRegFee, valFee, months;
+  function mortgageCalculator(){
+    var loanAmt, deptFee, regFee, mortRegFee, valFee, months, perMonth;
 
-        months = loanPeriod*12;
+    months = loanPeriod*12;
 
-        loanAmt = (propertyPrice - downPaymentPrice);
-        deptFee = ((propertyPrice * (4 / 100)) + 580);
-        regFee = (propertyPrice > 500000) ? (4000 + (propertyPrice * (5 / 100))) : (2000 + (propertyPrice * (5 / 100))); 
-        mortRegFee = ((loanAmt *  (0.5/ 100)) + 10);
-        valFee = ((propertyPrice * (5 / 100)) + 3000);
+    loanAmt = (propertyPrice - downPaymentPrice);
+    deptFee = ((propertyPrice * (4 / 100)) + 580);
+    regFee = ((propertyPrice > 500000) ? (4000 + (4000 * (5 / 100))) : (2000 + (2000 * (5 / 100))));
+    mortRegFee = ((loanAmt *  (0.25/ 100)) + 10);
+    valFee = 3675;
+    perMonth = pmtFunction((interestRate/100)/12, loanPeriod*12, loanAmt);
 
 
-        setDepartmentFee(deptFee);
-        setRegistrationFee(regFee);
-        setMortgageRegistrationFee(mortRegFee);
-        setValuationFee(valFee);
-        setNoOfMonths(months);
-      }
+    setDepartmentFee(deptFee);
+    setRegistrationFee(regFee);
+    setMortgageRegistrationFee(mortRegFee);
+    setValuationFee(valFee);
+    setNoOfMonths(months);
+    setPerMonthAmount(perMonth);
+  }
 
   //  Mortgage calculation area
 
@@ -146,7 +163,7 @@ function OfferMain({entity1, nav, othernav, footerData}) {
 
       <main className="main">
       {/* <!-- community Hero section --> */}
-      <section className={styles['offermain-hero']} style={{'background-image':'url(' + entity1.fieldImageOffer.url + ')'}}>        
+      <section className={styles['offermain-hero']} style={{'background-image':'url(' + ((entity1!=null && entity1.fieldImageOffer!=null) && entity1.fieldImageOffer.url) + ')'}}>        
         <div className="container">
           <div className={styles['offerhero-container']}>
           <div className="row align-items-end" style={{'max-width':'100%'}}>
@@ -164,11 +181,11 @@ function OfferMain({entity1, nav, othernav, footerData}) {
       <section className={styles['hospitality']}>
         <div className="container">
           <div className={styles['hospitality-main-head']}>
-            <h2>Hospitality Investment never looked this good.</h2>
+            <h2>{entity1.fieldSubtitle}</h2>
           </div>
           <div dangerouslySetInnerHTML={{ __html: entity1.fieldOfferText!=null?entity1.fieldOfferText.value:'' }} className={styles['hospitality-maintxt']}>
             
-            </div>
+          </div>
         </div>
       </section>
       {/* <!-- callback section --> */}
@@ -177,14 +194,14 @@ function OfferMain({entity1, nav, othernav, footerData}) {
           <div className="row">
           {
             entity1.fieldProjects.map((m,n)=>(
-
+              m!=null &&
               <div className="col-md-6 dm-col-6">
                 <div className={styles['callback-card']}>
-                  <img src="../damac-static/images/offer-main.jpg" className="img-fluid"/>
-                  <h6>{m.entity.title}</h6>
-                  <p className={styles['callback-card-desc']} dangerouslySetInnerHTML={{ __html: m.entity.fieldTagling }}></p>
+                  <img src="../../damac-static/images/offer-main.jpg" className="img-fluid"/>
+                  <h6>{m.entity!=null && m.entity.title}</h6>
+                  <p className={styles['callback-card-desc']} dangerouslySetInnerHTML={{ __html: m.entity!=null && m.entity.fieldTagling }}></p>
                   <div className={styles['community-card-btn']}>
-                    <a href="#" className="btn btn-primary">Schdule a Call-back</a>
+                    <a href="javascript:void(0)" className="btn btn-primary">Schdule a Call-back</a>
                   </div>
                 </div>
               </div>
@@ -211,7 +228,7 @@ function OfferMain({entity1, nav, othernav, footerData}) {
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
+                                      <p><input type="number" min="300000" step="10000" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`down-payment ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
@@ -223,12 +240,12 @@ function OfferMain({entity1, nav, othernav, footerData}) {
                                   <div className={styles['estimate-inner']}>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
+                                      <p><input type="text" min="1" disabled class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
                                     </div>
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                                       <p> {loanSlider}</p>
-                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                                      <input type="range" min="1" max="25" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
                                   </div>
@@ -238,11 +255,11 @@ function OfferMain({entity1, nav, othernav, footerData}) {
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
+                                      <p><input type="number" min="300000" step="10000" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}} /><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
+                                      <p><input type="text" min="1" disabled class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}} /><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
                                     </div>
                                   </div>
                                   <div className={styles['estimate-inner']}>
@@ -255,7 +272,7 @@ function OfferMain({entity1, nav, othernav, footerData}) {
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                                       <p> {loanSlider}</p>
-                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                                      <input type="range" min="1" max="25" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
                                   </div>
@@ -269,9 +286,9 @@ function OfferMain({entity1, nav, othernav, footerData}) {
                                   <div className={styles['estimate-cost']}>
                                     <h4>Cost Breakdown</h4>
                                     <ul>
-                                      <li><span className={styles['text-left']}>{noOfMonths} months of</span> <i><span>AED</span> {propertyPrice}</i></li>
+                                      <li><span className={styles['text-left']}>{noOfMonths} months of</span> <i><span>AED</span> {Math.ceil(perMonthAmount)}</i></li>
                                       <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> {downPaymentPrice}</i></li>
-                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>{interestRate.toFixed(2)}</i></li>
+                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i>{interestRate.toFixed(2)} <span>%</span></i></li>
                                       <li><span className={styles['text-left']}>For Years</span> <i>{loanPeriod}</i></li>
                                     </ul>
 
@@ -299,9 +316,9 @@ function OfferMain({entity1, nav, othernav, footerData}) {
 
                                       <li><span className={styles['text-left']}>Valuation Fee <span><FaRegQuestionCircle onMouseOver={()=>{setValueFee(true)}} onMouseOut={()=>{setValueFee(false)}}/></span>
                                       {
-                                        valueFee && <span class="tooltip_pop tooltip_pop_dark_bg">3000 AED + 5% VAT</span>
+                                        valueFee && <span class="tooltip_pop tooltip_pop_dark_bg">2500 to 3500 AED + 5% VAT</span>
                                       }
-                                      </span><i><span>AED</span> {valuationFee}</i></li>
+                                      </span><i><span>AED</span> {Math.ceil(valuationFee)}</i></li>
                                     </ul>
                                   </div>
                                 </div>
@@ -320,15 +337,17 @@ function OfferMain({entity1, nav, othernav, footerData}) {
           <section className={styles['faq-section']}>
                           <div className="container">
                               <div className={styles['faq-icon']}>
-                              <img src="../damac-static/images/speech-bubble 1.png"/>
+                              <img src="../../damac-static/images/speech-bubble 1.png"/>
                               <h2>Frequently Asked Questions</h2>          
                               </div>
                               <div className="row">
                               <div className="col-md-12">
                                   <div className={styles['faq-wrap']}>
 
-                                 { entity1.fieldMultipleFaqsO.map( (f, index) => (
-                                  <div className="accordion" id="accordionExample">
+                                 { entity1.fieldMultipleFaqsO!=null && entity1.fieldMultipleFaqsO.map( (f, index) => (
+          
+                                    (f!=null && f.entity!=null) &&
+                                    <div className="accordion" id="accordionExample">
                                     <div className="accordion-item">
                                       <h2 className="accordion-header" id="headingOne">
                                         <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -342,9 +361,8 @@ function OfferMain({entity1, nav, othernav, footerData}) {
                                       </div>
                                     </div>
 
-                                  
-                                    
-                                  </div> 
+                                    </div> 
+                                   
                                   ))}                          
                                   </div>            
                               </div>          

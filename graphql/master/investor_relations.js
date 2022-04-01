@@ -2,22 +2,24 @@ import { gql } from '@apollo/client';
 
 const INVESTORRELATIONS = gql`
 query {
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["investor_relations"]}]}) {
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["investor_relations"]}]}) {
     entities {
-      ... on NodeInvestorRelations{
-         nid,
-         fieldTitleIr{
-          value
+      entityTranslation(language: EN) {
+        ... on NodeInvestorRelations{
+          nid,
+          fieldTitleIr{
+           value
+         }
+         fieldTextHeading{
+           value
+         }
+         fieldDescriptionHeading{
+           value
+         }
+         fieldIframeContent
+         
+       }
         }
-        fieldTextHeading{
-          value
-        }
-        fieldDescriptionHeading{
-          value
-        }
-        fieldIframeContent
-        
-      }
     }
   }
 }`;

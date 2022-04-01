@@ -54,11 +54,11 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                 <div className="container">
                     <div className={styles['content-wrap-news']}>
                     <ul className={styles['social-media']}>
-                        <li><a href="#"><img src="damac-static/images/twiter.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/facebook.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/linkedin.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/whatsapp.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/share.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/twiter.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/facebook.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/linkedin.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/whatsapp.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="damac-static/images/share.png"/></a></li>
                     </ul>
                     <div className={styles['content-detail']}>
                         <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
@@ -88,13 +88,13 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         <div className={styles['card']}>
                         <img src="damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
                         <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
+                            <a href="javascript:void(0)"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
                             <div className="d-flex justify-content-between">
                             <label>Tag Label</label>
                             <span> 21/12 2020 by The Guardian </span>
                             </div>
                             <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
+                            <a href="javascript:void(0)" className={styles['read-more']}>Read More</a>
                         </div>
                         </div>
                         
@@ -103,13 +103,13 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         <div className={styles['card']}>
                         <img src="damac-static/images/blog2.png" className={styles['card-img-top']} alt="..."/>
                         <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
+                            <a href="javascript:void(0)"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
                             <div className="d-flex justify-content-between">
                             <label>Tag Label</label>
                             <span> 21/12 2020 by The Guardian </span>
                             </div>
                             <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
+                            <a href="javascript:void(0)" className={styles['read-more']}>Read More</a>
                         </div>
                         </div>
                         
@@ -118,13 +118,13 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                         <div className={styles['card']}>
                         <img src="damac-static/images/blog3.png" className={styles['card-img-top']} alt="..."/>
                         <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
+                            <a href="javascript:void(0)"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
                             <div className="d-flex justify-content-between">
                             <label>Tag Label</label>
                             <span> 21/12 2020 by The Guardian </span>
                             </div>
                             <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
+                            <a href="javascript:void(0)" className={styles['read-more']}>Read More</a>
                         </div>
                         </div>
                         
@@ -133,7 +133,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     </div>
 
                     <div className={`${styles["post-button"]} text-center`}>
-                    <a href="#" className="btn btn-primary">View all posts</a>
+                    <a href="javascript:void(0)" className="btn btn-primary">View all posts</a>
                     </div>
 
                     

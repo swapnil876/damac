@@ -52,7 +52,7 @@ function Communities( { communities, nav, othernav, footerData } ) {
                <div className='communityListGrid communities_page' style={{'padding':'44px 0'}}>
                  {
                    communities.map( (community, index) => (
-
+                     community!=null && 
                      <ImageCardItem key={ index } cardDetails={ community } />
 
                    ) )
@@ -170,7 +170,7 @@ if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
   communities_data.map((v,i)=>{
     
     if(v.fieldImageDesktop != null){
-      communities.push({title:v.title,imageUrl:v.fieldImageDesktop.url,subtitle:v.fieldLocation!=null?v.fieldLocation.entity.name:'',description:v.fieldTagline,link:'/community/'+v.nid})
+      communities.push({title:v.title,imageUrl:v.fieldImageDesktop!=null && v.fieldImageDesktop.url,subtitle:(v.fieldLocation!=null && v.fieldLocation.entity!=null)?v.fieldLocation.entity.name:'',description:v.fieldTagline,link:'community/'+v.nid})
     }
      
   });

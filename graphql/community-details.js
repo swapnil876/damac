@@ -2,9 +2,10 @@ import { gql } from '@apollo/client';
 
 const COMMUNITYDETAILS = gql`
 query COMMUNITYDETAILS($id: String!){
-  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "nid", value: [$id]}]}) {
+  nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "nid", language:EN, value: [$id]}]}) {
     entities {
-      ... on NodeCommunity{
+      entityTranslation(language: EN) {
+        ... on NodeCommunity{
           nid
           title
           fieldTagline
@@ -126,6 +127,7 @@ query COMMUNITYDETAILS($id: String!){
         fieldHeading
         fieldWhatsappNumber
       }
+        }
     }
   }
 }`;

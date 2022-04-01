@@ -1,0 +1,169 @@
+
+/*
+* Home hero section
+*/
+
+.homepage-hero-section {
+    display: block;
+    position: relative;
+    min-height: 720px;
+    min-height: 100vh;
+    height: 100vh;
+    width: 100%;
+    background-color: #111;
+    background-image: linear-gradient(45deg, #111, #c8b37a);
+}
+
+.homepage-hero-section .bg-image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.homepage-hero-section .homepage-hero-content  {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.homepage-hero-section .homepage-hero-content .hero-content-text {
+    
+}
+
+.homepage-hero-content .hero-content-text {
+    max-width: 500px;
+    color: #fff;
+}
+.hero-content-text h2, .hero-content-text h1 {
+    color: #fff;
+    font-size: 72px;
+    font-weight: 300;
+}
+.hero-content-text p.subtext {
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.hero-content-text .hero-cta-btns {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+
+}
+
+.homepage-hero-section .hero-cta {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-weight: 300;
+    background-color: #000000;
+    margin-left: 30px;
+    border-radius: 4px;
+}
+.homepage-hero-section .hero-cta:hover {
+    color: var(--primary);
+}
+
+.homepage-hero-section .hero-cta-blurr {
+    backdrop-filter: blur(38px);
+    -webkit-backdrop-filter: blur(38px);
+    background-color: rgb(103 103 103 / 20%);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+
+
+
+.about-banner-text {
+    text-align: center;
+    color: #fff;
+}
+
+.about-banner-text h2, .about-banner-text h1 {
+    font-size: 72px;
+    font-family: "Roboto";
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.about-banner-text .bannerPlayBtn {
+    width: 120px;
+    height: 120px;
+    margin: 45px auto;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(38px);
+    -webkit-backdrop-filter: blur(38px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.about-banner-text p {
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: 300;
+    line-height: 2;
+}
+
+
+.about-banner-top-area {
+    margin-bottom: 0px;
+}
+
+@media ( min-width: 768px ) {
+    .about-banner-container {
+      padding-top: 180px;
+    }
+}
+@media ( max-width: 768px ) {
+    .homepage-hero-section{
+        width:100%;
+        max-width: 100vw;
+        min-height: unset;
+        height: auto;
+        aspect-ratio: 390/349 !important;
+    }
+    .about-banner-top-area {
+        margin-bottom: 45px;
+    }
+
+   .about-banner-container {
+     display: flex;
+     align-items: center;
+     height: 100%;
+   }
+
+  .about-banner-text h2, .about-banner-text h1 {
+    font-size: 32px;
+    max-width: 194px;
+    text-align: center;
+  }
+
+  .about-banner-text p {
+    font-size: 16px;
+    margin-top: 156px;
+    margin-top: 45px;
+  }
+
+  .about-banner-text .bannerPlayBtn {
+    width:  60px;
+    height:  60px;
+  }
+
+  .about-banner-text .bannerPlayBtn svg {
+    width: 10px;
+  }
+
+}

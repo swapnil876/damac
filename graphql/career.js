@@ -2,9 +2,10 @@ import { gql } from '@apollo/client';
 
 const CAREERS = gql`
   query {
-    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["career"]}]}) {
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["career"]}]}) {
       entities {
-        ... on NodeCareer{
+        entityTranslation(language: EN) {
+          ... on NodeCareer{
             nid
             title
              fieldHeaderImageVideoMobile{
@@ -50,6 +51,7 @@ const CAREERS = gql`
           fieldSubTitle1
           fieldSubTitle2
         }
+          }
       }
     }
   }`;

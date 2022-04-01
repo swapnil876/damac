@@ -41,7 +41,7 @@ const sliderSettings = {
 import styles from '../styles/pages/offer-main.module.css'
 
 // Bootstrap Css
-import 'bootstrap/dist/css/bootstrap.css'
+
 
 // Banner image
 
@@ -63,7 +63,7 @@ function OfferMain({entity1, nav, othernav, footerData}) {
       }
 
     //   importing bootstrap js
-      import("bootstrap/dist/js/bootstrap");
+      
 
    }, [])
 
@@ -125,7 +125,7 @@ function OfferMain({entity1, nav, othernav, footerData}) {
                 <h6>DAMAC Towers by Paramount Hotels and Resorts Dubai</h6>
                 <p className={styles['callback-card-desc']}>An established and prestigious international golf callback in Dubailands</p>
                 <div className={styles['community-card-btn']}>
-                  <a href="#" className="btn btn-primary">Schdule a Call-back</a>
+                  <a href="javascript:void(0)" className="btn btn-primary">Schdule a Call-back</a>
                 </div>
               </div>
             </div>
@@ -135,7 +135,7 @@ function OfferMain({entity1, nav, othernav, footerData}) {
                 <h6>DAMAC Paramount Tower Hotel and Residences Dubai</h6>
                 <p className={styles['callback-card-desc']}>An established and prestigious international golf callback in Dubailands</p>
                 <div className={styles['community-card-btn']}>
-                  <a href="#" className="btn btn-primary">Schdule a Call-back</a>
+                  <a href="javascript:void(0)" className="btn btn-primary">Schdule a Call-back</a>
                 </div>
               </div>
             </div>
@@ -215,7 +215,7 @@ function OfferMain({entity1, nav, othernav, footerData}) {
                 <ul>
                   <li><span className={styles['text-left']}>60 months of</span> <span>AED</span> 120,000</li>
                   <li><span className={styles['text-left']}>Down Payment</span> <span>AED</span> 120,000</li>
-                  <li><span className={styles['text-left']}>With Interest rate of</span> <span>%</span>120,000</li>
+                  <li><span className={styles['text-left']}>With Interest rate of</span> 120,000 <span>%</span></li>
                   <li><span className={styles['text-left']}>For Years</span>5</li>
                 </ul>
 

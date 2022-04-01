@@ -14,7 +14,7 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import Select from "react-dropdown-select";
 
 // Bootstrap Css
-import 'bootstrap/dist/css/bootstrap.css'
+
 import { isMobile } from "react-device-detect";
 
 import * as axios from 'axios';
@@ -66,36 +66,28 @@ export default function ContactForm({ selectedOption, initialValues, address , h
         }
         if(!lastName){
             setLastName("null");
-            return false;
         }
 
         if(!email){
             setEmail("null");
-            return false;
         }
         if(!phoneNumber){
             setPhoneNumber("null");
-            return false;
         }
         if(!countryCode){
             setCountryCode("null");
-            return false;
         }
         if(!type){
             setType("null");
-            return false;
         }
         if(!title){
             setTitle("null");
-            return false;
         }  
         if(!checkBox1){
             setCheckBox1("null");
-            return false;
         }  
         if(!checkBox2){
             setCheckBox2("null");
-            return false;
         }  
         let data = {
           title:title,
@@ -170,7 +162,7 @@ export default function ContactForm({ selectedOption, initialValues, address , h
 
     useEffect(() => {
          //   importing bootstrap js
-         import("bootstrap/dist/js/bootstrap");
+         
 
          if ( isMobile ) {
             setDeviceIsMobile( true );
@@ -552,15 +544,15 @@ export default function ContactForm({ selectedOption, initialValues, address , h
                 {/* <!-- office address section --> */}
                 <section className={styles['office-wrap']}>
                     <div className="">
-                        <div className={`${styles["office-main"]} d-flex justify-content-between`}>
+                        <div className={`${styles["office-main"]} office_address_sec d-flex justify-content-between`}>
                             <h1>{heading}</h1>
                             {/* <div className={styles['dropdown']}>
                                 <button className={`${styles["btn-form-dropdown"]} ${styles["text-start"]}`} type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     All <span class="fas fa-chevron-down"></span>
                                 </button>
                                 <ul className={`${styles["dropdown-menu"]} ${styles["form-dropdown-menu"]}`} aria-labelledby="dropdownMenuButton1">
-                                    <li><a className={`${styles["dropdown-item"]} ${styles["active"]}`} href="#">All</a></li>
-                                    <li><a className={styles['dropdown-item']} href="#">Some</a></li>
+                                    <li><a className={`${styles["dropdown-item"]} ${styles["active"]}`} href="javascript:void(0)">All</a></li>
+                                    <li><a className={styles['dropdown-item']} href="javascript:void(0)">Some</a></li>
                                 </ul>
                             </div> */}
 
@@ -573,8 +565,8 @@ export default function ContactForm({ selectedOption, initialValues, address , h
                                 <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style={{'position':'absolute', 'right': '10px', 'min-width': '130px'}}>
                                     <div className={styles['accordion-body']}>
                                     <ul className={`${styles["dropdown-menu"]} ${styles["form-dropdown-menu"]}`} aria-labelledby="dropdownMenuButton1">
-                                    <li><a className={`${styles["dropdown-item"]} ${styles["active"]}`} href="#">All</a></li>
-                                    <li><a className={styles['dropdown-item']} href="#">Some</a></li>
+                                    <li><a className={`${styles["dropdown-item"]} ${styles["active"]}`} href="javascript:void(0)">All</a></li>
+                                    <li><a className={styles['dropdown-item']} href="javascript:void(0)">Some</a></li>
                                     </ul>
                                     </div>
                                 </div>
@@ -590,7 +582,7 @@ export default function ContactForm({ selectedOption, initialValues, address , h
                                             <div dangerouslySetInnerHTML={{ __html: add.entity.fieldAddress.value }}></div>
                                             <div className={styles['contact-number']}>
                                             <FaPhoneAlt/>
-                                                <a href="#">{add.entity.fieldNumberC.value}</a>
+                                                <a href="javascript:void(0)">{add.entity.fieldNumberC.value}</a>
                                             </div>
                                         </div>
                                     </div>

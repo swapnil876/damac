@@ -11,8 +11,8 @@ export default function CorporateGovernance({entity1}) {
         <div className="container">
           {/* <div className="tabs_gov">
             <ul className="list-unstyled d-flex flex-wrap align-items-center p-0">
-              <li><a href="#">Meet Our Board Members</a></li>
-              <li className="active"><a href="#">Governance Committees</a></li>
+              <li><a href="javascript:void(0)">Meet Our Board Members</a></li>
+              <li className="active"><a href="javascript:void(0)">Governance Committees</a></li>
             </ul>
           </div> */}
           <div className={ styles['gov_main_content'] }>
@@ -20,7 +20,7 @@ export default function CorporateGovernance({entity1}) {
               <h1>{entity1.title}</h1>
               {/* <p>{entity1.body.value}</p> */}
 
-              <div className={styles['para']} dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
+              <div className={styles['para']} dangerouslySetInnerHTML={{ __html:entity1.body!=null && entity1.body.value }}></div>
              
               
             </div>

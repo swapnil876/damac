@@ -2,9 +2,10 @@ import { gql } from '@apollo/client';
 
 const LISTING = gql`
   query {
-    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["listing"]}]}) {
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["listing"]}]}) {
       entities {
-       ... on NodeListing{
+        entityTranslation(language: EN) {
+          ... on NodeListing{
             nid
             title
             fieldTaglingL
@@ -160,6 +161,7 @@ const LISTING = gql`
             fieldLatitudeL
             fieldLongitudeL
         }
+          }
       }
     }
   }`;

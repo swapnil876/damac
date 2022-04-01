@@ -120,7 +120,11 @@ function CapitalHistory( { mobileDevice , entity1,fieldTabs,iframe, nav, otherna
           <div className='container'>
 
           {/* <!-- capital tab --> */}
-                <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+          {
+            iframe.entity!=null &&
+            <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+          }
+               
              
 
              <div className='enquiry-form-section'>

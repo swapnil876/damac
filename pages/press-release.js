@@ -3,8 +3,6 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 
-import { FOOTER_LINKS } from "../graphql/footer_links" ;
-
 // Navbar
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
@@ -14,146 +12,84 @@ import PageTitle from '../components/PageTitle'
 import PagePagination from '../components/PagePagination'
 import BlogCardItem from '../components/BlogCardItem'
 
-// Made by vinayak
+import styles from '../styles/blog-list.module.css'
 import style from '../styles/pages/damac-in-the-news.module.css'
 
-// Used from news page
-import styles from '../styles/pages/industry-news.module.css'
-
 import React, { Component } from "react";
+import { useMediaQuery } from 'react-responsive'
 
-// FA
-import ReactDOM from 'react-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faArrowDown } from '@fortawesome/free-regular-svg-icons'
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+// import styles from '../styles/.module.css'
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
- // React Responsive
- import { Context as ResponsiveContext } from 'react-responsive'
- import { useMediaQuery } from 'react-responsive'
+import { NAVIGATION } from '../graphql/master/navigation';
+import { PARENTMENUITEMS } from '../graphql/master/parentItems';
+import { BLOGTYPEDETAIL } from '../graphql/master/blogtypedetail';
+import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
+function PressReleaseList( { blogs, nav, othernav, footerData } ) {
+  return (
+    <div className='bloglistbody'>
+      <Head>
+        <title>Press Release List - Damac</title>
+        <meta name="description" content="Press Release List - Damac Properties" />
+        
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
- import { ApolloClient, InMemoryCache } from '@apollo/client';
- import { NAVIGATION } from '../graphql/master/navigation';
- import { PARENTMENUITEMS } from '../graphql/master/parentItems';
-//  import { BLOGS } from '../../graphql/blogs';
-import {BLOGS} from '../graphql/blogs';
+      <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
+      <main className="main bloglist-main">
 
- export default function PressRelease({nav, othernav, footerData}){
-     return(
-         <div className="PressRelease">
-             <Navbar navigationBar={nav} otherNav={othernav}></Navbar>
-             <main className="main">
-                <section className={styles['press-hero']} style={{'background-image': 'url(damac-static/images/press-realease-banner.jpg)'}}>   
-                <div className="container" style={{'height':'100%'}}>
-                <div className={styles['press-hero-wrap']} style={{'padding-right':'0'}}>
-                    <div className={styles['press-content']} style={{'padding':'0 !important'}}>
-                    <h1>DAMAC Properties to Hold First Ever Ramadan Sports Festival at AKOYA</h1>
-                    <p>We reflected on DAMAC’s years of history and created an infographic summary.</p>
-                    <span>Dec, 15 2021 By Financial Times</span>
-                    </div> 
-                </div> </div>                              
-                </section>  
+           {/* <PageTitle title="Damac In The News List" subtitle="News" background-image={'damac-static/images/investor-relation-hero.jpg'}/> */}
 
-                <section className={styles['newsdetail-content']}>
+           {/* <!-- Blog list Hero section --> */}
+            <section className={`${style["news-hero"]} d-flex align-items-center`} style={{'background': "url('images/investor-relation-hero.jpg') no-repeat center/100%"}}>
                 <div className="container">
-                    <div className={styles['content-wrap-news']}>
-                    <ul className={styles['social-media']}>
-                        <li><a href="#"><img src="damac-static/images/twiter.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/facebook.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/linkedin.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/whatsapp.png"/></a></li>
-                        <li><a href="#"><img src="damac-static/images/share.png"/></a></li>
-                    </ul>
-                    <div className={styles['content-detail']}>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <h3>Dubai, UAE — 11 April 2021</h3>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <img src="damac-static/images/content-image.jpg" className="img-fluid"/>
-
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        <p>To say that real estate is dynamic is an understatement. Terms like<br/> influencers and podcasters were unheard of a few decades ago. Additionally,<br/> apps like Tik Tok and to say that real estate is dynamic is an understatement. <br/>Terms like influencers and podcasters were unheard of a few decades ago.<br/> Additionally, apps like Tik Tok.</p>
-                        
-                    </div>
-
-                    </div>
-                    
-                </div>
-                
-                </section>
-
-                <section className={styles['related-post']}>
-                <div className="container">
-                    <div className={styles['related-title']}>
-                    <h2>Related News</h2>          
-                    </div>
                     <div className="row">
-                    <div className="col-md-4">
-                        <div className={styles['card']}>
-                        <img src="damac-static/images/blog1.png" className={styles['card-img-top']} alt="..."/>
-
-
-                        <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
-                            <div className="d-flex justify-content-between">
-                            <label>Tag Label</label>
-                            <span> 21/12 2020 by The Guardian </span>
-                            </div>
-                            <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
+                        <div className="col-md-12">
+                            <p>News</p>
+                            <h1 className={`${style["news-hero-text"]} text-white m-0`}>Press Release</h1>
                         </div>
-                        </div>
-                        
                     </div>
-                    <div className="col-md-4">
-                        <div className={styles['card']}>
-                        <img src="damac-static/images/blog2.png" className={styles['card-img-top']} alt="..."/>
-                        <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
-                            <div className="d-flex justify-content-between">
-                            <label>Tag Label</label>
-                            <span> 21/12 2020 by The Guardian </span>
-                            </div>
-                            <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
-                        </div>
-                        </div>
-                        
-                    </div>
-                    <div className="col-md-4">
-                        <div className={styles['card']}>
-                        <img src="damac-static/images/blog3.png" className={styles['card-img-top']} alt="..."/>
-                        <div className={styles['card-body']}>
-                            <a href="#"><h4>10 Emerging Real Estate Trends That You Should Pay Attention To</h4></a>
-                            <div className="d-flex justify-content-between">
-                            <label>Tag Label</label>
-                            <span> 21/12 2020 by The Guardian </span>
-                            </div>
-                            <p className={styles['card-text']}>To say that real estate is dynamic is an understatement. Terms like influencers and podcasters were unheard of a few decades ago. Additionally, apps like Tik Tok and...</p>
-                            <a href="#" className={styles['read-more']}>Read More</a>
-                        </div>
-                        </div>
-                        
-                    </div>
-                    
-                    </div>
-
-                    <div className={`${styles["post-button"]} text-center`}>
-                    <a href="#" className="btn btn-primary">View all posts</a>
-                    </div>
-
-                    
                 </div>
-                </section>
-             </main>
-             <Footer footerData={footerData}></Footer>
-         </div>
-     )
- }
+            </section>
+            {/* <!-- news list news section --> */}
+           <section className="bloglist-list-page">
+             <div className="container">
+               
+               <div className={`ItemListGrid items-3 ${styles["custom_card"]}`}>
+                 {
+                   blogs.map( (blog, index) => (
+
+                     <BlogCardItem key={ index } cardDetails={ blog } />
+
+                   ) )
+                 }
+               </div>
 
 
- export async function getServerSideProps(context){
+               {/*<div className={ styles['pagination-container'] }>
+                                <PagePagination/>
+                              </div>*/}
+
+             </div>
+           </section>
+
+        
+      </main>
+
+      <Footer footerData={footerData}></Footer>
+
+      
+    </div>
+  )
+}
+
+export default PressReleaseList
+
+
+
+
+export async function getStaticProps(context) {
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
@@ -165,11 +101,12 @@ import {BLOGS} from '../graphql/blogs';
 
  
   // end
-
   
    // Use this for novigation
    const  data2  = await client.query({ query: NAVIGATION });
    const  data1  = await client.query({ query: PARENTMENUITEMS });
+   const  press_item  = await client.query({ query: BLOGTYPEDETAIL,variables:{type:'8'}  });
+   var press_item_list = press_item.data.nodeQuery.entities;
    let nav = [];
    let othernav = [];
    if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
@@ -179,7 +116,7 @@ import {BLOGS} from '../graphql/blogs';
      menu.map((m,i)=>{
        othernav = [];
        let des = m.description==null?'': m.description.value
-       nav.push({name:m.name,tid:m.tid,submenu:[],link:des,isOpen:false});
+       nav.push({name:m.name,tid:m.tid,submenu:[],link:des});
        if((i+1)==menu.length){
          submenu.fieldMultipleMenuItems.map((k,l)=>{
            if(k.entity.fieldMenuType!=null){
@@ -198,12 +135,20 @@ import {BLOGS} from '../graphql/blogs';
     
    }
      // end
- 
-   return {
-     props: {
-        nav:nav,
-        othernav:othernav,
-        footerData: footerData
-     }, // will be passed to the page component as props
-   }
- }
+
+  // Device React
+
+  let blogs = []
+  press_item_list.map((v,i)=>{
+    blogs.push({title:v.title,url:'press-release/'+v.nid,imageUrl: v.fieldThumbnailDesktop!=null?v.fieldThumbnailDesktop.url:'',ctaText:'Read More',excerpt:v.fieldShortText, author: (v.fieldAuthor && v.fieldAuthor!=null) ? v.fieldAuthor.entity.name : '', tag: v.fieldTag && v.fieldTag.entity.name })
+  });
+
+  return {
+    props: {
+       blogs: blogs,
+       nav:nav,
+       othernav:othernav,
+       footerData: footerData
+    }, // will be passed to the page component as props
+  }
+}

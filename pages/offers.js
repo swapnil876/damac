@@ -11,8 +11,7 @@ import PageTitle from '../components/PageTitle'
 
 import ImageCardItem from '../components/ImageCardItem'
 
-
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { useMediaQuery } from 'react-responsive'
 
 import liststyle from "../styles/bases/ListStyles.module.css"
@@ -28,6 +27,62 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
 function OffersPage( { offers, nav, othernav, footerData } ) {
 
+  // useEffect(()=>{
+  //   pagination()
+  // },[]);
+
+  // function pagination(){
+  //   var indexsPerSet = [
+  //     {
+  //       start:0,
+  //       end:10
+  //     },
+  //     {
+  //       start:11,
+  //       end:20
+  //     },
+  //     {
+  //       start:21,
+  //       end:30
+  //     },
+  //     {
+  //       start:31,
+  //       end:40
+  //     },
+  //     {
+  //       start:41,
+  //       end:50
+  //     },
+  //     {
+  //       start:51,
+  //       end:60
+  //     },
+  //     {
+  //       start:61,
+  //       end:70
+  //     },
+  //   ]; 
+  //   var noOfSets = Math.ceil(offers.length/10);
+
+  //   var finalArr=[];
+
+  //   for(var i=0; i<noOfSets; i++){
+  //     let innerArr=[];
+  //     for(var j=indexsPerSet[i].start; j<=indexsPerSet[i].end; j++){
+  //       if(j){
+  //         if(j!=indexsPerSet[i].end){
+  //           innerArr.push(offers[j]);
+  //         }else{
+  //           innerArr.push(offers[j]);
+  //           finalArr.push(innerArr);
+  //           console.log("Here is our inner array",innerArr);
+  //           innerArr=[];
+  //         }
+  //       }
+  //     }
+  //   }
+  //   console.log("Here is our array",finalArr);
+  // }
 
   return (
     <div className='offersbody'>
@@ -60,6 +115,7 @@ function OffersPage( { offers, nav, othernav, footerData } ) {
                   <div className="row">
                     {
                       offers.map( (offer, index) => (
+                        offer!=null &&
                         <div className="col-md-6">
                         <ImageCardItem key={ index } cardDetails={ offer } />
                         </div>
@@ -71,7 +127,7 @@ function OffersPage( { offers, nav, othernav, footerData } ) {
 
 
                   <div class="view_more_btn_area" style={{'margin-top':'82px'}}>
-                    <a class="btn btn-primary" href="#" style={{'margin':'auto', 'display':'block', 'width':'fit-content'}}>View more</a>
+                    <a class="btn btn-primary" href="javascript:void(0)" style={{'margin':'auto', 'display':'block', 'width':'fit-content'}}>View more</a>
                   </div>
             
                

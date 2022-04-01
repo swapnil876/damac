@@ -34,6 +34,8 @@ import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
 
+import Iframe from 'react-iframe'
+
 export default function CompanyAnnouncements({entity,unique,year_announcement, nav, othernav, footerData}){
 
     const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -170,9 +172,19 @@ return (
         className='mb-0'
       >  
       </HeadingTitle>
-    <div>
-    {/* <!-- Company Announcement Hero section --> */}
-            <section className="announcements-hero d-flex align-items-center">
+
+
+    <div className="container">
+      {/* <iframe className="company_announcement_iframe" src="https://tools.eurolandir.com/tools/pressreleases/?companycode=AE-DAMAC&v=r2022&lang=en-GB"></iframe> */}
+
+      <Iframe url="https://tools.eurolandir.com/tools/pressreleases/?companycode=AE-DAMAC&v=r2022&lang=en-GB"
+        className="company_announcement_iframe"
+        display="initial"
+        position="relative"/>
+    </div>
+
+        {/* <!-- Company Announcement Hero section --> */}
+        {/* <section className="announcements-hero d-flex align-items-center">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
@@ -196,7 +208,7 @@ return (
                                         </div>
                                         <div className="col-md-2">
                                             <div className="form_btn_announcement" onClick={()=>{getResult()}}>
-                                                <a href="#" className="btn btn-primary w-100">Search</a>
+                                                <a href="javascript:void(0)" className="btn btn-primary w-100">Search</a>
                                             </div>
                                         </div>
                                     </div>
@@ -205,44 +217,47 @@ return (
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
     {/* // <!-- Announcement main data section --> */}
-    <section className="announcement_data">
+    {/* <section className="announcement_data">
         <div className="container">
             <div className="year_sorting d-flex justify-content-between align-items-center flex-wrap">
                 <div className="announcement_tab">
                     <ul className={`${styles["announcement_tab_ul"]} list-unstyled d-flex flex-wrap align-items-center p-0`}>
                         {
                         uniqueYear.map( (yr, i) => (
+                            yr!=null &&
                             <li className={`${yr.isActive ? styles['active'] : ""}`} key={i} ><a style={{'cursor':'pointer'}} onClick={()=>{selectYear(yr,year_announcement,i,1 )}}>{yr.year}</a></li>
                         ))
                         }
-                        <li className={`${allYear ? styles['active'] : ""}`} onClick={()=>{selectYear(null,null,null,0 )}}><a href="#">All({yearData.length})</a></li>
+                        <li className={`${allYear ? styles['active'] : ""}`} onClick={()=>{selectYear(null,null,null,0 )}}><a href="javascript:void(0)">All({yearData.length})</a></li>
                     </ul>
                 </div>
                 <div className={styles['clear_main']}>
-                    <a href="#">Clear Selection</a>
+                    <a href="javascript:void(0)">Clear Selection</a>
                 </div>
             </div>
-            {/* <!-- announcement list start here --> */}
             <div className="list_announcement_main">
                 <ul className="list-unstyled">
                     {
                         yearData.length>0?(
                             yearData.map((v,i)=>(
                                 v.isShow?(
+                                    v.obj!=null &&
+                                    (
                                     <li key={i}>
                                         <div className={styles['announcement_list']}>
-                                            <h2><a href="#">{v.obj.fieldTitleCa.value}</a></h2>
+                                            <h2><a href="javascript:void(0)">{v.obj.fieldTitleCa!=null && v.obj.fieldTitleCa.value}</a></h2>
                                             <div className="d-flex ">
                                                 <div className={styles['datetime-announcement']}>
-                                                    <p>{v.obj.fieldDate.value}</p>
+                                                    <p>{v.obj.fieldDate!=null && v.obj.fieldDate.value}</p>
                                                 </div>
-                                                <div className={styles['download_announcement']}><a href={"/downloads/" + v.obj.fieldAnnouncement.entity.url} download target="_blank">Download</a></div>
+                                                <div className={styles['download_announcement']}><a href={"/downloads/" + (v.obj.fieldAnnouncement!=null && v.obj.fieldAnnouncement.entity!=null) && v.obj.fieldAnnouncement.entity.url} download target="_blank">Download</a></div>
                                             </div>
                                         </div>
                                     </li>
+                                    )
                                 ):
                                 ('')
                             
@@ -251,85 +266,12 @@ return (
                         
                     }
                     
-                    {/* <li>
-                        <div className={styles['announcement_list']}>
-                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h2>
-                            <div className="d-flex ">
-                                <div className={styles['datetime-announcement']}>
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div className={styles['download_announcement']}><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className={styles['announcement_list']}>
-                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - English</a></h2>
-                            <div className="d-flex ">
-                                <div className={styles['datetime-announcement']}>
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div className={styles['download_announcement']}><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className={styles['announcement_list']}>
-                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Result Presentation H1 2020</a></h2>
-                            <div className="d-flex ">
-                                <div className={styles['datetime-announcement']}>
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div className={styles['download_announcement']}><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className={styles['announcement_list']}>
-                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h2>
-                            <div className="d-flex ">
-                                <div className={styles['datetime-announcement']}>
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div className={styles['download_announcement']}><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className={styles['announcement_list']}>
-                            <h2><a href="#">DAMAC Properties Dubai Co PJSC Financial Statements 9M 2020 - Arabic</a></h2>
-                            <div className="d-flex ">
-                                <div className={styles['datetime-announcement']}>
-                                    <p>January 29, 2021 4:00 PM EST</p>
-                                </div>
-                                <div className={styles['download_announcement']}><a href="#">Download</a></div>
-                            </div>
-                        </div>
-                    </li> */}
                 </ul>
             </div>
-            <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}
-            >
-                {/* <div className={`${styles["page_btn"]} prev_btn`}>
-                    <a href="#"><FaAngleLeft/></a>
-                </div> */}
-                {/* <div className={styles['pagination_no']}>
-                    <ul className="list-unstyled d-flex">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><span>....</span></li>
-                        <li><a href="#">12</a></li>
-                    </ul>
-                </div> */}
-                {/* <div className={`${styles["page_btn"]} prev_btn`}>
-                    <a href="#"><FaAngleRight/></a>
-                </div> */}
+            <div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
             </div>
         </div>
-    </section>
-
-    </div>
+    </section> */}
 
     <FooterMoreLinks/>
 

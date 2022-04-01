@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import { renderToString } from 'react-dom/server'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,6 +15,7 @@ import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detec
 
 import styles from '../styles/components/Navbar.module.css'
 
+import { FaAngleDown } from 'react-icons/fa'
 
 // FA
 import ReactDOM from 'react-dom'
@@ -26,11 +28,13 @@ import { NAVIGATION } from '../graphql/master/navigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
 
 
+
 export default function Navbar({ className, children, navbarStyle, whiteEnquiryBtn, navigationBar, otherNav }) {
   // var navigationMenu = [];
   const [slideOutMenuVisible, setMenuActive] = useState(false);
   const [navigationMenu, setNavigationMenu] = useState(navigationBar);
   const [taxonomy, setTaxonomy] = useState([]);
+  const { locale, locales } = useRouter();
 
   // getNavs()
   const handleMenuToggle = (e) => {
@@ -194,34 +198,88 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
     'enquire': [
         {
           label: 'Sales',
-          url: '/contact/sales-enquire'
+          url: '/contact/en/sales-enquire'
         },
         {
           label: 'Customer Care',
-          url: '/contact/customer-care'
+          url: '/contact/en/customer-care'
         },
         {
           label: 'Press and media',
-          url: '/contact/press-media'
+          url: '/contact/en/press-media'
         },
         {
           label: 'Investor Relations',
-          url: '/contact/investor-relations'
+          url: '/contact/en/investor-relations'
         },
         {
           label: 'Agent Relations',
-          url: '/contact/agent-relations'
+          url: '/contact/en/agent-relations'
         },
         {
           label: 'Careers',
-          url: '/contact/careers'
+          url: '/contact/en/careers'
         },
     ],
   };
 
-  console.log(otherNav);
+  console.log('otherNav..',otherNav);
+  let l = locale == 'en'?'English':'Arabic';
+  const [selectedLang, setLang] = useState(l);
+   
+  function handleLanguageChange(lang){
+    var pathname = window.location.pathname.split('/');
+    var pgUrl = window.location.origin
+    // var pgUrl = 'http://stg-nextjs-1432560238.eu-west-1.elb.amazonaws.com';
+    
+    var newUrl;
+    var newPath ='';
+    
+    if(pathname.length>3){
+      var breakPath = [];
+      breakPath=pathname.slice(2, (pathname.length+1));
+    
+      breakPath.forEach((item)=>{
+        if(item!="") {
+          newPath = newPath + (item + '/');
+        }
+       
+      })
+      if(lang == 'English'){
+        var newUrl = pgUrl + '/' + 'en' + '/' +  newPath;
+        // console.log(newPath, newUrl);
+      }
+      else{
+        var newUrl = pgUrl + '/' + 'ar' + '/' +  newPath;
+        // console.log(newUrl);
+      }
+    }
+    else{
+      if(lang == 'English'){
+        newPath = pathname[2]==undefined ? '' : pathname[2];
+        var newUrl = pgUrl + '/' + 'en' + '/' +  newPath;
+        // console.log(newUrl);
+      }
+      else{
+        newPath = pathname[2]==undefined ? '' : pathname[2];
+        var newUrl = pgUrl + '/' + 'ar' + '/' +  pathname[2];
+        // console.log(newUrl);
+      }
+    }
+    window.location.assign(newUrl);
+  }
 
+  function handleBookmark(){
+    // var bookmarkUrl = window.location.href;
+    // var bookmarkTitle = "Damac";
 
+    // if (window.sidebar) { // For Mozilla Firefox Bookmark
+    //     window.sidebar.addPanel(bookmarkTitle, bookmarkUrl,"");
+    // }  else { // for other browsers which does not support
+    //      alert('Your browser does not support this bookmark action');
+    //      return false;
+    // }
+  }
 
   return (
     
@@ -246,10 +304,10 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                       <div className="menuicon-wrapper">
                       {
                       navbarStyle=='dark'?
-                      <a href="#" className="mainmenutoggle" onClick={handleMenuToggle} style={{'backgroundImage':'unset'}}>
+                      <a href="javascript:void(0)" className="mainmenutoggle" onClick={handleMenuToggle} style={{'backgroundImage':'unset'}}>
                     <img src="/images/icons/Menu/menu.png" style={navbarStyle=='dark'?{'width':'28px', 'height':'18px'}:{'display':'none'}}/>
                     </a> :
-                    <a href="#" className="mainmenutoggle" onClick={handleMenuToggle}>
+                    <a href="javascript:void(0)" className="mainmenutoggle" onClick={handleMenuToggle}>
                     </a>
                     }
 
@@ -271,10 +329,10 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                   <div className="menuicon-wrapper">
                     {
                       navbarStyle=='dark'?
-                      <a href="#" className="mainmenutoggle" onClick={handleMenuToggle} style={{'background-image':'unset'}}>
+                      <a href="javascript:void(0)" className="mainmenutoggle" onClick={handleMenuToggle} style={{'background-image':'unset'}}>
                     <img src="/images/icons/Menu/menu.png" style={navbarStyle=='dark'?{'width':'28px', 'height':'18px'}:{'display':'none'}}/>
                     </a> :
-                    <a href="#" className="mainmenutoggle" onClick={handleMenuToggle}>
+                    <a href="javascript:void(0)" className="mainmenutoggle" onClick={handleMenuToggle}>
                     </a>
                     }
                     
@@ -299,7 +357,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                     m.submenu.length>0?(
                       <div key={p} className="header-item-wrapper not-on-mobile header-dropdown-container dropdown-to-centered">
                           <a 
-                          href="#" 
+                          href="javascript:void(0)" 
                           className="browseProperties header-dropdown-btn"
                           data-dropdownkey={'browse-properties'} 
                           
@@ -330,11 +388,11 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                     <div className="header-item-wrapper header-dropdown-container not-on-mobile">
                       {
                         whiteEnquiryBtn ? 
-                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'} style={{'background':'#fff', 'color':'#111', 'fontWeight':'400'}}>
+                        <a href="javascript:void(0)" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'} style={{'background':'#fff', 'color':'#111', 'fontWeight':'400'}}>
                         Enquire
                        </a>
                         :
-                        <a href="#" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'}>
+                        <a href="javascript:void(0)" className={`btn btn-primary btn-style-${navbarStyle} header-dropdown-btn`} data-dropdownkey={'enquire'}>
                           Enquire
                         </a>
                       }
@@ -360,24 +418,48 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
 
                     <div className="header-item-wrapper not-on-mobile">
 
-                      <div className="dropdown dropdown-item-outer language-dropdown">
-                        <a href="#" className={`${styles["lang_drop"]} dropdown-toggle language-dropdown-link`}>
+                      {/* <div className="dropdown dropdown-item-outer language-dropdown">
+                        <a href="javascript:void(0)" className={`${styles["lang_drop"]} dropdown-toggle language-dropdown-link`}>
                             <span style={ {'marginRight': '6px'} }>English</span> 
                             <FontAwesomeIcon size='xs' icon={ faChevronDown }/>
                         </a>
                         
-                      </div>
+                      </div> */}
+
+
+                          <div className={navbarStyle=='dark' ? 'accordion language_select dark' : 'accordion language_select'} id="accordionExample">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 
+                                 {selectedLang }
+                                 {
+                                   navbarStyle=='dark' &&
+                                   <img src="/images/icons/angle-down.png" />
+                                 }
+                                 
+                                </button>
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                  <div className="dropdown">
+                                    <a onClick={()=>{setLang('English'), handleLanguageChange('English')}}>English</a>
+                                    <a onClick={()=>{setLang('Arabic'), handleLanguageChange('Arabic')}}>Arabic</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
                     </div>
 
                     <div className="header-item-wrapper d-flex align-items-center">
                       {/*
-                      <a href="#" className="bookmark-icon">
+                      <a href="javascript:void(0)" className="bookmark-icon">
                         <span>bookmark icon</span>
                       </a>
                       */}
 
-                      <a href="#" className="bookmark-btn">
+                      <a href="javascript:void(0)" className="bookmark-btn" onClick={()=>{handleBookmark()}}>
                         <span>
                           <FontAwesomeIcon icon={ faBookmark }/>
                         </span>
@@ -405,7 +487,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
             </div>
             <div className="inner">
               
-              <div className="main-menu-inner d-flex flex-column justify-content-between">
+            <div className="main-menu-inner d-flex flex-column justify-content-between">
                 <div className="biglinks">
                 {
                   navigationMenu.map((m,p)=>(
@@ -456,7 +538,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                     navigationBar.map((m,p)=>{
                     m.submenu.length>0?(
                       <div key={p} className="biglink-container biglinks-dropdown">
-                        <ActiveLink href="#" activeClassName="active"  >
+                        <ActiveLink href="javascript:void(0)" activeClassName="active"  >
                              <a className="biglink" data-dropdownkey="browse-properties" onClick={ handleBrowsePropertiesBiglink }>
                                  <span>Browse Properties</span>
                                  <span className="menuItemIcon">
@@ -497,7 +579,7 @@ export default function Navbar({ className, children, navbarStyle, whiteEnquiryB
                   <div className="container-fluid">
                     <div className="row">
                      
-                      {
+                    {
                         otherNav.map((n,m)=>(
                           <div className="col-md-4 menu-list-col">
                           <ul className="menu-list">

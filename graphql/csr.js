@@ -2,9 +2,10 @@ import { gql } from '@apollo/client';
 
 const _CSR = gql`
   query {
-    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["csr"]}]}) {
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["csr"]}]}) {
       entities {
-        ... on NodeCsr{
+        entityTranslation(language: EN) {
+          ... on NodeCsr{
             nid
             title
             fieldMilestones {
@@ -55,7 +56,7 @@ const _CSR = gql`
               targetId
               url
             }
-
+        
             fieldWhyCsr
             
             fieldCanonicalUrlCsr
@@ -74,6 +75,7 @@ const _CSR = gql`
               value
             }
           
+          }
           }
       }
     }

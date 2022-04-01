@@ -126,7 +126,7 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
         {
           !deviceIsMobile ?
           tabLinksArray.map( ( link, index ) => (
-
+            link!=null &&
               <Link href="" key={ index }>
                 <a className={ `${style['pagetabs-link']} ${ sectionToShow == link.label ? style['active'] : '' }` } onClick={()=>{
                   setSectionToShow(link.label);
@@ -158,7 +158,7 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
                <div className="date-time">
                  <p className=''><strong>Date & Time: 31 January 2021 11:31 (GTM +04:00)</strong></p>
                </div>
-               <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+               <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity!=null && iframe.entity.fieldIframeContent}></iframe>
              </div>
 
 
@@ -167,7 +167,7 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
                    <div className="col-md-6">
                      <div className="graph-left-div">
                        {/* <img src="/images/content/share-information/graph-left.jpg" alt="graph" className="img-fluid" /> */}
-                       <iframe className="iframe_left_share_info" src={fieldTabs[0].iframeContent}></iframe>
+                       <iframe className="iframe_left_share_info" src={fieldTabs[0]!=null && fieldTabs[0].iframeContent}></iframe>
                      </div>
                    </div>
                    <div className="col-md-6">
@@ -194,7 +194,7 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
               </div>*/}
 
               <div class="dfm-row-table">
-                <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+                <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity!=null && iframe.entity.fieldIframeContent}></iframe>
               </div>
             
           </div>
@@ -204,7 +204,7 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
           sectionToShow == "Investment Calculator" && 
           <section className='section'>
           <div className="container">
-          <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+          <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity!=null && iframe.entity.fieldIframeContent}></iframe>
           </div>
           </section>
         }
@@ -213,7 +213,7 @@ function ShareOverview( { mobileDevice, entity1, fieldTabs, iframe, nav, otherna
           <section className='section'>
           <section className={styles2['investor_relations_container']}>
               <div className="container">
-                <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+                <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity!=null && iframe.entity.fieldIframeContent}></iframe>
               </div>
           </section>
           </section>
@@ -294,6 +294,7 @@ export async function getStaticProps(context) {
   let data1 = {};
   let fieldTabs = [];
   entity1.fieldTabsS.map((v,i)=>{
+    console.log(v);
     if(v.entity.fieldTabHeading == 'Share Graph Monitor')
     {
       fieldTabs.push(

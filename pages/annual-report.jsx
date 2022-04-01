@@ -1,5 +1,7 @@
 
 import React, { Component, useState, useEffect } from "react";
+import { useRouter } from 'next/router';
+import { ARANNUALREPORTS } from '../graphql-ar/master/arannual_reports';
 
 import Head from 'next/head'
 import Image from 'next/image'
@@ -192,9 +194,10 @@ function AnnualReport( { entity,unique,year_announcement, nav, othernav, footerD
         <div className='container'>
           <ul className={styles['pagetabs']}>
           {
-                  uniqueYear.map( (yr, i) => (
+              uniqueYear.map( (yr, i) => (
+              yr!=null &&
               <li key={i}>
-                <a className={`${yr.isActive ? styles['active'] : ''}`} href="#" onClick={()=>{selectYear(yr,year_announcement,i,1 )}}>{yr.year}</a>
+                <a className={`${yr.isActive ? styles['active'] : ''}`} href="javascript:void(0)" onClick={()=>{selectYear(yr,year_announcement,i,1 )}}>{yr.year}</a>
               </li>
               ))
             }
@@ -208,7 +211,7 @@ function AnnualReport( { entity,unique,year_announcement, nav, othernav, footerD
             {
                         yearData.length>0?(
                             yearData.map((report,index)=>(
-                              report.isShow?(
+                              (report.isShow && report.obj!=null)?(
                         <div className={ styles['annual-reports-item']} key={index}>
                           <h3 className={`annual-report-title`}>
                             {report.obj.fieldTitleAr.value}

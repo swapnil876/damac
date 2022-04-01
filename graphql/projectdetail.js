@@ -2,9 +2,10 @@ import { gql } from '@apollo/client';
 
 const PROJECTDETAIL = gql`
   query PROJECTDETAIL($id: String!){
-    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "nid", value: [$id]}]}) {
+    nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "nid", language:EN, value: [$id]}]}) {
       entities {
-        ... on NodeProject{
+        entityTranslation(language: EN) {
+          ... on NodeProject{
             nid
             title
              fieldTaglingP
@@ -200,6 +201,7 @@ const PROJECTDETAIL = gql`
             }
           }
         }
+          }
       }
     }
   }`;

@@ -21,7 +21,7 @@ import { FaAngleRight } from 'react-icons/fa'
 
 
 // Bootstrap Css
-import 'bootstrap/dist/css/bootstrap.css'
+
 
  // React Responsive
  import { isMobile, getUA, getSelectorsByUserAgent } from 'react-device-detect';
@@ -65,7 +65,7 @@ function InvestorRelations( { entity1, nav, othernav, footerData } ) {
 
         <PageTitle 
              className={styles['investor-relationsbody']} 
-             title={entity1.fieldTitleIr.value} 
+             title={entity1.fieldTitleIr!=null && entity1.fieldTitleIr.value} 
              subtitle="Investor Relations" 
              backgroundImage={'/images/investor-relation-hero.jpg'}
            />
@@ -77,8 +77,8 @@ function InvestorRelations( { entity1, nav, othernav, footerData } ) {
           <div className={styles['profile-outer-white']}>
             <div className={`${styles["profile-inner-main"]}  d-flex justify-content-center`}>
               <div className={styles['profile-main-head']}>
-                <h2 className="text-center investor_relation_page_titles">{entity1.fieldDescriptionHeading.value}</h2>
-                <div className="text-center" dangerouslySetInnerHTML={{ __html: entity1.fieldTextHeading.value }}></div>
+                <h2 className="text-center investor_relation_page_titles">{entity1.fieldDescriptionHeading!=null && entity1.fieldDescriptionHeading.value}</h2>
+                <div className="text-center" dangerouslySetInnerHTML={{ __html:entity1.fieldTextHeading!=null && entity1.fieldTextHeading.value }}></div>
               </div>
             </div>
           </div>
@@ -197,14 +197,14 @@ function InvestorRelations( { entity1, nav, othernav, footerData } ) {
           </div>
           <div className={style['more-links-main']}>
             <ul className={style['more-link-ul']}>
-              <li><a href="#" className={style['more-link-item']}>Why DAMAC? <FaAngleRight/></a></li>
-              <li><a href="#" className={style['more-link-item']}> Quick factsheet <FaAngleRight/></a></li>
-              <li><a href="#" className={style['more-link-item']}>Dividends <FaAngleRight/></a></li>
-              <li><a href="#" className={style['more-link-item']}>Share Information <FaAngleRight/></a></li>
-              <li><a href="#" className={style['more-link-item']}>Financial Information <FaAngleRight/></a></li>
-              <li><a href="#" className={style['more-link-item']}>Company Announcements <FaAngleRight/></a></li>
-              <li><a href="#" className={style['more-link-item']}>Annual Reports <FaAngleRight/></a></li>
-              <li><a href="#" className={style['more-link-item']}>Contact Us <FaAngleRight/></a></li>
+              <li><a href="javascript:void(0)" className={style['more-link-item']}>Why DAMAC? <FaAngleRight/></a></li>
+              <li><a href="javascript:void(0)" className={style['more-link-item']}> Quick factsheet <FaAngleRight/></a></li>
+              <li><a href="javascript:void(0)" className={style['more-link-item']}>Dividends <FaAngleRight/></a></li>
+              <li><a href="javascript:void(0)" className={style['more-link-item']}>Share Information <FaAngleRight/></a></li>
+              <li><a href="javascript:void(0)" className={style['more-link-item']}>Financial Information <FaAngleRight/></a></li>
+              <li><a href="javascript:void(0)" className={style['more-link-item']}>Company Announcements <FaAngleRight/></a></li>
+              <li><a href="javascript:void(0)" className={style['more-link-item']}>Annual Reports <FaAngleRight/></a></li>
+              <li><a href="javascript:void(0)" className={style['more-link-item']}>Contact Us <FaAngleRight/></a></li>
             </ul>           
           </div>                 
         </div>
@@ -227,7 +227,7 @@ function InvestorRelations( { entity1, nav, othernav, footerData } ) {
                    <p>Customer’s Stories</p>
                  </div>
                  <div className={style['dm-card-head']}>
-                   <h2 className='investor_relation_page_titles'><a href="#">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
+                   <h2 className='investor_relation_page_titles'><a href="javascript:void(0)">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
                  </div>
                   <div className={style['dm-card-txt']}>
                    <p className="m-0">7-minute read • Kim</p>
@@ -245,7 +245,7 @@ function InvestorRelations( { entity1, nav, othernav, footerData } ) {
                    <p>Customer’s Stories</p>
                  </div>
                  <div className={style['dm-card-head']}>
-                   <h2><a href="#">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
+                   <h2><a href="javascript:void(0)">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
                  </div>
                   <div className={style['dm-card-txt']}>
                    <p className="m-0">7-minute read • Kim</p>
@@ -263,7 +263,7 @@ function InvestorRelations( { entity1, nav, othernav, footerData } ) {
                    <p>Customer’s Stories</p>
                  </div>
                  <div className={style['dm-card-head']}>
-                   <h2><a href="#">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
+                   <h2><a href="javascript:void(0)">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
                  </div>
                   <div className={style['dm-card-txt']}>
                    <p className="m-0">7-minute read • Kim</p>
@@ -281,7 +281,7 @@ function InvestorRelations( { entity1, nav, othernav, footerData } ) {
                    <p>Customer’s Stories</p>
                  </div>
                  <div className={style['dm-card-head']}>
-                   <h2><a href="#">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
+                   <h2><a href="javascript:void(0)">Global Investor on How DAMAC Helps to Check Which Property Will Work Best for You</a></h2>
                  </div>
                   <div className={style['dm-card-txt']}>
                    <p className="m-0">7-minute read • Kim</p>

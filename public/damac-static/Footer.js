@@ -56,12 +56,12 @@ export default function HomeBanner( { children} ) {
              <div className="footer-link-list">
                <ul>
                    <li>
-                     <Link href="#">
+                     <Link href="javascript:void(0)">
                        <a>Blog</a>
                      </Link>
                    </li>
                    <li>
-                     <Link href="#">
+                     <Link href="javascript:void(0)">
                        <a>Media Center</a>
                      </Link>
                    </li>
@@ -75,20 +75,20 @@ export default function HomeBanner( { children} ) {
 
                    <li>
                      
-                     <Link href="#">
+                     <Link href="javascript:void(0)">
                        <a>Investor Relations</a>
                      </Link>
                    </li>
 
                    <li>
                      
-                     <Link href="#">
+                     <Link href="javascript:void(0)">
                        <a>Careers</a>
                      </Link>
                    </li>
 
                    <li>
-                     <Link href="#">
+                     <Link href="javascript:void(0)">
                        <a>Contact Us</a>
                      </Link>
                    </li>
@@ -100,16 +100,16 @@ export default function HomeBanner( { children} ) {
 
           <div className="col-md-4">
             <div className="footer-social-block">
-              <a href="#" target="_blank">
+              <a href="javascript:void(0)" target="_blank">
                 <span></span>
               </a>
-              <a href="#" target="_blank">
+              <a href="javascript:void(0)" target="_blank">
                 <span></span>
               </a>
-              <a href="#" target="_blank">
+              <a href="javascript:void(0)" target="_blank">
                 <span></span>
               </a>
-              <a href="#" target="_blank">
+              <a href="javascript:void(0)" target="_blank">
                 <span></span>
               </a>
             </div>
@@ -124,17 +124,17 @@ export default function HomeBanner( { children} ) {
           <div className="col-md-4">
             <ul className="footerimportantlinks">
               <li>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <a>Terms of service</a>
                 </Link>
               </li>
               <li>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <a>Privacy policy</a>
                 </Link>
               </li>
               <li>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <a>Privacy policy</a>
                 </Link>
               </li>

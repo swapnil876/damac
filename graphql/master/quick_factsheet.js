@@ -2,9 +2,10 @@ import { gql } from '@apollo/client';
 
 const QUICKFACTSHEET = gql`
 query {
-   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["quick_factsheet"]}]}) {
+   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["quick_factsheet"]}]}) {
       entities {
-      ... on NodeQuickFactsheet{
+        entityTranslation(language: EN) {
+          ... on NodeQuickFactsheet{
             nid
             fieldPageTitle{
               value
@@ -19,7 +20,8 @@ query {
               value
             }
             fieldIframContent
-      }
+        }
+          }
       }
    }
 }`;

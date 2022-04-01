@@ -16,7 +16,7 @@ import style from '../../styles/pages/listing.module.css';
 import Select from "react-dropdown-select";
 
 // Bootstrap Css
-import 'bootstrap/dist/css/bootstrap.css'
+
 
 import {
   FaPlay,
@@ -71,7 +71,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
       }
 
        //   importing bootstrap js
-       import("bootstrap/dist/js/bootstrap");
+       
    }, [])
 
    useEffect(() => {
@@ -84,6 +84,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
   const [regFee, setRegFee] = useState(false);
   const [mortRegFee, setMortRegFee] = useState(false);
   const [valueFee, setValueFee] = useState(false);
+
+       // Loan month per month calculation
+       const [perMonthAmount, setPerMonthAmount] = useState();
 
   //  Mortgage calculation area
   const [loanSlider, setLoanSlider] = useState(1);
@@ -106,28 +109,42 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
   const [downPayment, setDownPayment] = useState(25);
   const [loanPeriod, setLoanPeriod] = useState(1);
 
+  function pmtFunction(ir,np, pv, fv = 0){ 
+    // ir: interest rate
+    // np: number of payment
+    // pv: present value or loan amount
+    // fv: future value. default is 0
+   
+    var presentValueInterstFector = Math.pow((1 + ir), np);
+    var pmt = ir * pv  * (presentValueInterstFector + fv)/(presentValueInterstFector-1); 
+    return pmt;
+   }
+
+
   function callDownPaymentPrice(){
     var totPrice = propertyPrice * (downPayment / 100) ;
     setDownPaymentPrice(Math.ceil(totPrice));
   }
-      function mortgageCalculator(){
-        var loanAmt, deptFee, regFee, mortRegFee, valFee, months;
+  function mortgageCalculator(){
+    var loanAmt, deptFee, regFee, mortRegFee, valFee, months, perMonth;
 
-        months = loanPeriod*12;
+    months = loanPeriod*12;
 
-        loanAmt = (propertyPrice - downPaymentPrice);
-        deptFee = ((propertyPrice * (4 / 100)) + 580);
-        regFee = (propertyPrice > 500000) ? (4000 + (propertyPrice * (5 / 100))) : (2000 + (propertyPrice * (5 / 100))); 
-        mortRegFee = ((loanAmt *  (0.5/ 100)) + 10);
-        valFee = ((propertyPrice * (5 / 100)) + 3000);
+    loanAmt = (propertyPrice - downPaymentPrice);
+    deptFee = ((propertyPrice * (4 / 100)) + 580);
+    regFee = ((propertyPrice > 500000) ? (4000 + (4000 * (5 / 100))) : (2000 + (2000 * (5 / 100))));
+    mortRegFee = ((loanAmt *  (0.25/ 100)) + 10);
+    valFee = 3675;
+    perMonth = pmtFunction((interestRate/100)/12, loanPeriod*12, loanAmt);
 
 
-        setDepartmentFee(deptFee);
-        setRegistrationFee(regFee);
-        setMortgageRegistrationFee(mortRegFee);
-        setValuationFee(valFee);
-        setNoOfMonths(months);
-      }
+    setDepartmentFee(deptFee);
+    setRegistrationFee(regFee);
+    setMortgageRegistrationFee(mortRegFee);
+    setValuationFee(valFee);
+    setNoOfMonths(months);
+    setPerMonthAmount(perMonth);
+  }
 
   //  Mortgage calculation area
   
@@ -307,11 +324,11 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                         <div className={ styles['select-card-img-wrap'] }>
                                             <img src="/images/book-step-card-img.jpg" alt="card-img" className="img-fluid" />
                                             <div className={ styles["play-btn-card"]}>
-                                                <a href="#"><i className="fas fa-play"></i></a>
+                                                <a href="javascript:void(0)"><i className="fas fa-play"></i></a>
                                             </div>
                                         </div>
                                         <ul className={`${styles["bookmark_main"]} ${styles["d-flex"]} ${styles["float-end"]} ${styles["list-unstyled"]}`}>
-                                            <li><a href="#"><img src="/images/icons/bookmark 4.png" /></a></li>
+                                            <li><a href="javascript:void(0)"><img src="/images/icons/bookmark 4.png" /></a></li>
                                         </ul>
                                         <h6>{entity1.fieldTitle2}</h6>
                                           { entity1.fieldLocation != null ? 
@@ -322,22 +339,22 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                             <div className="row">
                                                 <div className="col-md-7">
                                                 <li>
-                                                <a href="#"><img src="/images/price-tag 1.png" className={ styles["img-fluid"]} />From {entity1.fieldStartingFromPrice}*</a>
+                                                <a href="javascript:void(0)"><img src="/images/price-tag 1.png" className={ styles["img-fluid"]} />From {entity1.fieldStartingFromPrice}*</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />{entity1.fieldArea} sqft</a>
+                                                <a href="javascript:void(0)"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />{entity1.fieldArea} sqft</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-7">
                                                 <li>
-                                                <a href="#"><img src="/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> {entity1.fieldBedRooms} Bedrooms</a>
+                                                <a href="javascript:void(0)"><img src="/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> {entity1.fieldBedRooms} Bedrooms</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                {/* <a href="#"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a> */}
+                                                {/* <a href="javascript:void(0)"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a> */}
                                                  </li>
                                                 </div>
                                             </div>   
@@ -398,7 +415,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                 }
                             </div>
                             <div className={styles["close-btn"]}>
-                              <a href="#"><i className="fas fa-times"></i></a>
+                              <a href="javascript:void(0)"><i className="fas fa-times"></i></a>
                             </div>
                         </div>
                     </div>
@@ -577,16 +594,16 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
                                         <span dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
-                                        <a href="#"><img src="/damac-static/images/location.png"/>   {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/location.png"/>   {entity1.fieldCity.entity.name}, {entity1.fieldCountry.entity.name}</a>
                                     </div>
                                 </div>
                                 <div className="col-md-5">
                                     <div className={style['project-right']}>
                                         <ul className="d-flex align-items-center">
-                                            <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
-                                            <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
+                                            <li><a href="javascript:void(0)"><img src="/damac-static/images/save.png"/></a></li>
+                                            <li><a href="javascript:void(0)"><img src="/damac-static/images/Vector.png"/></a></li>
                                             <li><a href={entity1.fieldBrochure.entity.url} target="_blank">Download Brochure</a></li>
-                                            <li><a href="#">View Gallery (19)</a></li>                
+                                            <li><a href="javascript:void(0)">View Gallery (19)</a></li>                
                                         </ul>              
                                     </div>
                                 </div>    
@@ -604,9 +621,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                 <div className="col-md-7">
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
-                                        <span style={{'display':'block', 'marginBottom':'20px'}} dangerouslySetInnerHTML={{ __html: entity1.fieldTagline }}></span>
+                                        <span style={{'display':'block', 'marginBottom':'20px'}} dangerouslySetInnerHTML={{ __html: (entity1.fieldTagline && entity1.fieldTagline!=null) && entity1.fieldTagline }}></span>
                                         { entity1.fieldLocation != null ? 
-                                        <a href="#" style={{'display':'block'}}><img src="/damac-static/images/location.png"/> entity1.fieldLocation.entity.name </a>
+                                        <a href="javascript:void(0)" style={{'display':'block'}}><img src="/damac-static/images/location.png"/> entity1.fieldLocation.entity.name </a>
                                         : '' }
                                     </div>
                                 </div>
@@ -615,10 +632,10 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                     !deviceIsMobile ?
                                     <div className={style['project-right']}>
                                     <ul className="d-flex align-items-center">
-                                        <li><a href="#"><img src="/damac-static/images/save.png"/></a></li>
-                                        <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
-                                        <li><a href={"/download/" + entity1.fieldBrochure.entity.url} target="_blank" download>Download Brochure</a></li>
-                                        <li><a href="#">View Gallery (19)</a></li>              
+                                        <li><a href="javascript:void(0)"><img src="/damac-static/images/save.png"/></a></li>
+                                        <li><a href="javascript:void(0)"><img src="/damac-static/images/Vector.png"/></a></li>
+                                        <li><a href={"/download/" + (entity1.fieldBrochure!=null) && entity1.fieldBrochure.entity.url} target="_blank" download>Download Brochure</a></li>
+                                        <li><a href="javascript:void(0)">View Gallery (19)</a></li>              
                                     </ul>              
                                    </div>
                                     :
@@ -629,7 +646,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                     <a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a>             
                                     </div>
                                     <div className="col-6">
-                                    <a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a>              
+                                    <a href="javascript:void(0)" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a>              
                                     </div>
                                     </div>
                                  
@@ -653,7 +670,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
               <div className={`text-wrapper`}> 
                 <div className="top-text">
                   <h2>{entity1.fieldTitle2}</h2>
-                  <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionc2.value }}></div>
+                  <div dangerouslySetInnerHTML={{ __html: (entity1.fieldDescriptionc2!=null)&&entity1.fieldDescriptionc2.value }}></div>
                 </div>
                 <div className={styles['shape-item']}>
                   <h4>
@@ -942,7 +959,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
             <div className="col-md-3 col-6" key={index}>
               <div className={styles['single-project']}>
                 <div className={styles['img']}>
-                <img alt="" src={proj.fieldMainImageDesktopP.url} />
+                <img alt="" src={proj.fieldMainImageDesktopP && proj.fieldMainImageDesktopP.url} />
                 </div>
                 <div className={styles['info']}>
                   <h4>{proj.title}</h4>
@@ -1059,7 +1076,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                             {
                               entity1.fieldBrandIcons.map( (icon, index) => (
                                 <div className={`${styles["column"]} col-4`}>
-                                <img alt="" src={icon.entity.fieldIconImage.url}/>
+                                <img alt="" src={icon.entity!=null && icon.entity.fieldIconImage.url}/>
                                </div>
                               ))
                             }  
@@ -1082,7 +1099,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                           <div className="col-md-12">
                             <div className={style['plan-video']}>
                               <div className={style['video']}>
-                              <iframe src={entity1.fieldVideo.url.path} class="project-video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> 
+                              <iframe src={entity1.fieldVideo!=null && entity1.fieldVideo.url.path} class="project-video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> 
                               </div>
                               {/* <a className={style['play-button']}><FaPlay /></a> */}
                             </div>
@@ -1100,7 +1117,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
           </div>
 
             <div className={styles['map']}>
-             <img alt=""src={entity1.fieldMasterplan.entity.url}/>
+             <img alt=""src={entity1.fieldMasterplan!=null && entity1.fieldMasterplan.entity.url}/>
             </div>
 
             {
@@ -1125,9 +1142,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
             entity1.fieldMultipleLocators.forEach((item)=>{
               <div className="col-sm-6 col-md-4">
               <div className="distance-card text-center">
-                <img alt={item.entity.fieldTextc6} src={item.entity.fieldIconm.url} />
-                <h5>{item.entity.fieldValuec6}</h5>
-                <p>{item.entity.fieldTextc6}</p>            
+                <img alt={item.entity!=null && item.entity.fieldTextc6} src={item.entity!=null && item.entity.fieldIconm.url} />
+                <h5>{item.entity!=null && item.entity.fieldValuec6}</h5>
+                <p>{item.entity!=null && item.entity.fieldTextc6}</p>            
               </div>
             </div>
             }) :
@@ -1171,7 +1188,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
+                                      <p><input type="number" min="300000" step="10000" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`down-payment ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
@@ -1183,12 +1200,12 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                   <div className={styles['estimate-inner']}>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
+                                      <p><input type="text" min="1" disabled class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
                                     </div>
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                                       <p> {loanSlider}</p>
-                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                                      <input type="range" min="1" max="25" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
                                   </div>
@@ -1198,11 +1215,11 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
+                                      <p><input type="number" min="300000" step="10000" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}} /><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
+                                      <p><input type="text" min="1" disabled class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}} /><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
                                     </div>
                                   </div>
                                   <div className={styles['estimate-inner']}>
@@ -1215,7 +1232,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                                       <p> {loanSlider}</p>
-                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                                      <input type="range" min="1" max="25"  className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
                                   </div>
@@ -1229,9 +1246,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                   <div className={styles['estimate-cost']}>
                                     <h4>Cost Breakdown</h4>
                                     <ul>
-                                      <li><span className={styles['text-left']}>{noOfMonths} months of</span> <i><span>AED</span> {propertyPrice}</i></li>
+                                      <li><span className={styles['text-left']}>{noOfMonths} months of</span> <i><span>AED</span> {Math.ceil(perMonthAmount)}</i></li>
                                       <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> {downPaymentPrice}</i></li>
-                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>{interestRate.toFixed(2)}</i></li>
+                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i>{interestRate.toFixed(2)} <span>%</span></i></li>
                                       <li><span className={styles['text-left']}>For Years</span> <i>{loanPeriod}</i></li>
                                     </ul>
 
@@ -1259,9 +1276,9 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
 
                                       <li><span className={styles['text-left']}>Valuation Fee <span><FaRegQuestionCircle onMouseOver={()=>{setValueFee(true)}} onMouseOut={()=>{setValueFee(false)}}/></span>
                                       {
-                                        valueFee && <span class="tooltip_pop tooltip_pop_dark_bg">3000 AED + 5% VAT</span>
+                                        valueFee && <span class="tooltip_pop tooltip_pop_dark_bg">2500 to 3500 AED + 5% VAT</span>
                                       }
-                                      </span><i><span>AED</span> {valuationFee}</i></li>
+                                      </span><i><span>AED</span> {Math.ceil(valuationFee)}</i></li>
                                     </ul>
                                   </div>
                                 </div>
@@ -1285,7 +1302,7 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
             <div className={styles['invest-wrap']}>
               <h2>{entity1.fieldHeading}</h2>
               <p>{entity1.fieldText}</p>
-              <a href="#" className={styles['read-more']}>Read more</a>
+              <a href="javascript:void(0)" className={styles['read-more']}>Read more</a>
             </div>  
           </div>          
         </div>        
@@ -1309,15 +1326,15 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
             <div className="col-md-6" key={index}>
               <div className={styles['property-slider-wrap']}>
                 <div className={styles['project-card']}>
-                  <img alt=""src={proj.fieldImageDesktop.url} className="img-fluid" />               
+                  <img alt=""src={proj.fieldImageDesktop!=null && proj.fieldImageDesktop.url} className="img-fluid" />               
                   <h6>{proj.title}</h6>
                   <p>{proj.fieldLocationP != null ? proj.fieldLocationP.entity.name : ''}</p>
                   <ul className={styles['bedroom-detail']}>
                     <li>
-                      <a href="#"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {proj.fieldStartingFromPrice}*</a>
+                      <a href="javascript:void(0)"><img alt=""src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {proj.fieldStartingFromPrice}*</a>
                     </li>
                      <li>
-                      {/* <a href="#"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />{}{
+                      {/* <a href="javascript:void(0)"><img alt=""src="/images/house (2) 1.png" className="img-fluid" />{}{
                         proj.fieldPropertyType.map( (prop, i) => (<span key={i}>{prop.entity.name}{i!=proj.fieldPropertyType.length-1?'-':''}</span>))} {proj.fieldBedRoomsP2} Bedrooms</a> */}
                     </li>                  
                   </ul>                              
@@ -1325,10 +1342,10 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                  </div>
                  <div className="project-detail-nav">
                     <div className="left-nav">
-                      <a href="#"><i className="fas fa-chevron-left"></i></a>
+                      <a href="javascript:void(0)"><i className="fas fa-chevron-left"></i></a>
                     </div>
                      <div className="right-nav">
-                      <a href="#"><i className="fas fa-chevron-right"></i></a>
+                      <a href="javascript:void(0)"><i className="fas fa-chevron-right"></i></a>
                     </div>   
                 </div>
               </div>
@@ -1359,12 +1376,12 @@ function Community({entity1, projectlist, otherProjects, nav, othernav, footerDa
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        {f.entity.fieldQuestion}
+                                        {f.entity!=null && f.entity.fieldQuestion}
                                         </button>
                                       </h2>
                                       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                        {f.entity.fieldAnswer}
+                                        {f.entity!=null && f.entity.fieldAnswer}
                                         </div>
                                       </div>
                                     </div>

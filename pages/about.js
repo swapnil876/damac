@@ -148,11 +148,11 @@ function About({entity1, nav, othernav, footerData}) {
       
       {/* <iframe src={entity1.fieldMainImageVideoDesktop.entity.url} class="aboutus-iframe-banner" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> */}
 
-       <AboutBanner entity1={entity1} responsiveHeights={ deviceIsMobile ? '100vh' : '' } bannerImage={ deviceIsMobile ? entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop.url}></AboutBanner>
+       <AboutBanner entity1={entity1} responsiveHeights={ deviceIsMobile ? '100vh' : '' } bannerImage={ deviceIsMobile ? entity1.fieldMainImageVideoMobile!=null && entity1.fieldMainImageVideoMobile.url : entity1.fieldMainImageVideoDesktop!=null && entity1.fieldMainImageVideoDesktop.url}></AboutBanner>
 
 
        <div className="damac-text-section-container">
-         <div className="damac-text-section" style={{'backgroundImage': 'url(' + entity1.fieldImage2.url + ')'}}>
+         <div className="damac-text-section" style={{'backgroundImage': 'url(' + entity1.fieldImage2!=null && entity1.fieldImage2.url + ')'}}>
 
            <div className="container">
              <div className="damac-text-section-right">
@@ -173,7 +173,7 @@ function About({entity1, nav, othernav, footerData}) {
        </div>
 
 
-       <section className="damac-about-section-2" style={{'backgroundImage': 'url(' + entity1.fieldImage3.url + ')'}}>
+       <section className="damac-about-section-2" style={{'backgroundImage': 'url(' + entity1.fieldImage3!=null && entity1.fieldImage3.url + ')'}}>
          <div className={ deviceIsMobile ? '' : 'container' }>
            
            <div className="aboutsection-2">
@@ -190,13 +190,13 @@ function About({entity1, nav, othernav, footerData}) {
                <div className="col-md-7 numbers-row-col">
                  <div className="numbersdata">
                    <div className="numberdata">
-                     <h4>{entity1.fieldCounter3[0].entity.fieldCountValue}</h4>
-                     <p>{entity1.fieldCounter3[0].entity.fieldCountText}</p>
+                     <h4>{entity1.fieldCounter3[0]!=null && entity1.fieldCounter3[0].entity.fieldCountValue}</h4>
+                     <p>{entity1.fieldCounter3[0]!=null && entity1.fieldCounter3[0].entity.fieldCountText}</p>
                    </div>
 
                    <div className="numberdata">
-                     <h4>{entity1.fieldCounter3[1].entity.fieldCountValue}</h4>
-                     <p>{entity1.fieldCounter3[1].entity.fieldCountText}</p>
+                     <h4>{entity1.fieldCounter3[1]!=null && entity1.fieldCounter3[1].entity.fieldCountValue}</h4>
+                     <p>{entity1.fieldCounter3[1]!=null && entity1.fieldCounter3[1].entity.fieldCountText}</p>
                    </div>
                  </div>
                </div>
@@ -219,7 +219,7 @@ function About({entity1, nav, othernav, footerData}) {
                <div className="aboutChairmanbox">
                  <h3>{entity1.fieldHeader4}</h3>
                  <div className="chairmanTextBody">
-                   <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescription4.value }}></div>
+                   <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescription4!=null && entity1.fieldDescription4.value }}></div>
                    {/* <p>In 2002, Dubai’s leadership opened up the real estate market to international investors by allowing freehold ownership. DAMAC Properties was incorporated the same year, and purchased land for its very first project in the Dubai Marina area.</p> */}
 
                    <div className="ctabtn-container">
@@ -238,13 +238,13 @@ function About({entity1, nav, othernav, footerData}) {
              <div className="col-md-5 ps-md-0" >
                   { !deviceIsMobile && 
                     <div className="chairmanPhoto">
-                      <img alt="" src={entity1.fieldImage4.url} layout="fill" objectfit="cover" objectPosition="top"/>
+                      <img alt="" src={entity1.fieldImage4!=null && entity1.fieldImage4.url} layout="fill" objectfit="cover" objectPosition="top"/>
                     </div>
                   }
 
                   { deviceIsMobile && 
                     <div className="chairmanPhoto-mobile">
-                      <img alt="" src={entity1.fieldImage4.url} width={342} height={338}/>
+                      <img alt="" src={entity1.fieldImage4!=null && entity1.fieldImage4.url} width={342} height={338}/>
                     </div>
                   }
              </div>
@@ -271,6 +271,7 @@ function About({entity1, nav, othernav, footerData}) {
             {
               !deviceIsMobile ? 
                 entity1.fieldMultipleTeam.map( (team, index) => (
+                  (team.entity!=null && team!=null) &&
                    <div className="col-md-3 col-6" key={index}>
                       <div className="leadershipbox">
                         <div className="leadershipimg">
@@ -290,6 +291,7 @@ function About({entity1, nav, othernav, footerData}) {
                 <Slider {...leadership}>
                 {
                   fieldMultipleTeamOnly5.map( (team, index) => (
+                    (team.entity!=null && team!=null) &&
                     <div className="col-6" key={index}>
                     <div className="leadershipbox">
                       <div className="leadershipimg">
@@ -307,6 +309,7 @@ function About({entity1, nav, othernav, footerData}) {
                 <Slider {...leadership}>
                 {
                   fieldMultipleTeamAfter5.map( (team, index) => (
+                    (team.entity!=null && team!=null) &&
                     <div className="col-6" key={index}>
                     <div className="leadershipbox">
                       <div className="leadershipimg">
@@ -327,6 +330,7 @@ function About({entity1, nav, othernav, footerData}) {
                 <Slider {...leadership}>
                 {
                   entity1.fieldMultipleTeam.map( (team, index) => (
+                    (team.entity!=null && team!=null) &&
                     <div className="col-6" key={index}>
                     <div className="leadershipbox">
                       <div className="leadershipimg">
@@ -363,13 +367,13 @@ function About({entity1, nav, othernav, footerData}) {
                </div>
 
                {/* <div className="historyArrows d-md-flex d-none">
-                 <a href="#" className="historyArrow arrow-disabled">
+                 <a href="javascript:void(0)" className="historyArrow arrow-disabled">
                    <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.75 15.875L1.875 9L8.75 2.125" stroke="black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     </span>
                  </a>
-                 <a href="#" className="historyArrow">
+                 <a href="javascript:void(0)" className="historyArrow">
                    <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.25 2.125L9.125 9L2.25 15.875" stroke="black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
@@ -400,6 +404,7 @@ function About({entity1, nav, othernav, footerData}) {
                  <Slider {...settings}>
                  {
                    entity1.fieldMultipleHistory.map( (history, index) => (
+                    (history.entity!=null && history!=null) &&
                        <div className="historyslide" key={index}>
                              <div className="inner" style={{'max-width':'100%'}}>
                                <h5>{history.entity.fieldYear}</h5>
@@ -439,7 +444,7 @@ function About({entity1, nav, othernav, footerData}) {
                  <div className="awardsbox2">
                    <div className="text-box">
                    <h4>{entity1.fieldHeader5}</h4>
-                   <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescription5.value }}></div>
+                   <div dangerouslySetInnerHTML={{ __html: entity1.fieldDescription5!=null && entity1.fieldDescription5.value }}></div>
                       {/* <h4>Awards</h4> */}
                    
                      {/* <p>Since the early days of DAMAC Properties, the organisation has continually received recognition and accolades for its contribution to the real estate development sector. 
@@ -493,7 +498,7 @@ Having now received over 100 global awards and commendations, for everything fro
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,

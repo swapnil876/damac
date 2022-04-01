@@ -65,7 +65,7 @@ function DamacInTheNewsList( { blogs, newslist, nav, othernav, footerData } ) {
                <div className={`ItemListGrid items-3 ${styles["custom_card"]}`}>
                  {
                    blogs.map( (blog, index) => (
-
+                     blog!=null &&
                      <BlogCardItem key={ index } cardDetails={ blog } />
 
                    ) )
@@ -151,7 +151,7 @@ export const getServerSideProps = async () => {
   let blogs = [];
   entitiy.map((v,i)=>{
    
-    blogs.push({title:v.title,url:'/damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body.value,  author: v.fieldAuthor.entity.name, tag: v.fieldTag && v.fieldTag.entity.name})
+    blogs.push({title:v.title,url:'damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body.value,  author: (v.fieldAuthor!=null && v.fieldAuthor) && v.fieldAuthor.entity.name, tag: v.fieldTag && v.fieldTag.entity.name})
   });
   // const blogs = [
   //     {

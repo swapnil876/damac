@@ -88,10 +88,13 @@ function Dividends( { mobileDevice , entity1,fieldTabs,iframe, nav, othernav, fo
 
 
   const optionsInHere = fieldTabs.map( (item) => {
-    return { 
-      value: item.label, 
-      label: item.label
+    if(item!=null){
+      return { 
+        value: item.label, 
+        label: item.label
+      }
     }
+    
  })
 
 const options = [
@@ -131,7 +134,7 @@ function handleSelectChange(ev){
         {
           !deviceIsMobile ?       
           tabLinksArray.map( ( link, index ) => (
-
+              link!=null &&
               <Link key={ index } href="">
                 <a className={ `${style['pagetabs-link']} ${ ((currentSection == "Dividends" && index == 0) || (currentSection == "Capital History" && index == 1) ) ? style['active'] : '' }` } onClick={()=>{showCurrentSection(link.label)}}>
                   <span>{ link.label }</span>
@@ -159,8 +162,10 @@ function handleSelectChange(ev){
              
              <div className={`${styles["table-wrapper-dividend"]} my-4`}>
                <div className={`${styles["table-main-wrap"]} ${styles["table-responsive"]}`}>
-                 
-                 <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+                 {
+                   iframe.entity!=null &&
+                   <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>
+                 }
                </div>
              </div>
 
@@ -187,8 +192,11 @@ function handleSelectChange(ev){
           <section className='section'>
           <div className='container'>
 
-          {/* <!-- capital tab --> */}
-            <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe>             
+            {
+              iframe.entity!=null &&
+              <iframe className="iframe_for_graph_quickfactsheet" src={iframe.entity.fieldIframeContent}></iframe> 
+            }
+                     
 
              <div className='enquiry-form-section'>
                <div className='row'>

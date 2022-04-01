@@ -57,6 +57,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     <div className="row">
                     {
                      blogs.map( (blog, index) => (
+                       blog!=null &&
                         <div className="col-md-4 bl-col-4">
                             <div className={styles['blog-card']}>
                                 <img src={blog.imageUrl} className="img-fluid"/>
@@ -70,7 +71,11 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                                     </div>
                                     <div className={`col-md-8 ${styles["date_main_div"]}`}>
                                       <div className={styles['date_div']}>
-                                        <p> {blog.date} by {blog.author} </p>
+                                        {
+                                          (blog.author!=null && blog.author!='') && 
+                                          <p> {blog.date} by {blog.author} </p>
+                                        }
+                                       
                                       </div>
                                     </div>
                                   </div>
@@ -85,19 +90,19 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
                     </div>
                     {/*<div className={`${styles["pagination_main_wrap"]} d-flex justify-content-center`}>
                                            <div className={`${styles["page_btn"]} prev_btn`}>
-                                             <a href="#" className={styles['disabled']}>< FaAngleLeft /></a>
+                                             <a href="javascript:void(0)" className={styles['disabled']}>< FaAngleLeft /></a>
                                            </div>
                                            <div className={styles['pagination_no']}>
                                              <ul className="list-unstyled d-flex">
-                                               <li><a href="#">1</a></li>
-                                               <li><a href="#">2</a></li>
-                                               <li><a href="#">3</a></li>
+                                               <li><a href="javascript:void(0)">1</a></li>
+                                               <li><a href="javascript:void(0)">2</a></li>
+                                               <li><a href="javascript:void(0)">3</a></li>
                                                <li><span>....</span></li>
-                                               <li><a href="#">12</a></li>
+                                               <li><a href="javascript:void(0)">12</a></li>
                                              </ul>
                                            </div>
                                            <div className={`${styles["page_btn"]} next_btn`}>
-                                             <a href="#"><FaAngleRight/></a>
+                                             <a href="javascript:void(0)"><FaAngleRight/></a>
                                            </div>
                                          </div> */} 
 
@@ -123,7 +128,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
   let blogs = [];
   entitiy.map((v,i)=>{
    
-    blogs.push({title:v.title,url:'/damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body.value,  author: v.fieldAuthor.entity.name, tag: v.fieldTag.entity.name})
+    blogs.push({title:v.title,url:'/damac-in-the-news/'+v.nid,imageUrl: v.fieldThumbnailDesktop!=null && v.fieldThumbnailDesktop.url,ctaText:'Read More',excerpt:v.body!=null && v.body.value,  author: (v.fieldAuthor!=null && v.fieldAuthor.entity!=null) && v.fieldAuthor.entity.name, tag: (v.fieldTag!=null && v.fieldTag.entity!=null) && v.fieldTag.entity.name})
   });
   // Use this for footer
   const footer  = await client.query({ query: FOOTER_LINKS });

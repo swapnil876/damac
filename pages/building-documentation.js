@@ -64,46 +64,48 @@ function BuildingDocumentation({entity1, nav, othernav, footerData}) {
                <ul className="building-documentation-link">
                  {/* <li>
                    <div className="doc-name">Download DAMAC Majestine JOPD</div>
-                   <div className="doc-link"><Link href="#"><a>Download</a></Link></div>
+                   <div className="doc-link"><Link href="javascript:void(0)"><a>Download</a></Link></div>
                  </li>
                  <li>
                    <div className="doc-name">Download DAMAC Majestine JOPD</div>
-                   <div className="doc-link"><Link href="#"><a>Download</a></Link></div>
+                   <div className="doc-link"><Link href="javascript:void(0)"><a>Download</a></Link></div>
                  </li>
                  <li>
                    <div className="doc-name">Download DAMAC Majestine JOPD</div>
-                   <div className="doc-link"><Link href="#"><a>Download</a></Link></div>
+                   <div className="doc-link"><Link href="javascript:void(0)"><a>Download</a></Link></div>
                  </li>
                  <li>
                    <div className="doc-name">Download DAMAC Majestine JOPD</div>
-                   <div className="doc-link"><Link href="#"><a>Download</a></Link></div>
+                   <div className="doc-link"><Link href="javascript:void(0)"><a>Download</a></Link></div>
                  </li>
                  <li>
                    <div className="doc-name">Download DAMAC Majestine JOPD</div>
-                   <div className="doc-link"><Link href="#"><a>Download</a></Link></div>
+                   <div className="doc-link"><Link href="javascript:void(0)"><a>Download</a></Link></div>
                  </li>
                  <li>
                    <div className="doc-name">Download DAMAC Majestine JOPD</div>
-                   <div className="doc-link"><Link href="#"><a>Download</a></Link></div>
+                   <div className="doc-link"><Link href="javascript:void(0)"><a>Download</a></Link></div>
                  </li>
                  <li>
                    <div className="doc-name">Download DAMAC Majestine JOPD</div>
-                   <div className="doc-link"><Link href="#"><a>Download</a></Link></div>
+                   <div className="doc-link"><Link href="javascript:void(0)"><a>Download</a></Link></div>
                  </li> */}
 
 
               {    
               deviceIsMobile ? 
               entity1.fieldMultipleFiles.map((item, index)=>(
+                (item!=null && item.entity!=null) &&
                 <li key={ index }>
-                  <div className="doc-name"><Link href={item.entity.fieldFile==null?'':item.entity.fieldFile.entity.url}><a  target="_blank">{item.entity.fieldFileTitle}</a></Link></div>
+                  <div className="doc-name"><Link href={item.entity.fieldFile==null?'':item.entity.fieldFile.entity.url}><a  target="_blank" download>{item.entity.fieldFileTitle}</a></Link></div>
                 </li>
                ))
               :
                entity1.fieldMultipleFiles.map((item, index)=>(
+                 (item!=null && item.entity!=null && item.entity!='') &&
                  <li key={ index }>
                    <div className="doc-name">{item.entity.fieldFileTitle}</div>
-                   <div className="doc-link"><Link href={item.entity.fieldFile==null?'':item.entity.fieldFile.entity.url} download><a  target="_blank">Download</a></Link></div>
+                   <div className="doc-link"><Link href={item.entity.fieldFile==null?'':item.entity.fieldFile.entity.url} ><a  target="_blank" download>Download</a></Link></div>
                  </li>
                 ))
               }

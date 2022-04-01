@@ -38,7 +38,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // Bootstrap Css
-import 'bootstrap/dist/css/bootstrap.css'
+
 
 import style from '../../styles/pages/listing.module.css';
 import styles from '../../styles/pages/Community.module.css'
@@ -95,7 +95,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
       }
 
         //   importing bootstrap js
-        import("bootstrap/dist/js/bootstrap");
+        
    }, [])
 
    useEffect(() => {
@@ -103,12 +103,17 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
       callDownPaymentPrice();
  })
 
+   const [show3DTour, setShow3DTour] = useState(false);
+
    // tooltip
    const [landFee, setLandFee] = useState(false);
    const [regFee, setRegFee] = useState(false);
    const [mortRegFee, setMortRegFee] = useState(false);
    const [valueFee, setValueFee] = useState(false);
    
+      
+        // Loan month per month calculation
+  const [perMonthAmount, setPerMonthAmount] = useState();
 
   //  Mortgage calculation area
   const [loanSlider, setLoanSlider] = useState(1);
@@ -131,28 +136,42 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
   const [downPayment, setDownPayment] = useState(25);
   const [loanPeriod, setLoanPeriod] = useState(1);
 
+  function pmtFunction(ir,np, pv, fv = 0){ 
+    // ir: interest rate
+    // np: number of payment
+    // pv: present value or loan amount
+    // fv: future value. default is 0
+   
+    var presentValueInterstFector = Math.pow((1 + ir), np);
+    var pmt = ir * pv  * (presentValueInterstFector + fv)/(presentValueInterstFector-1); 
+    return pmt;
+   }
+
+
   function callDownPaymentPrice(){
     var totPrice = propertyPrice * (downPayment / 100) ;
     setDownPaymentPrice(Math.ceil(totPrice));
   }
-      function mortgageCalculator(){
-        var loanAmt, deptFee, regFee, mortRegFee, valFee, months;
+  function mortgageCalculator(){
+    var loanAmt, deptFee, regFee, mortRegFee, valFee, months, perMonth;
 
-        months = loanPeriod*12;
+    months = loanPeriod*12;
 
-        loanAmt = (propertyPrice - downPaymentPrice);
-        deptFee = ((propertyPrice * (4 / 100)) + 580);
-        regFee = (propertyPrice > 500000) ? (4000 + (propertyPrice * (5 / 100))) : (2000 + (propertyPrice * (5 / 100))); 
-        mortRegFee = ((loanAmt *  (0.5/ 100)) + 10);
-        valFee = ((propertyPrice * (5 / 100)) + 3000);
+    loanAmt = (propertyPrice - downPaymentPrice);
+    deptFee = ((propertyPrice * (4 / 100)) + 580);
+    regFee = ((propertyPrice > 500000) ? (4000 + (4000 * (5 / 100))) : (2000 + (2000 * (5 / 100))));
+    mortRegFee = ((loanAmt *  (0.25/ 100)) + 10);
+    valFee = 3675;
+    perMonth = pmtFunction((interestRate/100)/12, loanPeriod*12, loanAmt);
 
 
-        setDepartmentFee(deptFee);
-        setRegistrationFee(regFee);
-        setMortgageRegistrationFee(mortRegFee);
-        setValuationFee(valFee);
-        setNoOfMonths(months);
-      }
+    setDepartmentFee(deptFee);
+    setRegistrationFee(regFee);
+    setMortgageRegistrationFee(mortRegFee);
+    setValuationFee(valFee);
+    setNoOfMonths(months);
+    setPerMonthAmount(perMonth);
+  }
 
   //  Mortgage calculation area
    
@@ -194,7 +213,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
 
   //
   const tour3dcta = (
-    <Link href="#">
+    <Link href="javascript:void(0)">
       <a className="btn btn-primary cta-btn cta-btn-primary tour-3d-cta">
         <span
           className="react-icon"
@@ -417,6 +436,29 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
             </div> :
             ""
           }
+                {/* 3d tour video modal */}
+      { 
+            show3DTour ? 
+            <div className="custom_modal_contain booking_step_2_modal tour_modal">
+                <section className={ styles["book-step-main"]} style={{'minHeight':'100vh'}}>
+                    <div className="close" onClick={()=>{
+                      setShow3DTour(false);
+                      }}>
+                      <span>
+                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.5547 9.5L17.1875 3.92188L18.3359 2.77344C18.5 2.60938 18.5 2.33594 18.3359 2.11719L17.1328 0.914062C16.9141 0.75 16.6406 0.75 16.4766 0.914062L9.75 7.69531L2.96875 0.914062C2.80469 0.75 2.53125 0.75 2.3125 0.914062L1.10938 2.11719C0.945312 2.33594 0.945312 2.60938 1.10938 2.77344L7.89062 9.5L1.10938 16.2812C0.945312 16.4453 0.945312 16.7188 1.10938 16.9375L2.3125 18.1406C2.53125 18.3047 2.80469 18.3047 2.96875 18.1406L9.75 11.3594L15.3281 16.9922L16.4766 18.1406C16.6406 18.3047 16.9141 18.3047 17.1328 18.1406L18.3359 16.9375C18.5 16.7188 18.5 16.4453 18.3359 16.2812L11.5547 9.5Z" fill="white" fill-opacity="0.42"/>
+                          </svg>
+                      </span>
+                    </div>
+                    <div className="container">
+                        <div className="row">
+                          <div dangerouslySetInnerHTML={{ __html: entity1.field3dTourLink!=null && entity1.field3dTourLink }}></div>
+                        </div>
+                    </div>
+                </section>
+            </div> :
+            ""}
+       {/* 3d tour video modal */}
           {
             customModal ? 
             <div className="custom_modal_contain">
@@ -586,11 +628,11 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                         <div className={ styles['select-card-img-wrap'] }>
                                             <img src="/images/book-step-card-img.jpg" alt="card-img" className="img-fluid" />
                                             <div className={ styles["play-btn-card"]}>
-                                                <a href="#"><i className="fas fa-play"></i></a>
+                                                <a href="javascript:void(0)"><i className="fas fa-play"></i></a>
                                             </div>
                                         </div>
                                         <ul className={`${styles["bookmark_main"]} ${styles["d-flex"]} ${styles["float-end"]} ${styles["list-unstyled"]}`}>
-                                            <li><a href="#"><img src="/images/icons/bookmark 4.png" /></a></li>
+                                            <li><a href="javascript:void(0)"><img src="/images/icons/bookmark 4.png" /></a></li>
                                         </ul>
                                         <h6>{entity1.title}</h6>
                                         { entity1.fieldLocationP != null ?
@@ -600,22 +642,22 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                             <div className="row">
                                                 <div className="col-md-7">
                                                 <li>
-                                                <a href="#"><img src="/images/price-tag 1.png" className={ styles["img-fluid"]} />From {entity1.fieldStartingFromPriceP2}</a>
+                                                <a href="javascript:void(0)"><img src="/images/price-tag 1.png" className={ styles["img-fluid"]} />From {entity1.fieldStartingFromPriceP2}</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                <a href="#"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />{entity1.fieldAreaP2} sqft</a>
+                                                <a href="javascript:void(0)"><img src="/images/house (2) 1.png" className={ styles["img-fluid"]} />{entity1.fieldAreaP2} sqft</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-7">
                                                 <li>
-                                                <a href="#"><img src="/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> {entity1.fieldBedRoomsP2} Bedrooms</a>
+                                                <a href="javascript:void(0)"><img src="/images/icons/bed.png" className={ styles["img-fluid"]} style={{'width':'18px', 'height':'18px'}}/> {entity1.fieldBedRoomsP2} Bedrooms</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-md-5">
                                                 <li>
-                                                {/* <a href="#"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a> */}
+                                                {/* <a href="javascript:void(0)"><img src="/images/icons/bathtub.png" className={ styles["img-fluid"]} style={{'width':'22px', 'height':'22px'}}/>3 Bathrooms</a> */}
                                                  </li>
                                                 </div>
                                             </div>   
@@ -676,7 +718,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                 }
                             </div>
                             <div className={styles["close-btn"]}>
-                              <a href="#"><i className="fas fa-times"></i></a>
+                              <a href="javascript:void(0)"><i className="fas fa-times"></i></a>
                             </div>
                         </div>
                     </div>
@@ -853,7 +895,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
 
 
             <main className="main">
-                    <section className={style['inner-wrap-hero']} style={!deviceIsMobile?{'background-image': 'url(' + entity1.fieldMainImageDesktopP.url + ')'}:{'background-image': 'url(' + entity1.fieldMainImageMobileP.url + ')'}}>
+                    <section className={style['inner-wrap-hero']} style={!deviceIsMobile?{'background-image': 'url(' + (entity1.fieldMainImageDesktopP!=null && entity1.fieldMainImageDesktopP.url) + ')'}:{'background-image': 'url(' + (entity1.fieldMainImageMobileP!=null && entity1.fieldMainImageMobileP.url) + ')'}}>
                         <div className={style['project-hero-wrap']}>
                             <div className={`container ${style["hero-container"]}`}>
                             <div className="row align-items-end">
@@ -861,8 +903,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className={style['project-left']}>
                                         <h1>{entity1.title}</h1>
                                         <p><span>{entity1.fieldTaglingP}</span></p>
-                                        { entity1.fieldLocationP != null ?
-                                        <a href="#"><img src="/damac-static/images/location.png"/>  entity1.fieldLocationP.entity.name </a>
+                                        { (entity1.fieldLocationP != null && entity1.fieldLocationP.entity != null) ?
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/location.png"/>  entity1.fieldLocationP.entity.name </a>
                                         : '' }
                                     </div>
                                 </div>
@@ -874,9 +916,9 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                             <li><a onClick={()=>{
                                               document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'd', 'ctrlKey': true}));   
                                             }}><img src="/damac-static/images/save.png" /></a></li>
-                                            <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
+                                            <li><a href="javascript:void(0)"><img src="/damac-static/images/Vector.png"/></a></li>
                                             <li><a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a></li>
-                                            <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a></li>                
+                                            <li><a href="javascript:void(0)" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP!=null && entity1.fieldGalleryDesktopP.length})</a></li>                
                                         </ul>              
                                     </div> :
                                     <div className={`${style["project-right"]} project-right-for-mobile`}>
@@ -886,7 +928,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                       <a onClick={()=>{openBrochureModal(true)}} style={{'cursor':'pointer'}}>Download Brochure</a>             
                                       </div>
                                       <div className="col-6">
-                                      <a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP.length})</a>              
+                                      <a href="javascript:void(0)" onClick={()=>{openGalleryModal(true)}}>View Gallery ({entity1.fieldGalleryDesktopP!=null && entity1.fieldGalleryDesktopP.length})</a>              
                                       </div>
                                       </div>
                                    
@@ -902,12 +944,12 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                           <div className={`text-wrapper`} style={deviceIsMobile ? {'padding':'50px 0'} : {'padding':'80px 0'}}> 
                             <div className="top-text">
                               <h2>{entity1.fieldTitleP2}</h2>
-                              <div  dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionP2.value }}></div>
+                              <div  dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionP2!=null && entity1.fieldDescriptionP2.value }}></div>
                             </div>
 
                             <div className="section-data-boxes">
                             <div className="data-box" style={{'width':'fit-content'}}>
-                                <h2 className="heading-medium">{entity1.fieldPropertyType != null ? entity1.fieldPropertyType.entity.name:''}</h2>
+                                <h2 className="heading-medium">{(entity1.fieldPropertyType!=null && entity1.fieldPropertyType.entity != null) ? entity1.fieldPropertyType.entity.name:''}</h2>
                                 <p>Properties</p>
                               </div>
                               </div>
@@ -940,12 +982,12 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                       </div>
                       { !deviceIsMobile && 
                         <div className={`containerRightImage`}>
-                          <img alt="" src={entity1.fieldCol1ImageDesktopP2.entity.url} layout='fill' objectfit="cover" style={{'max-width':'100%'}}/>
+                          <img alt="" src={(entity1.fieldCol1ImageDesktopP2!=null && entity1.fieldCol1ImageDesktopP2.entity!=null)?entity1.fieldCol1ImageDesktopP2.entity.url:''} layout='fill' objectfit="cover" style={{'max-width':'100%'}}/>
                         </div>
                       }
                       { deviceIsMobile && 
                         <div className={`containerBottomImage for_mobile_screen`}>
-                          <img alt="" src={entity1.fieldCol1ImageMobileP3.entity.url} layout='fill' objectfit="cover" style={{'max-width':'100%'}}/>
+                          <img alt="" src={(entity1.fieldCol1ImageMobileP3!=null && entity1.fieldCol1ImageMobileP3.entity!=null) && entity1.fieldCol1ImageMobileP3.entity.url} layout='fill' objectfit="cover" style={{'max-width':'100%'}}/>
                         </div>
                       }
                     </section>
@@ -957,15 +999,15 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                             <div className="col-md-6">
                                 <div className="d-flex justify-content-between">
                                 <div className={style['vs-range']}>
-                                    <h5><a href="#">{entity1.fieldStartingFromPriceP2}</a></h5>
+                                    <h5><a href="javascript:void(0)">{entity1.fieldStartingFromPriceP2}</a></h5>
                                     <p>Starting from</p>
                                 </div>
                                 <div className={style['vs-range']}>
-                                    <h5><a href="#">{entity1.fieldLocalityP2}</a></h5>
+                                    <h5><a href="javascript:void(0)">{entity1.fieldLocalityP2}</a></h5>
                                     <p>Locality</p>
                                 </div>
                                 <div className={style['vs-range']}>
-                                    <h5><a href="#">{entity1.fieldStatusP2}</a></h5>
+                                    <h5><a href="javascript:void(0)">{entity1.fieldStatusP2}</a></h5>
                                     <p>Status</p>
                                 </div>
 
@@ -985,7 +1027,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                           <div className="row" style={{'maxWidth':'100%'}}>
                           <div className="col-7">
                               <div className={style['vs-range']}>
-                                  <h5><a href="#">{entity1.fieldLocalityP2}</a></h5>
+                                  <h5><a href="javascript:void(0)">{entity1.fieldLocalityP2}</a></h5>
                                   <p>Locality</p>
                               </div>
                           </div>
@@ -993,8 +1035,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                               <div className={style['shape-wrap-plan']}>              
                                   <div className={`${style["shape-contact"]} float-end`}>
                                       <ul className="d-flex align-items-center p-0">
-                                      <li><a href="#" className={style['solid-icon']} onClick={()=>{setCallBackModal(true)}}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
-                                      <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
+                                      <li><a href="javascript:void(0)" className={style['solid-icon']} onClick={()=>{setCallBackModal(true)}}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                      <li><a href="javascript:void(0)" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
                                       </ul>                  
                                   </div>                
                               </div>              
@@ -1010,7 +1052,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                           <div className={style['angry-grid']}>
                             <div className={style['gr-item-0']}>
                             <div className={style['right-side-gallery']}>
-                            <img src={isMobile?entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
+                            <img src={isMobile? entity1.fieldCol1ImageMobileP3!=null && entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2!=null && entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
                             <div className={style['gal-content']}>
                                 <p>
                                   {entity1.fieldCol1TextP3}
@@ -1020,17 +1062,17 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                             </div>
                             <div className={style['gr-item-1']}>
                                 <div className={style['sm-gal-right']}>
-                                <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} className="img-fluid"/>
+                                <img src={isMobile?entity1.fieldCol2Row1Col1ImageMobp3!=null && entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3!=null && entity1.fieldCol2Row1Col1ImageDesp3.entity.url} className="img-fluid"/>
                                 </div>
                             </div>
                             <div className={style['gr-item-2']}>
                             <div className={style['sm-gal-left']}>
-                                <img src={isMobile?entity1.fieldCol2Row1Col2ImageMobp3.entity.url:entity1.fieldCol2Row1Col2ImageDesp3.entity.url} className="img-fluid"/>
+                                <img src={isMobile?entity1.fieldCol2Row1Col2ImageMobp3!=null && entity1.fieldCol2Row1Col2ImageMobp3.entity.url:entity1.fieldCol2Row1Col2ImageDesp3!=null && entity1.fieldCol2Row1Col2ImageDesp3.entity.url} className="img-fluid"/>
                                 </div>
                             </div>
                             <div className={style['gr-item-3']}>
                             <div className={style['gal-gr']}>
-                                <img src={isMobile?entity1.fieldCol2Row2ImageMobileP3.entity.url:entity1.fieldCol2Row2ImageDesktopP3.entity.url} className="img-fluid"/> 
+                                <img src={isMobile?entity1.fieldCol2Row2ImageMobileP3!=null && entity1.fieldCol2Row2ImageMobileP3.entity.url:entity1.fieldCol2Row2ImageDesktopP3!=null && entity1.fieldCol2Row2ImageDesktopP3.entity.url} className="img-fluid"/> 
                                 
                             </div>
                             </div>
@@ -1038,7 +1080,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
 
                           <div className="container-fluid sec_3_gallery_grid_for_mobile p-0">
                             <div className="text_on_img_sec">
-                            <img src={deviceIsMobile?entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
+                            <img src={deviceIsMobile?entity1.fieldCol1ImageMobileP3!=null && entity1.fieldCol1ImageMobileP3.entity.url:entity1.fieldCol1ImageDesktopP2!=null && entity1.fieldCol1ImageDesktopP2.entity.url} className="img-fluid"/>
                               <div className="gal-content-2">
                                   <p>
                                     {entity1.fieldCol1TextP3}
@@ -1047,10 +1089,10 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                             </div>
                             <div className="row" style={{'maxWidth':'100%', 'margin':'auto'}}>
                               <div className="col-6" style={{'paddingLeft':'0'}}>
-                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} Name="img-fluid"/>
+                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobp3!=null && entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3!=null && entity1.fieldCol2Row1Col1ImageDesp3.entity.url} Name="img-fluid"/>
                               </div>
                               <div className="col-6" style={{'paddingRight':'0'}}>
-                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3.entity.url} className="img-fluid"/>
+                              <img src={deviceIsMobile?entity1.fieldCol2Row1Col1ImageMobp3!=null && entity1.fieldCol2Row1Col1ImageMobp3.entity.url:entity1.fieldCol2Row1Col1ImageDesp3!=null && entity1.fieldCol2Row1Col1ImageDesp3.entity.url} className="img-fluid"/>
                               </div>
                             </div>
                           </div>
@@ -1102,9 +1144,10 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                 </div>
                                 </div> */}
                                  {entity1.fieldAmenitiesP3.map((item)=>(
+                                   (item!=null && item.entity!=null) &&
                                     <div className="col-6">
                                     <div className={styles['icon-area']}>
-                                      <img alt=""src={item.entity.fieldIcona.url} />
+                                      <img alt=""src={item.entity.fieldIcona!=null && item.entity.fieldIcona.url} />
                                       <h4>{item.entity.fieldValueAmi}</h4>
                                       <p>{item.entity.fieldTextAmi}</p>
                                     </div>
@@ -1129,10 +1172,10 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                   <img src="/damac-static/images/listing-slider.png" className="img-fluid" />
                                   <div className={`${style["slider-nav"]} text-center`}>
                                   <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                   </div>
                                   <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                   </div>
                                   </div>
                               </div>
@@ -1175,7 +1218,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                           </div>
                         </div>
                         <div className="col-md-6 order-md-2 order-1">
-                        <div  dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionP2.value }}></div>
+                        <div  dangerouslySetInnerHTML={{ __html: entity1.fieldDescriptionP2!=null && entity1.fieldDescriptionP2.value }}></div>
                           <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
                           <p>Live your story amongst a spectacular mix of culture and leisure attractions that are sure to leave you astounded, and retreat to your luxurious haven whenever you want to take a break.</p>
                           <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px', 'margin-top':'40px'}}>Learn more</button>
@@ -1214,6 +1257,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <tbody className={style['t_body']}>
                                         {
                                           entity1.fieldMultipleInstallmentsP.map((item, index)=>(
+                                            (item!=null && item.entity!=null) && 
                                             <tr>
                                             <td>{item.entity.fieldInstallment}</td>
                                             <td>{item.entity.fieldMilestone}</td>
@@ -1238,7 +1282,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                           <div className="col-md-12">
                             <div className={style['plan-video']}>
                               <div className={style['video']}>
-                              <iframe src={entity1.fieldVideop4.url.path} class="project-video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> 
+                              <iframe src={entity1.fieldVideop4!=null && entity1.fieldVideop4.url.path} class="project-video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> 
                                 {/*<img src={entity1.fieldVideop4.url} className="img-fluid"/>*/}
                               </div>
                               {/* <a className={style['play-button']}><FaPlay /></a> */}
@@ -1254,9 +1298,10 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
 
                             {
                               entity1.fieldMultipleLocatorsp4.map((item)=>(
+                                (item!=null && item.entity!=null) && 
                                 <div className="col-sm-6 col-md-4">
                                 <div className="distance-card text-center">
-                                  <img alt=""src={item.entity.fieldIconm.url} />
+                                  <img alt=""src={item.entity.fieldIconm!=null && item.entity.fieldIconm.url} />
                                   <h5>{item.entity.fieldValuec6}</h5>
                                   <p>{item.entity.fieldTextc6}</p>            
                                 </div>
@@ -1320,7 +1365,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
+                                      <p><input type="number" min="300000" step="10000" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`down-payment ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
@@ -1332,12 +1377,12 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                   <div className={styles['estimate-inner']}>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                      <p><input type="text" min="1" disabled class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
                                     </div>
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                                       <p> {loanSlider}</p>
-                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                                      <input type="range" min="1" max="25"  className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
                                   </div>
@@ -1347,11 +1392,11 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
+                                      <p><input type="number" min="300000" step="10000" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
+                                      <p><input type="text" min="1" disabled class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
                                     </div>
                                   </div>
                                   <div className={styles['estimate-inner']}>
@@ -1364,7 +1409,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                                       <p> {loanSlider}</p>
-                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                                      <input type="range" min="1" max="25" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
                                   </div>
@@ -1378,9 +1423,9 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                   <div className={styles['estimate-cost']}>
                                     <h4>Cost Breakdown</h4>
                                     <ul>
-                                      <li><span className={styles['text-left']}>{noOfMonths} months of</span> <i><span>AED</span> {propertyPrice}</i></li>
+                                      <li><span className={styles['text-left']}>{noOfMonths} months of</span> <i><span>AED</span> {Math.ceil(perMonthAmount)}</i></li>
                                       <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> {downPaymentPrice}</i></li>
-                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>{interestRate.toFixed(2)}</i></li>
+                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i>{interestRate.toFixed(2)} <span>%</span></i></li>
                                       <li><span className={styles['text-left']}>For Years</span> <i>{loanPeriod}</i></li>
                                     </ul>
 
@@ -1408,9 +1453,9 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
 
                                       <li><span className={styles['text-left']}>Valuation Fee <span><FaRegQuestionCircle onMouseOver={()=>{setValueFee(true)}} onMouseOut={()=>{setValueFee(false)}}/></span>
                                       {
-                                        valueFee && <span class="tooltip_pop tooltip_pop_dark_bg">3000 AED + 5% VAT</span>
+                                        valueFee && <span class="tooltip_pop tooltip_pop_dark_bg">2500 to 3500 AED + 5% VAT</span>
                                       }
-                                      </span><i><span>AED</span> {valuationFee}</i></li>
+                                      </span><i><span>AED</span> {Math.ceil(valuationFee)}</i></li>
                                     </ul>
                                   </div>
                                 </div>
@@ -1453,6 +1498,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                               <div className="row">
                                 {
                                 unit_data.map((unit,k)=>(
+                                  unit!=null &&
                                   <div className="col-md-6">
                                     <div className={style['property-slider-wrap']}>
                                       <div className={style['project-card']}>
@@ -1465,10 +1511,10 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                         <p>{unit.Address},{unit.Country.display_value}</p>
                                         <ul className={style['bedroom-detail']}>
                                           <li>
-                                            <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From {unit.Unit_price_AED}*</a>
+                                            <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From {unit.Unit_price_AED}*</a>
                                           </li>
                                           <li>
-                                            <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa {unit.Number_of_Bedrooms1} Bedrooms</a>
+                                            <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa {unit.Number_of_Bedrooms1} Bedrooms</a>
                                           </li>
                                         </ul>
                                         <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -1483,6 +1529,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                <Slider {...settings}>
                                  {
                                    unit_data.map((unit,k)=>(
+                                    unit!=null &&
                                     <div className={style['property-slider-wrap']}>
                                         <div className={style['project-card']}>
                                         <Carousel responsive={responsive}>
@@ -1494,12 +1541,12 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                             <div className="row">
                                             <div className="col-6">
                                             <li>
-                                              <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {unit.Unit_price_AED}*</a>
+                                              <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED {unit.Unit_price_AED}*</a>
                                             </li>
                                             </div>
                                             <div className="col-6">
                                             <li>
-                                              <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa {unit.Number_of_Bedrooms1} Bedrooms</a>
+                                              <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa {unit.Number_of_Bedrooms1} Bedrooms</a>
                                             </li>
                                             </div>
                                             </div>
@@ -1519,12 +1566,12 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                                 <div className="row">
                                                 <div className="col-6">
                                                 <li>
-                                                  <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                                  <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                                 </li>
                                                 </div>
                                                 <div className="col-6">
                                                 <li>
-                                                  <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                                  <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                                 </li>
                                                 </div>
                                                 </div>
@@ -1552,12 +1599,12 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                        <div className="row">
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                        </li>
                                        </div>
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                        </li>
                                        </div>
                                        </div>
@@ -1577,12 +1624,12 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                        <div className="row">
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                        </li>
                                        </div>
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                        </li>
                                        </div>
                                        </div>
@@ -1606,7 +1653,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                            <div className={style['invest-wrap']}>
                              <h2>{entity1.fieldHeadingSec7}</h2>
                              <p>{entity1.fieldTextSec7}</p>
-                             <a href="#" className={style['read-more']}>Read more</a>
+                             <a href="javascript:void(0)" className={style['read-more']}>Read more</a>
                            </div>
                          </div>
                        </div>
@@ -1630,13 +1677,13 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                       /> */}
 
 
-                         {/* <!-- Experince section --> */}
-                        <section className={style['3d-tour']}>
+                          {/* <!-- Experince section --> */}
+                          <section className={style['3d-tour']}>
                         <div className={ !deviceIsMobile ? 'container' : 'container-fluid'} style={ !deviceIsMobile ? {} : {'padding':'0'}}>
                         <div className={style['3d-tour-inner']} style={deviceIsMobile? {'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '90px 2px', 'max-width':'100%'} :{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>
-                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>{entity1.field3dTourLink}</a>
+                            <a href="javascript:void(0)" className="btn btn-primary" onClick={()=>{setShow3DTour(true)}} ><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}} />Take a 3D Tour</a>
                           </div>
                         </div>
                         </div>
@@ -1659,8 +1706,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className="">
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top more_projects_image" />
-                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                        <div className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
                                         
                                         </div>
@@ -1669,8 +1716,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className="">
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top more_projects_image"/>
-                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                        <div className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>  
                                         </div>
                                       </div>
@@ -1678,8 +1725,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className="">
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top more_projects_image" />
-                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                        <div className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
                                           
                                         </div>
@@ -1688,8 +1735,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className="">
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top more_projects_image" />
-                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                        <div className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
                                         
                                         </div>
@@ -1702,8 +1749,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className="col-6 col-md-3">
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 135.png" className="card-img-top more_projects_image" />
-                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                        <div className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
                                         
                                         </div>
@@ -1712,8 +1759,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className="col-6 col-md-3">
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 151.png" className="card-img-top more_projects_image"/>
-                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                        <div className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>  
                                         </div>
                                       </div>
@@ -1721,8 +1768,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className="col-6 col-md-3">
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 152.png" className="card-img-top more_projects_image" />
-                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                        <div className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
                                           
                                         </div>
@@ -1731,8 +1778,8 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                     <div className="col-6 col-md-3">
                                     <div className={`card ${style["custom_project_card"]}`}>
                                         <img alt=""src="/images/news/Rectangle 153.png" className="card-img-top more_projects_image" />
-                                        <div className="card-body" className={`card-body ${style["custom_project_card_body"]}`}>
-                                          <h5 className={style['card-title']}><Link href="#"><a>Kiara</a></Link></h5>
+                                        <div className={`card-body ${style["custom_project_card_body"]}`}>
+                                          <h5 className={style['card-title']}><Link href="javascript:void(0)"><a>Kiara</a></Link></h5>
                                           <p className="card-text">Starting AED 1,213,515*</p>
                                         
                                         </div>
@@ -1809,6 +1856,7 @@ function ProjectPage({entity1,unit_data, nav, othernav, footerData}) {
                                   <div className={style['faq-wrap']}>
                                   <div class="accordion" id="accordionExample">
                                   {entity1.fieldMutipleFaqs.map((item,k) => (
+                                    (item.entity!=null && item!=null) &&
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

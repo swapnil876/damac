@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-
+import { useRouter } from 'next/router';
 import Link from 'next/link'
 
 // Navbar
@@ -27,6 +27,7 @@ import TextSection from '../components/text-section'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { WHY_DUBAI } from '../graphql/why_dubai';
+import { ARWHY_DUBAI } from '../graphql-ar/arwhy_dubai';
 
 
 // Carousel plugin import
@@ -34,9 +35,11 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import { NAVIGATION } from '../graphql/master/navigation';
+import { ARNAVIGATION } from '../graphql-ar/master/arnavigation';
 import { PARENTMENUITEMS } from '../graphql/master/parentItems';
-
+import { ARPARENTMENUITEMS } from '../graphql-ar/master/arparentItems';
 import { FOOTER_LINKS } from "../graphql/footer_links" ;
+import { ARFOOTER_LINKS } from "../graphql-ar/arfooter_links" ;
 
 const WhyDubai= ({entity1, nav, othernav, footerData})=> {
 
@@ -50,6 +53,7 @@ const WhyDubai= ({entity1, nav, othernav, footerData})=> {
   };
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
+  const { locale, locales } = useRouter();
   useEffect(() => {
       if ( isMobile ) {
         setDeviceIsMobile( true );
@@ -94,7 +98,7 @@ const WhyDubai= ({entity1, nav, othernav, footerData})=> {
        
 
        <HeroSection
-         bannerImage={ deviceIsMobile ? entity1.fieldMainImageMobile.url : entity1.fieldMainImageDesktopd.url}
+         bannerImage={ deviceIsMobile ? entity1.fieldMainImageMobile!=null && entity1.fieldMainImageMobile.url :entity1.fieldMainImageDesktopd!=null && entity1.fieldMainImageDesktopd.url}
        >
 
            <div className="banner-conent-style-1">
@@ -127,9 +131,9 @@ const WhyDubai= ({entity1, nav, othernav, footerData})=> {
                   {entity1.fieldMultipleCounters.map((counter,index) => (
                      <div key={index} className="col-md-4 col-6">
                        <div className="icon-box">
-                         <img alt={counter.entity.fieldText} src={counter.entity.fieldIcon.url}/>
-                         <h3>{counter.entity.fieldValue}</h3>
-                         <p style={{'color':'#111'}}>{counter.entity.fieldText}</p>
+                         <img alt={counter.entity!=null?counter.entity.fieldText:''} src={counter.entity!=null?counter.entity.fieldIcon.url:''}/>
+                         <h3>{counter.entity!=null?counter.entity.fieldValue:''}</h3>
+                         <p style={{'color':'#111'}}>{counter.entity!=null?counter.entity.fieldText:''}</p>
                        </div>
                      </div>
                    ))}
@@ -163,11 +167,11 @@ const WhyDubai= ({entity1, nav, othernav, footerData})=> {
 
 
        <section>
-         <img alt="Map Image" src={entity1.fieldMiddleSectionImage.url} className="img-responsive full-width why-damac-map-img"/>
+         <img alt="Map Image" src={entity1.fieldMiddleSectionImage!=null?entity1.fieldMiddleSectionImage.url:''} className="img-responsive full-width why-damac-map-img"/>
        </section>
 
 
-       <section className="why-dubai-section-3" style={{'background-image': 'url(' + entity1.fieldSection3Background.url + ')'}}>
+       <section className="why-dubai-section-3" style={{'background-image': 'url(' + entity1.fieldSection3Background!=null?entity1.fieldSection3Background.url:'' + ')'}}>
          <div className="container">
            <div className="row">
                <div className="col-md-6 mb-4">
@@ -191,15 +195,15 @@ const WhyDubai= ({entity1, nav, othernav, footerData})=> {
                <div className="row justify-content-between">
                  <Slider {...settings} ref={sliderRef}>
                  {
-                   entity1.fieldMutlipleAreas.map((item)=>(
+                   entity1.fieldMutlipleAreas.map((item,k)=>(
                     <div>
-                      <div className='row'>
-                      <div className="col-md-6 col-8 mb-2">
-                      <h4>{item.entity.fieldTitle}</h4>
-                    </div>
-                    <div className="col-md-6 mb-2">
-                      <p>{item.entity.fieldTextw}</p>
-                    </div>
+                      <div className='row' key={k}>
+                        <div className="col-md-6 col-8 mb-2">
+                          <h4>{item.entity!=null?item.entity.fieldTitle:''}</h4>
+                        </div>
+                        <div className="col-md-6 mb-2">
+                          <p>{item.entity!=null?item.entity.fieldTextw:''}</p>
+                        </div>
                       </div>
                    
                     <div className="district-items-nav">
@@ -232,13 +236,13 @@ const WhyDubai= ({entity1, nav, othernav, footerData})=> {
        <TextSection className="text-section-whhydubai-investorsfav">
          <div className="row justify-content-center">
          {entity1.fieldMultipleIconsWithHeadin.map((counter,index) => (
-           <div className="col-md-4">
+           <div className="col-md-4" key={index}>
              <div className="icon-box">
                <div className="text-center">
-                 <img alt=""src={counter.entity.fieldIconW.url}/>
+                 <img alt=""src={counter.entity!=null?counter.entity.fieldIconW.url:''}/>
                </div>
-               <h4>{counter.entity.fieldHeading}</h4>
-               <p>{counter.entity.fieldTextW}</p>
+               <h4>{counter.entity!=null?counter.entity.fieldHeading:''}</h4>
+               <p>{counter.entity!=null?counter.entity.fieldTextW:''}</p>
              </div>
            </div>
            ))}
@@ -273,18 +277,18 @@ const WhyDubai= ({entity1, nav, othernav, footerData})=> {
 
            <Slider {...settings}>
            {entity1.fieldMultipleStories.map((counter,index) => (
-             <div>
+             <div key={index}>
                <div className="row justify-content-between mb-4">
            
            {/* <div className="col-12">
              <div className={`sliderArrows sliderArrowsDark`}>
-               <a href="#" className="sliderArrow">
+               <a href="javascript:void(0)" className="sliderArrow">
                  <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path  d="M8.75 15.875L1.875 9L8.75 2.125" stroke="white" strokelidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   </span>
                </a>
-               <a href="#" className="sliderArrow">
+               <a href="javascript:void(0)" className="sliderArrow">
                  <span><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path  d="M2.25 2.125L9.125 9L2.25 15.875" stroke="white" strokelidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -294,15 +298,15 @@ const WhyDubai= ({entity1, nav, othernav, footerData})=> {
              </div>
            </div> */}
            <div className="col-md-5 col-7">
-             <h3>{counter.entity.fieldHeadingS}</h3>
+             <h3>{counter.entity!=null?counter.entity.fieldHeadingS:''}</h3>
            </div>
        </div>
               <div className="row justify-content-between">
                <div className="col-md-5">
-                 <p>{counter.entity.fieldTextw4}</p>
+                 <p>{counter.entity!=null?counter.entity.fieldTextw4:''}</p>
                </div>
                <div className="col-md-5">
-                 <p>{counter.entity.fieldCol2Text}</p>
+                 <p>{counter.entity!=null?counter.entity.fieldCol2Text:''}</p>
                </div>
               </div>
              </div>
@@ -369,29 +373,48 @@ const WhyDubai= ({entity1, nav, othernav, footerData})=> {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (e) => {
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
 
+  var data;
+  var footer;
+  var data2;
+  var data1;
+  if(e.locale == 'en'){
+    data = await client.query({ query: WHY_DUBAI });
+    footer  = await client.query({ query: FOOTER_LINKS });
+    data2  = await client.query({ query: NAVIGATION });
+    data1  = await client.query({ query: PARENTMENUITEMS });
+  }
+    
+  else{
+    data = await client.query({ query: ARWHY_DUBAI });
+    footer  = await client.query({ query: ARFOOTER_LINKS });
+    data2  = await client.query({ query: ARNAVIGATION });
+    data1  = await client.query({ query: ARPARENTMENUITEMS });
+  }
+    
+
   // Use this for footer
-  const footer  = await client.query({ query: FOOTER_LINKS });
+  
   let footerData = footer.data.nodeQuery.entities[0];
 
  
   // end
   
    // Use this for novigation
-   const  data2  = await client.query({ query: NAVIGATION });
-   const  data1  = await client.query({ query: PARENTMENUITEMS });
+  
    let nav = [];
    let othernav = [];
    if(typeof data2 != 'undefined' &&  typeof data1 != 'undefined'){
-     let submenu = data2.data.nodeQuery.entities[0];
+     let submenu = data2.data.nodeQuery.entities[0].entityTranslation;
      let menu = data1.data.taxonomyTermQuery.entities;
-   
+     console.log(menu);
      menu.map((m,i)=>{
+       m = m;
        othernav = [];
        let des = m.description==null?'': m.description.value
        nav.push({name:m.name,tid:m.tid,submenu:[],link:des,isOpen:false});
@@ -414,10 +437,8 @@ export const getServerSideProps = async () => {
    }
      // end
 
-
-  const  data  = await client.query({ query: WHY_DUBAI });
- 
-  let entity1 = data.data.nodeQuery.entities[0];
+  console.log('*******',data.data.nodeQuery.entities);
+  let entity1 = data.data.nodeQuery.entities[0].entityTranslation;
   // let entity2 = data.data.nodeQuery.entities[1];
  
    return {

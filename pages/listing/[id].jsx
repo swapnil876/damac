@@ -36,7 +36,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // Bootstrap Css
-import 'bootstrap/dist/css/bootstrap.css'
+
 
 import style from '../../styles/pages/listing.module.css';
 import styles from '../../styles/pages/Community.module.css'
@@ -81,7 +81,7 @@ function ListingPage({nav, othernav, footerData}) {
       }
 
         //   importing bootstrap js
-        import("bootstrap/dist/js/bootstrap");
+        
    }, [])
 
    useEffect(() => {
@@ -89,11 +89,16 @@ function ListingPage({nav, othernav, footerData}) {
     callDownPaymentPrice();
  })
 
+ const [show3DTour, setShow3DTour] = useState(false);
+
    // tooltip
    const [landFee, setLandFee] = useState(false);
    const [regFee, setRegFee] = useState(false);
    const [mortRegFee, setMortRegFee] = useState(false);
    const [valueFee, setValueFee] = useState(false);
+
+        // Loan month per month calculation
+  const [perMonthAmount, setPerMonthAmount] = useState();
 
 //  Mortgage calculation area
 const [loanSlider, setLoanSlider] = useState(1);
@@ -117,28 +122,42 @@ const [interestRate, setInterestRate] = useState(2.49);
 const [downPayment, setDownPayment] = useState(25);
 const [loanPeriod, setLoanPeriod] = useState(1);
 
+function pmtFunction(ir,np, pv, fv = 0){ 
+  // ir: interest rate
+  // np: number of payment
+  // pv: present value or loan amount
+  // fv: future value. default is 0
+ 
+  var presentValueInterstFector = Math.pow((1 + ir), np);
+  var pmt = ir * pv  * (presentValueInterstFector + fv)/(presentValueInterstFector-1); 
+  return pmt;
+ }
+
+
 function callDownPaymentPrice(){
   var totPrice = propertyPrice * (downPayment / 100) ;
   setDownPaymentPrice(Math.ceil(totPrice));
 }
-    function mortgageCalculator(){
-      var loanAmt, deptFee, regFee, mortRegFee, valFee, months;
+function mortgageCalculator(){
+  var loanAmt, deptFee, regFee, mortRegFee, valFee, months, perMonth;
 
-      months = loanPeriod*12;
+  months = loanPeriod*12;
 
-      loanAmt = (propertyPrice - downPaymentPrice);
-      deptFee = ((propertyPrice * (4 / 100)) + 580);
-      regFee = (propertyPrice > 500000) ? (4000 + (propertyPrice * (5 / 100))) : (2000 + (propertyPrice * (5 / 100))); 
-      mortRegFee = ((loanAmt *  (0.5/ 100)) + 10);
-      valFee = ((propertyPrice * (5 / 100)) + 3000);
+  loanAmt = (propertyPrice - downPaymentPrice);
+  deptFee = ((propertyPrice * (4 / 100)) + 580);
+  regFee = ((propertyPrice > 500000) ? (4000 + (4000 * (5 / 100))) : (2000 + (2000 * (5 / 100))));
+  mortRegFee = ((loanAmt *  (0.25/ 100)) + 10);
+  valFee = 3675;
+  perMonth = pmtFunction((interestRate/100)/12, loanPeriod*12, loanAmt);
 
 
-      setDepartmentFee(deptFee);
-      setRegistrationFee(regFee);
-      setMortgageRegistrationFee(mortRegFee);
-      setValuationFee(valFee);
-      setNoOfMonths(months);
-    }
+  setDepartmentFee(deptFee);
+  setRegistrationFee(regFee);
+  setMortgageRegistrationFee(mortRegFee);
+  setValuationFee(valFee);
+  setNoOfMonths(months);
+  setPerMonthAmount(perMonth);
+}
 
 //  Mortgage calculation area
 
@@ -177,7 +196,7 @@ function callDownPaymentPrice(){
 
   //
   const tour3dcta = (
-    <Link href="#">
+    <Link href="javascript:void(0)">
       <a className="btn btn-primary cta-btn cta-btn-primary tour-3d-cta">
         <span
           className="react-icon"
@@ -286,6 +305,29 @@ function callDownPaymentPrice(){
             </div> :
             ""
           }
+                {/* 3d tour video modal */}
+      { 
+                show3DTour ? 
+                <div className="custom_modal_contain booking_step_2_modal tour_modal">
+                    <section className={ styles["book-step-main"]} style={{'minHeight':'100vh'}}>
+                        <div className="close" onClick={()=>{
+                          setShow3DTour(false);
+                          }}>
+                          <span>
+                          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M11.5547 9.5L17.1875 3.92188L18.3359 2.77344C18.5 2.60938 18.5 2.33594 18.3359 2.11719L17.1328 0.914062C16.9141 0.75 16.6406 0.75 16.4766 0.914062L9.75 7.69531L2.96875 0.914062C2.80469 0.75 2.53125 0.75 2.3125 0.914062L1.10938 2.11719C0.945312 2.33594 0.945312 2.60938 1.10938 2.77344L7.89062 9.5L1.10938 16.2812C0.945312 16.4453 0.945312 16.7188 1.10938 16.9375L2.3125 18.1406C2.53125 18.3047 2.80469 18.3047 2.96875 18.1406L9.75 11.3594L15.3281 16.9922L16.4766 18.1406C16.6406 18.3047 16.9141 18.3047 17.1328 18.1406L18.3359 16.9375C18.5 16.7188 18.5 16.4453 18.3359 16.2812L11.5547 9.5Z" fill="white" fill-opacity="0.42"/>
+                              </svg>
+                          </span>
+                        </div>
+                        <div className="container">
+                            <div className="row">
+                              {/* <div dangerouslySetInnerHTML={{ __html: entity1.field3dTourLink }}></div> */}
+                            </div>
+                        </div>
+                    </section>
+                </div> :
+                ""}
+          {/* 3d tour video modal */}
           {
             customModal ? 
             <div className="custom_modal_contain">
@@ -435,7 +477,7 @@ function callDownPaymentPrice(){
                                     <div className={style['project-left']}>
                                         <h1>Studio Apartment</h1>
                                         <p><span>Menaro Tower at Business bay</span></p>
-                                        <a href="#"><img src="/damac-static/images/location.png"/>  Dubailand, Dubai, United Arab Emirates</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/location.png"/>  Dubailand, Dubai, United Arab Emirates</a>
                                     </div>
                                 </div>
                                 <div className="col-md-5">
@@ -446,9 +488,9 @@ function callDownPaymentPrice(){
                                             <li><a onClick={()=>{
                                               document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'd', 'ctrlKey': true}));   
                                             }}><img src="/damac-static/images/save.png" /></a></li>
-                                            <li><a href="#"><img src="/damac-static/images/Vector.png"/></a></li>
+                                            <li><a href="javascript:void(0)"><img src="/damac-static/images/Vector.png"/></a></li>
                                             <li><a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a></li>
-                                            <li><a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery (19)</a></li>                
+                                            <li><a href="javascript:void(0)" onClick={()=>{openGalleryModal(true)}}>View Gallery (19)</a></li>                
                                         </ul>              
                                     </div> :
                                     <div className={`${style["project-right"]} project-right-for-mobile`}>
@@ -458,7 +500,7 @@ function callDownPaymentPrice(){
                                       <a onClick={()=>{openBrochureModal(true)}} target="_blank">Download Brochure</a>             
                                       </div>
                                       <div className="col-6">
-                                      <a href="#" onClick={()=>{openGalleryModal(true)}}>View Gallery (19)</a>              
+                                      <a href="javascript:void(0)" onClick={()=>{openGalleryModal(true)}}>View Gallery (19)</a>              
                                       </div>
                                       </div>
                                    
@@ -525,15 +567,15 @@ function callDownPaymentPrice(){
                             <div className="col-md-6">
                                 <div className="d-flex justify-content-between">
                                 <div className={style['vs-range']}>
-                                    <h5><a href="#">AED 5000</a></h5>
+                                    <h5><a href="javascript:void(0)">AED 5000</a></h5>
                                     <p>Starting from</p>
                                 </div>
                                 <div className={style['vs-range']}>
-                                    <h5><a href="#">Dubai Marina</a></h5>
+                                    <h5><a href="javascript:void(0)">Dubai Marina</a></h5>
                                     <p>Locality</p>
                                 </div>
                                 <div className={style['vs-range']}>
-                                    <h5><a href="#">Ready</a></h5>
+                                    <h5><a href="javascript:void(0)">Ready</a></h5>
                                     <p>Status</p>
                                 </div>
 
@@ -553,7 +595,7 @@ function callDownPaymentPrice(){
                           <div className="row">
                           <div className="col-8">
                               <div className={style['vs-range']}>
-                                  <h5><a href="#">Dubai Marina</a></h5>
+                                  <h5><a href="javascript:void(0)">Dubai Marina</a></h5>
                                   <p>Locality</p>
                               </div>
                           </div>
@@ -561,8 +603,8 @@ function callDownPaymentPrice(){
                               <div className={style['shape-wrap-plan']}>              
                                   <div className={`${style["shape-contact"]} float-end`}>
                                       <ul className="d-flex align-items-center p-0">
-                                      <li><a href="#" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
-                                      <li><a href="#" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
+                                      <li><a href="javascript:void(0)" className={style['solid-icon']}> <FontAwesomeIcon icon={faEnvelope}/></a></li>
+                                      <li><a href="javascript:void(0)" className={style['border-icon']}><FontAwesomeIcon icon={faWhatsapp}/></a></li>
                                       </ul>                  
                                   </div>                
                               </div>              
@@ -698,10 +740,10 @@ function callDownPaymentPrice(){
                                   <img src="/damac-static/images/listing-slider.png" className="img-fluid" />
                                   <div className={`${style["slider-nav"]} text-center`}>
                                   <div className={style['left-nav']}>
-                                      <a href="#"><FaAngleLeft/></a>
+                                      <a href="javascript:void(0)"><FaAngleLeft/></a>
                                   </div>
                                   <div className={style['right-nav']}>
-                                      <a href="#"><FaAngleRight/></a>
+                                      <a href="javascript:void(0)"><FaAngleRight/></a>
                                   </div>
                                   </div>
                               </div>
@@ -919,7 +961,7 @@ function callDownPaymentPrice(){
                               </video> */}
                                 <img src="/images/similar-property-1.jpg" className="img-fluid"/>
                               </div>
-                              <a href="#" className={style['play-button']}><FaPlay /></a>
+                              <a href="javascript:void(0)" className={style['play-button']}><FaPlay /></a>
                             </div>
                           </div>
                         </div>
@@ -933,7 +975,7 @@ function callDownPaymentPrice(){
                         <div className={style['3d-tour-inner']} style={{'background-image':'url(/images/3d-tour-listing.jpg)','background-repeat': 'no-repeat', 'width': '100%', 'padding': '251px 2px', 'max-width':'100%'}}>
                           <div className={`${style["3d-content-inner"]} ${style["text-center"]}`}>
                             <h2>Experience it <br/>remotely</h2>
-                            <a href="#" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
+                            <a href="javascript:void(0)" className="btn btn-primary"><img src="/damac-static/images/per.png" style={{'margin-right':'13px'}}/>Take a 3D Tour</a>
                           </div>
                         </div>
                         </div>
@@ -955,7 +997,7 @@ function callDownPaymentPrice(){
                             <h3 className={style['sub_heading']}>Shaping the Middle East’s luxury real estate market since 2002</h3>
                             <p className={style['text']}>Dubailand, Dubai, United Arab Emirates</p>
                             
-                            <a href="#" className="btn btn-primary">View More</a>
+                            <a href="javascript:void(0)" className="btn btn-primary">View More</a>
                            </div>
                          </div>
                          </div>
@@ -1036,7 +1078,7 @@ function callDownPaymentPrice(){
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
+                                      <p><input type="number" min="300000" step="10000" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`down-payment ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Down Payment <span className="text-right">%</span></p>
@@ -1048,12 +1090,12 @@ function callDownPaymentPrice(){
                                   <div className={styles['estimate-inner']}>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus/><FaMinus/></span></p>
+                                      <p><input type="text" min="1" disabled class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}} /><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
                                     </div>
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                                       <p> {loanSlider}</p>
-                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                                      <input type="range" min="1" max="25" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
                                   </div>
@@ -1063,11 +1105,11 @@ function callDownPaymentPrice(){
                                     <div className={styles['estimate-inner']}>
                                     <div className={`price ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Property Price</p>
-                                      <p><input type="text" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
+                                      <p><input type="number" min="300000" step="10000" class="mortgage_invidible_input currency" value={propertyPrice} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setPropertyPrice(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_angles"]}`}></span></p>
                                     </div>
                                     <div className={`rate ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Interest Rate <span className="text-right">%</span></p>
-                                      <p><input type="text" class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
+                                      <p><input type="text" min="1" disabled class="mortgage_invidible_input" value={interestRate.toFixed(2)} onChange={()=>{ callDownPaymentPrice(), mortgageCalculator(), setInterestRate(event.target.value)}} /> <span className={`text-right dark ${styles["side_icons"]} ${styles["side_icons_calc"]}`}><FaPlus onClick={()=>{setInterestRate((prev)=>{return prev + 0.1})}}/><FaMinus onClick={()=>{setInterestRate((prev)=>{return prev - 0.1})}}/></span></p>
                                     </div>
                                   </div>
                                   <div className={styles['estimate-inner']}>
@@ -1080,7 +1122,7 @@ function callDownPaymentPrice(){
                                     <div className={`loan ${styles["border-white"]}`}>
                                       <p className={styles['heading']}>Loan Period <span className="text-right">Y R S</span></p>
                                       <p> {loanSlider}</p>
-                                      <input type="range" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
+                                      <input type="range" min="1" max="25" className={styles['range-slider']} value={loanSlider} onChange={()=>{ callDownPaymentPrice(),mortgageCalculator(), setLoanSlider(event.target.value), 
                             setLoanPeriod(event.target.value)}}/>
                                     </div>
                                   </div>
@@ -1094,9 +1136,9 @@ function callDownPaymentPrice(){
                                   <div className={styles['estimate-cost']}>
                                     <h4>Cost Breakdown</h4>
                                     <ul>
-                                      <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> {propertyPrice}</i></li>
+                                      <li><span className={styles['text-left']}>60 months of</span> <i><span>AED</span> {Math.ceil(perMonthAmount)}</i></li>
                                       <li><span className={styles['text-left']}>Down Payment</span> <i><span>AED</span> {downPaymentPrice}</i></li>
-                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i><span>%</span>{interestRate.toFixed(2)}</i></li>
+                                      <li><span className={styles['text-left']}>With Interest rate of</span> <i>{interestRate.toFixed(2)} <span>%</span></i></li>
                                       <li><span className={styles['text-left']}>For Years</span> <i>{loanPeriod}</i></li>
                                     </ul>
 
@@ -1124,9 +1166,9 @@ function callDownPaymentPrice(){
 
                                       <li><span className={styles['text-left']}>Valuation Fee <span><FaRegQuestionCircle onMouseOver={()=>{setValueFee(true)}} onMouseOut={()=>{setValueFee(false)}}/></span>
                                       {
-                                        valueFee && <span class="tooltip_pop tooltip_pop_dark_bg">3000 AED + 5% VAT</span>
+                                        valueFee && <span class="tooltip_pop tooltip_pop_dark_bg">2500 to 3500 AED + 5% VAT</span>
                                       }
-                                      </span><i><span>AED</span> {valuationFee}</i></li>
+                                      </span><i><span>AED</span> {Math.ceil(valuationFee)}</i></li>
                                     </ul>
                                   </div>
                                 </div>
@@ -1153,7 +1195,7 @@ function callDownPaymentPrice(){
                              <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%.
                                 Property prices per square foot are lower than many other cities globally, 
                                making Dubai an affordable location to own prime real estate.</p>
-                             <a href="#" className={style['read-more']}>Read more</a>
+                             <a href="javascript:void(0)" className={style['read-more']}>Read more</a>
                            </div>
                          </div>
                        </div>
@@ -1167,7 +1209,7 @@ function callDownPaymentPrice(){
                               <p>The city offers higher rental yields than many other mature real estate markets. On average, investors can achieve gross rental yields of between 5-9%.
                                  Property prices per square foot are lower than many other cities globally, 
                                 making Dubai an affordable location to own prime real estate.</p>
-                              <a href="#" className={style['read-more']}>Read more</a>
+                              <a href="javascript:void(0)" className={style['read-more']}>Read more</a>
                             </div>
                       </div>
                       </section>
@@ -1213,10 +1255,10 @@ function callDownPaymentPrice(){
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -1237,33 +1279,10 @@ function callDownPaymentPrice(){
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                      </li>
-                                    </ul>
-                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-md-6">
-                                <div className={style['property-slider-wrap']}>
-                                  <div className={style['project-card']}>
-                                     <Carousel responsive={responsive}>
-                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                     </Carousel>
-                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
-                                    <p>DAMAC Hills, Dubailand, Dubai</p>
-                                    <ul className={style['bedroom-detail']}>
-                                      <li>
-                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                      </li>
-                                      <li>
-                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -1283,33 +1302,10 @@ function callDownPaymentPrice(){
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                      </li>
-                                    </ul>
-                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-md-6">
-                                <div className={style['property-slider-wrap']}>
-                                  <div className={style['project-card']}>
-                                     <Carousel responsive={responsive}>
-                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                     </Carousel>
-                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
-                                    <p>DAMAC Hills, Dubailand, Dubai</p>
-                                    <ul className={style['bedroom-detail']}>
-                                      <li>
-                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                      </li>
-                                      <li>
-                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -1329,33 +1325,10 @@ function callDownPaymentPrice(){
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
-                                      </li>
-                                    </ul>
-                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
-
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-md-6">
-                                <div className={style['property-slider-wrap']}>
-                                  <div className={style['project-card']}>
-                                     <Carousel responsive={responsive}>
-                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
-                                     </Carousel>
-                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
-                                    <p>DAMAC Hills, Dubailand, Dubai</p>
-                                    <ul className={style['bedroom-detail']}>
-                                      <li>
-                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
-                                      </li>
-                                      <li>
-                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -1375,10 +1348,79 @@ function callDownPaymentPrice(){
                                     <p>DAMAC Hills, Dubailand, Dubai</p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                      </li>
+                                    </ul>
+                                    <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className={style['property-slider-wrap']}>
+                                  <div className={style['project-card']}>
+                                     <Carousel responsive={responsive}>
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                       <img src="/damac-static/images/project-gal4.jpg" className="img-fluid" />
+                                     </Carousel>
+                                    <span className={style['title_sec']}><h6>Kiara 2 Bedroom Apartment</h6> <img src="/images/icons/save-outline.png" alt="save"/></span>
+                                    <p>DAMAC Hills, Dubailand, Dubai</p>
+                                    <ul className={style['bedroom-detail']}>
+                                      <li>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                      </li>
+                                      <li>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -1398,10 +1440,10 @@ function callDownPaymentPrice(){
                                     <p><span>Starting AED 1,213,515*</span></p>
                                     <ul className={style['bedroom-detail']}>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                       </li>
                                       <li>
-                                        <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                        <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                       </li>
                                     </ul>
                                     <button type="button" className={style['solid-icon']} style={{'border':'0', 'padding':'15px 35px'}}>Learn more</button>
@@ -1426,12 +1468,12 @@ function callDownPaymentPrice(){
                                        <div className="row">
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                        </li>
                                        </div>
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                        </li>
                                        </div>
                                        </div>
@@ -1451,12 +1493,12 @@ function callDownPaymentPrice(){
                                        <div className="row">
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                        </li>
                                        </div>
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                        </li>
                                        </div>
                                        </div>
@@ -1480,12 +1522,12 @@ function callDownPaymentPrice(){
                                        <div className="row">
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                        </li>
                                        </div>
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                        </li>
                                        </div>
                                        </div>
@@ -1505,12 +1547,12 @@ function callDownPaymentPrice(){
                                        <div className="row">
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/price-tag 1.png" className="img-fluid" />From AED 1,213,515*</a>
                                        </li>
                                        </div>
                                        <div className="col-6">
                                        <li>
-                                         <a href="#"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
+                                         <a href="javascript:void(0)"><img src="/damac-static/images/house (2) 1.png" className="img-fluid" />Villa 3 Bedrooms</a>
                                        </li>
                                        </div>
                                        </div>

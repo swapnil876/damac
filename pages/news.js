@@ -73,12 +73,12 @@ function News( {entity1,firstSelect, firstPressRelease,section1Data,newslist, na
              <div className="row">
                <div className="col-md-8">
                <div className="primary-cta">
-                 <img alt="" src={deviceIsMobile?selectedBlog.fieldFeatureImageMobile.url:selectedBlog.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
-                 <label>{selectedBlog.fieldTag.entity.name}</label>
+                 <img alt="" src={deviceIsMobile?selectedBlog.fieldFeatureImageMobile!=null && selectedBlog.fieldFeatureImageMobile.url:selectedBlog.fieldFeatureImageDesktop!=null && selectedBlog.fieldFeatureImageDesktop.url} className="img-responsive full-width"/>
+                 <label>{(selectedBlog.fieldTag!=null && selectedBlog.fieldTag.entity!=null) && selectedBlog.fieldTag.entity.name}</label>
                  <h2 className="txt_black">
                  <Link href={"blog" + "/" + selectedBlog.nid }><a>{selectedBlog.title}</a></Link>
                  </h2>
-                 <div dangerouslySetInnerHTML={{ __html: selectedBlog.body.value }}></div>
+                 <div dangerouslySetInnerHTML={{ __html:selectedBlog.body!=null && selectedBlog.body.value }}></div>
                </div>
              </div>
              <div className="col-md-4">
@@ -91,7 +91,7 @@ function News( {entity1,firstSelect, firstPressRelease,section1Data,newslist, na
                    section1Data.map((m,n)=>(
                     <div className="news" key={n}>
                       <label>{m.fieldTag!=null?m.fieldTag.entity.name:''}</label>
-                      <h6><Link href="#"><a onClick={()=>{saveBlogItem(m)}}>{m.title}</a></Link></h6>
+                      <h6><Link href="javascript:void(0)"><a onClick={()=>{saveBlogItem(m)}}>{m.title}</a></Link></h6>
                       <p> {m.entityCreated} by {m.fieldAuthor!=null?m.fieldAuthor.entity.name:''}  </p>              
                     </div>
                     ))
@@ -125,7 +125,7 @@ function News( {entity1,firstSelect, firstPressRelease,section1Data,newslist, na
                 secTwoNewsList.map((item, index)=>(
                   <div className="col-md-3">
                   <div className="card ">
-                     <img alt={item.title} src={deviceIsMobile ? item.fieldFeatureImageMobile.url : item.fieldThumbnailDesktop.url } className="squae-img card-img-top card-img-for-damac-in-news" />
+                     <img alt={item.title} src={deviceIsMobile ?item.fieldFeatureImageMobile!=null && item.fieldFeatureImageMobile.url :item.fieldThumbnailDesktop!=null && item.fieldThumbnailDesktop.url } className="squae-img card-img-top card-img-for-damac-in-news" />
                      <div className="card-body">
                        <span>Customer’s Stories</span>
                        <h5 className="card-title">
@@ -163,7 +163,10 @@ function News( {entity1,firstSelect, firstPressRelease,section1Data,newslist, na
               secThreeNewsList.map((item, index)=>(
                 <div className="col-md-3">
                 <div className="card card-for-news-page">
-                   <img alt={item.title} src={deviceIsMobile ? item.fieldFeatureImageMobile.url : item.fieldThumbnailDesktop.url } className="card-img-top card-img-for-news-page " />
+                  {
+                    (item.fieldFeatureImageMobile!=null && item.fieldThumbnailDesktop!=null) &&
+                     <img alt={item.title} src={deviceIsMobile ? item.fieldFeatureImageMobile.url : item.fieldThumbnailDesktop.url } className="card-img-top card-img-for-news-page " />
+                  }
                    <div className="card-body">
                      <h5 className="card-title"><Link href={"damac-in-the-news" + "/" + item.nid}><a>{item.title}</a></Link></h5>
                      <p className="card-text">{item.entityCreated} by {item.fieldAuthor!=null?item.fieldAuthor.entity.name:''}</p>

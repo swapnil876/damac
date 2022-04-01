@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 
@@ -77,26 +78,26 @@ function Home( {entity1, nav, othernav} ) {
 
           <>
             { (!deviceIsMobile) &&
-              <HomeBanner entity1={ entity1 } bannerImage={ entity1.fieldMainImageDesktopHome.url }></HomeBanner>
+              <HomeBanner entity1={ entity1 } bannerImage={entity1.fieldMainImageDesktopHome!=null && entity1.fieldMainImageDesktopHome.url }></HomeBanner>
             }
 
             { (deviceIsMobile) &&
-              <div className="homeMobileBanner" style={{'background-image': 'url(' + entity1.fieldMainImageMobileHome.url + ')'}}>
+              <div className="homeMobileBanner" style={{'background-image': 'url(' +entity1.fieldMainImageMobileHome!=null && entity1.fieldMainImageMobileHome.url + ')'}}>
                 <div className="container">
                  
                   <div className="homemobileBannerText">
                     <h1>{entity1.title}</h1>
-                    <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
+                    <div dangerouslySetInnerHTML={{ __html:entity1.body!=null && entity1.body.value }}></div>
                   </div>
 
                   <div className="bannerBtnGroup">
-                    <a className="d-block btn btn-primary cta-btn">
+                    <Link href="/en/project/144" className="d-block btn btn-primary cta-btn">
                       <span>Discover more</span>
-                    </a>
+                    </Link>
 
-                    <a className="d-block btn cta-btn cta-btn-link">
+                    <Link href="/en/contact/sales-enquire" className="d-block btn cta-btn cta-btn-link">
                       <span>Explore Now</span>
-                    </a>
+                    </Link>
                   </div>
 
                 </div>

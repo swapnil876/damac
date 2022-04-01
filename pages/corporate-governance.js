@@ -165,7 +165,7 @@ function handleSelectChange(ev){
             {
               !deviceIsMobile ?
               tabLinks.map( ( link, index ) => (
-    
+                link!=null &&    
                   <Link href="" key={ index }>
                     <a className={ `${style['pagetabs-link']} ${ sectionToShow == link.label ? style['active'] : '' }` } onClick={()=>{
                       setSectionToShow(link.label);
@@ -197,6 +197,7 @@ function handleSelectChange(ev){
                   <div className="row">
                   {
                     entity1.fieldMembers.map( (unit, index) => (
+                      unit.entity!=null && 
                   // <CorporateGovernanceBoard entity1={unit} />
                   <div className="col-md-3 col-6" key={index}>
                       <div className={styles['leadershipbox']}>

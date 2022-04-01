@@ -23,7 +23,7 @@ import { FOOTER_LINKS } from "../graphql/footer_links" ;
  import { useMediaQuery } from 'react-responsive'
 
 //  Bootstrap
-//  import 'bootstrap/dist/css/bootstrap.css'
+//  
 
 
 // FA
@@ -43,7 +43,7 @@ import { FINANCIAL_INFORMATION } from '../graphql/financial_information';
 function FinancialInformation( { mobileDevice, nav, othernav, footerData, entity1 } ) {
 
     // useEffect(() => {
-    //     import("bootstrap/dist/js/bootstrap");
+    //     
     //   }, []);
 
   const [deviceIsMobile, setDeviceIsMobile] = useState(false);
@@ -54,11 +54,11 @@ function FinancialInformation( { mobileDevice, nav, othernav, footerData, entity
    }, [])
  
 
-  const[showSection, setShowSection] = useState("financialstatements");
-  // var showThisSection = "financialstatements";
+  const[showSection, setShowSection] = useState("Financial Information");
+  // var showThisSection = "Financial Information";
   //  function changeState(){
  
-  //      showThisSection = (showThisSection == "financialstatements") ? "keyfigures" : "financialstatements" ;
+  //      showThisSection = (showThisSection == "Financial Information") ? "Key Figures" : "Financial Information" ;
   //  }
 
   // Breadcrumbs links
@@ -113,9 +113,10 @@ function FinancialInformation( { mobileDevice, nav, othernav, footerData, entity
           <div className={`nav nav-tabs btn-group ${styles["damac-tab-btns"]} justify-content-start d-inline-flex`}>
             {
               entity1.fieldMultipleTabs.map((item, index)=>(
-                <a className={`${styles["nav-pills"]} btn btn-outine ${styles[(index == 0) ? "active" : "inactive"]}`} aria-current="page" 
+                item.entity!=null &&
+                <a className={`${styles["nav-pills"]} btn btn-outine ${styles[(showSection == item.entity.fieldTabHeading) ? "active" : "inactive"]}`} aria-current="page" 
                 onClick={function(){
-                  const selectedSecion = (index == 0) ? "financialstatements" : "keyfigures";
+                  const selectedSecion = (index == 0) ? "Financial Information" : "Key Figures";
                   setShowSection(selectedSecion);
                 }}>{item.entity.fieldTabHeading}</a>
               ))
@@ -126,61 +127,63 @@ function FinancialInformation( { mobileDevice, nav, othernav, footerData, entity
 
           <div className={styles['tab-content']}>
               {
-                (showSection == "financialstatements") ? 
-                <div className="tab-pane show fade" id="financialstatements">
-                <div className={styles['capital-history-menu']}>
-                 <ul className={styles['capital-dm-ul']}>
+                (showSection == "Financial Information") ? 
+                // <div className="tab-pane show fade" id="Financial Information">
+                // <div className={styles['capital-history-menu']}>
+                //  <ul className={styles['capital-dm-ul']}>
                    
-                   <li className={styles['active']}><a href="#">2020</a></li>
-                   <li><a href="#">2019</a></li>
-                   <li><a href="#">2018</a></li>
-                   <li><a href="#">2017</a></li>
-                   <li><a href="#">2016</a></li>           
-                  </ul>
-                </div>
+                //    <li className={styles['active']}><a href="javascript:void(0)">2020</a></li>
+                //    <li><a href="javascript:void(0)">2019</a></li>
+                //    <li><a href="javascript:void(0)">2018</a></li>
+                //    <li><a href="javascript:void(0)">2017</a></li>
+                //    <li><a href="javascript:void(0)">2016</a></li>           
+                //   </ul>
+                // </div>
                 
-                <div className={styles['statements-wrapper']}>
-                  {/* <!-- Report list start here --> */}
-                  <div className={styles['list_report_main']}>
-                      <ul className="list-unstyled">
-                      {entity1.fieldMultipleFilesF.map( (f, index) => (
-                          <li>
-                              <div className={styles['report_list']}>
-                                  <h2><a href="#">{f.entity.fieldFileTitle}</a></h2>
-                                  <div className="d-flex ">
-                                      <div className={styles['datetime-report']}>
-                                          <p>{f.entity.fieldDate}</p>
-                                      </div>
-                                      <div className={styles['download_report']}><a href={f.entity.fieldFile}>Download</a></div>
-                                  </div>
-                              </div>
-                          </li>
-                      ))}
-                      </ul>
-                  </div>
-                </div>
-                </div> : 
-                <div className={styles['tab-pane']} id="keyfigures">
-               <div className={styles['capital-history-menu']}>
-                <ul className={styles['capital-dm-ul']}>
-                  <li><a href="#">Quarterly Data</a></li>
-                  <li className={styles['active']}><a href="#">Annual Data</a></li>
-                 </ul>
-               </div>
+                // <div className={styles['statements-wrapper']}>
+                //   <div className={styles['list_report_main']}>
+                //       <ul className="list-unstyled">
+                //       {entity1.fieldMultipleFilesF.map( (f, index) => (
+                //         f.entity!=null &&
+                //           <li>
+                //               <div className={styles['report_list']}>
+                //                   <h2><a href="javascript:void(0)">{f.entity.fieldFileTitle}</a></h2>
+                //                   <div className="d-flex ">
+                //                       <div className={styles['datetime-report']}>
+                //                           <p>{f.entity.fieldDate}</p>
+                //                       </div>
+                //                       <div className={styles['download_report']}><a href={f.entity.fieldFile}>Download</a></div>
+                //                   </div>
+                //               </div>
+                //           </li>
+                //       ))}
+                //       </ul>
+                //   </div>
+                // </div>
+                // </div>
+                <iframe class="financial_info_iframe" src={entity1.fieldMultipleTabs[0].entity.fieldIframeContent} />
+                 : 
+              //   <div className={styles['tab-pane']} id="Key Figures">
+              //  <div className={styles['capital-history-menu']}>
+              //   <ul className={styles['capital-dm-ul']}>
+              //     <li><a href="javascript:void(0)">Quarterly Data</a></li>
+              //     <li className={styles['active']}><a href="javascript:void(0)">Annual Data</a></li>
+              //    </ul>
+              //  </div>
  
-               <div className={`${styles["capital-history-menu"]} ${styles["secondary-menu"]}`} style={{'font-size':' 14px'}}>
-                <ul className={styles['capital-dm-ul']}>
-                  <li className={styles['active']}><a href="#">Consolidated Income Statement</a></li>
-                  <li ><a href="#">Consolidated Statement of Financial Position</a></li>
-                 </ul>
-               </div>
+              //  <div className={`${styles["capital-history-menu"]} ${styles["secondary-menu"]}`} style={{'font-size':' 14px'}}>
+              //   <ul className={styles['capital-dm-ul']}>
+              //     <li className={styles['active']}><a href="javascript:void(0)">Consolidated Income Statement</a></li>
+              //     <li ><a href="javascript:void(0)">Consolidated Statement of Financial Position</a></li>
+              //    </ul>
+              //  </div>
  
-               <div className="my-5 pb-5">
-                 <img src="damac-static/img/financialinfoimg.png" width="758" style={{'max-width':'100%'}}/>
-                 {/* <iframe class="financial_info_key_fig_iframe"></iframe> */}
-               </div>
+              //  <div className="my-5 pb-5">
+              //    <img src="damac-static/img/financialinfoimg.png" width="758" style={{'max-width':'100%'}}/>
+              //  </div>
                
-                </div>
+              //   </div>
+              <iframe class="financial_info_iframe" src={entity1.fieldMultipleTabs[1].entity.fieldIframeContent} />
               }
             </div>
         </div>

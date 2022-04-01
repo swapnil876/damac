@@ -121,14 +121,14 @@ export default function ItemDetailsSection({
                   <div className={styles['mobilebtns-sharer']}>
 
                     <div className={styles['cta-bottom-btns']}>
-                      <a href="#" className={ `btn btn-primary btn-blur btn-icon` }>
+                      <a href="javascript:void(0)" className={ `btn btn-primary btn-blur btn-icon` }>
                         <span className='react-icon'>
                               <IoBookmarkOutline color={ 'white' } />
                         </span>
                       </a>
                     
                    
-                      <a href="#" style={ {marginLeft: 8} } className={ `btn btn-primary btn-blur btn-icon btn-icon-square` }>
+                      <a href="javascript:void(0)" style={ {marginLeft: 8} } className={ `btn btn-primary btn-blur btn-icon btn-icon-square` }>
                         <span className='react-icon'>
                           <IoShareSocialOutline  color={ 'white' } />
                         </span>

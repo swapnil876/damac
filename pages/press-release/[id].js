@@ -51,7 +51,7 @@ import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
                     <div className={styles['press-content']} style={{'padding':'0 !important'}}>
                     <h1>{entity1.title}</h1>
                     <p>{entity1.fieldShortText}</p>
-                    <span>{entity1.entityCreated} By {entity1.fieldAuthor.entity.name}</span>
+                    <span>{entity1.entityCreated} By {entity1.fieldAuthor!=null && entity1.fieldAuthor.entity.name}</span>
                     </div> 
                 </div> </div>                              
                 </section>  
@@ -60,16 +60,22 @@ import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
                 <div className="container">
                     <div className={styles['content-wrap-news']}>
                     <ul className={styles['social-media']}>
-                        <li><a href="#"><img src="../../damac-static/images/twiter.png"/></a></li>
-                        <li><a href="#"><img src="../../damac-static/images/facebook.png"/></a></li>
-                        <li><a href="#"><img src="../../damac-static/images/linkedin.png"/></a></li>
-                        <li><a href="#"><img src="../../damac-static/images/whatsapp.png"/></a></li>
-                        <li><a href="#"><img src="../../damac-static/images/share.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="../../damac-static/images/twiter.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="../../damac-static/images/facebook.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="../../damac-static/images/linkedin.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="../../damac-static/images/whatsapp.png"/></a></li>
+                        <li><a href="javascript:void(0)"><img src="../../damac-static/images/share.png"/></a></li>
                     </ul>
-                    <div className={styles['content-detail']}>
-                        <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
-                        
-                    </div>
+                    {
+                      entity1.body!=null && entity1.body!=''?
+                      (
+                      <div className={styles['content-detail']}>
+                          <div dangerouslySetInnerHTML={{ __html: entity1.body.value }}></div>
+                          
+                      </div>):
+                      ('')
+                    }
+                    
 
                     </div>
                     
@@ -87,16 +93,21 @@ import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
                        bloglist.map( (blog, index) => (
                         <div className="col-md-4">
                             <div className={styles['card']}>
-                            <img src='../damac-static/images/blog1.png' className={styles['card-img-top']} alt="..."/>
+                            <img src='../../damac-static/images/blog1.png' className={styles['card-img-top']} alt="..."/>
 
 
                             <div className={styles['card-body']}>
-                                <a href="#"><h4>{blog.title}</h4></a>
+                                <a href="javascript:void(0)"><h4>{blog.title}</h4></a>
                                 <div className="d-flex justify-content-between">
-                                <label>{blog.fieldTag.entity.name}</label>
-                                <span> {blog.entityCreated} by {blog.fieldAuthor.entity.name} </span>
+                                <label>{(blog.fieldTag!=null && blog.fieldTag!='')?blog.fieldTag.entity.name:''}</label>
+                                <span> {blog.entityCreated} by {(blog.fieldAuthor!=null && blog.fieldAuthor!='')?blog.fieldAuthor.entity.name:''} </span>
                                 </div>
-                                <div className={styles['card-text']}> dangerouslySetInnerHTML={{ __html: blog.body.value }}</div>
+                                {
+                                  blog.body!=null && blog.body!=''?
+                                  (<div className={styles['card-text']} dangerouslySetInnerHTML={{ __html: blog.body.value }}></div>):
+                                  ('')
+                                }
+                                
                                 <a href={'press-release/'+blog.nid} className={styles['read-more']}>Read More</a>
                             </div>
                             </div>
@@ -170,7 +181,7 @@ import { BLOGSDETAILS } from '../../graphql/master/blogdetails';
    let entity1 = data.data.nodeQuery.entities[0];
    let bloglist = data3.data.nodeQuery.entities;
      // end
- 
+   console.log(bloglist);
    return {
      props: {
         entity1: entity1,

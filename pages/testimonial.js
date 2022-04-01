@@ -67,7 +67,7 @@ function Bookstep2({entity, nav, othernav, footerData}) {
         <main className="main-body main">
 
 
-        <iframe className='fullpage_banner_video_iframe' src={entity.fieldMainVideo.url.path} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe className='fullpage_banner_video_iframe' src={entity.fieldMainVideo.url!=null && entity.fieldMainVideo.url.path} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         
 
 
@@ -141,11 +141,11 @@ function Bookstep2({entity, nav, othernav, footerData}) {
                       <div className="col-lg-6 order-md-1 order-2">
                           <div className={styles['client_says']}>
                             <div className={styles['client_says_txt']}>
-                              <h2>{testimonial.entity.fieldTestimonialHeading}</h2>
-                              <p>{testimonial.entity.fieldTestimonialText}</p>
+                              <h2>{testimonial.entity!=null?testimonial.entity.fieldTestimonialHeading:''}</h2>
+                              <p>{testimonial.entity!=null?testimonial.entity.fieldTestimonialText:''}</p>
                             </div>
                             <div className={styles['client_name']}>
-                              <p>{testimonial.entity.fieldTestimonialName}</p>
+                              <p>{testimonial.entity!=null?testimonial.entity.fieldTestimonialName:''}</p>
                             </div>
                             <div className={styles['client_designation']}>
                               <p>Investor</p>
@@ -153,7 +153,7 @@ function Bookstep2({entity, nav, othernav, footerData}) {
                           </div>
                         </div>
                         <div className="col-lg-6 order-md-2 order-1">
-                          <img src={testimonial.entity.fieldTestimonialImage.url} className="img-fluid"/>
+                          <img src={testimonial.entity.fieldTestimonialImage!=null?testimonial.entity.fieldTestimonialImage.url:''} className="img-fluid"/>
                         </div>   
                       </div>
                      </div>

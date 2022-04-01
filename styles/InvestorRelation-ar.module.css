@@ -1,0 +1,229 @@
+.pagetabs {
+    display: flex;
+    padding: 0;
+    margin-bottom: 45px;
+    list-style-type: none;
+    max-width: 100%;
+    overflow:auto
+}
+
+.pagetabs > li{
+    padding: 15px 0;
+    display: block;
+    margin-left: 33px;
+    font-size: 20px;
+    position: relative;
+    opacity: 0.5;
+}
+
+.pagetabs-link {
+    padding: 15px 0;
+    display: block;
+    margin-right: 33px;
+    font-size: 20px;
+    position: relative;
+    opacity: 0.5;
+
+}
+
+.pagetabs > li:hover,
+.pagetabs > li.active{
+    color: #000;
+    opacity: 1;
+}
+
+.pagetabs-link:hover,
+.pagetabs-link.active {
+    color: #000;
+    opacity: 1;
+}
+
+.pagetabs > li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #000;
+    opacity: 0;
+    transition: 0.12s all ease-in-out;
+}
+
+.pagetabs-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #000;
+    opacity: 0;
+    transition: 0.12s all ease-in-out;
+}
+
+.pagetabs > li:hover::after {
+    opacity: 0.8;
+}
+
+.pagetabs-link:hover::after {
+    opacity: 0.8;
+}
+
+.pagetabs > li.active::after,
+.pagetabs > .li:hover::after {
+    opacity: 1;
+}
+
+.pagetabs-link.active::after,
+.pagetabs-link:hover::after {
+    opacity: 1;
+}
+
+
+.pagetabs-link.active {
+    font-weight: 500;
+}
+
+.pagetabs > li > a.active {
+    font-weight: 500;
+}
+
+
+/* Annual Report  */
+.annual-reports-list {
+    padding-bottom: 80px;
+}
+
+.annual-reports-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.annual-reports-item:last-child {
+    border-bottom: 0;
+}
+
+.annual-reports-item h3 {
+    font-weight: 500;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+
+.annual-reports-item .annual-report-meta {
+    display: flex;
+    font-size: 16px;
+    padding: 12px 0;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .profile-inner-main {
+        background: #fff !important;
+    }
+    .profile-main-head h1, .profile-main-head p{
+        color:#111 !important;
+        text-align: right !important;
+    }
+    .annual-reports-item h3 {
+        font-size: 18px;
+    }
+    .annual-reports-item .annual-report-meta .datetime{
+        font-size: 14px;
+    }
+    .annual-reports-item .annual-report-meta {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.annual-reports-item .annual-report-meta .datetime {
+    display: inline-block;
+    margin-left: 30px;
+    font-weight: 300;
+}
+
+.annual-report-meta .downloadlink a {
+    font-weight: 400;
+}
+
+
+/*Contact us investor*/
+.contactus-investor {
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+
+
+
+
+/*
+* Investor Relation Page
+*/
+
+.profile-outer-white {
+    padding: 0px;
+    background: #fff;
+    border-radius: 4px;
+    position: relative;
+    z-index: 9;
+}
+
+.profile-inner-main {
+    background: #000;
+    padding: 40px 16px;
+
+}
+
+.profile-main-head {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.profile-main-head h1 {
+    font-size: 32px;
+    line-height: 37.63px;
+    color: #fff;
+    letter-spacing: 0.01em;
+    margin-bottom: 16px;
+}
+
+.profile-main-head p {
+    font-size: 16px;
+    line-height: 25.28px;
+    letter-spacing: 0.04em;
+    font-weight: 300;
+    opacity: 0.75;
+    color: #ffffff;
+}
+
+.contactus-left-area h3 {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.6%;
+    letter-spacing: 0.03em;
+    color: #000000;
+}
+
+.telephonelinks, .contactus-left-area {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 148%;
+    color: #000000;
+}
+
+
+@media (min-width: 768px) {
+    .profile-corporate {
+        margin-top: -50px;
+    }
+
+    .profile-outer-white {
+        padding: 40px;
+    }
+}

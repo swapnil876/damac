@@ -2,9 +2,10 @@ import { gql } from '@apollo/client';
 
 const CONTACTUS = gql`
 query {
-   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", value: ["contact_us"]}]}) {
+   nodeQuery(limit: 10, offset: 0, filter: {conditions: [{operator: EQUAL, field: "type", language:EN, value: ["contact_us"]}]}) {
       entities {
-      ... on NodeContactUs{
+        entityTranslation(language: EN) {
+          ... on NodeContactUs{
             nid
             fieldPageTitleC
             fieldAddressesTitle
@@ -24,7 +25,8 @@ query {
            }
            }
          
-      }
+        }
+          }
       }
    }
 }`;
